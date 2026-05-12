@@ -114,8 +114,9 @@ Supporting obs from today's landscape sweep: ob_1668 (SCM Algorithm-1-no-resolut
 |--------|------|----------|
 | ✓ existing | dv_0597 | Substrate-as-retrieval-profile (philosophical form): unique ancestry-traceable history of nodes → retrieval profile → behavior |
 | ✓ existing | dv_0598 | Nozick pillar recommendation; full-pillar concept-locked, word-count TBD |
-| ◐ structure-warning | dv_0620 (conf 0.20) | Clone-stability as substrate-success-condition (rebuts cloning-argument-against-identity); twin-study experimental design ob_1657/ob_1660 as empirical anchor. **Structure warning: 3 premises under deductive_modus_ponens; reasoning-type needs refinement to inductive_chain or 2-premise restructure on ratification walk.** |
-| ◐ structure-warning | dv_0621 (conf 0.20) | Long-run-divergence via two paths: (1) new-node accumulation, (2) recall-refresh on shared nodes shifts retrieval profile even without graph-state divergence. **Same structure warning as dv_0620; needs reasoning-type refinement.** |
+| ~~superseded~~ | ~~dv_0620~~ | Superseded by dv_0622 (reasoning-type refinement 2026-05-12 19:48 EDT per ls_0040). |
+| ◐ | dv_0622 (conf 0.25) | Clone-stability as substrate-success-condition (rebuts cloning-argument-against-identity); twin-study experimental design ob_1657/ob_1660 as empirical anchor. Reasoning-type now deductive_hypothetical_syllogism (corrected); confidence still modest because dv_0597 is the limiting premise — needs empirical anchor (Ch6 twin-study future-work) before paper-strength. |
+| ◐ stale-by-premise | dv_0621 (conf 0.20, stale) | Long-run-divergence via two paths: (1) new-node accumulation, (2) recall-refresh on shared nodes shifts retrieval profile even without graph-state divergence. Auto-cascade fired when dv_0620 → dv_0622; needs re-derivation citing dv_0622 + reasoning-type fix on tomorrow's ratification walk. |
 | ✓ supporting cohort | ob_1655–ob_1661 | Nozick deep-dive observations (2026-05-11 PM with Lei) |
 
 ### Ch6 — Empirical data + analysis
