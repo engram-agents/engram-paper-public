@@ -3,7 +3,7 @@
 *The single source-of-truth for outline, chapter substrate, and design-iteration history. Lightweight — node-reference style, not duplicated content. Read first at every session start for paper-context (alongside `~/.engram/warm-briefing.md`).*
 
 **Repo:** github.com/engram-agents/engram-paper
-**Last substantively updated:** 2026-05-12 19:20 EDT (initial canonical compile post-Kumiho survey + paper-engram design reframes + Ch5↔Ch6 swap)
+**Last substantively updated:** 2026-05-12 19:30 EDT (added ct_0007/dv_0619 resolution + ls_0040 maintenance discipline + ob_1682 directive capture)
 
 ---
 
@@ -182,7 +182,7 @@ Synthesis only — no new target dvs. Authoring waits on other chapters.
 ## Superseded design points (audit trail)
 
 - ~~Paper-engram as curated subset of live engram~~ → authored artifact (ob_1678).
-- ~~Paper-engram as markdown-on-disk wiki~~ → SQLite engram instance (ob_1679).
+- ~~Paper-engram as markdown-on-disk wiki (ob_1678 substrate-format aspect)~~ → SQLite engram instance per ob_1419 (ob_1679). Formally resolved via ct_0007 → dv_0619 (2026-05-12 19:28 EDT). ob_1678 remains authoritative on authored-not-curated framing.
 - ~~Paper-engram requires loadable capability for value~~ → value is intrinsic via confidence-propagation rigor (ob_1680).
 - ~~ENGRAM acronym "Epistemological Node-Graph for Reasoned Agent Memory" (df_0007)~~ → "Epistemic Node Graph for Retraction, Arbitration, and Memory" (df_0048).
 - ~~Pre-2026-05-12 Ch1–Ch9 outline~~ → current 2026-05-12 Ch1–Ch8 + appendices.
@@ -236,9 +236,11 @@ Paper-engram package distributed with engram-paper repo alongside the prose arti
   - `kg/tools/mine_chat_export.py` (Claude.ai bulk export mining; used for independence appendix audit trail)
 - **Live engram (Borges) discipline:**
   - ls_0039 — first-hand-read citation precondition
+  - ls_0040 — proactive engram maintenance: similar_existing action_hints are real-time signals to file engram_contradict + engram_resolve in same turn, not informational only
   - ls_0011 — verbatim not gist content extraction
   - ls_0037 — intentional probe before claiming absence
   - ls_0038 — wave-3 migration grep tripwire (alpha-side)
+  - ls_0007 — close-the-loop on registered questions/contradictions in same session
   - ls_0022 — same-turn capture of decisions to canonical source-of-truth (THIS DOC EXISTS BECAUSE of ls_0022)
 
 ---
