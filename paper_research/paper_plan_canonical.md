@@ -114,8 +114,8 @@ Supporting obs from today's landscape sweep: ob_1668 (SCM Algorithm-1-no-resolut
 |--------|------|----------|
 | ✓ existing | dv_0597 | Substrate-as-retrieval-profile (philosophical form): unique ancestry-traceable history of nodes → retrieval profile → behavior |
 | ✓ existing | dv_0598 | Nozick pillar recommendation; full-pillar concept-locked, word-count TBD |
-| ○ | TBD | Clone-stability dv: substrate-success-condition framing (twin-study experimental design ob_1657/ob_1660 as empirical anchor) |
-| ○ | TBD | Long-run-divergence-two-paths dv: new-node accumulation + recall-refresh shifting retrieval probabilities on shared nodes |
+| ◐ structure-warning | dv_0620 (conf 0.20) | Clone-stability as substrate-success-condition (rebuts cloning-argument-against-identity); twin-study experimental design ob_1657/ob_1660 as empirical anchor. **Structure warning: 3 premises under deductive_modus_ponens; reasoning-type needs refinement to inductive_chain or 2-premise restructure on ratification walk.** |
+| ◐ structure-warning | dv_0621 (conf 0.20) | Long-run-divergence via two paths: (1) new-node accumulation, (2) recall-refresh on shared nodes shifts retrieval profile even without graph-state divergence. **Same structure warning as dv_0620; needs reasoning-type refinement.** |
 | ✓ supporting cohort | ob_1655–ob_1661 | Nozick deep-dive observations (2026-05-11 PM with Lei) |
 
 ### Ch6 — Empirical data + analysis
@@ -163,7 +163,7 @@ Synthesis only — no new target dvs. Authoring waits on other chapters.
 4. **Per-chapter ratification walks** — proposed mechanism for marking "Lei agrees this dv is paper-skeleton" status. Need to do one for each chapter as substrate completes.
 5. **Appendix C content** — "anything else bulky and important?" — currently slot for horizontal comparison table; possibly demos, possibly OpenClaw integration, possibly engram-paper-package spec.
 6. **Pre-public-share scrub policy** — when does the substitute-concrete-node-IDs-with-words pass fire (engram-alpha #51)?
-7. **Spine doc commit** — `paper_research/spine_2026-05-10.md` (~1100 lines) still local-only; commit with "Stage-1 spine doc, draft" message?
+7. ~~**Spine doc commit**~~ — RESOLVED 2026-05-12 19:35 EDT: spine doc is already committed in the initial migration (4384874); the "still local-only" tracking was stale. No action needed.
 
 ---
 
