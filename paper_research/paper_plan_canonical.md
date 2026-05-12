@@ -134,7 +134,7 @@ Supporting obs from today's landscape sweep: ob_1668 (SCM Algorithm-1-no-resolut
 | ○ | TBD | Compaction-discontinuity central limitation dv (this IS Ch7's center per Lei) |
 | ○ | TBD | Three-component complementary architecture future research (weights / KV cache / ENGRAM) |
 | ○ | TBD | Paper-engram-as-format dv (this very repo's ambition; meta-demo of cross-agent knowledge transmission) |
-| ✓ supporting | ob_1064, ob_1065, ob_1067 | Yellow-card/red-card design substrate (Lei 2026-04-20; implementation incomplete) |
+| ✓ supporting | ob_1064, ob_1065, ob_1067 | Yellow-card/red-card design substrate (Lei 2026-04-20). **Status verified 2026-05-12 19:40 EDT**: v0 yellow-tier IS implemented in alpha (server.py:2645 `_check_yellow_card`, config.json `yellow_domains`, emergentmind.com entry live citing ob_1064). NOT yet implemented: ob_1067 extension (per-incident accumulation observations, red-card graduation threshold, incident-tracking schema). |
 | ✓ supporting | ob_1049, ob_1059, ob_0455, dv_0211 | Confidence-model limitations + ECE/AUROC calibration protocol |
 
 ### Ch8 — Conclusions
