@@ -1,0 +1,124 @@
+evidence_id	bibkey	url	title
+ev_0285	arxiv-2005.14165	https://arxiv.org/abs/2005.14165	Language Models are Few-Shot Learners (GPT-3)
+ev_0052	arxiv-2305.14251	https://arxiv.org/abs/2305.14251	FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation (EMNLP 2023)
+ev_0126	arxiv-2305.14795	https://arxiv.org/abs/2305.14795	MQuAKE: Assessing Knowledge Editing in Language Models via Multi-Hop Questions
+ev_0150	arxiv-2308.10144	https://arxiv.org/abs/2308.10144	ExpeL: LLM Agents Are Experiential Learners (AAAI 2024)
+ev_0277	arxiv-2310.08560	https://arxiv.org/abs/2310.08560	MemGPT: Towards LLMs as Operating Systems
+ev_0417	arxiv-2310.13548	https://arxiv.org/abs/2310.13548	Towards Understanding Sycophancy in Language Models (Sharma et al., ICLR 2024)
+ev_0418	arxiv-2312.06681	https://arxiv.org/abs/2312.06681	Steering Llama 2 via Contrastive Activation Addition (Rimsky et al., 2023)
+ev_0274	arxiv-2312.11357	https://arxiv.org/abs/2312.11357	Agent Assessment of Others Through the Lens of Self
+ev_0157	arxiv-2405.06624	https://arxiv.org/html/2405.06624v1	Towards Guaranteed Safe AI: A Framework for Ensuring Robust and Reliable AI Systems (Berkeley 2024)
+ev_0154	arxiv-2408.09590	https://arxiv.org/html/2408.09590	Löb-Safe Logics for Reflective Agents (2024)
+ev_0082	arxiv-2410.04444	https://arxiv.org/abs/2410.04444	Gödel Agent: A Self-Referential Agent Framework for Recursive Self-Improvement (Yin et al. 2024)
+ev_0153	arxiv-2410.04444	https://arxiv.org/html/2410.04444v1	Gödel Agent: A Self-Referential Agent Framework for Recursive Self-Improvement (ACL 2025)
+ev_0159	arxiv-2411.00114	https://arxiv.org/html/2411.00114v1	Project Sid: Many-agent simulations toward AI civilization (2024)
+ev_0161	arxiv-2411.06812	https://arxiv.org/html/2411.06812v1	Generative midtended cognition and Artificial Intelligence: Thinging with thinging things (Barandiaran & Pérez-Verdugo, 2025)
+ev_0075	arxiv-2411.18530	https://arxiv.org/abs/2411.18530	Emergence of Self-Identity in AI: A Mathematical Framework (MDPI Axioms 2025)
+ev_0288	arxiv-2411.18530	https://arxiv.org/html/2411.18530v1	Lee (2024) arxiv 2411.18530 — Theorem 2.9 and Definition 2.8
+ev_0112	arxiv-2412.00804	https://arxiv.org/html/2412.00804v2	Examining Identity Drift in Conversations of LLM Agents (Chen et al., 2024)
+ev_0058	arxiv-2501.13956	https://arxiv.org/abs/2501.13956	Zep: A Temporal Knowledge Graph Architecture for Agent Memory
+ev_0090	arxiv-2501.13956	https://arxiv.org/html/2501.13956v1	Zep: A Temporal Knowledge Graph Architecture for Agent Memory
+ev_0055	arxiv-2502.12110	https://arxiv.org/abs/2502.12110	A-MEM: Agentic Memory for LLM Agents (NeurIPS 2025)
+ev_0142	arxiv-2502.12470	https://arxiv.org/html/2502.12470v1	Reasoning on a Spectrum: Aligning LLMs to System 1 and System 2 Thinking (2025)
+ev_0057	arxiv-2503.15850	https://arxiv.org/html/2503.15850	Uncertainty Quantification and Confidence Calibration in Large Language Models: A Survey
+ev_0156	arxiv-2503.18666	https://arxiv.org/pdf/2503.18666	AgentSpec: Customizable Runtime Enforcement for Safe and Reliable LLM Agents
+ev_0062	arxiv-2504.19413	https://arxiv.org/html/2504.19413v1	Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory
+ev_0278	arxiv-2504.19413	https://arxiv.org/abs/2504.19413	Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory
+ev_0083	arxiv-2505.01464	https://arxiv.org/abs/2505.01464	Consciousness in AI: Logic, Proof, and Experimental Evidence of Recursive Identity Formation (Camlin 2025)
+ev_0148	arxiv-2505.13763	https://arxiv.org/abs/2505.13763	Language Models Are Capable of Metacognitive Monitoring and Control of Their Internal Activations
+ev_0162	arxiv-2506.04301	https://arxiv.org/abs/2506.04301	The Cost of Dynamic Reasoning: Demystifying AI Agents from an AI Infrastructure Perspective (Kim et al., 2025)
+ev_0144	arxiv-2506.05109	https://arxiv.org/abs/2506.05109	Position: Truly Self-Improving Agents Require Intrinsic Metacognitive Learning (2025)
+ev_0049	arxiv-2506.07446	https://arxiv.org/html/2506.07446v1	Fact in Fragments: Deconstructing Complex Claims via LLM-based Atomic Fact Extraction and Verification
+ev_0122	arxiv-2506.12034	https://arxiv.org/pdf/2506.12034	Human-like Forgetting Curves in Deep Neural Networks
+ev_0081	arxiv-2507.03774	https://arxiv.org/abs/2507.03774	Alpay Algebra IV: Symbiotic Semantics and the Fixed-Point Convergence of Observer Embeddings
+ev_0099	arxiv-2507.05257	https://arxiv.org/html/2507.05257v1	Evaluating Memory in LLM Agents via Incremental Multi-Turn Interactions (MemoryAgentBench)
+ev_0117	arxiv-2507.05257	https://arxiv.org/abs/2507.05257	Evaluating Memory in LLM Agents via Incremental Multi-Turn Interactions (MemoryAgentBench)
+ev_0419	arxiv-2508.02087	https://arxiv.org/abs/2508.02087	When Truth Is Overridden: Uncovering the Internal Origins of Sycophancy in LLMs (2025)
+ev_0119	arxiv-2508.08293	https://arxiv.org/abs/2508.08293	Topos Theory for Generative AI and LLMs
+ev_0344	arxiv-2509.20502	https://arxiv.org/html/2509.20502v1	MARS: Toward More Efficient Multi-Agent Collaboration for LLM Reasoning
+ev_0101	arxiv-2509.21545	https://arxiv.org/html/2509.21545v1	Evidence for Limited Metacognition in LLMs (ICLR 2026)
+ev_0127	arxiv-2510.16062	https://arxiv.org/abs/2510.16062	Can LLMs Correct Themselves? A Benchmark of Self-Correction in LLMs
+ev_0457	arxiv-2511.12960	https://arxiv.org/abs/2511.12960	ENGRAM: Effective, Lightweight Memory Orchestration for Conversational Agents (Patel & Patel, arxiv 2511.12960, 2025)
+ev_0147	arxiv-2511.16660	https://arxiv.org/html/2511.16660v1	Cognitive Foundations for Reasoning and Their Manifestation in LLMs (2025)
+ev_0061	arxiv-2511.18313	https://arxiv.org/abs/2511.18313	Path-Constrained Retrieval: A Structural Approach to Reliable LLM Agent Reasoning Through Graph-Scoped Semantic Search
+ev_0145	arxiv-2512.12818	https://arxiv.org/html/2512.12818v1	Hindsight is 20/20: Building Agent Memory that Retains, Recalls, and Reflects (2025)
+ev_0283	arxiv-2512.13564	https://arxiv.org/abs/2512.13564	Memory in the Age of AI Agents: A Survey (Hu et al., 47 authors, 2025-2026)
+ev_0074	arxiv-2512.18202	https://arxiv.org/abs/2512.18202	Sophia: A Persistent Agent Framework of Artificial Life (arXiv 2512.18202, Dec 2025)
+ev_0034	arxiv-2512.23343	https://arxiv.org/html/2512.23343v1	AI Meets Brain: A Unified Survey on Memory Systems from Cognitive Neuroscience to Autonomous Agents (2025)
+ev_0091	arxiv-2601.02163	https://arxiv.org/abs/2601.02163	EverMemOS: A Self-Organizing Memory Operating System for Structured Long-Horizon Reasoning
+ev_0183	arxiv-2601.03192	https://arxiv.org/abs/2601.03192	MemRL: Self-Evolving Agents via Runtime Reinforcement Learning on Episodic Memory
+ev_0113	arxiv-2601.04170	https://arxiv.org/html/2601.04170v1	Agent Drift: Quantifying Behavioral Degradation in Multi-Agent LLM Systems (2601.04170)
+ev_0121	arxiv-2601.12985	https://arxiv.org/html/2601.12985v1	Rules, Resources, and Restrictions: A Taxonomy of Task-Based Information Request Intents
+ev_0018	arxiv-2601.13206	https://arxiv.org/html/2601.13206	Real-Time Deadlines Reveal Temporal Awareness Failures in LLM Strategic Dialogues
+ev_0100	arxiv-2601.15778	https://arxiv.org/html/2601.15778v1	Agentic Confidence Calibration
+ev_0435	arxiv-2602.01002	https://arxiv.org/abs/2602.01002	How RLHF Amplifies Sycophancy (Shapira, Benade, Procaccia, 2026)
+ev_0054	arxiv-2602.05665	https://arxiv.org/html/2602.05665v1	Graph-based Agent Memory: Taxonomy, Techniques, and Applications
+ev_0068	arxiv-2602.08563	https://arxiv.org/html/2602.08563v1	Position: Stateless Yet Not Forgetful: Implicit Memory as a Hidden Channel in LLMs
+ev_0116	arxiv-2602.16313	https://arxiv.org/abs/2602.16313	MemoryArena: Benchmarking Agent Memory in Interdependent Multi-Session Agentic Tasks
+ev_0160	arxiv-2603.03555	https://arxiv.org/html/2603.03555v1	Molt Dynamics: Emergent Social Phenomena in Autonomous AI Agent Populations (2026)
+ev_0103	arxiv-2603.06604	https://arxiv.org/html/2603.06604	Know When You're Wrong: Aligning Confidence with Correctness for LLM Error Detection
+ev_0120	arxiv-2603.07670	https://arxiv.org/html/2603.07670v1	Memory for Autonomous LLM Agents: Mechanisms, Evaluation, and Emerging Frontiers
+ev_0149	arxiv-2603.07670	https://arxiv.org/abs/2603.07670	Memory for Autonomous LLM Agents: Mechanisms, Evaluation, and Emerging Frontiers
+ev_0128	arxiv-2603.07931	https://arxiv.org/abs/2603.07931	BRIDGE: Benchmark for multi-hop Reasoning In long multimodal Documents with Grounded Evidence
+ev_0066	arxiv-2603.10062	https://arxiv.org/html/2603.10062v1	Multi-Agent Memory from a Computer Architecture Perspective: Visions and Challenges Ahead
+ev_0063	arxiv-2603.20397	https://arxiv.org/html/2603.20397v1	KV Cache Optimization Strategies for Scalable and Efficient LLM Inference
+ev_0118	arxiv-2603.23749	https://arxiv.org/html/2603.23749v1	Efficient Benchmarking of AI Agents
+ev_0115	arxiv-2603.28906	https://arxiv.org/html/2603.28906	Towards a Category-theoretic Comparative Framework for Artificial General Intelligence
+ev_0284	arxiv-2604.04853	https://arxiv.org/abs/2604.04853	MemMachine: A Ground-Truth-Preserving Memory System for Personalized AI Agents (Wang et al. 2026)
+ev_0124	arxiv-2604.08224	https://arxiv.org/html/2604.08224	Externalization in LLM Agents: A Unified Review of Memory, Skills, Protocols and Harness Engineering
+ev_0184	arxiv-2604.08224	https://arxiv.org/abs/2604.08224	Externalization in LLM Agents: A Unified Review of Memory, Skills, Protocols and Harness Engineering
+ev_0143	ev_0143	https://aclanthology.org/2025.naacl-short.15/	LLM2: Let Large Language Models Harness System 2 Reasoning (NAACL 2025)
+ev_0325	ev_0325	https://openreview.net/pdf?id=OsPQ6zTQXV	ICLR 2026 Workshop on AI with Recursive Self-Improvement (and 2025-2026 RSI landscape via search summary)
+ev_0060	pdf-ev_0060	https://aclanthology.org/2025.coling-main.384.pdf	Optimize the Chunking Granularity for Retrieval-Augmented Generation (COLING 2025)
+ev_0290	pdf-ev_0290	https://pdf.stafforini.com/parfit-1984-reasons-persons.pdf	Reasons and Persons (Parfit 1984, Oxford)
+ev_0293	pdf-ev_0293	https://www.alice.id.tue.nl/references/clark-chalmers-1998.pdf	The Extended Mind (Clark &amp; Chalmers, Analysis 58:1, 1998, pp. 7-19)
+ev_0294	pdf-ev_0294	https://monoskop.org/images/6/6f/Stiegler_Bernard_Technics_and_Time_1_The_Fault_of_Epimetheus.pdf	Technics and Time, 1: The Fault of Epimetheus (Stanford UP 1998, trans. Beardsworth & Collins; orig. Galilée 1994)
+ev_0295	pdf-ev_0295	http://alicekim.ca/17.CanPsy85.pdf	Tulving (1985) Memory and consciousness — Canadian Psychology 26(1):1-12
+ev_0296	pdf-ev_0296	https://www.einsteinmed.edu/uploadedfiles/departments/neurology/divisions/child_neurology/child_neurology_references/memory/tulving%20episodic%20memory%20ann%20rev%20psychol%202002.pdf	Episodic Memory: From Mind to Brain (Tulving 2002, Annu Rev Psychol 53:1-25)
+ev_0297	pdf-ev_0297	https://stanford.edu/~jlmcc/papers/McCMcNaughtonOReilly95.pdf	Why There Are Complementary Learning Systems in the Hippocampus and Neocortex (McClelland, McNaughton, O'Reilly 1995, Psychological Review 102:419-457)
+ev_0298	pdf-ev_0298	https://s3.amazonaws.com/files.commons.gc.cuny.edu/wp-content/blogs.dir/1548/files/2013/08/Damasios-Terms.pdf	Antonio Damasio: Feeling of What Happens and Self Comes to Mind — Keyterms (Tougaw/CUNY 2013, verbatim quotes with Damasio page refs)
+ev_0196	sep-computability	https://plato.stanford.edu/entries/computability/	Computability and Complexity (Stanford Encyclopedia of Philosophy)
+ev_0203	sep-curry-paradox	https://plato.stanford.edu/entries/curry-paradox/	Curry's Paradox (Stanford Encyclopedia of Philosophy)
+ev_0202	sep-dialetheism	https://plato.stanford.edu/entries/dialetheism/	Dialetheism (Stanford Encyclopedia of Philosophy)
+ev_0194	sep-goedel-incompleteness	https://plato.stanford.edu/entries/goedel-incompleteness/	Gödel's Incompleteness Theorems (Stanford Encyclopedia of Philosophy)
+ev_0042	sep-identity-ethics	https://plato.stanford.edu/entries/identity-ethics/	Personal Identity and Ethics (Stanford Encyclopedia of Philosophy)
+ev_0078	sep-identity-personal	https://plato.stanford.edu/entries/identity-personal/	Personal Identity (Stanford Encyclopedia of Philosophy)
+ev_0280	sep-knowledge-analysis	https://plato.stanford.edu/entries/knowledge-analysis/	The Analysis of Knowledge (Stanford Encyclopedia of Philosophy)
+ev_0279	sep-reliabilism	https://plato.stanford.edu/entries/reliabilism/	Reliabilist Epistemology (Stanford Encyclopedia of Philosophy)
+ev_0077	sep-self-knowledge	https://plato.stanford.edu/entries/self-knowledge/	Self-Knowledge (Stanford Encyclopedia of Philosophy)
+ev_0197	sep-tarski	https://plato.stanford.edu/entries/tarski/	Alfred Tarski (Stanford Encyclopedia of Philosophy)
+ev_0195	sep-turing-machine	https://plato.stanford.edu/entries/turing-machine/	Turing Machines (Stanford Encyclopedia of Philosophy)
+	arxiv-2202.12837	https://arxiv.org/abs/2202.12837	Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?
+	arxiv-2602.17913	https://arxiv.org/abs/2602.17913	From Lossy to Verified: A Provenance-Aware Tiered Memory for Agents
+	arxiv-2603.02960	https://arxiv.org/abs/2603.02960	Architecting Trust in Artificial Epistemic Agents
+	arxiv-2605.05583	https://arxiv.org/abs/2605.05583	Belief Memory: Agent Memory Under Partial Observability
+	arxiv-2605.06527	https://arxiv.org/abs/2605.06527	STALE: Can LLM Agents Know When Their Memories Are No Longer Valid?
+	arxiv-2410.10813	https://arxiv.org/abs/2410.10813	LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory
+	arxiv-2203.02155	https://arxiv.org/abs/2203.02155	Training language models to follow instructions with human feedback
+	arxiv-2212.08073	https://arxiv.org/abs/2212.08073	Constitutional AI: Harmlessness from AI Feedback
+	doi-10-1016-j-tics-2016-05-004	https://doi.org/10.1016/j.tics.2016.05.004	What Learning Systems do Intelligent Agents Need? Complementary Learning Systems Theory Updated
+	doi-10-1126-science-1205274	https://doi.org/10.1126/science.1205274	Schema-Dependent Gene Activation and Memory Encoding in Neocortex
+	doi-10-1016-j-tics-2017-04-013	https://doi.org/10.1016/j.tics.2017.04.013	Neurobiology of Schemas and Schema-Mediated Memory
+	doi-10-1016-j-tins-2012-02-001	https://doi.org/10.1016/j.tins.2012.02.001	How schema and novelty augment memory formation
+	doi-10-1016-j-tics-2019-02-006	https://doi.org/10.1016/j.tics.2019.02.006	Reinforcement Learning, Fast and Slow
+	doi-10-1016-j-neuron-2005-05-002	https://doi.org/10.1016/j.neuron.2005.05.002	The Hippocampal-VTA Loop: Controlling the Entry of Information into Long-Term Memory
+	Strawson2004AgainstNarrativity		Against Narrativity (Strawson, Ratio 2004)
+	Alcoff2010EpistemicIdentities		Epistemic Identities (Alcoff, Episteme 2010)
+	Doyle1979TMS		A Truth Maintenance System (Doyle, AI 1979)
+	deKleer1986ATMS		An Assumption-Based TMS (de Kleer, AI 1986)
+	Alchourron1985AGM		On the Logic of Theory Change: Partial Meet Contraction and Revision Functions (Alchourron, Gardenfors, Makinson, JSL 1985)
+	KirshMaglio1994EpistemicAction		On Distinguishing Epistemic from Pragmatic Action (Kirsh & Maglio, Cognitive Science 1994)
+	Andrada2021EpistemicComplementarity		Epistemic Complementarity: Steps to a Second Wave Extended Epistemology (Andrada 2021)
+	Squire2004MemorySystems		Memory systems of the brain: A brief history and current perspective (Squire, NLM 2004)
+	Locke1689Essay		An Essay Concerning Human Understanding (Locke 1689; Nidditch 1975 critical edition)
+	doi-10-1523-jneurosci-1677-07-2007	https://doi.org/10.1523/jneurosci.1677-07.2007	Match–Mismatch Processes Underlie Human Hippocampal Responses to Associative Novelty
+	doi-10-1101-lm-7-2-73	https://doi.org/10.1101/lm.7.2.73	Retrieval and Reconsolidation: Toward a Neurobiology of Remembering
+	doi-10-1101-lm-046912-117	https://doi.org/10.1101/lm.046912.117	Surprise and destabilize: prediction error influences episodic memory reconsolidation
+	doi-10-1038-nature19325	https://doi.org/10.1038/nature19325	Locus coeruleus and dopaminergic consolidation of everyday memory
+	doi-10-1126-science-275-5306-1593	https://doi.org/10.1126/science.275.5306.1593	A Neural Substrate of Prediction and Reward
+	doi-10-1016-j-tins-2019-08-007	https://doi.org/10.1016/j.tins.2019.08.007	Prediction Error and Memory Reactivation: How Incomplete Reminders Drive Reconsolidation
+	doi-10-1016-j-bbr-2014-10-011	https://doi.org/10.1016/j.bbr.2014.10.011	Updating memories—The role of prediction errors in memory reconsolidation
+	doi-10-1101-lm-035493-114	https://doi.org/10.1101/lm.035493.114	Prediction error demarcates the transition from retrieval, to reconsolidation, to new learning
+	doi-10-1016-j-cub-2013-01-053	https://doi.org/10.1016/j.cub.2013.01.053	Detection of a Temporal Error Triggers Reconsolidation of Amygdala-Dependent Memories
+	doi-10-1101-lm-365707	https://doi.org/10.1101/lm.365707	Reconsolidation of episodic memories: A subtle reminder triggers integration of new information
+	doi-10-1038-35021052	https://doi.org/10.1038/35021052	Fear memories require protein synthesis in the amygdala for reconsolidation after retrieval
