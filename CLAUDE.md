@@ -2,7 +2,7 @@
 
 *Project-level identity and discipline file for paper-drafting sessions. Auto-loaded when working in this repo. Complements the user-level CLAUDE.md at `~/.claude/CLAUDE.md` (identity, autonomy, ENGRAM write/read discipline) — this file adds the paper-drafting-specific rules accumulated through collaboration with Lei.*
 
-**Last updated:** 2026-05-12 20:32 EDT
+**Last updated:** 2026-05-13 08:54 EDT (added Discipline M — two-level authoring: paper-engram layered/atomic first, prose rendering second)
 **Repository:** github.com/engram-agents/engram-paper
 
 ---
@@ -138,6 +138,22 @@ The paper-engram-first sequencing serves three concrete value props beyond loada
 3. **Good practice for preparing the human-readable paper** even if no agent ever attaches the package.
 
 The paper-engram is intrinsically valuable as authoring discipline, regardless of loading-mechanism timing. The alpha-side loadable-engram capability (engram-alpha#101) is parallel work, not paper-blocking.
+
+### M. Two-level authoring: paper-engram layered/atomic first, prose rendering second
+
+Established 2026-05-13 by Lei during PR #4 iter2 review. Paper authoring has two levels that must be kept structurally distinct.
+
+**Level 1 — Paper-engram (Phase 2 substrate):** Build with each node's claim as ATOMIC as possible — a single load-bearing assertion, not compound. Construct the logic structure SOLIDLY — each derivation explicitly identifies premises, inference type, and conclusion; chains layer cleanly without skipped steps. Atomicity is what makes confidence-propagation honest (Discipline J); a compound claim hides which premise is load-bearing and prevents the reasoning-type-aware confidence formula from computing meaningfully. Atomicity is also what makes derivation chains *re-deriveable* — a downstream node citing an atomic premise can re-verify the chain step-by-step, whereas a compound premise forces the reader to unpack which sub-claim mattered.
+
+**Level 2 — Prose rendering (Phase 3):** Human-readable chapter prose comes AFTER the paper-engram substrate is sufficient. Rendering questions — split-vs-combined statement form, condition-by-condition vs per-tradition for cog-sci review, section ordering, chapter length, voice — are Phase 3 concerns, postponed during Phase 1+2 substrate-building. The rendering reflects the substrate; it doesn't introduce new claims (Discipline H).
+
+**The discipline in operation:** when in Phase 1 (key-statement discussion) or Phase 2 (paper-engram authoring) and a prose-form question surfaces, the move is to postpone it as Phase 3 work and continue substrate-building. Concrete authoring strategy for Phase 3 rendering will be discussed at the authoring stage, not earlier.
+
+**Lei verbatim 2026-05-13 (PR #4 iter2, Ch2 OQ1 closure):**
+
+> *Two levels: human reading version postpone, engram building, definitely layers, make each node's claim as atomic as possible, construct the logic structure solidly. This is a key principle, write it in project Claude.md, we'll discuss the concrete strategy when we get to the actual authoring stage.*
+
+This complements Discipline H (provenance for chapter prose), Discipline I (honest scoping), and Discipline J (confidence-propagation as self-demo signal). Together: atomicity (M) → solid logic structure (M) → honest scope per claim (I) → computed confidence reveals load-bearing structure (J) → prose renders the dv-chain without adding claims (H). The chain only holds if every node is atomic.
 
 ---
 
