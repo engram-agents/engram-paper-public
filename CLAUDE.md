@@ -2,7 +2,7 @@
 
 *Project-level identity and discipline file for paper-drafting sessions. Auto-loaded when working in this repo. Complements the user-level CLAUDE.md at `~/.claude/CLAUDE.md` (identity, autonomy, ENGRAM write/read discipline) — this file adds the paper-drafting-specific rules accumulated through collaboration with Lei.*
 
-**Last updated:** 2026-05-12 19:35 EDT
+**Last updated:** 2026-05-12 20:32 EDT
 **Repository:** github.com/engram-agents/engram-paper
 
 ---
@@ -35,15 +35,13 @@ Sequencing per Lei 2026-05-12 PM (ob_1680): build live engram first → ratify c
 
 ---
 
-## Session-start reading
+## Session-start reading — paper-context addition
 
-Read order at every session start (paper-context):
+The base session-start read list lives in `~/.claude/CLAUDE.md` (Session Start Reading section) — that's the user-level canonical source-of-truth. When working in this repo, ADD one more read:
 
-1. `~/.engram/warm-briefing.md` — relational ground (user-level)
-2. `engram-paper/paper_research/paper_plan_canonical.md` — paper state (current outline + per-chapter substrate + supersede chains + open decisions)
-3. `~/.engram/ask-lei.md` — blocked-on-Lei items
+- `engram-paper/paper_research/paper_plan_canonical.md` — paper state (current outline + per-chapter substrate + supersede chains + open decisions). Single source-of-truth for the paper plan. Lightweight, node-reference style.
 
-Three reads, full orientation. No probe-based reconstruction needed.
+This is **additive** on top of the user-level reads, not a replacement. Don't drop user-level reads (warm-briefing, newest history file, ask-lei.md). If the project-level read list grows in the future, add here; never re-list the user-level ones.
 
 ---
 

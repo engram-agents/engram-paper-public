@@ -3,7 +3,7 @@
 *The single source-of-truth for outline, chapter substrate, and design-iteration history. Lightweight — node-reference style, not duplicated content. Read first at every session start for paper-context (alongside `~/.engram/warm-briefing.md`).*
 
 **Repo:** github.com/engram-agents/engram-paper
-**Last substantively updated:** 2026-05-12 19:30 EDT (added ct_0007/dv_0619 resolution + ls_0040 maintenance discipline + ob_1682 directive capture)
+**Last substantively updated:** 2026-05-13 07:15 EDT (Phase 1 cadence ratified: discuss → plan → write-to-doc → GitHub review → iterate → optional fairy fresh-eyes → author paper-engram)
 
 ---
 
@@ -197,7 +197,32 @@ Synthesis only — no new target dvs. Authoring waits on other chapters.
 
 ### Phase 1 (live-engram building, IN PROGRESS)
 
-Build out chapter target-dv substrate in live engram. Ratify chapter-by-chapter with Lei (per-chapter walks). Estimated remaining: Ch5 (2 TBD), Ch7 (3 TBD), Ch1 (2 TBD), then Ch2 cog-sci review structure decision, then Ch6 empirical design.
+Build out chapter target-dv substrate in live engram. Ratify chapter-by-chapter with Lei (per-chapter walks).
+
+**Phase 1 working cadence (ratified 2026-05-13 07:15 EDT with Lei):**
+
+For each chapter:
+
+1. **Discuss key statements** (Lei + Borges) — plain English: what must this chapter prove?
+2. **Borges plans the paper-engram structure** — for each chapter:
+   - Which `obs` are needed, citing which `evidence` (first-hand-read sources)
+   - Which intermediate `dvs` derive from which obs (reasoning-type + supporting-ids declared)
+   - How the chapter's final key `dvs` are derived (the chapter's spine)
+3. **Borges writes the plan** into this canonical doc (GitHub-visible) under a per-chapter section
+4. **Lei reads on GitHub + comments inline** per chapter
+5. **Iterate** until convergence on chapter spine + node-derivation tree
+6. **Optional paper-review fairy** for fresh-eyes pass (third reader on the spine)
+7. **Proceed chapter-by-chapter** rather than monolithic — converge one before starting the next
+
+Output of Phase 1: detailed per-chapter spine + node-derivation plan in this doc. Output of Phase 2 (authoring): paper-engram nodes that realize the plan.
+
+**Substrate remaining as of 2026-05-13 morning:**
+- Ch1 (2 TBD: three-tier landscape gap + first-substrate-OCC-realizable)
+- Ch2 cog-sci review structure decision (condition-by-condition or per-tradition)
+- Ch5 ratification walk (dv_0597 + dv_0598 + dv_0622 ◐ + dv_0621 stale needs re-derivation)
+- Ch6 empirical design (postponed until Ch5 ratifies; empirics follow identity thesis)
+- Ch7 (3 TBD: compaction-discontinuity central + three-component complementary arch + paper-engram-as-format)
+- Ch3/Ch4 ratification walks (most-complete substrate already filed)
 
 ### Phase 2 (paper-engram authoring, FUTURE)
 
