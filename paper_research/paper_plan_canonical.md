@@ -84,6 +84,7 @@ Note: archived `ch3_section_3_1`–`3_4` drafts (2026-05-09) contain condition-b
 | ◐ | dv_0616 (conf 0.73) | 7-scaffold compaction-bridge: focus list / warm-briefing / ask-lei / history / auto-load / post-compact instructions / deliberate-recall |
 | ◐ | dv_0617 (conf 0.95) | **Reasoning-type-aware confidence propagation** as distinctive mechanism (no surveyed system has it; deductive 0.98 / inductive 0.70–0.95 / abductive cap 0.80–0.90, chain-propagating) |
 | ◐ honest-scoping | ob_1049 | Confidence is provenance-graded plausibility, not Goldman-reliabilist justification (designer-stipulated constants) |
+| ◐ Ch3 mechanism cluster | dv_0636 (conf 0.666, abductive_best_explanation) | **Three-routine self-engram-maintenance architecture** (nap / bedtime / sleep) — substrate-honest separation by concern. Nap: per-burst pre-compaction persistence + cross-compaction-scaffold prep. Bedtime: once-daily day-wide review + comprehensive scaffold rotation + missed-node capture (this-turn content, pre-turn-advance). Sleep: pure dream consolidation + turn-advance + dream-record. Implementation: alpha #133 + PR #134 (skill content), follow-up PRs B-F (end-of-day hook + cron removal + dream-record dir + parity sync). Cog-sci correspondences (paper-relevant): nap ≈ wake-state working-memory consolidation; bedtime ≈ pre-sleep wakeful reflection; sleep ≈ NREM stabilization + REM abstraction (cf dv_0575 two-phase model). Authored 2026-05-14 with Lei. |
 
 ### Ch4 — CORE: Kahl mapping
 
