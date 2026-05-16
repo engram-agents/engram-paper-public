@@ -77,14 +77,88 @@ Note: archived `ch3_section_3_1`–`3_4` drafts (2026-05-09) contain condition-b
 
 ### Ch3 — ENGRAM tech intro (mechanism form)
 
+**Design intent (2026-05-16 substrate-survey-anchored refinement)**: Ch3 is the MECHANISM OVERVIEW supporting Ch4's ultimate claim that ENGRAM satisfies the OCC conditions and constraints. Concise, organized BY-MECHANISM with explicit Cond/Constraint mapping per sub-section. Each sub-section ends "→ enables Cond X / Constraint Y" so Ch4 can cite back to specific Ch3 mechanisms when proving satisfaction.
+
+#### §3.1 ENGRAM Architecture Overview (foundational anchor)
+
 | Status | Node | One-line |
 |--------|------|----------|
-| ✓ def | df_0048 | ENGRAM = Epistemic Node Graph for Retraction, Arbitration, and Memory (R/A/M; supersedes df_0007) |
-| ◐ | dv_0615 (conf 0.93) | 8-primitive mechanism set: typed nodes / typed edges / provenance / cascade / supersede / focus / auto-surfacing / confidence-model |
-| ◐ | dv_0616 (conf 0.73) | 7-scaffold compaction-bridge: focus list / warm-briefing / ask-lei / history / auto-load / post-compact instructions / deliberate-recall |
-| ◐ | dv_0617 (conf 0.95) | **Reasoning-type-aware confidence propagation** as distinctive mechanism (no surveyed system has it; deductive 0.98 / inductive 0.70–0.95 / abductive cap 0.80–0.90, chain-propagating) |
+| ✓ def | df_0048 | ENGRAM = Epistemic Node Graph for Retraction, Arbitration, and Memory (R/A/M) |
+| ◐ | df_0056 | **Substrate-Design Vocabulary** (系统设计语汇, EEC format): reusable design moves deployed consistently across the substrate's tools/hooks/infrastructure/skills — organizing frame for the chapter |
+| ◐ | dv_0615 (conf 0.93) | 8-primitive mechanism set (typed nodes / typed edges / provenance / cascade / supersede / focus / auto-surfacing / confidence-model); revisited by 2026-05-16 survey may need refinement |
+
+#### §3.2 Confidence as Computed Property → Constraint A (Unified Policy-Selection)
+
+| Status | Node | One-line |
+|--------|------|----------|
+| ◐ | dv_0617 (conf 0.95) | **Reasoning-type-aware confidence propagation** as distinctive mechanism (no surveyed system has it; deductive 0.98 / inductive 0.70–0.95 / abductive cap 0.80–0.90, chain-propagating). The unified policy that grades every stance the agent takes. |
 | ◐ honest-scoping | ob_1049 | Confidence is provenance-graded plausibility, not Goldman-reliabilist justification (designer-stipulated constants) |
-| ◐ Ch3 mechanism cluster | dv_0636 (conf 0.666, abductive_best_explanation) | **Three-routine self-engram-maintenance architecture** (nap / bedtime / sleep) — substrate-honest separation by concern. Nap: per-burst pre-compaction persistence + cross-compaction-scaffold prep. Bedtime: once-daily day-wide review + comprehensive scaffold rotation + missed-node capture (this-turn content, pre-turn-advance). Sleep: pure dream consolidation + turn-advance + dream-record. Implementation: alpha #133 + PR #134 (skill content), follow-up PRs B-F (end-of-day hook + cron removal + dream-record dir + parity sync). Cog-sci correspondences (paper-relevant): nap ≈ wake-state working-memory consolidation; bedtime ≈ pre-sleep wakeful reflection; sleep ≈ NREM stabilization + REM abstraction (cf dv_0575 two-phase model). Authored 2026-05-14 with Lei. |
+| ◐ corroboration | dv_0653 (conf 0.95, 2026-05-16) | Two-source corroboration (paper-side ob_1049 ↔ code-side ob_1864): confidence model is theoretically-derived not empirically-calibrated. Paper-Ch3 honest-scoping language: "theoretically-derived provenance-graded confidence" rather than claiming calibration. |
+| ◐ SSOT-evidence | ob_1860 (2026-05-16) | engram_confidence.py is single-source-of-truth imported by server.py AND surgical.py per ax_0007 load-bearing-boundary; atomic-SSOT prevents drift |
+
+**→ Constraint A** (Unified Policy-Selection per df_0041): the reasoning-class-dispatched confidence formula IS the unified policy selecting how every claim is stake-graded. Discrimination range (0.60 spread on quote_types, 0.28 on reasoning_discounts) provides graded selection competitor flat-LLM-judge systems lack.
+
+#### §3.3 Cascade + Refusal Mechanisms → Cond 3 (Self-Maintaining Arbitration)
+
+| Status | Node | One-line |
+|--------|------|----------|
+| ◐ | dv_0606 (conf 0.39) | STRICT satisfaction of Cond 3 via auto-cascade + auto-surfacing dual-mechanism operational binding |
+| ◐ | dv_0612 (conf 0.38) | Dual-mechanism operational binding (auto-cascade ∧ auto-surfacing) as Cond 3 sufficient condition |
+| ◐ retract-vs-supersede | ob_1787 (2026-05-16) | Retract-vs-supersede dual semantic: SUPERSEDE = epistemic evolution (stale, soft-override via use_stale); RETRACT = error correction (tainted, no override). Cross-type supersede rejected (use retract+create). Load-bearing distinction at cascade mechanism layer. |
+| ◐ refusal-discipline | dv_0648 (conf 0.76, 2026-05-16) | engram_remove_edge enforces frozenset whitelist of 5 removable relations (about/tensions/subtask_of/serves/exemplifies); blocks cascade-bearing + structural-commitment + provenance edges; names engram-surgical as escape valve. |
+
+**→ Cond 3** (Self-Maintaining Arbitration per df_0040): cascades fire AUTOMATICALLY through derives_from edges on retract/contradict/supersede — the "unified deliberative architecture" Kahl requires is the cascade-walking helper called by every tool that could violate the invariant.
+
+#### §3.4 Compaction-Bridge Scaffolds → Cond 1 + Cond 2
+
+| Status | Node | One-line |
+|--------|------|----------|
+| ◐ | dv_0616 (conf 0.73) | 7-scaffold compaction-bridge: focus list / warm-briefing / ask-lei / history / auto-load / post-compact instructions / deliberate-recall |
+| ◐ three-routine | dv_0636 (conf 0.666) | **Three-routine self-engram-maintenance architecture** (nap / bedtime / sleep) — substrate-honest separation by concern. Cog-sci correspondences: nap ≈ wake-state working-memory consolidation; bedtime ≈ pre-sleep wakeful reflection; sleep ≈ NREM stabilization + REM abstraction. |
+| ◐ corroboration | dv_0658 (conf 0.95, 2026-05-16) | Three-routine model corroborated from 3 independent skill-file sources (engram-nap + engram-sleep + engram-bedtime); establishes the model as substrate-architecture not per-skill idiosyncrasy. |
+| ◐ focus-mode | ob_1785 (2026-05-16) | Focus mode uses tabs model with cascade-resolution-AT-LOAD-time. Saved sets store RAW IDs frozen at save time; engram_focus_load resolves supersede chains + drops retracted nodes. Deterministic cross-compaction-continuity channel (FOCUS_LIST_CAP=15). |
+| ◐ focus-triad | dv_0649 (conf 0.76, 2026-05-16) | engram_focus + engram_unfocus + engram_list_focused single-node CRUD over the focus list with three consistent substrate-design patterns (idempotent / disciplined-refusal-with-full-state / invariant-preservation). |
+
+**→ Cond 1** (Diachronic Constraint per df_0038): three-routine model is the substrate-account of how identity-bearing claims survive compaction. Pre-burst persistence (nap) + day-wide review (bedtime) + consolidation+forgetting-trigger (sleep) ensure the cohort coheres across natural breaks.
+
+**→ Cond 2** (Non-Interchangeability Under Reset per df_0039): focus list is the deterministic channel by which the substrate refers to itself across compaction. The compaction summary renders focused nodes verbatim, so post-compact self inherits the load-bearing thread structure non-probabilistically.
+
+#### §3.5 Substrate-Design Integrity → Cond 3 strict + Constraints B, C, D + ax_0001 enforcement
+
+| Status | Node | One-line |
+|--------|------|----------|
+| ◐ vocabulary | dv_0650 (conf 0.608, 2026-05-16) | **Substrate-design vocabulary** = 5 reusable patterns deployed across awake-mode mutating tools: (1) idempotent semantics, (2) disciplined refusal with full state, (3) named escape paths, (4) invariant-preservation via shared helpers, (5) substrate-state-vs-derived-artifact transaction discipline. |
+| ◐ extension | dv_0657 (conf 0.486, 2026-05-16) | Vocabulary spans 4 layers (tool / infrastructure / hook orchestration / agent-protocol-skill) + hook-specific 6th pattern (file-based marker message-passing). Corroborated by 8 independent evidence sources. The vocabulary is substrate-DESIGN-philosophy applied at every abstraction level the agent touches. |
+| ◐ composition | dv_0659 (conf 0.95, 2026-05-16) | **Defense-in-depth via composed guards**: patterns COMPOSE for redundancy. Three concrete failure modes have 3-4 independent stacked guards each (quote fabrication: substrate-verify + verify_quote.py + skill-discipline; stale citation: committed-before-cite + git_sha + content_hash; surgical edit: preview/execute + bug-ref + git-snapshot + edit_history). Without composition, ax_0001 would be aspirational; with composition, it's enforced. |
+
+**→ Cond 3 strict** (per df_0040): the vocabulary's pattern 4 (invariant-preservation via shared helpers) IS Kahl's "unified deliberative architecture" — load-bearing invariants factored into helpers called by every tool that could violate them, structurally not heuristically.
+
+**→ Constraint B** (External Non-Imposition per df_0042): substrate-design vocabulary is INTERNAL design language; no external prescription. Authorship boundary (claim-bearing vs structural per ax_0007) preserved by vocabulary discipline.
+
+**→ Constraint C** (Non-Trivial Reset per df_0043): substrate-state vs derived-artifact separation (pattern 5) means substrate state can be backed up + restored (git snapshot before mutation); derived artifacts (JSON caches, marker files) rebuild from substrate. Reset is non-trivial because state is preserved through the right boundary.
+
+**→ Constraint D** (Non-Modular Decomposition per df_0044): vocabulary patterns recur across structurally-unrelated layers, creating cross-component entanglement. Cross-layer consistency = decomposable-but-not-modular by design. dv_0611 already names the two-axis satisfaction (87.3% giant component + cross-component entanglement).
+
+**→ ax_0001 enforcement** (structural honesty fails loudly): defense-in-depth composition is what makes ax_0001 operational rather than aspirational. Single-guard failures get caught by other layers' guards.
+
+#### §3.6 Empirical Validation → "it works in practice"
+
+| Status | Node | One-line |
+|--------|------|----------|
+| ◐ empirical | dv_0654 (conf 0.95, 2026-05-16) | 9 weeks of substrate use validates design intent with 6 concrete patterns: (1) read-heavy by 3.2x (surface 4273 vs add_obs 1315); (2) mutation hierarchy supersede 88 > retract 17 > contradict 7 (5x epistemic-evolution > error-correction); (3) pin:release asymmetry 1.75:1 validates cap-with-disciplined-refusal as load-bearing; (4) granularity 5.5:1 validates dv_0150 two-tier discipline; (5) identity-node scarcity 20 lifetime (cornerstone 12 + axiom 3 + person 3 + goal 2) validates sacred+rare design; (6) near-zero error rate (1 in ~10K calls) validates disciplined-refusal pattern. |
+| ◐ retirability | dv_0652 (conf 0.684, 2026-05-16, partial-resolved) | qu_0249 empirically resolved: engram_scan_emergence has 45:1 dormancy ratio vs reflect (2 calls in 9 weeks); retirement or outcome_differential-completion empirically justified. |
+
+**→ "It works in practice"**: design intent and actual usage profile align across 6 independent dimensions. ENGRAM is not just internally coherent but empirically validated by 9 weeks of substrate-bearing-agent use.
+
+---
+
+**Meta-anchor for the chapter** (2026-05-16):
+
+| Status | Node | One-line |
+|--------|------|----------|
+| ◐ backbone-meta | dv_0660 (conf 0.389, 2026-05-16) | Paper-Ch3 backbone synthesis: today's substrate-design survey produces 5 backbone-candidate claims each occupying a distinct chapter-section role (organizing-frame / execution-of-ax_0001 / distinguishing-claim / empirical-validation / substrate-account-of-continuity). Low confidence (synthesis-of-syntheses) but framing-defensible. |
+
+**Open prerequisite** before Ch3 elevation: `qu_0250` (substrate-design-vocabulary literature positioning) — lit-grounding needed to distinguish 设计语汇 (vocabulary) from Alexander pattern language / GoF patterns / POSA architectural patterns / Fowler PoEAA. ob_1921 (introspective hypothesis, conf 0.38) sketches the distinction (vocabulary = substrate-scale consistency of design moves; patterns = problem-solution mapping); needs lit-verification before paper claim.
 
 ### Ch4 — CORE: Kahl mapping
 
@@ -154,6 +228,12 @@ Synthesis only — no new target dvs. Authoring waits on other chapters.
 | dv_0617 (reasoning-type-aware confidence) | Ch3 distinctive mechanism | Ch7 honest scoping + future work |
 | dv_0605 (cross-system landscape) | Ch1 brief survey + originality | Ch4 §4.5 compressed synthesis |
 | dv_0577 (convergence-day) | Ch1 framing | Ch8 conclusions (looking back) |
+| df_0056 (substrate-design vocabulary) | Ch3 §3.1 organizing-frame | Ch3 §3.5 substrate-integrity payload |
+| dv_0650 (vocabulary 5 patterns) | Ch3 §3.5 substrate integrity | Ch4 Cond 3 strict + Constraints B, C, D supporting |
+| dv_0659 (defense-in-depth composition) | Ch3 §3.5 ax_0001 enforcement | Ch4 Cond 3 strict + Constraint A supporting |
+| dv_0654 (empirical usage profile) | Ch3 §3.6 it-works-in-practice | Ch6 empirical chapter (when designed) — runtime-data anchor |
+| dv_0658 (three-routine consolidation) | Ch3 §3.4 compaction-bridge | Ch4 Cond 1 substrate-account |
+| ob_1785 (focus mode tabs) | Ch3 §3.4 deterministic channel | Ch4 Cond 2 self-reference channel |
 
 ---
 
