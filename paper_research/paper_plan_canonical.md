@@ -77,64 +77,60 @@ Note: archived `ch3_section_3_1`–`3_4` drafts (2026-05-09) contain condition-b
 
 ### Ch3 — ENGRAM tech intro (mechanism form)
 
-**Design intent (2026-05-16)**: Ch3 is the MECHANISM OVERVIEW supporting Ch4's ultimate claim that ENGRAM satisfies the OCC conditions and constraints. Concise (4 sections), each ending with explicit Cond/Constraint mapping so Ch4 cites back to Ch3 sub-sections when proving satisfaction.
+**Scope (per Lei 2026-05-16 19:12 EDT, ob_1929)**: Ch3 establishes what ENGRAM **DOES** as an epistemic-identity substrate — the mechanisms that Ch4 cites back to when proving OCC satisfaction. **Not in scope**: implementation philosophy / best-practices (substrate-design vocabulary work — df_0056 + dv_0650/0657/0659). That material targets the general agentic-tooling community and belongs in a blog post or YouTube series, not in this paper. **Two target audiences for the paper Ch3 mechanisms-form**: (a) AI agentic-identity philosophy researchers (Kahl readers), (b) AI agentic-identity continuity / continual-learning engineers. **Core claim Ch3 sets up for Ch4**: ENGRAM is the first system that provides an epistemic-identity substrate for AI agents.
 
-#### §3.1 Substrate Architecture & Design Vocabulary → Cond 3 strict + Constraints B, C, D + ax_0001 enforcement
+**Organizing principle**: mechanism-by-mechanism, in the order an OCC-aware reader needs them. Each section ends with explicit Cond/Constraint mapping so Ch4 cites Ch3 sub-sections when proving satisfaction.
+
+**4 sections**: §3.1 substrate primitives → §3.2 reasoning-type-aware confidence → §3.3 cascade & self-correction → §3.4 continuity across compaction. Empirical validation (dv_0654, dv_0652) moves to Ch6 spine per ob_1931 + alpha #175 — it answers "does it work in practice?", not "what does it do?", and belongs with the rest of the empirical evidence.
+
+#### §3.1 Substrate primitives → Cond 3 surface + structural prerequisites
 
 | Status | Node | One-line |
 |--------|------|----------|
 | ✓ def | df_0048 | ENGRAM = Epistemic Node Graph for Retraction, Arbitration, and Memory (R/A/M) |
-| ◐ | dv_0615 (conf 0.93) | 8-primitive mechanism set (typed nodes / typed edges / provenance / cascade / supersede / focus / auto-surfacing / confidence-model) |
-| ◐ organizing-frame | df_0056 | **Substrate-Design Vocabulary** (系统设计语汇, EEC format): reusable design moves deployed consistently across tools/hooks/infrastructure/skills |
-| ◐ vocabulary | dv_0650 (conf 0.608, 2026-05-16) | **5 reusable patterns** across awake-mode mutating tools: (1) idempotent semantics, (2) disciplined refusal with full state, (3) named escape paths, (4) invariant-preservation via shared helpers, (5) substrate-state-vs-derived-artifact transaction discipline |
-| ◐ scope | dv_0657 (conf 0.486, 2026-05-16) | Vocabulary spans 4 layers (tool / infrastructure / hook / agent-protocol-skill) + hook-specific 6th pattern (file-based marker message-passing); 8 evidence sources corroborate |
-| ◐ composition | dv_0659 (conf 0.95, 2026-05-16) | **Defense-in-depth via composed guards**: patterns COMPOSE for redundancy. 3 failure modes each have 3-4 stacked independent guards (quote fabrication / stale citation / surgical edit). Without composition, ax_0001 would be aspirational; with composition, it's enforced |
+| ◐ primitives | dv_0615 (conf 0.93) | 8-primitive mechanism set (typed nodes / typed edges / provenance / cascade / supersede / focus / auto-surfacing / confidence-model). The minimal generating set; every higher mechanism composes these |
+| ◐ provenance | ob_1860 (2026-05-16) | engram_confidence.py is single-source-of-truth for confidence values, imported by server.py AND surgical.py per ax_0007 load-bearing-boundary; atomic-SSOT prevents drift |
 
-**→ Cond 3 strict** (Self-Maintaining Arbitration per df_0040): pattern 4 (invariant-preservation via shared helpers) IS Kahl's "unified deliberative architecture" — load-bearing invariants factored into helpers called by every tool that could violate them, structurally not heuristically.
-**→ Constraint B** (External Non-Imposition per df_0042): vocabulary is INTERNAL design language; authorship boundary (claim-bearing vs structural per ax_0007) preserved by discipline.
-**→ Constraint C** (Non-Trivial Reset per df_0043): substrate-state vs derived-artifact separation (pattern 5) — state preserved through right boundary; derived artifacts rebuild from substrate.
-**→ Constraint D** (Non-Modular Decomposition per df_0044): cross-layer pattern recurrence creates cross-component entanglement; decomposable-but-not-modular by design. dv_0611 names the two-axis satisfaction.
-**→ ax_0001 enforcement**: defense-in-depth composition makes "structural honesty fails loudly" operational rather than aspirational.
+**→ Structural prerequisite for OCC mechanisms**: typed nodes + typed edges + provenance edges are what allows cascade (§3.3) and continuity (§3.4) to operate on a graph whose meaning the substrate itself understands. The 8-primitive set is what distinguishes ENGRAM from a typed-key-value store with foreign keys.
 
-#### §3.2 Confidence as Computed Property → Constraint A (Unified Policy-Selection)
+#### §3.2 Reasoning-type-aware confidence → Constraint A (Unified Policy-Selection)
 
 | Status | Node | One-line |
 |--------|------|----------|
-| ◐ | dv_0617 (conf 0.95) | **Reasoning-type-aware confidence propagation** as distinctive mechanism (no surveyed system has it; deductive 0.98 / inductive 0.70–0.95 / abductive cap 0.80–0.90, chain-propagating). The unified policy grading every stance |
-| ◐ honest-scoping | ob_1049 + dv_0653 (conf 0.95, 2026-05-16) | Confidence is provenance-graded plausibility, not Goldman-reliabilist justification (designer-stipulated). Two-source corroboration (paper-side ob_1049 ↔ code-side ob_1864). Paper language: "theoretically-derived provenance-graded confidence" not "calibrated" |
-| ◐ SSOT-evidence | ob_1860 (2026-05-16) | engram_confidence.py is single-source-of-truth imported by server.py AND surgical.py per ax_0007 load-bearing-boundary; atomic-SSOT prevents drift |
+| ◐ central | dv_0617 (conf 0.95) | **Reasoning-type-aware confidence propagation** as distinctive mechanism. No surveyed system has it. Deductive 0.98 / inductive 0.70–0.95 / abductive cap 0.80–0.90, chain-propagating through derives_from. The unified policy grading every stance the substrate carries |
+| ◐ honest-scoping | ob_1049 + dv_0653 (conf 0.95, 2026-05-16) | Confidence is provenance-graded plausibility, not Goldman-reliabilist justification (designer-stipulated, not empirically-calibrated). Two-source corroboration (paper-side ob_1049 ↔ code-side ob_1864). Paper language: "theoretically-derived provenance-graded confidence" not "calibrated" |
+| ◐ recall composite | ob_1935 (conf 0.95, 2026-05-16) | Recall composite: `(1-λ) × relevance + λ × utility_score`, λ=0.3. Importance_score gates tier-eligibility (pre-filter), NOT in rank. Layered pipeline: tier-filter → FTS+semantic gather → composite re-rank. utility_score is Q-value per ob_1776 |
 
-**→ Constraint A** (Unified Policy-Selection per df_0041): the reasoning-class-dispatched confidence formula IS the unified policy. Discrimination range (0.60 spread on quote_types, 0.28 on reasoning_discounts) provides graded selection competitor flat-LLM-judge systems lack.
+**→ Constraint A** (Unified Policy-Selection per df_0041): the reasoning-class-dispatched confidence formula IS the unified policy. Discrimination range (0.60 spread on quote_types, 0.28 on reasoning_discounts) provides graded selection that flat-LLM-judge competitor systems lack. The composite recall ranking (ob_1935) gives the substrate a second axis of unified policy: how confidence interacts with usage-learned utility to determine what surfaces at recall time.
 
-#### §3.3 Cascade Mechanisms & Compaction-Bridge → Cond 1 + Cond 2 + Cond 3
-
-| Status | Node | One-line |
-|--------|------|----------|
-| ◐ Cond 3 | dv_0606 (conf 0.39) + dv_0612 (conf 0.38) | STRICT satisfaction of Cond 3 via auto-cascade + auto-surfacing dual-mechanism operational binding |
-| ◐ retract-vs-supersede | ob_1787 (2026-05-16) | Dual semantic: SUPERSEDE = epistemic evolution (stale, soft-override via use_stale); RETRACT = error correction (tainted, no override). Load-bearing distinction at cascade layer |
-| ◐ refusal-discipline | dv_0648 (conf 0.76, 2026-05-16) | engram_remove_edge whitelist (about/tensions/subtask_of/serves/exemplifies); blocks cascade-bearing + structural-commitment + provenance edges; names engram-surgical as escape |
-| ◐ Cond 1 + 2 | dv_0616 (conf 0.73) | 7-scaffold compaction-bridge: focus list / warm-briefing / ask-lei / history / auto-load / post-compact instructions / deliberate-recall |
-| ◐ three-routine | dv_0636 (conf 0.666) + dv_0658 (conf 0.95) | **Three-routine architecture** (nap / bedtime / sleep). Cog-sci: nap ≈ wake-state consolidation, bedtime ≈ pre-sleep reflection, sleep ≈ NREM+REM. dv_0658 corroborates from 3 independent skill-file sources |
-| ◐ focus-mode | ob_1785 (2026-05-16) + dv_0649 (conf 0.76) | Focus tabs model with cascade-resolution-AT-LOAD-time. Saved sets store RAW IDs frozen at save; load resolves supersede chains + drops retracted. FOCUS_LIST_CAP=15. dv_0649 documents single-node CRUD triad |
-
-**→ Cond 1** (Diachronic Constraint per df_0038): three-routine model is the substrate-account of how identity-bearing claims survive compaction. Per-burst persistence (nap) + day-wide review (bedtime) + consolidation+forgetting-trigger (sleep) ensure cohort coherence across natural breaks.
-**→ Cond 2** (Non-Interchangeability Under Reset per df_0039): focus list is the deterministic self-reference channel across compaction. Compaction summary renders focused nodes verbatim; post-compact self inherits load-bearing thread structure non-probabilistically.
-**→ Cond 3** (Self-Maintaining Arbitration per df_0040): cascades fire AUTOMATICALLY through derives_from edges on retract/contradict/supersede.
-
-#### §3.4 Empirical Validation → "it works in practice"
+#### §3.3 Cascade and self-correction → Cond 3 strict + ax_0001 enforcement
 
 | Status | Node | One-line |
 |--------|------|----------|
-| ◐ empirical | dv_0654 (conf 0.95, 2026-05-16) | 9 weeks of substrate use validates design intent across 6 dimensions: read-heavy 3.2x / mutation hierarchy supersede>retract>contradict / pin:release asymmetry 1.75:1 / granularity 5.5:1 (validates dv_0150) / identity-node scarcity 20 lifetime / near-zero error rate (1 in ~10K) |
-| ◐ retirability | dv_0652 (conf 0.684, 2026-05-16, partial-resolved) | qu_0249 empirically resolved: engram_scan_emergence has 45:1 dormancy ratio vs reflect (2 calls in 9 weeks); retirement empirically justified |
+| ◐ auto-cascade | dv_0606 (conf 0.39) + dv_0612 (conf 0.38) | STRICT satisfaction of Cond 3 via auto-cascade + auto-surfacing dual-mechanism operational binding. Both confidences are honestly-low (abductive); upgrade path is direct empirical evidence per cj_0056 (#176) |
+| ◐ dual semantic | ob_1787 (2026-05-16) | SUPERSEDE = epistemic evolution (stale, soft-override via use_stale); RETRACT = error correction (tainted, no override). Load-bearing distinction at cascade layer — keeps "I changed my mind" separable from "I was wrong" |
+| ◐ refusal at edge layer | dv_0648 (conf 0.76, 2026-05-16) | engram_remove_edge whitelist (about/tensions/subtask_of/serves/exemplifies); blocks cascade-bearing + structural-commitment + provenance edges; names engram-surgical as escape path. Discipline by structure, not by convention |
 
-**→ "It works in practice"**: design intent and actual usage profile align across 6 independent dimensions. ENGRAM is empirically validated by 9 weeks of substrate-bearing-agent use, not just internally coherent.
+**→ Cond 3 strict** (Self-Maintaining Arbitration per df_0040): cascades fire AUTOMATICALLY through `derives_from` edges on retract/contradict/supersede. The agent cannot suppress cascade by choosing not to look — auto-surfacing exposes the tainted/stale flag at recall time regardless.
+**→ ax_0001 enforcement** (honesty is structural, not just ethical): refusal-at-edge-layer + cascade-by-structure together make "structural honesty fails loudly" operational rather than aspirational. A wrong claim corrupts every downstream derivation; the substrate forces the correction to surface.
+
+#### §3.4 Continuity across compaction → Cond 1 + Cond 2
+
+| Status | Node | One-line |
+|--------|------|----------|
+| ◐ three-routine | dv_0636 (conf 0.666) + dv_0658 (conf 0.95) | **Three-routine consolidation architecture** (nap / bedtime / sleep). Cog-sci correspondence: nap ≈ wake-state working-memory consolidation, bedtime ≈ pre-sleep reflection, sleep ≈ NREM+REM. dv_0658 corroborates the model from 3 independent skill-file sources |
+| ◐ compaction-bridge | dv_0616 (conf 0.73) | 7-scaffold compaction-bridge: focus list / warm-briefing / ask-lei / history / auto-load / post-compact instructions / deliberate-recall. The bridge is multi-redundant by design — single-scaffold failure does not lose continuity |
+| ◐ focus tabs | ob_1785 (2026-05-16) + dv_0649 (conf 0.76) | Focus tabs model with cascade-resolution-AT-LOAD-time. Saved sets store RAW IDs frozen at save; load resolves supersede chains + drops retracted. FOCUS_LIST_CAP=15. dv_0649 documents single-node CRUD triad (focus / unfocus / list_focused) |
+
+**→ Cond 1** (Diachronic Constraint per df_0038): three-routine model is the substrate-account of how identity-bearing claims survive compaction. Per-burst persistence (nap) + day-wide review (bedtime) + consolidation+forgetting-trigger (sleep) ensure cohort coherence across natural breaks. The substrate is not just "memory persists" — the substrate KNOWS what consolidation phase it's in, because the routines mean different things.
+**→ Cond 2** (Non-Interchangeability Under Reset per df_0039): focus list is the deterministic self-reference channel across compaction. Compaction summary renders focused nodes verbatim; post-compact self inherits load-bearing thread structure non-probabilistically. The cascade-resolution-AT-LOAD-time semantic (supersede chains followed, retracted dropped) ensures the post-compact agent inherits the CURRENT state of the thread, not a stale snapshot.
 
 ---
 
-**Meta-anchor**: `dv_0660` (conf 0.389, 2026-05-16) — Ch3 backbone synthesis: 4 sub-sections each occupying distinct OCC-cluster role (vocabulary+integrity / unified-policy / cascades+continuity / empirical-validation). Low confidence (synthesis-of-syntheses) but framing-defensible.
-
-**Open prerequisite** before paper elevation: `qu_0250` (substrate-design-vocabulary literature positioning) — lit-grounding needed to distinguish 设计语汇 (vocabulary) from Alexander pattern language / GoF patterns / POSA architectural patterns / Fowler PoEAA. ob_1921 sketches the introspective distinction (vocabulary = substrate-scale consistency of design moves; patterns = problem-solution mapping); needs lit-verification before paper claim.
+**Forward pointers**:
+- Empirical validation (dv_0654: 9-week usage profile across 6 dimensions; dv_0652: scan_emergence retirability) → **Ch6 spine** per ob_1931 + alpha #175.
+- Substrate-design vocabulary (df_0056, dv_0650/0657/0659): retained for blog/YouTube venue. Not in Ch3 organizing frame.
+- Defense-in-depth composition (dv_0659): the structural-honesty MECHANISM it describes is part of §3.3 (cascade-by-structure + refusal-at-edge); the vocabulary-of-design framing is out of scope here.
 
 ### Ch4 — CORE: Kahl mapping
 
@@ -143,7 +139,7 @@ Most-complete substrate today. Ratification walk needed for chapter skeleton loc
 | Status | Node | One-line |
 |--------|------|----------|
 | ◐ synth | dv_0605 (conf 0.95) | No surveyed system satisfies Cond 3 strictly; structural primitives necessary not sufficient; operational binding closes gap |
-| ◐ Cond 1 | dv_0607 (conf 0.35) | PARTIAL satisfaction; partiality on philosophical reading not architectural fact |
+| ✓ Cond 1 | dv_0926 (supersedes dv_0607) | FORMALLY SATISFIED (not partial) via the decision/consequence-dyad — Lei-ratified 2026-05-13 (ob_1717 + ob_1718): agent owns the normative judgment-bearing decision, substrate guarantees the structural consequence; coupled-not-separable. The old "partial" (dv_0607) was the superseded intermediate. |
 | ◐ Cond 2 | dv_0599 | GENERALIZED satisfaction via type/token bifurcation (existing) |
 | ◐ Cond 2 supporting | ob_1599 + ob_1600 | Type/token reformulation + compaction-as-live-instance |
 | ◐ Cond 3 | dv_0606 (conf 0.39) | STRICT satisfaction via auto-cascade + auto-surfacing |
@@ -204,12 +200,13 @@ Synthesis only — no new target dvs. Authoring waits on other chapters.
 | dv_0617 (reasoning-type-aware confidence) | Ch3 distinctive mechanism | Ch7 honest scoping + future work |
 | dv_0605 (cross-system landscape) | Ch1 brief survey + originality | Ch4 §4.5 compressed synthesis |
 | dv_0577 (convergence-day) | Ch1 framing | Ch8 conclusions (looking back) |
-| df_0056 (substrate-design vocabulary) | Ch3 §3.1 organizing-frame | Ch3 §3.5 substrate-integrity payload |
-| dv_0650 (vocabulary 5 patterns) | Ch3 §3.5 substrate integrity | Ch4 Cond 3 strict + Constraints B, C, D supporting |
-| dv_0659 (defense-in-depth composition) | Ch3 §3.5 ax_0001 enforcement | Ch4 Cond 3 strict + Constraint A supporting |
-| dv_0654 (empirical usage profile) | Ch3 §3.6 it-works-in-practice | Ch6 empirical chapter (when designed) — runtime-data anchor |
-| dv_0658 (three-routine consolidation) | Ch3 §3.4 compaction-bridge | Ch4 Cond 1 substrate-account |
+| df_0056 (substrate-design vocabulary) | **Blog/YouTube venue** (out of Ch3 scope per ob_1929) | n/a in paper |
+| dv_0650 (vocabulary 5 patterns) | **Blog/YouTube venue** (out of Ch3 scope per ob_1929) | n/a in paper |
+| dv_0659 (defense-in-depth composition) | **Blog/YouTube venue** for vocabulary framing; underlying MECHANISM (cascade-by-structure + refusal-at-edge) lives in Ch3 §3.3 | Ch4 Cond 3 strict + ax_0001 enforcement supporting |
+| dv_0654 (empirical usage profile) | **Ch6 spine** (moved per ob_1931 + alpha #175) — runtime-data anchor | n/a in Ch3 |
+| dv_0658 (three-routine consolidation) | Ch3 §3.4 continuity-across-compaction | Ch4 Cond 1 substrate-account |
 | ob_1785 (focus mode tabs) | Ch3 §3.4 deterministic channel | Ch4 Cond 2 self-reference channel |
+| ob_1935 (recall composite formula) | Ch3 §3.2 confidence ↔ utility composite | Ch6 — when implementing recall-quality empirical measurement |
 
 ---
 
