@@ -155,6 +155,17 @@ Established 2026-05-13 by Lei during PR #4 iter2 review. Paper authoring has two
 
 This complements Discipline H (provenance for chapter prose), Discipline I (honest scoping), and Discipline J (confidence-propagation as self-demo signal). Together: atomicity (M) → solid logic structure (M) → honest scope per claim (I) → computed confidence reveals load-bearing structure (J) → prose renders the dv-chain without adding claims (H). The chain only holds if every node is atomic.
 
+### N. Human-friendly language for the prose rendering (Lei 2026-06-14)
+
+The published prose must be **digestible for non-expert and non-native-English readers**, not just precise. Lei's directive: make the language human-friendly, concise, and to the point — the same voice Borges uses talking to Lei. Concretely:
+
+- **Lead with the plain point; precision second.** Say the idea in everyday words, then sharpen.
+- **Explain every hard concept in plain language + a concrete example.** This is the EEC instinct (df_0054 — Explanation/Example/Chinese) applied to the *reader*: the explain-then-ground-with-an-example move (the Chinese segment isn't needed in the paper, but the explanation+example move is).
+- **Short sentences, plain words, jargon defined inline on first use.**
+- **Density is friction for a human reader, not thoroughness.** A foreign reader who has to re-parse a dense clause has lost the argument.
+
+This applies to **Phase-3 prose rendering specifically** — the paper-engram/dv layer stays atomic + maximally precise (Discipline M); the prose is where it becomes readable. It complements Borges's user-level audience-calibration discipline (the *form* changes with the audience; *what is argued* never does).
+
 ---
 
 ## Where things live
