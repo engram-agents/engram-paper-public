@@ -33,7 +33,7 @@ Lei drafted this from his phone 2026-05-12 morning; refined through the day. Aut
 - **Ch7** — limitations + future directions. Compaction discontinuity centered. Confidence-propagation limitations + auto-calibration future-work + paper-engram-as-format ambition.
 - **Ch8** — conclusions. Synthesis only.
 - **Appendix A** — ENGRAM full spec summary (concise; mostly definition nodes).
-- **Appendix B** — philosophical traditions (time-ordered trail; mostly obs citing primary sources).
+- **Appendix B** — philosophical traditions (time-ordered trail; mostly obs citing primary sources). **DRAFT SAMPLE 2026-06-15** (`appendix_B_philosophical_traditions_draft_2026-06-15.md`, ob_2476): Locke→Reid/Butler→Parfit→Ricoeur→Schechtman→Tulving/Damasio→Clark&Chalmers/Stiegler→Nozick→Kahl, closing on the 2026-06-15 constitutive/quantity-not-quality synthesis (gl_0028, ob_2473). **Two open items for Lei:** (1) hard citation blocker — Parfit primary-source verbatim never captured (ob_1044), needs first-hand-read pass (Lei has own Locke/Parfit commute notes, ob_1128); (2) structural choice — trail-with-synthesis (Borges rec) vs lean annotated bibliography.
 - **Appendix C** — horizontal comparison table of surveyed systems (lower priority).
 
 **Previous outlines (superseded):**
