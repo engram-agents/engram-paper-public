@@ -33,6 +33,8 @@ This is why the off-the-shelf accounts need sharpening. "Continuity of conscious
 
 The threshold we adopt is **Kahl's (2026) Ontological Continuity Condition** (df_0037): a set of **three jointly necessary conditions plus four constraints** for the identity-continuity of agent-like systems. We use it for three reasons. It is *recent and agent-native* — written for artificial agents, not retrofitted from human personal-identity theory. It is *demanding* — it sets a high bar that most memory systems visibly fail. And it is *operational* — each condition admits a structural test, not just an intuition pump.
 
+A note on what adopting it does and does not assume. OCC is a *recent proposal* (a 2026 preprint), not a long-established canon, and we adopt it on its **operational merits**, not as an appeal to authority: we use it because it is the most precise, agent-native, testable threshold available for the question we care about, and we argue each condition on its own terms in the chapters that follow rather than leaning on its standing. We also note — and develop in Appendix D — that ENGRAM's architecture *independently converged* with these conditions before we were aware of Kahl's work, which we treat as corroboration of the threshold's shape rather than as borrowed framing. The reader who does not yet know OCC loses nothing: the conditions are stated here verbatim and defended on their merits.
+
 We present the three conditions, then the four constraints, each with Kahl's verbatim text, a plain-language gloss, and an example. **Whether ENGRAM meets each is Chapter 4's argument, not this section's** — but we note after each which way the paper will go, as a forward pointer.
 
 ### The three conditions
