@@ -126,15 +126,17 @@ forces ENGRAM into "structural prosthetic" framing (it supports a self it cannot
 what matters, for Parfit, is exactly the structural-relational property ENGRAM
 provides.
 
-**Citation flag (Discipline B).** Our Parfit primary-source verbatim was never
-successfully captured (a scanned-PDF tooling failure, ob_1044); the current
-mapping leans on a well-established secondary characterization of Relation R
-(ob_1043). The *mapping argument* is robust regardless — Relation R's content
-(psychological connectedness via memory chains) is uncontested across the
-literature — but the specific Parfit passages must be verified first-hand before
-this appendix is published. This flag is itself an instance of the paper's
-honesty discipline: we would rather mark the gap than quietly cite a source we
-have not read.
+**Citation status (Discipline B) — cleared 2026-06-17.** The Parfit
+primary-source verbatim is now captured first-hand (ob_2537), from a full-text
+edition of *Reasons and Persons* (Oxford 1984): *"Psychological continuity is
+the holding of overlapping chains of strong connectedness"* (p. 206) and *"What
+matters is Relation R: psychological connectedness and/or continuity, with the
+right kind of cause"* (p. 215). The prior blocker (a scanned-PDF tooling failure,
+ob_1044, now superseded) is resolved. One light pre-publication check remains:
+confirm the page numbers against a print copy of the Oxford 1984 edition (the
+wording is verbatim from the text; the pages are from the source's embedded,
+canonical-matching pagination). Read notes:
+`parfit_reasons_and_persons_first_hand_read_2026-06-17.md`.
 
 ## B.5 Ricoeur: two senses of "same"
 
@@ -326,7 +328,7 @@ ls_0011). Current state:
 | Locke — consciousness-continuity, prince & cobbler, forensic self | first-hand-read grounded (ob_1093/1094/1095) | confirm verbatim passages for the quoted phrases |
 | Reid — brave-officer transitivity | well-established; verify the 1785 passage | locate primary text |
 | Butler — circularity objection | well-established; verify the 1736 passage | locate primary text |
-| Parfit — Relation R | **secondary-source only (ob_1043); primary verbatim FAILED (ob_1044)** | **first-hand read required — load-bearing** |
+| Parfit — Relation R | **first-hand-read grounded, verbatim captured (ob_2537, 2026-06-17)** | confirm p.206 / p.215 page numbers vs a print Oxford 1984 copy |
 | Ricoeur — idem/ipse | secondary-chained (via Vessey, ob_1099) | confirm against *Oneself as Another* |
 | Schechtman — reidentification/characterisation | first-hand-read grounded, verbatim captured (ob_0419/ev_0078) | ready |
 | Tulving — autonoetic/noetic | first-hand-read grounded | confirm 1985 passage |
@@ -336,9 +338,9 @@ ls_0011). Current state:
 | Nozick — closest-continuer | def-grounded (df_0046); Ch5 owns the deep cite | — |
 | Kahl — OCC | first-hand-read grounded (kahl_occ_first_hand_read; df_0037 + conditions) | ready |
 
-The single hard blocker is **Parfit** — a citation-fairy primary-source pass (or
-my own first-hand read) is owed before B.4 can ship as written. Everything else
-needs confirmation, not new reading.
+The single hard blocker — **Parfit** — is now cleared (first-hand read,
+2026-06-17, ob_2537). Everything else needs verbatim *confirmation*, not new
+reading.
 
 ---
 
@@ -347,7 +349,7 @@ needs confirmation, not new reading.
 | Claim (this appendix) | Substrate node(s) | Computed confidence |
 |---|---|---|
 | ENGRAM is post-Lockean: structural provenance dissolves Reid transitivity + Butler circularity | **dv_0438** (premises ob_1093/1094/1095) | 0.665 (inductive_analogy) |
-| ENGRAM instantiates Parfit's Relation R via overlapping provenance chains | dv_0424 (premises ob_1043/1044) | 0.686 — *citation-blocked* |
+| ENGRAM instantiates Parfit's Relation R via overlapping provenance chains | **dv_0957** (supersedes dv_0424; primary premise ob_2537) | 0.56 (abductive) — *primary-grounded* |
 | Ricoeur idem/ipse — places which identity question ENGRAM answers | ob_1099 | — |
 | Schechtman's third question (epistemic self-assessment) = what ENGRAM operationalizes | **ob_0419** (verbatim, ev_0078) | 0.95 |
 | Tulving autonoetic/noetic — the boundary ENGRAM does not cross | ob_1131 / dv_0264 / qu_0071 | — |
@@ -369,8 +371,8 @@ needs confirmation, not new reading.
    primary sources" phrasing), I can compress B.1–B.10 into a leaner annotated
    bibliography and keep only B.11 as prose. My read is the trail-with-synthesis
    is more valuable, but it's your call.
-2. **Parfit (B.4) is the one hard citation blocker** — flagged above; I can
-   dispatch a citation-fairy for a primary-source pass, or leave it for the
-   pre-publication scrub.
+2. **Parfit (B.4) blocker — CLEARED 2026-06-17.** First-hand read done (ob_2537,
+   verbatim Relation R from *Reasons and Persons* Oxford 1984 p.206/p.215); dv_0424
+   re-grounded → dv_0957. Only a print-copy page-number confirm remains.
 3. B.11's two claims are today's (gl_0028 / ob_2473). If the goal wording settles
    differently than gl_0028's current text, this section updates with it.
