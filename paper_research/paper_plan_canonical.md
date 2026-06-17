@@ -215,6 +215,8 @@ Synthesis only — no new target dvs. Authoring waits on other chapters.
 
 ## Open decisions awaiting Lei
 
+0. **Ch1 §1.4 "no surveyed system satisfies Cond 3" claim** (Lei note 2026-06-17, at Google) — too strong/vague as written. TWO fixes: **(1) claim treatment** — (a) explicit appendix listing surveyed systems + per-system reason each fails Cond 3, OR (b) soften to ENGRAM-only. **(2) date precision** — "mid-2026" is vague; stamp exactly WHEN surveyed + WHICH systems (fast-moving field; don't offend newer/missed systems). **Borges rec: (a) + stamp 2026-05-12.** Rationale: the per-system analysis ALREADY EXISTS (dv_0605 conf 0.95 names all 11 systems + each failure mode; 11 dated first-hand reads 2026-05-12) so (a) is rendering-not-research AND preserves the Layer-3-gap contribution (the paper's spine); softening discards an earned claim. Stamp the 2026-05-12 11-system survey + a rapid-change caveat ("claim about the surveyed set as of that date") = the protection against missed/newer systems. Full re-survey-to-today = a real project (new systems need first-hand reads per ls_0039); offer light delta-scan now + full re-survey pre-submission. **AWAITING Lei's (a)-vs-(b) confirm before rewriting §1.4 + drafting Appendix C.** Reusable discipline: superlative/landscape claims about competitors must be scoped to the explicit surveyed set + dated + caveated.
+
 1. **Nozick chapter volume** — concept-locked as pillar (dv_0598); word-count TBD.
 2. **Ch6 empirical design** — what to measure, what data to collect.
 3. **engram-paper-package generator + curation policy** — Issue #3 has 7 open questions across 4 iterations; awaiting your sign-off on Proposals 1–5 (revised forms).
