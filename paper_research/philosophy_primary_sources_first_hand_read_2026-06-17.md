@@ -133,5 +133,19 @@ Ch2 §2.4 machinery (df_0047). Source: the passage as quoted verbatim in the Sta
 
 ---
 
+## Hansson — Core-Retainment / Relevance (belief-base contraction; Ch2 §2.3, df_0053)
+Source: the postulate as stated verbatim in the Stanford Encyclopedia of Philosophy "Logic of Belief Revision" entry (a reliable host quoting Hansson's formulation; primary of-record is Hansson, *A Textbook of Belief Dynamics*, 1999, and his base-contraction papers). Confirms df_0053's "verbatim sense" gloss is accurate.
+
+**Core-retainment (belief-set form, SEP/Hansson):**
+> "If q ∈ K and q ∉ K÷p, then there is a belief set K' such that K' ⊆ K and that p ∉ K' but p ∈ K'+q. Core-retainment requires of an excluded sentence q that it in some way contributes to the fact that K implies p."
+
+**Belief-base form** (the level ENGRAM lives at — finite bases, not consequence-closed sets; from the base-contraction literature): *If ψ ∈ (B \ (B−φ)), then there is some B' ⊆ B such that B' ⊭ φ but B' ∪ {ψ} ⊨ φ.*
+
+**Load-bearing nuance for Ch2 §2.3.** SEP notes that on belief *sets*, an operator satisfying Core-retainment *also satisfies Recovery* — so on closed sets the two are not cleanly separable. This is precisely why Hansson re-grounds on belief *bases*, where Recovery fails but Core-retainment holds. Ch2 §2.3 already makes this move (Recovery rejected; Core-retainment + Relevance on bases); the nuance sharpens *why* the base level is the right one. **Relevance** is the (slightly stronger) partial-meet sibling — every operation satisfying Relevance satisfies Core-retainment, but not conversely; ENGRAM's cascade aligns with the weaker, base-appropriate Core-retainment (dv_0613).
+
+✓ df_0053's gloss ("every removed belief must have genuinely contributed to deriving the contracted belief") = Hansson's "the excluded sentence contributes to the fact that K implies p." Verbatim confirmed; df_0053 left as-is (accurate).
+
+---
+
 ## Sweep status — all Appendix B primary sources first-hand grounded (2026-06-17)
 Locke ✓ · Reid ✓ · Butler ✓ · Parfit ✓ (separate notes) · Ricoeur ✓ · Schechtman ✓ (prior, ob_0419) · Tulving ✓ · Damasio ✓ · Clark & Chalmers ✓ · Stiegler ✓ (term-nuance flagged) · Nozick (Ch5/df_0046) · Kahl ✓ (prior). One process note: a source-locator fairy's RAW-EXTRACTs were treated as DIRECTION only; every quote above was verbatim-verified by me against the saved source file before inclusion (ls_0039 held — and it caught a whitespace/splice mismatch in the fairy's first Stiegler extract).
