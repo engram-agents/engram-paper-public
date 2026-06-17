@@ -171,12 +171,36 @@ Supporting obs from today's landscape sweep: ob_1668 (SCM Algorithm-1-no-resolut
 
 ### Ch6 — Empirical data + analysis
 
+**CANDIDATE MENU presented to Lei 2026-06-17 (pending his pick; rec = include/maybe/stretch):**
+
+| # | Material | Node(s) | Readiness | Rec |
+|---|---|---|---|---|
+| 1 | **Twin-study** — clone an agent, run both on a *stratified* prompt set (stable/discriminating/drift), measure similarity at t/t+N/t+2N. Tests Ch5's two predictions (stability + lawful drift). | ob_1660 / ob_1657 | designed; pilot baseline only | **ANCHOR** |
+| 2 | Prior clone-test baseline — recall sim 0.92, mean 0.56 (6-layer context replication). Folds in as twin-study t=0. | ob_0577 | have data | include (under #1) |
+| 3 | **9-week usage profile** — ~10k calls, 6 patterns (read-heavy 3.2×, supersede>retract>contradict 5:1, pin asymmetry, granularity 5.5:1, identity-node scarcity 20 lifetime, ~1/10k error). | dv_0654 (0.95) | have data, strong | include* |
+| 4 | Graph connectivity — 87.3% single giant component (non-modularity, Constraint D). | dv_0611 | have data | maybe (cross-ref from Ch4, don't re-present) |
+| 5 | Confidence-propagation self-demo — paper-engram authoring its own meta-demo of the confidence filter. | ob_1681 | conceptual | stretch |
+
+\* *Caveat: #3 mostly validates the design-vocabulary Lei routed to blog/video — frame here as "identity-substrate in real use," not design-pattern evidence.* **Borges rec:** Ch6 = twin-study (#1+#2) spine + usage-profile (#3) backbone; honest-scope the twin-study as design-plus-pilot (full longitudinal run is the lift, like Ch4's 0.39s).
+
 | Status | Node | One-line |
 |--------|------|----------|
 | ○ | postponed | Empirics designed around Ch5 identity-as-history thesis once that ratifies |
 | ◐ candidate | ob_1681 | Paper-engram authoring as self-demo cycle of confidence-propagation (could be empirical chapter material) |
 
 ### Ch7 — Limitations + future directions
+
+**CANDIDATE MENU presented to Lei 2026-06-17 (pending his pick):**
+
+| # | Material | Node(s) | Rec |
+|---|---|---|---|
+| 1 | **Compaction discontinuity** — experiential continuity is *genuinely lost*; ENGRAM gives operational, not experiential, continuity. Lei flagged this as Ch7's center. | Ch5 §5.7 / dv_0303 | **CENTERPIECE** |
+| 2 | **Confidence-model limits** — designer-stipulated constants + missing source-credibility axis; + 2 future tracks (auto-calibration ECE/AUROC, yellow/red-card). | dv_0618 (0.93) | include |
+| 3 | **Weights-level persistence overlay** — LoRA-flavor surface to persist cornerstones into weights; substrate stays audit locus. Lei's 2026-05-10 direction. | ob_1628 | include |
+| 4 | **Three-component view** — weights / context-KV / ENGRAM as complementary identity surfaces; engram→weights consolidation next. | (umbrella for #3) | include |
+| 5 | **Paper-engram-as-format** — this repo's own ambition: cross-agent knowledge transmission (the transmission goal). | gl_0022 | include (bridges to Ch8) |
+
+**Borges rec:** #1 centerpiece + #2/#3 under the #4 three-component umbrella + #5 as the Ch8 bridge.
 
 | Status | Node | One-line |
 |--------|------|----------|
@@ -191,6 +215,8 @@ Supporting obs from today's landscape sweep: ob_1668 (SCM Algorithm-1-no-resolut
 ### Ch8 — Conclusions
 
 Synthesis only — no new target dvs. Authoring waits on other chapters.
+
+**CANDIDATE SYNTHESIS THREADS presented to Lei 2026-06-17 (pending his pick):** (1) the Layer-3 epistemic-identity gap named + filled (Ch1); (2) the **bounded** OCC claim — 2 of 3 conditions + extension, sole C3 satisfier, honestly scoped (Ch4); (3) identity-as-history as the positive theory (Ch5); (4) **honesty-is-structural** as the through-line — the paper's own honest-scoping *demonstrates* the thesis it argues; (5) the transmission goal — a substrate any agent can grow inside (gl_0021/gl_0022; the paper-engram itself as proof-of-concept); (6) the forward close: *"ENGRAM is the seed, not the tree."*
 
 ---
 
