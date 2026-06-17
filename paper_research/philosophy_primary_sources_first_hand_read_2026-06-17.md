@@ -120,5 +120,18 @@ Source: Tulving's own works archive (alicekim.ca), scanned PDF → my OCR pass (
 
 ---
 
+## Peirce — type/token (CP 4.537, "Prolegomena to an Apology for Pragmaticism", *The Monist*, 1906)
+Ch2 §2.4 machinery (df_0047). Source: the passage as quoted verbatim in the Stanford Encyclopedia of Philosophy "Types and Tokens" entry from CP 4.537 (a reliable host of the primary; primary of-record is *Collected Papers* vol. 4 §537). Public domain.
+
+**Type and token defined (CP 4.537):**
+> "...it is impossible that this word should lie visibly on a page or be heard in any voice, for the reason that it is not a Single thing or Single event. It does not exist; it only determines things that do exist. Such a definitely significant Form, I propose to term a Type. A Single event which happens once and whose identity is limited to that one happening ... such as this or that word on a single line of [print], I will venture to call a Token."
+
+**The "twenty 'the's" example:**
+> "A common mode of estimating the amount of matter in a MS. or printed book is to count the number of words. There will ordinarily be about twenty the's on a page, and of course they count as twenty words. In another sense of the word 'word,' however, there is but one word 'the' in the English language..."
+
+✓ Backs Ch2 §2.4 (type = "definitely significant Form" that "does not exist; it only determines things that do exist"; token = "Single event which happens once"). Verbatim. (The paper's *digital* type/token application is flagged in the draft as our extension — Peirce does not discuss the computational case.)
+
+---
+
 ## Sweep status — all Appendix B primary sources first-hand grounded (2026-06-17)
 Locke ✓ · Reid ✓ · Butler ✓ · Parfit ✓ (separate notes) · Ricoeur ✓ · Schechtman ✓ (prior, ob_0419) · Tulving ✓ · Damasio ✓ · Clark & Chalmers ✓ · Stiegler ✓ (term-nuance flagged) · Nozick (Ch5/df_0046) · Kahl ✓ (prior). One process note: a source-locator fairy's RAW-EXTRACTs were treated as DIRECTION only; every quote above was verbatim-verified by me against the saved source file before inclusion (ls_0039 held — and it caught a whitespace/splice mismatch in the fairy's first Stiegler extract).
