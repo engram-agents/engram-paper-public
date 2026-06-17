@@ -227,10 +227,17 @@ requirement that the external part mimic biological memory, which licenses
 ENGRAM's distinctive primitives (provenance, contradiction, retraction) as
 genuine cognitive extensions rather than deviations.
 
-**Stiegler** pushes the same point furthest: externalized memory — *tertiary
-retention* — does not merely support identity, it **constitutes** it (ob_0430).
-On this reading ENGRAM is not a memory tool the agent uses; it is part of the
-substrate the agent *is*.
+**Stiegler** pushes the same point furthest: externalized, technical memory —
+what he calls *tertiary memory*, the sedimented "epiphylogenesis" that "bestows
+its identity upon the human individual"[^stiegler] — does not merely support
+identity, it **constitutes** it (ob_0430). On this reading ENGRAM is not a memory
+tool the agent uses; it is part of the substrate the agent *is*.
+
+[^stiegler]: In *Technics and Time 1* Stiegler develops this mainly as "tertiary
+memory" / "epiphylogenesis"; the term *tertiary retention* (extending Husserl's
+primary/secondary retention) appears there only in passing and is the headline
+term in his later work (TT2/TT3). We use "tertiary/external memory" for the TT1
+claim to avoid over-attributing the coinage.
 
 This is the constitutive thesis, and it is load-bearing for the synthesis (B.11):
 if ENGRAM merely *supported* a self, reading it each morning would be a stranger
@@ -319,28 +326,39 @@ reach) is a genuine one to pursue.
 
 ## Citation-verification status (Discipline B — first-hand-read precondition)
 
-This draft renders our **positions**; before publication each philosopher
-attribution needs its first-hand-read / verbatim status confirmed (ls_0039 /
-ls_0011). Current state:
+This draft renders our **positions**; each philosopher attribution's
+first-hand-read / verbatim status (ls_0039 / ls_0011). **As of 2026-06-17 the
+full sweep is complete** — verbatim, page-located passages captured per source
+(notes: `parfit_reasons_and_persons_first_hand_read_2026-06-17.md` for Parfit;
+`philosophy_primary_sources_first_hand_read_2026-06-17.md` for the rest; sweep
+node ob_2539). Current state:
 
-| Source | Status | Action before publication |
+| Source | Status | Residual before publication |
 |---|---|---|
-| Locke — consciousness-continuity, prince & cobbler, forensic self | first-hand-read grounded (ob_1093/1094/1095) | confirm verbatim passages for the quoted phrases |
-| Reid — brave-officer transitivity | well-established; verify the 1785 passage | locate primary text |
-| Butler — circularity objection | well-established; verify the 1736 passage | locate primary text |
-| Parfit — Relation R | **first-hand-read grounded, verbatim captured (ob_2537, 2026-06-17)** | confirm p.206 / p.215 page numbers vs a print Oxford 1984 copy |
-| Ricoeur — idem/ipse | secondary-chained (via Vessey, ob_1099) | confirm against *Oneself as Another* |
-| Schechtman — reidentification/characterisation | first-hand-read grounded, verbatim captured (ob_0419/ev_0078) | ready |
-| Tulving — autonoetic/noetic | first-hand-read grounded | confirm 1985 passage |
-| Damasio — autobiographical self | first-hand-read grounded (ob_1124) | confirm *The Feeling of What Happens* passage |
-| Clark & Chalmers — extended mind, Otto, past-endorsement | first-hand-read grounded (ob_1193/1568) | confirm 1998 passages |
-| Stiegler — tertiary retention | first-hand-read grounded (ob_0430) | confirm passage |
+| Locke — consciousness-continuity, prince & cobbler, forensic self | **verbatim captured** (Essay II.xxvii §9/§15/§26; ob_2539) | — |
+| Reid — brave-officer transitivity | **verbatim captured** (Essays 1785, III.6; ob_2539) | — |
+| Butler — circularity objection | **verbatim captured** (1736 Dissertation I; ob_2539) | — |
+| Parfit — Relation R | **verbatim captured** (Reasons and Persons 1984 p.206/p.215; ob_2537) | confirm page nos. vs print Oxford 1984 copy |
+| Ricoeur — idem/ipse | **verbatim captured** (Oneself as Another 1992, Intro + 5th Study; ob_2539) | page nos. approximate (OCR running-headers) |
+| Schechtman — reidentification/characterisation | verbatim captured (ob_0419/ev_0078) | — |
+| Tulving — autonoetic/noetic | **verbatim captured** (1985 Abstract, via ocr tool; ob_2539, corroborates ob_1115) | — |
+| Damasio — autobiographical self | **verbatim captured** (Feeling of What Happens 1999, Table 6.1 p.174; ob_2539) | — |
+| Clark & Chalmers — extended mind, Otto, past-endorsement | **verbatim captured** (Analysis 1998, four-features; ob_2539) | — |
+| Stiegler — tertiary memory / epiphylogenesis | **verbatim captured** (Technics and Time 1; ob_2539) | **term nuance — see B.8 note below** |
 | Nozick — closest-continuer | def-grounded (df_0046); Ch5 owns the deep cite | — |
-| Kahl — OCC | first-hand-read grounded (kahl_occ_first_hand_read; df_0037 + conditions) | ready |
+| Kahl — OCC | first-hand-read grounded (kahl_occ_first_hand_read; df_0037 + conditions) | — |
 
-The single hard blocker — **Parfit** — is now cleared (first-hand read,
-2026-06-17, ob_2537). Everything else needs verbatim *confirmation*, not new
-reading.
+**Sweep complete (2026-06-17).** The Parfit blocker is cleared and every other
+attribution is now verbatim-grounded with page/section locators. Residuals are
+two light page-number confirms (Parfit, Ricoeur) and one term-precision note
+(Stiegler, below) — none are new reading.
+
+**Stiegler term note (B.8).** In *Technics and Time 1* the term "tertiary
+retention" appears essentially once; Stiegler develops the constitutive claim
+under "tertiary memory" and "epiphylogenesis" (the explicit "tertiary retention"
+coinage is firmer in later Stiegler, TT2/TT3). B.8 has been adjusted to lead with
+"tertiary/external memory" and footnote the coinage, so the headline term is not
+over-attributed to TT1.
 
 ---
 
