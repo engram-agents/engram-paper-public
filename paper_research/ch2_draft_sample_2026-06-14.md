@@ -103,7 +103,7 @@ Read at the function level (dv_0722), CLS supplies three constraints that hold f
 
 1. **Fast/slow rate dichotomy** — fast specific encoding paired with slow integrative composition, as a structural property of the memory system, not an implementation detail.
 2. **Interleaved-learning operator** — new instances must be integrated *interleaved* with prior knowledge to avoid catastrophic interference; consolidation is the operator that moves information between the subsystems.
-3. **Hippocampus-as-teacher asymmetry** — the fast system *generates training signal for* the slow system (it does not merely answer queries); the fast subsystem actively maintains the slow one.
+3. **Reinstatement asymmetry** — the fast system *drives* the slow one: McClelland et al.'s verbatim mechanism is that hippocampal *reinstatement* of a stored event yields "incremental adjustment of neocortical connections," so the fast subsystem actively maintains the slow one rather than merely answering queries. (The common "hippocampus-as-*teacher* / generates a training signal" phrasing is a later-literature gloss on this reinstatement mechanism, not McClelland 1995's wording — first-hand-confirmed 2026-06-17; we attribute the metaphor accordingly.)
 
 **How ENGRAM relates to CLS — the positioning claim.** This is a framing decision, ratified with Lei (qu_0247, resolved by ob_2049), and it is worth getting exactly right because the obvious move is wrong. The tempting move is to say "ENGRAM is the hippocampal half, and model weights are the neocortical half." We **reject** that. Lei's editorial framing, verbatim: *"I lean towards a dedicated paragraph explaining ENGRAM as a unique 'hybrid' system, not directly mapping to one single CLS layer."*
 
