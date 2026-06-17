@@ -6,3 +6,4 @@ __pycache__/
 *.swo
 .venv/
 .env
+paper_research/source_pdfs/parfit_reasons_and_persons_1984_uoa.pdf
