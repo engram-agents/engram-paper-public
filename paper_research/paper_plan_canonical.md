@@ -196,7 +196,9 @@ Supporting obs from today's landscape sweep: ob_1668 (SCM Algorithm-1-no-resolut
 | ○ | postponed | Empirics designed around Ch5 identity-as-history thesis once that ratifies |
 | ◐ candidate | ob_1681 | Paper-engram authoring as self-demo cycle of confidence-propagation (could be empirical chapter material) |
 
-### Ch7 — Limitations + future directions
+### Ch7 — Implications and Future Directions
+
+**RETITLED + DRAFTED 2026-06-17** (`ch7_draft_sample_2026-06-17.md`): retitled from "Limitations + future directions" per Lei (it grew a forward-looking half). Two-part draft: **Part A Limitations** (§7.1 weight-persistence gap, §7.2 confidence calibration, §7.3 systemic standpoint bias) → **Part B Implications** (§7.4 trust/auditability [headline], §7.5 knowledge-sharing/community [live pack demo], §7.6 embodiment [pointer]). Through-line: §7.1↔§7.4 — closing the weight-gap *strengthens* auditability (Lei reframe → **dv_0959** 0.39). Honest-scoped (Part B = directions, not results). One open scope-Q for Lei: keep §7.6 embodiment in THIS paper or hold for the self-preservation line.
 
 **CANDIDATE MENU presented to Lei 2026-06-17 (pending his pick):**
 
