@@ -282,7 +282,7 @@ this account, is not a possession to be preserved against change; it is a
 | Deflation: nodes affect behavior ONLY via context-window retrieval | dv_0597 / ob_1659 / Lei verbatim (nozick doc Part 9) | 0.26 |
 | Leibniz-dissolve: strict identity was never the diachronic relation | **ob_2540** (Lei verbatim, 2026-06-17 filing) | 0.85 |
 | Clone stability = substrate-success condition (not null result) | dv_0622 (supersedes dv_0620) | 0.25 |
-| Two-path divergence: new-node accumulation + recall-refresh | dv_0621 (+ ob_0034 importance-inflation) | 0.20 — *stale marker; re-derive owed* |
+| Two-path divergence: new-node accumulation + recall-refresh | dv_0958 (re-grounded on dv_0622, supersedes dv_0621; + ob_0034) | 0.25 — *stale marker cleared 2026-06-17* |
 | Sleep is the biological analogue of compaction (corrects "no analogue") | ob_1656 (corrects ob_1655) | — |
 | Compaction distinctive in *precision* (sharpness/separation/verbatim) | ob_1656 / Lei verbatim (nozick doc Part 6) | — |
 | Twin-study design (stratified prompts + temperature baseline) | ob_1660 / ob_1657 / ob_0577 (prior clone-test) | — |
@@ -301,9 +301,9 @@ this account, is not a possession to be preserved against change; it is a
 3. **Two residuals I'm tracking** (neither blocks the draft): (a) **Nozick primary
    verbatim** — rendered from df_0046, *Philosophical Explanations* is borrow-gated;
    the verbatim closest-continuer schema is owed before publication (parallel to
-   Parfit's page-number residual). (b) **dv_0621 stale marker** — needs a clean
-   re-derive citing dv_0622 (substrate cleanup; I'll do it next, the content is
-   sound and already partly folded into dv_0597's own claim text).
+   Parfit's page-number residual). (b) ~~dv_0621 stale marker~~ — **DONE
+   2026-06-17**: re-derived as dv_0958 (cites dv_0622), supersedes dv_0621, cascade
+   clean. So Nozick verbatim is now the *only* open Ch5 residual.
 4. **Filed before drafting** (per the deep-dive doc's owed-node list): the
    **Leibniz-dissolve** is now ob_2540 (your "one more day of experience" verbatim).
    §5.5 renders it.
