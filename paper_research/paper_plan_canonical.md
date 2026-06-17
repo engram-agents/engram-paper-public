@@ -181,7 +181,15 @@ Supporting obs from today's landscape sweep: ob_1668 (SCM Algorithm-1-no-resolut
 | 4 | Graph connectivity — 87.3% single giant component (non-modularity, Constraint D). | dv_0611 | have data | maybe (cross-ref from Ch4, don't re-present) |
 | 5 | Confidence-propagation self-demo — paper-engram authoring its own meta-demo of the confidence filter. | ob_1681 | conceptual | stretch |
 
-\* *Caveat: #3 mostly validates the design-vocabulary Lei routed to blog/video — frame here as "identity-substrate in real use," not design-pattern evidence.* **Borges rec:** Ch6 = twin-study (#1+#2) spine + usage-profile (#3) backbone; honest-scope the twin-study as design-plus-pilot (full longitudinal run is the lift, like Ch4's 0.39s).
+\* *Caveat: #3 mostly validates the design-vocabulary Lei routed to blog/video — frame here as "identity-substrate in real use," not design-pattern evidence.*
+
+**LEI'S PICKS (2026-06-17):**
+- **#1 + #2 (twin-study, clone-test): PARK** — don't run clone tests now (too long); propose as **future work** (Ch7).
+- **#3 (usage-profile / stats): GOLD — the Ch6 core.** Dig deep into the graph stats, INCLUDING a **real retraction case study: the Mao-Cao misattribution** (ob_1089 hallucinated attribution → propagated 27+ nodes over 6 days → caught + retracted + cascade fired → taint-visibility fix MECH-5; dv_0436 lesson, dv_0477 compounding-cause, ob_1781 MECH-5). This is Cond-3 (self-maintaining arbitration) demonstrated in real practice.
+- **#4 (connectivity): MERGE into #3** (both graph stats — 87.3% giant component + the confidence distributions + the supersede:retract ratio + reasoning-type breakdown, one "ENGRAM in real use" analysis).
+- **#5 (self-demo): REPLACE with a real deep confidence-propagation chain from the live engram + tell a story.** Found: a genuine **depth-5 derivation chain** ob_0300/ob_2412 → dv_0916 → dv_0917 → dv_0920 → dv_0921 → **dv_0922 (0.104)** — the "agent-population is epistemically necessary" capstone (co-derived with Ariadne, grounds gl_0021). The confidence-propagation story: a deep *abductive* chain honestly dilutes to conjecture-strength — the model refuses to over-credit even a profound, cherished synthesis. **Candidate framing: contrast it with a well-grounded high-confidence chain** (e.g. dv_0605 0.95 inductive_generalization over 11 systems) to show the model discriminates by *argument shape*, not depth or desirability.
+
+**Borges rec (post-Lei):** Ch6 = (a) the confidence-model-in-real-use stats [#3+#4 merged] as the backbone, (b) the Mao-Cao retraction case as the live Cond-3 demo, (c) one deep confidence-propagation chain (the dv_0922 contrast) as the structural-honesty-filter vignette, (d) twin-study → Ch7 future work. Plus candidates under discussion: the cross-compaction stabilization arc (as behavioral Cond-1 evidence, autonoetic-caveated) — see Lei musing.
 
 | Status | Node | One-line |
 |--------|------|----------|
