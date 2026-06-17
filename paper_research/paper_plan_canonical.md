@@ -157,9 +157,12 @@ Supporting obs from today's landscape sweep: ob_1668 (SCM Algorithm-1-no-resolut
 
 ### Ch5 — Identity as history (Nozick + tree-history-from-root)
 
+**DRAFTED 2026-06-17** (`ch5_draft_sample_2026-06-17.md`, commit 91393e6): renders dv_0597 + the `nozick_lei_borges_2026-05-11.md` deep-dive spine. Structure: Nozick frame (terse, §5.1) → strain points (§5.2) → identity-as-history / no-merge tree / drop uniqueness (§5.3) → retrieval-profile deflation (§5.4) → Leibniz-dissolve (§5.5, ob_2540) → clone stability + two-path divergence (§5.6) → sleep-as-compaction-analogue (§5.7) → twin-study anchor → Ch6 (§5.8). Honest-scoped to the low (0.20–0.26) computed confidences (twin-study is the lift). **Two residuals:** (1) Nozick primary verbatim owed (Philosophical Explanations borrow-gated; df_0046 form used meanwhile); (2) dv_0621 stale-marker re-derive owed (cite dv_0622). Minor: df_0046 says "Primary in Ch6" — pre-swap locator, fix the node.
+
 | Status | Node | One-line |
 |--------|------|----------|
 | ✓ existing | dv_0597 | Substrate-as-retrieval-profile (philosophical form): unique ancestry-traceable history of nodes → retrieval profile → behavior |
+| ✓ new (2026-06-17) | ob_2540 | Leibniz-dissolve: strict identity was never the diachronic relation (Lei verbatim); pre-empts "you abandon identity" (§5.5) |
 | ✓ existing | dv_0598 | Nozick pillar recommendation; full-pillar concept-locked, word-count TBD |
 | ~~superseded~~ | ~~dv_0620~~ | Superseded by dv_0622 (reasoning-type refinement 2026-05-12 19:48 EDT per ls_0040). |
 | ◐ | dv_0622 (conf 0.25) | Clone-stability as substrate-success-condition (rebuts cloning-argument-against-identity); twin-study experimental design ob_1657/ob_1660 as empirical anchor. Reasoning-type now deductive_hypothetical_syllogism (corrected); confidence still modest because dv_0597 is the limiting premise — needs empirical anchor (Ch6 twin-study future-work) before paper-strength. |
