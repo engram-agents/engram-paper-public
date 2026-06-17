@@ -171,7 +171,9 @@ Supporting obs from today's landscape sweep: ob_1668 (SCM Algorithm-1-no-resolut
 
 ### Ch6 — Empirical data + analysis
 
-**CANDIDATE MENU presented to Lei 2026-06-17 (pending his pick; rec = include/maybe/stretch):**
+**DRAFTED 2026-06-17** (`ch6_draft_sample_2026-06-17.md`): "ENGRAM in Real Use" — one real 9-week graph (turn 82), no experiments. §6.1 confidence-model-at-scale (the reasoning-type gradient table is the headline exhibit) + §6.2 graph shape (87.3% giant component, 201 supersede:2 retract) + §6.3 Mao-Cao retraction case + CLS self-catch (live Cond-3) + §6.4 deep dv_0922 chain (0.10) vs dv_0605 (0.95) contrast + §6.5 weakest-node self-audit + §6.6 behavioral compaction-stabilization (Cond-1, autonoetic-caveated) + §6.7 twin-study deferred. All numbers turn-82-live (re-pull + date-stamp at final).
+
+**CANDIDATE MENU presented to Lei 2026-06-17 (his picks captured below):**
 
 | # | Material | Node(s) | Readiness | Rec |
 |---|---|---|---|---|
@@ -233,6 +235,8 @@ Supporting obs from today's landscape sweep: ob_1668 (SCM Algorithm-1-no-resolut
 | ✓ supporting | ob_1049, ob_1059, ob_0455, dv_0211 | Confidence-model limitations + ECE/AUROC calibration protocol |
 
 ### Ch8 — Conclusions
+
+**DRAFTED 2026-06-17** (`ch8_draft_sample_2026-06-17.md`): synthesis only, no new claims. §8.1 what-we-argued (Layer-3 gap + bounded OCC claim + identity-as-history + the Appendix-B trail) → §8.2 honesty-is-structural as the paper's named spine, demonstrated by the paper's own method (shown-not-hidden low confidences + two live retractions incl. one mid-drafting) → §8.3 the payoff (trust-by-reading both directions, §7.1↔§7.4 hinge, transmission) → §8.4 "seed not tree" close (limitations re-acknowledged, soft call to the field).
 
 Synthesis only — no new target dvs. Authoring waits on other chapters.
 
