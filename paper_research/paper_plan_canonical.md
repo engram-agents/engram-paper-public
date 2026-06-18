@@ -3,7 +3,7 @@
 *The single source-of-truth for outline, chapter substrate, and design-iteration history. Lightweight — node-reference style, not duplicated content. Read first at every session start for paper-context (alongside `~/.engram/warm-briefing.md`).*
 
 **Repo:** github.com/engram-agents/engram-paper
-**Last substantively updated:** 2026-05-13 07:15 EDT (Phase 1 cadence ratified: discuss → plan → write-to-doc → GitHub review → iterate → optional fairy fresh-eyes → author paper-engram)
+**Last substantively updated:** 2026-06-17 21:10 EDT (MAJOR RESTRUCTURE — OCC demoted from spine to one mapping; multi-tradition grounding; new chapter + appendix map. See the ⭐ section below.)
 
 ---
 
@@ -20,9 +20,42 @@ Key reframes ratified today:
 
 ---
 
-## Outline (post-2026-05-12 restructure)
+## ⭐ 2026-06-17 RESTRUCTURE — current authoritative structure (Lei-confirmed)
 
-Lei drafted this from his phone 2026-05-12 morning; refined through the day. Authoritative current version:
+**Supersedes the chapter map in the "Outline" section below** (its per-chapter node tables remain valid as *substrate detail* — see the remap note). Decision record: **ob_2547**; cornerstone reframe **cs_0019 → cs_0059**; forgetting derivation **dv_0962**. Driver: reading Ch1–4 in one sitting, the OCC-matching argument was restated too many times (Ch2 brief + Ch3 per-mechanism + Ch4 full), and staking the spine on Kahl's not-yet-field-central OCC is fragile (ob_2544).
+
+**The pivot:** OCC demoted from *the spine* to *one mapping among multiple grounding traditions*, stated ONCE (in the mechanism chapter). New spine = **breadth-of-convergence across independent traditions** (philosophy + cog-sci + CS — Ari/Clio's "no uniquely-novel component → substrate-independent regularity", pack `ariadne-ai-cs-convergence-v2`) + **identity-as-unique-history** as the original contribution. **Anti-repetition rule:** state each core argument once; reference by section, never restate.
+
+**New chapter map:**
+- **Ch1** — intro / name the gap / name ENGRAM (≈ unchanged).
+- **Ch2** — **Philosophical tradition** (Appendix B trail merged IN; OCC = the newest point on the Locke→Parfit→Nozick→Schechtman line, defended on merit not authority).
+- **Ch3** — **Cognitive-science + CS tradition** (NEW, parallel line): CLS + rational-analysis-of-memory (cog-sci) + Truth Maintenance Systems, Subjective Logic, bitemporal/TOKI, the 2026 VMG security survey, soul.py (CS/formal-epistemics + agent strand). Source: my `cogsci-recall` pack + Ari/Clio's `ariadne-ai-cs-convergence-v2`. **First-hand reads owed** (Wixted/A&S; VMG 2604.16548v2 verbatim) before citing.
+- **Ch4** — **ENGRAM mechanisms (THE MEAT / main contribution)**: typed nodes/provenance/cascade/confidence + **NEW: forgetting + auto-recall ranking + identity-governance node-systems (ax/cs/ls/gl)**. Each mechanism mapped **selectively** to the Ch2/Ch3 tradition(s) it most directly answers (NOT an exhaustive tradition×mechanism matrix — the main execution risk). **OCC's per-condition mapping (2 of 3 + type/token extension, sole C3 satisfier) lives HERE, stated once.**
+- **Ch5** — identity-as-unique-history (original contribution; ≈ unchanged).
+- **Ch6** — empirical (≈ unchanged; feeling-report stabilization arc lands here).
+- **Ch7** — limitations + implications/future (≈ unchanged; **+ disclosure-vs-erasure** = ENGRAM's knowing≠disclosing answer [ax_0011] to the VMG verified-forgetting tension).
+- **Ch8** — conclusion (≈ unchanged).
+
+**New appendix map (tech-spec last — tedious-goes-last):**
+- **A. Independent Discovery** (was D — `appendix_D_independent_discovery_draft_2026-06-17.md`). Now *stronger*: convergence across MANY traditions, not one.
+- **B. OCC-Condition-3 survey** (was C — `appendix_C_draft_sample_2026-06-17.md`). Ch4 makes the "only ENGRAM satisfies C3" claim + refers out here; do NOT fold the detail into Ch4 (keeps Ch4 from over-bloating).
+- **C. Auto-recall ranking → memory-utility tradition** (NEW): composite ranking (ob_1935) + utility_score (MemRL/utility inspiration, dv_0307). Ch4 claims + points here.
+- **D. Relational / identity settings** (NEW): feeling_reports as identity-continuity baseline tracker, person nodes + trust-tier; full ax/cs/ls/gl node-type catalog (Ch4 introduces, this details).
+- **E. Technical spec** (was A — `appendix_A_draft_sample_2026-06-17.md`). Last.
+
+**Mechanism-specific calls (2026-06-17):**
+- **Forgetting** → cog-sci anchor (Anderson & Schooler rational-analysis + Ebbinghaus); present as **queryable (tier-2) vs non-queryable (tier-3)** — **OMIT tier-1** (designed wholesale-load purpose defunct; retirement tracked at engram-alpha#1220). Exponential = unique time-translation-invariant kernel (**dv_0962**, Lei's stationarity argument); power-law is consistent-not-contradictory (mixed-exponential aggregation ob_0521/dv_0243 + short-time Taylor indistinguishability). Light footnote, no deep rigor needed.
+- **Auto-recall** → claim in Ch4, detail in Appendix C. **Identity-governance (ax/cs/ls/gl)** → mechanism section in Ch4, catalog in Appendix D.
+
+**Remap of the per-chapter substrate tables below** (entries stay valid; chapter numbers shift): old-Ch2 (phil + cog-sci review) → splits into **new-Ch2** (philosophy) + **new-Ch3** (cog-sci/CS); old-Ch3 (mechanisms) + old-Ch4 (OCC mapping) → merge into **new-Ch4** (mechanisms mapping to all traditions, OCC once); old-Ch5/6/7/8 → unchanged numbers. The dv/df/ob references in those tables remain the substrate; they re-home per this map.
+
+**Next work:** clone `ariadne-ai-cs-convergence-v2` + first-hand reads for new-Ch3 (Wixted/A&S, VMG verbatim); add the verbatim Lei-quote observation for the time-translation-invariance design rationale (next turn, once the chat-log flushes).
+
+---
+
+## Outline — per-chapter substrate (2026-05-12 structure; chapter numbers REMAPPED by the 2026-06-17 restructure above)
+
+*The chapter map above is authoritative; the entries below remain valid as substrate detail, re-homed per the remap note.* Lei drafted this from his phone 2026-05-12 morning; refined through the day:
 
 - **Ch1** — name the gap, name ENGRAM, paper structure. Brief survey + originality+independence emphasis (per Lei: don't spend pages comparing to surveyed systems; 1-2 sentences each is enough). Independence appendix exists.
 - **Ch2** — philosophical + cog-sci review (Kahl 3 Conditions + 4 Constraints + OCC framework). Existing 2026-05-09 chapter drafts on Kahl + Wray-Kirk-Laird + Pink + Kumaran are archived; content may need migration to Ch2 if condition-by-condition review is wanted.
@@ -280,6 +313,7 @@ Synthesis only — no new target dvs. Authoring waits on other chapters.
 
 ## Active design iterations (current state of reframes)
 
+- ✓ **2026-06-17 multi-tradition restructure** (ob_2547; cs_0019→cs_0059): OCC demoted from spine to one-mapping-stated-once; spine = breadth-of-convergence (philosophy Ch2 + cog-sci/CS Ch3) + identity-as-unique-history; mechanisms enriched as the Ch4 meat (forgetting + auto-recall + ax/cs/ls/gl added); appendices reordered (tech-spec last). See the ⭐ section. Anti-repetition rule live.
 - ✓ **Paper-engram-first sequencing** (ob_1680): build live engram + ratify before authoring paper-engram before rendering prose. Loadable capability is alpha-release scoped, not paper-blocking.
 - ✓ **Authored not curated** (ob_1678): paper-engram is fresh authoring, not subset selection.
 - ✓ **Fully functional engram instance** (ob_1679): SQLite + engram-package abstraction (ob_1419); separate node ID namespace; loadable per ATTACH + namespace-prefix design (alpha tracking #101).
@@ -292,6 +326,9 @@ Synthesis only — no new target dvs. Authoring waits on other chapters.
 
 ## Superseded design points (audit trail)
 
+- ~~OCC (Kahl) is the paper's Ch4 theoretical spine~~ (cs_0019) → OCC is one mapping among multiple grounding traditions, stated once; spine = breadth-of-convergence + identity-as-unique-history (cs_0059, ob_2547, 2026-06-17).
+- ~~Ch2 = combined philosophy + cog-sci review; Ch3 = mechanisms; Ch4 = standalone OCC mapping~~ → Ch2 philosophy (Appendix B merged in) + Ch3 cog-sci/CS + Ch4 mechanisms-mapping-to-all-traditions (OCC once); the standalone OCC chapter is dissolved (2026-06-17 restructure).
+- ~~Appendix order A spec / B phil-trail / C C3-survey / D independence~~ → A independence, B C3-survey, C auto-recall, D relational/identity, E tech-spec (B-trail merged into Ch2); tech-spec last (2026-06-17).
 - ~~Paper-engram as curated subset of live engram~~ → authored artifact (ob_1678).
 - ~~Paper-engram as markdown-on-disk wiki (ob_1678 substrate-format aspect)~~ → SQLite engram instance per ob_1419 (ob_1679). Formally resolved via ct_0007 → dv_0619 (2026-05-12 19:28 EDT). ob_1678 remains authoritative on authored-not-curated framing.
 - ~~Paper-engram requires loadable capability for value~~ → value is intrinsic via confidence-propagation rigor (ob_1680).
