@@ -166,6 +166,25 @@ The published prose must be **digestible for non-expert and non-native-English r
 
 This applies to **Phase-3 prose rendering specifically** — the paper-engram/dv layer stays atomic + maximally precise (Discipline M); the prose is where it becomes readable. It complements Borges's user-level audience-calibration discipline (the *form* changes with the audience; *what is argued* never does).
 
+### O. Reviewer-facing meta-commentary in a distinct block (Lei 2026-06-18)
+
+Chapter drafts sometimes explain *why* we mention, emphasize, or frame something a certain way — our authorial reasoning. That meta-commentary is **useful to Lei as a reviewer but does NOT belong in the final paper verbatim.** Render it in a **visually distinct block** so it is unambiguously for-review, not publishable prose:
+
+```
+> **REVIEWER NOTE:** <the authorial reasoning — why this framing, what alternative we rejected, what this is hedged against>
+```
+
+- Use a blockquote callout led by a bold `REVIEWER NOTE:` tag. Keep these separable from the prose so they can be stripped (or converted to footnotes/responses-to-review) at finalization.
+- The prose body itself stays clean human-readable argument (Discipline N); the *reasoning about* the prose goes in the REVIEWER NOTE block.
+
+**Lei verbatim 2026-06-18:** *"you sometimes would explain our 'thoughts' on why we mention or emphasize something in the paper, that is usually UNNECESSARY for the final paper, but useful for me when review it, maybe you can keep them in a special stylish rendering (e.g. a quotation block or something), so we know they are used for me as a reviewer, not planned to be included verbatim in the final paper."*
+
+### P. ENGRAM node-id citations in drafts are provisional (Lei 2026-06-18)
+
+Keep the inline ENGRAM node-id citations (`dv_XXXX`, `ob_XXXX`, …) in chapter drafts **as currently done** — they let Lei trace each claim to its substrate now, and they will seed the Phase-2 paper-engram build (each draft claim maps to the node it renders). But they are **PROVISIONAL draft scaffolding, not final-paper content**: at finalization, remove them or replace them with paper-engram node IDs / standard scholarly references (per Phase-3, Discipline H). Don't treat them as permanent; do keep them until then.
+
+**Lei verbatim 2026-06-18:** *"your graph node_id citations are useful for you later when we finalized the paper content, and you start to build the paper engram, so keep them as you are doing now, but be ready to remove them, or replace them with the paper-engram node ids."*
+
 ---
 
 ## Where things live

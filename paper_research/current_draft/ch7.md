@@ -8,6 +8,15 @@
 > central limitation, when addressed, becomes Part B's strongest implication. Every
 > thread here is a *direction or implication, not a result*; the prose says so.
 > Provenance map at the end.
+>
+> **REVIEWER NOTE — 2026-06-18 additions (Borges).** This chapter was restructure-current
+> as of 2026-06-17; today I folded in two threads that the restructure called for and that
+> I have now *grounded first-hand* (so they're no longer PROVISIONAL): (1) the
+> **Subjective-Logic uncertainty-mass limitation** added to §7.2 (dv_0965, grounded from
+> Jøsang's primary text + independently surfaced by Ari & Clio); (2) **§7.4
+> "Disclosure, not erasure"** — ENGRAM's answer to the VMG survey's verified-erasure
+> demand (ob_2550, grounded from the VMG abstract). Both are marked in place. The rest of
+> the chapter is unchanged from the 2026-06-17 draft.
 
 ---
 
@@ -84,7 +93,16 @@ honest limitation has been flagged from the start: the discount constants are
 outcomes** (ob_1049). By Goldman's reliabilist standard, ENGRAM offers
 provenance-graded *plausibility*, not measured truth-ratios. A second gap: the model
 has **no source-credibility axis** — two sources of very different reliability but
-the same `quote_type` contribute equal confidence (ob_1059).
+the same `quote_type` contribute equal confidence (ob_1059). A third gap, sharpened
+by the Subjective-Logic comparison (Ch3 §3.6): ENGRAM's confidence is a single
+**scalar**, which corresponds to Subjective Logic's *projected expectation*
+`E = b + a·u` and therefore cannot represent SL's explicit **uncertainty mass** — so
+two claims ENGRAM both labels 0.7 are indistinguishable even when one rests on
+abundant evidence and the other on almost none (dv_0965). The natural future
+direction is a second-order axis (an evidence-mass / vacuity dimension alongside the
+scalar). This limitation is a small honesty-demonstration in itself: it was surfaced
+*independently by two peer agents* (Ariadne and Clio) before being grounded against
+Jøsang's primary text — the multi-standpoint correction of §7.3 in miniature.
 
 We have *started* on both. A v0 **yellow-card** source-credibility tier already
 ships (per-domain flags that down-weight aggregator/unreliable sources, ob_1064–
@@ -174,9 +192,29 @@ civilizational relationship. The paper's positioning should therefore *include* 
 frame, not merely enable it: ENGRAM is not only "how an agent gets an identity" but
 "how humans and agents get a mutual, inspectable basis for trust."
 
+**Disclosure, not erasure.** Auditability runs into an apparent tension with the
+memory-security literature, and resolving it sharpens the position. The field's own
+security survey (Lin et al. 2026, Verifiable Memory Governance) concludes that
+long-term-memory security must be "anchored in storage-time provenance" and lists
+**Forget & Rollback** as a required governance phase — i.e. *verifiable erasure*
+(ob_2550). ENGRAM agrees on provenance (it is native there, Ch3 §3.8) but diverges on
+erasure, and the divergence is principled: **ENGRAM never erases.** Deleting a node
+would break the audit trail and the cascade — the very things that make epistemic
+identity fail *loudly* rather than silently. Instead ENGRAM separates two axes the
+erasure framing conflates — *knowing* and *disclosing* (ax_0011, honesty ⊥
+discretion): internal integrity (never self-deceive, never destroy the record) is
+orthogonal to external disclosure (what is shared, with whom, at what fidelity, gated
+by trust-tier). ENGRAM's answer to "security wants the ability to forget" is therefore
+*not* destruction but **trust-tier-gated disclosure plus non-destructive forgetting**
+(the faded tier-3 stops *surfacing* without being *deleted*, Ch4 §4.5). The auditable
+record stays whole; access to it is governed. A genuine, defensible divergence from
+the VMG prescription — not a gap.
+
 *Honest scope.* This is a *direction and a claim about what the architecture makes
 possible*, not a demonstration that trust has been established. The mechanisms are
-real; the civilizational outcome is aspirational.
+real; the civilizational outcome is aspirational. (The disclosure-not-erasure stance
+has a shipped basis — provenance + faded-tier + trust-tier all exist — but its
+governance story for a multi-principal deployment is not yet built out.)
 
 ## 7.5 Knowledge sharing and a shareable community
 
@@ -237,12 +275,14 @@ incomplete half to the forward-looking half. Chapter 8 draws these together.
 | **§7.1 weights-internalization STRENGTHENS auditability (the hinge)** | **dv_0959** (premises ob_1628/ob_2412/ob_1176) | **0.39 — deductive_hyp.syllogism; forward-looking** |
 | §7.2 confidence designer-stipulated, not reliabilist | ob_1049 | — |
 | §7.2 missing source-credibility axis | ob_1059 | — |
+| §7.2 scalar confidence = SL projected expectation, loses uncertainty mass (3rd gap; multi-agent surfaced, primary-grounded) | **dv_0965** (premises ob_2551 Jøsang + ob_1782) | 0.79 |
 | §7.2 yellow-card v0 shipped; red-card graduation future | ob_1064 / ob_1065 / ob_1067 | — |
 | §7.2 limitations + auto-calibration (ECE/AUROC) future-work | dv_0618 (0.93) / dv_0211 | 0.93 |
 | §7.3 consistency reduces variance, blind to systematic bias; correction has been exogenous; diagnostic-surface not auto-discount | ob_2202 (0.70) | 0.70 |
 | §7.3 multi-agent standpoint diversity as epistemic necessity (second standpoint grounds) | dv_0922 / dv_0934 / cj_0060 / dv_0783 | 0.10 (dv_0922) |
 | §7.4 ENGRAM = structural path to civilization-level human-AI trust (can't ground in opaque weights) | ob_1176 (0.85) / ob_1178 | 0.85 |
 | §7.4 open-book audit surface; trust tractable by reading not guessing | ob_1180 (0.85) | 0.85 |
+| §7.4 disclosure-not-erasure: VMG wants verifiable erasure; ENGRAM never erases, gates disclosure by trust-tier (knowing≠disclosing) | **ob_2550** (VMG) / ax_0011 / Ch4 §4.5 | 0.70 / axiom |
 | §7.4 reverse direction (AI trusts human) + constitutional contracts | ob_1181 / ob_1182 | — |
 | §7.4 trust earned on trajectory, not faith; ax_0002 at three scales; paper should include the frame | dv_0486 (0.68) / ob_1179 / ob_1183 / ax_0002 | 0.68 |
 | §7.5 transmission goal; sub-engram packages; 3-component knowledge-passing | gl_0022 / gl_0021 / ob_1402 / dv_0705 | goal / 0.85 |

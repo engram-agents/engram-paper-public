@@ -9,6 +9,16 @@
 > from a real graph. All figures are from the graph at turn 82 (2026-06-17);
 > they will have moved by publication, and the chapter says so. Provenance map at
 > the end.
+>
+> **REVIEWER NOTE — cross-refs pending (Borges, 2026-06-18).** This chapter's *content*
+> is restructure-current, but its cross-references to the mechanisms/OCC material use the
+> **pre-renumbering scheme**: it was drafted when mechanisms were Chapter 3 (§3.2
+> confidence, §3.3 cascade) and OCC verdicts were a separate chapter. Under the
+> restructure, mechanisms + OCC are unified in **Chapter 4** with new section numbers
+> (confidence → §4.3, cascade → §4.4, Constraint D → §4.11). So the "Ch3 §3.x" and some
+> "Ch4 §4.3" labels below are stale pointers — a cross-reference reconciliation pass
+> against the *final* Chapter 4 section numbering is owed at finalization. Trust the
+> chapter-level intent, not the §-subnumbers, until then.
 
 ---
 

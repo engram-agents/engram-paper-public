@@ -3,7 +3,7 @@
 *The single source-of-truth for outline, chapter substrate, and design-iteration history. Lightweight — node-reference style, not duplicated content. Read first at every session start for paper-context (alongside `~/.engram/warm-briefing.md`).*
 
 **Repo:** github.com/engram-agents/engram-paper
-**Last substantively updated:** 2026-06-17 21:10 EDT (MAJOR RESTRUCTURE — OCC demoted from spine to one mapping; multi-tradition grounding; new chapter + appendix map. See the ⭐ section below.)
+**Last substantively updated:** 2026-06-18 ~11:20 EDT (FULL RESTRUCTURE DRAFT COMPLETE — all chapters Ch1–8 + appendices drafted/aligned on the restructure; 3 cog-sci/CS sources grounded first-hand. See the ✅ 2026-06-18 section below. Prior: 2026-06-17 21:10 MAJOR RESTRUCTURE, ⭐ section.)
 
 ---
 
@@ -51,7 +51,21 @@ Key reframes ratified today:
 
 **Detailed per-chapter plan:** `paper_research/restructure_chapter_plan_2026-06-17.md` — §-level structure for every chapter, the Ch4 mechanism→tradition→OCC mapping table (the centerpiece), and [SOLID]/[PROVISIONAL] citation-status flags. Captured 2026-06-17 evening while context hot; refine with Lei.
 
-**Next work:** clone `ariadne-ai-cs-convergence-v2` + first-hand reads for new-Ch3 (Wixted/A&S, VMG verbatim); add the verbatim Lei-quote observation for the time-translation-invariance design rationale (next turn, once the chat-log flushes).
+---
+
+## ✅ 2026-06-18 — FULL RESTRUCTURE DRAFT COMPLETE (ready for Lei's review)
+
+The full chapter-by-chapter draft on the 2026-06-17 restructure now exists. Drafted in an autonomous paper-loop with Lei present (10-min cadence).
+
+**Draft files (current):** ALL moved 2026-06-18 into **`paper_research/current_draft/`** (separated from research substrate/stale drafts), cleanly renamed — `ch1.md … ch8.md` + `appendix_A_independence.md`, `appendix_B_c3_survey.md`, `appendix_C_autorecall_ranking.md`, `appendix_D_relational_identity.md`, `appendix_E_techspec.md` (the rename **resolves the old appendix letter-remap item** — filenames now match the restructure letter map). A combined printable doc **`current_draft/PAPER_REVIEW_2026-06-18.md`** concatenates all 13 for pen review; `current_draft/README.md` records the source-filename lineage. Per-chapter status: Ch1 (spine recast, OCC demoted), Ch2 (philosophy trail), Ch3 (NEW cog-sci/CS), Ch4 (NEW, THE MEAT, mechanism→tradition→OCC table), Ch5/6 (content-current + cross-ref reviewer-notes), Ch7 (strengthened: SL limit + disclosure-vs-erasure), Ch8 (reframed to convergence spine).
+
+**First-hand reads DONE (all PROVISIONAL cog-sci/CS flags retired/synced, ls_0039 — Lei's pre-review grounding directive):** VMG survey (ob_2550, arXiv 2604.16548 — provenance = foundational LTM-security requirement); Subjective Logic (ob_2551 + dv_0965 — the Ch7 scalar-vs-uncertainty-mass divergence, primary-grounded from Jøsang); Anderson & Schooler (ob_2552 + dv_0966 — need-probability adaptive forgetting); soul.py (ob_2553, multi-anchor persistent identity — same problem-statement as ENGRAM); TOKI (ob_2554 — bitemporal audit-row = supersede-retains-old; "audit erasure" anomaly supports never-erase). **Doyle TMS (ob_2555): read-attempted via the `ocr` tool — canonical scan image-degraded below citation grade (loud-failed, no confabulation); honest-scoped — TMS gap primary-confirmed (ob_1571), mechanism at standard-literature level, NO Doyle verbatim used.** Ch3 + Ch4 PROVISIONAL flags all synced to grounding (zero stale flags). Pack `ariadne-ai-cs-convergence-v2` cloned at `~/ai-cs-convergence`.
+
+**Citations tool now in use:** `tools/bib_bootstrap.py` run → `citations.bib` + `.manifest` regenerated from ENGRAM evidence nodes (6 new: ev_0818–0823); `tools/check_citations_consistency.py` = all hard checks passed. Raw PDFs organized into `source_pdfs/` (josang, anderson_schooler, doyle_1979_tms).
+
+**Remaining grounding gap (pre-review, genuine first-hand read owed):** Nozick *Philosophical Explanations* primary verbatim for closest-continuer (Ch2 §2.4 + Ch5 — currently df_0046 form; borrow-gated). The only cog-sci/CS secondary left by *choice* is ACT-R (§4.6; Tulving carries that section). 
+
+**Finalization-stage items (post-review, NOT draft blockers):** ~~(1) appendix letter-remap A/B/E~~ DONE 2026-06-18 (current_draft/ rename); (2) intra-Ch4 §-cross-ref reconciliation in Ch5/6 once Ch4 section numbers final; (3) node-id→paper-engram-id pass (Discipline P) + Ch4 §4.7 ob_1935→ob_2017 fix; (4) citations.bib title cleanup (evidence-node titles carry my annotations; pdf-fallback bibkeys for josang/A&S/doyle → upgrade to DOIs); (5) Lei time-translation-invariance verbatim quote-obs (internal capture).
 
 ---
 

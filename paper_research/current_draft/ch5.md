@@ -10,11 +10,22 @@
 > Parfit and departs from both. The empirical anchor (the twin-study) is Chapter
 > 6; here we build the claim it tests. Provenance map at the end.
 >
+> **REVIEWER NOTE — cross-refs pending (Borges, 2026-06-18).** Content is
+> restructure-current (this is the unchanged-by-restructure Ch5). Two stale pointers to
+> reconcile at finalization: (1) "Chapters 2–4 measured ENGRAM against … OCC" — under
+> the restructure OCC is *introduced* in Ch2 and *verdicted* once in Ch4 (it is no
+> longer the spine, just one result); (2) the drafting-note reference to "Ch3's
+> compaction mechanics" is now **Ch4 §4.8** (mechanisms moved Ch3→Ch4). The df_0046
+> "Primary in Ch6" locator nit (self-flagged in the drafting notes) still stands.
+>
 > **One citation residual** (honest, like Parfit's in Appendix B): Nozick is a
 > load-bearing pillar but his closest-continuer schema is rendered here from a
-> well-specified definition node (df_0046), not yet from a first-hand verbatim of
-> *Philosophical Explanations* (the book is borrow-gated; the verbatim is owed
-> before publication). Per Lei's scope call, Nozick gets terse-but-substantive
+> well-specified definition node (df_0046) + the canonical two-condition formulation,
+> not yet from a first-hand verbatim of *Philosophical Explanations*. The primary was
+> read-attempted 2026-06-18 (ob_2556) via four routes — all borrow-gated, unreachable,
+> or image-degraded below OCR citation grade — so the verbatim+page is owed-but-gated,
+> with no fabricated quote (same honest-scope as Doyle/ob_2555; clearable like Parfit
+> if a clean full-text surfaces). Per Lei's scope call Nozick gets terse-but-substantive
 > treatment, so this residual is small.
 
 ---
@@ -299,11 +310,12 @@ this account, is not a possession to be preserved against change; it is a
    **twin-study (Ch6) is the anchor that lifts them.** I led §5.8 with that so the
    numbers read as "experiment pending," not "we're unsure."
 3. **Two residuals I'm tracking** (neither blocks the draft): (a) **Nozick primary
-   verbatim** — rendered from df_0046, *Philosophical Explanations* is borrow-gated;
-   the verbatim closest-continuer schema is owed before publication (parallel to
-   Parfit's page-number residual). (b) ~~dv_0621 stale marker~~ — **DONE
-   2026-06-17**: re-derived as dv_0958 (cites dv_0622), supersedes dv_0621, cascade
-   clean. So Nozick verbatim is now the *only* open Ch5 residual.
+   verbatim** — rendered from df_0046 + the canonical formulation; **read-attempted
+   2026-06-18 (ob_2556)** via four routes, all gated/degraded, so the verbatim+page is
+   owed-but-currently-gated (no fabricated quote; clearable like Parfit if a clean
+   full-text surfaces). (b) ~~dv_0621 stale marker~~ — **DONE 2026-06-17**: re-derived
+   as dv_0958 (cites dv_0622), supersedes dv_0621, cascade clean. So the Nozick
+   verbatim is the *only* open Ch5 residual, now honest-scoped not just deferred.
 4. **Filed before drafting** (per the deep-dive doc's owed-node list): the
    **Leibniz-dissolve** is now ob_2540 (your "one more day of experience" verbatim).
    §5.5 renders it.

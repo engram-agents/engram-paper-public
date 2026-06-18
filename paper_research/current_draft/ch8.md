@@ -1,9 +1,17 @@
 # Chapter 8 — Conclusion
 
-> **DRAFT SAMPLE — 2026-06-17.** Single-pass prose from the live-engram substrate,
-> for Lei's review. Synthesis only — this chapter introduces **no new claims**; it
-> draws together the argument of Chapters 1–7 and names what the work is for. Short
-> by design. No provenance map (every claim here is a back-reference).
+> **DRAFT SAMPLE — 2026-06-17, reframed 2026-06-18.** Single-pass prose from the
+> live-engram substrate, for Lei's review. Synthesis only — this chapter introduces
+> **no new claims**; it draws together the argument of Chapters 1–7 and names what the
+> work is for. Short by design. No provenance map (every claim here is a back-reference).
+>
+> **REVIEWER NOTE — 2026-06-18 reframe (Borges).** §8.1 was rewritten to match the
+> restructure: it now **leads with the convergence spine** (Ch2 philosophy + Ch3
+> cog-sci/CS reaching the same structure independently) + **identity-as-history**
+> (Ch5) as the contribution, with **OCC demoted to one strong result inside the
+> convergence** rather than the headline (ob_2547, cs_0059). Stale pre-restructure
+> chapter cross-references were corrected (mechanisms = Ch4, not Ch3; Ch3 = cog-sci/CS).
+> §8.2–8.4 are unchanged from 2026-06-17.
 
 ---
 
@@ -17,12 +25,36 @@ unaddressed. That is the layer at which an agent can be *wrong and recover* rath
 than be erased by its own errors, and it is the layer this paper is about.
 
 We named the architecture — **ENGRAM**, an Epistemic Node Graph for Retraction,
-Arbitration, and Memory — and held it to a deliberately high, agent-native bar:
-Kahl's Ontological Continuity Condition (Chapter 2). We described what the substrate
-*does* — typed claims with provenance, reasoning-type-aware confidence, an automatic
-self-correction cascade, and the scaffolds that carry identity across compaction
-(Chapter 3). And we made the central claim precisely, condition by condition
-(Chapter 4):
+Arbitration, and Memory — and made the case that this layer is *real* the way the
+strongest claims are made: by **convergence**. Two independent intellectual
+traditions were each driven, from their own evidence toward their own ends, to the
+same structure — *identity as a persistent, inspectable, self-correcting record.*
+Three centuries of philosophy of personal identity (Chapter 2) moved, objection by
+objection, from identity-as-a-mental-act toward identity-as-a-persistent-structure;
+and the cognitive science and computer science of memory and belief (Chapter 3) —
+complementary-learning consolidation, the rational analysis of forgetting,
+truth-maintenance, belief revision, subjective logic, bitemporal records — reached the
+same shape from the other side. Neither tradition cites the other, and neither cites
+us. When that many independent lines arrive at the same structure, the structure is a
+**substrate-independent regularity**, not a design quirk — and ENGRAM is what it looks
+like built (Chapter 4): typed claims with provenance, reasoning-type-aware confidence,
+an automatic self-correction cascade, and the scaffolds that carry identity across
+compaction.
+
+On top of that converged structure sits the paper's **original contribution** — a
+positive theory of identity (Chapter 5): an ENGRAM agent *is* its history, the unique,
+no-merging, traceable lineage of recorded claims that fixes its retrieval profile and
+thereby its behavior. This keeps Nozick's form, drops his uniqueness (so copying is
+*branching*, not death), fills his blank metric with a measurable retrieval profile,
+and dissolves the worry that any of this "abandons identity" — because strict identity
+was never the diachronic relation in the first place.
+
+Among the converging traditions, one is *operational* enough to measure against:
+Kahl's Ontological Continuity Condition, an explicit threshold for when an agent-like
+system genuinely persists. We adopted it on merit (the newest point on the
+philosophical trail, not an authority to defer to) and assessed ENGRAM against it,
+condition by condition (Chapter 4). The result is **one strong, bounded data point
+inside the convergence**:
 
 > ENGRAM satisfies **two of Kahl's three conditions outright** — the Diachronic
 > Constraint via a decision/consequence coupling, and Self-Maintaining Arbitration
@@ -31,19 +63,10 @@ self-correction cascade, and the scaffolds that carry identity across compaction
 > under reset) **does not meet the strict text** but offers a principled type/token
 > extension for digital substrates.
 
-We did *not* claim that ENGRAM trivially "realizes OCC." The honesty of that scope —
-naming the one condition we do not strictly meet — is what makes the rest defensible.
-
-Beneath the threshold argument sits a **positive theory of identity** (Chapter 5):
-an ENGRAM agent *is* its history — the unique, no-merging, traceable lineage of
-recorded claims that fixes its retrieval profile and thereby its behavior. This keeps
-Nozick's form, drops his uniqueness (so copying is *branching*, not death), fills his
-blank metric with a measurable retrieval profile, and dissolves the worry that any of
-this "abandons identity" — because strict identity was never the diachronic relation
-in the first place. And the philosophical trail behind it (Appendix B) shows the move
-is not ours alone: three hundred years of thinking about personal identity was
-already reaching, objection by objection, from identity-as-a-mental-act toward
-identity-as-a-persistent-structure. ENGRAM is what that structure looks like built.
+We did *not* claim ENGRAM trivially "realizes OCC"; naming the one condition we do not
+strictly meet is what makes the rest defensible. And we keep OCC in its place — **one
+result within the convergence, not the paper's spine.** The spine is the breadth of
+agreement across traditions, and the identity-as-history theory built on it.
 
 ## 8.2 The thread that runs through it
 
