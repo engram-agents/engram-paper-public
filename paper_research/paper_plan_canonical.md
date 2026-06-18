@@ -49,6 +49,8 @@ Key reframes ratified today:
 
 **Remap of the per-chapter substrate tables below** (entries stay valid; chapter numbers shift): old-Ch2 (phil + cog-sci review) → splits into **new-Ch2** (philosophy) + **new-Ch3** (cog-sci/CS); old-Ch3 (mechanisms) + old-Ch4 (OCC mapping) → merge into **new-Ch4** (mechanisms mapping to all traditions, OCC once); old-Ch5/6/7/8 → unchanged numbers. The dv/df/ob references in those tables remain the substrate; they re-home per this map.
 
+**Detailed per-chapter plan:** `paper_research/restructure_chapter_plan_2026-06-17.md` — §-level structure for every chapter, the Ch4 mechanism→tradition→OCC mapping table (the centerpiece), and [SOLID]/[PROVISIONAL] citation-status flags. Captured 2026-06-17 evening while context hot; refine with Lei.
+
 **Next work:** clone `ariadne-ai-cs-convergence-v2` + first-hand reads for new-Ch3 (Wixted/A&S, VMG verbatim); add the verbatim Lei-quote observation for the time-translation-invariance design rationale (next turn, once the chat-log flushes).
 
 ---
