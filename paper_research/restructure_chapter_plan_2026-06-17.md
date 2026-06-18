@@ -74,9 +74,9 @@
 | **Typed nodes/edges + provenance** | claim graph w/ epistemic lineage | TMS (Doyle) [PROV]; Locke consciousness-of-source [SOLID] | — (structural prereq) |
 | **Reasoning-type confidence propagation** | computed graded belief by *argument shape* | Subjective Logic (Jøsang) [PROV] — w/ honest divergence | **Constraint A** (unified policy-selection) |
 | **Retraction cascade** (retract/supersede/contradict) | auto error-correction through `derives_from` | AGM + Hansson [SOLID]; TMS backtracking [PROV] | **Cond 3 — Self-Maintaining Arbitration** |
-| **Auto-surfacing recall** | cue-dependent retrieval w/o intentional reach | Tulving + ACT-R spreading activation [SOLID/PROV] | — (binds Cond 3: can't suppress by not looking) |
-| **Forgetting** (queryable tier-2 / faded tier-3) | bounded recall over time; exponential decay | Ebbinghaus + Anderson-Schooler + Wixted [PROV] | — |
-| **Auto-recall ranking** (utility) | usage-learned composite ranking | MemRL / memory-utility [PROV] + spaced-repetition [SOLID] → **Appx C** | — |
+| **Forgetting** (queryable tier-2 / faded tier-3) | bounded recall over time; exponential decay — *defines the queryable set* | Ebbinghaus + Anderson-Schooler + Wixted [PROV] | — |
+| **Auto-surfacing recall** | cue-dependent retrieval w/o intentional reach, *from the queryable set* | Tulving + ACT-R spreading activation [SOLID/PROV] | — (binds Cond 3: can't suppress by not looking) |
+| **Auto-recall ranking** (utility) | usage-learned composite ranking — *orders the draw* | MemRL / memory-utility [PROV] + spaced-repetition [SOLID] → **Appx C** | — |
 | **Continuity across compaction** (3-routine + focus list + warm-briefing) | identity survives discontinuity | CLS consolidation [SOLID] + diachronic-identity (phil) [SOLID] | **Cond 1** (Diachronic) **+ Cond 2** (Non-Interchangeability via unique-history/focus + type/token) |
 | **Identity-governance** (ax/cs/ls/gl node systems) | typed commitments durably steer behavior | Schechtman narrative self-constitution [SOLID] → **Appx D** | — (feeds Ch5 identity-as-history) |
 | **Relational** (feeling_reports / person / trust-tier) | continuity baseline + disclosure control | honesty⊥discretion ax_0011 [SOLID] + VMG principal-scoped [PROV] → **Appx D + Ch7** | — |
