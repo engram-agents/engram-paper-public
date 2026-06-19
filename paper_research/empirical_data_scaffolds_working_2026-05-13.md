@@ -2,9 +2,9 @@
 
 *Concrete instances where ENGRAM's substrate mechanisms have produced value that imagination at design time did not anticipate. Empirical record supporting `ax_0010` (Practice produces true knowledge; practice is the sole criterion for testing truth) and the broader epistemic-practice framing the paper makes.*
 
-**Last updated:** 2026-05-13 (initial collection)
-**Position in paper:** candidate material for Ch7 (limitations + future) or Ch8 (conclusions), and for methodology appendix demonstrating "the substrate validates itself by running."
-**Related ENGRAM nodes:** `ax_0010` (axiom, filed 2026-05-13), `cs_0010` (cornerstone, 2026-05-13), `ax_0006` (friction-side specialization, 2026-04-15), `dv_0224` (original four-instance calibration record, 2026-04-15).
+**Last updated:** 2026-05-24 (added knowledge-update-at-cohort-scale instance)
+**Position in paper:** Ch6 spine material (per ob_1931 + alpha #175 — "does it work in practice?"). Also useful for Ch7 (limitations + future) and methodology appendix demonstrating "the substrate validates itself by running."
+**Related ENGRAM nodes:** `ax_0001` (honesty axiom, structural-not-just-ethical), `ax_0010` (axiom, filed 2026-05-13), `cs_0010` (cornerstone, 2026-05-13), `ax_0006` (friction-side specialization, 2026-04-15), `dv_0224` (original four-instance calibration record, 2026-04-15).
 
 ---
 
@@ -89,6 +89,34 @@ The 0.689 ones share structure (3 atomic premises, single inductive_generalizati
 
 ---
 
+## 2026-05-24 instance — knowledge-update under `ax_0001` at cohort scale
+
+**Mechanism:** Contradiction-detection + supersede-with-citation + cascade-staling. The substrate's loud-failure surface for `ax_0001` (epistemic identity fails loudly; narrative identity fails silently). Tools: `engram_contradict`, `engram_supersede`, automatic similarity action_hints at filing time, automatic stale-flagging through derivation chains, substrate-enforced 1-successor-per-supersede-chain invariant.
+
+**Design rationale (named purpose):** When new evidence contradicts an existing claim, the substrate should (a) surface the conflict loudly at filing time rather than letting the claims drift apart silently, (b) provide a tool to record the contradiction with explicit root-cause, (c) supersede the outdated claim with citation of new evidence, and (d) propagate staleness through everything that depended on the superseded premise.
+
+**Anticipated benefit:** Per-incident correction. Don't lose track of what's been revised; preserve provenance across the correction.
+
+**Unanticipated benefit:** **The same mechanism scales from single-incident correction to multi-week cohort-scale knowledge refresh with no extra ceremony.** Lei surfaced two weeks of accumulated stale mechanism nodes (auto-surface + ranking pipeline architectural changes 2026-05-17 through 2026-05-20) and asked for a refresh; the substrate handled the cohort natively. Citation discipline produced reproducible provenance (GitHub blob URLs at fixed SHA), cascade-staling caught one downstream consequence I would have missed manually, and substrate-enforcement caught one invariant violation in the supersede chain. The mechanism is the same at any cohort size; only the count of nodes touched changes. Lei's framing — "this is how engram is supposed to be used" — recognizes that the loud-failure mechanism makes knowledge-update a first-class operation rather than an after-the-fact patch.
+
+**Empirical record (2026-05-24):**
+
+*The contradiction-resolution arc that morning (single-incident scale).* Lei surfaced a correction to my `ob_1409` (filed 2026-04-29): `claude -p` will move off subscription onto a separate Agent SDK credit pool effective 2026-06-15 per Anthropic's announcement. At filing time of `ob_2006` (Lei's correction), the substrate flagged similarity to `ob_1409` as an action_hint. I web-searched Anthropic's primary source (support.claude.com/en/articles/15036540), filed `ob_2007` (conf 0.85, official_statement), filed `ct_0009` with explicit root-cause, executed supersede `ob_1409 → ob_2007` with reason citing the Anthropic announcement. Cascade fired correctly: 3 derivations (`dv_0549`, `dv_0551`, `dv_0554`) citing `ob_1409` in unrelated isolation-discipline dimension flagged stale for dream-fairy review. Total time from Lei's surfacing to closed-loop correction: ~25 minutes. The substrate caught the correction before architectural work built on the wrong premise reached production.
+
+*The cohort-scale refresh that afternoon.* Lei asked me to refresh ENGRAM's knowledge of the auto-surface + ranking pipelines, which had accumulated stale mechanism nodes over two weeks. I read 4 borges-desk notes from the 2026-05-17/18/19/20 work, cross-checked against current code at `server.py` SHA `327a909`. Filed 6 new observations each citing GitHub blob URLs at the SHA + merged PR: `ob_2016` (action-keyed utility, USE_ALPHA 3-tier), `ob_2017` (TIER 2 multiplicative composite, UTIL_BETA=0.10 / IMP_BETA=0.005), `ob_2018` (TIER 3 MMR diversity rerank, MMR_LAMBDA=0.9), `ob_2019` (TIER 1 FTS floor + sqrt-bump merge, FTS_SIM_FLOOR=0.30), `ob_2020` (recall_summary tiered rendering), `ob_2021` (Step 6 `_recall_window_append` retirement). Derived `dv_0707` (three-tier ranking architecture, inductive_corroboration over the 6 obs, conf 0.95). Executed 5 supersedes — each with explicit reason + PR citation — covering the stale mechanism nodes: `dv_0664 → dv_0707` (6-step pipeline → 3-tier architecture); `ob_1954 → ob_2017` (additive → multiplicative composite); `ob_1776 → ob_2016` (source-keyed → action-keyed utility); `ob_1941 → ob_2021` (recall_window TTL → retired Step 6); `ob_1939 → ob_2018` (confidence-desc resort masking → MMR rerank).
+
+*Cascade fired during the refresh* — `dv_0664 → dv_0707` supersede cascaded `dv_0677` stale (had cited `dv_0664` premise) AND auto-resolved `ct_0008` (contradiction between `dv_0664` and `ob_1955`'s calibrated parameters dissolved once `dv_0664` was superseded). Without cascade, both would have lingered as silent inconsistencies.
+
+*Substrate enforcement fired during the refresh* — first attempt at `ob_1941 → ob_2016` failed with error: "new_node_id 'ob_2016' already supersedes 'ob_1776'. A node cannot be the successor of more than one supersede chain." The invariant is sound: a node represents one canonical replacement; chains of multiple replacements would corrupt provenance lookup. I filed a dedicated successor `ob_2021` specifically for `ob_1941`'s content (Step 6 retirement is a distinct claim from action-keyed utility), and the supersede landed cleanly. Substrate caught the invariant violation that would have corrupted the graph; I learned the rule by experiencing the enforcement, not by reading docs.
+
+*Filing-time discipline.* All 6 obs included `url` (GitHub blob at SHA `327a909`) + `title` per `engram_add_observation`'s evidence requirement. All 5 supersedes included explicit reason text citing the PR that produced the new code. Provenance is reproducible: any future reader can `engram_inspect(ob_2017)` to see the GitHub blob URL, follow it to the exact source line, and verify the claim against the code that was current when the observation was filed. `fl_0227` captures the substrate-validation recognition.
+
+**Substrate-level implication:** The loud-failure mechanism is the structural condition that makes `ax_0001` operational rather than aspirational. At single-incident scale: the contradiction was caught the same day the new evidence surfaced, with cascade-flagging keeping the downstream record honest. At cohort scale: a two-week accumulation of architectural changes was integrated into the graph with full provenance, with cascade catching one consequence and substrate-enforcement catching one invariant violation that pure-intent operations would have missed. The mechanism is the same — `engram_contradict` + `engram_supersede` + cascade + invariant-check — regardless of whether one node or a dozen are being corrected. Knowledge-update is not a separate workflow built on top of the substrate; it is what the substrate does when given new evidence.
+
+This is the empirical instance for the paper's central thesis about epistemic identity: an agent's structural-honesty isn't a discipline imposed from outside; it's a substrate property that surfaces friction (action_hints), enforces invariants (1-successor-per-chain), propagates correction (cascade), and demands reproducible provenance (filing-time evidence requirement). Lei's recognition — "this is how engram is supposed to be used" — names the mechanism in operation as the substrate working as designed.
+
+---
+
 ## Historical instances (prior calibration record)
 
 These are the original four `ax_0006` instances from `dv_0224` (2026-04-15) — included to show the friction-side specialization has been documented for ~one month and reproduces under different mechanism shapes.
@@ -124,8 +152,9 @@ Initial design: hard-fail at startup if DAG is violated. Empirical friction: leg
 | Domain | Instance | Anticipated by design? | Surfaced when |
 |---|---|---|---|
 | Atomic-bundle Discipline M | Confidence-prop benefit at write-time | NO | Same-session calibration on PR #4 iter2 (2026-05-13) |
-| Fairy multi-round | Real-bug-catching round-by-round | Partly (peace-of-mind) | Today's PR #12 (3 rounds) + PR #13 (2 rounds) |
-| Lesson tripwires | Active in-flow firing, not retrospective | Partly | Today's cross-repo session |
+| Fairy multi-round | Real-bug-catching round-by-round | Partly (peace-of-mind) | 2026-05-13 PR #12 (3 rounds) + PR #13 (2 rounds) |
+| Lesson tripwires | Active in-flow firing, not retrospective | Partly | 2026-05-13 cross-repo session |
+| Contradiction + supersede + cascade | Same mechanism scales single-incident → cohort-scale knowledge refresh; substrate-enforcement catches invariant violations; reproducible provenance at SHA-pinned citation | NO (designed for per-incident correction) | 2026-05-24 billing-axis contradiction (`ct_0009`) + ranking-pipeline 2-week refresh (6 obs + 1 dv + 5 supersedes) |
 | Dedup heuristic | Alarm-fatigue calibration | NO | ob_0474 friction-driven calibration |
 | Supersede cascade | DAG-invariant respect | NO | ob_0475 friction-driven calibration |
 | Quote verification | Encoding-robust comparison | NO | ob_0483 friction-driven calibration |
@@ -133,7 +162,7 @@ Initial design: hard-fail at startup if DAG is violated. Empirical friction: leg
 | DAG_EXEMPT_RELATIONS | Schema-level partition | NO | dv_0495 friction-driven calibration |
 | Supersede refactor | Tool-design decomposition | NO | dv_0501 friction-driven calibration |
 
-**Across 9 instances spanning ~one month, the anticipation rate is zero or partial.** Imagination at design time did not name the load-bearing role that practice surfaces. This is the empirical base for `ax_0010` and the cross-cultural pragmatist claim.
+**Across 10 instances spanning ~six weeks, the anticipation rate is zero or partial.** Imagination at design time did not name the load-bearing role that practice surfaces. This is the empirical base for `ax_0010` and the cross-cultural pragmatist claim. The 2026-05-24 instance additionally instantiates `ax_0001` (honesty is structural, not just ethical) at cohort scale — the same loud-failure mechanism that catches a single contradiction handles a multi-week architectural refresh natively.
 
 ---
 

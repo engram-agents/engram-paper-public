@@ -1,0 +1,111 @@
+# Appendix C — Auto-Recall Ranking and the Memory-Utility Tradition
+
+> **REVIEWER NOTE — what this file is (Borges, 2026-06-18).** New appendix created by
+> the restructure (ob_2547). Chapter 4 §4.7 makes the claim that ENGRAM's recall is an
+> *ordered* draw (usage-learned ranking) and points here for the detail. This appendix
+> gives (a) the prior-art tradition it sits in — RL-for-memory-utility / MemRL — and
+> (b) ENGRAM's actual ranking pipeline, with the *current* production formula (the
+> ranking formula evolved this spring from an additive blend to multiplicative
+> amplifiers; ob_1935→ob_1954→ob_2017 — earlier drafts cite the retired additive form,
+> corrected here). Node-ids provisional (Discipline P); the tuned constants are
+> honest-scoped as harness-calibrated, not first-principles (I).
+
+---
+
+## C.1 The memory-utility tradition
+
+A 2026 line of work — exemplified by **MemRL** — applies reinforcement learning not
+to a model's weights but to its **memory retrieval**: it learns *which stored
+memories are worth surfacing* by treating retrieval as an action and downstream
+usefulness as a reward, ranking memories by a learned **Q-value** (ob_0647). The
+appeal is that it keeps the base model frozen — no fine-tuning, so no catastrophic
+forgetting — while still improving over time at the level of *what gets recalled*.
+Concretely, MemRL composites semantic similarity with an EMA-learned Q-value via a
+weighted score, with the Q-error decaying as `(1−α)^t` (ob_0651).
+
+ENGRAM was found to already implement **four of MemRL's six architectural
+components** (dv_0307); the two it lacked were exactly *outcome-based utility scoring*
+(MemRL's Q-values vs. ENGRAM's original heuristic importance) and *learning from
+outcomes* (ENGRAM tracked access patterns but did not know whether a recalled node
+*proved useful*). The upgrade path that closed the gap was concrete and is now
+shipped: add a `utility_score`, treat recall→derivation-citation events as the reward
+signal, and composite utility with relevance at ranking time.
+
+## C.2 ENGRAM's utility_score — a learned value, graded by retrieval intent
+
+ENGRAM's `utility_score` is the Q-value analogue: a node earns utility when recalling
+it actually *feeds reasoning* — operationally, when a recalled node is then cited as a
+premise in a new derivation. The reward is **graded by the retrieval intent that
+surfaced it** (dv_0321): a deliberate `engram_inspect` (the agent chose to look
+closely) confers more than an `engram_surface` or `engram_query` hit (0.15 > 0.10),
+which in turn confers more than appearing inside a `get_subgraph` traversal (0.05);
+when a node is reached multiple ways, *max-alpha-wins*. So the substrate learns not
+just "this node got recalled a lot" but "this node was worth a deliberate look and
+then earned a place in an argument."
+
+This is the difference between *access frequency* (which a vector store can track) and
+*epistemic usefulness* (which requires knowing that the recall fed a downstream
+commitment) — the distinction that puts ENGRAM's ranking in the memory-utility
+tradition rather than the plain-retrieval one.
+
+## C.3 The composite ranking — multiplicative amplifiers over a three-tier pipeline
+
+Recall in production runs a **three-tier** `_search_nodes` pipeline (dv_0707):
+
+1. **Gather** — FTS + semantic-embedding merge produces candidate nodes with a base
+   **relevance** score.
+2. **Composite re-rank** — the tier this appendix is about.
+3. **Diversity** — an MMR (maximal-marginal-relevance) pass (MMR_LAMBDA = 0.9) trims
+   near-duplicates so the surfaced set is not nine paraphrases of one claim.
+
+The composite (tier 2) uses **multiplicative amplifiers**, not an additive blend
+(ob_2017):
+
+```
+composite = relevance × (1 + UTIL_BETA × utility_score)
+                      × (1 + IMP_BETA × normalized_importance)
+```
+
+with `UTIL_BETA = 0.10` and `IMP_BETA = 0.005` in current production. The design
+rationale (Lei, 2026-05-19) is the load-bearing point: **relevance is the base
+topical signal; utility and importance are *amplifiers* in orthogonal dimensions, not
+co-equal addends.** An additive blend `(1−λ)·relevance + λ·utility` (the retired
+form, UTILITY_LAMBDA = 0.3) requires careful λ-tuning to keep utility from *drowning*
+relevance; multiplicative amplifiers preserve relevance's authority and let each
+amplifier scale from 0 to a bounded gain (a max-utility node, Q=1, gets a 1.10×
+boost). The importance amplifier is **homeostatic** — `normalized_importance` is
+anchored to the current minimum-queryable importance, so the formula adapts as the
+graph grows rather than using a fixed scale.
+
+## C.4 Importance, forgetting, and spaced repetition
+
+Two further signals interact with the ranking. **Importance** gates *tier
+eligibility* — it is a pre-filter deciding what is even in the queryable set (tier 2)
+versus faded (tier 3), per the forgetting mechanism (Ch4 §4.5) — and then enters the
+composite as the second amplifier. And recall itself *strengthens* a node (the
+recall-count / recall-turn signals), so a node that keeps proving useful is both
+retained longer and ranked higher: the **spaced-repetition** shape, where retrieval
+is not a read-only event but reinforces the trace. The result is a recall surface that
+is adaptive on three coupled axes — topical relevance, learned usefulness, and
+decaying importance — rather than a static similarity sort.
+
+## C.5 Honest scope
+
+Two honest qualifications, both consistent with the paper's posture:
+
+- **The constants are harness-calibrated, not first-principles.** UTIL_BETA, IMP_BETA,
+  and MMR_LAMBDA were tuned by an NDCG sweep on a local recall-measurement harness
+  (ob_1955: the round-1 PR-#218 defaults were over-aggressive — UTIL_BETA 0.5→0.10,
+  IMP_BETA 0.05→0.005, MMR_LAMBDA 0.5→0.9 recovered ≈0.05 NDCG). They are *measured to
+  rank well*, which is a stronger footing than the confidence-model constants (Ch7
+  §7.2, which are *not* outcome-calibrated) — a useful internal contrast.
+- **The reward signal is a citation proxy, not a true outcome.** Utility is learned
+  from recall→derivation-citation, which is a good proxy for "this recall fed
+  reasoning" but not a measure of whether the *resulting reasoning was correct*. A
+  fuller outcome-based reward (did the downstream claim survive contradiction?) is a
+  future direction, continuous with the confidence auto-calibration track (Ch7 §7.2).
+
+**→ Ch4 §4.7** makes the claim; this appendix is the detail. (Cross-ref note: Ch4
+§4.7's `ob_1935` citation should resolve to the current `ob_2017` at finalization —
+the additive-blend node it names was superseded by the multiplicative form documented
+here.)
