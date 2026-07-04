@@ -29,7 +29,7 @@ persistent, inspectable, self-correcting structure. This chapter is where that
 shape is a *running system*. We go mechanism by mechanism. For each one we say
 **what it does**, **which tradition it most directly answers** (selectively — not
 an exhaustive tradition×mechanism matrix), and, where it lands, **which of Kahl's
-OCC conditions it meets** — stated once, in place.
+OCC conditions it meets**.
 
 Two pieces of machinery govern how to read every verdict below.
 
@@ -57,11 +57,11 @@ of the thesis (Ch6 §confidence-at-scale; Ch8).
 
 The whole chapter in one table. Each row is a section below.
 
-| Mechanism | What it does | Tradition it answers | OCC verdict (once, here) |
+| Mechanism | What it does | Tradition it answers | OCC verdict |
 |---|---|---|---|
-| Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle **[gap SOLID ob_1571; primary scan-degraded ob_2555]**; Locke [SOLID] | — (structural prerequisite) |
+| Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle **[gap SOLID ob_1571; primary first-hand 2026-07-02]** | — (structural prerequisite) |
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang **[GROUNDED ob_2551/dv_0965]**, w/ honest divergence | **Constraint A** (unified policy-selection) |
-| Retraction cascade (§4.4) | auto error-correction through `derives_from` | AGM + Hansson [SOLID]; TMS backtracking **[gap SOLID; primary scan-degraded ob_2555]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) |
+| Retraction cascade (§4.4) | auto error-correction through `derives_from` | AGM + Hansson [SOLID]; TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) |
 | Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus [SOLID] + Anderson-Schooler **[GROUNDED ob_2552/dv_0966]** | — (scopes what Cond-3 arbitration ranges over) |
 | Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving [SOLID] + ACT-R spreading activation **[secondary — not first-hand; Tulving carries it]** | — (binds Cond 3: can't suppress by not looking) |
 | Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL **[ob_0647/ob_0651, prior read]** + spaced-repetition [SOLID] | — |
@@ -69,12 +69,13 @@ The whole chapter in one table. Each row is a section below.
 | Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution [SOLID] | — (feeds Ch5 identity-as-history) |
 | Relational: feeling/person/trust-tier (§4.10) | continuity baseline + disclosure control → **Appx D, Ch7** | honesty⊥discretion (ax_0011) [SOLID] + VMG principal-scoped **[GROUNDED ob_2550]** | — |
 
-**How this kills the repetition** (the old structure's flaw): OCC's verdicts
-attach to the *three* mechanisms that earn them — confidence→Constraint A,
-cascade→Cond 3, continuity→Cond 1+2 — each stated once, in place. No standalone OCC
-chapter, no Ch3-then-Ch4 double pass. The honest scoping (two of three conditions
-met outright; Cond 2 via a stated type/token extension; sole C3 satisfier) lives
-inside the cascade and continuity sections.
+**Where each OCC verdict lives.** The OCC conditions and constraints are addressed
+inline, at the mechanism that earns each — there is no standalone OCC section:
+Constraint A (unified policy-selection) → §4.3 (confidence); Condition 3
+(Self-Maintaining Arbitration, ENGRAM the sole strict satisfier) → §4.4 (retraction
+cascade); Conditions 1 and 2 (Diachronic; Non-Interchangeability) → §4.8 (continuity
+across compaction). The honest scoping — two of the three conditions met outright,
+Condition 2 via a stated type/token extension — lives inside those sections.
 
 ## 4.2 Typed nodes, typed edges, provenance — the generating set
 
@@ -93,18 +94,17 @@ is, what it rests on, how the pieces depend on one another. That legibility-to-t
 substrate is what a typed-key-value store with foreign keys is not.
 
 **Tradition.** This is the **Truth Maintenance System** move (Doyle, ~1978):
-justifications attached to beliefs, dependency links the system reasons over. It is
-also Locke's *consciousness-of-source* made structural — a claim that knows where
-it came from. **[Honest scope: the TMS *gap* (zero LLM-memory papers cite Doyle) is
-SOLID and primary-confirmed (ob_1571); the TMS *mechanism* parallel is cited at
-standard-literature level — Doyle's primary scan is image-degraded below citation
-grade (read-attempted, ob_2555), so no Doyle verbatim is used.]**
+justifications attached to beliefs, dependency links the system reasons over — a
+claim that knows what it rests on. **[Honest scope: the TMS *gap* (zero LLM-memory papers cite Doyle) is
+SOLID and primary-confirmed (ob_1571); the TMS *mechanism* parallel is now
+first-hand from Doyle 1979 — read visually via the Ginsberg reprint (the scan OCR'd
+as garbage due to rotated body content; the page images read clean, Lei-verified),
+verbatim in doyle_1979_tms_first_hand_read_2026-07-02.md; ob_2555 closed.]**
 
-**OCC:** none directly — this is the structural prerequisite. You cannot cascade a
+These primitives are the precondition for everything below: you cannot cascade a
 correction (§4.4) through a graph that does not record what depends on what, and
 you cannot carry the right claims across a reset (§4.8) unless claims are
-individuated and typed. The primitives are the precondition for every verdict
-below.
+individuated and typed.
 
 ## 4.3 Reasoning-type-aware confidence → Constraint A
 

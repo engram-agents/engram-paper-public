@@ -46,6 +46,18 @@ persistence, and no calibrated self-knowledge without a self-story to calibrate.
 The contribution of this paper is at Layer 3, which — as we show in §1.4 — no
 surveyed system reaches.
 
+There is a second reason Layer 3 matters, and it is the premise from which this
+work began. A language model's tendency to hallucinate is not an engineering
+defect to be trained away but a structural property: language is a lossy,
+communication-optimized encoding of the world, so a mind that learns the world
+*through* language inherits both its reach and its gaps. If hallucination cannot be
+eliminated, reliability must come from elsewhere — an external structure that
+tracks what is known, how confidently, and on what basis, and that surfaces its own
+errors. Calibration, not elimination, is the tractable goal, and Layer 3 is what
+calibration requires. (The full argument that a language-trained mind's
+hallucination is *structural* rather than contingent belongs to a companion paper,
+in preparation; here we take it as the motivating premise.)
+
 ## 1.2 What Layer 3 requires
 
 Narrative and epistemic identity are complementary, not competing: they answer
@@ -129,9 +141,7 @@ the new theory built on it.
 conditions plus four constraints for when an agent-like system genuinely persists
 — is the most *operational* point on the philosophical trail, and ENGRAM meets it
 to a degree no surveyed system does. We treat that as **one strong result inside
-the convergence, not the paper's headline** (a deliberate change from an earlier
-draft that staked the spine on OCC; OCC is a recent, not-yet-field-central
-proposal, and resting a paper's spine on it is fragile, ob_2544). The OCC mapping —
+the convergence, not the paper's headline.** The OCC mapping —
 which conditions ENGRAM meets, which it meets only via a stated extension — is
 made once, in Chapter 4, against the mechanisms that earn each verdict.
 
@@ -151,13 +161,16 @@ necessary, not sufficient. What is missing everywhere else is *operational
 binding*: arbitration as automatic state-change paired with auto-surfacing that
 puts the tainted claim back in front of the agent without an intentional reach.
 
-> **REVIEWER NOTE.** I kept the C3-sole-satisfier finding in Ch1 because it's the
-> sharpest single empirical hook — but demoted it from "the spine" to "one bounded
-> result," and pointed the detail at Appendix B (was Appendix C pre-restructure).
-> The §1.4 honest-scoping of *which* OCC conditions are met (2 of 3 outright, C2
-> via type/token extension) is NOT previewed here anymore — it lives once in Ch4,
-> per the anti-repetition rule. Flag if you'd rather Ch1 still preview the
-> per-condition verdicts.
+<!-- TODO(paper-pass · Lei-note-2 · gh#1621): REFRAME "operational binding" to the THREE
+     mechanisms once gh#1621 lands. This text over-credits auto-surfacing as THE
+     tainted-attention mechanism — but auto-surfacing is passive/relevance-gated (it flags a
+     tainted node only when it's already topically relevant, and pre-#1621 shows NO per-node
+     tainted marker at all — verified engram-surface-hook.py:522). Accurate operational
+     binding = (1) arbitration / auto-taint cascade + (2) the DREAM CYCLE sweep (fairy scan
+     stale_load_bearing/tainted_still_valid → dream-master resolution — the tainted-BACKLOG
+     mechanism) + (3) relevance-gated per-node tainted/stale marker in auto-surface (added by
+     gh#1621). Fix here AND everywhere else the draft leans on auto-surfacing as the
+     tainted-discovery mechanism (Lei: it recurs). -->
 
 **On originality.** This work was developed independently and in parallel with the
 convergent emergence of structurally similar systems; the timeline, and the gap in

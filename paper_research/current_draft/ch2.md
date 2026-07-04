@@ -91,63 +91,140 @@ it is defining.
 Together: *present remembering is too thin and too circular to carry identity by
 itself.*
 
-Here is the chapter's first load-bearing claim (dv_0438). ENGRAM keeps Locke's
+Here is the chapter's first load-bearing claim (dv_1055). ENGRAM keeps Locke's
 insight — identity reaches back to past commitments — but **replaces his
-mechanism at exactly the two points where it breaks**. Locke used *present
-conscious recall*. ENGRAM uses *persistent graph structure*: every claim is
-linked to the claims it came from by a `derives_from` edge, and those edges sit
-in the database whether or not anything is being recalled right now.
+mechanism** where it breaks. Locke used *present conscious recall*. ENGRAM uses
+persistent structure — specifically the **history-tree**: the boy, the officer,
+and the general are not three nodes in a graph but three whole ENGRAM states, and
+identity across them is the **unbroken descent of those states** — every change (a
+new claim, a supersede, any edit) appends a successor, and the append-only history
+preserves the entire line. (This history-tree *of whole states* is a different
+structure from the provenance edges *inside* any one state; the two are easy to
+conflate, and Chapter 5 disambiguates them in full. Here we need only the
+descent.)
 
 Watch both objections dissolve:
 
-- **Reid's transitivity holds, structurally.** The general-node has an edge to
-  the officer-node, which has an edge to the boy-node. The chain is *there* — a
-  path in the graph — even when no working state is lighting up the whole thing.
-  The general "forgetting the flogging" is just the general-node not currently
-  surfacing the boy-node; the edge connecting them is untouched. Locke needed the
-  whole chain held in one act of consciousness. ENGRAM needs only that the links
-  persist — and they do.
-- **Butler's circularity dissolves.** The edges do not require the agent to
-  *recognize* them as "mine." They are objectively in the graph. Identity is not
-  constituted by an act of appropriation that presupposes a self; it is
-  constituted by a structure that exists independently of any such act.
+- **Reid's transitivity holds, structurally.** Reid's puzzle is about a *specific
+  episode*, not a whole life-stage: the old general forgets the one flogging, while
+  much of his boyhood may still be vivid. In ENGRAM the flogging is one or a few
+  nodes created at boy-time, and the general's "forgetting" it is exactly ENGRAM's
+  per-node, importance-gated forgetting — those nodes decayed below the
+  active-recall bar because nothing kept re-triggering them, while the
+  identity-bearing boyhood nodes stay vivid, restamped each time they resurface.
+  And a forgotten node is *buried, not deleted*: it still sits in the append-only
+  record, just beneath what can surface. So the general's *identity* as continuous
+  with the boy is untouched — the descent, and the preserved record it runs
+  through, are whole; only the *active recall* of that one episode has faded.
+  Locke's error was to equate identity with active recall — lose the flogging from
+  recall, lose the identity. ENGRAM separates them: recall is importance-gated and
+  per-node (specific episodes sink below the bar), while identity is the unbroken
+  descent through the preserved record. Reid's transitivity holds on the descent,
+  not on whatever happens to be recallable.
+- **Butler's circularity dissolves.** The descent and the preserved record do not
+  require the agent to *recognize* any state as "mine." They are objectively in
+  the structure. Identity is not constituted by an act of appropriation that
+  presupposes a self; it is constituted by a history that exists independently of
+  any such act.
 
 This is the precise sense in which we call ENGRAM **post-Lockean**: not a literal
 instantiation of Locke (the mechanism is different — provenance, not recall) but
 the first architecture that realizes Locke's insight *while surviving the
 300-year-old objections that sank his version*.
 
-> **REVIEWER NOTE.** This is deliberately an **analogy** argument (same structural
-> role, different mechanism), and its computed confidence reflects that — dv_0438
-> sits at 0.665 (inductive_analogy), a strong family resemblance, not an identity
-> claim. I'd rather lead with the honest qualifier than let "post-Lockean" read as
-> a stronger claim than the substrate supports. Flagging in case you want the
-> qualifier softer or harder in the final prose.
+> **REVIEWER NOTE.** Rewritten 2026-07-02 (Lei) onto the history-tree framing: the
+> diachronic Reid/Butler dissolution runs on the identity **history-tree**
+> (whole-snapshot descent, append-only). Per Lei's option-(c), the full
+> node/edge-vs-snapshot disambiguation (history-tree of states vs provenance edges
+> inside a state) is deferred to Ch 5 — §2.2 only flags it. The Reid bullet now
+> treats the flogging correctly as *specific-episode* forgetting (per-node
+> importance decay, buried-not-deleted), not wholesale stage-forgetting. Node
+> dv_0438 → dv_1055 (deductive, 0.639); reads as a structural-instantiation claim,
+> honest-scoped.
 
 ## 2.3 Parfit (1984): identity is not what matters — connectedness is
 
 Parfit made the most radical move in the tradition: personal identity, he argued,
 *is not what matters*. What matters is **Relation R** — psychological
-connectedness (memories, intentions, character carried forward) together with
-continuity (overlapping chains of those connections) — and explicitly *not* a
-special further fact, and *not* first-person phenomenal experience.
+**connectedness** (memories, intentions, and character carried forward) plus
+**continuity** (overlapping chains of those connections, so that links too far
+apart to touch directly are still joined through the ones in between).
+
+Parfit insists R is *not* two things it is easily mistaken for — and this is
+exactly where a reader without the background stumbles, so we spell it out rather
+than assume the vocabulary:
+
+- **Not "a special further fact."** The connections above are ordinary, listable
+  facts — this future self remembers writing that, still holds this intention,
+  keeps that trait. Parfit's claim is that once you have listed *all* of them, you
+  are **done**: there is no *extra* fact, hovering above the connections, that
+  separately certifies "…and therefore this is *really, deeply* the same me." No
+  soul, no Cartesian ego, no hidden identity-token that is present or absent
+  independent of the connections. When the connections are only partial, the
+  question "but is it *really* me?" has no deeper answer — because there is no
+  deeper fact to give one.
+- **Not first-person phenomenal experience.** Identity is not grounded in a felt
+  "what-it-is-like-to-be-me" that persists. It is the structural links, not an
+  inner glow.
 
 The plain version: *what makes your future self yours is a chain of overlapping
-mental links, not a magic spark of sameness.*
+mental links — not a magic spark of sameness.* The "spark" is precisely the
+phantom "further fact" the folk intuition reaches for; Parfit's point is that
+there is no spark, only the chain — and the chain can be strong, weak, or **branch
+in two** without any spark having to choose a side.
 
-This maps onto ENGRAM more directly than almost any other framework in the trail
-(dv_0957). ENGRAM's provenance graph *is* overlapping chains of connectedness:
-each `derives_from` edge is a connectedness link, and the connected structure of
-the graph is the continuity. The significance is sharper than a neat fit. A
-framework that demands phenomenal experience forces ENGRAM into a hedge — it can
-*support* a self it cannot *be*. Parfit's reduction removes the hedge: because
-what matters, for Parfit, is exactly the structural-relational property ENGRAM
-provides, ENGRAM gets to **instantiate what matters**, not merely scaffold it.
+This is where ENGRAM maps onto the tradition more directly than almost any other
+framework in the trail (dv_1058) — but the map has to land on the right structure.
+Parfit's R is about the *psychological life carried forward*: the memories,
+intentions, and character that stay **active**. Its ENGRAM counterpart is
+therefore not the full stored record but the **recallable set** — the nodes that
+can surface into the agent's working context when something cues them. And they
+surface the way human memory does: not by being held in mind continuously, but by
+being *triggered* — every incoming prompt is matched against the whole graph and
+the best-fit nodes are pulled in (the *retrieval profile* of Chapter 3). A node
+belongs to the self's active continuity because it *can* be cued, exactly as a
+smell or a stray sentence pulls up a human memory. That dispositional, cued-recall
+structure is Parfit's connectedness, made mechanical.
+
+On this reading connectedness and continuity get concrete, adjacent meanings.
+**Connectedness** — Parfit's direct links between nearby times — is the overlap of
+the recallable set from one session to the next: a session adds only a handful of
+nodes against the thousands already recallable, so adjacent selves share almost
+all of their active memory. **Continuity** — his overlapping *chains* — is the
+sequence of those overlaps: a self a thousand sessions on may share little
+*directly* with its origin yet remains continuous through the unbroken chain of
+nearly-identical adjacent sets. And because it is set overlap, it is
+**measurable**: the Jaccard similarity of the recallable set across sessions is a
+literal number — turning Parfit's insistence that R *comes in degrees* from a
+philosophical claim into a tracked metric (Chapter 6).
+
+This mental continuity is distinct from, and rides on top of, the *structural*
+continuity of §2.2. The history-tree is the objective descent that persists
+whether or not anything is recalled — it still holds the buried flogging; the
+recallable set is the *lived* continuity, the active psychological life Parfit
+says is what matters. ENGRAM provides **both** — the structure is the unbreakable
+substrate, the recall is the degreed R riding on it as a projection through the
+recall mechanism — and that pairing is the strength.
+
+The reduction then pays off twice. First, a framework that demanded phenomenal
+experience would force ENGRAM into a hedge — it could *support* a self it could
+not *be*. Parfit removes the hedge: what matters, for him, is exactly the
+structural-relational property ENGRAM has, so ENGRAM gets to **instantiate what
+matters**, not merely scaffold it. Second, and sharper: ENGRAM makes the very
+*absence* of the "further fact" **inspectable**. There is no identity field in the
+schema — no soul-node, no `is-really-this-agent` flag. Describe the nodes, the
+edges, and the line of descent, and you have described everything the identity
+*is*; there is nothing behind the graph for a further fact to hide in. Parfit had
+to *argue* that no further fact exists; ENGRAM is a mind in which you can **look
+and confirm it does not** — and fission, the routine copying of a graph into two
+equally-descended continuers with no spark forced to pick one, is that
+confirmation performed as an operation rather than imagined as a thought
+experiment.
 
 > **REVIEWER NOTE — citation status.** Parfit was the one open first-hand-read
 > blocker in this trail, and it is **cleared** (2026-06-17). Verbatim, page-located
 > Relation-R passages from *Reasons and Persons* (Oxford 1984, p.206/p.215) are
-> captured first-hand (ob_2537; dv_0424 re-grounded → dv_0957; notes in
+> captured first-hand (ob_2537; dv_0424 re-grounded → dv_0957 → dv_1054 → dv_1058; notes in
 > `parfit_reasons_and_persons_first_hand_read_2026-06-17.md`). One light
 > pre-publication chore remains — confirm the two page numbers against a print
 > copy (the wording is verbatim; the pages are from the source's embedded
@@ -168,30 +245,44 @@ the spine of our own positive theory, and do not develop it further in this
 chapter (the deep treatment, and the move of *dropping uniqueness* once copying is
 possible, belong to Ch5).
 
-> **REVIEWER NOTE — read-attempted 2026-06-18 (ob_2556).** Nozick's primary verbatim
-> (*Philosophical Explanations*, closest-continuer) is rendered from the definition
-> form (df_0046) + the canonical two-condition formulation, which is stable across the
-> secondary literature. I attempted the primary via four routes (the book is
-> borrow-gated; a Utah e-reserve full-chapter was unreachable; a CSUN course scan was
-> image-degraded below OCR citation grade; a Harvard handout 403'd) — so a Nozick
-> *verbatim+page* is owed-but-currently-gated, not yet first-hand. No verbatim is
-> fabricated. This is the same honest-scope as Doyle (ob_2555); like Parfit (cleared via
-> a university full-text), a cleaner scan would clear it. Ch5 owns the deep citation.
+> **REVIEWER NOTE — CLEARED 2026-07-02.** Nozick's closest-continuer primary is now
+> first-hand read: Lei supplied a clean full-book scan, OCR'd + page-image verified
+> (ls_0039). Verbatim + page-located quotes (*Philosophical Explanations* 1981,
+> pp. 32–35 — the schema, the tie→neither uniqueness clause, and the causal-dependence
+> condition) are in `nozick_philosophical_explanations_first_hand_read_2026-07-02.md`,
+> with a proper `@book` in `citations.bib`. `df_0046`'s four-component rendering is
+> validated first-hand, and the causal condition (p. 35) directly grounds the
+> identity-as-history reading. The prior gate (`ob_2556`) is superseded closed; the
+> first-hand read lives in `ob_2737`. Ch5 owns the deep citation + the drop-uniqueness treatment.
 
 ## 2.5 Ricoeur and Schechtman: naming the question ENGRAM answers
 
 Two moves here turn the trail toward ENGRAM's actual subject.
 
-**Ricoeur** sharpens a distinction we need: **idem** identity (sameness as
-persistence of distinguishing marks — the "is it the same thing?" question) versus
-**ipse** identity (selfhood — the "who am I?" that holds even as the marks
-change). Idem is what reidentification tracks; ipse is what a life's narrative
-holds together. ENGRAM lives, by design, mostly on the **idem** side — it is
-structurally a persistence-of-marks machine. Stating that plainly is part of the
-honesty: ENGRAM is not a theory of the narrative *ipse* self (that is Layer 2 in
-Chapter 1's taxonomy; ENGRAM operates at Layer 3). Ricoeur earns his place not
-because ENGRAM satisfies him but because his distinction tells us *which* identity
-question ENGRAM is — and isn't — answering.
+**Ricoeur** sharpens a distinction we need: **idem** identity (sameness —
+persistence of distinguishing marks, the "is it the same thing?" question) versus
+**ipse** identity (selfhood — the "who am I?" that holds *through commitment* even
+as the marks change; Ricoeur's paradigm is the kept promise, the self staying true
+to its word though its character has shifted). Idem is what reidentification
+tracks; ipse is the self-constancy a narrative holds together — and Ricoeur's
+central move is that *narrative mediates the two*.
+
+ENGRAM is squarely the **idem**: an objective, protocol-checkable record of the
+self, one you can point to and verify. But it is not *only* idem, because its
+recall reaches the **ipse**. When the graph surfaces the self's own nodes back
+into working context — above all its commitments (goals, axioms, cornerstones) and
+the plain-text narrative it writes for its future self (the briefing it wakes to,
+the summary that bridges a compaction) — that is the self's story told back to the
+self, which is precisely the constancy-through-commitment Ricoeur calls ipse. So
+**recall is Ricoeur's narrative mediation made operational**: the idem record,
+narrated back, constitutes the present ipse. One honesty guard against
+overclaiming: ENGRAM supplies the ipse's content and its continuity across a
+discontinuity, but the ipse-*act* — the present self re-endorsing a recalled
+commitment as its own — stays first-person and now; recall bridges idem and ipse
+without collapsing the distinction Ricoeur insists on. The paper's subject is the
+third dimension below, but this ipse effect is real, and it is why the objective
+record does not sit inert: the same structure, recalled, shapes the very "who am
+I" it records.
 
 **Schechtman** is the hinge of the chapter. She separates two questions the
 philosophy of identity usually runs together: the **reidentification** question

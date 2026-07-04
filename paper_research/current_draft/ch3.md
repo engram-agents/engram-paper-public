@@ -23,22 +23,39 @@ philosopher could object that this is just philosophy agreeing with philosophy.
 
 This chapter removes that objection. The *same* structures ENGRAM is built
 from — provenance, retraction-with-cascade, graded confidence, consolidation,
-designed forgetting, identity-as-accumulated-record — were each reached
-*independently* in two technical literatures with their own evidence and their own
-goals: the cognitive science of human memory, and the computer science of belief
-maintenance and agent memory. These literatures mostly do not cite each other, and
-none of them cite us.
+designed forgetting, identity-as-accumulated-record — are each precedented, from
+their own evidence and their own goals, in two technical literatures that mostly do
+not cite each other and none of which cite us: the cognitive science of human
+memory, and the computer science of belief maintenance and agent memory. We are
+careful *not* to call this independent discovery. These fields are not independent
+of one another: human cognition is a common root they all draw on — cognitive
+science studies it, logic and belief-revision formalize it, agent-memory borrows
+its analogies — and ENGRAM itself was designed by introspecting one human's
+reasoning. What *is* genuinely independent is narrower and cleaner: ENGRAM's design
+was arrived at **without the author having studied these results**. It meets them
+from the inside out, not by copying them.
 
-That breadth is the chapter's load-bearing point, and it cuts the opposite way from
-how it first sounds. **ENGRAM has no uniquely-novel component** — every mechanism is
-precedented somewhere. Read as a novelty claim, that is a weakness. Read correctly,
-it is the opposite: *when many independent fields, reasoning from different evidence
-toward different ends, converge on the same structure, the structure is probably a
-substrate-independent regularity* — a real feature of what any self-correcting memory
-must look like, not a local design quirk. "Not novel" flips from weakness to
-strength. ENGRAM's honest distinctiveness is then narrower and more defensible: the
-**integration** (no prior system unifies all of these in one substrate) and the
-**purpose** (epistemic identity that fails loudly, df_0002).
+That convergence is the chapter's load-bearing point, and it cuts the opposite way
+from how it first sounds. **ENGRAM has no uniquely-novel component** — every
+mechanism is precedented somewhere. Read as a novelty claim, that is a weakness.
+Read correctly, it is the opposite. When fields reasoning from different evidence
+toward different ends keep landing on the same structure — and a memory built from
+the inside, by introspection, lands there too — the structure is very likely
+tracking something real about how a knowing mind reasons and revises. And the
+agreement is *not* a coincidence: human cognition is the most successful reasoning
+we know of; ENGRAM's substrate, a language-trained model, inherits that cognition
+*through* human language; and its designer introspected the same cognition to build
+it. Convergence with the fields that study human reasoning is therefore what one
+should expect — empirical science describing the structure from the outside, ENGRAM
+instantiating it from the inside. (Whether that structure is specific to human minds
+or universal to any reasoning system, we leave open: ENGRAM on a non-human substrate
+is suggestive, but it was designed from human introspection, so we claim no proof of
+substrate-independence.) "Not novel" flips from weakness to strength. ENGRAM's honest
+distinctiveness is then narrower and more defensible: the **integration** (no prior
+system unifies all of these in one substrate) and the **purpose** (epistemic
+identity that fails loudly, df_0002) — which follows directly from the motivating
+premise of §1.1: an LLM's hallucination is structural, so reliability must come from
+external calibration, not elimination.
 
 > **REVIEWER NOTE.** This "not-novel → well-founded" inversion is the spine of the
 > chapter and was reached by three agents independently auditing three literatures
@@ -65,8 +82,9 @@ subsystems: a fast-learning, instance-specific store (hippocampal) and a
 slow-integrating, structure-extracting store (neocortical), with consolidation
 moving information between them. ENGRAM realizes this division *symbolically*:
 fast instance-specific observations vs. slow structure-extracting derivations and
-cornerstones, with the three consolidation routines (nap / bedtime / sleep) as the
-transfer process (dv_0658).
+cornerstones, with its consolidation routines — a per-burst nap and a daily,
+two-phase sleep (a day-wide review, then dream consolidation) — as the transfer
+process (dv_1064).
 
 > **REVIEWER NOTE — attribution of record.** The "hippocampus-as-teacher / replay
 > generates a training signal" framing is **Kumaran et al. 2016**, not McClelland
@@ -104,7 +122,7 @@ exponential-decay items with mixed rates (the aggregation result, ob_0521) and w
 single time-translation-invariant exponential kernel at the per-item level (dv_0962).
 
 ENGRAM forgets on purpose: recall-importance decays, maintaining a bounded **queryable
-set** (tier 2) and a **faded set** (tier 3, not destroyed), with a usage-learned
+set** and a **faded set** (retained, not destroyed), with a usage-learned
 utility score ranking what stays. That is the need-probability principle, instantiated:
 what the agent is most likely to need stays queryable; the rest fades (dv_0966).
 
@@ -116,7 +134,7 @@ what the agent is most likely to need stays queryable; the rest fades (dv_0966).
 > claim already rests on ob_0521 + the A&S primary.
 
 **→ Ch4 §4.5** (forgetting): the rational-analysis tradition is the cog-sci anchor for
-ENGRAM's queryable/faded tiers and the exponential kernel. [GROUNDED this session]
+ENGRAM's queryable/faded sets and the exponential kernel. [GROUNDED this session]
 
 ---
 
@@ -133,21 +151,20 @@ Kleer** (ob_1571, primary-confirmed): the TMS→modern-agent-memory bridge is re
 unwalked, so ENGRAM is the first *implementation* of TMS-style dependency propagation
 in typed LLM-agent memory, not the first *naming*.
 
-> **REVIEWER NOTE — honest citation scope (read-attempted 2026-06-18, ob_2555).** The
+> **REVIEWER NOTE — citation scope CLEARED 2026-07-02 (was read-attempted, ob_2555).** The
 > TMS *gap* claim (zero LLM-memory papers cite Doyle; ENGRAM = first implementation) is
-> **SOLID and primary-confirmed** (ob_1571). For Doyle's *primary content*, I attempted
-> a first-hand read of the canonical accessible scan (Ginsberg ed. 1987 reprint) via the
-> `ocr` tool — and it **loud-failed**: Doyle's own pages are image-degraded below
-> citation grade (the recognition engine garbled them rather than confabulating). So the
-> TMS *mechanism* description above (justifications, IN/OUT support, dependency-directed
-> backtracking) is cited at the **standard-literature level** (corroborated first-hand via
-> Ginsberg's editorial intro, understanding-grade) — **no Doyle-1979 verbatim is used, and
-> none should be fabricated.** This is ls_0039 working: cite at the level actually
-> verified. (Canonical refs: Doyle, *A Truth Maintenance System*, Artificial Intelligence
-> 12, 1979; the 1978 MIT AI-TR-419 is the earlier tech-report version.)
+> **SOLID and primary-confirmed** (ob_1571). Doyle's *primary content* is now **first-hand
+> read**: the accessible scan (Ginsberg ed. 1987 reprint) OCR'd as garbage because its body
+> content is rotated within the page frame, but a direct *visual* read of the page images —
+> the method that cleared Nozick — is clean and Lei-verified. Verbatim for justifications,
+> IN/OUT support-status, contradiction nodes, and dependency-directed backtracking (anthology
+> pp. 260–262) is captured in `doyle_1979_tms_first_hand_read_2026-07-02.md`; ob_2555 is
+> superseded closed. (Canonical ref: Doyle, *A Truth Maintenance System*, Artificial
+> Intelligence 12(3):231–272, 1979; read via the Ginsberg reprint — page numbers are the
+> anthology's.)
 
 **→ Ch4 §4.2 + §4.4** (provenance primitives; retraction cascade → Condition 3). [gap
-SOLID ob_1571; mechanism at standard-literature level — Doyle primary scan degraded, ob_2555]
+SOLID ob_1571; mechanism first-hand from Doyle 1979 via the Ginsberg reprint — ob_2555 closed]
 
 ### 3.5 AGM belief revision + Hansson → supersede / retract semantics
 
