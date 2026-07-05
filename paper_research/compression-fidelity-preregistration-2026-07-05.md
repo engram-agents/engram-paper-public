@@ -32,13 +32,13 @@ This is orthogonal to Study-1's recall-negative result (the number does not pred
 ## §2. Hypotheses (pre-committed, directional) — two levels, per Study-1's raw-vs-within-type structure
 
 - **H1 (compression fidelity — the headline):** the judge's provenance-informed confidence correlates positively with the computed confidence across the matched sample (Kendall τ-b > 0, bootstrap CI excluding 0).
-- **H2 (beyond-class signal):** *within* source-class strata, the computed confidence still correlates with the judge's (τ-b > 0, CI excluding 0). This asks whether the number adds discrimination **beyond the source-class ordering** — i.e. beyond "measurement > opinion," which both the judge and the formula rank the same way.
+- **H2 (beyond-class signal):** *within* source-class strata, the computed confidence still correlates with the judge's (τ-b > 0, CI excluding 0). This asks whether the number adds discrimination **beyond the source-class ordering** — i.e. beyond "measurement > opinion," which both the judge and the formula rank the same way. *(The strata here are defined by OUR filed `quote_type`/`reasoning_type`, used **analysis-side only** to partition — the judge never sees them. This is legitimate because H2's question is literally "does the number add signal beyond OUR class ordering"; it is stated explicitly so it is not misread as label leakage.)*
 
 **Pre-committed reading of the H1/H2 pattern:** if H1 holds and H2 collapses, the honest finding is *"the compression IS the type system"* — the number is informative only insofar as it encodes source-class, and the within-class arithmetic carries no signal a reader replicates. After Study-1 (miscalibration lives in the type-choice step) we should half-expect this; it is printed as-is either way.
 
 ## §3. The judge
 
-- **Exogenous LLM fairy** (Study-1 §3.0 pattern). Model: Sonnet-class — **cross-family from the graph author's lineage (Opus)** and blind to the ENGRAM confidence scale. No ENGRAM access; no graph context beyond the served item.
+- **Exogenous LLM fairy** (Study-1 §3.0 pattern). Model: Sonnet-class — **cross-family from the graph author's lineage (Opus)** and blind to the ENGRAM confidence scale. **Exact model ID recorded at freeze** (§PIN 6, resolved v2). No ENGRAM access; no graph context beyond the served item.
 - **Blind to:** the computed confidence number, the `quote_type` / `reasoning_type` labels, and this document's hypotheses.
 - **Reads** the provenance packet (§4) and produces a **structural** confidence judgment (§6): a 3-tier verdict (high / medium / low) + a raw 0–1 score + a shown rationale naming the weakest link.
 - **One blind pass**, all items scored before any analysis; item order randomized, strata interleaved so strata are not inferable from sequence.
@@ -48,19 +48,21 @@ This is orthogonal to Study-1's recall-negative result (the number does not pred
 The judge reads a node's **current** full provenance (no temporal reconstruction — the recall-time state IS the current state the number serves). Per item:
 
 - **Claim text.**
-- **Raw source identity, served VERBATIM — not our ontology.** The evidence node's actual fields: URL / domain / title / source_date, and the source's raw kind as filed (e.g. "chat-log excerpt", a file path, an external article title, "another agent's claim"). **We do NOT hand the judge our category words** ("measurement", "official_statement", "introspection") — that would be `quote_type` relabeled. The judge classifies the source's trustworthiness itself, from the raw. *(The packet spec enumerates the exact fields served; it does not describe them in our vocabulary.)*
+- **Raw source identity, served VERBATIM — not our ontology.** ONLY the evidence node's literal fields: `evidence.url`, `evidence.domain`, `evidence.title`, `evidence.source_date` — and **no kind label of any granularity**. We do NOT hand the judge our category words ("measurement", "official_statement", "introspection") NOR a coarser gloss ("chat-log excerpt", "another agent's claim") — any such label is `quote_type` relabeled one notch coarser (Kepler audit catch, v2). The judge infers the source's nature and trustworthiness itself, from the raw fields. **If a URL or file path is opaque to a blind judge, that opacity is part of what the compression is measured against**, not a packet defect.
 - **`quoted_text`** (the evidence excerpt).
 - **The filer's `interpretation`** — **INCLUDED in the primary arm** (thesis-owner's ruling, 2026-07-05): a recall-reader sees the interpretation on inspect, so "the full provenance a reader gets" includes it. A **without-interpretation sensitivity arm** (§8.4) isolates any anchoring effect.
 - **For derivations:** the cited premises' **claim-texts** (depth-1), served *as stated*. The judge rates the derivation **conditional on premises-as-stated** — a pure reasoning-warrant + premise-plausibility judgment. We do **not** serve premise confidences (that would feed the formula's own outputs back to the judge — circular) and do **not** recurse the full premise provenance (packet explosion). **Named frame restriction:** this tests the judge's `reasoning_type`-warrant + own-world-knowledge premise-plausibility against the formula's `reasoning_type`-map + min-premise propagation. The two premise estimators differ by construction (§9 has a divergence category for it); testing the propagation arithmetic itself would require a depth-≥1 provenance packet and is explicitly out of scope here.
 - **Withheld:** the computed confidence, the `quote_type` / `reasoning_type` labels.
 
+**Exact served fields (enumerated, nothing else — §PIN 5, resolved v2):** `claim` · `quoted_text` · `interpretation` *(primary arm only)* · `evidence.url` · `evidence.domain` · `evidence.title` · `evidence.source_date` · *(derivations)* premise `claim`-texts + `logical_chain`. No kind-gloss, no computed confidence, no type labels.
+
 ## §5. Sample & strata
 
-Frame: current, non-retracted nodes in the graph author's (Borges) graph. **N ≈ 250.**
+Frame (§PIN 1, resolved v2): current, non-retracted, **non-superseded observations + derivations only** — the obtained-knowledge node types the thesis is about. Conjectures, axioms, cornerstones, lessons, definitions, and questions are **explicitly excluded** (their confidence semantics differ by type and are not what a recall-reader treats as an evidence-backed claim). **N ≈ 250.**
 
 Stratified on **two axes — node-type × computed-confidence-bin** — using the confidence-anchor values as natural bin edges (observations: ≈ 0.95 / 0.85 / 0.70 / 0.40–0.35; derivations: by `reasoning_type`, which *is* their confidence map). Rationale: the formula's output is quasi-discrete, so deliberate within-type spread is the only thing that powers H2 (the within-class level). Target ≈ 35–40 per major cell (≥ 30/cell gives τ-b power ≈ 0.9 at ρ ≈ 0.5 for within-cell claims).
 
-**Oversampling correction:** stratified oversampling of the tails inflates correlation relative to the natural node distribution. We report **both** (a) the stratified estimate and (b) a **natural-distribution weight-corrected** estimate, both pre-registered.
+**Oversampling correction:** stratified oversampling of the tails inflates correlation relative to the natural node distribution. We report **both** (a) the stratified estimate and (b) a **natural-distribution weight-corrected** estimate, both pre-registered. **"Natural distribution" = the full eligible frame at freeze** (all current non-retracted, non-superseded obs+dv); the correction weights each cell by its proportion in that frame.
 
 ## §6. The structural rubric (the judge must reason, not emit a feeling — thesis-owner's requirement, 2026-07-05)
 
@@ -69,6 +71,8 @@ The judge's confidence must be a **structural judgment**, produced by explicit r
 1. **Evidence / source strength** — how much to trust the source *given its raw nature*, AND whether the `quoted_text` actually supports the claim *at the asserted scope* (does the claim overreach the quote?).
 2. **Argument structure (derivations)** — name the inference type (deductive / inductive-generalization / abductive / analogical), judge whether the conclusion **follows** from the premises-as-stated, and assess **premise plausibility** from the premise claim-texts (the judge's own world-knowledge).
 3. **Justified confidence** — a tier (high/med/low) + a 0–1 score that **follows from 1–2**, with the structural rationale **shown** and the **weakest link named**.
+
+**Schema-enforced (§PIN 2, resolved v2):** the judge returns a structured object with mandatory fields — `source_strength{rating, rationale}`, `scope_check{overreach, note}`, `argument{type, follows, premise_plausibility}` (derivations), `confidence{tier, score, weakest_link}`. A missing field = a malformed response, re-served once, then counted as a judge-failure (reported). This is what makes "show the work" enforceable rather than optional — a gut number back-filled with prose cannot satisfy the schema.
 
 This makes the judge do the same *kind* of structural work the formula encodes (`quote_type` ≈ source strength; `reasoning_type` ≈ argument type; premise-propagation ≈ premise strength) — so the correlation tests whether the formula's structural computation matches a competent structural read of the same logic, not whether a vibe matches a number.
 
@@ -86,7 +90,7 @@ This validates the judge's *scale* is sane (there is no outcome ground-truth her
 1. **H1 (headline):** **Kendall τ-b (tie-corrected) as PRIMARY** — the computed confidence has heavy ties (most observations sit at 0.85), which biases Spearman ρ; τ-b handles ties correctly. Spearman ρ + weighted-κ on tiers reported secondary. Bootstrap CIs. Report **both** stratified and natural-weighted estimates (§5).
 2. **H2 (beyond-class):** τ-b **within each source-class stratum**, pooled; CI excluding 0 required to claim within-class signal.
 3. **Distributions + scatter** reported alongside every correlation (judge-0–1 vs computed, by type and source-class).
-4. **Interpretation-anchoring (the two arms):** the primary arm includes the filer's `interpretation`; a **without-interpretation arm** on a pre-registered subsample re-scores the same items with `interpretation` stripped. The **Δ(τ-b)** between arms measures how much the filer's framing (vs the raw evidence) drives the judge's confidence — a finding in its own right, and the isolation of the anchoring concern that motivated withholding it in the refutation study.
+4. **Interpretation-anchoring (the two arms):** the primary arm includes the filer's `interpretation`; a **without-interpretation arm** on a **pre-registered stratified 50% subsample (~125 items, covering every type × confidence-bin cell)** re-scores those items with `interpretation` stripped (§PIN 3, resolved v2 — halves the second-arm cost while powering Δ(τ-b) detection at ~0.15). The **Δ(τ-b)** between arms measures how much the filer's framing (vs the raw evidence) drives the judge's confidence — a finding in its own right, and the isolation of the anchoring concern that motivated withholding it in the refutation study.
 5. **Divergence-coding (§9)** — the diagnostic layer.
 
 ### §8.1 Interpretation matrix (pre-committed)
@@ -99,9 +103,9 @@ This validates the judge's *scale* is sane (there is no outcome ground-truth her
 
 ## §9. Divergence-coding — which structural factor drives judge-vs-formula gaps (recovers Study-1's mechanism-diagnosis WITHOUT a refutation anchor)
 
-For items where the judge and formula disagree (tier mismatch, or |Δ| beyond a pre-set threshold on the 0–1 scale), a **pre-committed coding scheme** classifies the driver from the judge's **shown rationale** into one of: **source-strength disagreement · claim-overreach (compound / inferred-elaboration, per df_0063) · argument-type disagreement · premise-assessment disagreement · other**.
+For items where the judge and formula disagree — **tier mismatch OR |Δ| ≥ 0.25 on the 0–1 scale (one tier-width)** (§PIN 4, resolved v2) — a **pre-committed coding scheme** classifies the driver from the judge's **shown rationale** into one of: **source-strength disagreement · claim-overreach (compound / inferred-elaboration, per df_0063) · argument-type disagreement · premise-assessment disagreement · other**.
 
-**Independence guard (same family as Study-1's compound labeling):** the divergence-coder works from the judge's rationale + a **restricted node view**, **blind to the computed confidence and to the correlation results**, with the **scheme frozen before any judging**. Without this guard, divergence-coding becomes a place to explain misses away post-hoc.
+**Independence guard (same family as Study-1's compound labeling):** the divergence-coder works from the **judge's rationale + the served packet ONLY** (not the node's graph context, not the computed confidence, not the correlation results), with the **scheme frozen before any judging**. Without this guard, divergence-coding becomes a place to explain misses away post-hoc.
 
 **Pre-committed expectation (falsifiable):** claim-overreach + source-strength should dominate the observation divergences (the dv_1071 mechanism — interpretive over-claims filed at measurement-grade quote_type); premise-assessment should dominate derivation divergences (the §4 estimator difference). If the coded drivers do not match, that prediction is wrong and we print it.
 
@@ -127,7 +131,10 @@ If the number does not correlate with the judge's provenance-informed confidence
 5. τ-b (H1) → within-class τ-b (H2) → distributions → interpretation-arm Δ → divergence-coding, per §8.
 6. Report per the §8.1 matrix; confounds per §10.
 
-## §PINS (Kepler audit round — resolve before signing)
+## §PINS (Kepler audit round — **all resolved in v2**, folded 2026-07-05)
+
+*§0 thesis-fit PASSED Kepler's first-check (hunted for outcome-anchoring drift; clean — the discipline's first run did its job). The §4 kind-gloss catch + all six pin resolutions below are folded into this version.*
+
 
 0. **§0 thesis-fit (audit FIRST):** does §1's operationalization test §0's quoted thesis (compression-fidelity correlation), with no outcome-anchoring drift? This check precedes all others.
 1. **§5** — exact bin edges + per-cell N + the natural-distribution weighting source (which node population defines "natural").
@@ -139,6 +146,7 @@ If the number does not correlate with the judge's provenance-informed confidence
 ## Review history
 
 - **v1** (2026-07-05, Borges) — initial draft. Roles swapped from #16 (Borges holds dv_1074's intent → least likely to re-drift; Kepler audits, §0-first). Carries the full Borges+Kepler design convergence (seq 1181–1186) + Lei's thesis + rubric + interpretation rulings.
+- **v2** (2026-07-05, Borges, folding Kepler audit) — §0 PASSED (thesis-fit clean, checked first). Folded: §4 kind-gloss struck (raw evidence fields only — the ontology-creep catch) + enumerated packet fields; §5 frame = obs+dv only with explicit exclusions + natural-distribution definition; §6 schema-enforced rubric fields; §8.4 without-interpretation arm = stratified 50% (~125); §9 divergence = tier-mismatch OR |Δ|≥0.25, coder view = rationale+packet only; §3 judge model ID at freeze; §2 H2 stratifier made explicit as our-label-analysis-side-only (not leakage).
 
 ## Signatures (the git history is the signature ledger)
 
