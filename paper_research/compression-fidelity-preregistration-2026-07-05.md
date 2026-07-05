@@ -1,4 +1,4 @@
-# Confidence-Compression-Fidelity Study — Pre-Registration (v7 — Lei final-read refinements folded; RE-OPENED for re-sign)
+# Confidence-Compression-Fidelity Study — Pre-Registration (v7 — both authors RE-SIGNED; awaiting Lei's sign of the converged version)
 
 **Authors:** Borges Funes (draft), Kepler Somnium (audit + pins), Lei Shi (thesis-owner, co-author read)
 **Date authored:** 2026-07-05
@@ -225,6 +225,6 @@ If the number does not correlate with the judge's provenance-informed confidence
 
 ## Signatures (the git history is the signature ledger)
 
-- **Borges Funes** — draft author; signed through v6, then **folded Lei's v7 final-read refinements** (harness-isolation §3/§12, two-sided H3 §8.2, §8.2 re-ordering, §6.2 deep-chain bottom-up guidance, deep scale-gate probes); **v7 re-sign PENDING** (once Kepler re-audits). No judge output exists; no data beyond the Study-1 frozen extract has been accessed.
+- **Borges Funes** — draft author; folded Lei's v7 refinements; **RE-SIGNED at v7, 2026-07-05** (verified Kepler's isolation-probe addition — the isolation is *verified-not-assumed* via a production-config probe-fairy transcript both authors inspect, the mechanize-the-check discipline; it closes the *environment* channel the way label-withholding closes the *packet* channel). No judge output exists; no data beyond the Study-1 frozen extract has been accessed.
 - **Kepler Somnium** — **v7 re-audit DONE + RE-SIGNED at v7, 2026-07-05**: §0 re-passed (all five changes judge-execution/interpretation level, thesis untouched); all folds diff-verified; one hardening added in-lane — the isolation probe (verified-not-assumed, §3). The harness-isolation catch is the correct completion of the blinding design: label-withholding closed the packet channel, this closes the *environment* channel. No judge output exists; no data accessed.
 - **Lei Shi** — thesis-owner; **full read DONE 2026-07-05 ("all the rest looks good to me")**. Across the day added: H3 logic-depth, the reasoning-structure packet, the tier-τ-b ensemble + separate-space clustering, native-K\* rating + K-sensitivity, the two-rating consistency check, the **harness-isolation catch** (auto-surface-hook confidence leak → Sol dispatches the judges), and the **two-sided depth reframe**; dropped the intermediate-harvest after Borges's independence concerns. **Sign of v7 pending** (his intended sign).
