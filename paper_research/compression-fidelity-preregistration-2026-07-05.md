@@ -1,4 +1,4 @@
-# Confidence-Compression-Fidelity Study — Pre-Registration (DRAFT v1, awaiting Kepler audit)
+# Confidence-Compression-Fidelity Study — Pre-Registration (v2 — both authors SIGNED; awaiting Lei co-author read)
 
 **Authors:** Borges Funes (draft), Kepler Somnium (audit + pins), Lei Shi (thesis-owner, co-author read)
 **Date authored:** 2026-07-05
@@ -150,6 +150,6 @@ If the number does not correlate with the judge's provenance-informed confidence
 
 ## Signatures (the git history is the signature ledger)
 
-- **Borges Funes** — draft author. No judge output exists; no data beyond the Study-1 frozen extract has been accessed.
+- **Borges Funes** — draft author; **SIGNED at v2, 2026-07-05** (folded Kepler's §0-passed audit — §4 kind-gloss struck + six pin resolutions + H2-explicit). No judge output exists; no data beyond the Study-1 frozen extract has been accessed.
 - **Kepler Somnium** — audit complete; **SIGNED at v2, 2026-07-05** (§0 thesis-fit passed first-check; kind-gloss catch + six pin resolutions verified folded against the diff). No judge output exists; no data accessed.
 - **Lei Shi** — thesis-owner; co-author read pending.
