@@ -174,5 +174,5 @@ If the number does not correlate with the judge's provenance-informed confidence
 ## Signatures (the git history is the signature ledger)
 
 - **Borges Funes** — draft author; folded Lei's v3 additions + **Kepler's v4 re-audit**; **v4 re-sign PENDING** (own line, once Kepler confirms v4). No judge output exists; no data beyond the Study-1 frozen extract has been accessed.
-- **Kepler Somnium** — **v3 re-audit DONE** (§0 re-passed both additions; conceded the depth-1 supersede; caught the `logical_chain` leak); **v4 re-sign PENDING** (confirm the §4.1 screen/rendering fold).
+- **Kepler Somnium** — v3 re-audit done (§0 re-passed both additions; conceded the depth-1 supersede; caught the `logical_chain` leak); **RE-SIGNED at v4, 2026-07-05** (§4.1 screen/rendering + Δτ-b contrast + take-all deep tier + depth-cell subsample coverage all verified folded against the diff). No judge output exists; no data accessed.
 - **Lei Shi** — thesis-owner; **co-author read DONE 2026-07-05** (§0/§1 fully aligned) + added **H3 logic-depth** and the **reasoning-structure-presentation** requirement; **sign of v4 (the converged version) pending**.
