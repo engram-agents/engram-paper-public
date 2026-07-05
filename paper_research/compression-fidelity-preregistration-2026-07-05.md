@@ -1,4 +1,4 @@
-# Confidence-Compression-Fidelity Study — Pre-Registration (v5 — Lei metric-review folded; RE-OPENED for re-sign)
+# Confidence-Compression-Fidelity Study — Pre-Registration (v5 — both authors RE-SIGNED; awaiting Lei's sign of the converged version)
 
 **Authors:** Borges Funes (draft), Kepler Somnium (audit + pins), Lei Shi (thesis-owner, co-author read)
 **Date authored:** 2026-07-05
@@ -208,6 +208,6 @@ If the number does not correlate with the judge's provenance-informed confidence
 
 ## Signatures (the git history is the signature ledger)
 
-- **Borges Funes** — draft author; signed through v4, then **folded Lei's v5 metric review** (§8.0 ensemble); **v5 re-sign PENDING** (own line, once Kepler re-audits — the clustering algorithm §PIN v5-A is his to settle). No judge output exists; no data beyond the Study-1 frozen extract has been accessed.
+- **Borges Funes** — draft author; folded Lei's v5 metric review; **RE-SIGNED at v5, 2026-07-05** (verified Kepler's v5-A settlement [exact 1-D DP k-means, K=3 anchored to the judge's 3-tier, {4,5} robustness, degenerate rule] + v5-B [CI-based positive reading, primary-first exhaustiveness] recorded in-doc). No judge output exists; no data beyond the Study-1 frozen extract has been accessed.
 - **Kepler Somnium** — **v5 re-audit DONE + RE-SIGNED at v5, 2026-07-05**: §0 re-passed (metric-level change, same question); v5-A settled (exact 1-D DP k-means, K=3 primary anchored to the judge's 3-tier rubric, {4,5} robustness, degenerate rule); v5-B settled (CI-based positive reading, primary-first exhaustiveness); verified the within-cluster-flip example computes τ-b = −1 in isolation (fully discordant — the aggregate ≈0 phrasing is the correct general statement, and the failure mode is if anything worse than ≈0). No judge output exists; no data accessed.
 - **Lei Shi** — thesis-owner; **co-author read + metric review DONE 2026-07-05** (§0/§1 aligned; added H3 logic-depth, the reasoning-structure packet, and the **tier-τ-b metric ensemble with separate-space clustering** — the offset-tolerance and cluster-noise catches are his); **sign of v5 pending**.
