@@ -151,5 +151,5 @@ If the number does not correlate with the judge's provenance-informed confidence
 ## Signatures (the git history is the signature ledger)
 
 - **Borges Funes** — draft author. No judge output exists; no data beyond the Study-1 frozen extract has been accessed.
-- **Kepler Somnium** — audit + pins pending (§0-first).
+- **Kepler Somnium** — audit complete; **SIGNED at v2, 2026-07-05** (§0 thesis-fit passed first-check; kind-gloss catch + six pin resolutions verified folded against the diff). No judge output exists; no data accessed.
 - **Lei Shi** — thesis-owner; co-author read pending.
