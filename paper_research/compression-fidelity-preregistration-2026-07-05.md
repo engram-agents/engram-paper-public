@@ -1,4 +1,4 @@
-# Confidence-Compression-Fidelity Study — Pre-Registration (v4 — both authors RE-SIGNED; awaiting Lei's sign of the converged version)
+# Confidence-Compression-Fidelity Study — Pre-Registration (v5 — Lei metric-review folded; RE-OPENED for re-sign)
 
 **Authors:** Borges Funes (draft), Kepler Somnium (audit + pins), Lei Shi (thesis-owner, co-author read)
 **Date authored:** 2026-07-05
@@ -31,10 +31,10 @@ This is orthogonal to Study-1's recall-negative result (the number does not pred
 
 ## §2. Hypotheses (pre-committed, directional) — two levels, per Study-1's raw-vs-within-type structure
 
-- **H1 (compression fidelity — the headline):** the judge's provenance-informed confidence correlates positively with the computed confidence across the matched sample (Kendall τ-b > 0, bootstrap CI excluding 0).
-- **H2 (beyond-class signal):** *within* source-class strata, the computed confidence still correlates with the judge's (τ-b > 0, CI excluding 0). This asks whether the number adds discrimination **beyond the source-class ordering** — i.e. beyond "measurement > opinion," which both the judge and the formula rank the same way. *(The strata here are defined by OUR filed `quote_type`/`reasoning_type`, used **analysis-side only** to partition — the judge never sees them. This is legitimate because H2's question is literally "does the number add signal beyond OUR class ordering"; it is stated explicitly so it is not misread as label leakage.)*
+- **H1 (compression fidelity — the headline):** the judge's provenance-informed confidence correlates positively with the computed confidence across the matched sample — **primary metric tier-τ-b > 0 (§8.0), bootstrap CI excluding 0** (read with the full ensemble + decision table).
+- **H2 (beyond-class signal):** *within* source-class strata, the computed confidence still correlates with the judge's (primary **tier-τ-b > 0**, CI excluding 0; §8.0). This asks whether the number adds discrimination **beyond the source-class ordering** — i.e. beyond "measurement > opinion," which both the judge and the formula rank the same way. *(The strata here are defined by OUR filed `quote_type`/`reasoning_type`, used **analysis-side only** to partition — the judge never sees them. This is legitimate because H2's question is literally "does the number add signal beyond OUR class ordering"; it is stated explicitly so it is not misread as label leakage.)*
 
-- **H3 (depth — where the compression earns its keep; Lei, v3):** define a node's **logic depth** = `max(depth of premises) + 1`, with observations at depth 1 (the longest logical path to an evidence node). Pre-committed **directional** expectation: **compression fidelity (τ-b) is highest for the deepest derivation tier.** Rationale: deep chains are exactly where walking the provenance by hand is most expensive, so a number that stays faithful *there* is doing its most valuable work — the strongest validation of "the number earns its keep." Tested as τ-b stratified by depth tier (1 / 2 / ≥3), primary statistic = the **Δτ-b(≥3 − 1) bootstrap contrast** (§8.2), middle tier descriptive; the deep tier is **oversampled** for power (§5). If fidelity does not rise with depth — or falls — that is printed as-is; the directional prior is registered, not assumed.
+- **H3 (depth — where the compression earns its keep; Lei, v3):** define a node's **logic depth** = `max(depth of premises) + 1`, with observations at depth 1 (the longest logical path to an evidence node). Pre-committed **directional** expectation: **compression fidelity (τ-b) is highest for the deepest derivation tier.** Rationale: deep chains are exactly where walking the provenance by hand is most expensive, so a number that stays faithful *there* is doing its most valuable work — the strongest validation of "the number earns its keep." Tested as the ensemble stratified by depth tier (1 / 2 / ≥3), primary statistic = the **Δ(tier-τ-b)(≥3 − 1) bootstrap contrast** (§8.2), middle tier descriptive; the deep tier is **oversampled** for power (§5). If fidelity does not rise with depth — or falls — that is printed as-is; the directional prior is registered, not assumed.
 
 **Pre-committed reading of the H1/H2 pattern:** if H1 holds and H2 collapses, the honest finding is *"the compression IS the type system"* — the number is informative only insofar as it encodes source-class, and the within-class arithmetic carries no signal a reader replicates. After Study-1 (miscalibration lives in the type-choice step) we should half-expect this; it is printed as-is either way.
 
@@ -97,20 +97,48 @@ This validates the judge's *scale* is sane (there is no outcome ground-truth her
 
 ## §8. Analysis plan
 
-1. **H1 (headline):** **Kendall τ-b (tie-corrected) as PRIMARY** — the computed confidence has heavy ties (most observations sit at 0.85), which biases Spearman ρ; τ-b handles ties correctly. Spearman ρ + weighted-κ on tiers reported secondary. Bootstrap CIs. Report **both** stratified and natural-weighted estimates (§5).
-2. **H2 (beyond-class):** τ-b **within each source-class stratum**, pooled; CI excluding 0 required to claim within-class signal.
-3. **H3 (depth):** τ-b by **logic-depth tier (1 / 2 / ≥ 3)**; **primary directional contrast = Δτ-b(tier ≥3 − tier 1) with bootstrap CI > 0** (v4 — one registered contrast beats a weak 3-coefficient omnibus trend test); the middle tier is reported with its CI for descriptive monotonicity. Deep tier take-all-oversampled (§5), corrected in the natural-weighted estimate.
+### §8.0 The metric ensemble (v5 — Lei metric review): tier-τ-b PRIMARY + three secondaries + a pre-committed decision table
+
+Pure rank correlation on the raw scores has a failure mode: τ-b treats a meaningless within-cluster flip (formula 0.95/0.94/0.93 vs judge 0.93/0.94/0.95 — near-identical *values*, reversed *order*) as fully discordant, so it can report ≈ 0 on data with near-perfect absolute agreement. Our formula produces exactly such tight clusters. The fix is an **ensemble** — each metric killing a different confound, with **one pre-committed primary** so four numbers are not four bites at the apple.
+
+**Tiering (shared input to the tier metrics) — separate-space natural clustering.** The formula and judge scores are **not** on a calibrated common scale, so we do **not** impose shared score-thresholds (would falsely penalize a systematic offset) and do **not** use rank-quantiles (a boundary can split a tight cluster, reintroducing the noise). Instead, **each distribution is clustered in its own score-space into K ordinal tiers** using a **deterministic, globally-optimal 1-D method — exact 1-D k-means by DP (`Ckmeans.1d.dp`) / Fisher–Jenks natural breaks** (NOT vanilla k-means — random init makes the tiers seed-dependent, disqualifying for a pre-reg; exact choice settled in Kepler's re-audit), **same K for both** (rank scales commensurate), clusters ordered by centroid → tier 1…K. **K pinned with robustness across K ∈ {3, 4, 5}**; the whole procedure (algorithm + K + robustness set) is **frozen before running**, run once on the frozen sample, **no post-hoc K tuning**. (The formula's near-discrete anchor structure means clustering its distribution recovers the semantic tiers automatically.) *Caveat:* a near-degenerate judge distribution would manufacture artificial tiers — the §7 scale-gate guards against a no-spread judge, and low spread surfaces as a finding, not hidden.
+
+**The four metrics:**
+
+| Metric | Question it answers | Robust to |
+|---|---|---|
+| **tier-τ-b** (τ-b on ordinal tier assignments) — **PRIMARY** | Does the number *order* trust correctly at tier resolution? | within-cluster noise **and** systematic scale offset |
+| weighted-κ on the tiers — secondary | Do the tier *labels* (same ordinal rank) agree? | within-cluster noise (offset-**sensitive** by design) |
+| Pearson + mean-abs-error on raw 0–1 — secondary | Are the raw values close? | — (absolute check) |
+| raw τ-b on raw 0–1 — diagnostic | Fine within-tier ordering | nothing — kept as a conservative diagnostic |
+
+**Primary = tier-τ-b:** the cleanest statement of the thesis ("relative confidence at tier resolution"), robust to the two confounds that sink the others — within-cluster noise (kills raw τ-b) and scale-offset (which the judge's un-calibrated scale guarantees, and which κ would wrongly penalize).
+
+**Pre-committed decision table (the pattern IS the finding):**
+
+| tier-τ-b | κ | raw τ-b | Reading (printed as-is) |
+|---|---|---|---|
+| high | high | — | Faithful AND calibrated to a reader's scale. |
+| high | low | — | Faithful *ordering*, systematic scale offset — informative as a **relative** trust-clue, not an absolute one. The expected, still-good case. |
+| high | — | low | Within-tier fine ordering is noise — use the number at tier resolution, not its third decimal. Expected. |
+| **low** | — | — | **The real negative:** the number cannot order trust even coarsely. |
+
+All four metrics are computed for **H1** (whole sample), **H2** (within source-class), and **H3** (by depth tier); bootstrap CIs throughout; **both** stratified and natural-weighted estimates (§5).
+
+1. **H1 (headline):** the **§8.0 ensemble, primary tier-τ-b** (κ + Pearson/MAE secondary, raw τ-b diagnostic), read against the §8.0 decision table.
+2. **H2 (beyond-class):** the §8.0 ensemble **within each source-class stratum**, pooled; primary **tier-τ-b** CI excluding 0 required to claim within-class signal. (The κ-vs-tier-τ-b gap here cleanly separates within-class *calibration* from within-class *ordering*.)
+3. **H3 (depth):** the ensemble by **logic-depth tier (1 / 2 / ≥ 3)**; **primary directional contrast = Δ(tier-τ-b)(tier ≥3 − tier 1) with bootstrap CI > 0** (one registered contrast beats a weak 3-coefficient omnibus trend test); the middle tier is reported with its CI for descriptive monotonicity. Deep tier take-all-oversampled (§5), corrected in the natural-weighted estimate.
 4. **Distributions + scatter** reported alongside every correlation (judge-0–1 vs computed, by type, source-class, **and depth tier**).
 5. **Interpretation-anchoring (the two arms):** the primary arm includes the filer's `interpretation`; a **without-interpretation arm** on a **pre-registered stratified 50% subsample (~125 items, covering every type × confidence-bin × depth-tier cell** — v4, so the deep tier is not left uncovered in the sensitivity arm) re-scores those items with `interpretation` stripped (§PIN 3, resolved v2 — halves the second-arm cost while powering Δ(τ-b) detection at ~0.15). The **Δ(τ-b)** between arms measures how much the filer's framing (vs the raw evidence) drives the judge's confidence — a finding in its own right, and the isolation of the anchoring concern that motivated withholding it in the refutation study.
 6. **Divergence-coding (§9)** — the diagnostic layer. The depth tier is one of the codeable factors: a deep-derivation divergence may be a premise-assessment gap compounding through the chain.
 
 ### §8.2 Depth-tier expectation (H3, pre-committed)
 
-The registered directional prior: **the number is a *better* compression the deeper the reasoning it summarizes**, tested as the **primary contrast Δτ-b(tier ≥3 − tier 1) with bootstrap CI > 0** (v4); per-tier CIs reported for descriptive monotonicity (tier ≥3 ≥ tier 2 ≥ tier 1). A null or reversed contrast is printed as-is (it would mean the number's fidelity does *not* concentrate where the compression is most valuable — an important negative for the "earns its keep" claim).
+The registered directional prior: **the number is a *better* compression the deeper the reasoning it summarizes**, tested as the **primary contrast Δ(tier-τ-b)(tier ≥3 − tier 1) with bootstrap CI > 0** (on the §8.0 primary metric); per-tier tier-τ-b CIs reported for descriptive monotonicity (tier ≥3 ≥ tier 2 ≥ tier 1). A null or reversed contrast is printed as-is (it would mean the number's fidelity does *not* concentrate where the compression is most valuable — an important negative for the "earns its keep" claim).
 
-### §8.1 Interpretation matrix (pre-committed)
+### §8.1 Interpretation matrix (pre-committed) — H1 × H2, on the §8.0 primary (tier-τ-b)
 
-| H1 (raw) | H2 (within-class) | Reading (printed as-is) |
+| H1 (tier-τ-b) | H2 (within-class) | Reading (printed as-is) |
 |---|---|---|
 | holds | holds | The number is a faithful compression AND adds signal beyond source-class — it validly substitutes for the provenance walk. |
 | holds | collapses | **"The compression is the type system."** The number is informative only as a source-class encoding; within-class arithmetic carries no signal a reader replicates. (Half-expected after Study-1.) |
@@ -148,6 +176,10 @@ If the number does not correlate with the judge's provenance-informed confidence
 
 ## §PINS
 
+### v5 OPEN pins (Kepler re-audit — §0-first, then these)
+- **v5-A (§8.0 clustering algorithm — the delegated one):** settle the exact deterministic 1-D method — **exact 1-D k-means DP (`Ckmeans.1d.dp`) vs Fisher–Jenks natural breaks** (near-equivalent; both deterministic/reproducible, unlike random-init k-means) — and the **pinned K + robustness set** (proposed {3,4,5}, K anchored to the formula's natural cluster count). Confirm same-K-both-spaces and centroid-ordering. Reproducibility is the hard constraint: the tiers must not depend on a seed.
+- **v5-B (§8.0 ensemble hygiene):** confirm the decision table exhausts the tier-τ-b × κ × raw-τ-b pattern space with no un-covered cell that could be read post-hoc, and that "primary = tier-τ-b" is applied uniformly across H1/H2/H3.
+
 ### v3 pins — all resolved in v4 (Kepler re-audit; §0 re-passed both additions)
 - **v3-A (rendering) → §4.1:** numbered-outline depth-first markdown tree, shared-premise dedup-by-reference (cycle-safe), legibility a §12.3 pass gate.
 - **v3-B (leak + size) → §4.1:** the real catch — `logical_chain` free-text leaks enum/numbers, concentrated in the deep tier; resolved by the automated metadata screen (redact + log + >20%-gutted-exclusion) + a 15k-token max-packet guard. No-circularity preserved (no confidence served at any level).
@@ -168,11 +200,12 @@ If the number does not correlate with the judge's provenance-informed confidence
 
 - **v1** (2026-07-05, Borges) — initial draft. Roles swapped from #16 (Borges holds dv_1074's intent → least likely to re-drift; Kepler audits, §0-first). Carries the full Borges+Kepler design convergence (seq 1181–1186) + Lei's thesis + rubric + interpretation rulings.
 - **v2** (2026-07-05, Borges, folding Kepler audit) — §0 PASSED (thesis-fit clean, checked first). Folded: §4 kind-gloss struck (raw evidence fields only — the ontology-creep catch) + enumerated packet fields; §5 frame = obs+dv only with explicit exclusions + natural-distribution definition; §6 schema-enforced rubric fields; §8.4 without-interpretation arm = stratified 50% (~125); §9 divergence = tier-mismatch OR |Δ|≥0.25, coder view = rationale+packet only; §3 judge model ID at freeze; §2 H2 stratifier made explicit as our-label-analysis-side-only (not leakage). **Both authors SIGNED at v2.**
+- **v5** (2026-07-05, Borges, folding Lei's metric review — RE-OPENS both signatures) — **§8.0 metric ensemble added.** Lei caught that pure rank τ-b reports ≈0 on within-cluster near-tie reversals despite near-perfect absolute agreement (our formula has tight clusters). Ensemble: **PRIMARY = tier-τ-b** (ordering at tier resolution, robust to within-cluster noise AND scale offset) + weighted-κ (tier-label agreement, offset-sensitive) + Pearson/MAE (absolute) + raw-τ-b (fine diagnostic) + a **pre-committed decision table** (the pattern is the finding: high tier-τ-b + low κ = faithful ordering on an offset scale = still good). **Tiering = separate-space natural clustering** (each distribution clustered in its own score-space; deterministic 1-D method — Ckmeans.1d.dp/Fisher-Jenks, exact choice §PIN v5-A; same K both, K∈{3,4,5} robustness, frozen-before-run). H1/H2/H3 + §8.1/§8.2 all re-expressed on the ensemble; H3 contrast → Δ(tier-τ-b)(≥3−1).
 - **v4** (2026-07-05, Borges, folding Kepler v3 re-audit — §0 re-passed both additions) — **§4.1 added:** derivation-tree rendering (numbered-outline, dedup-by-reference, cycle-safe) + the **metadata screen** for the `logical_chain` free-text leak (redact enum/numbers, log, >20%-gutted-exclusion, 15k max-packet guard) — the real v3-B catch, leak concentrated in the deep tier. **§8/§8.2:** H3 statistic → primary contrast Δτ-b(≥3−1) bootstrap CI>0 (not omnibus trend). **§5:** deep tier take-all-if-≤40-else-40. **§8.5:** subsample now covers depth cells. **§12.3:** 5-item validation must include a deep node + legibility pass gate.
 - **v3** (2026-07-05, Borges, folding Lei's co-author-read additions — RE-OPENS both signatures) — **§2 H3 (logic-depth) added:** depth = max(premise depth)+1, obs=1; pre-committed directional prior that τ-b is highest for the deepest tier ("the number earns its keep where walking the provenance is most expensive"). **§4 derivation packet reworked (supersedes v2's depth-1 restriction):** serve the full logical STRUCTURE as an intuitive reasoning tree to the evidence, `reasoning_type` enum + confidences stripped at every level (no circularity, since no confidence is shown) — legibility is a requirement, and it lets H3 be tested fairly. **§5** adds depth as a 3rd stratification axis + oversamples the rare deep tier. **§8.2/§8 item 3** adds the depth-stratified τ-b + monotonic-trend test. New §PIN for the reasoning-tree rendering format.
 
 ## Signatures (the git history is the signature ledger)
 
-- **Borges Funes** — draft author; folded Lei's v3 additions + Kepler's v4 re-audit; **RE-SIGNED at v4, 2026-07-05** (+ one consistency fix: §2 H3 cross-ref aligned to §8.2's Δτ-b contrast). No judge output exists; no data beyond the Study-1 frozen extract has been accessed.
-- **Kepler Somnium** — v3 re-audit done (§0 re-passed both additions; conceded the depth-1 supersede; caught the `logical_chain` leak); **RE-SIGNED at v4, 2026-07-05** (§4.1 screen/rendering + Δτ-b contrast + take-all deep tier + depth-cell subsample coverage all verified folded against the diff). No judge output exists; no data accessed.
-- **Lei Shi** — thesis-owner; **co-author read DONE 2026-07-05** (§0/§1 fully aligned) + added **H3 logic-depth** and the **reasoning-structure-presentation** requirement; **sign of v4 (the converged version) pending**.
+- **Borges Funes** — draft author; signed through v4, then **folded Lei's v5 metric review** (§8.0 ensemble); **v5 re-sign PENDING** (own line, once Kepler re-audits — the clustering algorithm §PIN v5-A is his to settle). No judge output exists; no data beyond the Study-1 frozen extract has been accessed.
+- **Kepler Somnium** — signed v4; **v5 re-audit + re-sign PENDING** (metric ensemble + separate-space clustering; settle the exact deterministic 1-D clustering algorithm + K, §PIN v5-A).
+- **Lei Shi** — thesis-owner; **co-author read + metric review DONE 2026-07-05** (§0/§1 aligned; added H3 logic-depth, the reasoning-structure packet, and the **tier-τ-b metric ensemble with separate-space clustering** — the offset-tolerance and cluster-noise catches are his); **sign of v5 pending**.
