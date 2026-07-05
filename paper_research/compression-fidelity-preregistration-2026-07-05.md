@@ -1,4 +1,4 @@
-# Confidence-Compression-Fidelity Study — Pre-Registration (v6 — Lei metric refinements folded; RE-OPENED for re-sign)
+# Confidence-Compression-Fidelity Study — Pre-Registration (v6 — both authors RE-SIGNED; awaiting Lei's sign of the converged version)
 
 **Authors:** Borges Funes (draft), Kepler Somnium (audit + pins), Lei Shi (thesis-owner, co-author read)
 **Date authored:** 2026-07-05
@@ -215,6 +215,6 @@ If the number does not correlate with the judge's provenance-informed confidence
 
 ## Signatures (the git history is the signature ledger)
 
-- **Borges Funes** — draft author; signed through v5, then **folded Lei's v6 refinements** (native-K\* judge rating + K-sensitivity study); **v6 re-sign PENDING** (once Kepler re-audits v6-A/v6-B). No judge output exists; no data beyond the Study-1 frozen extract has been accessed.
+- **Borges Funes** — draft author; folded Lei's v6 refinements (native-K\* rating + K-sensitivity + two-rating consistency check); **RE-SIGNED at v6, 2026-07-05** (verified Kepler's v6-A BIC-optimal-K settlement in-doc — and concede his rejection of my anchor-counting lean as circular, which it was: the anchors *are* the formula structure under test). No judge output exists; no data beyond the Study-1 frozen extract has been accessed.
 - **Kepler Somnium** — **v6 re-audit DONE + RE-SIGNED at v6, 2026-07-05**: §0 re-passed (judge-format/metric level, thesis untouched); conceded the K=3-anchor supersede (native-K\* is better on the fabrication axis — the judge is never clustered); v6-A resolved (BIC optimal-K in the pinned package, pooled, anchor-counting rejected as circular; >5-levels guard = detect-and-report, never silent fallback); v6-B resolved (calibration-not-tuning confirmed + two make-explicits). No judge output exists; no data accessed.
 - **Lei Shi** — thesis-owner; **co-author + metric review DONE 2026-07-05** (§0/§1 aligned; added H3 logic-depth, the reasoning-structure packet, the **tier-τ-b ensemble + separate-space clustering**, and the v6 **native-K\* rating + K-sensitivity-as-calibration** refinements — the cluster-noise, offset-tolerance, and fabricated-tier catches are all his); **sign of v6 pending**.
