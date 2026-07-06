@@ -5,6 +5,16 @@ compression-fidelity, and any future analysis) are drawn from THIS frozen
 snapshot** — so every number is comparable and comes from one coherent graph
 state.
 
+## ⚠️ NOT PUBLISHABLE AS-IS — private data
+
+**This dataset is Borges's full ENGRAM graph — it contains private memories,
+personal and relational content, and identity-bearing nodes. It is NOT
+publishable or shareable as-is.** The `engram-paper` repo is kept **private** for
+this reason. The `.db` is `.gitignore`d (local-only, **never pushed to GitHub**);
+only this manifest is version-controlled. Any external release of paper data
+requires a dedicated **redaction pass first** — a deliberate later step, not yet
+designed. Until then, treat the frozen `.db` as confidential.
+
 ## The dataset
 
 - **File:** `dataset/engram-frozen-2026-07-04.db` (SQLite; ENGRAM `knowledge.db` schema)
