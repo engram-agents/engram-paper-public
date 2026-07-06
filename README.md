@@ -26,6 +26,22 @@ material can eventually be made public without leaking private workshop history.
 Everything older than the 2026-06-17 restructure lives under the `archived_*` folders
 below — do not read those as the current paper.
 
+## Frozen dataset (paper substrate)
+
+**All empirical results in the paper are drawn from one frozen ENGRAM snapshot**,
+so every number is comparable and comes from a coherent graph state:
+
+- **`dataset/engram-frozen-2026-07-04.db`** — the canonical frozen graph
+  (end of 2026-07-04, 5,428 current nodes; sha256
+  `6b0bc778…d0bf9a6`). Predates the Study-2 design work and was frozen before the
+  analysis was pre-registered (pre-registration gold standard).
+- **`dataset/DATASET.md`** — the manifest: full integrity metadata, freeze
+  rationale, and the usage discipline (draw every sample/statistic from this
+  file, not the live graph). Read it before running any paper analysis.
+
+The `.db` itself is `.gitignore`d (96 MB binary + private full-graph content);
+`DATASET.md` is the version-controlled pointer.
+
 ## Layout
 
 - **`paper_research/`** — the working substrate:

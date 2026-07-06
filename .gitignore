@@ -18,3 +18,7 @@ paper_research/source_pdfs/anderson_schooler_1991_reflections.*
 paper_research/source_pdfs/josang_subjective_logic_2013.*
 paper_research/source_pdfs/[Nn]ozick*
 paper_research/source_pdfs/tulving_memory_consciousness_1985/
+
+# Frozen paper dataset — canonical substrate (see dataset/DATASET.md).
+# 96MB SQLite binary holding the full private graph — pointer is tracked, DB is not.
+dataset/*.db
