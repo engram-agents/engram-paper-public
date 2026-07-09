@@ -156,3 +156,218 @@ def test_source_class_read_from_metadata_not_a_column(tmp_path):
     )
     frame = frame_export.export_frame([row])
     assert frame[0]["evidence"]["source_class"] == "introspective"
+
+
+# ── export_derivation_frame (derivation arm) ──────────────────────────────
+
+
+def _derivation_row(node_id, outcome, premises=None, claim=None, **kwargs):
+    if premises is None:
+        premises = [
+            {"claim": "Swan #1 observed at the lake was white.", "type": "hard_data"},
+            {"claim": "Swan #2 observed at the lake was white.", "type": None},
+        ]
+    if claim is None:
+        claim = f"Claim for {node_id}."
+    row = db.NodeRow(
+        id=node_id, graph_id="g", type="derivation", claim=claim,
+        quoted_text=None, interpretation=None, quote_type=None,
+        evidence_id=None, confidence=0.75,
+        outcome=outcome,
+        **kwargs,
+    )
+    row.premises = premises
+    return row
+
+
+def test_excluded_and_excluded_type_rows_never_enter_the_derivation_frame():
+    """The one behavior genuinely different from the observation arm: BOTH
+    "excluded" and "excluded_type" outcomes must be kept out of the normal
+    judge-facing frame. "excluded_type" rows are type-correction cases that
+    belong to the separate M5 reconstruction pool
+    (`db.mine_m5_reconstruction_pool`) -- letting one leak into this frame
+    would hand the judge a case whose ground truth is the study's own
+    predictor (type mis-selection), which is exactly the circularity the
+    "excluded_type" bucket exists to prevent (see `db.py`'s
+    `classify_derivation_outcome` docstring)."""
+    rows = [
+        _derivation_row("dv_excluded", "excluded"),
+        _derivation_row("dv_excluded_type", "excluded_type"),
+        _derivation_row("dv_survived", "survived"),
+    ]
+    frame = frame_export.export_derivation_frame(rows)
+    exported_ids = {item["id"] for item in frame}
+    assert "dv_excluded" not in exported_ids
+    assert "dv_excluded_type" not in exported_ids
+    assert exported_ids == {"dv_survived"}
+
+
+def test_unclassified_derivation_rows_are_included_and_tagged():
+    rows = [
+        _derivation_row("dv_unclassified", "unclassified"),
+        _derivation_row("dv_survived", "survived"),
+    ]
+    frame = frame_export.export_derivation_frame(rows)
+    by_id = {item["id"]: item for item in frame}
+    assert "dv_unclassified" in by_id
+    assert by_id["dv_unclassified"]["stratum"]["outcome"] == "unclassified"
+
+
+def test_derivation_frame_shape_is_flat():
+    rows = [_derivation_row("dv_survived", "survived")]
+    frame = frame_export.export_derivation_frame(rows)
+    assert frame, "fixture set must produce at least one exported item"
+    for item in frame:
+        assert set(item.keys()) == {"id", "claim", "premises", "stratum"}
+        assert set(item["stratum"].keys()) == {"outcome", "fs_class"}
+        for premise in item["premises"]:
+            assert set(premise.keys()) == {"claim", "type"}
+
+
+def test_export_derivation_frame_raises_on_unset_outcome():
+    row = db.NodeRow(
+        id="dv_x", graph_id="g", type="derivation", claim="x",
+        quoted_text=None, interpretation=None, quote_type=None,
+        evidence_id=None, confidence=0.75,
+    )
+    row.premises = [{"claim": "premise", "type": "hard_data"}]
+    assert row.outcome is None
+    with pytest.raises(ValueError):
+        frame_export.export_derivation_frame([row])
+
+
+def test_exported_derivation_frame_never_contains_withheld_fields():
+    """The load-bearing safety test for the derivation arm: serialize the
+    WHOLE exported frame to JSON and grep the whole string -- not just
+    top-level keys -- for any of the withheld substrings, per pre-reg §2.
+    `reasoning_type` (the node's own filed answer key) is the derivation
+    arm's equivalent of the observation arm's withheld `quote_type`."""
+    rows = [
+        _derivation_row(
+            "dv_survived", "survived",
+            metadata={"reasoning_type": "inductive_generalization", "standpoint_author_id": "pn_0002"},
+        ),
+    ]
+    frame = frame_export.export_derivation_frame(rows)
+    serialized = json.dumps(frame)
+
+    forbidden_substrings = [
+        "reasoning_type",
+        "confidence",
+        "interpretation",
+        "standpoint_author_id",
+    ]
+    for forbidden in forbidden_substrings:
+        assert forbidden not in serialized, (
+            f"withheld field/substring {forbidden!r} leaked into the "
+            f"exported derivation frame JSON"
+        )
+
+    import re
+    author_id_leak = re.search(r"\bpn_\d+\b", serialized)
+    assert author_id_leak is None, (
+        f"a pn_* author-id-shaped string leaked: {author_id_leak.group(0)!r}"
+    )
+
+    # None of the REASONING_TYPES enum values may appear anywhere, even
+    # inside claim/premise-claim free text.
+    for enum_value in ("inductive_generalization", "abductive_best_explanation", "deductive_modus_ponens"):
+        assert enum_value not in serialized, (
+            f"reasoning_type enum value {enum_value!r} leaked into the frame"
+        )
+
+
+def test_premise_claim_is_actually_redacted_through_export():
+    """A direct, non-trivial exercise of the redact-integration path
+    (mirrors `test_outcome_vocab_in_free_text_is_actually_redacted_through_export`
+    for the observation arm): a premise claim whose FREE TEXT happens to
+    mention outcome-vocabulary words, or a confidence-shaped number, must
+    have them scrubbed by the time it reaches the exported frame."""
+    row = _derivation_row(
+        "dv_z", "survived",
+        claim="Therefore the conclusion is warranted.",
+        premises=[
+            {
+                "claim": "This premise was later retracted after a contradiction was resolved, confidence 0.85.",
+                "type": "hard_data",
+            },
+        ],
+    )
+    frame = frame_export.export_derivation_frame([row])
+    item = frame[0]
+    premise_claim = item["premises"][0]["claim"]
+    for outcome_word in ("retracted", "contradiction", "resolved"):
+        assert outcome_word not in premise_claim
+    assert "0.85" not in premise_claim
+
+
+# ---------------------------------------------------------------------------
+# export_m5_frame -- code-enforced M5 withholding (Borges's PR #23 suggestion:
+# M5's withholding was previously a caller-contract in a docstring only)
+# ---------------------------------------------------------------------------
+
+
+def _m5_pool_item(node_id="dv_old", claim="the claim", premises=None, ground_truth_type="deductive_modus_ponens"):
+    return {
+        "pre_correction_packet": {
+            "id": node_id,
+            "claim": claim,
+            "premises": premises or [],
+        },
+        "ground_truth_type": ground_truth_type,
+    }
+
+
+def test_export_m5_frame_preserves_ground_truth_type_for_scoring():
+    """ground_truth_type is researcher-only scoring metadata (mirrors
+    stratum's exact role) -- it MUST survive the export so
+    analysis.recovery_rate_vs_chance can use it, but callers dispatching
+    to the judge must not forward it (see the function's own docstring)."""
+    pool = [_m5_pool_item(ground_truth_type="abductive_best_explanation")]
+    frame = frame_export.export_m5_frame(pool)
+    assert frame[0]["ground_truth_type"] == "abductive_best_explanation"
+
+
+def test_export_m5_frame_withholds_field_names_not_the_ground_truth_value():
+    """The bare field-name words (confidence, interpretation,
+    standpoint_author_id, and the literal word "reasoning_type") must never
+    appear -- but ground_truth_type's own VALUE (a type name) legitimately
+    appears, since carrying it is the whole point of this function."""
+    pool = [_m5_pool_item(ground_truth_type="inductive_generalization")]
+    frame = frame_export.export_m5_frame(pool)
+    serialized = json.dumps(frame)
+
+    for forbidden in ("confidence", "interpretation", "standpoint_author_id"):
+        assert forbidden not in serialized
+    # The bare FIELD NAME "reasoning_type" must not appear even though a
+    # type NAME (which happens to be a reasoning_type value) legitimately does.
+    assert '"reasoning_type"' not in serialized
+    assert "inductive_generalization" in serialized  # the value itself is expected
+
+
+def test_export_m5_frame_shape_is_flat():
+    pool = [_m5_pool_item(premises=[{"claim": "a premise", "type": "hard_data"}])]
+    frame = frame_export.export_m5_frame(pool)
+    item = frame[0]
+    assert set(item.keys()) == {"id", "claim", "premises", "ground_truth_type"}
+    assert item["premises"] == [{"claim": "a premise", "type": "hard_data"}]
+
+
+def test_export_m5_frame_claim_is_actually_redacted():
+    pool = [_m5_pool_item(claim="This claim mentions confidence 0.85 directly.")]
+    frame = frame_export.export_m5_frame(pool)
+    assert "0.85" not in frame[0]["claim"]
+
+
+def test_export_m5_frame_premise_claim_is_actually_redacted():
+    pool = [_m5_pool_item(premises=[
+        {"claim": "This premise was later retracted, confidence 0.40.", "type": "hard_data"},
+    ])]
+    frame = frame_export.export_m5_frame(pool)
+    premise_claim = frame[0]["premises"][0]["claim"]
+    assert "retracted" not in premise_claim
+    assert "0.40" not in premise_claim
+
+
+def test_export_m5_frame_empty_pool_returns_empty_list():
+    assert frame_export.export_m5_frame([]) == []

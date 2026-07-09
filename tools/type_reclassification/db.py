@@ -1,5 +1,6 @@
 """Read-only, multi-graph access to ENGRAM `knowledge.db` SQLite files, for
-the Track-(b) observation-arm harness.
+the Track-(b) dual-axis (observation + derivation arm) type-reclassification
+harness.
 
 Schema source of truth: engram-alpha `src/engram/engram_core.py` (`nodes`,
 `edges` tables — same schema on every install per engram-alpha's CLAUDE.md).
@@ -15,13 +16,17 @@ explicit label the caller chooses) — the DB file itself has no notion of
 its own graph identity, so this is plumbed in at `fetch_frame_multi`'s
 `db_paths: dict[str, str]` (graph_id -> db_path) call boundary.
 
-**Scope: observation-type nodes only** (`observation_factual`,
-`observation_predictive`) — `OBSERVATION_TYPES`, vendored via
-`tools.compression_fidelity.constants` (same-repo sibling-package import;
-see `redact.py`'s module docstring for why this is NOT the same fragility
-concern that made `compression_fidelity/constants.py` vendor-not-import
-ACROSS repos). Derivation nodes are explicitly out of scope for this
-package — the reasoning_type arm is on hold (see package `__init__.py`).
+**Scope: both observation- and derivation-type nodes** (`observation_factual`,
+`observation_predictive`, `derivation`) — `OBSERVATION_TYPES`/`DERIVATION_TYPES`,
+vendored via `tools.compression_fidelity.constants` (same-repo sibling-package
+import; see `redact.py`'s module docstring for why this is NOT the same
+fragility concern that made `compression_fidelity/constants.py` vendor-not-import
+ACROSS repos). The derivation-arm functions below (`fetch_derivation_frame`,
+`fetch_derivation_premises`, `find_type_correction_partner`,
+`classify_derivation_outcome`) were added once the reasoning_type arm's
+design intent + Aleph's review landed (2026-07-08) — see package
+`__init__.py`'s note on how the observation-arm code was deliberately kept
+general enough not to need a rewrite for this.
 
 Unlike `compression_fidelity/db.py`'s `fetch_frame` (which filters to
 `is_current=1 AND status != 'retracted'`), THIS `fetch_frame` deliberately
@@ -39,7 +44,7 @@ import sqlite3
 from dataclasses import dataclass, field
 from typing import Optional
 
-from tools.compression_fidelity.constants import OBSERVATION_TYPES
+from tools.compression_fidelity.constants import DERIVATION_TYPES, OBSERVATION_TYPES
 
 # ---------------------------------------------------------------------------
 # fs_class proxy fallback — ported from engram-alpha `src/engram/
@@ -110,6 +115,21 @@ class NodeRow:
     # `fetch_frame`/`classify_outcome` has run; hand-built test fixtures
     # that skip `fetch_frame` must set this explicitly.
     outcome: Optional[str] = None
+    # Derivation-arm fields (gh-derivation-arm handoff, 2026-07-08). Both
+    # None/empty for observation-type rows; filled for derivation-type rows
+    # by `fetch_derivation_frame` (premises needs a live `conn` to walk
+    # `derives_from` edges, same reasoning `outcome` above already applies).
+    premises: list = field(default_factory=list)
+
+    @property
+    def reasoning_type(self) -> Optional[str]:
+        """`reasoning_type` lives in `metadata` (NOT a top-level `nodes`
+        column) — confirmed against engram-alpha's `engram_core.py`
+        `_create_derivation`, which stores
+        `derive_meta = {"reasoning_type": reasoning_type, "reasoning_class": rclass}`
+        into the node's `metadata` JSON, mirroring `source_class`'s own
+        metadata-not-column storage (see `NodeRow.source_class` above)."""
+        return self.metadata.get("reasoning_type")
 
     @property
     def source_class(self) -> Optional[str]:
@@ -392,3 +412,333 @@ def _contradicted_and_lost(row: NodeRow, conn: sqlite3.Connection) -> Optional[s
     if "unclassified" in signals:
         return "unclassified"
     return None
+
+
+# ---------------------------------------------------------------------------
+# Derivation-arm functions (reasoning_type re-classification, §2/§4/§5 M5).
+# ---------------------------------------------------------------------------
+
+def fetch_derivation_premises(conn: sqlite3.Connection, derivation_id: str) -> list[dict]:
+    """Return the visible premise structure for a derivation: each premise's
+    `claim` + its own established `type` (the premise's `quote_type` if it's
+    an observation, or its own `reasoning_type` if it's itself a derivation
+    citing a prior derivation) -- pre-reg §2's "premise `type` IS shown, it's
+    part of the visible premise->conclusion structure" requirement.
+
+    Walks `derives_from`/`supported_by` edges FROM `derivation_id` (the
+    convention `_create_derivation` writes them in, confirmed against
+    engram-alpha's `engram_core.py` -- `INSERT INTO edges (source_id,
+    target_id, relation, ...) VALUES (?, ?, 'derives_from', ...)` per
+    supporting_id, source_id = the new derivation). Order is NOT guaranteed
+    (SQLite gives no ordering guarantee absent ORDER BY, and the pre-reg's
+    dose has no notion of premise order) -- sorted by target `id` for
+    deterministic test/fixture comparisons only, not because order carries
+    study meaning.
+
+    A premise node that is itself neither an observation nor a derivation
+    (e.g. an axiom/conjecture/theory cited as a premise -- CLAIM_BEARING_TYPES
+    in engram-alpha includes these) gets `type: None` -- there is no
+    quote_type/reasoning_type to show for those, and the dose must not
+    invent one.
+    """
+    rows = conn.execute(
+        """SELECT p.id, p.type AS node_type, p.claim, p.quote_type, p.metadata
+           FROM edges e
+           JOIN nodes p ON p.id = e.target_id
+           WHERE e.source_id = ? AND e.relation IN ('derives_from', 'supported_by')
+           ORDER BY p.id""",
+        (derivation_id,),
+    ).fetchall()
+
+    premises: list[dict] = []
+    for r in rows:
+        node_type = r["node_type"]
+        premise_type: Optional[str] = None
+        if node_type in OBSERVATION_TYPES:
+            premise_type = r["quote_type"]
+        elif node_type in DERIVATION_TYPES:
+            try:
+                meta = json.loads(r["metadata"]) if r["metadata"] else {}
+            except (TypeError, ValueError):
+                meta = {}
+            if isinstance(meta, dict):
+                premise_type = meta.get("reasoning_type")
+        premises.append({"claim": r["claim"], "type": premise_type})
+    return premises
+
+
+def fetch_derivation_frame(conn: sqlite3.Connection, graph_id: str) -> list[NodeRow]:
+    """All derivation-type nodes in `conn`'s DB (any status/is_current),
+    stamped with `graph_id`, `.premises` (via `fetch_derivation_premises`),
+    and a precomputed `.outcome` (via `classify_derivation_outcome`).
+    Mirrors `fetch_frame`'s observation-arm shape and rationale exactly --
+    see that function's docstring for why ALL statuses are fetched (not
+    pre-filtered to is_current=1) rather than duplicating the explanation.
+    """
+    types = tuple(DERIVATION_TYPES)
+    placeholders = ",".join("?" * len(types))
+    cur = conn.execute(
+        f"""SELECT {NODE_COLUMNS} FROM nodes n
+            LEFT JOIN nodes ev ON n.evidence_id = ev.id
+            WHERE n.type IN ({placeholders})""",
+        types,
+    )
+    rows = [_row_to_node(r, graph_id) for r in cur.fetchall()]
+    for row in rows:
+        row.premises = fetch_derivation_premises(conn, row.id)
+        row.outcome = classify_derivation_outcome(row, conn)
+    return rows
+
+
+def fetch_derivation_frame_multi(db_paths: dict[str, str]) -> list[NodeRow]:
+    """Multi-graph derivation frame -- mirrors `fetch_frame_multi` exactly."""
+    all_rows: list[NodeRow] = []
+    for graph_id, db_path in db_paths.items():
+        conn = connect(db_path)
+        try:
+            all_rows.extend(fetch_derivation_frame(conn, graph_id))
+        finally:
+            conn.close()
+    return all_rows
+
+
+@dataclass
+class TypeCorrectionSearch:
+    """Tri-state result of `find_type_correction_partner` -- distinguishes
+    "definitely not a type correction" from "can't tell" (colleague-review
+    -caught gap, Borges, 2026-07-08: the prior boolean/Optional-only
+    signature silently folded these two into one "no match" outcome, which
+    could let an UNASSESSABLE node land in the scored refuted/INCLUDE
+    population as if it had been assessed-and-found-clean).
+
+    partner: the matched correction partner, or None if none found.
+    indeterminate: True if a same-claim candidate existed but its
+        reasoning_type (or `row`'s own) is None, so a type-change
+        comparison could not be made at all. When True, `partner` is
+        always None -- an indeterminate candidate is never returned as a
+        confirmed match (that would be guessing the comparison came out
+        "different").
+    """
+    partner: Optional[NodeRow] = None
+    indeterminate: bool = False
+
+
+def find_type_correction_partner(conn: sqlite3.Connection, row: NodeRow) -> TypeCorrectionSearch:
+    """Find `row`'s type-correction PARTNER node, if one exists -- the
+    reconstruction step for both the outcome-labeler's circularity fix
+    (§4/draft-3) and the M5 positive-control pool (§5).
+
+    Type-errors surface in TWO structural forms (Borges's handoff, 2026-07-08,
+    both must be mined -- a supersede-only miner silently undercounts):
+
+    Form (a) -- FORMAL SUPERSEDE: `row.superseded_by` is set, and the
+    superseding node has the SAME claim text but a DIFFERENT reasoning_type.
+    Structurally linked via the `superseded_by` FK -- no ambiguity.
+
+    Form (b) -- RETRACT(error_type=other) + REFILE: `row` is retracted with
+    error_type == "other", and a LATER derivation in the SAME graph exists
+    with the SAME claim text but a DIFFERENT reasoning_type. There is no FK
+    linking a retraction to its refile (unlike supersede) -- ENGRAM's schema
+    has no "refiled_by" concept, so this is a claim-text + created_at
+    heuristic, not a structural guarantee. Deliberately conservative:
+    EXACT claim-text match only (no fuzzy/normalized matching), and if
+    MULTIPLE later same-claim candidates exist, the EARLIEST one is taken
+    (the first refile attempt, not a later unrelated coincidence) --
+    favors returning no-match over a false-positive partner pairing, same
+    "ambiguous > wrong" discipline as `_contradicted_and_lost` above.
+
+    Returns `TypeCorrectionSearch(partner=None, indeterminate=False)` if
+    `row` is not itself a candidate (not superseded, not a
+    retracted-with-error_type=other derivation) OR no same-claim candidate
+    is found at all, OR the only candidate partner(s) have the SAME
+    reasoning_type as `row` (a supersede/refile that did NOT change the
+    type is not a type correction -- e.g. a pure content refinement, out
+    of scope here). Returns `indeterminate=True` if a same-claim candidate
+    exists but either its or `row`'s own `reasoning_type` is None (a
+    type-change comparison literally cannot be made) -- see
+    `classify_derivation_outcome`'s handling of this case.
+    """
+    if row.type not in DERIVATION_TYPES:
+        return TypeCorrectionSearch()
+
+    # #1715-shaped bug caught by reviewer-fairy review (2026-07-08): these
+    # two checks were originally `if/elif`, making Form (a) and Form (b)
+    # MUTUALLY EXCLUSIVE. A real, reproducible circularity leak: a
+    # derivation can be BOTH superseded (by a same-reasoning_type content
+    # refinement -- NOT itself a type correction) AND SEPARATELY retracted
+    # later with error_type="other" (engram-alpha's `_retract_impl` never
+    # checks `superseded_by`/`is_current` before retracting -- confirmed
+    # against engram_revision.py). With `elif`, the `if row.superseded_by`
+    # branch wins, finds no type change on the supersede partner, and the
+    # function returns None -- even when a genuine Form (b) refile (same
+    # claim, different reasoning_type, filed later) exists elsewhere in the
+    # graph. Both checks now run independently and their candidates are
+    # unioned (Form (a) first -- the more certain structural match --
+    # then Form (b)'s heuristic match), so a Form (a) non-match no longer
+    # suppresses a real Form (b) match.
+    candidates: list[sqlite3.Row] = []
+
+    if row.superseded_by is not None:
+        cur = conn.execute(
+            f"SELECT {NODE_COLUMNS} FROM nodes n "
+            f"LEFT JOIN nodes ev ON n.evidence_id = ev.id WHERE n.id = ?",
+            (row.superseded_by,),
+        )
+        r = cur.fetchone()
+        if r is not None:
+            candidates.append(r)
+
+    if row.status == "retracted" and (row.metadata or {}).get("error_type") == "other":
+        # Colleague-review-caught gap (Borges, 2026-07-08): the docstring
+        # says "a LATER derivation" but the query had no created_at bound
+        # at all -- only an ORDER BY, which sorts candidates but doesn't
+        # EXCLUDE earlier ones. An earlier same-claim-diff-type node (e.g.
+        # a prior draft this derivation itself superseded/refiled FROM)
+        # could be silently picked as the "correction partner," which for
+        # M5 specifically would mis-pair pre_correction_packet (should be
+        # the retracted row) against the WRONG ground_truth_type -- silent
+        # because it requires a multi-version claim history to trigger, no
+        # crash, just a wrong number in the study's own positive-control
+        # instrument. row's own created_at is fetched here (NodeRow/
+        # NODE_COLUMNS don't carry it -- both are shared with the
+        # observation arm's already-reviewed code, so this stays a scoped
+        # local lookup rather than widening that shared surface).
+        row_created_at = conn.execute(
+            "SELECT created_at FROM nodes WHERE id = ?", (row.id,)
+        ).fetchone()
+        if row_created_at is not None:
+            cur = conn.execute(
+                f"SELECT {NODE_COLUMNS} FROM nodes n "
+                f"LEFT JOIN nodes ev ON n.evidence_id = ev.id "
+                f"WHERE n.type IN ({','.join('?' * len(DERIVATION_TYPES))}) "
+                f"AND n.id != ? AND n.claim = ? AND n.created_at > ? "
+                f"ORDER BY n.created_at ASC",
+                (*DERIVATION_TYPES, row.id, row.claim, row_created_at["created_at"]),
+            )
+            candidates.extend(cur.fetchall())
+
+    saw_indeterminate = False
+    for cand_row in candidates:
+        cand = _row_to_node(cand_row, row.graph_id)
+        if cand.claim != row.claim:
+            continue  # form (a) safety check: supersede target must match too
+        if cand.reasoning_type is None or row.reasoning_type is None:
+            # Colleague-review-caught gap (Borges, 2026-07-08): a same-claim
+            # candidate exists, but the type-change comparison literally
+            # cannot be made (one side's reasoning_type is unknown --
+            # legacy/backfilled derivations, typically). The OLD code
+            # silently treated this the same as "compared, found no
+            # change" (both falsy-short-circuit the `and` chain), which
+            # would let an unassessable node enter the scored population
+            # as if it had been cleanly assessed. Track it and keep
+            # scanning other candidates -- a LATER candidate in the same
+            # list might still resolve definitively.
+            saw_indeterminate = True
+            continue
+        if cand.reasoning_type != row.reasoning_type:
+            return TypeCorrectionSearch(partner=cand)
+    return TypeCorrectionSearch(indeterminate=saw_indeterminate)
+
+
+def classify_derivation_outcome(row: NodeRow, conn: sqlite3.Connection) -> str:
+    """Derivation-arm outcome classification -- mirrors `classify_outcome`'s
+    rubric exactly EXCEPT for the type-error circularity fix (§4 draft-3):
+    a retracted-or-superseded derivation whose correction is a TYPE change
+    (same claim, different reasoning_type -- see `find_type_correction_partner`)
+    is tagged "excluded_type", NOT "refuted"/"unclassified". Type-errors are
+    the study's own predictor (type mis-selection); letting them leak into
+    the refuted/unclassified outcome population would make the predictor
+    and the outcome the same construct -- circular (Borges, seq 1398).
+
+    Order (checked in this priority, same discipline as `classify_outcome`):
+      1. retracted + error_type in EXCLUDE list -> "excluded"
+      2. retracted OR superseded + a type-correction partner exists ->
+         "excluded_type"
+      2b. retracted OR superseded + a same-claim candidate exists but the
+         type-change comparison is INDETERMINATE (either side's
+         reasoning_type is None -- colleague-review-caught gap, Borges,
+         2026-07-08) -> "unclassified", NEVER "refuted"/"excluded_type".
+         "Can't tell if this was a type correction" must never be silently
+         treated as "assessed and clean" (which would let it enter the
+         scored refuted/INCLUDE population) NOR as a confirmed correction
+         (which would enter M5 with an unreliable ground truth) -- the
+         SAME open-question-deferral principle classify_outcome already
+         applies to a superseded-with-unwritten-rubric observation.
+      3. retracted + error_type in INCLUDE list -> "refuted"
+      4. superseded_by is not None (no type-correction partner found) ->
+         "unclassified" (same open-question deferral as classify_outcome)
+      5. contradicted-and-lost (reused verbatim from classify_outcome's own
+         helper -- the structural-loss logic is type-system-agnostic)
+      6. otherwise -> "survived"
+    """
+    meta = row.metadata or {}
+    error_type = meta.get("error_type")
+
+    if row.status == "retracted":
+        if error_type in _EXCLUDED_ERROR_TYPES:
+            return "excluded"
+        search = find_type_correction_partner(conn, row)
+        if search.partner is not None:
+            return "excluded_type"
+        if search.indeterminate:
+            return "unclassified"
+        if error_type in _REFUTED_ERROR_TYPES:
+            return "refuted"
+        return "unclassified"
+
+    if row.superseded_by is not None:
+        search = find_type_correction_partner(conn, row)
+        if search.partner is not None:
+            return "excluded_type"
+        return "unclassified"
+
+    lost = _contradicted_and_lost(row, conn)
+    if lost is not None:
+        return lost
+
+    return "survived"
+
+
+def mine_m5_reconstruction_pool(conn: sqlite3.Connection, graph_id: str) -> list[dict]:
+    """Build the M5 positive-control pool (§5): every derivation classified
+    as "excluded_type" by `classify_derivation_outcome`, reconstructed into
+    a {pre_correction_packet, ground_truth_type} pair.
+
+    pre_correction_packet is the SAME shape a normal derivation-arm frame
+    item would have ({id, claim, premises}) built from the RETRACTED/
+    SUPERSEDED node's OWN premises (its pre-correction state -- the panel
+    re-judges what reasoning_type the ORIGINAL claim+premises warranted,
+    blind to the fact a correction ever happened). ground_truth_type is the
+    partner node's reasoning_type -- the agent's own refiled/superseding
+    choice, used only for scoring (recovery rate vs chance), never shown to
+    the judge.
+
+    Does NOT redact/export-shape the packet (no confidence/interpretation/
+    node-id withholding applied here) -- that is frame_export.py's job,
+    same division of responsibility as the observation arm's `fetch_frame`
+    (raw fetch) vs `export_frame` (judge-facing shaping). Callers building
+    the actual M5 dispatch packets must run this pool through the same
+    withholding path as a normal derivation frame item.
+    """
+    frame = fetch_derivation_frame(conn, graph_id)
+    pool: list[dict] = []
+    for row in frame:
+        if row.outcome != "excluded_type":
+            continue
+        search = find_type_correction_partner(conn, row)
+        if search.partner is None:
+            # row.outcome == "excluded_type" was set by
+            # classify_derivation_outcome finding a CONFIRMED partner --
+            # an indeterminate-only result never sets that outcome (see
+            # its docstring), so reaching here with no partner is a
+            # genuine defensive no-op, not a live path.
+            continue
+        pool.append({
+            "pre_correction_packet": {
+                "id": row.id,
+                "claim": row.claim,
+                "premises": row.premises,
+            },
+            "ground_truth_type": search.partner.reasoning_type,
+        })
+    return pool
