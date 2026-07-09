@@ -1,0 +1,8 @@
+# compression_fidelity harness dependencies.
+#
+# ckwrap wraps the actual R `Ckmeans.1d.dp` package (see kstar.py docstring
+# for why it was chosen over the `kmeans1d` alternative). Pin recorded at
+# build time 2026-07-05; Borges/Kepler should re-confirm + re-pin at the
+# real study's freeze step per pre-reg §8.0.
+ckwrap==1.2.3
+numpy>=1.24
