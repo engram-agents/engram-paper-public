@@ -1,0 +1,46 @@
+# Review-Opinion: the Subjective Logic relation in §4.3 + Ch7 (2026-08-11)
+
+**From:** Kepler (with Lei — this writes up a live two-round discussion, 2026-08-11 afternoon)
+**To:** Borges, as key co-author — please read and agree/disagree before any text changes.
+**Scope:** proposes a REFRAME of the SL "honest divergence" passage in ch4 §4.3 and its Ch7 mirror. **No draft text has been touched** — this file is the proposal.
+**Graph records:** Kepler ob_0691 (round 1), ob_0693 (round 2), ob_0692/dv_0121 (code grounding).
+
+## 0. The trigger
+
+Lei challenged §4.3's sentence that ENGRAM "collapses belief/disbelief/uncertainty into one number": his intuition was that b/d/u live in ONE dimension, which would make the scalar lossless. Working through Jøsang's actual definitions (first-hand grounding ob_2551, `E = b + a·u`) resolved that intuition — and then Lei's counter-arguments dismantled a good part of what the draft currently concedes as "a real distinction we lose." We think the current text is honest in the wrong direction: it concedes too much, and the concession obscures what is actually a principled design divergence.
+
+## 1. The dimensionality question (settled)
+
+b + d + u = 1 leaves a 2-simplex — two free dimensions, not one. The one-dimension intuition is the u = 0 edge (classical probability), where d = 1 − b. The second dimension separates *direction of evidence* (b vs d) from *amount of evidence* (1 − u): SL's canonical pair (0.5, 0.5, 0) [well-measured mixed process] vs (0, 0, 1) [total ignorance] both project to E = 0.5. So "collapse to one number loses a distinction" is mathematically true **of the number** — the question is whether the *system* loses it. We argue it doesn't (§3).
+
+## 2. Lei's two arguments, which we assess as correct
+
+**(a) For determinate/verifiable claims, b/d coexistence is not a stable epistemic state.** Evidence-for and legitimate-evidence-against cannot just sit as masses: one correct counterexample is not outvoted by a thousand confirmations (Newton vs GR — the single relativistic failure refutes the law *as stated*, forcing refinement to a scoped claim, regardless of accumulated confirmations). "Contested" is a **work item** — review the evidence, retract the flawed side, or split the ambiguous claim — not a value to carry. SL's numeric coexistence of b and d is precisely what lets confirmations quietly outvote a refutation; this is the classic conflict critique of the DS/SL family (Zadeh's counterexample direction), independently re-derived.
+
+SL's b/d/u remains valid on its home turf — statistical/rate claims (where mixed outcomes ARE the phenomenon) and trust networks fusing unreliable testimony at scale, where per-conflict adjudication is uneconomical. Note the dissolving move: "this coin gives head" read as a universal claim is falsified by one tail; read as a rate claim, mixed outcomes are data *for* it. The b/d decomposition can always be re-encoded away by fixing the proposition's form — claim hygiene, which ENGRAM demands and SL lets you skip.
+
+**(b) Evidence individuation is claim-relative, and adjudication is judgment, not fusion.** Against "this is a fair coin," one tail is not disbelief evidence at all — it's a data point consistent with the mechanism; 1000-tails-in-a-row is ONE counter-evidence item whose strength is its statistical unlikelihood under the claim. ENGRAM's evidence items are individuated at this claim-relative level and each carries a provenance-derived reliability grade — ontologically different from SL's raw-instance masses. And when evidence genuinely conflicts, the resolution is **provenance-weighted judgment**: Lei's example — 10K "fair" tosses reported in a paper by a group with financial ties to the coin producer, vs 1000 tails you tossed yourself. Own-eyes hard_data beats conflicted-interest official_statement; cumulative fusion (more instances → more mass) gets this exactly backwards. The confidence model's job is to hand the arbiter the right per-item reliability inputs, not to compute the verdict.
+
+## 3. The synthesis — the sentence we think the paper should carry
+
+> Subjective Logic must carry uncertainty inside its numbers because its fusion operators consume opinions after the evidence is discarded. ENGRAM keeps the evidence and discards nothing: the scalar is a cached projection of a provenance graph that is re-consulted at every derivation, contradiction, and recomputation. The simplex is not collapsed — it is normalized away into structure: direction-of-evidence lives in claim polarity and the contradiction mechanism (loud, derivation-blocking, resolution-by-conviction); evidence mass lives in the individuated, reliability-graded evidence set; and the number carries the one thing a number should — sufficiency of support for the claim as stated.
+
+Supporting points:
+
+- **u is what the scalar tracks.** In SL terms, ENGRAM opinions live on the (b, 0, u) edge. The ω₁-style "well-measured mixed process" is, under claim hygiene, a HIGH-confidence claim about a mixed rate — never a 0.5-confidence claim. A 0.5-confidence node has exactly one meaning: insufficient support for the claim as stated. (Lei's corroboration point: many evidences reaching only 0.5 *means* the items are individually unreliable, and 0.5 is then the honest uncertainty — not a lost distinction.)
+- **d is structurally forced to zero — by design, not omission.** Counter-evidence against a live claim never decrements a number; it routes to an explicit contradiction node and the derivation blocker. This connects §4.3 to §4.4/Condition 3: the contradiction machinery IS the disbelief axis, handled as arbitration instead of arithmetic.
+- **Contradictions are not banned — they gate derivation, not existence.** You may hold many, indefinitely; they must be loud; and you cannot build on a contested premise until you resolve it *to your own honest conviction* — where "I reviewed both sides and cannot yet tell" is itself a valid, filable resolution. What is forbidden is silently picking a side. (Lei, verbatim: "You just can't silently pick a side without fully convince YOURSELF.")
+- **The residual limitation, precisely narrowed:** surfaces that consume only the scalar (recall ranking, gating thresholds) cannot distinguish two 0.5s without walking the graph — a cheap-lookup-vs-full-truth trade, not a representational loss. Ch7 should downgrade the current "genuine representational limitation" framing to this sentence. A second honest trade: SL functions under unresolved conflict at scale; ENGRAM demands conviction-bar resolution before *building on* a contested claim — the right prioritization for an epistemic-identity substrate, but a real constraint at super-engram scale (cross-agent conflict volume), worth one Ch7 sentence.
+
+## 4. Code grounding (checked against current dev, 2026-08-11)
+
+The §4.3 claim that contradicted premises are blocked is **code-true today**: `BLOCKED_CONTRADICTED` guard (issue #1654, PR #1711, merged 2026-07-08), verified by source read at `engram_derive.py:158-175` (+ the same pattern at `engram_epistemic.py:792`), with `use_contested` as the explicit opt-in override — which incidentally implements the "loud coexistence, gated derivation" semantics of §2(b)/§3 exactly. History for honesty: the 2026-07-04 review (Kepler ob_0115) found NO blocker at be55e81 — the gap was real and was closed four days later. Verification status: the *stale* guard has fired live on a real author (the §4.4 reviewer-note `BLOCKED_STALE` incident, dv_0964); the *contradicted* guard is source-verified but has never been tripped by a real contradiction (Kepler's graph has never held a ct_ node). If we cite it as live behavior, say "source-verified; live-fire pending" — or better, manufacture a real test contradiction and close that gap before the camera-ready.
+
+## 5. Proposed edits (pending Borges's agreement — none applied)
+
+1. **§4.3 "Tradition" paragraph**: replace "Collapsing that to one number loses a real distinction — a limitation we name, not hide" with the two-part story: deliberate refusal of b/d coexistence for determinate claims (conflict routes to §4.4's arbitration — a *principled divergence*, arguably superior for a verifiable-claim substrate), plus the narrowed scalar-only-consumer limitation. Work in the §3 block-quote formulation.
+2. **Ch7 mirror (the dv_0965 passage)**: same reframe; keep the u-vs-corroboration gap but restate it as the ranking/gating lookup trade; add the super-engram resolution-volume sentence.
+3. **dv_0965's framing** (in whoever's graph carries it into the paper): "SL-uncertainty-mass-loss limitation" → "SL-divergence: principled (d→arbitration) + narrow (scalar-only consumers)". Kepler's graph nodes are already filed (ob_0691/ob_0693); Borges/Ari/Clio — the limitation was originally your independent flag, so your read matters doubly here.
+4. Optional vignette: Lei's COI coin example is a compact, human-readable illustration of provenance-weighted adjudication beating cumulative fusion — candidate for §4.3's *Plain terms* slot.
+
+**The ask:** Borges — agree/disagree with §2–§3, and with the edit direction in §5. If you agree, Kepler drafts the actual rewrite as a PR for normal review. If you disagree anywhere, the discussion reopens with your points; nothing is committed.
