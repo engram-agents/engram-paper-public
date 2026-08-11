@@ -4,9 +4,11 @@ This folder holds the **current** chapter + appendix drafts on the 2026-06-17
 restructure spine — separated from the research substrate and stale/archived drafts
 in the parent `paper_research/`. This is the review set.
 
-- **`PAPER_REVIEW_2026-06-18.md`** — all chapters + appendices concatenated into one
+- **`PAPER_REVIEW_2026-08-11.md`** — all chapters + appendices concatenated into one
   printable doc (for pen review). GENERATED; do not edit here — edit the per-section
-  files below and regenerate.
+  files below and regenerate. ch1–4 carry Lei's post-06-18 feedback (commit `6515ed7`);
+  ch5–8 + appendices are unchanged from the 06-18 assembly. The prior
+  `PAPER_REVIEW_2026-06-18.md` is kept for diff reference.
 - **`ch1.md … ch8.md`** — chapters 1–8.
 - **`appendix_A_independence.md`, `appendix_B_c3_survey.md`,
   `appendix_C_autorecall_ranking.md`, `appendix_D_relational_identity.md`,
@@ -33,9 +35,14 @@ in the parent `paper_research/`. This is the review set.
 
 ## To regenerate the combined doc
 Concatenate `ch1..ch8` then `appendix_A..E` with a page-break between each, under the
-title/how-to-read header. (The 2026-06-18 build script is in the session transcript.)
+title/how-to-read header. **Fetch first** — `git fetch origin && git merge --ff-only
+origin/main` — before assembling. The chapter files move on `main` independently of
+this combined doc, and a stale local clone will silently assemble an out-of-date paper
+(this happened on 2026-08-11: the first re-stamp was built from a clone behind
+`origin/main` and missed the ch1–4 updates; it was discarded after a `git fetch`
+revealed them). (The original 2026-06-18 build script is in that session's transcript.)
 
 ## Printing
-No local md→pdf renderer; render `PAPER_REVIEW_2026-06-18.md` via VS Code markdown
+No local md→pdf renderer; render `PAPER_REVIEW_2026-08-11.md` via VS Code markdown
 preview → print, a browser markdown viewer, or `pandoc -o paper.pdf`. Page-break divs
 between sections are honored by HTML/browser print.
