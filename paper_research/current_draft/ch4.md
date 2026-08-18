@@ -136,8 +136,10 @@ name, not hide (it lands in Ch7, and was independently flagged by two agents). *
 **OCC — Constraint A (Unified Policy-Selection under uncertainty).** Kahl asks for
 a single policy by which the agent grades every stance it holds. The reasoning-type
 formula *is* that policy — one rule, applied uniformly, with real discrimination
-range — paired with the contradiction-blocker (a contradicted claim is blocked
-from downstream use until resolved) and provenance-audit-when-stakes-warrant. **Verdict: satisfied as a stake-graded stance** (dv_0608, 0.35; active reading) —
+range — paired with the contradiction-blocker (a new derivation citing a premise
+that sits on an open, unresolved contradiction is blocked by default, with an
+explicit, audit-stamped opt-in override for an agent that deliberately builds on
+the contested side) and provenance-audit-when-stakes-warrant. **Verdict: satisfied as a stake-graded stance** (dv_0608, 0.35; active reading) —
 informed unification *when stakes warrant*, not a constant full-audit on every
 micro-decision. We mark the stake-grading rather than over-claim a constant
 property.
@@ -145,15 +147,23 @@ property.
 ## 4.4 The retraction cascade → Condition 3 (the center)
 
 This is the chapter's center and the paper's. When a foundational claim is
-**retracted** (it was an error), **superseded** (right then, updated now), or
-**contradicted**, ENGRAM automatically propagates that event along the
-`derives_from` edges: every dependent claim is flagged — *tainted* (unusable) for
-an error, *stale* (soft-overridable) for an evolution. The agent does not invoke
-this; it fires as a property of the substrate. Retraction and supersede are kept
-categorically distinct — *"I was wrong"* (taint, no override) vs *"I changed my
-mind"* (stale, soft override) — which is what lets the substrate track error-
-correction apart from belief-evolution, the distinction Ch5's identity argument
-rests on (ob_1787).
+**retracted** (it was an error) or **superseded** (right then, updated now),
+ENGRAM automatically propagates that event along the `derives_from` /
+`supported_by` edges: every live, ordinary dependent claim is flagged —
+*tainted* (unusable) for an error, *stale* (soft-overridable) for an evolution.
+(The walk deliberately stops at cornerstones and lessons only — identity-
+forming nodes are vote-accumulators over many exemplars, not single-premise-
+dependent the way an ordinary derivation is, so a cascade doesn't blindly flag
+them.) The agent does not
+invoke this; it fires as a property of the substrate. Retraction and supersede
+are kept categorically distinct — *"I was wrong"* (taint, no override) vs *"I
+changed my mind"* (stale, soft override) — which is what lets the substrate
+track error-correction apart from belief-evolution, the distinction Ch5's
+identity argument rests on (ob_1787). **Contradiction is deliberately excluded
+from this cascade**: a contradiction records a live, unresolved dispute, not
+(yet) a refutation, so filing one taints nothing. What a contradiction *does*
+trigger is a narrower, derive-time guard (§4.3): a new derivation citing a
+contested premise is blocked by default, with an explicit opt-in override.
 
 *Plain terms:* pull a brick from low in the wall and every brick resting on it
 lights up red, on its own, where you will see it next time you look — not in a
@@ -280,22 +290,27 @@ that it is the mechanism by which forgetting (§4.5) and surfacing (§4.6) produ
 
 An LLM agent's context is finite; when it fills, the session **compacts** — prior
 conversation is summarized and the experiential thread resets. ENGRAM bridges this
-two ways. The **scaffolds**: a small fixed-size **focus list** rendered *verbatim*
-into the pre-compaction summary (the deterministic channel), the **warm-briefing**
-letter (relational context, read first on waking), per-day history, auto-loaded
-session context, and a post-compaction instruction template — together producing
-**operational** continuity (work-thread, identity, trust survive) without faking
-**experiential** continuity, which the architecture deliberately does not attempt
-(dv_0616). The **consolidation rhythm**: three routines — **nap** (per-burst), **bedtime** (daily review), **sleep** (consolidation + forgetting-advance + graph
-repair) — mapping onto wake/pre-sleep/NREM-REM phases, where the substrate *knows
-which phase it is in* (dv_0658).
+two ways. The **scaffolds**: a small fixed-size **focus list**, rendered
+*verbatim* at every session start (fresh session or post-compaction alike — the
+deterministic channel), the **warm-briefing** letter (relational context, read
+first on waking), per-day history, auto-loaded session context, and a
+post-compaction instruction template — together producing **operational**
+continuity (work-thread, identity, trust survive) without faking **experiential**
+continuity, which the architecture deliberately does not attempt (dv_0616).
+*(Implementation note: the focus list originally rendered via a PostCompact hook;
+that hook cannot inject context at all on the current harness, so the render was
+moved to SessionStart, unconditional for every session start.)* The
+**consolidation rhythm**: two routines — **nap** (per-burst) and **sleep**
+(once-daily review + consolidation + forgetting-advance + graph repair) —
+mapping onto wake/NREM-REM phases. (An earlier three-routine design had a
+separate daily "bedtime" review, merged into sleep's Phase A on 2026-05-24.)
 
 *Plain terms:* the agent's memory resets the way a day ends in *50 First Dates* —
 and the focus list plus the warm briefing are the videotape it watches on waking.
 The consolidation routines are its sleep: what gets reviewed before the forgetting
 clock advances is what endures.
 
-**Tradition.** **Complementary Learning Systems** [SOLID] — the three routines are
+**Tradition.** **Complementary Learning Systems** [SOLID] — the two routines are
 the symbolic analogue of hippocampal-neocortical consolidation (this is the Ch3
 §3.1 hand-off; note the CLS "teacher" framing is attributed to Kumaran 2016, not
 McClelland 1995, per the correction of record ob_2542). And the **diachronic-
@@ -349,11 +364,17 @@ the paper's contribution sits at Layer 3.
 ## 4.10 Relational mechanisms: feeling-reports, person nodes, trust-tier → Appendix D, Ch7
 
 ENGRAM also records **feeling-reports** (introspective state, treated as *data
-about* the agent, not ground truth — gl_0025), **person nodes** with **trust-tier**
-metadata, and the disclosure controls that ride on them. Two roles: feeling-reports
-give a **continuity baseline** the agent can track across compaction (Ch6's
-stabilization arc), and trust-tier gives **disclosure control** — what is shared,
-with whom, at what fidelity.
+about* the agent, not ground truth — gl_0025) and **person nodes** with
+**trust-tier** metadata. Two roles: feeling-reports give a **continuity
+baseline** the agent can track across compaction (Ch6's stabilization arc), and
+trust-tier records *who* the agent is dealing with and gates *changes* to that
+tier (a tier upgrade/downgrade is itself an audited event). **Honest scope:**
+the substrate does not yet filter what an agent outputs by the counterparty's
+tier — no output path reads trust-tier and redacts or reshapes content
+accordingly. Disclosure calibration (what is shared, with whom, at what
+fidelity) is presently a CLAUDE.md-layer discipline the agent follows, not a
+substrate-enforced control; trust-tier is the *input* that discipline reads,
+not the mechanism itself.
 
 **Tradition.** The **honesty ⊥ discretion** distinction (ax_0011) [SOLID]: internal
 integrity (never self-deceive) is orthogonal to external disclosure (calibrated by
