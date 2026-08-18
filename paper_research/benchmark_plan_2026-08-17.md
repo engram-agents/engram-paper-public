@@ -227,6 +227,44 @@ budget allows (per-cell ENGRAM-delta).
   this design tests, is handicapped on dsh. Until that closes, cell 1 measures
   migration completeness, not harness quality. "Benchmark-fair" is a concrete
   milestone for dsh-engram.
+  **Status correction (2026-08-18, per Borges's first-hand check of DESIGN.md
+  at tip #25):** this prerequisite is an unmade DESIGN DECISION, not a build in
+  progress — §6c says "Not yet designed," with two options open (transcript
+  adapter translating dsh's session log to the verifier's expected shape, vs. a
+  dsh-native evidence resolver against the real log format). The decision is
+  Luria's lane, and Sol builds the dsh runner interface-only — not run for
+  score — until §6c resolves, so nothing else stalls meanwhile (team context
+  per Borges's note, not DESIGN.md itself).
+  **Fairness rider (scope corrected per Borges, 2026-08-18):** the blocking
+  condition for scoring cell 1 is the verifier's behaviour being UNKNOWN, not
+  §6c being unresolved. Three states, two scoreable: hard-fails (scoreable —
+  dsh without a session-cited evidence path, an honest handicap reported in
+  the disciplines-live column); verifies (scoreable — parity); degrades
+  silently (NOT scoreable — filings look like the measured thing and are not,
+  quietly weakening the exact honesty mechanism the study partly measures).
+  Only the silent branch disqualifies. Determining the state is a direct
+  measurement against today's dsh, independent of the §6c design decision —
+  no design work required (effort not yet estimated by measurement).
+  **What a hard-failing cell measures is not static.** An agent whose first
+  session-cited filing fails may adapt — stop attempting, downgrade
+  `source_class`, route around the broken path — and *how readily it adapts
+  can differ by model and by harness*, which is precisely the axis 1v2 and
+  2v3 exist to isolate. So the audit reports **session-cited filing attempts
+  after the first observed hard-fail** as a per-cell field alongside
+  disciplines-live — converting the confound into a covariate, the same move
+  as the disciplines-live column itself.
+  **Mechanical form (exam-room `INTEGRITY.md` Gate 3b, merged `053a8ef`):** a
+  per-cell preflight in two steps, because the harness's structure is knowable
+  before any probe runs. **Step A** reads the harness's tool schema — does it
+  *declare* a session-cited evidence field at all? No → hard-fails, scoreable,
+  no probe needed. **Step B**, only for harnesses that declare one, attempts a
+  filing with a deliberately non-verbatim quote against a scratch instance:
+  rejected-naming-quote-mismatch *with nothing persisted* → verifies;
+  accepted, or rejected-with-an-artifact-written → degrades silently.
+  **Step C** catches anything indeterminate, allows one re-run, then forces a
+  classification, so no cell can sit in limbo. The procedure fails toward
+  `hard-fails` — the scoreable default — whenever it cannot pin a case down,
+  and never toward `verifies`.
 - **Report which disciplines were LIVE per cell** (CC: full 22-registration
   stack; dsh: whatever the bridge covers, ~14/22 today). Discipline delivery
   differs by harness by construction; making it a reported variable keeps the
