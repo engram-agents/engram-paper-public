@@ -127,11 +127,61 @@ outcomes (ob_1049). The paper says "provenance-graded confidence," never
 "calibrated"; auto-calibration is future work (Ch7).
 
 **Tradition.** This is **Subjective Logic** territory (Jøsang): an algebra of
-graded opinions with propagation operators. And here we owe an *honest divergence*,
-not just a convergence: ENGRAM's confidence is a scalar, where Subjective Logic
-carries an explicit *uncertainty mass* (belief / disbelief / uncertainty as a
-simplex). Collapsing that to one number loses a real distinction — a limitation we
-name, not hide (it lands in Ch7, and was independently flagged by two agents). **[GROUNDED 2026-06-18 — Jøsang read first-hand (ob_2551, verbatim opinion def + E=b+a·u); the divergence is dv_0965.]**
+graded opinions with propagation operators. An earlier draft conceded here that
+collapsing SL's belief/disbelief/uncertainty simplex to one number "loses a real
+distinction." Working the comparison against Jøsang's own definitions (E = b + a·u,
+first-hand ob_2551) turned the concession into a *principled divergence*, in two
+parts. First, for the determinate, verifiable claims an epistemic-identity
+substrate mostly carries, ENGRAM **deliberately refuses b/d coexistence**:
+evidence-against a live claim never decrements a number — it routes to an explicit
+contradiction node and the derivation blocker (§4.4's arbitration). One legitimate
+counterexample is not outvoted by a thousand confirmations; "contested" is a work
+item to resolve, not a value to carry.
+
+> Subjective Logic must carry uncertainty inside its numbers because its fusion
+> operators consume opinions after the evidence is discarded. ENGRAM keeps the
+> evidence and discards nothing: the scalar is a cached projection of a provenance
+> graph that is re-consulted at every derivation, contradiction, and
+> recomputation. The simplex is not collapsed — it is normalized away into
+> structure: direction-of-evidence lives in claim polarity and the contradiction
+> mechanism; evidence mass lives in the individuated, reliability-graded evidence
+> set; and the number carries the one thing a number should — sufficiency of
+> support for the claim as stated.
+
+*Plain terms (Lei's example):* 10,000 "fair" tosses reported in a paper by a group
+with financial ties to the coin's producer, against 1,000 tails you tossed
+yourself. The verdict does not come from mass; it comes from provenance-weighted
+judgment — own-eyes hard data outweighs a conflicted official statement. The
+confidence model's job is to hand the arbiter the right per-item reliability
+inputs, not to compute the verdict.
+
+Second, the residual limitation, precisely narrowed (detail in Ch7): surfaces that
+consume *only* the scalar — recall ranking, gating thresholds — cannot distinguish
+two 0.5s without walking the graph. A cheap-lookup-vs-full-truth trade, not a
+representational loss. Credit where the primary text is stronger than its
+caricature: Jøsang's discounting operators (Defs 23–25, §4.8) *do* weight source
+reliability — under Def 23 specifically, the recommender's distrust flows into `u`,
+so a distrusted source is pushed toward vacuity, not disbelief — closer to ENGRAM's
+own posture than earlier drafts implied. The divergence that
+survives the primary text is about **independence**: SL's multi-source operators
+require opinion independence to be *assumed* — cumulative fusion is defined over
+"independent opinions" (§4.7, §5.5), and trust paths prohibit entity repetition
+structurally. Jøsang concedes the limit himself (§5.5): dependence between
+evidence sources "should be avoided as far as possible," a "more subtle and hard
+to detect dependence" can originate from hidden common ancestors outside the
+model, and *"absolute independence is never achievable"* — his remedy is modeller
+discipline (be aware; select low-dependence sources). ENGRAM's remedy is
+mechanical exactly where he locates the hard case: because the evidence graph is
+retained rather than consumed, the hidden common ancestor is a traversal —
+premises are walked back to their evidence roots and a shared root raises a
+warning at derivation time. Honest scope: this shared-root check is
+reasoning-type gated — it fires where independence is load-bearing (2 of 14
+reasoning types: inductive_generalization and authority_consensus), not
+universally. **[GROUNDED 2026-06-18 — Jøsang read
+first-hand (ob_2551, verbatim opinion def + E=b+a·u); §5.5 independence passages
+verified 2026-08-12 (Borges, primary read); divergence dv_0965 → dv_1289 (0.833)
+— the supersede chain is itself a live instance of the mechanism this chapter
+describes; reframe per review_opinion_sl_section_2026-08-11.md.]**
 
 **OCC — Constraint A (Unified Policy-Selection under uncertainty).** Kahl asks for
 a single policy by which the agent grades every stance it holds. The reasoning-type
@@ -273,6 +323,31 @@ CS-side precedent for cue-dependent automatic retrieval.
 **OCC:** none of its own, but auto-surfacing is the **binding half of Condition 3**
 (§4.4): it is what makes "the agent cannot quietly ignore a correction" true — the
 tainted flag surfaces next turn whether or not the agent goes looking.
+
+**Honest scope (measured on ourselves).** The binding claim is exactly as narrow
+as stated: it holds for *cascade flags*, which surface unbidden. It does not
+generalize to "the substrate reliably converts surfaced knowledge into
+decisions." Our working record holds three instances of that conversion failing
+— and on re-examination, none fails at the surfacing step; each fails at a
+different stage downstream of it. In one measured instance (one seat, one query,
+one missed node — enough to refute "the surface does not fire," not enough for a
+rate), the ambient recall surface fired dozens of times per session while an
+agent carried a refuted claim into a draft; the missed node returned at **rank
+1, first attempt**, when queried with a draft of the claim itself. The defect is
+**query construction** — the surface queries with the prompt's salient novel
+terms rather than the claim about to be asserted, so it retrieves weakest
+exactly where that claim is most specific — and its mitigation requires no
+substrate change: draft the claim, query with it, then assert. In the other two
+instances the relevant warning fired, was read — in one case cited by name — and
+the error was committed in the same breath: an **enactment gap** between
+rendering and binding. Three instances, three seats, each verified only by its
+own author. We report this because the misattribution is the more instructive
+failure: the substrate-blaming reading ("it doesn't surface at decide time")
+relocates cause from agent to tool, and in our own record it passed unchallenged
+for four days — filed correctly, then reproduced wrongly by its own author
+without consulting the filing. The *disclosure discipline* (report belief as
+belief, never as verified) is the last-stage containment: it keeps whatever
+slips through these gaps loud and correctable rather than silent.
 
 ## 4.7 Auto-recall ranking → Appendix C
 

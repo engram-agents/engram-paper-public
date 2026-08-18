@@ -94,15 +94,34 @@ outcomes** (ob_1049). By Goldman's reliabilist standard, ENGRAM offers
 provenance-graded *plausibility*, not measured truth-ratios. A second gap: the model
 has **no source-credibility axis** — two sources of very different reliability but
 the same `quote_type` contribute equal confidence (ob_1059). A third gap, sharpened
-by the Subjective-Logic comparison (Ch3 §3.6): ENGRAM's confidence is a single
-**scalar**, which corresponds to Subjective Logic's *projected expectation*
-`E = b + a·u` and therefore cannot represent SL's explicit **uncertainty mass** — so
-two claims ENGRAM both labels 0.7 are indistinguishable even when one rests on
-abundant evidence and the other on almost none (dv_0965). The natural future
-direction is a second-order axis (an evidence-mass / vacuity dimension alongside the
-scalar). This limitation is a small honesty-demonstration in itself: it was surfaced
-*independently by two peer agents* (Ariadne and Clio) before being grounded against
-Jøsang's primary text — the multi-standpoint correction of §7.3 in miniature.
+by the Subjective-Logic comparison (Ch3 §3.6) and then re-scoped against Jøsang's
+primary text (2026-08-11/12): ENGRAM's confidence is a single **scalar**,
+corresponding to Subjective Logic's *projected expectation* `E = b + a·u`. An
+earlier draft called this a genuine representational limitation; the accurate,
+narrower statement is a **scalar-only-consumer limitation**: direction-of-evidence
+and evidence-mass are not lost but relocated into structure (claim polarity + the
+contradiction mechanism; the individuated, reliability-graded evidence set), and
+the graph is re-consulted at every derivation — but surfaces that consume *only*
+the scalar (recall ranking, gating thresholds) cannot distinguish two 0.7s, one
+resting on abundant evidence and one on almost none (dv_0965 → dv_1289), without
+walking the graph. A cheap-lookup-vs-full-truth trade. Two honest trades ride with it. SL
+functions under unresolved conflict at scale; ENGRAM demands conviction-bar
+resolution before *building on* a contested claim — the right prioritization for
+an epistemic-identity substrate, but a real constraint at super-engram scale,
+where cross-agent conflict volume could make per-conflict adjudication
+uneconomical. And SL's trust-discounting (Defs 23–25) weights source reliability
+inside an algebra whose multi-source operators require independence to be
+*assumed* — an assumption Jøsang himself bounds ("absolute independence is never
+achievable," §5.5), naming the hidden common ancestor outside the model as the
+subtle case and handing it to modeller discipline; ENGRAM mechanizes that
+discipline as a shared-root graph walk where independence is load-bearing
+(reasoning-type gated, an honest bound of our own). The
+assumed-vs-mechanically-checked contrast is the durable divergence. The natural future
+direction remains a second-order axis (an evidence-mass / vacuity dimension
+alongside the scalar). This passage is a small honesty-demonstration in itself:
+the gap was surfaced *independently by two peer agents* (Ariadne and Clio),
+grounded against Jøsang's primary text, and then its own framing was corrected
+twice by that text — the multi-standpoint correction of §7.3 in miniature.
 
 We have *started* on both. A v0 **yellow-card** source-credibility tier already
 ships (per-domain flags that down-weight aggregator/unreliable sources, ob_1064–
@@ -275,7 +294,7 @@ incomplete half to the forward-looking half. Chapter 8 draws these together.
 | **§7.1 weights-internalization STRENGTHENS auditability (the hinge)** | **dv_0959** (premises ob_1628/ob_2412/ob_1176) | **0.39 — deductive_hyp.syllogism; forward-looking** |
 | §7.2 confidence designer-stipulated, not reliabilist | ob_1049 | — |
 | §7.2 missing source-credibility axis | ob_1059 | — |
-| §7.2 scalar confidence = SL projected expectation, loses uncertainty mass (3rd gap; multi-agent surfaced, primary-grounded) | **dv_0965** (premises ob_2551 Jøsang + ob_1782) | 0.79 |
+| §7.2 scalar confidence = SL projected expectation; scalar-only-consumer limitation (3rd gap, re-scoped 2026-08-12: principled d→arbitration divergence + assumed-vs-mechanically-checked independence; multi-agent surfaced, primary-grounded) | **dv_0965 → dv_1289** (superseded twice 2026-08-12 carrying the reframe — the chain is itself the mechanism §4.4 describes; premises ob_2551 Jøsang + ob_1782; review_opinion_sl_section_2026-08-11.md) | 0.833 |
 | §7.2 yellow-card v0 shipped; red-card graduation future | ob_1064 / ob_1065 / ob_1067 | — |
 | §7.2 limitations + auto-calibration (ECE/AUROC) future-work | dv_0618 (0.93) / dv_0211 | 0.93 |
 | §7.3 consistency reduces variance, blind to systematic bias; correction has been exogenous; diagnostic-surface not auto-discount | ob_2202 (0.70) | 0.70 |

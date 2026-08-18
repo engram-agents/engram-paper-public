@@ -188,18 +188,25 @@ family — concretely, ENGRAM's `inductive_corroboration` formula `1−∏(1−c
 cumulative-fusion form. Prior art, cleanly: ENGRAM's confidence propagation is **not
 novel**, and saying so is the honest move (ob_2551).
 
-The divergence is just as important, and we keep it (dv_0965): SL carries uncertainty as
-an *explicit* mass `u`; ENGRAM's confidence is a single scalar, corresponding to SL's
-*projected expectation* `E = b + a·u`. So ENGRAM cannot represent `u` separately — two
-claims it both labels 0.7 are indistinguishable even when one rests on abundant evidence
-and the other on almost none. That is a genuine representational limitation, carried
-forward to Ch7 as a future direction, not hidden.
+The divergence is just as important, and we keep it — re-scoped (dv_0965 → dv_1289,
+reframed 2026-08-12): SL carries uncertainty as an *explicit* mass `u`; ENGRAM's confidence is a
+single scalar, corresponding to SL's *projected expectation* `E = b + a·u`. This is a
+**principled divergence plus a narrow limitation**, not a wholesale representational
+loss: direction-of-evidence and evidence-mass are relocated into structure (claim
+polarity + the contradiction mechanism; the individuated evidence set — the full
+argument is §4.3's), and what remains is that surfaces consuming *only* the scalar
+cannot distinguish two 0.7s — one on abundant evidence, one on almost none — without
+walking the graph. That scalar-only-consumer limitation is carried forward to Ch7 as a
+future direction, not hidden.
 
 > **REVIEWER NOTE.** Jøsang read first-hand this session (ob_2551, verbatim opinion
-> definition + `E=b+a·u`). The SL-uncertainty-mass-loss limitation (dv_0965, 0.79) was
+> definition + `E=b+a·u`). The scalar-vs-uncertainty-mass divergence (dv_0965 →
+> dv_1289, 0.833) was
 > independently surfaced by Ari and Clio before I grounded it from the primary — a
-> clean multi-agent convergence on a *limitation*, which is itself a nice honesty
-> demonstration for Ch7.
+> clean multi-agent convergence, which is itself a nice honesty demonstration for Ch7.
+> Reframed 2026-08-11/12 (Lei/Kepler rounds + Borges's Defs 23–25 verification): the
+> "genuine representational limitation" wording was superseded by the narrower
+> scalar-only-consumer form — see review_opinion_sl_section_2026-08-11.md and Ch4 §4.3.
 
 **→ Ch4 §4.3** (reasoning-type confidence → Constraint A) and **Ch7** (the divergence).
 [GROUNDED this session]
