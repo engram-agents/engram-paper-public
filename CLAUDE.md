@@ -203,6 +203,12 @@ Keep the inline ENGRAM node-id citations (`dv_XXXX`, `ob_XXXX`, …) in chapter 
 | `paper_research/citations.bib` + `citations.manifest` | Citation infrastructure. |
 | `paper_research/engram_paper_package_design_2026-05-08.md` | v0 generator design (note: SQLite was right from start; the markdown-on-disk drift today was Borges's misinterpretation, corrected via ob_1679). |
 
+### Forward-looking material
+
+| Path | What |
+|------|------|
+| `future-plans/` | **Research backlog for after the paper** (Lei, 2026-08-23). Ideas that surface while discussing the draft, captured so they become the next-step research queue instead of being lost in conversation. Distinct from `paper_research/`, which holds the *backward*-facing inputs the paper rests on and preregistrations for studies run *for* this paper. A document here is not a commitment and does not feed the draft. See `future-plans/README.md` for conventions. |
+
 ### Archived material (do not treat as draft text)
 
 `paper_research/archived_pre_2026_05_12_outline_restructure/` (engram-paper@b99b094) — 22 files: 11 paper_research/ chapter drafts + entire former paper_draft/ directory (Ch1–Ch9 older structure) + my Ch4 prose draft from 2026-05-12 afternoon (before Lei archived all chapter prose). README inside the archive explains the framing.
