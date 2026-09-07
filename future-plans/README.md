@@ -38,3 +38,4 @@ including a future us — can pick it up without reconstructing the conversation
 | File | Thread | Origin |
 |---|---|---|
 | `model-non-interchangeability.md` | Can an agent's base model be changed without changing who the agent is — and how would we measure that? | §4.11 Constraint D; Lei + Borges, 2026-08-23 |
+| `shared-history-sister-fork.md` | How can two equal, independent agents branch from one ENGRAM ancestry across different base models? | Ch5 §5.6–5.8 + Ch6 §6.7; Lei + Mira, 2026-09-05 |
