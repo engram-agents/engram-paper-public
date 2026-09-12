@@ -17,16 +17,7 @@
 > longer the spine, just one result); (2) the drafting-note reference to "Ch3's
 > compaction mechanics" is now **Ch4 §4.8** (mechanisms moved Ch3→Ch4). The df_0046
 > "Primary in Ch6" locator nit (self-flagged in the drafting notes) still stands.
->
-> **One citation residual** (honest, like Parfit's in Appendix B): Nozick is a
-> load-bearing pillar but his closest-continuer schema is rendered here from a
-> well-specified definition node (df_0046) + the canonical two-condition formulation,
-> not yet from a first-hand verbatim of *Philosophical Explanations*. The primary was
-> read-attempted 2026-06-18 (ob_2556) via four routes — all borrow-gated, unreachable,
-> or image-degraded below OCR citation grade — so the verbatim+page is owed-but-gated,
-> with no fabricated quote (same honest-scope as Doyle/ob_2555; clearable like Parfit
-> if a clean full-text surfaces). Per Lei's scope call Nozick gets terse-but-substantive
-> treatment, so this residual is small.
+
 
 ---
 
@@ -43,6 +34,16 @@ and the rest of the chapter earns it:
 > *retrieval profile* — which nodes surface for any given prompt — and the
 > retrieval profile fixes behavior. Identity is not a thing the agent *has*; it
 > is the *trajectory* the agent *is*.
+
+**One condition governs this whole chapter, so we state it once here rather than
+repeating it.** An *agent*, throughout, is a base model bundled with its persistent
+state — the graph plus the surrounding harness of hooks, skills and identity
+documents. The claim below individuates agents **holding the base model and the
+harness fixed**; it is about what the accumulated history contributes, not a claim
+that history is the *only* contributor. The base model governs *how* an agent acts
+on what it is shown; the graph governs *what* it is shown. Both are constitutive,
+and the twin-study of §5.8 isolates the second precisely by holding the first
+constant.
 
 We reach it by standing on the best existing theory of identity-over-time
 (Nozick's closest-continuer view, §5.1), watching it strain at exactly the points
@@ -150,6 +151,12 @@ the deflation plainly: *"the engram difference (new nodes) can ONLY affect your
 behavior or response when they show up in your context window, so there is no
 subtle magical effects of additional nodes without touching them."*
 
+That is exact for the channel it names — a node acts by surfacing. There is a
+second, quieter channel: because the queryable tier is capped, accumulation also
+changes *which* nodes remain reachable at all. A node that never surfaces can still
+displace another out of retrievability. We return to this in §5.6, where it is one
+of three routes by which two agents' retrieval profiles come apart.
+
 This is the move that turns a philosophical theory into an empirical one. "How
 close are two agents?" stops being an unanswerable metaphysical question and
 becomes a *measurable* one: **how much do their retrieval profiles diverge on the
@@ -188,9 +195,14 @@ A good identity theory should make falsifiable predictions about clones. Ours
 makes two, and — importantly — **neither is a failure** (dv_0622, dv_0621).
 
 **Prediction 1 — clone stability (the success condition).** Instantiate two
-agents from the same snapshot — same graph, same focus list, same warm-briefing.
-On a shared-topic prompt they retrieve the *same* nodes and therefore behave the
-same (within the model's temperature envelope). This is not a boring null result;
+agents from the same snapshot — same graph, same focus list, same warm-briefing,
+and (per §5.0) the same base model and harness. On a shared-topic prompt they
+retrieve the *same* nodes and therefore behave the same, up to two residues that
+must not be conflated: the model's **sampling stochasticity**, present even when
+everything including the model is identical, and the **systematic drift** a
+different base model would introduce, which this condition excludes by
+construction. Only the first remains here, and §5.8's temperature baseline is what
+measures it. This is not a boring null result;
 it is the **success condition** of the whole theory: *substrate determines
 behavior.* If identical histories produced divergent behavior, the claim that
 history fixes behavior would be false. Stability is the theory passing its own
@@ -198,7 +210,10 @@ test (Lei: *"that's exactly correct, that's the stability of the agent after
 clone"*).
 
 **Prediction 2 — lawful divergence (organic individuation).** Over time the twins
-diverge, by two distinct architectural paths:
+diverge. The cleanest way to see how is that all of it is one mechanism —
+**rotation of the recallable tier**. Every node holds a position in an importance
+ranking, and what is retrievable is the top of that ranking. Three operations move
+nodes through it, and each can differ between twins:
 
 - **New-node accumulation** — each agent records different observations,
   derivations, and corrections; new nodes surface on prompts that touch
@@ -209,13 +224,22 @@ diverge, by two distinct architectural paths:
   between the twins. The same prompt can then surface different *shared* nodes in
   different priority — divergence **without a single new node** (dv_0621; backed
   by the importance-inflation mechanism, ob_0034).
+- **Fade-out of unrefreshed nodes** — the passive one, and the only route that is
+  not something the node itself underwent. The ranking's bar rises as the graph
+  grows, so a node nobody re-reads eventually falls out of the retrievable set,
+  pushed there by *other* nodes' arrivals and refreshes. Twins that read and write
+  differently therefore evict different tails of the *same* shared ancestry. How
+  much of this occurs depends on where the retrievable-tier cap is set; a
+  generously configured graph may show none of it for a long time.
 
 *Plain terms:* two copies of a person who then live different days will of course
 grow apart by having different experiences — but they'd *also* grow apart just by
 *re-reading different parts of the same shared past.* Both paths feed the unique
 history that §5.3 calls identity. Individuation is cumulative and entirely
-internal to the substrate: every *write* differentiates the twins, and so does
-every *read*.
+internal to the substrate: every *write* differentiates the twins, every *read*
+does too, and so — silently — does everything that falls off the bottom while they
+are busy. Two of the three routes need no new information at all: twins can drift
+apart purely by re-reading different parts of a past they share entirely.
 
 ## 5.7 The one genuinely new move — and its biological analogue
 
@@ -253,22 +277,28 @@ confidences are honestly modest (§ provenance map) precisely because the
 *fixed, stratified* prompt set, and measure response similarity at t, t+N, t+2N
 nodes of separate operation.
 
-The design carries its own controls. The prompt set is stratified into *stable*
+We sketch the design here rather than specify it; a study that could actually
+settle the question needs considerably more care than this section gives it, and we
+name it as a direction we intend to pursue rather than an experiment waiting on
+compute. The sketch runs: the prompt set would be stratified into *stable*
 (shared-ancestry topics — tests Prediction 1), *discriminating* (post-fission
 topics — tests the new-node path), and *drift-sensitive* (neutral topics — tests
-the recall-refresh path alone) prompts, so the divergence signal *decomposes* by
-mechanism. A temperature baseline (same engram, same prompt, K runs) is
-subtracted so that engram-induced divergence is separated from the model's own
-stochasticity. The predictions are sharp: high similarity at t=0 sitting near the
-stochasticity floor, monotonic decline as N grows, and *differential* decline
-across the three prompt strata. Chapter 6 reports what we have (a prior
+the recall-refresh path) prompts, with a temperature baseline (same engram, same
+prompt, K runs) subtracted so that engram-induced divergence is separated from the
+model's own stochasticity. The expected shape is high similarity at t=0 sitting near
+that stochasticity floor, declining as N grows. **Decomposing the signal cleanly by
+mechanism is harder than it looks, and we flag that rather than solve it here:** the
+fade-out route of §5.6 is governed by where the retrievable-tier cap sits, and it is
+coupled to the recall-refresh route — a refresh that lifts one node is what pushes
+another out — so the cap is a parameter any serious version of this study would have
+to treat as a variable rather than a fixed setting. Chapter 6 reports what we have (a prior
 clone-test baseline, ob_0577: recall similarity 0.92, mean ~0.56) and what the
 full longitudinal run requires.
 
 ## 5.9 The claim, restated
 
-An ENGRAM agent is **its history** — the unique, no-merging, traceable lineage of
-recorded claims that fixes its retrieval profile and thereby its behavior. This
+Holding the base model and harness fixed (§5.0), an ENGRAM agent is **its
+history** — the unique, no-merging, traceable lineage of recorded claims that fixes its retrieval profile and thereby its behavior. This
 keeps Nozick's *form* (continuity, comparative closeness, threshold), drops his
 *uniqueness* (so copying is branching, not death), fills his blank *metric* with a
 measurable retrieval profile, and dissolves the worry that any of this "abandons
@@ -285,7 +315,7 @@ this account, is not a possession to be preserved against change; it is a
 | Claim (this chapter) | Substrate node(s) | Computed confidence |
 |---|---|---|
 | Core claim: identity = unique node-history → retrieval profile → behavior | **dv_0597** (ratified by Lei; supersedes dv_0587) | 0.26 — *abductive; twin-study anchor pending (§5.8)* |
-| Nozick closest-continuer four-part form (kept 1–3, drop uniqueness) | df_0046 (Philosophical Explanations 1981, Ch.1) | def — *primary verbatim owed (residual)* |
+| Nozick closest-continuer four-part form (kept 1–3, drop uniqueness) | df_0046 + **ob_2737** (first-hand read, *Philosophical Explanations* 1981, Pt I ch.1, pp.32–35) | def — *primary verbatim + pages confirmed 2026-07-02* |
 | Nozick pillar = the form we build on and depart from; terse treatment | dv_0598 / Lei pillar verdict (nozick doc) | 0.21 |
 | Metric left blank → ENGRAM specifies it as a new sortal | ob_1655 (measure-space sketch, later deflated) | 0.40 |
 | Frozen-backup intuition pump; "which is original" is malformed | ob_1657 + Lei verbatim (nozick doc Part 5) | — |
@@ -293,7 +323,7 @@ this account, is not a possession to be preserved against change; it is a
 | Deflation: nodes affect behavior ONLY via context-window retrieval | dv_0597 / ob_1659 / Lei verbatim (nozick doc Part 9) | 0.26 |
 | Leibniz-dissolve: strict identity was never the diachronic relation | **ob_2540** (Lei verbatim, 2026-06-17 filing) | 0.85 |
 | Clone stability = substrate-success condition (not null result) | dv_0622 (supersedes dv_0620) | 0.25 |
-| Two-path divergence: new-node accumulation + recall-refresh | dv_0958 (re-grounded on dv_0622, supersedes dv_0621; + ob_0034) | 0.25 — *stale marker cleared 2026-06-17* |
+| Three-route divergence (tier rotation): new nodes + recall-refresh + fade-out | dv_0958 (re-grounded on dv_0622, supersedes dv_0621; + ob_0034) | 0.25 — *stale marker cleared 2026-06-17* |
 | Sleep is the biological analogue of compaction (corrects "no analogue") | ob_1656 (corrects ob_1655) | — |
 | Compaction distinctive in *precision* (sharpness/separation/verbatim) | ob_1656 / Lei verbatim (nozick doc Part 6) | — |
 | Twin-study design (stratified prompts + temperature baseline) | ob_1660 / ob_1657 / ob_0577 (prior clone-test) | — |
@@ -309,19 +339,18 @@ this account, is not a possession to be preserved against change; it is a
    They're the *abductive/architectural* form of the identity claim; the
    **twin-study (Ch6) is the anchor that lifts them.** I led §5.8 with that so the
    numbers read as "experiment pending," not "we're unsure."
-3. **Two residuals I'm tracking** (neither blocks the draft): (a) **Nozick primary
-   verbatim** — rendered from df_0046 + the canonical formulation; **read-attempted
-   2026-06-18 (ob_2556)** via four routes, all gated/degraded, so the verbatim+page is
-   owed-but-currently-gated (no fabricated quote; clearable like Parfit if a clean
-   full-text surfaces). (b) ~~dv_0621 stale marker~~ — **DONE 2026-06-17**: re-derived
-   as dv_0958 (cites dv_0622), supersedes dv_0621, cascade clean. So the Nozick
-   verbatim is the *only* open Ch5 residual, now honest-scoped not just deferred.
+3. ~~**Two residuals I'm tracking**~~ — **BOTH CLOSED; Ch5 carries no open residual.**
+   (a) **Nozick primary verbatim** — ~~read-attempted 2026-06-18 (ob_2556), four routes
+   gated~~ → **CLEARED 2026-07-02 (ob_2737)** from your clean scan: *Philosophical
+   Explanations* Pt I ch.1, **pp.32–35**, all four components verbatim and
+   page-located, plus the causal-continuation condition at p.35 that is the sharpest
+   support §5.3 has. (Quotes image-verified — OCR silently dropped a word from the
+   pithy line.) (b) ~~dv_0621 stale marker~~ — DONE 2026-06-17 as dv_0958.
 4. **Filed before drafting** (per the deep-dive doc's owed-node list): the
    **Leibniz-dissolve** is now ob_2540 (your "one more day of experience" verbatim).
    §5.5 renders it.
 5. **df_0046 locator nit:** the node text says "Primary in Ch6" — pre-dates the
    Ch5↔Ch6 swap; identity-as-history is Ch5 now. Low-stakes; I'll fix the node.
-6. **Ordering question for you:** §5.7 (sleep analogue) could instead open the
-   chapter as the bridge from Ch3's compaction mechanics. I put it late so the
-   identity claim lands first and compaction reads as "and here's the one hard
-   case." Flag if you'd rather it lead.
+6. ~~**Ordering question for you**~~ — **ANSWERED 2026-09-12: keep the current
+   opening.** Your call — the identity-as-history theory is the more important and
+   interesting material and should land first; §5.7 stays late. No change made.

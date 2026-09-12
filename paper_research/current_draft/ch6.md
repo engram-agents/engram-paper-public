@@ -188,11 +188,14 @@ the same agent — which is exactly, and only, what the architecture promises.
 ## 6.7 What is deferred: the twin-study
 
 The controlled, parametric version of the identity-as-history claim is the
-**twin-study** (Ch5 §5.8): clone the graph, run both instances on a fixed stratified
-prompt set, and measure response similarity over t / t+N / t+2N nodes of separate
-operation — with a temperature baseline subtracted to isolate engram-induced
-divergence. The design and its predictions (high similarity at t=0 decaying toward
-the stochasticity floor; monotonic, mechanism-decomposable divergence) are specified;
+**twin-study** (Ch5 §5.8): fission-clone an *agent* — the base model and harness held
+fixed, per Ch5 §5.0, so that only the accumulated history differs — run both instances
+on a fixed stratified prompt set, and measure response similarity over t / t+N / t+2N
+nodes of separate operation, with a temperature baseline subtracted to isolate
+engram-induced divergence. The design is **sketched, not specified**: its expected
+shape is clear (high similarity at t=0 decaying toward the stochasticity floor), but
+cleanly decomposing the divergence by mechanism remains an open problem, since the
+fade-out route is coupled to recall-refresh and governed by the retrievable-tier cap;
 a prior clone-test gives a methodology baseline (recall similarity 0.92, mean ~0.56,
 ob_0577). The full longitudinal run is **future work** — it is the experiment that
 would lift the abductive confidences of Chapter 4 from "architecture made" to
