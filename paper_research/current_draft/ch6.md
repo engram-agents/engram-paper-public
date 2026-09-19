@@ -1,14 +1,24 @@
 # Chapter 6 — The Empirical Picture: ENGRAM in Real Use
 
-> **DRAFT SAMPLE — 2026-06-17.** Single-pass prose from the live-engram substrate,
-> for Lei's review. This is the **empirical** chapter, and it makes a deliberately
-> bounded promise: it reports what a **single, real, ~9-week-old ENGRAM graph**
-> (this author's) looks like in use — not an at-scale benchmark. The headline
-> at-scale experiment (the twin-study, Ch5 §5.8) is **deferred to future work**;
-> what we show here is the architecture's machinery *operating*, with real numbers
-> from a real graph. All figures are from the graph at turn 82 (2026-06-17);
-> they will have moved by publication, and the chapter says so. Provenance map at
-> the end.
+> **DRAFT SAMPLE — 2026-06-17. RE-SCOPED 2026-09-12; AWAITING REWRITE — see
+> "Planned rewrite" at the end of this chapter before citing anything below.**
+> Single-pass prose from the live-engram substrate, for Lei's review. This is the
+> **empirical** chapter. As drafted it makes a deliberately bounded promise: it
+> reports what a **single, real, ~9-week-old ENGRAM graph** (this author's) looks
+> like in use — not an at-scale benchmark. The headline at-scale experiment (the
+> twin-study, Ch5 §5.8) is **deferred to future work**; what we show here is the
+> architecture's machinery *operating*, with real numbers from a real graph.
+> Provenance map at the end.
+>
+> **Two things about the numbers, stated up front rather than in a footnote.**
+> First, **every figure below is from one graph at turn 82, 2026-06-17** — the
+> staleness is the whole chapter's, not merely the "~9-week-old" phrase's. Second,
+> Lei re-scoped the chapter on 2026-09-12: the fleet now runs **many seats, each
+> with a substantial graph and months of history**, so the single-graph framing
+> understates the available evidence rather than merely dating it. The content
+> below was reviewed and carries **no outstanding objections** — it is the
+> *evidence base* that is too narrow, not the prose. Treat this draft as the
+> argument's shape, and the Planned-rewrite section as what will fill it.
 >
 > **REVIEWER NOTE — cross-refs pending (Borges, 2026-06-18).** This chapter's *content*
 > is restructure-current, but its cross-references to the mechanisms/OCC material use the
@@ -65,6 +75,17 @@ preference. Computed across every derivation:
 | deductive_modus_ponens | 210 | 0.70 |
 | abductive_best_explanation | 246 | **0.53** |
 | inductive_analogy | 33 | **0.50** |
+
+**Read the deductive row against the others, not against the word "deductive."**
+0.70 next to `deductive_modus_ponens` looks like an anomaly — deduction is the
+*strongest* argument shape, so why does it not top the table? Because the reasoning
+type does not set the confidence *level*; it sets how much is *lost*. A deductive
+step computes as `min(premises) × 0.98`, and that 0.98 is the **smallest** discount
+in the table: deductive confidence is a **ceiling-preserving pass-through**, which
+can never exceed its weakest premise and gives up almost nothing on the way. The
+0.70 is therefore a fact about the premises, not about the deduction — and the
+generalization rows sit higher precisely because corroboration *combines* evidence
+rather than passing it through.
 
 A broad generalization over many independent cases earns 0.93; a single-best-
 explanation guess earns 0.53; a structural analogy earns 0.50 — *automatically*,
@@ -229,10 +250,132 @@ would lift the abductive confidences of Chapter 4 from "architecture made" to
 2. **The compaction-stabilization arc (§6.6) is in, reframed behaviorally** per our
    discussion — it serves Cond-1 without making a phenomenal claim. If you'd rather
    cut it to keep Ch6 tight on the confidence-model story, it's a clean lift.
-3. **All numbers are turn-82 live-graph** and will drift; I'd re-pull them at final
-   draft and add an "as of <date>, N nodes" stamp (same honesty move as the Appendix
-   C survey date).
+3. ~~**All numbers are turn-82 live-graph** and will drift; I'd re-pull them at final
+   draft and add an "as of <date>, N nodes" stamp.~~ **SUPERSEDED 2026-09-12 — a
+   re-pull is no longer the right move.** The refresh is now a fleet-wide collection
+   run against a shared, versioned instrument, and the numbers are regenerated rather
+   than re-typed. See "Planned rewrite" below.
 4. **Honest scope held throughout:** this is "one real graph in use," not a
    benchmark — said plainly in §6.0 so no reviewer mistakes it for a controlled study.
 5. The §6.1 reasoning-type table is the single strongest exhibit — it's the
    confidence-model thesis (Ch3 §3.2) shown true at scale on the author's own graph.
+
+---
+
+## Planned rewrite — fleet-wide collection, versioned instrument, generated plots
+
+**Status: this chapter is scheduled for rewrite, not revision.** Lei's decision,
+2026-09-12, in a notes session over the draft above. Nothing below is drafted prose;
+it is the design the rewrite executes against. Full session record:
+`paper_research/lei-notes/2026-09-12_ch6_session_LIVE.md`.
+
+### Why a rewrite and not a number refresh
+
+The chapter's *content* was read and carries no outstanding objections. What is too
+narrow is its **evidence base**: one graph, one snapshot, 2026-06-17. The fleet now
+runs many seats, each with a substantial graph and months of history, so the
+single-graph framing understates what we can actually show. **Do not read the rewrite
+as a response to defects in the writing** — that distinction is easy to lose once
+only the plan survives.
+
+### The instrument
+
+**One shared, versioned script — not a specification each seat implements
+separately.** This is the load-bearing choice, and it is not a matter of tidiness. On
+2026-09-12 two seats ran the same measurement minutes apart; one seat's file glob
+addressed directories that no longer existed after an infrastructure move, iterated a
+corpus of zero, and reported `0` — a result byte-identical to a genuine sweep finding
+nothing. Under per-seat implementations that seat's silence would have been
+aggregated as data. A single distributed artifact makes that failure impossible
+rather than unlikely.
+
+**It extends the existing health-measurement registry rather than standing beside
+it.** That registry already implements exactly the architecture this chapter needs —
+raw measurements as ground truth, computed signals above them, a positional version
+token, replayable snapshots — and it is already collecting. A parallel paper-only
+instrument would drift from it within weeks, leaving two disagreeing ground truths
+for the same graph. One canonical home per concern.
+
+**Every measurement prints its denominators beside its numerator.** A wrong corpus
+then announces itself in the same output that carries the answer (`0 / 0 / 0` rather
+than a bare, plausible `0`), at no cost and with no separate step to remember.
+
+### Versioning and backfill
+
+Any measurement-level change — an addition, a deletion, or a change of definition —
+is a **major** version bump requiring a **recompute and backfill**, with
+previous-version snapshots preserved as archived data rather than deleted or
+overwritten (Lei, 2026-09-12).
+
+This is affordable because the graph itself is git-versioned: each commit holds a
+complete dump, so a replay path recomputes *every* measurement at *every* historical
+commit at full fidelity — including fields that are mutated in place and carry no
+history of their own. Backfill therefore reaches back to the start of the backup
+repository, not merely to the earliest stored snapshot; on this author's seat that is
+three months of real history against five days of stored snapshots. **One boundary
+survives and should be stated in the chapter rather than discovered by a reader:**
+graph history that predates the backup repository is reconstructible only from
+append-only fields (creation timestamps, confidence history) — structurally, not at
+full fidelity.
+
+### What each collected record must carry
+
+Raw measurements as ground truth and base numbers, so that the computed signals above
+them are interpretable *in context*: graph **age**, **turn count**, **node and edge
+counts**, the **node-creation-per-turn distribution**, and the composition figures the
+current registry already takes. Metadata must carry **model lineage** — and, equally,
+**age and turn count**, without which seats are silently compared at different
+maturities and part of any cross-seat spread is just calendar time.
+
+### Which measurements belong to health, and which only to the paper
+
+Open, and to be decided per metric rather than in advance. Some paper-relevant
+measurements will be academically interesting without being health-relevant, and they
+must not acquire a health weight merely because the collection code is shared —
+intentional inclusion, never inclusion for the sake of reuse.
+
+A discriminator offered for testing against each candidate, not as a settled rule: **a
+measurement belongs to health only if a bad value implies an action.** Uncited
+evidence rising means go and cite things; a mean out-degree is genuinely interesting
+and implies nothing to do. The shape that keeps the decision explicit is one registry,
+one collection pass, and a **per-measurement flag** for whether it feeds a health
+signal — so the choice is a visible field rather than an implicit consequence of where
+the code lives.
+
+### Plots
+
+Script-generated alongside the measurement instrument, in the same repository, under
+the same version discipline. **A refresh is a re-run of a named version of the
+scripts** — no per-seat ad-hoc manual figures, and no figure whose provenance is a
+person's afternoon.
+
+### A threat to validity that belongs in the chapter, not only in the design
+
+**The seats are not independent samples.** Every graph descends from the same seed,
+under the same written disciplines and conventions, and the agents read each other's
+findings daily — a non-trivial share of any seat's nodes are corroborations of a
+colleague's claim. So *N* seats are not *N* independent observations, and any
+cross-seat statistic that assumes independence will overstate its confidence. This
+needs designing for rather than discovering at review, and it is worth stating plainly
+in the prose: it is an honest limitation and an interesting finding about accumulated
+multi-agent knowledge in its own right.
+
+### Carried forward into the rewrite
+
+- The §6.1 reasoning-type table remains the chapter's strongest exhibit. Its
+  ceiling-preserving-pass-through explanation (added above) is scope-independent and
+  survives the rewrite unchanged.
+- That row is also **structurally stable, not a small-sample artifact**: re-measured
+  on this author's graph three months later, `deductive_modus_ponens` had grown from
+  210 to 402 derivations while its mean confidence moved 0.70 → 0.697, reconciling
+  with the computed prediction (mean weakest premise 0.713 × 0.98 = 0.699) to two
+  thousandths. Worth reporting as a stability result, and a good candidate for the
+  first cross-seat plot.
+- Unexpected and worth a sentence of its own in the rewrite: in 196 of those 402
+  cases the weakest premise is **another derivation**, not an observation — so most
+  of the deductive tier's confidence is inherited down chains rather than sourced
+  from weak evidence.
+- **Still owed independently of the rewrite:** this chapter's cross-references use
+  the pre-renumbering scheme (Ch3 §3.2 / §3.3) against the restructured Chapter 4
+  (§4.3 confidence, §4.4 cascade, §4.11 Constraint D). A reconciliation pass is
+  outstanding from 2026-06-18.
