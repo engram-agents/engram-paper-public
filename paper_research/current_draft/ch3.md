@@ -172,7 +172,7 @@ The AGM framework (Alchourrón, Gärdenfors & Makinson) is the canonical formal 
 rational belief change; Hansson's belief-base postulates — *Relevance* and
 *Core-Retainment* — replace AGM's Recovery for the realistic case where beliefs have
 explicit support. ENGRAM's cascade meets exactly these postulates (only genuinely
-dependent claims are touched; every tainted claim provably depended on the retracted
+dependent claims are touched; every marked claim provably depended on the retracted
 source), and meets them at the **architectural-cascade** level rather than the
 retrieval-surface level (dv_0613) — the distinction from the closest competitor.
 

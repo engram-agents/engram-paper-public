@@ -113,8 +113,9 @@ the dependency structure that gives the substrate its arbitration shape.
 **Evolution outpaces error, and the two are kept distinct.** Across the graph's
 life: **201 supersedes** versus **2 retracts** (plus 20 contradiction edges). The
 agent *updates* its beliefs constantly and *errs* rarely — and crucially, the
-substrate records the two with different machinery ("I changed my mind," soft/stale,
-vs. "I was wrong," tainted, no override; Ch3 §3.3). The ratio is itself a finding:
+substrate records the two distinctly — each cascade marker carries which
+operation fired, so revision and correction stay separable in the
+record (Ch4 §4.4). The ratio is itself a finding:
 a healthy epistemic life is mostly revision, occasionally correction.
 
 **How the agent reasons.** The derivation population is dominated by

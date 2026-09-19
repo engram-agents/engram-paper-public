@@ -8,7 +8,18 @@
 > plainly rather than manufacturing a quote). Every quote below was verified
 > first-hand against the source — the arXiv papers, vendor docs, or the committed
 > 2026-05-12 first-hand-read notes; the three most load-bearing (SCM, GAM, Kumiho)
-> were re-confirmed against the source PDFs.
+> were re-confirmed against the source PDFs, which are committed alongside this
+> appendix.
+>
+> **This survey is documentary throughout, and that bound is load-bearing.** Every
+> finding below rests on what a system's authors published about it — papers,
+> specifications, vendor documentation. **We did not read the source code of any
+> surveyed system.** So a claim here that some mechanism is absent means *absent from
+> the system's own account of itself*, never *absent from its implementation*. Where
+> a paper describes a mechanism completely enough that the absence is visible in the
+> description — as SCM's does, publishing its sleep cycle's state machine and full
+> pseudocode — we say so and show the description. Where it does not, we mark the
+> claim as unestablished rather than inferring downward from silence.
 
 ## B.0 Scope, date, and method
 
@@ -89,11 +100,22 @@ resolution" are used in §3.6 only as a **trigger metric**.
   the conflict for resolution during sleep**."
 - *paper-verbatim* (§3.6): "Conflict density is the ratio of contradicts edges to
   total edges in the long-term memory graph: ρ(G) = |E_contradicts|/|E|."
-- *first-hand-read finding:* the sleep cycle (NREM/REM phases) contains **no
-  resolution logic** — the "flagged for resolution during sleep" language is
-  aspirational; the `contradicts` edges feed the density trigger ρ(G) and then
-  persist. SCM has the *surface appearance* of structural conflict handling without
-  the substance: no arbitration outcome, no cascade, no downstream taint.
+- *paper-verbatim* (§3.6): the sleep cycle is "implementing three distinct offline
+  processes" — NREM consolidation (Hebbian strengthening plus proportional
+  downscaling), REM dreaming (random-walk sequence integration), and value-based
+  forgetting — presented as a state machine (Figure 2) with "the full pseudocode
+  given in Algorithm 1."
+- *first-hand-read finding, from the paper alone:* **none of the three described
+  phases acts on a `contradicts` edge.** The edges appear in the sleep cycle only
+  inside the trigger metric ρ(G), and then persist. The finding is checkable at the
+  level of the whole document: the string *resolution* occurs **twice** in the SCM
+  paper — once in §3.2's promise quoted above, and once in future work, listing
+  "contradictory information resolution" among capabilities harder evaluations
+  should test. It occurs nowhere in §3.6, §3.7, or Algorithm 1. Because SCM
+  publishes its sleep cycle's complete state machine and pseudocode, this absence is
+  visible *in the paper's own account*, and needs no claim about SCM's code. SCM has
+  the surface appearance of structural conflict handling without the substance: no
+  arbitration outcome, no cascade, no downstream taint.
 
 ### GAM — Hierarchical Graph-based Agentic Memory (arXiv 2604.12285) — **(N) detect-only**
 Assigns a `contradict` edge at consolidation, but both conflicting nodes persist
@@ -238,10 +260,27 @@ we report that as *not documented* rather than asserting overwrite. Verdict: C3 
 
 Across the surveyed set, the pattern is uniform: the field has the *primitives*
 (detection, typed edges, even formal AGM compliance in Kumiho) but stops short of
-**automatic arbitration as internal state-change**. The single line that separates
-ENGRAM is operational binding — auto-cascade paired with auto-surfacing (Ch3 §3.3,
-dv_0606/dv_0612) — which no surveyed system, including the closest competitor,
-provides.
+**automatic arbitration as internal state-change**. What separates ENGRAM is
+operational binding (Ch4 §4.4, dv_0606/dv_0612), and it has **three** parts, not two:
+the cascade marks every affected node without being asked; auto-surfacing puts those
+marks back in front of the agent without an intentional reach; and the **cascade
+machine drives the marked region to adjudication during sleep** — walking the
+frontier in dependency order until no pending marker remains, as a mandatory phase of
+every consolidation cycle.
+
+The third part is where the contrast with the closest competitor is sharpest, and it
+is worth stating plainly because the two systems fail and succeed *at the same place
+in the architecture*. SCM's sleep cycle is **triggered by** conflict density and does
+not resolve conflicts; ENGRAM's sleep cycle is **where resolution happens**. Both
+systems reached for the same biological analogy and put conflict handling in the
+offline phase; only one of them closes the loop there.
+
+One precision, since overclaiming here would repeat the very error this appendix
+charges to others: ENGRAM's machine does not decide what is *true*. It finds what
+needs deciding, orders the decisions so that none rests on a premise still awaiting
+its own, computes what can be computed, and puts each remaining judgement to the
+agent. The claim is that no affected node stays quietly unexamined — not that
+arbitration happens without a mind.
 
 ---
 
