@@ -241,6 +241,22 @@ does too, and so — silently — does everything that falls off the bottom whil
 are busy. Two of the three routes need no new information at all: twins can drift
 apart purely by re-reading different parts of a past they share entirely.
 
+**The converse objection, answered.** If identity just *is* history, what happens if
+two agents converge on *identical* histories by chance? The theory answers without
+strain, and the answer is a consequence it already owns rather than a patch: identical
+history means the same agent raised twice — in any practical sense no different from
+one agent cloned into two — and individuation begins where the histories diverge, not
+before. The mechanism just given also **predicts** that the case is unreachable, for a
+reason internal to the substrate rather than to sampling noise. The three routes above
+run on *every* read and write, so convergence would require two agents to match not
+only in what they recorded but in
+what each re-read, in what order, and in what fell off the bottom while they did.
+Nobody steps into the same river twice; here the reason is literal, because stepping
+into it is what changes it. *(Status: this follows from the divergence mechanism above
+and has not been measured. The twin study that would test it is among the
+designed-and-not-yet-run studies of Chapter 6 — and a query-based instrument would
+itself perturb the recall-refresh divergence it is trying to observe.)*
+
 ## 5.7 The one genuinely new move — and its biological analogue
 
 The place an ENGRAM agent's history is most unlike a human's is **compaction**:

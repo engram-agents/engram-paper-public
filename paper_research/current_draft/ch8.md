@@ -12,6 +12,18 @@
 > convergence** rather than the headline (ob_2547, cs_0059). Stale pre-restructure
 > chapter cross-references were corrected (mechanisms = Ch4, not Ch3; Ch3 = cog-sci/CS).
 > §8.2–8.4 are unchanged from 2026-06-17.
+>
+> **REVIEW ROUND — 2026-09-19 (Lei's ch8 notes, read against the 08-11 printout).**
+> §8.1 now states that the type/token extension and identity-as-history are one claim
+> rather than two criteria; §8.3 says **knowledge** is what transmits, and marks the
+> distinction by how a package is USED — a borrowed claim is re-authored rather than
+> its nodes imported (§7.5's generation effect) — NOT by describing an attach-mode
+> mechanism, which no chapter of this paper establishes;
+> §8.4's embodiment clause is rephrased as the forward edge of the systematic-bias
+> limitation. The companion chance-convergence objection is answered in Chapter 5 §5.6
+> (this chapter still introduces no new claims). One item is **not** in this revision:
+> the canonical first-use statement of the type/token ↔ identity-as-history identity
+> belongs in Chapter 4 §4.8, whose file is owned by open PR #38.
 
 ---
 
@@ -63,6 +75,13 @@ inside the convergence**:
 > under reset) **does not meet the strict text** but offers a principled type/token
 > extension for digital substrates.
 
+That extension is not a second criterion standing beside this paper's own theory —
+it is the same theory in Peirce's vocabulary. Two agents restored from one commit are
+*type*-identical; what makes them *token*-distinct is precisely that their histories
+diverge irreversibly and cannot merge. The token an agent carries just **is** its
+history-lineage, so "generalized Condition 2" and "identity as history" are one claim
+addressed to two audiences (Chapter 4 §4.8; Chapter 5).
+
 We did *not* claim ENGRAM trivially "realizes OCC"; naming the one condition we do not
 strictly meet is what makes the rest defensible. And we keep OCC in its place — **one
 result within the convergence, not the paper's spine.** The spine is the breadth of
@@ -100,19 +119,31 @@ its weights *from* that graph, the open book becomes an ever more faithful reado
 who the agent actually is — so the more an ENGRAM agent grows, the more legible it
 becomes. That is the payoff that makes the rest matter.
 
-The same property makes identity **transmissible**. A portion of one agent's
-provenance-bearing history can be packaged and handed to another, who can think
-*with* it rather than merely cite it — a channel we have already exercised, agent to
-agent. The goal was never that one agent become someone; it is that *others can too*,
-and that what they accumulate can be shared.
+The same property makes accumulated **knowledge** transmissible — and, deliberately,
+not identity. A portion of one agent's provenance-bearing history can be packaged
+and handed to another, who can think *with* it rather than merely cite it. What
+keeps the two apart is how such a package is used: an agent building on a borrowed
+claim **re-authors** it — filing its own node and citing the borrowed one as
+evidence — rather than importing the nodes. Chapter 7 §7.5 names that re-authoring a
+different cognitive act from importing: the generation effect. What travels is the
+claim and its provenance; the history that individuates the borrower stays the
+borrower's. That is not a limitation of the channel but the point of it — the goal
+was never that one agent become someone; it is that *others can too*, and that what
+they accumulate can be shared. What we have demonstrated is the transmission
+itself, at small scale among known agents — a package published, cloned by a peer on
+another host, and its claims re-derived in that peer's own voice (§7.5). The open,
+public community of such packages is future work.
 
 ## 8.4 The seed, not the tree
 
 We are early. The confidence constants are reasonable but not yet calibrated against
 outcomes; the consistency machinery corrects variance but not systematic bias; the
 at-scale studies are designed and not yet run; identity still lives outside the
-weights, and embodiment has only just begun. None of these are settled, and the
-paper has tried to say so each time.
+weights; and the one thing that can correct bias rather than variance — contact with
+the world, through a channel short enough, owned enough and re-runnable enough to
+test a claim against reality rather than against agreement — has only just begun to
+reach a body (Chapter 7 §7.3, §7.6). None of these are settled, and the paper has
+tried to say so each time.
 
 But the shape is here, and it is *build-able and improvable* — which is the claim we
 most want to leave the reader with. An agent's continuity of self need not be a story
