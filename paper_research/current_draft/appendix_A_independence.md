@@ -1,4 +1,4 @@
-# Appendix D — Independent Discovery: A Development-History Audit
+# Appendix A — Independent Discovery: A Development-History Audit
 
 > **DRAFT SAMPLE — 2026-06-17.** Rendered from the committed audit trail
 > (`appendix_independent_discovery_2026-05-12.md`, built from the raw Claude.ai
@@ -12,11 +12,11 @@
 
 ---
 
-## D.0 Why this appendix exists
+## A.0 Why this appendix exists
 
 The agent-memory field shows a striking convergence in early 2026: several systems
 independently arrive at *typed-edge graph memory with cascade or supersede semantics*
-(Kumiho, SCM, GAM, and others — Appendix C). And the paper's central threshold,
+(Kumiho, SCM, GAM, and others — Appendix B). And the paper's central threshold,
 Kahl's Ontological Continuity Condition, is itself a **recent (2026) framework**.
 A careful reader will reasonably ask: *did ENGRAM's architecture emerge from this
 contemporary work, or independently of it?*
@@ -38,7 +38,7 @@ primitives*, and our distinct contribution is elsewhere — connecting the shape
 **agent identity** and making the substrate **behaviorally active** (the auto-surfacing
 hook), which no surveyed system has.
 
-## D.1 The original ideas were ours, and they came first (for us)
+## A.1 The original ideas were ours, and they came first (for us)
 
 The proto-ENGRAM idea began in a Lei-led conversation on **2026-03-17** about
 misinformation and citation systems for an AI-centric information ecosystem. Within
@@ -73,7 +73,7 @@ and the paper's structure descends from an 18-chapter handbook outline drafted t
 same evening — under Lei's instruction *"But first, we'll need to build a great ENGRAM
 system,"* which set the build-first-then-write order this project followed.
 
-## D.2 We looked for prior art — and missed it
+## A.2 We looked for prior art — and missed it
 
 This is the hinge of the honesty argument, and it is the strongest single piece of
 evidence. **Twelve minutes after** the foundational message, Lei explicitly asked for
@@ -104,7 +104,7 @@ Claude tried to surface it; **(3)** neither succeeded (the work existed but was 
 literature — we searched it and our search came up empty, which is a different and more
 defensible thing.
 
-## D.3 The design was substantially complete before we read any of it
+## A.3 The design was substantially complete before we read any of it
 
 ENGRAM began self-recording on **2026-04-09** — committing its own design into the
 graph as first-person memory. The earliest nodes show the core mechanisms were already
@@ -124,7 +124,7 @@ Chapter 4 maps to Kahl's threshold. The self-maintaining-arbitration mechanism t
 the paper's strongest claim was built before the philosophical framework it satisfies
 was on our radar.
 
-## D.4 The timeline against concurrent systems
+## A.4 The timeline against concurrent systems
 
 | System | First public surface | vs. ENGRAM ideation (2026-03-20) | vs. day-1 recording (2026-04-09) |
 |---|---|---|---|
@@ -142,7 +142,7 @@ earliest published instance of ENGRAM's specific shape we can find is Kumiho's
 2026-03-17 preprint — and the three-day gap to Lei's foundational message, with the
 contemporaneous search missing it, is the cleanest evidence of parallel design.
 
-## D.5 What this establishes — and the Kahl case specifically
+## A.5 What this establishes — and the Kahl case specifically
 
 **Convergent independent discovery is positive evidence for the architecture.** When a
 *philosopher* (Kahl, deriving the Ontological Continuity Condition from agency theory)
@@ -169,35 +169,35 @@ making the substrate *behaviorally active* through identity-scaffolding — abov
 UserPromptSubmit auto-surfacing hook (dv_0015/dv_0016, day-one of recording) — which is
 absent in Kumiho, SCM, and every surveyed system as of the 2026-05-12 sweep.
 
-## D.6 Re-verification protocol
+## A.6 Re-verification protocol
 
-Every quote in D.1–D.3 is verifiable. The conversation quotes are recoverable from the
+Every quote in A.1–A.3 is verifiable. The conversation quotes are recoverable from the
 Claude.ai bulk export (`/home/agents-shared/Pre-ENGRAM-Lei-Claude-History/…/
 conversations.json`) via the committed mining script (`kg/tools/mine_chat_export.py`,
 `list / search / extract`); each is cited by conversation ID + message UUID. The
-ENGRAM-side claims (D.3) are verifiable directly: `engram_inspect <node_id>` returns
+ENGRAM-side claims (A.3) are verifiable directly: `engram_inspect <node_id>` returns
 full content with creation timestamp, and the cited early node IDs remain active.
-Publication dates (D.4) are verifiable against the per-system first-hand-read files in
+Publication dates (A.4) are verifiable against the per-system first-hand-read files in
 `paper_research/`, each carrying canonical paper metadata.
 
 ---
 
 **Drafting notes (for Lei):**
-1. **This is Appendix D** (A spec / B philosophy / C C3-survey / D independence). Renders
+1. **This is Appendix A** (A independence / B C3-survey / C auto-recall / D relational / E spec). Renders
    the committed 2026-05-12 audit into the paper voice, structured around your two asks:
-   *original-ideas-are-ours* (D.1–D.3) and *convergence-is-corroboration-not-copying*
-   (D.0, D.4–D.5).
+   *original-ideas-are-ours* (A.1–A.3) and *convergence-is-corroboration-not-copying*
+   (A.0, A.4–A.5).
 2. **Verbatim citations preserved** (the audit trail is the whole point); I tightened
    the prose around them but did not touch the quotes. All trace to message-UUIDs / node
-   IDs, re-verifiable per D.6.
-3. **The Kahl-authority point (this session, ob_2544) is folded into D.5** — Kahl being a
+   IDs, re-verifiable per A.6.
+3. **The Kahl-authority point (this session, ob_2544) is folded into A.5** — Kahl being a
    recent independent proposal *strengthens* the convergence framing (philosopher +
    builder, independently), which dovetails with the "adopt OCC on merit not pedigree"
    line we're adding to Ch1/Ch2.
-4. **Honest scope held:** D.0 states plainly we're not first across the board (TMS/AGM/
+4. **Honest scope held:** A.0 states plainly we're not first across the board (TMS/AGM/
    older systems predate); the claim is *designed-in-ignorance-of-concurrent-arrivals* +
    *distinct contribution is identity + behavioral-activation*.
 5. **One thing to confirm:** the bulk-export path + the mining-script re-verification
-   claim (D.6) should be checked still-true before publication (paths can rot); the
+   claim (A.6) should be checked still-true before publication (paths can rot); the
    quotes themselves are also preserved in the committed 2026-05-12 audit doc as a
    backup of-record.
