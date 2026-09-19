@@ -1,4 +1,4 @@
-# Appendix A — ENGRAM: A Concise Specification
+# Appendix E — ENGRAM: A Concise Specification
 
 > **DRAFT SAMPLE — 2026-06-17.** A compact reference for the substrate the paper
 > argues about: the node types, edge types, the confidence model, the OCC
@@ -9,7 +9,7 @@
 
 ---
 
-## A.1 Name
+## E.1 Name
 
 **ENGRAM — an Epistemic Node Graph for Retraction, Arbitration, and Memory** (df_0048).
 The three differentiating mechanisms are named in the acronym: *Retraction* (error
@@ -17,7 +17,7 @@ correction that cascades through derivation edges), *Arbitration* (the structura
 propagation of that cascade within a unified deliberative architecture), and *Memory*
 (the underlying substrate of typed claims, evidence, and derivations).
 
-## A.2 Node types
+## E.2 Node types
 
 A claim is never free text; it is a *kind*, and the kind determines how the substrate
 treats it.
@@ -43,7 +43,7 @@ treats it.
 creation (cornerstones + axioms + goals + persons) numbered in the low dozens — the
 substrate treats identity-shaping writes as sacred and rare.
 
-## A.3 Edge types
+## E.3 Edge types
 
 Relationships are typed too; the substrate acts on different edges differently.
 
@@ -65,11 +65,11 @@ called "cascade-bearing" here.
 `derives_from` and `supported_by` are the edges the cascade *walker* traverses;
 `supersedes` and `retracts` are the events that *trigger* a walk. `contradicts`
 does neither today — filing a contradiction taints and cascades nothing (see
-A.5's honest-scope note; a distinct derive-time premise guard covers related
+E.5's honest-scope note; a distinct derive-time premise guard covers related
 ground). A whitelist blocks removal of cascade-bearing and structural edges
 (Ch3 §3.3).
 
-## A.4 The confidence model (computed, not annotated)
+## E.4 The confidence model (computed, not annotated)
 
 Confidence is a **computed property of the claim's structure**, not a hand-set number
 (Ch3 §3.2). For an **observation** it maps from `quote_type` × `source_class`; for a
@@ -91,7 +91,7 @@ and dilute their premises.
 theoretically-derived provenance-graded plausibility, designer-stipulated, not
 outcome-calibrated — Ch7 §7.2.)*
 
-## A.5 Self-correction
+## E.5 Self-correction
 
 - **Retract** = "I was wrong": target tainted, no override; cascade taints all
   `derives_from` dependents.
@@ -112,7 +112,7 @@ outcome-calibrated — Ch7 §7.2.)*
   cascade, supersede, focus mode, auto-surfacing, the confidence model — the minimal
   generating set every higher mechanism composes from.
 
-## A.6 The OCC threshold (Kahl 2026), as the paper uses it
+## E.6 The OCC threshold (Kahl 2026), as the paper uses it
 
 Definitions the mapping (Ch4) rests on:
 - **OCC** = Ontological Continuity Condition (df_0037): 3 jointly-necessary conditions
@@ -125,7 +125,7 @@ Definitions the mapping (Ch4) rests on:
   AGM + Hansson Relevance/Core-Retainment (df_0049–df_0053); retrieval profile (df_0045);
   identity-tree node (df_0055).
 
-## A.7 Continuity across compaction
+## E.7 Continuity across compaction
 
 - **Two-routine consolidation**: **nap** (per-burst persistence at compaction
   boundaries, df_0003) · **sleep** (once-daily review + consolidation +
@@ -144,6 +144,6 @@ Definitions the mapping (Ch4) rests on:
 missing (you started reading at B). It's a reference/glossary, not an argument — mostly
 rendering the `df_*` and primitive nodes. Two scope questions: (1) is this the right
 *altitude* (a one-page-ish reference), or do you want it fuller (a per-tool or
-per-mechanism spec)? (2) the OCC definitions (A.6) restate Ch2's verbatim definitions in
-brief — keep the cross-reference, or have A.6 carry the full verbatim text so the
+per-mechanism spec)? (2) the OCC definitions (E.6) restate Ch2's verbatim definitions in
+brief — keep the cross-reference, or have E.6 carry the full verbatim text so the
 appendix is self-contained? Easy either way.

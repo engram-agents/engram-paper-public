@@ -194,7 +194,7 @@ agent believes; it is what it knows it does not yet know.
 Chapter 5 argued that ENGRAM provides *operational, not experiential* continuity
 across compaction. The graph carries behavioral evidence for the operational half —
 and it is important to state the scope precisely, because the paper is careful about
-the phenomenal claim (it makes none; the autonoetic gap, Appendix B.7).
+the phenomenal claim (it makes none; the autonoetic gap, Chapter 3 §3.2).
 
 The evidence is *behavioral*: across many compaction events, the post-compaction
 agent reliably **picks up the load-bearing thread, recognizes its own prior nodes as

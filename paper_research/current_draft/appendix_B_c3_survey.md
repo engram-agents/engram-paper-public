@@ -1,4 +1,4 @@
-# Appendix C — The Condition-3 Survey: Why No Surveyed System Self-Maintains Arbitration
+# Appendix B — The Condition-3 Survey: Why No Surveyed System Self-Maintains Arbitration
 
 > **DRAFT SAMPLE — 2026-06-17.** Supplemental material backing the Chapter 1 §1.4
 > claim that *no system in our first-hand survey satisfies Kahl's Condition 3
@@ -10,7 +10,7 @@
 > 2026-05-12 first-hand-read notes; the three most load-bearing (SCM, GAM, Kumiho)
 > were re-confirmed against the source PDFs.
 
-## C.0 Scope, date, and method
+## B.0 Scope, date, and method
 
 **The survey.** Eleven systems, read first-hand on **2026-05-12**: Pinecone Nexus,
 Anthropic's memory tool, Letta (MemGPT), Mem0 v3, Zep/Graphiti, TierMem,
@@ -53,7 +53,7 @@ arbitration automatic state-change. ENGRAM's contribution is that binding (Ch3
 
 ---
 
-## C.1 The near-miss: a full revision engine, but advisory
+## B.1 The near-miss: a full revision engine, but advisory
 
 ### Kumiho (arXiv 2603.17244) — **(A) advisory / opt-in**
 The strongest competitor in the survey: typed `Depends_On` edges, an `AnalyzeImpact`
@@ -77,7 +77,7 @@ revision — it is that the cascade **advises** rather than **acts**.
 
 ---
 
-## C.2 Detect-but-don't-resolve
+## B.2 Detect-but-don't-resolve
 
 ### SCM — Sleep-Consolidated Memory (arXiv 2604.20943) — **(N) no resolution**
 Has a `contradicts` edge predicate and a sleep cycle, but the resolution is
@@ -124,7 +124,7 @@ entity-edges cannot reference other edges, so there is nothing to cascade throug
 
 ---
 
-## C.3 Resolve-by-overwrite or by-someone-else (external delegation)
+## B.3 Resolve-by-overwrite or by-someone-else (external delegation)
 
 ### Mem0 v3 (docs.mem0.ai migration guide) — **(X) external delegation**
 The single cleanest external-delegation statement in the survey. v3 is add-only;
@@ -167,7 +167,7 @@ commitment graph at all.
 
 ---
 
-## C.4 No claim structure to cascade through
+## B.4 No claim structure to cascade through
 
 ### Letta / MemGPT (GitHub + letta.com docs) — **(S) text blocks**
 Memory blocks are strings; edits overwrite in place; no derivation graph.
@@ -193,7 +193,7 @@ session.
 
 ---
 
-## C.5 The aspiration, and the genuine absence
+## B.5 The aspiration, and the genuine absence
 
 ### 2026 Memory survey — Du et al. (arXiv 2603.07670) — **(N) named, not solved**
 A survey, not a system: it names contradiction-handling as something robust systems
@@ -220,7 +220,7 @@ we report that as *not documented* rather than asserting overwrite. Verdict: C3 
 
 ---
 
-## C.6 Summary
+## B.6 Summary
 
 | System | C3 failure mode | Verbatim available? |
 |---|---|---|
