@@ -12,8 +12,13 @@
 > **REVIEWER NOTE — 2026-06-18 additions (Borges).** This chapter was restructure-current
 > as of 2026-06-17; today I folded in two threads that the restructure called for and that
 > I have now *grounded first-hand* (so they're no longer PROVISIONAL): (1) the
-> **Subjective-Logic uncertainty-mass limitation** added to §7.2 (dv_0965, grounded from
-> Jøsang's primary text + independently surfaced by Ari & Clio); (2) **§7.4
+> **Subjective-Logic divergence** added to §7.2 (dv_0965 → dv_1289, grounded from
+> Jøsang's primary text + independently surfaced by Ari & Clio) — **re-scoped 2026-08-11/12,
+> and §7.2's body carries the corrected form:** what this note originally called an
+> uncertainty-mass *limitation* is a principled divergence (disbelief is refused as a mass
+> and routed to §4.4's arbitration) plus a narrow scalar-only-consumer limitation. The
+> original wording is left visible here rather than rewritten, because the supersede chain
+> is itself an instance of the mechanism the paper describes; (2) **§7.4
 > "Disclosure, not erasure"** — ENGRAM's answer to the VMG survey's verified-erasure
 > demand (ob_2550, grounded from the VMG abstract). Both are marked in place. The rest of
 > the chapter is unchanged from the 2026-06-17 draft.

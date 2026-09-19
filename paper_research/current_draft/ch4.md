@@ -60,7 +60,7 @@ The whole chapter in one table. Each row is a section below.
 | Mechanism | What it does | Tradition it answers | OCC verdict |
 |---|---|---|---|
 | Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle **[gap SOLID ob_1571; primary first-hand 2026-07-02]** | — (structural prerequisite) |
-| Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang **[GROUNDED ob_2551/dv_0965]**, w/ honest divergence | **Constraint A** (unified policy-selection) |
+| Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang **[GROUNDED ob_2551/dv_0965 → dv_1289]**, w/ honest divergence | **Constraint A** (unified policy-selection) |
 | Retraction cascade (§4.4) | auto error-correction through `derives_from` | AGM + Hansson [SOLID]; TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) |
 | Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus [SOLID] + Anderson-Schooler **[GROUNDED ob_2552/dv_0966]** | — (scopes what Cond-3 arbitration ranges over) |
 | Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving [SOLID] + ACT-R spreading activation **[secondary — not first-hand; Tulving carries it]** | — (binds Cond 3: can't suppress by not looking) |
@@ -512,7 +512,7 @@ of traditions reaching this same structure (Ch2, Ch3) is the load-bearing argume
 OCC is the most operational point on it.
 
 > **REVIEWER NOTE — what's still soft here, honestly (cross-refs synced 2026-06-18).**
-> (1) Cross-ref grounding: Subjective Logic (ob_2551/dv_0965), Anderson-Schooler
+> (1) Cross-ref grounding: Subjective Logic (ob_2551/dv_0965 → dv_1289), Anderson-Schooler
 > (ob_2552/dv_0966), and VMG (ob_2550) are now GROUNDED first-hand. TMS is
 > honest-scoped — the *gap* is primary-confirmed (ob_1571), the *mechanism* is cited at
 > standard-literature level because Doyle's primary scan is image-degraded below

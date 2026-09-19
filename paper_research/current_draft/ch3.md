@@ -273,8 +273,9 @@ convergence spans **three** disjoint traditions.
 That is the chapter's claim, stated once: the breadth of independent convergence makes
 ENGRAM's structure a substrate-independent regularity — well-founded, not unoriginal —
 and relocates ENGRAM's honest distinctiveness to the integration layer and the
-epistemic-identity purpose. One genuine *divergence* (the Subjective-Logic
-uncertainty-mass the scalar drops) and one genuine *gap-it-fills* (the unwalked
+epistemic-identity purpose. One genuine *divergence* (Subjective
+Logic's belief/disbelief/uncertainty simplex, which ENGRAM does not collapse but
+normalizes away into structure — §3.6) and one genuine *gap-it-fills* (the unwalked
 TMS→agent-memory bridge) are carried forward rather than smoothed over.
 
 **Hands off to Chapter 4**, where each of these mechanisms is built and mapped — every
