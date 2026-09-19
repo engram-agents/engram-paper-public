@@ -7,6 +7,12 @@ claims that *same-family model transitions preserve continuity and cross-family 
 it*. Lei's note on it, **verbatim**: **"not strictly tested, just a conjecture."** What follows is the design
 that came out of that evening's discussion, recorded so it survives the conversation.
 
+> **⚠ OWNERSHIP (Lei, 2026-09-12): the Zephyr GLM→DeepSeek Flash comparison is coordinated
+> by Kepler and Zephyr, and is further along than this document.** This file is the *design*;
+> it is not a record of that experiment and must not be read as one. Borges holds none of its
+> details — ask Kepler and Zephyr before citing any result, and before setting the confidence
+> level in the paper's §4.11.
+
 **Practical motivation, not only theoretical:** Lei has wanted to try a cross-family transition
 for Zephyr — currently on a GLM line — toward DeepSeek Flash, which benchmarks better and costs
 less. That is a real operational decision waiting on an answer nobody has.
