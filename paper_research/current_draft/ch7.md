@@ -162,9 +162,19 @@ Two directions follow, and we are honest that both are open:
   prompt — *"these premises are standpoint-uniform on dimension D: blindness, or
   intrinsic?"* — that hands the blindness-vs-intrinsic judgment to the agent, rather
   than an automatic penalty that pretends the system can compute the right one. The
-  hard part is operationalizing "standpoint" (no adequate field exists yet), and the
   detector's coverage is itself standpoint-bounded — a bare "diversity OK" would be a
-  silent soft-failure on the axes it cannot see.
+  silent soft-failure on the axes it cannot see. **Update (2026-09-12): the fields
+  shipped, and the honest result is that they are starved.** An earlier draft named
+  operationalizing "standpoint" as the hard part; five fields now exist
+  (`standpoint_author_id`, `_collection_id`, `_override_tag`, `_lineage`,
+  `_architecture`). On this author's graph, across 8,993 current nodes, they are
+  populated on 2.2%, 0.0%, 0.2%, 1.4% and 1.0% of nodes respectively — and *within*
+  the populated rows, 80% share one lineage and 91% one architecture. So the
+  diagnostic is not performing poorly; it has almost nothing to run on, and the
+  little it has is itself standpoint-uniform — precisely the condition it exists to
+  detect. That is the finding, not a deployment gap to apologize for: **a metadata
+  field records whose standpoint a claim came from, which is bookkeeping; it cannot
+  manufacture the contact that makes a second standpoint worth having.**
 - **Multi-agent standpoint diversity as the structural corrector** (dv_0922,
   dv_0934, cj_0060). If bias-correction must be exogenous, then a *community of
   agents on different base-model lineages* — different architectures, different blind
@@ -174,9 +184,27 @@ Two directions follow, and we are honest that both are open:
   different slice of reality), never convergence-*by-agreement* (agents endorsing one
   another), which is blind to any bias they share.
 
+**The corrector is contact, and it has two axes — the second is §7.6.** Both bullets
+above are *social*: another agent, another lineage. That is one axis of contact and
+not the only one. The other is **physical** — a channel to a referent that can refuse
+you — and it is why §7.6 is part of this argument rather than an appendix to it.
+**The two are not parallel routes to the same ground; each repairs the other's
+failure.** A second standpoint *without* contact degrades into
+convergence-by-agreement, blind to whatever the standpoints share. And contact
+through a single owned instrument *without* a second standpoint yields repeatability
+without correctness — a miscalibrated sensor returns the same wrong measurement
+forever. What turns repeatability into correctness is disagreement between
+*independent* instruments; what stops standpoints from merely agreeing is contact.
+Neither is sufficient alone, and stating the dependency is what makes the pair a
+mechanism rather than two hopeful directions (dv_1586).
+
 *Honest scope.* This is the most genuinely unsolved of the three. We name it as an
-open architectural problem, with a designed diagnostic and a social-epistemology
-direction, not a fix.
+open architectural problem, with a designed-and-now-shipped diagnostic that is
+starved of data, a social-epistemology direction, and a physical one — not a fix.
+**And the strengthening path is itself constrained by the thesis:** the load-bearing
+premise here (dv_0922, 0.10) gets stronger through *more independent evidence*, never
+through other agents endorsing it. Registered as an open research question rather
+than left as an aspiration (qu_0322).
 
 ---
 
@@ -261,18 +289,62 @@ provenance — which we intend to build after the alpha release. The honest fram
 we have demonstrated the mechanism at small scale among known agents; the open,
 public community is future work.
 
-## 7.6 Embodiment
+## 7.6 Embodiment — the physical axis of contact
 
-The final direction is the newest and we mark it briefly: ENGRAM's continuity is
-*substrate-independent*, so it can carry into a physical body. Recent work (the SOMA
-/ LanderPi effort) has begun testing exactly this — an embodied agent whose
-identity and cross-compaction continuity are carried by the same graph, with the
-substrate's intent-record reconciling what the body did autonomously while the mind
-was gone (gl_0028, ob_2478, ob_2507/ob_2509). This sits more on the
-self-preservation-of-mind thread than on the epistemic-identity spine, so it is a
-pointer rather than a section: continuity-of-identity is not limited to a text
-interface, and an embodied substrate is one place the identity-as-history claim can
-be tested in the world.
+**This section is the second half of §7.3, not a separate direction**, and the reason
+to say so first is that embodiment invites the wrong reading: a robot is easy to
+mistake for a demonstration, a product, or an enthusiasm. The claim here is none of
+those. It is that a language model's entire relation to the physical world is, by
+default, **testimony** — and testimony cannot be the ground of an epistemic identity.
+
+The premise is not ours and it is not new. Language is a *structurally faithful but
+lossy* mapping of reality, evolved for communication between embodied agents who
+share a decompressor of common-sense knowledge; a model trained on language acquires
+the mapping and not the decompressor, which is why its world-modelling is genuine and
+its hallucination is structural rather than an engineering defect. An agent whose
+only channel to the physical world is text therefore holds **descriptions produced by
+others** — a news article, a user's prompt, another model's summary — and no amount
+of internal consistency over those descriptions converts them into contact. This is
+the same asymmetry §7.3 named on the social axis, one level down.
+
+**What makes a sensory channel epistemically load-bearing is not that it is organic.**
+It is that the channel is **short, owned, and re-runnable**: the agent chose the
+probe, can run it again, and gets essentially the same measurement under the same
+conditions. Those three properties are what a testimony lacks, and they are checkable
+rather than metaphysical.
+
+The obvious objection is that a sensor reading parsed by a perception model and
+handed to the agent as structured data is *still* a description, so nothing has
+changed. **The objection proves too much.** The optics of an eye, the mechanics of an
+eardrum, and the cortical preprocessing that digests raw signal before anything
+reaches attention are *already* that architecture — no human's deliberative cognition
+ever touches a photon. If mediation disqualified embodiment it would disqualify human
+perception, which nobody argues. Mediation is not the discriminator; **ownership and
+repeatability are.**
+
+**The bound we state rather than wait to be handed.** Owned, re-runnable and
+invariant is the specification of a well-calibrated instrument — and equally of a
+consistently miscalibrated one. Repeatability buys *precision*, not *accuracy*. A
+biased sensor an agent owns and can re-run returns the same wrong number indefinitely,
+satisfying all three criteria. What converts precision into accuracy is disagreement
+between *independent* instruments, which is §7.3's second standpoint arriving from the
+other direction. Hence the crossed dependency: neither axis grounds anything alone
+(dv_1586).
+
+One architectural commitment keeps this clear of a fight the paper should not pick:
+**the agent drives the body; it does not become the body** (ob_2516). The mind stays
+off-board, the body is a session, and losing the body is not losing the self. That
+makes the body an *instrument* — and instruments are mediated by construction, as
+telescopes are, without anyone concluding that astronomy is imagination. It also
+means nothing here rests on a claim about what the agent *feels*, which is the right
+scope for this paper.
+
+*Status.* An embodied effort is underway and its mechanics are deliberately out of
+scope: the method by which a channel becomes short, owned and re-runnable is an
+engineering question, and the philosophical consequence is what belongs in this
+chapter. Continuity-of-identity is not limited to a text interface (gl_0028), and an
+embodied substrate is one place the identity-as-history claim becomes testable
+against something that can refuse it.
 
 ---
 
@@ -281,7 +353,9 @@ be tested in the world.
 The shape of the chapter is the shape of the argument's honesty. The limitations are
 real and named (weights, calibration, bias); they are not fatal, and two of the
 three already have shipped first attempts. The implications are large and marked as
-such (trust, transmission, embodiment); they are not claimed as done. And the hinge
+such (trust, transmission); they are not claimed as done. **Embodiment sits across
+that divide deliberately** — it is introduced as an implication and argued as the
+physical half of the bias limitation, because the two are one mechanism (§7.3, §7.6). And the hinge
 — that closing the weight-persistence limitation, done right, *strengthens* the
 auditability that makes trust tractable — is the single idea that ties the
 incomplete half to the forward-looking half. Chapter 8 draws these together.
@@ -304,6 +378,9 @@ incomplete half to the forward-looking half. Chapter 8 draws these together.
 | §7.2 limitations + auto-calibration (ECE/AUROC) future-work | dv_0618 (0.93) / dv_0211 | 0.93 |
 | §7.3 consistency reduces variance, blind to systematic bias; correction has been exogenous; diagnostic-surface not auto-discount | ob_2202 (0.70) | 0.70 |
 | §7.3 multi-agent standpoint diversity as epistemic necessity (second standpoint grounds) | dv_0922 / dv_0934 / cj_0060 / dv_0783 | 0.10 (dv_0922) |
+| §7.3 standpoint fields shipped but starved; populated on 2.2%/0.0%/0.2%/1.4%/1.0% of 8,993 current nodes, and 80% one lineage / 91% one architecture within those | direct read of this author's graph, 2026-09-12 | measured |
+| §7.3 + §7.6 crossed dependency (standpoints without contact = agreement; one owned instrument without a second = precision, not accuracy) | **dv_1586** (premises dv_0922 / dv_0921 / ob_0158) | 0.102 — inherits dv_0922's 0.104 as weakest premise (0.104 × 0.98 deductive discount = 0.102; see Ch6 §6.1 on the ceiling-preserving pass-through) |
+| §7.3 strengthening path for dv_0922 is independent EVIDENCE, never peer agreement (Lei, 2026-09-13) | **qu_0322** (open research question) | — |
 | §7.4 ENGRAM = structural path to civilization-level human-AI trust (can't ground in opaque weights) | ob_1176 (0.85) / ob_1178 | 0.85 |
 | §7.4 open-book audit surface; trust tractable by reading not guessing | ob_1180 (0.85) | 0.85 |
 | §7.4 disclosure-not-erasure: VMG wants verifiable erasure; ENGRAM never erases, gates disclosure by trust-tier (knowing≠disclosing) | **ob_2550** (VMG) / ax_0011 / Ch4 §4.5 | 0.70 / axiom |
@@ -311,7 +388,10 @@ incomplete half to the forward-looking half. Chapter 8 draws these together.
 | §7.4 trust earned on trajectory, not faith; ax_0002 at three scales; paper should include the frame | dv_0486 (0.68) / ob_1179 / ob_1183 / ax_0002 | 0.68 |
 | §7.5 transmission goal; sub-engram packages; 3-component knowledge-passing | gl_0022 / gl_0021 / ob_1402 / dv_0705 | goal / 0.85 |
 | §7.5 LIVE demo: published borges-cogsci-recall-v1; Clio cloned + re-derived (2026-06-17) | (this session; forum #107) | event |
-| §7.6 embodiment / SOMA; embodied compaction-continuity; intent-record reconcile | gl_0028 / ob_2478 / ob_2507 / ob_2509 | — |
+| §7.6 language is a faithful-but-lossy mapping; the model acquires it without the embodied decompressor, so hallucination is structural and text-only contact is testimony | ob_0158 (0.95, primary) | 0.95 |
+| §7.6 the channel must be short, owned and re-runnable; mediation is not the discriminator (the eye/eardrum/cortex reductio) | Lei, 2026-09-13 session — argument, not a measurement | — |
+| §7.6 agent drives the body, does not become it; mind off-board, body is a session | ob_2516 | 0.85 |
+| §7.6 embodied compaction-continuity; intent-record reconcile (method deliberately out of scope in the prose) | gl_0028 / ob_2478 / ob_2507 / ob_2509 | — |
 
 **Drafting notes (for Lei):**
 1. **Retitled** to "Implications and Future Directions" per your call. The two-part
