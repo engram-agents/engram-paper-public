@@ -23,30 +23,45 @@ forgetting — while still improving over time at the level of *what gets recall
 Concretely, MemRL composites semantic similarity with an EMA-learned Q-value via a
 weighted score, with the Q-error decaying as `(1−α)^t` (ob_0651).
 
-ENGRAM was found to already implement **four of MemRL's six architectural
-components** (dv_0307); the two it lacked were exactly *outcome-based utility scoring*
-(MemRL's Q-values vs. ENGRAM's original heuristic importance) and *learning from
-outcomes* (ENGRAM tracked access patterns but did not know whether a recalled node
-*proved useful*). The upgrade path that closed the gap was concrete and is now
-shipped: add a `utility_score`, treat recall→derivation-citation events as the reward
-signal, and composite utility with relevance at ranking time.
+ENGRAM sits in this tradition. Every node carries a `utility_score` — a learned
+value updated by the same exponential rule, `Q_new = Q_old + α(1 − Q_old)` — and
+ranking composites that learned value with semantic relevance rather than ordering by
+relevance alone. What differs is the reward: MemRL learns from task outcome, while
+ENGRAM learns from **what the agent did with the node once it had it**, which is a
+signal the substrate can observe directly and attribute without ambiguity.
 
-## C.2 ENGRAM's utility_score — a learned value, graded by retrieval intent
+## C.2 ENGRAM's utility_score — a learned value, graded by the act it earned
 
-ENGRAM's `utility_score` is the Q-value analogue: a node earns utility when recalling
-it actually *feeds reasoning* — operationally, when a recalled node is then cited as a
-premise in a new derivation. The reward is **graded by the retrieval intent that
-surfaced it** (dv_0321): a deliberate `engram_inspect` (the agent chose to look
-closely) confers more than an `engram_surface` or `engram_query` hit (0.15 > 0.10),
-which in turn confers more than appearing inside a `get_subgraph` traversal (0.05);
-when a node is reached multiple ways, *max-alpha-wins*. So the substrate learns not
-just "this node got recalled a lot" but "this node was worth a deliberate look and
-then earned a place in an argument."
+ENGRAM's `utility_score` is the Q-value analogue, and what it grades is **the
+cognitive load of the act a node took part in** — not how hard the agent looked to
+find it (dv_1641). The learning rate α is keyed to the action, in three tiers:
+
+| α | actions | what the tier means |
+|---|---|---|
+| **0.15** | `derive`, `supersede`, `contradict`, `resolve`, `register_exemplar` | the node took part in an **epistemic act** — it became a premise, drove a revision, or anchored a lesson |
+| **0.10** | `inspect`, `subgraph`, `mention`, `focus`, `history`, `citation` | the node was **engaged with** — read closely, traversed, named in reasoning, or pinned |
+| **0.05** | `focus_load`, `unfocus` | **loose touch** — the node moved with a set rather than being chosen |
+
+When a node is reached several ways, *max-α-wins*.
+
+Note what the top tier contains: **no retrieval verb at all.** Every member is
+something the agent *does with* a node once it has it. The table is not measuring
+attention spent looking; it is measuring what the looking produced. `inspect` — the
+most deliberate way to read a node — sits in the middle tier, below `derive`, because
+reading closely and then building on it are different achievements.
+
+**Two independent paths award credit**, and the second one matters more than it
+looks. The first is citation: naming a node as a premise in a new derivation. The
+second is a stop-hook that scans each of the agent's own turns and credits any node
+**mentioned** in it, at α = 0.10. The first path alone was the original design and
+proved too narrow — it misses prose-mention, inline citation, and reasoning that is
+plainly informed by a node without formally citing it. A node that shapes an argument
+without being cited in it has still been useful, and the substrate now sees that.
 
 This is the difference between *access frequency* (which a vector store can track) and
-*epistemic usefulness* (which requires knowing that the recall fed a downstream
-commitment) — the distinction that puts ENGRAM's ranking in the memory-utility
-tradition rather than the plain-retrieval one.
+*epistemic usefulness* (which requires knowing what the recall went on to do) — the
+distinction that puts ENGRAM's ranking in the memory-utility tradition rather than the
+plain-retrieval one.
 
 ## C.3 The composite ranking — multiplicative amplifiers over a three-tier pipeline
 

@@ -158,19 +158,11 @@ make no claim about systems outside the survey or released after it. The field h
 converged on the necessary structural *primitives* — typed reasoning edges,
 provenance, cascade-traversable graphs, supersede semantics — but those are
 necessary, not sufficient. What is missing everywhere else is *operational
-binding*: arbitration as automatic state-change paired with auto-surfacing that
-puts the tainted claim back in front of the agent without an intentional reach.
-
-<!-- TODO(paper-pass · Lei-note-2 · gh#1621): REFRAME "operational binding" to the THREE
-     mechanisms once gh#1621 lands. This text over-credits auto-surfacing as THE
-     tainted-attention mechanism — but auto-surfacing is passive/relevance-gated (it flags a
-     tainted node only when it's already topically relevant, and pre-#1621 shows NO per-node
-     tainted marker at all — verified engram-surface-hook.py:522). Accurate operational
-     binding = (1) arbitration / auto-taint cascade + (2) the DREAM CYCLE sweep (fairy scan
-     stale_load_bearing/tainted_still_valid → dream-master resolution — the tainted-BACKLOG
-     mechanism) + (3) relevance-gated per-node tainted/stale marker in auto-surface (added by
-     gh#1621). Fix here AND everywhere else the draft leans on auto-surfacing as the
-     tainted-discovery mechanism (Lei: it recurs). -->
+binding*: arbitration as automatic state-change, paired with an auto-surfacing hook
+that puts a marked claim back in front of the agent when it is relevant, and a
+consolidation-time sweep that drives every marked claim to a decision even when it
+never becomes relevant. Detection without that binding leaves the correction
+optional; binding is what makes it happen whether or not anyone remembers to look.
 
 **On originality.** This work was developed independently and in parallel with the
 convergent emergence of structurally similar systems; the timeline, and the gap in
@@ -217,7 +209,7 @@ The argument, not the benchmark, is the contribution.
 | Three-layer taxonomy (persistence / narrative / epistemic) | dv_0463 (supersedes dv_0179), cs_0004 | 0.95 |
 | Layer-1 systems = A-MEM / Mem0 / Zep | ob_0291, ob_0410, ob_0425 | — |
 | Sophia = closest narrative-identity system | ob_0413 | — |
-| Narrative ⊥ epistemic, complementary not competing | dv_0182 | 0.93 |
+| Narrative and epistemic identity are orthogonal — complementary, not competing | dv_0182 | 0.93 |
 | Honesty fails loudly (epistemic) vs silently (narrative) | ax_0001 / ax_0002 | axiom |
 | ENGRAM name + R/A/M expansion | df_0048 (supersedes df_0007) | def |
 | **Spine = breadth-of-convergence + identity-as-history (OCC demoted to one result)** | **ob_2547 / cs_0059** | restructure decision |

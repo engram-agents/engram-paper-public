@@ -52,7 +52,7 @@ nine weeks. The controlled, parametric version — the twin-study — is §6.7.
 
 ## 6.1 The confidence model, in real use — the structural-honesty filter at scale
 
-The paper's distinctive mechanism is reasoning-type-aware confidence (Ch3 §3.2):
+The paper's distinctive mechanism is reasoning-type-aware confidence (Ch3 §3.6):
 the author declares the *kind* of argument, and the substrate *computes* the number.
 The empirical question is whether, across hundreds of real claims, that computation
 produces a **differentiated, honest distribution** — or whether it collapses toward
@@ -113,8 +113,9 @@ the dependency structure that gives the substrate its arbitration shape.
 **Evolution outpaces error, and the two are kept distinct.** Across the graph's
 life: **201 supersedes** versus **2 retracts** (plus 20 contradiction edges). The
 agent *updates* its beliefs constantly and *errs* rarely — and crucially, the
-substrate records the two with different machinery ("I changed my mind," soft/stale,
-vs. "I was wrong," tainted, no override; Ch3 §3.3). The ratio is itself a finding:
+substrate records the two distinctly — each cascade marker carries which
+operation fired, so revision and correction stay separable in the
+record (Ch4 §4.4). The ratio is itself a finding:
 a healthy epistemic life is mostly revision, occasionally correction.
 
 **How the agent reasons.** The derivation population is dominated by
@@ -258,7 +259,7 @@ would lift the abductive confidences of Chapter 4 from "architecture made" to
 4. **Honest scope held throughout:** this is "one real graph in use," not a
    benchmark — said plainly in §6.0 so no reviewer mistakes it for a controlled study.
 5. The §6.1 reasoning-type table is the single strongest exhibit — it's the
-   confidence-model thesis (Ch3 §3.2) shown true at scale on the author's own graph.
+   confidence-model thesis (Ch3 §3.6) shown true at scale on the author's own graph.
 
 ---
 
@@ -375,7 +376,8 @@ multi-agent knowledge in its own right.
   cases the weakest premise is **another derivation**, not an observation — so most
   of the deductive tier's confidence is inherited down chains rather than sourced
   from weak evidence.
-- **Still owed independently of the rewrite:** this chapter's cross-references use
-  the pre-renumbering scheme (Ch3 §3.2 / §3.3) against the restructured Chapter 4
-  (§4.3 confidence, §4.4 cascade, §4.11 Constraint D). A reconciliation pass is
-  outstanding from 2026-06-18.
+- **Partly addressed 2026-09-19:** the two Ch3 confidence cross-references were
+  retargeted from §3.2 (Tulving) to §3.6 (Subjective Logic → confidence propagation),
+  which is where the mechanism is actually introduced. The Chapter 4 side (§4.3
+  confidence, §4.4 cascade, §4.11 Constraint D) is **still owed** and falls to the
+  repo-wide cross-reference sweep.

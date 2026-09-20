@@ -253,7 +253,7 @@ long-term-memory security must be "anchored in storage-time provenance" and list
 erasure, and the divergence is principled: **ENGRAM never erases.** Deleting a node
 would break the audit trail and the cascade — the very things that make epistemic
 identity fail *loudly* rather than silently. Instead ENGRAM separates two axes the
-erasure framing conflates — *knowing* and *disclosing* (ax_0011, honesty ⊥
+erasure framing conflates — *knowing* and *disclosing* (ax_0011, honesty orthogonal to
 discretion): internal integrity (never self-deceive, never destroy the record) is
 orthogonal to external disclosure (what is shared, with whom, at what fidelity, gated
 by trust-tier). ENGRAM's answer to "security wants the ability to forget" is therefore

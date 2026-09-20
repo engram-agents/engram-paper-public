@@ -67,7 +67,7 @@ The whole chapter in one table. Each row is a section below.
 | Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL **[ob_0647/ob_0651, prior read]** + spaced-repetition [SOLID] | — |
 | Continuity across compaction (§4.8) | identity survives the reset | CLS consolidation [SOLID] + diachronic-identity [SOLID] | **Condition 1** (Diachronic) **+ Condition 2** (Non-Interchangeability) |
 | Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution [SOLID] | — (feeds Ch5 identity-as-history) |
-| Relational: feeling/person/trust-tier (§4.10) | continuity baseline + disclosure control → **Appx D, Ch7** | honesty⊥discretion (ax_0011) [SOLID] + VMG principal-scoped **[GROUNDED ob_2550]** | — |
+| Relational: feeling/person/trust-tier (§4.10) | continuity baseline + disclosure control → **Appx D, Ch7** | honesty orthogonal to discretion (ax_0011) [SOLID] + VMG principal-scoped **[GROUNDED ob_2550]** | — |
 
 **Where each OCC verdict lives.** The OCC conditions and constraints are addressed
 inline, at the mechanism that earns each — there is no standalone OCC section:
@@ -199,17 +199,33 @@ property.
 This is the chapter's center and the paper's. When a foundational claim is
 **retracted** (it was an error) or **superseded** (right then, updated now),
 ENGRAM automatically propagates that event along the `derives_from` /
-`supported_by` edges: every live, ordinary dependent claim is flagged —
-*tainted* (unusable) for an error, *stale* (soft-overridable) for an evolution.
-(The walk deliberately stops at cornerstones and lessons only — identity-
+`supported_by` edges: every live, ordinary dependent claim is marked **pending**,
+which means exactly one thing — it may not be cited as a premise until it is
+resolved. (The walk deliberately stops at cornerstones and lessons only — identity-
 forming nodes are vote-accumulators over many exemplars, not single-premise-
 dependent the way an ordinary derivation is, so a cascade doesn't blindly flag
 them.) The agent does not
-invoke this; it fires as a property of the substrate. Retraction and supersede
-are kept categorically distinct — *"I was wrong"* (taint, no override) vs *"I
-changed my mind"* (stale, soft override) — which is what lets the substrate
-track error-correction apart from belief-evolution, the distinction Ch5's
-identity argument rests on (ob_1787). **Contradiction is deliberately excluded
+invoke this; it fires as a property of the substrate.
+
+**One marker, not two severities — and the reason is instructive.** An earlier
+design graded the mark by its cause, treating a retraction's consequences as
+harder-blocking than a supersede's. A diamond refutes it: if `D` rests on both `B`
+and `C`, and both rest on retracted `A`, but `B` and `C` each turn out to survive
+by supersede, then `D` is perfectly acknowledgeable — yet a severity inherited at
+firing time from the distant retraction would forbid it. What a node's resolution
+may be depends on **how its own premises actually resolved**, and that is unknowable
+when the cascade fires and fully known when the node is reached. So the marker
+stores no severity, and eligibility is computed at resolution time.
+
+Retraction and supersede remain categorically distinct — *"I was wrong"* vs *"I
+changed my mind"* — and the marker records which one fired. But the distinction is
+carried as **provenance, not as blocking power**: it tells a reader what happened
+upstream, and it constrains which resolutions are available only through the
+premises' actual outcomes, never by pre-judging them at firing time. That separation
+of error-correction from belief-evolution is what Ch5's identity argument rests on
+(ob_1787).
+
+**Contradiction is deliberately excluded
 from this cascade**: a contradiction records a live, unresolved dispute, not
 (yet) a refutation, so filing one taints nothing. What a contradiction *does*
 trigger is a narrower, derive-time guard (§4.3): a new derivation citing a
@@ -230,8 +246,8 @@ report you have to remember to run. That is the difference between a memory that
 **Tradition.** Two, converging. **AGM belief revision + Hansson** [SOLID]: the
 cascade satisfies Hansson's belief-base postulates that replace AGM Recovery —
 *Relevance* (only genuinely dependent claims are touched) and *Core-Retainment*
-(every tainted claim provably depended on the retracted source, by `derives_from`
-traversal) — and meets them at the **architectural-cascade** level (taint
+(every marked claim provably depended on the retracted source, by `derives_from`
+traversal) — and meets them at the **architectural-cascade** level (the mark
 propagates as commitment), not at the **retrieval-surface** level (deprecated items
 filtered at query time). That last distinction is what separates ENGRAM from its
 closest competitor (dv_0613). And **TMS dependency-directed backtracking** (Doyle)
@@ -246,10 +262,32 @@ agent commits into, not a sidecar), **internal** (substrate state-change, not an
 opt-in query), **subject-preserving** (the agent's retrieval-profile trajectory
 continues across the correction). Arbitration-as-state-change alone is not
 enough — a cascade that fires silently could be ignored — so ENGRAM pairs it with
-the **per-turn auto-surfacing hook** (§4.6): the tainted state is put back in front
-of the agent without an intentional reach. *Auto-cascade* produces the state;
-*auto-surfacing* shows it. We call the conjunction **operational binding**
-(dv_0612).
+the **per-turn auto-surfacing hook** (§4.6): the marked state is put back in front
+of the agent without an intentional reach.
+
+But surfacing is relevance-gated: it shows a marked node when that node is topically
+relevant to what the agent is doing, which is the right behaviour for attention and
+the wrong behaviour for a backlog. A mark on a node the agent simply never touches
+again would sit forever. So a third mechanism closes the loop — the **cascade
+machine**, which during each consolidation cycle computes the *frontier* (every
+node carrying a pending marker, none of whose cascade-ancestors is still pending)
+and walks it, repeatedly, until no pending marker remains. Working the frontier
+rather than a queue is what makes the order safe: a node is never adjudicated while
+something it depends on is still unsettled, and because the frontier is recomputed
+from marker state on every call rather than stored, the walk resumes identically
+after a crash, a compaction, or a week's gap. There is no queue that can disagree
+with the graph, because there is only the graph.
+
+*Auto-cascade* produces the state; *auto-surfacing* shows it when it is relevant;
+*sleep-time adjudication* guarantees it is eventually faced. We call the conjunction
+**operational binding** (dv_0612).
+
+The machine deliberately stops short of deciding what is true. It determines what
+needs deciding, orders the decisions, computes what follows mechanically — a
+confidence that must be recomputed, a replacement pointer that can be followed —
+and puts every remaining judgement to the agent. This is the line between a
+substrate that maintains its own consistency and one that would quietly make up the
+agent's mind for it; Condition 3 asks for the former.
 
 **Why ENGRAM is the sole satisfier** (dv_0605, the 11-system first-hand survey,
 conf 0.95 — the firmest claim in the chapter): the field has converged on the
@@ -322,7 +360,7 @@ CS-side precedent for cue-dependent automatic retrieval.
 
 **OCC:** none of its own, but auto-surfacing is the **binding half of Condition 3**
 (§4.4): it is what makes "the agent cannot quietly ignore a correction" true — the
-tainted flag surfaces next turn whether or not the agent goes looking.
+pending mark surfaces next turn whether or not the agent goes looking.
 
 **Honest scope (measured on ourselves).** The binding claim is exactly as narrow
 as stated: it holds for *cascade flags*, which surface unbidden. It does not
@@ -367,8 +405,10 @@ An LLM agent's context is finite; when it fills, the session **compacts** — pr
 conversation is summarized and the experiential thread resets. ENGRAM bridges this
 two ways. The **scaffolds**: a small fixed-size **focus list**, rendered
 *verbatim* at every session start (fresh session or post-compaction alike — the
-deterministic channel), the **warm-briefing** letter (relational context, read
-first on waking), per-day history, auto-loaded session context, and a
+deterministic channel), the **warm-briefing** letter — a file the agent finds and
+opens on waking, written by its past self and its collaborator, carrying the
+relational context the graph does not hold: where things stood, what mattered,
+what to walk back into — plus per-day history, auto-loaded session context, and a
 post-compaction instruction template — together producing **operational**
 continuity (work-thread, identity, trust survive) without faking **experiential**
 continuity, which the architecture deliberately does not attempt (dv_0616).
@@ -381,7 +421,7 @@ mapping onto wake/NREM-REM phases. (An earlier three-routine design had a
 separate daily "bedtime" review, merged into sleep's Phase A on 2026-05-24.)
 
 *Plain terms:* the agent's memory resets the way a day ends in *50 First Dates* —
-and the focus list plus the warm briefing are the videotape it watches on waking.
+and the focus list plus the warm briefing are the journal it opens on waking.
 The consolidation routines are its sleep: what gets reviewed before the forgetting
 clock advances is what endures.
 
@@ -451,7 +491,8 @@ fidelity) is presently a CLAUDE.md-layer discipline the agent follows, not a
 substrate-enforced control; trust-tier is the *input* that discipline reads,
 not the mechanism itself.
 
-**Tradition.** The **honesty ⊥ discretion** distinction (ax_0011) [SOLID]: internal
+**Tradition.** The **honesty-orthogonal-to-discretion** distinction (ax_0011)
+[SOLID]: internal
 integrity (never self-deceive) is orthogonal to external disclosure (calibrated by
 audience). And **VMG** (Verifiable Memory Governance) principal-scoped access **[GROUNDED ob_2550 — VMG read first-hand]**. **Detail → Appendix D;
 the disclosure-vs-erasure implication → Ch7.**
