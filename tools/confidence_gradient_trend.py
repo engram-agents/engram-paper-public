@@ -38,6 +38,8 @@ def main():
     ap = argparse.ArgumentParser()
     _ssot.add_db_arg(ap)
     ap.add_argument("--step-days", type=int, default=14)
+    ap.add_argument("--cohort", action="store_true",
+                    help="group by CALENDAR MONTH of creation instead of cumulative cuts — the view §6.1's monthly table reports")
     ap.add_argument("--min-n", type=int, default=10, help="suppress a cell below this count")
     a = ap.parse_args()
     db = _ssot.resolve_db(a.db, allow_unpinned=a.allow_unpinned)
@@ -62,6 +64,35 @@ def main():
     lo = min(r[0] for r in rows); hi = max(r[0] for r in rows)
     d = datetime.strptime(lo, "%Y-%m-%d").replace(tzinfo=timezone.utc)
     end = datetime.strptime(hi, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+
+    if a.cohort:
+        # MONTHLY COHORTS — each row is the derivations CREATED in that month, not a
+        # cumulative prefix. This is the view §6.1's monthly table reports, and it is
+        # a different measurement from the cumulative one below: a cumulative cut damps
+        # late movement because each new month is a shrinking fraction of the total.
+        # The two can order the per-type SPREADS differently, so never quote a spread
+        # without saying which view produced it.
+        months = sorted({r[0][:7] for r in rows})
+        hdr = f"{'month':<9}{'n(dv)':>7}" + "".join(f"{t.split('_')[-1][:9]:>11}" for t in TRACK)
+        print(hdr); print("-" * len(hdr))
+        spread = {t: [] for t in TRACK}
+        for mo in months:
+            sel = [r for r in rows if r[0][:7] == mo]
+            line = f"{mo:<9}{len(sel):>7,}"
+            for t in TRACK:
+                vals = [conf for _, rt, conf in sel if rt == t]
+                if len(vals) >= a.min_n:
+                    line += f"{statistics.fmean(vals):>11.2f}"; spread[t].append(statistics.fmean(vals))
+                else:
+                    line += f"{'-':>11}"
+            print(line)
+        print("\n# per-type spread ACROSS MONTHLY COHORTS (reportable cells only):")
+        for t in TRACK:
+            v = spread[t]
+            if len(v) >= 2:
+                print(f"  {t:<30} min {min(v):.3f}  max {max(v):.3f}  "
+                      f"range {max(v)-min(v):.3f}  over {len(v)} months")
+        return
 
     hdr = f"{'date':<12}{'n(dv)':>7}" + "".join(f"{t.split('_')[-1][:9]:>11}" for t in TRACK)
     print(hdr); print("-" * len(hdr))

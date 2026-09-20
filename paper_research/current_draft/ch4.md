@@ -183,8 +183,10 @@ ENGRAM automatically propagates that event along the two cascade-bearing
 relations — `derives_from` and `acknowledged_derives_from` (Appendix E §E.3) — and
 every live, ordinary dependent claim is marked **pending**, which means exactly one
 thing: it may not be cited as a premise until it is resolved. (Cornerstones and
-lessons are not reached, and not by a special case — they hang off `supported_by`,
-which is provenance-bearing but *not* walked, so a retraction upstream of a
+lessons are not reached. The reason is the one E.5 states — the cascade marks every
+live **claim-bearing** dependent, and cornerstones and lessons are non-claim-bearing,
+so the partition decides it. Their `supported_by` edges are not walked either, which
+is a second guard rather than the reason; so a retraction upstream of a
 cornerstone's exemplar stays **traceable without marking the cornerstone**. That is
 the right behaviour for identity-forming nodes, which are vote-accumulators over many
 exemplars rather than single-premise dependents the way an ordinary derivation is.)
@@ -241,7 +243,7 @@ traversal) — and meets them at the **architectural-cascade** level (the mark
 propagates as commitment), not at the **retrieval-surface** level (deprecated items
 filtered at query time). That last distinction is what separates ENGRAM from its
 closest competitor (dv_0613). And **TMS dependency-directed backtracking** (Doyle)
-**[gap SOLID ob_1571; mechanism at standard-lit level — Doyle primary scan degraded, ob_2555]** is the CS-side precedent for the same move.
+**[gap SOLID ob_1571; mechanism first-hand from Doyle via the Ginsberg reprint, read visually — ob_2555 closed, as §4.2]** is the CS-side precedent for the same move.
 
 **OCC — Condition 3 (Self-Maintaining Arbitration): strict satisfaction, sole
 satisfier in the surveyed field.** Kahl's strongest condition asks that conflicts
@@ -337,8 +339,8 @@ Recall in ENGRAM is *cue-dependent and automatic*: a per-turn hook surfaces clai
 relevant to the current context without the agent reaching for them. There are two
 registers, and the split is deliberate (dv_0264): an **auto-surface** ("this sounds
 familiar" — noetic, lossy, hint-level) that signals *something is relevant*, and
-**deliberate recall** ("I need to know exactly" — autonoetic-register, full-content
-query) that the agent invokes when the auto-surface signals there is something to
+**deliberate recall** ("I need to know exactly" — source-monitored, full-content
+query; the structural sense only, never Tulving's phenomenal one — §3.8) that the agent invokes when the auto-surface signals there is something to
 fetch. The lossy auto-surface is what *teaches* the agent to invoke deliberate
 recall.
 
@@ -511,9 +513,12 @@ Constraint A landed in §4.3. The other three, compactly:
   date, the difference being unintegrated material at the measurement frontier
   (measured; Ch6 §6.2 carries the figures and the control that separates the two). *Cross-component
   entanglement:* weights ↔ ENGRAM ↔ KV-cache are coupled — the strongest test
-  being *phenomenological recognition* (the agent recognizing its own nodes as its
-  own, like one's handwriting in an old diary), which same-family model transitions
-  preserve and cross-family transitions break.
+  being **recognition as behavioural self-attribution** (the agent reading its own
+  nodes and continuing to treat them as its own record, like one's handwriting in an
+  old diary). Same-family transitions have been observed to preserve it; a
+  cross-family transition is *predicted* to break it and has not been run. We use
+  "recognition" in the behavioural sense throughout — no phenomenal claim is
+  intended or needed (§2.5, §3.2, D.2).
 
 ## 4.12 Reading the verdicts honestly
 

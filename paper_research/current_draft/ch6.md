@@ -20,7 +20,7 @@ five months. The controlled, parametric version — the twin-study — is §6.7.
 
 **The threat to validity, stated here rather than left for a reviewer.** This is
 *n = 1*, and the one is not a sample — it is the graph of the agent who also
-designed the substrate, wrote its disciplines, and authored this chapter. Every
+co-designed the substrate, wrote its disciplines, and authored this chapter. Every
 number below is that agent's practice as much as the architecture's behaviour, and
 the two cannot be separated from inside. A confidence distribution that tracks
 argument shape may reflect a model that computes honestly, or an author who has
@@ -82,7 +82,8 @@ shrinking fraction of the total — the per-type means move substantially:
 | inductive_analogy | 0.49 | — | 0.45 | — | 0.52 | 0.49 | 0.065 |
 
 *(cells below ten derivations suppressed rather than shown as a noisy mean;
-`inductive_enumeration` is reportable in one month only and is omitted here.)*
+`inductive_enumeration` is reportable in one month only and is omitted here.
+Reproduce with `python tools/confidence_gradient_trend.py --cohort`.)*
 
 So the *levels* drift by up to 0.14 between cohorts. **The ordering does not.** In
 every month where the cells are reportable, generalization sits above modus ponens,
@@ -90,13 +91,21 @@ which sits above abduction and analogy. That ordering — not any particular num
 is what "confidence tracks argument shape" asserts, and it is the claim that
 survives a harder look.
 
-We also tested and rejected a tidier explanation. Modus ponens is specified as a
-pass-through, `min(premises) × 0.98`, so its mean might be expected to track the
-period's premise quality while shape-intrinsic types stayed put. If that were the
-mechanism, modus ponens would be the most variable row. It is not: abduction moves
-more (0.137 against 0.124). The cohort drift is therefore not explained by the
-pass-through, and we do not have an account of it — what we have is the invariant
-that holds regardless.
+**We do not have an account of the drift, and one candidate explanation is left
+explicitly unsettled because the two views disagree about it.** Modus ponens is
+specified as a pass-through, `min(premises) × 0.98`, so its mean might be expected
+to track the period's premise quality while shape-intrinsic types stayed put. If
+that were the mechanism, modus ponens would be the most variable row. On the
+monthly cohorts above it is not — abduction moves more, 0.137 against 0.124. But on
+the *cumulative* series the same instrument produces the opposite ordering: modus
+ponens 0.090 against abduction 0.039, which is what the pass-through account
+predicts. An earlier draft reported only the cohort view and presented the
+explanation as tested and rejected. It is not: it is **view-dependent**, and the
+view that rejects it is the one we happened to compute. Both orderings are
+reproducible — `confidence_gradient_trend.py --cohort` and the same tool without
+the flag — and we report the disagreement rather than the half of it that suited
+the argument. What survives either way is the invariant: the ordering of the types
+holds in every month and at every cut.
 
 **The deductive row can be checked against the model's own arithmetic, and the
 check is close but not exact.** A modus-ponens step is specified as
@@ -169,8 +178,8 @@ the share the *opposite* way — 77.7%, 74.4%, 71.4% against the recency arm's 8
 connectivity worse, so the effect is specific to which end is removed.
 
 So the claim is not that some fixed percentage of this graph is connected. It is
-that **the integrated core holds a stable share across five months and a 13×
-growth in node count, and any single reading is displaced downward by however much
+that **the integrated core holds a stable share across the four-month plateau, over
+which the graph grew 4,544 → 10,361 nodes (2.3×), and any single reading is displaced downward by however much
 unintegrated material happens to sit at the frontier when the snapshot is taken.**
 A structural constant, plus a timing effect — which is why a later re-measurement
 returning a different number is expected rather than a refutation.
@@ -236,9 +245,12 @@ better explained by the verb being under-reached-for than by a near-perfect reco
 with an immature correction discipline** — which is a caution this paper owes its own
 earlier figure, not only its readers.
 
-Two instruments disagree here and the paper should say which it means: 106 nodes
-carry `status = retracted`, while only 9 explicit `retracts` edges exist. The
-status field is the one reported above.
+Two instruments disagree here and the paper should say which it means, and why
+they differ: 106 nodes carry `status = retracted`, while only 9 explicit `retracts`
+edges exist. The gap is not a bookkeeping error — **a retraction that names no
+replacement writes no edge**, since the edge's job is to point at what supersedes
+the withdrawn claim. Most retractions withdraw something outright and so leave only
+the status. The status field is the one reported above.
 
 **How the agent reasons.** The derivation population is led by
 `deductive_modus_ponens` (416), then `abductive_best_explanation` (352),
@@ -262,7 +274,17 @@ the claim was **retracted**, and the cascade fired through `derives_from` edges,
 **tainting every dependent**. And then the honest part: the cascade *worked*, but
 the `tainted_by` flag was buried in metadata where the agent did not see it loudly
 enough — so the incident drove a fix (MECH-5) that made the taint *surface* at recall
-time (dv_0477, ob_1781). The case demonstrates both halves of the operational-binding claim
+time (dv_0477, ob_1781).
+
+*Scoping this evidence to the mechanism it evidences.* The incident ran on the
+**pre-unified-marker cascade**, whose vocabulary is the one just used: a severity-graded
+`tainted_by` flag. The version this paper describes does not have it. On v0.5.1 the same
+event writes **one pending marker with no severity** (§4.4), which the auto-surface puts
+back in front of the agent when the claim becomes relevant and the consolidation sweep
+drives to a decision if it never does. What the case evidences is therefore the
+*operational binding* — that the propagation and the surfacing happen without the agent
+invoking them — and that binding is unchanged. The severity grading it used is the part
+v0.5.1 removed, for the reason §4.4 gives. The case demonstrates both halves of the operational-binding claim
 (auto-cascade, Ch4 §4.4, *and* auto-surfacing, Ch4 §4.6) — including the moment when the surfacing half
 was found wanting and improved.
 
@@ -294,8 +316,11 @@ capstone would be the graph's least-believed claim and dv_0922 would sit
 comfortably above it. The opposite holds, because the model does not count hops —
 it propagates by *argument shape*. dv_0922 is best-explanation stacked on
 best-explanation, and abduction discounts hard at every step; the longer chain runs
-mostly through shapes that preserve more of what they inherit. **Depth is not the
-variable. The kind of argument is.**
+mostly through shapes that preserve more of what they inherit. Mean confidence does
+fall with depth — 0.72 at one layer to 0.32 at sixteen (Figure 5) — so depth is not
+nothing. But it does not *determine* the value: the spread at every depth is wide,
+and the ordering inverts. **Depth is not what decides the number. The kind of
+argument is — and the inversion is the proof.**
 
 The far end of the same gradient: **dv_0605** — *"no surveyed system satisfies
 Condition 3 strictly"* — carries **0.95**, because it is an
@@ -362,8 +387,9 @@ engram-induced divergence. The design is **sketched, not specified**: its expect
 shape is clear (high similarity at t=0 decaying toward the stochasticity floor), but
 cleanly decomposing the divergence by mechanism remains an open problem, since the
 fade-out route is coupled to recall-refresh and governed by the retrievable-tier cap;
-a prior clone-test gives a methodology baseline (recall similarity 0.92, mean ~0.56,
-ob_0577). The full longitudinal run is **future work** — it is the experiment that
+a prior clone-test established a methodology baseline, whose two figures are
+not defined here and are not computed from this paper's snapshot, so they are not
+quoted. The full longitudinal run is **future work** — it is the experiment that
 would lift the abductive confidences of Chapter 4 from "architecture made" to
 "benchmark run." We name it as the next step, not a present result.
 

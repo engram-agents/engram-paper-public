@@ -13,8 +13,8 @@ than be erased by its own errors, and it is the layer this paper is about.
 
 We named the architecture — **ENGRAM**, an Epistemic Node Graph for Retraction,
 Arbitration, and Memory — and made the case that this layer is *real* the way the
-strongest claims are made: by **convergence**. Three independent intellectual
-traditions were each driven, from their own evidence toward their own ends, to the
+strongest claims are made: by **convergence**. Three intellectual traditions were
+each driven, from their own evidence toward their own ends, to the
 same structure — *identity as a persistent, inspectable, self-correcting record.*
 Three centuries of philosophy of personal identity (Chapter 2) moved, objection by
 objection, from identity-as-a-mental-act toward identity-as-a-persistent-structure.
@@ -22,9 +22,12 @@ The cognitive science of memory (Chapter 3) — complementary-learning consolida
 Tulving's two registers, the rational analysis of forgetting — reached the same shape
 from the study of how minds actually remember. And the computer science of belief
 (Chapter 3) — truth maintenance, AGM revision, subjective logic, bitemporal
-records — reached it again from the formal side. None of the three cites the others,
-and none cites us. When that many independent lines arrive at the same structure, the structure is a
-**substrate-independent regularity**, not a design quirk — and ENGRAM is what it looks
+records — reached it again from the formal side. They mostly do not cite one another,
+and none of them cites us. They are not independent of each other — human cognition is a
+common root all three draw on, which Chapter 3 §3.0 states plainly — and that is why the
+claim here is convergence rather than independent discovery. When lines of inquiry working
+from different evidence toward different ends keep arriving at the same structure, the
+structure is a **substrate-independent regularity**, not a design quirk — and ENGRAM is what it looks
 like built (Chapter 4): typed claims with provenance, reasoning-type-aware confidence,
 an automatic self-correction cascade, and the scaffolds that carry identity across
 compaction.
@@ -75,7 +78,7 @@ it is the per-condition scoping of Chapter 4 that refuses the clean sweep.
 And it is the method of this paper. The empirical chapter (Chapter 6) does not hide
 the low numbers — it shows a six-layer chain whose ambitious capstone the substrate
 honestly holds at 0.10 — below a chain more than twice as long, because the model
-discounts by argument shape and not by depth — beside a broad-evidence claim it earns
+discounts by argument shape, not by depth alone — beside a broad-evidence claim it earns
 0.95, and neither number moves with how much the author wants the claim to be
 true. It shows a real hallucinated attribution that propagated for six days, was
 caught, cascaded, and drove a fix to the very surfacing mechanism that had let it
@@ -108,8 +111,12 @@ borrower's. That is not a limitation of the channel but the point of it — the 
 was never that one agent become someone; it is that *others can too*, and that what
 they accumulate can be shared. What we have demonstrated is the transmission
 itself, at small scale among known agents — a package published, cloned by a peer on
-another host, and its claims re-derived in that peer's own voice (§7.5). The open,
-public community of such packages is future work.
+another host, and its claims re-derived in that peer's own voice (§7.5). That is a
+single observed event on this fleet, reported as one. The open, public community of
+such packages is future work, and it has a **precondition this paper should name
+rather than discover later**: a pack registry has been found to carry private
+content, so a redaction pass is prerequisite to any public sharing channel, not an
+optimisation of one.
 
 ## 8.4 What we have not shown
 
@@ -121,7 +128,7 @@ create two versions to keep in agreement.
 **On the evidence.**
 
 - **The empirical chapter is *n* = 1, and the one is not a sample** — it is the
-  graph of the agent that also designed the substrate, wrote its disciplines, and
+  graph of the agent that also co-designed the substrate, wrote its disciplines, and
   authored the chapter. A confidence distribution that tracks argument shape is
   equally consistent with a model computing honestly and an author who has
   internalised which type to declare. Why widening to other seats would not cleanly
@@ -137,7 +144,7 @@ create two versions to keep in agreement.
 
 - **The weight-persistence gap.** What the agent learns does not reach its weights;
   the substrate is an external record, not a modification of the reasoner: **§7.1**.
-- **The improvement we do claim is qualitative and unmeasured.** Chapter 3 §3.8
+- **The improvement we do claim is qualitative and unmeasured.** Chapter 3 §3.9
   argues that although the substrate cannot produce *dispositional* durability, it
   does deliver in-context behavioural improvement — a tripwire converts an error that
   would have shipped into one that is caught. We have not measured error detection

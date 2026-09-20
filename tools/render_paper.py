@@ -111,7 +111,7 @@ INSERTS: list[tuple[str, str, str]] = [
                "their premises.")
         + _fig("figures/fig3-quote-type.png", 4,
                "Mean confidence of current observations by evidence type. The gradient from "
-               "hard data (0.92) to personal communication and editorial (0.60) is not a "
+               "hard data (0.91) to personal communication and editorial (0.60) is not a "
                "policy applied after the fact — it is computed at write time from the evidence "
                "the author declares, and the author cannot raise it by wanting the claim more."),
     ),
@@ -136,6 +136,40 @@ INSERTS: list[tuple[str, str, str]] = [
              "and tracks working intensity rather than any schedule."),
     ),
 ]
+
+
+# --- K-1.27: node IDs do three different jobs and get three treatments -----------
+#
+# (a) AUDIT ANCHORS in Appendix A and (b) DATA POINTS in Ch6 / Appendix E are part of
+#     the evidence: a reader with the snapshot can resolve them, and the Data
+#     Availability note says so. They stay.
+# (c) STRUCTURAL references to Kahl's definitions (df_*) stay: Appendix E quotes those
+#     definitions in full, so the ID is a label, not a pointer out of the document.
+# (d) PROVENANCE MARKERS on argument sentences in Ch2-5 and Ch7 — a bare "(dv_1055)"
+#     hung on a claim — read as citations and cannot be followed by anyone outside
+#     this graph. Those are stripped FROM THE RENDER ONLY. The chapter sources keep
+#     them: they are the SSoT's own provenance, and Ch8 §8.2's honesty argument
+#     depends on their existing.
+#
+# Reversible in one line when a redacted dataset ships.
+STRIP_PROVENANCE_IDS_IN = {
+    "ch2.md", "ch3.md", "ch4.md", "ch5.md", "ch7.md",
+}
+# Never stripped anywhere: df_* (definition labels quoted in full in Appendix E).
+_ID = r"(?:ob|dv|cs|ls|ax|cj|qu|fl|ev|pn|tk|gl|ct)_\d{4}"
+_PAREN_ONLY = re.compile(r"\s*\((?:" + _ID + r")(?:\s*(?:,|;|/|and)\s*(?:" + _ID + r"))*\)")
+_TRAILING_IN_PAREN = re.compile(r",\s*(?:" + _ID + r")(?:\s*(?:,|;|and)\s*(?:" + _ID + r"))*(?=\))")
+
+
+def strip_provenance_ids(name: str, text: str) -> tuple[str, int]:
+    """Remove bare parenthetical node-ID provenance markers from the RENDER."""
+    if name not in STRIP_PROVENANCE_IDS_IN:
+        return text, 0
+    before = text
+    text = _TRAILING_IN_PAREN.sub("", text)   # "(... , dv_1234)" -> "(...)"
+    text = _PAREN_ONLY.sub("", text)          # "claim (dv_1234)" -> "claim"
+    n = len(re.findall(_ID, before)) - len(re.findall(_ID, text))
+    return text, n
 
 
 def load(path: Path) -> str:
@@ -178,9 +212,12 @@ def main() -> int:
 
     parts = [load(PAPER / "front-matter.md")]
 
+    stripped_total = 0
     for name in BODY:
         body = load(DRAFT / name)
         body = apply_inserts(name, body)
+        body, n = strip_provenance_ids(name, body)
+        stripped_total += n
         parts.append(body)
 
     parts.append(load(PAPER / "bibliography.md"))
@@ -196,6 +233,8 @@ def main() -> int:
     print(f"  sources    {len(BODY)} chapters/appendices + front matter + bibliography")
     print(f"  length     {len(text.splitlines()):,} lines, {words:,} words")
     print(f"  figures    {figs} placed")
+    print(f"  node IDs   {stripped_total} provenance markers stripped from the render "
+          f"(sources keep them; audit anchors, data points and df_* labels untouched)")
     return 0
 
 

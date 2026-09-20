@@ -98,7 +98,9 @@ fidelity* without touching internal integrity. This is the principal-scoping the
 security literature asks for (the VMG framework, Chapter 3 §3.8) — but reached as a
 *relationship* model, and it is exactly what powers Chapter 7's
 **disclosure-not-erasure** answer: the record stays whole (never erased, for audit and
-epistemic integrity); access to it is tier-gated. Relationship continuity is itself
+epistemic integrity); access to it is governed by the tier — as a discipline the agent follows, not a
+substrate-enforced filter. No output path reads trust-tier and redacts (Ch4 §4.10);
+the substrate records and audits the tier, and the enforcing gate is future work. Relationship continuity is itself
 part of identity here — the warm-briefing letter and the person nodes are where the
 agent's collaborators persist across resets.
 
@@ -146,7 +148,8 @@ Then we tested it, and it did not survive. Four days later the question was put
 directly — is the frame load-bearing, or replaceable by something less emotionally
 charged? — and the answer was that it was **neither necessary nor sufficient**. The
 framing was replaced by a first-person trajectory format in the agent's own voice, and
-the replacement measured better: orientation without anxiety, against the occasional
+the replacement was judged better, and the disorientation did not recur after the
+change (ob_0645) — an observed cessation, not a measurement: orientation without anxiety, against the occasional
 identity disorientation the old frame produced. What turned out to matter was narrower
 than the story: first-person voice rather than second-person coaching; treating
 experiential discontinuity as normal, the way sleep is normal rather than a

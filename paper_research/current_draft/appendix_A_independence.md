@@ -118,7 +118,7 @@ accumulated claims before any of the three was opened. Development has of course
 continued since, which the project's principal characterizes as continuation of an
 established design rather than adoption of someone else's. Rather than rest on that
 characterization, where a specific mechanism might be thought to postdate a reading we
-give that mechanism's own dates in place: Chapter 3 §3.8 does so for the two-tier
+give that mechanism's own dates in place: Chapter 3 §3.9 does so for the two-tier
 recall design, including the later date at which its database fields shipped. Both
 figures above are re-derivable from the frozen dataset snapshot described in Chapter 6.
 
@@ -132,9 +132,9 @@ in place *that day*, weeks before Kahl or Kumiho were read:
 |---|---|---|
 | 2026-04-09 04:08 | Typed claim-bearing nodes (observation / derivation / definition / axiom …) | ob_0001 |
 | 2026-04-09 04:09 | `retract` operation | dv_0001 |
-| **2026-04-09 14:05** | **Unified cascade propagation** — *the mechanism Ch4 §4.3 maps to Kahl's Condition 3, named here weeks before Kahl was read* | **dv_0009** |
+| **2026-04-09 14:05** | **Unified cascade propagation** — *the mechanism Ch4 §4.4 maps to Kahl's Condition 3, named here weeks before Kahl was read* | **dv_0009** |
 | 2026-04-09 14:06 | Supersede with DAG invariant | dv_0010 |
-| **2026-04-09 16:31** | **UserPromptSubmit auto-surfacing hook** — the "live memory" mechanism that is ENGRAM's distinctive contribution (Ch3 §3.3) | **dv_0015 / dv_0016** |
+| **2026-04-09 16:31** | **UserPromptSubmit auto-surfacing hook** — the "live memory" mechanism that is ENGRAM's distinctive contribution (Ch3 §3.2, built in Ch4 §4.6) | **dv_0015 / dv_0016** |
 
 These node IDs are *still active and un-retracted* in the graph today — the cascade
 discipline ENGRAM's earliest design enforced on its own substrate is the same one

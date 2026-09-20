@@ -170,7 +170,8 @@ sequence of those overlaps: a self a thousand sessions on may share little
 nearly-identical adjacent sets. And because it is set overlap, it is
 **measurable**: the Jaccard similarity of the recallable set across sessions is a
 literal number — turning Parfit's insistence that R *comes in degrees* from a
-philosophical claim into a tracked metric (Chapter 6).
+philosophical claim into a measurable quantity — designed for Chapter 6's twin
+study and not yet measured (§6.7).
 
 This mental continuity is distinct from, and rides on top of, the *structural*
 continuity of §2.2. The history-tree is the objective descent that persists
@@ -327,10 +328,8 @@ Two honesty notes belong here, and only here:
    discovery picture).
 2. **Verdicts deferred.** Whether ENGRAM *satisfies* each condition is a claim
    about mechanism, and we make those claims exactly once, in Chapter 4, attached
-   to the mechanisms that earn them. We do not preview them here. (Readers who
-   want the short version: two of the three conditions are met outright, the third
-   via a stated type/token extension, and ENGRAM is — on our survey — the sole
-   system that meets Condition 3; Chapter 4 and Appendix B do the work.)
+   to the mechanisms that earn them. We do not preview them here; Chapter 4 and
+   Appendix B do the work.
 
 ---
 

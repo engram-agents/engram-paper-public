@@ -59,8 +59,12 @@ the partition is a declaration about kinds, not a census of what happens to exis
 | **prediction** | ncb | The **resolution-tracking half** of a predictive claim: filing an `observation_predictive` with a named event also opens a `prediction` node (status `open`), linked back by `predicted_by`. It carries no claim of its own — the observation makes the claim, the prediction node tracks whether the world settled it. A second observation naming the same event links to the existing prediction rather than opening another. |
 
 **Identity scarcity is by design.** Measured on this paper's own graph at 164 days (23
-weeks) and 10,361 nodes: lifetime identity-node creation — cornerstones, axioms, goals
-and person nodes together — stands at **131 nodes, 1.27% of the graph**, roughly five
+weeks) and 10,361 nodes: lifetime identity-node creation on the **narrow** set — cornerstones, axioms, goals
+and person nodes, excluding lessons — stands at **131 nodes, 1.27% of the graph**.
+(Figure 1 uses a **wider** set that includes lessons and reports under 3%; lessons
+are excluded here because the claim is about *identity-shaping* writes and a lesson
+is a procedural tripwire, but both numbers describe the same graph and neither is
+wrong — the set has to be named to compare them.) That is roughly five
 or six a week against a total write rate near 450. The ratio is the claim, not the
 count: the substrate is built so identity-shaping writes stay rare *relative to*
 ordinary knowledge, and that holds as the graph grows. *(Figures are one graph at one
@@ -142,7 +146,7 @@ different epistemic situations and must not be scored the same way.
 
 | mode | formula | reasoning types | behaviour |
 |---|---|---|---|
-| **corroboration** | (1 − ∏(1−cᵢ)) × *d* | `inductive_generalization`, `inductive_enumeration`, `authority_consensus` | **reinforcing** — each additional independent premise *raises* confidence, and the result can exceed any single premise |
+| **corroboration** | (1 − ∏(1−cᵢ)) × *d* | `inductive_generalization`, `inductive_enumeration`, `authority_consensus` | **reinforcing** — each additional independent premise *raises* confidence, and the result can exceed any single premise. **The shared-root independence check (§4.3) fires on only two of these three: `inductive_generalization` and `authority_consensus`. `inductive_enumeration` runs the reinforcing formula unguarded**, so its independence is the author's judgement and no warning arrives. |
 | **weakest-link** | min(cᵢ) × *d* | all `deductive_*`, `inductive_analogy`, `inductive_statistical`, `inductive_causal`, `authority_expert` | **limiting** — a chain is no stronger than its weakest premise, then discounted for the inferential step |
 | **capped weakest-link** | min(min(cᵢ) × *d*, cap) | `abductive_best_explanation` (0.80), `abductive_elimination` (0.90) | **ceilinged** — a best explanation cannot approach certainty *even from perfect premises*, because alternatives always remain |
 
@@ -263,7 +267,9 @@ node (Ch5).
   "bedtime" review; it was merged into sleep's Phase A on 2026-05-24 and is not
   a live separate routine.)
 - **Compaction-bridge scaffolds** (Ch3 §3.1): the **focus list** (small, fixed-size,
-  rendered verbatim into the pre-compaction summary — the deterministic channel), the
+  rendered verbatim at every session start, fresh or post-compaction alike — the
+  deterministic channel; see Ch4 §4.8, which carries the mechanism and why it is
+  not the pre-compaction summary), the
   **warm-briefing** letter (Appendix D §D.4 for what it contains and how its shape was
   arrived at), per-day history logs, auto-loaded session-start context, and an explicit
   post-compaction instruction template. Multi-redundant by design.

@@ -129,7 +129,7 @@ University.
 
 ## Works cited in the text without a verified entry
 
-Seventeen further works are cited in the chapters for which no source document is
+Nineteen further works are cited in the chapters for which no source document is
 currently held. They are listed here rather than given reconstructed entries, because
 a bibliographic entry built from memory is indistinguishable from a checked one once
 it is on the page — which is the failure mode the extraction rule above exists to
@@ -138,6 +138,21 @@ prevent. **Each requires sourcing before this paper is submitted.**
 Locke · Reid · Butler · Schechtman · Clark · Chalmers · Hansson · AGM
 (Alchourrón–Gärdenfors–Makinson) · de Kleer · Ebbinghaus · Wixted · Peirce · Semon
 (see the partial entry above) · Shoemaker · Johnston · Goldman · Nuxoll (with Laird)
+· **Sophia** · **A-MEM**
+
+**Two are needed before round 2, not merely before submission:** *Hansson* and
+*AGM*. The Condition-3 argument states their `Relevance` and `Core-Retainment`
+postulates as met (Ch3 §3.5, Ch4 §4.4), so the paper's central verdict leans on
+them; the philosophers can wait.
+
+*Sophia and A-MEM were added after a reviewer found them missing, and the reason
+they were missing is worth recording, because it was a classification error rather
+than an oversight. The sweep that produced this list triaged candidates by whether
+they were a person's name, and both are system names — so both were excluded
+deliberately. But this bibliography already carries entries for systems (Kumiho,
+SCM, GAM): the operative question is whether a citation needs a reference, not
+whether it names a person. The sweep was complete over names and the population was
+citations.*
 
 *One judgment call, recorded rather than silently made: ACT-R's spreading activation
 is cited as a precedent in Ch4 with no source file, and is not covered by the sourced

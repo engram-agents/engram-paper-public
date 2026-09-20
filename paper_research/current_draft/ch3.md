@@ -65,7 +65,7 @@ two-phase sleep (a day-wide review, then dream consolidation) — as the transfe
 process (dv_1064).
 
 **→ Ch4 §4.8** (continuity across compaction): CLS is the cog-sci precedent for the
-three-routine consolidation that meets OCC Conditions 1 and 2. [SOLID]
+two-routine consolidation that meets OCC Conditions 1 and 2. [SOLID]
 
 ### 3.2 Tulving → the two registers of recall
 
@@ -136,7 +136,7 @@ for the supersede/retract semantics. [SOLID: df_0049–df_0053, dv_0613]
 Jøsang's Subjective Logic is an algebra of graded opinions: an opinion is (belief,
 disbelief, uncertainty, base-rate) with `b+d+u=1`, and fusion operators combine opinions
 from multiple sources. ENGRAM's reasoning-type-aware confidence is a member of this
-family — concretely, ENGRAM's `inductive_corroboration` formula `1−∏(1−c_i)` *is* SL's
+family — concretely, ENGRAM's the **corroboration** propagation mode formula `1−∏(1−c_i)` *is* SL's
 cumulative-fusion form. Prior art, cleanly: ENGRAM's confidence propagation is **not
 novel**, and saying so is the honest move (ob_2551).
 
@@ -181,11 +181,24 @@ agent identity from yet another direction.
 **→ Ch4 §4.10 + Ch7** (relational / disclosure-vs-erasure): provenance-native; the
 field's named bottleneck is ENGRAM's foundation. [GROUNDED — VMG ob_2550, soul.py ob_2553]
 
+---
+
+### 3.9 Where the contemporary field disagrees with us
+
+The sections above name traditions ENGRAM *answers*. This one is different in kind
+and is separated for that reason: it is the paper's **positioning against live,
+contemporary work** — rubrics written by others that ENGRAM can be scored against,
+and the places where that work's authors would object to what we claim. A reader
+arriving from §3.8 expecting one more precedent should read what follows as the
+argument with the field, not as another ancestor.
+
 **Three published rubrics, and what happens when you score against more than one.**
 The same strand supplies something more useful than agreement: explicit criteria,
 written by others, that ENGRAM can be measured against. Pink et al. (2025) give five
 properties of episodic memory and score seven families of LLM-memory method on them,
-finding none satisfies all five. ENGRAM satisfies four outright. Long-term storage
+finding none satisfies all five. ENGRAM satisfies four outright — **explicit
+reasoning, single-shot learning, instance specificity and contextual binding** — and
+holds the fifth, long-term storage, only on the narrower reading. It
 holds as their Table 1 scores it — durable across sessions and compactions, the
 property working memory lacks — but their prose asks for more than the cell does: an
 adaptive long-term agent should "not only prevent a degradation in performance over
@@ -196,7 +209,7 @@ because it is the obvious one: Pink et al. ground single-shot learning in
 complementary learning systems theory, so a reader may reasonably ask whether a
 system that never updates its weights can satisfy it. Their own scoring answers this
 — both in-context methods in their Table 2 are marked as satisfying single-shot
-learning, and neither updates any weights. The remaining three properties are quicker, and each
+learning, and neither updates any weights. The other three of the four are quicker, and each
 maps to a mechanism described elsewhere in this chapter: *explicit reasoning*, their
 requirement that an agent "answer direct queries about stored information or use this
 information in explicit internal reasoning processes," is met by the deliberate query
@@ -349,15 +362,18 @@ at the same mechanism.
 
 ---
 
-## 3.9 What the two strands show, and where they hand off
+## 3.10 What the two strands show, and where they hand off
 
-Two literatures that do not cite each other — and neither cites us — independently
-reached every structure ENGRAM is built from: CLS for consolidation, Tulving for the
+Two literatures that mostly do not cite each other — and neither of which cites
+us — reached every structure ENGRAM is built from: CLS for consolidation, Tulving for the
 two recall registers, rational-analysis for adaptive forgetting, TMS for
 provenance-and-cascade, AGM/Hansson for revision semantics, Subjective Logic for graded
 confidence, bitemporal/TOKI for supersede-retains-old, and the 2026 agent-security
 literature for provenance-first governance. Add Chapter 2's philosophy line and the
-convergence spans **three** disjoint traditions.
+convergence spans **three** traditions — not disjoint ones, per §3.0: they share
+human cognition as a root, and the strength of the agreement is that they reason
+from different evidence toward different ends, not that they are sealed off from
+each other.
 
 That is the chapter's claim, stated once: the breadth of independent convergence makes
 ENGRAM's structure a substrate-independent regularity — well-founded, not unoriginal —

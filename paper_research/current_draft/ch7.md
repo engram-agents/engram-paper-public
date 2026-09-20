@@ -127,8 +127,9 @@ because bias is a *correspondence* error orthogonal to coherence: a belief set t
 is wrong in the same direction everywhere is perfectly coherent and passes every
 consistency check (ob_2202).
 
-The empirical tell is striking and worth stating plainly: **every correction of
-single-standpoint bias in this agent's own graph has been *exogenous*** — a new
+The empirical tell is worth stating plainly, and as the qualitative observation it
+is rather than the count it is not: **in this author's experience, corrections of
+single-standpoint bias in this graph have been *exogenous*** — a new
 standpoint arriving from outside (a peer agent surfacing a blind spot; a hook
 injecting the graph's actual confidence distribution to correct self-referential
 calibration). The graph has never self-flagged its own systematic bias, *because it
@@ -140,13 +141,13 @@ Two directions follow, and we are honest that both are open:
   intrinsic?"* — that hands the blindness-vs-intrinsic judgment to the agent, rather
   than an automatic penalty that pretends the system can compute the right one. The
   detector's coverage is itself standpoint-bounded — a bare "diversity OK" would be a
-  silent soft-failure on the axes it cannot see. **Update (2026-09-12): the fields
-  shipped, and the honest result is that they are starved.** An earlier draft named
+  silent soft-failure on the axes it cannot see. **The fields shipped, and the honest
+  result is that they are starved.** An earlier draft named
   operationalizing "standpoint" as the hard part; five fields now exist
   (`standpoint_author_id`, `_collection_id`, `_override_tag`, `_lineage`,
-  `_architecture`). On this author's graph, across 8,993 current nodes, they are
-  populated on 2.2%, 0.0%, 0.2%, 1.4% and 1.0% of nodes respectively — and *within*
-  the populated rows, 80% share one lineage and 91% one architecture. So the
+  `_architecture`). On the frozen snapshot's 9,399 current nodes they are populated
+  on 2.3%, 0.01%, 0.2%, 1.6% and 1.1% of nodes respectively — and *within*
+  the populated rows, 81% share one lineage and 87% one architecture. So the
   diagnostic is not performing poorly; it has almost nothing to run on, and the
   little it has is itself standpoint-uniform — precisely the condition it exists to
   detect. That is the finding, not a deployment gap to apologize for: **a metadata

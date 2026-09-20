@@ -127,7 +127,13 @@ argument about one philosopher's checklist. It is an argument about **convergenc
 
 **How we earn it — first, by breadth.** The mechanisms ENGRAM is built from are
 not novel inventions we are asking the reader to accept on our authority. Each one
-was reached *independently*, in disjoint literatures that do not cite each other:
+was reached in a separate literature, from that literature's own evidence toward
+its own ends, and mostly without reference to the others. We are careful about how
+much that buys, and Chapter 3 §3.0 states the bound the whole argument runs under:
+these fields are **not** independent of one another — human cognition is a common
+root they all draw on — so this is convergence, not independent discovery. What is
+genuinely independent is narrower: ENGRAM's design was arrived at *without the
+author having studied these results*.
 
 - **Three centuries of philosophy of personal identity** (Chapter 2) move, objection
   by objection, from identity-as-a-mental-act toward identity-as-a-persistent-
@@ -138,11 +144,12 @@ was reached *independently*, in disjoint literatures that do not cite each other
   memory taxonomy, rational-analysis forgetting; and truth-maintenance systems,
   AGM belief revision, subjective logic, bitemporal databases, and the 2025–26
   agent-memory work. No component of ENGRAM is uniquely novel — and *that is the
-  point*: a mechanism independently precedented across non-citing fields is a
-  **substrate-independent regularity**, not a local design choice.
+  point*: a mechanism precedented across fields that reason from different evidence
+  toward different ends is a **substrate-independent regularity**, not a local
+  design choice.
 
-When many traditions that never spoke to each other arrive at the same structure,
-the structure is probably real. That breadth — not any single framework — is what
+When traditions working from different evidence toward different ends keep arriving
+at the same structure, the structure is probably real. That breadth — not any single framework — is what
 makes the Layer-3 claim load-bearing.
 
 **How we earn it — second, by the original contribution.** On top of that
@@ -209,7 +216,7 @@ The argument, not the benchmark, is the contribution.
 - **Chapter 6 — ENGRAM in Real Use.** The empirical picture from one real graph,
   including a live retraction-cascade case.
 - **Chapter 7 — Implications and Future Directions.** The weight-persistence gap foremost;
-  the weights/context/ENGRAM three-component view; trust and auditability;
+  trust and auditability;
   knowledge-sharing; embodiment.
 - **Chapter 8 — Conclusion.**
 - **Appendices.** A: independent-discovery audit trail. B: the OCC Condition-3

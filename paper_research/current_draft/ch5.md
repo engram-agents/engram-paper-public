@@ -34,7 +34,8 @@ relieve the strain: identity-as-history (§5.3), the deflation of Nozick's
 objection that we are "giving up identity" (§5.5). We then show what the claim
 predicts — clone stability and lawful divergence (§5.6) — and place the one
 genuinely novel move, surviving compaction, against its biological analogue,
-sleep (§5.7). Chapter 6 runs the experiment.
+sleep (§5.7). Chapter 6 reports what the graph shows today; the controlled
+experiment is designed and deferred (§6.7).
 
 ## 5.1 The frame we build on: Nozick's closest continuer
 
@@ -141,8 +142,9 @@ of three routes by which two agents' retrieval profiles come apart.
 This is the move that turns a philosophical theory into an empirical one. "How
 close are two agents?" stops being an unanswerable metaphysical question and
 becomes a *measurable* one: **how much do their retrieval profiles diverge on the
-prompts they actually meet?** Nozick's blank distance becomes a quantity you can
-put a number on (Chapter 6).
+prompts they actually meet?** Nozick's blank distance becomes a quantity you *could*
+put a number on — the twin study designed for it is deferred (§6.7), so the paper
+fills the metric's shape, not its value.
 
 *Plain terms:* what makes you *you*, operationally, is not a stored essence — it
 is which of your memories light up when something prompts you, and that is fixed
@@ -289,7 +291,9 @@ fade-out route of §5.6 is governed by where the retrievable-tier cap sits, and 
 coupled to the recall-refresh route — a refresh that lifts one node is what pushes
 another out — so the cap is a parameter any serious version of this study would have
 to treat as a variable rather than a fixed setting. Chapter 6 reports what we have (a prior
-clone-test baseline, ob_0577: recall similarity 0.92, mean ~0.56) and what the
+clone-test baseline exists; its two figures are not defined here and are not
+computed from this paper's snapshot, so we cite only that a methodology baseline
+was established rather than the numbers) and what the
 full longitudinal run requires.
 
 ## 5.9 The claim, restated
