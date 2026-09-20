@@ -64,7 +64,7 @@ def default_db():
     return c[-1]
 
 def trend(db, step_days):
-    c = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+    c = _ssot.connect(db)
     nodes = c.execute("SELECT id, created_at FROM nodes WHERE created_at IS NOT NULL").fetchall()
     edges = c.execute("SELECT source_id, target_id, created_at FROM edges WHERE created_at IS NOT NULL").fetchall()
     n_no_date = c.execute("SELECT COUNT(*) FROM nodes WHERE created_at IS NULL").fetchone()[0]
@@ -128,7 +128,7 @@ def validate_git(db, commitish, engram_repo=os.path.expanduser("~/.engram")):
         h.close()
     hb, hc, hi = lcc_share(hn, he)
 
-    c = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+    c = _ssot.connect(db)
     ns = {i for i, ca in c.execute("SELECT id,created_at FROM nodes WHERE created_at IS NOT NULL") if ca[:10] <= cut}
     es = [(s,t) for s,t,ca in c.execute("SELECT source_id,target_id,created_at FROM edges WHERE created_at IS NOT NULL") if ca[:10] <= cut]
     c.close()

@@ -314,7 +314,7 @@ def main() -> int:
 
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
-    con = sqlite3.connect(db)
+    con = _ssot.connect(db)
 
     print(f"# source: {db}")
     print(f"# {pin_note}")

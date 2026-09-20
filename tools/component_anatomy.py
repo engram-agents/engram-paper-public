@@ -47,7 +47,7 @@ def main():
     ap = argparse.ArgumentParser(); _ssot.add_db_arg(ap)
     a = ap.parse_args()
     db = _ssot.resolve_db(a.db, allow_unpinned=a.allow_unpinned)
-    c = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+    c = _ssot.connect(db)
     ntype = {i: t for i, t in c.execute("SELECT id, type FROM nodes WHERE is_current=1")}
     edges = c.execute("SELECT source_id, target_id FROM edges").fetchall()
     print(f"# source: {os.path.relpath(db, REPO)}\n")

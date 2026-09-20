@@ -34,6 +34,7 @@ from __future__ import annotations
 import hashlib
 import os
 import re
+import sqlite3
 import sys
 from pathlib import Path
 
@@ -127,3 +128,23 @@ def add_db_arg(ap) -> None:
                     help="frozen snapshot to read (default: the pinned one in dataset/)")
     ap.add_argument("--allow-unpinned", action="store_true",
                     help="skip the SHA-256 pin check — deliberate and noisy")
+
+
+def connect(db: Path):
+    """Open the pinned snapshot read-only, in a way that works for a READER.
+
+    `mode=ro` is not sufficient. A snapshot taken from a WAL database still
+    carries WAL mode in its header, so SQLite wants to create//touch the `-shm`
+    and `-wal` side files next to it — and in a directory the reader cannot
+    write, every read fails with "attempt to write a readonly database". The
+    tools therefore worked for the directory's owner and for nobody else, which
+    made this repo's reproducibility claim true only for the author.
+
+    `immutable=1` tells SQLite the file cannot change underneath it, so it skips
+    the side files entirely. That assumption is not a hope here: `resolve_db()`
+    has already verified the file's SHA-256 against the manifest pin.
+
+    Found by Kepler on 2026-09-20, reviewing the paper: all five instruments
+    exited 1 on a hash-verified, readable file until he wrapped them.
+    """
+    return sqlite3.connect(f"file:{db}?mode=ro&immutable=1", uri=True)

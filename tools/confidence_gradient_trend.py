@@ -41,7 +41,7 @@ def main():
     ap.add_argument("--min-n", type=int, default=10, help="suppress a cell below this count")
     a = ap.parse_args()
     db = _ssot.resolve_db(a.db, allow_unpinned=a.allow_unpinned)
-    c = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+    c = _ssot.connect(db)
 
     rows = []
     for ca, m, conf in c.execute(

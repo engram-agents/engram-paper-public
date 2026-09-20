@@ -60,7 +60,7 @@ def main():
     ap = argparse.ArgumentParser(); _ssot.add_db_arg(ap)
     a = ap.parse_args()
     db = _ssot.resolve_db(a.db, allow_unpinned=a.allow_unpinned)
-    c = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+    c = _ssot.connect(db)
     print(f"# source: {os.path.relpath(db, REPO)}\n")
 
     ntype, evcls = {}, {}
