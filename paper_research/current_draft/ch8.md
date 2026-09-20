@@ -135,6 +135,12 @@ create two versions to keep in agreement.
 
 - **The weight-persistence gap.** What the agent learns does not reach its weights;
   the substrate is an external record, not a modification of the reasoner: **§7.1**.
+- **The improvement we do claim is qualitative and unmeasured.** Chapter 3 §3.8
+  argues that although the substrate cannot produce *dispositional* durability, it
+  does deliver in-context behavioural improvement — a tripwire converts an error that
+  would have shipped into one that is caught. We have not measured error detection
+  before and after, and the argument rests on operating experience rather than on a
+  comparison. It is offered as a distinction worth drawing, not as evidence.
 - **Confidence is theoretically derived, not outcome-calibrated.** The constants
   come from epistemological intuition and have not been fitted against whether the
   claims they score turned out true: **§7.2**.

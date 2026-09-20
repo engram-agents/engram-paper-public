@@ -50,7 +50,7 @@ Section 3 groups current LLM memory approaches into three categories and evaluat
 
 **In-context memory:**
 - KV-Compression: ✗ long-term, ✓ explicit, ✓ single-shot, ✓ instance-specific, ✓ contextual
-- State-space-model: ✗ long-term, ✓ explicit, ~ single-shot, ✗ instance-specific, ✗ contextual
+- State-space-model: ✗ long-term, ✓ explicit, ✓ single-shot, ✓ instance-specific, ✓ contextual
 
 **External memory:**
 - RAG: ✓ long-term, ✓ explicit, ~ single-shot, ~ instance-specific, ✗ contextual
@@ -62,6 +62,13 @@ Section 3 groups current LLM memory approaches into three categories and evaluat
 - Context distillation: ✓ long-term, ✓ explicit, ✗ single-shot, ✓ instance-specific, ✗ contextual
 
 **Critical finding:** *no current approach satisfies all five properties*. The closest are RAG / GraphRAG which are weak on contextual relations and partial on instance-specificity.
+
+> **Correction, 2026-09-20 (re-read against the PDF).** Two errors in the transcription above, both found by reading Table 2 directly rather than from this memo:
+>
+> 1. **The state-space-model row was wrong in three of five cells.** As transcribed it read `~` single-shot, `✗` instance-specific, `✗` contextual. Pink's Table 2 gives it the *same* row as KV-Compression: `✗ ✓ ✓ ✓ ✓`. Their §3.1 prose independently corroborates — "In-context memory (ICM) allows LLMs to perform single-shot, instance-specific, and contextualized learning" covers *both* in-context rows.
+> 2. **"RAG (~3.5/5), GraphRAG (~3.5/5)" below is my own arithmetic, not Pink's.** Pink publish no numeric scores — only ✓/~/✗ marks. Treating `~` as 0.5 gives RAG 3.0 and GraphRAG 3.5, so even the invented arithmetic was misapplied to RAG. Do not carry any "x/5" figure for their methods into the paper; cite the marks.
+>
+> The *critical finding itself survives both errors*: no row in Table 2 carries ✓ on all five.
 
 ---
 
@@ -79,9 +86,9 @@ This is the load-bearing exercise for our paper. Walking through honestly:
 
 **5. Contextual relations** — ✓ Multiple structural mechanisms: derivation chains (this claim follows from these specific other claims), `link_about` edges (this node is about that node/topic), focus state (currently load-bearing for which thread), reasoning_type metadata, and the temporal-structure cycle (nap, sleep, post-compaction, checkpoint). The "why this is in memory" + "what other memories it relates to" are both first-class. **Fully satisfied.**
 
-**Score: 5/5 properties satisfied.**
+**Score: ~~5/5 properties satisfied.~~** — *see the 2026-09-20 correction above; this framing is retired. The property-by-property verification against Pink's own definitions was finally done on 2026-09-20 and gives four satisfied outright plus the scoreable half of long-term storage, with a second clause of their prose operationalization (measured improvement over time) unmet.*
 
-This is in stark contrast to RAG (~3.5/5), GraphRAG (~3.5/5), and the parametric approaches (1-2/5).
+~~This is in stark contrast to RAG (~3.5/5), GraphRAG (~3.5/5), and the parametric approaches (1-2/5).~~ — **RETRACTED 2026-09-20: every figure in this sentence is my own arithmetic over Pink's checkmark table, and Pink publish no numeric scores at all.** The true statement is the one their Table 2 supports directly: no method in it carries ✓ on all five, and RAG and GraphRAG are the closest, each marked `~` on single-shot and instance-specificity, with RAG `✗` and GraphRAG `~` on contextual relations.
 
 **Honesty check:** Am I confabulating satisfaction? Three potential weaknesses to flag:
 
@@ -151,7 +158,7 @@ Wakeup at 21:55. Plan for next loop fire:
 
 2. Then revise the clean-slate paper plan with the integrated picture:
    - Phil claim: 1-of-3 OCC + bifurcation type/token reformulation as positive philosophical contribution + compaction-as-live-instance empirical validation
-   - Tech claim B: reconsideration pattern (not JTMS specifically) + knowledge compilation pattern + Pink's 5/5 episodic-memory-properties
+   - Tech claim B: reconsideration pattern (not JTMS specifically) + knowledge compilation pattern + Pink's five episodic-memory properties (**not** a "5/5" score — see the 2026-09-20 correction; the figure was mine, not theirs)
    - Convergence: now FOUR independent voices (Kahl + Wray-Kirk-Laird + Pink + ENGRAM-engineering)
 
 3. Wu et al. 2025 (April 2025 LLM-memory survey) if time permits — landscape evidence.

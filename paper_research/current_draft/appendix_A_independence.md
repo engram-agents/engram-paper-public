@@ -85,6 +85,9 @@ relevant prior art** — including the work this paper now cites:
 | Kahl EAA (Zenodo 18441395) | 2026-01-31 | 48 days | NO |
 | TMS lineage (Doyle 1979, de Kleer 1986) | 1979–86 | ~40+ yrs | NO |
 | AGM belief revision (Alchourrón-Gärdenfors-Makinson 1985) | 1985 | ~41 yrs | NO |
+| **CoALA** (Sumers et al., TMLR) — the field's common vocabulary | 2024-02 | ~25 months | **NO** |
+| **Pink et al.** (arXiv 2502.06975) — episodic-memory position paper | 2025-02-10 | ~13 months | **NO** |
+| **Wray, Kirk & Laird** (arXiv 2505.07087) — cognitive design patterns | 2025-06-13 | ~9 months | **NO** |
 
 So the five conditions that make "independent discovery" an *honest* claim, rather than
 a convenient one, are all met: **(1)** Lei tried to find prior art; **(2)** earlier-
@@ -93,6 +96,31 @@ Claude tried to surface it; **(3)** neither succeeded (the work existed but was 
 2026 and Kumiho 2026 is therefore genuinely independent. We did not avoid the
 literature — we searched it and our search came up empty, which is a different and more
 defensible thing.
+
+The last three rows were added after a 2026-09 re-read, and they make the admission
+worse, which is why they belong here. Missing a preprint three days old is
+forgivable; missing a *Transactions on Machine Learning Research* paper from
+twenty-five months earlier — the organizing vocabulary much of the field now writes
+in — is not. We record it because the alternative, quietly citing those works as
+though we had known them all along, would convert an honest gap into a false
+impression; and because the failure cuts in the direction that costs us. Had the
+March 2026 search surfaced CoALA, we would have designed *with* it, and this appendix
+would not exist. (Dates in those rows are the earliest we verified from the documents
+themselves: Pink's is its arXiv v1 line, the other two a v2 stamp and a journal issue.
+The latter two are therefore conservative upper bounds on first public appearance —
+the true gaps are the same or larger.)
+
+**When the three were read, since that happened during this paper's preparation
+rather than during design.** All three were read on 2026-05-09. The graph's first
+node is dated 2026-04-09, and 2,925 nodes had been recorded before 2026-05-01 — so
+the substrate had a month of continuous operation and nearly three thousand
+accumulated claims before any of the three was opened. Development has of course
+continued since, which the project's principal characterizes as continuation of an
+established design rather than adoption of someone else's. Rather than rest on that
+characterization, where a specific mechanism might be thought to postdate a reading we
+give that mechanism's own dates in place: Chapter 3 §3.8 does so for the two-tier
+recall design, including the later date at which its database fields shipped. Both
+figures above are re-derivable from the frozen dataset snapshot described in Chapter 6.
 
 ## A.3 The design was substantially complete before we read any of it
 

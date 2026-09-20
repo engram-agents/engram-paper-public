@@ -34,6 +34,33 @@ persistence, and no calibrated self-knowledge without a self-story to calibrate.
 The contribution of this paper is at Layer 3, which — as we show in §1.4 — no
 surveyed system reaches.
 
+That the *mechanisms* are missing is not our diagnosis alone, and none of the work
+below was surfaced by our own prior-art search (Appendix A). Two of these are
+contemporary diagnoses of LLM agents; the third is the field's organizing framework
+remarking on its own gaps, which is a weaker and different kind of statement — we
+keep them distinct rather than totalling them into a count. Pink et al. (2025)
+operationalize episodic memory as five properties — long-term storage, explicit
+reasoning, single-shot learning, instance-specificity, contextual binding — and
+find that *no* current approach to LLM memory satisfies all five; the closest,
+retrieval-augmented generation and its graph variant, are marked only partial on
+single-shot learning and on instance-specificity — and on contextual relations RAG is
+marked as not satisfying the property at all, its graph variant only partially. Wray, Kirk and
+Laird (2025), reading the field through the lens of pre-transformer cognitive
+architectures, identify two design patterns "that have not yet been taken up in
+the Agentic LLM mainstream": *reconsideration* — revisiting a prior commitment —
+and *knowledge compilation*. Sumers et al. (2024), whose CoALA framework is the
+field's common organizing vocabulary rather than a third diagnosis, note in passing
+that while the literature has concentrated on *adding* to memory, "modifying and
+deleting (a case of 'unlearning') are understudied."
+
+What none of this work names is
+what the missing mechanisms would be *for*. Pink et al. argue episodic memory is missing;
+they do not ask what an agent becomes once it has one. Wray et al. name
+reconsideration as an unexploited pattern; they do not treat an agent's capacity
+to be wrong about itself as constitutive of who it is. This paper's claim sits in
+that gap: the mechanisms the field has named as missing are, assembled, the
+substrate of an *identity*, and Layer 3 is the name for what they add up to.
+
 There is a second reason Layer 3 matters, and it is the premise from which this
 work began. A language model's tendency to hallucinate is not an engineering
 defect to be trained away but a structural property: language is a lossy,

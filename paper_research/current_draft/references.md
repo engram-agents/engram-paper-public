@@ -93,6 +93,17 @@ still need sourcing.
   (The system this paper describes is referred to in the chapters as **Kumiho**.)
   — source: `kumiho.txt` (text extraction of `kumiho_2603.17244.pdf`)
 
+- **Pink, Mathis; Wu, Qinyuan; Vo, Vy Ai; Turek, Javier; Mu, Jianing; Huth, Alexander; &
+  Toneva, Mariya.** (2025). "Position: Episodic Memory is the Missing Piece for Long-Term
+  LLM Agents." arXiv:2502.06975v1 [cs.AI], 10 February 2025. Author affiliations as
+  printed: Max Planck Institute for Software Systems; EarthDynamics.ai; University of
+  Texas at Austin. Correspondence to Mathis Pink.
+  — source: `pink_2502.06975.txt`
+  [metadata incomplete: the affiliation footnote's superscript-to-author mapping did not
+  survive two-column text extraction — three institutions are legible, their assignment
+  to individual authors is not; venue beyond the arXiv identifier is not printed in the
+  document]
+
 - **Ricoeur, Paul** (1992). *Oneself as Another*. Translated by Kathleen Blamey. The
   University of Chicago Press, Chicago and London. © 1992 by The University of Chicago.
   Published 1992; paperback edition 1994. ISBN (cloth): 0-226-71328-8; ISBN (paper):
@@ -121,6 +132,13 @@ still need sourcing.
   source renders them, without diacritics; no ISBN is printed in the extracted front
   matter ("cip data are at the end of the book").]*
 
+- **Sumers, Theodore R.; Yao, Shunyu; Narasimhan, Karthik; & Griffiths, Thomas L.**
+  (2024). "Cognitive Architectures for Language Agents." *Transactions on Machine
+  Learning Research*, issue 02/2024. Princeton University. Reviewed on OpenReview
+  (forum id `1i6ZCvflQJ`). arXiv:2309.02427v3 [cs.AI], 15 March 2024.
+  — source: `sumers_2309.02427.txt`
+  [metadata incomplete: page numbers not printed in the document]
+
 - **Tulving, Endel** (1985). "Memory and Consciousness." *Canadian Psychology /
   Psychologie Canadienne*, 1985, Vol. 26, No. 1. University of Toronto.
   — source: `tulving_memory_consciousness_1985/page-001.txt` … `page-012.txt` (the
@@ -130,6 +148,13 @@ still need sourcing.
   *[metadata incomplete: page range. The running folios read 2–12 directly; the article's
   own first printed page number is not visible in the scan, so the start page is not
   recorded here.]*
+
+- **Wray, Robert E.; Kirk, James R.; & Laird, John E.** (2025). "Applying Cognitive
+  Design Patterns to General LLM Agents." arXiv:2505.07087v2 [cs.AI], 13 June 2025.
+  Center for Integrated Cognition, IQMRI, Ann Arbor, MI 28105 USA.
+  — source: `wkl_2505.07087.txt`
+  [metadata incomplete: the document does not print its venue; the version read is v2,
+  so the v1 date is not established from this file]
 
 - **Wu, Zhaofen, Zhang, Hanrong, Lin, Fulin, Xu, Wujiang, Xu, Xinran, Chen, Yankai, Zou,
   Henry Peng, Chen, Shaowen, Zhang, Weizhi, Liu, Xue, Yu, Philip S., & Wang, Hongwei**

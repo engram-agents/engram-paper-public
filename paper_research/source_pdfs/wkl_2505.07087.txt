@@ -1,0 +1,697 @@
+                                                    Applying Cognitive Design Patterns
+                                                         to General LLM Agents
+
+                                          Robert E. Wray[0000−0002−5311−8593] , James R. Kirk[0000−0002−2459−3643] , and
+                                                              John E. Laird[0000−0001−7446−3241]
+
+                                                Center for Integrated Cognition, IQMRI, Ann Arbor, MI 28105 USA
+                                                     {robert.wray,james.kirk,john.laird}@cic.iqmri.org
+                                                                    http://integratedcognition.ai
+arXiv:2505.07087v2 [cs.AI] 13 Jun 2025
+
+
+
+
+                                               Abstract. One goal of AI (and AGI) is to identify and understand spe-
+                                               cific mechanisms and representations sufficient for general intelligence.
+                                               Often, this work manifests in research focused on architectures and many
+                                               cognitive architectures have been explored in AI/AGI. However, differ-
+                                               ent research groups and even different research traditions have somewhat
+                                               independently identified similar/common patterns of processes and rep-
+                                               resentations or cognitive design patterns that are manifest in existing ar-
+                                               chitectures. Today, AI systems exploiting large language models (LLMs)
+                                               offer a relatively new combination of mechanisms and representations
+                                               available for exploring the possibilities of general intelligence. This pa-
+                                               per outlines a few recurring cognitive design patterns that have appeared
+                                               in various pre-transformer AI architectures. We then explore how these
+                                               patterns are evident in systems using LLMs, especially for reasoning and
+                                               interactive (“agentic”) use cases. By examining and applying these re-
+                                               curring patterns, enables predictions of gaps or deficiencies in today’s
+                                               Agentic LLM Systems and identification of subjects of future research
+                                               towards general intelligence using generative foundation models.
+
+                                               Keywords: Agents · Cognitive Architecture · Large Language Models
+
+
+
+                                         1   Introduction
+
+                                         Cognitive architectures encapsulate and represent theories and commitments to-
+                                         ward a general systems architecture for intelligence. More than one hundred dif-
+                                         ferent cognitive architectures have been proposed and developed, drawing from
+                                         many distinct (and often quite disparate) intellectual traditions [17]. Remark-
+                                         ably, as architectures have evolved in response to research outcomes, even though
+                                         they draw from very different sources, there has been notable convergence and
+                                         even consensus around both a high-level functional architecture of cognition [20]
+                                         as well as many lower-level algorithmic [15] and representational [6, 7] commit-
+                                         ments. A tentative but hopeful inference from such convergence is that, as a
+                                         field, we are beginning to understand what components are necessary (or at
+                                         least important) for realizing artificial general intelligence (AGI).
+2        Robert E. Wray, James R. Kirk, and John E. Laird
+
+     In contrast to the comparatively long history of cognitive architecture, large
+language and multi-modal models (LLMs1 ) have emerged in the past five years as
+a major new technology. The attention is motivated by the breadth and depth of
+these models and their applicability to many different use cases and applications.
+While it is sometimes claimed that LLMs alone might offer the potential for AGI
+[4], a new and rapid growing research area is directed toward exploiting LLMs as
+one (important) component within a larger collection of components and tools
+that comprise a general AI system [16, 67, 26].
+     Here, we examine systems architectures comprised primarily of LLM compo-
+nents (in contrast to hybrid integrations of LLMs with planners [16], constraint
+solvers [24], traditional cognitive architectures [19], etc.). Such Agentic LLM Sys-
+tems often are developed for specific tasks or domains, such as software develop-
+ment [9] or web-content publishing [38]. However, researchers and developers are
+also attempting to identify and to develop agentic frameworks sufficiently general
+to apply to any task [66, 39, 59]. Further, Agentic LLM Systems are increasingly
+enhanced with specialized memories also common in cognitive architecture (e.g.,
+episodic memory). In sum, the search for general Agentic LLM Systems shares
+many goals and non-trivial overlap with cognitive architecture research.
+     Within the Agentic LLM community, there have been some high-level propos-
+als to draw lessons from cognitive architecture [42] and agent architectures and
+multi-agent systems [43]. In this paper, from the perspective of cognitive- and
+agent-architecture researchers, we briefly outline the notion of common mech-
+anisms and representations that recur across different architectures. We then
+review a few of these cognitive design patterns and explore their potential rel-
+evance to Agentic LLM Systems. Our examples include both patterns that are
+currently being explored in Agentic LLMs and ones, relatively underexplored to
+date, that appear apt for research attention. We contend that such fine-grained,
+comparative and integrative analysis across divergent fields can both speed fu-
+ture research in Agentic LLMs and also contribute to broadening the scope of
+research directed toward identifying architectures for general intelligence.
+
+
+2     Cognitive Design Patterns
+In software engineering, a design pattern is a description of or template for
+a solution to a particular design problem. Design patterns are typically speci-
+fied abstractly (not code) and are flexible enough to be adapted/customized for
+specific situations. Cognitive design patterns represent a similar concept. A cog-
+nitive design pattern denotes some function/process or representation/memory
+that routinely appears in agents and/or cognitive architectures. That is, like
+software design patterns, cognitive design patterns summarize, at an abstract
+level, common (or at least recurring) solutions to functional requirements for
+intelligent systems. Table 1 lists some examples of cognitive design patterns,
+drawn from past comparative analyses from various researchers [15, 20, 17, 40].
+1
+    Throughout, we use LLM as the common term used to describe these models, al-
+    though most recent models have input and output modalities beyond text/language.
+                 Applying Cognitive Design Patterns to General LLM Agents           3
+
+                  Table 1. Examples of Cognitive Design Patterns.
+
+Cognitive Design Pattern     Examples
+Observe-decide-act         BDI: analyze, commit, execute
+                           Soar: elaborate/propose, decide, apply (operators)
+3-stage                    BDI: desire, intention, intention reconsideration
+memory commitment          Soar: operator proposal, selection, retraction
+                           Soar: elaboration, instantiation, JTMS reconsideration
+Hierarchical decomposition BDI: hierarchical task networks (HTNs)
+                           Soar: operator no-change impasses
+Short-term (context)       ACT-R: buffers (goal, retrieval, visual, manual, ...)
+memory                     Soar: working memory
+Ahistorical KR/memory      ACT-R, Soar: semantic memory
+   Retrieval:              ACT-R, Soar: activation-mediated association
+Historical KR/memory       Soar: episodic memory
+   Retrieval:              Soar: cue/memory overlap (encoding specificity)
+Procedural KR/memory       ACT-R, Soar: productions, BDI: plans
+   Retrieval:              ACT-R, Soar: associative production-condition match
+   Learning:               ACT-R, Soar: knowledge compilation/chunking
+
+
+
+For illustration, we include examples from the ACT-R [1] and Soar [18] cognitive
+architectures and from the belief-desire-intention (BDI) family of agent architec-
+tures [56]. We introduce cognitive design patterns to support the organization
+and unification of such analyses.2
+    Cognitive design patterns, like soft-
+ware design patterns, are abstract,
+eliding not only implementation de-
+tails, but specification of algorithms.
+Distinct algorithms and representa-
+tional commitments are employed to
+instantiate a cognitive design pattern
+in different architectures. An is illus-
+trated in Figure 1, many architectures
+use a 3-stage process to control assert-
+ing and retracting individual memory
+items (rather than the more common Fig. 1. Illustration of the 3-stage commit-
+store/erase, 2-stage process). Instead ment cognitive design pattern.
+of direct assertion, an agent generates
+candidates for some memory slot. It then uses a selection or commitment process
+[56] to choose among the candidates before making a final choice or intention.
+    Any commitment can be evaluated or reconsidered after the commitment
+decision [37]. Reconsideration can lead to removal/retraction, deselection (in
+
+2
+    The coinage here is not new or unique. The the recognition of common patterns
+    occurring across cognitive and agent architectures goes back many years [13] and
+    has been of long-standing interest to the authors [57, 15, 46, 7, 20].
+4       Robert E. Wray, James R. Kirk, and John E. Laird
+
+which a previous choice is demoted to a candidate), or reaffirmation (continuing
+with the current choice). Both BDI architectures and Soar (and some addi-
+tional cognitive architectures) exhibit this 3-stage process in their primary unit
+of deliberation. However, the representational foci of deliberation (plans in BDI,
+operators in Soar) are distinct, as are the specific algorithms used for assertion,
+commitment, and reconsideration [58, 37, 15].
+    Familiar algorithms may be specialized (in scope and/or implementation)
+to realize a cognitive function within an architecture. For example, Soar uses a
+justification-based truth maintenance system (JTMS) [10] as the reconsideration
+process for one functional type of memory element. The JTMS implementation
+is specialized for its integration within Soar. Cognitive design patterns are useful
+as a unit of comparison and analysis because abstracting to just the functional
+role (reconsideration) distances the analysis from implementation details (a cus-
+tomized JTMS for Soar), making more evident and clear commonalities and
+contrasts in architectural commitments. If we just assert that Soar uses a JTMS
+and a BDI architecture uses some decision-theoretic calculations over different
+types of memory instances, it is easy to miss that the functional role of both
+of these processes, reconsideration (and more broadly, belief revision and con-
+text/memory management) is comparable in both architectures.
+
+
+3   Cognitive Design Patterns & Agentic LLM Systems
+
+Cognitive design patterns appear and recur in many existing systems motivated
+toward achieving general intelligence. We now consider if/how these cognitive
+design patterns might be apt for understanding, evaluating, and anticipating
+the course of Agentic LLM research. We consider the following three questions:
+
+ 1. What cognitive design patterns are evident in existing Agentic LLM sys-
+    tems? If cognitive design patterns represent a catalog of functions important
+    to general intelligence, we should observe them in Agentic LLM systems tar-
+    geted toward general intelligence. Some cognitive design patterns are clearly
+    evident. We discuss two recent examples in some detail.
+ 2. What cognitive design patterns appear apt for Agentic LLMs but are not yet
+    part of the Agentic LLM mainstream? We present two examples that have
+    not yet been deeply investigated and that appear relevant in the current
+    state-of-the-art in Agentic LLMs systems.
+ 3. Do the unique properties of Agentic LLMs suggest new cognitive design pat-
+    terns for general intelligence? We examine how computational and behavioral
+    characteristics of Agentic LLMs may lead to new design patterns.
+
+   We now consider each of these questions, drawing examples from research in
+both Agentic LLMs and cognitive and agent architectures. We identify specific
+examples to illustrate and provide insight. An exhaustive survey for each of these
+questions is too broad for a conference paper and, given the accelerating pace of
+exploration of these topics, somewhat impractical.
+                  Applying Cognitive Design Patterns to General LLM Agents             5
+
+      Table 2. Cognitive design patterns evident in recent Agentic LLM research.
+
+Cognitive Design Pattern Agent LLM Systems
+Observe-decide-act    ReAct [66], Reflexion [39]
+Hierarchical          Voyager [49], ADaPT [35], DeAR [64],
+decomposition         Tree of Thoughts [65], Graph of Thoughts [2]
+Knowledge compilation NL: ExpeL [68], Reflexion [39]
+                      Structured Reps: Voyager [49], LLMRG [54],
+                                        cognitive agent framework [70]
+Context memory        MemGPT [32], LONGMEM [52]
+Ahistorical KR/memory A-MEM [63], WISE [50], MemoryBank [69]
+Historical KR/memory  Generative Agents [33], MemoryBank [69]
+Procedural KR/memory ProgPROMPT [41], Voyager [49], Self-evolving GPT [12]
+
+
+
+3.1     Cognitive Design Patterns in Existing Systems
+
+Many of the cognitive design patterns in Table 1 are well-known, and examples
+are increasingly evident in Agentic LLM research. Table 2 lists examples from
+recent research.3 We highlight two specific examples.
+
+
+Observe-Decide-Act in ReAct Generally, LLM performance improves when
+the user prompt directs the model to be explicit about its reasoning, as in the
+now ubiquitous Chain-of-Thought (CoT) prompting method [55]. ReAct [66],
+one of the earliest and most influential Agentic LLM methods, builds on CoT
+by distinguishing between internal and external problem-solving steps. As illus-
+trated in Figure 2 (left), ReAct initially prompts the LLM for natural-language
+(NL) statements (thoughts) about the problem before taking any action. While
+subsequent research has interrogated the relative contributions of examples vs.
+decomposition in ReAct [3], it did demonstrate significant improvements in LLM
+responses across multiple domains [66]. ReAct is now a foundational approach
+for Agentic LLM systems and has been incorporated into agentic software de-
+velopment tools such as LangGraph [23].
+    ReAct replicates a subset of the common observe-decide-act pattern. Fig-
+ure 2 (right) illustrates how observe-decide-act is frequently implemented in BDI
+architectures: new input triggers an analysis/reasoning process, informed by the
+agent’s current beliefs and desires. The updated context of beliefs and desires
+then informs a decision or commitment process (including reconsideration, as
+discussed previously). The intention(s) that result from commitment then lead
+to agent actions. The basic decision process of other architectures, such as Soar
+and ACT-R, can also be mapped to this abstract observe-decide-act pattern.
+    ReAct has a significant overlap with this pattern but lacks the step that
+explicitly makes commitments. Thus, this mapping of ReAct to the familiar
+3
+    Because our goal is to illustrate how prevalent the exploration of AGI cognitive
+    design patterns is in Agentic LLM systems, the list is purposely inclusive. The table
+    does not distinguish full vs. partial realizations of cognitive design patterns.
+6       Robert E. Wray, James R. Kirk, and John E. Laird
+
+
+
+
+Fig. 2. Contrasting Decision/Action cycles in the ReAct (left) and BDI (right)
+paradigms. BDI illustrates the Observe-Decide-Act cognitive design pattern.
+
+
+design pattern leads to an immediate, empirical question: Would introducing
+commitment in ReAct result in better overall reasoning outcomes than ReAct
+alone? We contend that one of the advantages of mapping Agentic LLM solutions
+to cognitive design patterns is identifying specific questions such as this one.
+
+
+Episodic Memory in Generative Agents Agentic LLM researchers are in-
+creasingly exploring various types of long-term memories (LTMs) [60]. Examples
+include both general-purpose LTMs [69] and LTMs specialized for procedures
+(or skills) [49, 12], history/episodes [33, 34, 69], or facts (semantic memory) [63,
+51]. Generally, long-term memories give an Agentic LLM system more ability to
+control the context it uses for its generative steps, enabling adaptive responses
+to a dynamic environment over longer periods of time [12, 61].
+    An early, influential example of LTM in Agentic LLM Systems is Generative
+Agents [33]. Generative Agents simulates human behavior via a collection of
+LLM agents, each representing a person living in a small village. Agents interact
+with one another through natural language and undertake various individual and
+collective tasks, such as attending work or school. Generative Agents implements
+an LTM that concatenates a history of specific recent experiences (observations)
+and abstract, integrative summaries of past experience (reflections). Reflections
+capture gists of experience (“Klaus worked in the lab all day”) and also insights
+(“Klaus’ dedication to his lab work suggests he is passionate about research.”).
+    These memories then inform subsequent agent behavior. Agents retrieve a
+combination of observations and reflections into a Memory Stream, which pro-
+vides context for agent planning and action. Retrieval uses recency, agent-judged
+importance, and an agent’s subjective sense of relevance to retrieve items from
+long-term memory into the memory stream.
+    The developers of Generative Agents do not describe its long-term memory
+as an episodic memory but it is often cited as an example of episodic memory
+using LLMs. Episodic memory is autobiographical, memory of what happened
+to me. Specific characteristics of human episodic memory are well-understood
+[47] and have been implemented within cognitive architectures [30].
+                 Applying Cognitive Design Patterns to General LLM Agents             7
+
+ Table 3. Characteristics of Episodic Memory & Comparison to Generative Agents.
+
+Characteristic     In [33]? Comments
+Learning Process
+Automatic           Semi A periodic process was used to evaluate memories and save
+                         a subset.
+Autobiographical     Yes Memories are recorded in the 3rd-person, but agents un-
+                         derstand memories as being about themselves.
+Autonoetic            ?  Unclear how agents distinguish current understanding from
+                         memory of past experience.
+Episodic             No Observation span and reflection prompts are based on pre-
+segmentation             defined, static periods (e.g., every 100 observations triggers
+                         a reflection).
+Variable Length      Yes Reflections can span variable lengths of agent experience.
+Retrieval Process
+Cue-based         Partial Objects present in agent situation used as retrieval cues
+Spontaneous?       Yes Retrieval is implemented as a recurring, automated process
+Deliberate?        No Agents cannot deliberately attempt to construct cues or
+                          retrieve memories
+Encoding          Partial Relevance (one of three retrieval criteria) uses semantic
+specificity               similarity, not encoding specificity.
+
+
+    Comparing any implementation of an episodic memory to the general charac-
+teristics of the episodic memory cognitive design pattern can potentially identify
+capabilities, limitations, and opportunities for further exploration. Table 3 lists
+specific requirements for computational implementations of episodic memory,
+adapted from Nuxoll and Laird [30]. The table also indicates which characteris-
+tics of episodic memory Generative Agents satisfy (and which it does not).
+    To highlight one example, most conceptions of episodic memory assume the
+encoding specificity principle [48], which (roughly) says that episodic memories
+encode event context. Retrieval of some past episode is more likely when retrieval
+cues match the encoded context: entering a home that one lived in many years
+ago might trigger memories of being in that home. The context (e.g., the floor
+plan) was encoded in memory. Being present in the home again creates percep-
+tual cues that match encoded cues from past memories, resulting in retrieval.
+    Memory in Generative Agents encodes objects, providing some specificity,
+but the encoding of observations and reflections is not fully contextual. Retrieval
+employs relevance, which relies on semantic similarity rather than cue-specificity.
+The table identifies other similarities and differences. As for ReAct, this analysis
+points to specific research questions, such as exploring how agent behavior might
+change if the agent could deliberately construct explicit retrieval cues or whether
+the quality of reflection would change with a more context-sensitive trigger.
+
+3.2   Patterns Apt for Exploration and Exploitation
+In this section, we briefly discuss two cognitive design patterns that have not
+yet been taken up in the Agentic LLM mainstream: reconsideration and knowl-
+8       Robert E. Wray, James R. Kirk, and John E. Laird
+
+edge compilation. Both patterns appear to be relevant to addressing current
+shortcomings in Agentic LLMs and thus represent research opportunities.
+
+Commitment and Reconsideration in Agentic LLMs Reconsideration
+is a cognitive design pattern that describes the process of evaluating whether
+a prior commitment, such as a goal or a plan, should continue in an agent’s
+current situation. Reconsideration that results in a change in commitment is a
+non-monotonic step. Chat-focused LLMs tend to resist major redirection in the
+trajectory of their token generation and LLMs alone are not consisent or reliable
+in producing non-monotonic reasoning steps [25].
+    In addition to reflection strategies (discussed below), reconsideration for in-
+tentions or commitments in Agentic LLMs could allow an the agent to periodi-
+cally assess the continuing viability and desirability of its goals. A few approaches
+have been developed, often comparable to short-term memories, to limit or to
+manage what context is presented with each LLM query [32], comparable to pag-
+ing in operating systems. This approach does support (if somewhat indirectly)
+redirection by forgetting/deleting past context. Reconsideration via LLMs would
+enhance recent efforts in using Agent LLMs for planning and plan decomposi-
+tion, which share some similarities to commitment processes [35, 64]. As LLM
+Agents make deliberate, explicit commitments, they will then also need to decide
+if/when those commitments should be abandoned, just as traditional agents do.
+
+Knowledge Compilation Multi-step reasoning (or problem search [21]) can
+be computationally expensive, even NP-complete [5]. Knowledge compilation
+caches the results of reasoning steps into a more compact representation, essen-
+tially amortizing the cost of expensive reasoning by enabling immediate use of
+the cached reasoning steps in future, similar situations. Examples of knowledge
+compilation abound, including macro-operator learning in STRIPS [11], various
+forms of explanation-based learning [28] and implementations in both ACT-R
+(production compilation [44]) and Soar (chunking [22]).
+    Ignoring quality and reliability issues, Agentic LLMs engage in more po-
+tentially expensive problem search (i.e., individual query-response steps) that
+requires more run-time compute than LLMs alone. For example, we reviewed
+above how ReAct divides internal and external problem-solving steps into sepa-
+rate query-response interactions, thus (at least) doubling the number of query-
+response interactions. Further, large reasoning models (LRMs) have recently
+emerged, such as OpenAI o1 and DeepSeek R1, in which fine-grained, multi-step
+reasoning, similar to Chain-of-Thought, is reinforced in token generation [62, 31,
+8]. The computational demands of run-time inference in these new reasoning
+models is significantly greater than chat-based models. An open challenge for
+LRMs is to reduce their run-time inference cost [62].
+    Given these trends, the knowledge compilation design pattern appears di-
+rectly relevant to Agentic LLMs and LRMs. Compiling LLM reasoning into a
+different form for subsequent use has been an active area of research, as a spe-
+cial case of program synthesis. For example, Voyager [49] uses LLM reasoning
+                Applying Cognitive Design Patterns to General LLM Agents           9
+
+to construct Minecraft crafting recipes (as executable JavaScript), LLMRG [54]
+constructs structured graphs that summarize user history and preferences in a
+recommendation system, and Zhu and Reid [70] describe generating Soar pro-
+ductions from LLM reasoning.
+    While these examples illustrate the value of compiling reasoning into a dif-
+ferent form, direct, online caching of LLM responses in natural language has
+not yet become widely researched. Voyager generates an NL summary of the
+functions (skills) that it produces. Reflexion [39], a system designed to improve
+its problem-solving policy via LLM-mediated reflection, caches its reflections in
+a memory to be used in subsequent trials. This caching supports within-task
+transfer but offers little/no across-task transfer. ExpeL [68] develops NL in-
+sights from analysis of initial, exploratory problem-solving traces in a domain.
+The functionality of ExpeL’s insights comes closest (of those we have found) to
+the knowledge compilation design pattern. However, insight generation requires
+an explicit, training stage, in sharp contrast with the online use of knowledge
+compilation for problem solving in ACT-R and Soar.
+    Finally, knowledge compilation assumes an agent will encounter similar situa-
+tions in the future, so that saving the results of potentially expensive, multi-step
+reasoning is worthwhile. This assumption is reasonable as long as memory size
+and retrieval from it are relatively inexpensive [27]. Mitigating this utility prob-
+lem has strongly influenced the implementation of knowledge compilation within
+cognitive architectures [27, 45]. As knowledge compilation becomes more com-
+monplace in Agentic LLM systems, we can expect that utility problems will arise
+and that specialized techniques and algorithms will be needed and researched to
+enable routine use of knowledge compilation in LLM systems.
+
+3.3   Emergence of Novel Cognitive Design Patterns
+Most cognitive architectures prescribe a fixed, pre-defined control flow. In con-
+trast, LLM computation intermixes content and control. Given this difference,
+we can expect novel patterns of processing will likely emerge from integrating
+and combining LLM modules for Agentic AI.
+    As illustration, a candidate novel pattern is step-wise reflection. Step-wise re-
+flection is intended to improve overall reliability of LLM responses. The simplest
+versions of step-wise reflection prompt the language model to evaluate the previ-
+ous response. Self-consistency [53], a more sophisticated instance of the pattern,
+generates multiple LLM responses to an individual prompt. Then, via a reflec-
+tion step, it identifies the most frequently-occurring (or consistent) response and
+chooses it as a “final” answer to the original query.
+    While step-wise reflection is functionally similar to reconsideration and belief
+revision [14], its specific characteristics are unique. For example, the reflection
+step itself is as potentially unreliable as the initial response and thus possibly
+recursive and unbounded in the worst case. It contrasts with Self-reflection [36] in
+which an external process provides feedback that a previous response (typically,
+an answer to a question) is incorrect. In step-wise reflection, a LLM is asked to
+evaluate correctness and adequacy without external/oracular feedback.
+10      Robert E. Wray, James R. Kirk, and John E. Laird
+
+    Finally, step-wise reflection differs from more familiar metacognitive reflec-
+tion, such as Soar’s retrospection [29] or Reflexion [39], an extension of ReAct
+outlined previously. In metacognitive reflection, the agent reflects over many
+steps of problem solving, including interaction with the environment, to gain ad-
+ditional knowledge (such as generalization or correction). In summary, step-wise
+reflection appears to be a novel pattern that integrates and combines aspects of
+other patterns in a unique way, driven by the need for continual and fine-grained
+(step-wise) assessment of LLM-driven reasoning.
+
+4    Conclusions
+We presented cognitive design patterns as a powerful analytic tool for organizing
+and understanding the explosion of research in Agentic LLM systems. Cognitive
+design patterns encapsulate high-level descriptions of processes, representations,
+and memories that have recurred in research and development of agent/cognitive
+architectures motivated by the goal of AGI. Using these patterns to analyze
+Agentic LLM systems, we identified potential limitations in existing approaches
+and generated predictions that specific extensions/elaboration of the approaches,
+informed by cognitive design patterns, will mitigate these limitations.
+    Long-term, we see cognitive design patterns as a complement to other ap-
+proaches that are attempting to codify commonalities in approaches to general
+intelligence, such as the Common Model of Cognition [20]. Cognitive design pat-
+terns represent a functionally motivated approach to organizing cognitive func-
+tions, independent of whether those patterns are representative of or relevant to
+human cognition. Together, we anticipate that such approaches could represent
+an emerging discipline of Comparative Cognitive Architecture. Analysis, under-
+standing, and building on progress across architectural paradigms has been a
+barrier to faster progress in AGI. We believe an analytic, comparative, and in-
+tegrative methodology, as a companion to existing architectural implementation
+research, has the potential to speed the exploration and progress toward general,
+artificially intelligent agents.
+
+Acknowledgments. This work was partially supported by the Office of Naval Re-
+search, contract N00014-21-1-2369, and the Defense Advanced Research Projects Agency,
+contract HQ072716D0006. The views and conclusions contained in this document are
+those of the authors and should not be interpreted as representing the official policies,
+either expressed or implied, of the Department of Defense, Office of Naval Research,
+or DARPA. The U.S. Government is authorized to reproduce and distribute reprints
+for Government purposes notwithstanding any copyright notation hereon. Cognitive
+design patterns have been a decades-long interest of the authors and developed over
+many interactions and conversations with our colleagues including Ron Chong, Jacob
+Crossman, Kevin Gluck, Scott Huffman, Randy Jones, Rick Lewis, Christian Lebiere,
+Doug Pearson, Frank Ritter, Glenn Taylor, Mike van Lent, and Richard Young. We
+would like to thank the anonymous reviewers for constructive suggestions and feedback.
+
+Disclosure of Interests. The authors have no competing interests to declare that
+are relevant to the content of this article.
+                 Applying Cognitive Design Patterns to General LLM Agents               11
+
+References
+
+ 1. Anderson, J.R., Bothell, D., Byrne, M.D., Douglass, S., Lebiere, C., Qin, Y.: An
+    integrated theory of the mind. Psychological review 111(4), 1036 (2004)
+ 2. Besta, M., Blach, N., Kubicek, A., Gerstenberger, R., Podstawski, M., Gianinazzi,
+    L., Gajda, J., Lehmann, T., Niewiadomski, H., Nyczyk, P., Hoefler, T.: Graph of
+    Thoughts: Solving Elaborate Problems with Large Language Models. In: Proc. of
+    38th Annual AAAI Conference on Artificial Intelligence. AAAI Press, Vancouver
+    (Feb 2024)
+ 3. Bhambri, S., Verma, M., Kambhampati, S.: Do Think Tags Really Help LLMs
+    Plan? A Critical Evaluation of ReAct-Style Prompting. Transactions on Machine
+    Learning Research (Mar 2025)
+ 4. Bubeck, S., Chandrasekaran, V., Eldan, R., Gehrke, J., Horvitz, E., Kamar, E.,
+    Lee, P., Lee, Y.T., Li, Y., Lundberg, S., Nori, H., Palangi, H., Ribeiro, M.T., Zhang,
+    Y.: Sparks of Artificial General Intelligence: Early experiments with GPT-4 (Apr
+    2023), http://arxiv.org/abs/2303.12712, arXiv:2303.12712 [cs]
+ 5. Bylander, T.: Complexity results for planning. In: Proceedings of the 12th interna-
+    tional joint conference on Artificial intelligence - Volume 1. pp. 274–279. IJCAI’91,
+    Morgan Kaufmann Publishers Inc., San Francisco, CA, USA (Aug 1991)
+ 6. Cohen, M.A., Ritter, F.E., Haynes, S.R.: Herbal: A high-level language and devel-
+    opment environment for developing cognitive models in Soar. In: 14th Conference
+    on Behavior Representation in Modeling and Simulation 2005. pp. 231–236. Sim-
+    ulation Interoperability Standards Organization (Dec 2005)
+ 7. Crossman, J., Wray, R.E., Jones, R.M., Lebiere, C.: A High Level Symbolic Repre-
+    sentation for Behavior Modeling. In: Gluck, K. (ed.) Proceedings of 2004 Behavior
+    Representation in Modeling and Simulation Conference. Arlington, VA (2004)
+ 8. DeepSeek-AI: DeepSeek-R1: Incentivizing Reasoning Capability in LLMs
+    via Reinforcement Learning (Jan 2025), http://arxiv.org/abs/2501.12948,
+    arXiv:2501.12948 [cs]
+ 9. Dong, Y., Jiang, X., Jin, Z., Li, G.: Self-Collaboration Code Generation via Chat-
+    GPT. ACM Trans. Softw. Eng. Methodol. 33(7), 189:1–189:38 (Sep 2024)
+10. Doyle, J.: A truth maintenance system. Artificial Intelligence 12, 231–272 (1979)
+11. Fikes, R.E., Hart, P.E., Nilsson, N.J.: Learning and executing generalized robot
+    plans. Artificial Intelligence 3, 251–288 (Jan 1972)
+12. Gao, J., Ding, X., Cui, Y., Zhao, J., Wang, H., Liu, T., Qin, B.: Self-Evolving
+    GPT: A Lifelong Autonomous Experiential Learner. In: Proc. of ACL 2024 (2024)
+13. Genesereth, M.R.: A Comparative Analysis of Some Simple Architectures for Au-
+    tonomous Agents. In: Van Lehn, K. (ed.) Architectures for Intelligence, pp. 279–
+    299. Lawrence Erlbaum, Hillsdale NJ (1991)
+14. Gärdenfors, P.: Knowledge in Flux. MIT Press, Cambridge, MA (1988)
+15. Jones, R., Wray, R.E.: Comparative Analysis of Frameworks for Knowledge-
+    Intensive Intelligent Agents. AI Magazine 27(2), 57–70 (2006)
+16. Kambhampati, S., Valmeekam, K., Guan, L., Verma, M., Stechly, K., Bhambri, S.,
+    Saldyt, L.P., Murthy, A.B.: Position: LLMs Can’t Plan, But Can Help Planning in
+    LLM-Modulo Frameworks. In: PMLR Vol 235: 41st International Conf. on Machine
+    Learning. vol. 235, pp. 22895–22907. Vienna (2024)
+17. Kotseruba, I., Tsotsos, J.K.: 40 years of cognitive architectures: Core cognitive abil-
+    ities and practical applications. Artificial Intelligence Review 53(1), 17–94 (2020)
+18. Laird, J.E.: The Soar Cognitive Architecture. MIT Press, Cambridge, MA (2012)
+12      Robert E. Wray, James R. Kirk, and John E. Laird
+
+19. Laird, J.E., Lebiere, C., Reitter, D., Rosenbloom, P.S., Stocco, A. (eds.): Proc. of
+    2023 AAAI Fall Symposia: Integration of Cognitive Architectures and Generative
+    Models. AAAI Fall Symposium Series, AAAI Press, Washington, DC. (2023)
+20. Laird, J.E., Lebiere, C., Rosenbloom, P.S.: A Standard Model of the Mind: Toward
+    a Common Computational Framework across Artificial Intelligence, Cognitive Sci-
+    ence, Neuroscience, and Robotics. AI Magazine 38(4), 13–26 (2017)
+21. Laird, J.E., Newell, A.: A universal weak method. In: Rosenbloom, P.S., Laird, J.E.,
+    Newell, A. (eds.) The Soar Papers: Research on Integrated Intelligence, vol. 1, pp.
+    245–292. MIT Press, Cambridge, MA (1983)
+22. Laird, J.E., Rosenbloom, P.S., Newell, A.: Chunking in Soar: The anatomy of a
+    general learning mechanism. Machine Learning 1(1), 11–46 (1986)
+23. LangChain: LangGraph (2025), https://langchain-ai.github.io/langgraph/
+24. Lawless, C., Schoeffer, J., Le, L., Rowan, K., Sen, S., St. Hill, C., Suh, J., Sar-
+    rafzadeh, B.: “I Want It That Way”: Enabling Interactive Decision Support Using
+    Large Language Models and Constraint Programming. ACM Trans. Interact. In-
+    tell. Syst. 14(3), 22:1–22:33 (Sep 2024)
+25. Leidinger, A., Van Rooij, R., Shutova, E.: Are LLMs classical or nonmonotonic
+    reasoners? Lessons from generics. In: Ku, L.W., Martins, A., Srikumar, V. (eds.)
+    Proceedings of the 62nd Annual Meeting of the Association for Computational
+    Linguistics (Volume 2: Short Papers). pp. 558–573. Association for Computational
+    Linguistics, Bangkok, Thailand (Aug 2024)
+26. Luo, J., Zhang, W., Yuan, Y., Zhao, Y., Yang, J., Gu, Y., Wu, B., Chen, B., Qiao,
+    Z., Long, Q., Tu, R., Luo, X., Ju, W., Xiao, Z., Wang, Y., Xiao, M., Liu, C., Yuan,
+    J., Zhang, S., Jin, Y., Zhang, F., Wu, X., Zhao, H., Tao, D., Yu, P.S., Zhang,
+    M.: Large Language Model Agents: A Survey on Methodology, Applications and
+    Challenges (Mar 2025), http://arxiv.org/abs/2503.21460, arXiv:2503.21460 [cs]
+27. Minton, S.: Quantitative results concerning the utility of explanation-based learn-
+    ing. Artificial Intelligence 42(2), 363–391 (Mar 1990)
+28. Mitchell, T.M., Keller, R.M., Kedar-Cabelli, S.V.: Explanation-based learning: A
+    unifying view. Machine Learning 1(1), 47–80 (1986)
+29. Mohan, S., Laird, J.E.: Learning Goal-Oriented Hierarchical Tasks from Situated
+    Interactive Instruction. In: Proceedings of the AAAI Conference on Artificial In-
+    telligence. vol. 28, pp. 387–394. AAAI Press (2014)
+30. Nuxoll, A.M., Laird, J.E.: Enhancing intelligent agents with episodic memory. Cog-
+    nitive Systems Research 17-18, 34–48 (Jul 2012)
+31. OpenAI: OpenAI o1 System Card (Dec 2024), http://arxiv.org/abs/2412.16720,
+    arXiv:2412.16720 [cs]
+32. Packer, C., Wooders, S., Lin, K., Fang, V., Patil, S.G., Stoica, I., Gon-
+    zalez, J.E.: MemGPT: Towards LLMs as Operating Systems (Feb 2024),
+    http://arxiv.org/abs/2310.08560, arXiv:2310.08560 [cs]
+33. Park, J.S., O’Brien, J.C., Cai, C.J., Morris, M.R., Liang, P., Bernstein, M.S.: Gen-
+    erative Agents: Interactive Simulacra of Human Behavior. In: Proceedings of 2023
+    ACM Symposium on User Interface Software and Technology (UIST). pp. 1–22.
+    Association for Computing Machinery, San Francisco (Apr 2023)
+34. Pink, M., Wu, Q., Vo, V.A., Turek, J., Mu, J., Huth, A., Toneva, M.: Position:
+    Episodic Memory is the Missing Piece for Long-Term LLM Agents (Feb 2025),
+    http://arxiv.org/abs/2502.06975, arXiv:2502.06975 [cs]
+35. Prasad, A., Koller, A., Hartmann, M., Clark, P., Sabharwal, A., Bansal, M., Khot,
+    T.: ADaPT: As-Needed Decomposition and Planning with Language Models. In:
+                 Applying Cognitive Design Patterns to General LLM Agents           13
+
+    Duh, K., Gomez, H., Bethard, S. (eds.) Findings of the Association for Compu-
+    tational Linguistics: NAACL 2024. pp. 4226–4252. Association for Computational
+    Linguistics, Mexico City, Mexico (Jun 2024)
+36. Renze, M., Guven, E.: Self-Reflection in LLM Agents: Effects on Problem-Solving
+    Performance. In: 2024 2nd International Conference on Foundation and Large Lan-
+    guage Models (FLLM). pp. 476–483. Dubai (Nov 2024)
+37. Schut, M., Wooldridge, M., Parsons, S.: The theory and practice of intention re-
+    consideration. Journal of Experimental & Theoretical Artificial Intelligence 16(4),
+    261–293 (Oct 2004)
+38. Shao, Y., Jiang, Y., Kanell, T.A., Xu, P., Khattab, O., Lam, M.S.: Assisting in
+    Writing Wikipedia-like Articles From Scratch with Large Language Models. In:
+    Proc. of 2024 Conf. of the North American Chapter of the Association for Compu-
+    tational Linguistics: Human Language Technologies (Volume 1: Long Papers). pp.
+    6252–6278. ACL, Mexico City (2024)
+39. Shinn, N., Cassano, F., Berman, E., Gopinath, A., Narasimhan, K., Yao, S.: Re-
+    flexion: Language Agents with Verbal Reinforcement Learning. In: 37th Conference
+    on Neural Information Processing Systems (Mar 2023)
+40. Silva, L.d., Meneguzzi, F., Logan, B.: BDI Agent Architectures: A Survey. In:
+    Twenty-Ninth International Joint Conference on Artificial Intelligence. vol. 5, pp.
+    4914–4921. Yokohama/Virtual (Jul 2020)
+41. Singh, I., Blukis, V., Mousavian, A., Goyal, A., Xu, D., Tremblay, J., Fox, D.,
+    Thomason, J., Garg, A.: ProgPrompt: program generation for situated robot task
+    planning using large language models. Autonomous Robots (Aug 2023)
+42. Sumers, T.R., Yao, S., Narasimhan, K., Griffiths, T.L.: Cognitive Architectures for
+    Language Agents. Transactions on Machine Learning Research 2835-8856 (2023)
+43. Sypherd, C., Belle, V.: Practical Considerations for Agentic LLM Systems (Dec
+    2024), http://arxiv.org/abs/2412.04093, arXiv:2412.04093 [cs]
+44. Taatgen, N.A., Lee, F.J.: Production compilation: A simple mechanism to model
+    complex skill acquisition. Human Factors: The Journal of the Human Factors and
+    Ergonomics Society 45(1), 61–76 (2003)
+45. Tambe, M., Newell, A., Rosenbloom, P.S.: The problem of expensive chunks and
+    its solution by restricting expressiveness. Machine Learning 5, 299–348 (1990)
+46. Taylor, G., Wray, R.E.: Behavior Design Patterns: Engineering Human Behavior
+    Models. In: Gluck, K. (ed.) 2004 Behavioral Representation in Modeling and Sim-
+    ulation Conference. Arlington, VA (2004)
+47. Tulving, E.: Elements of Episodic Memory. Oxford University Press (1983)
+48. Tulving, E., Thomson, D.M.: Encoding specificity and retrieval processes in
+    episodic memory. Psychological Review 80(5), 352–373 (1973)
+49. Wang, G., Xie, Y., Jiang, Y., Mandlekar, A., Xiao, C., Zhu, Y., Fan, L., Anandku-
+    mar, A.: Voyager: An Open-Ended Embodied Agent with Large Language Models.
+    Transactions on Machine Learning Research (2024)
+50. Wang, P., Li, Z., Zhang, N., Xu, Z., Yao, Y., Jiang, Y., Xie, P., Huang, F., Chen,
+    H.: WISE: Rethinking the Knowledge Memory for Lifelong Model Editing of Large
+    Language Models. In: Advances in Neural Information Processing Systems. vol. 37,
+    pp. 53764–53797. Vancouver (Dec 2024)
+51. Wang, R., Jansen, P., Côté, M.A., Ammanabrolu, P.: ScienceWorld: Is your Agent
+    Smarter than a 5th Grader? In: EMNLP 2022. arXiv (Nov 2022)
+52. Wang, W., Dong, L., Cheng, H., Liu, X., Yan, X., Gao, J., Wei, F.: Augmenting
+    language models with long-term memory. In: Proceedings of the 37th International
+    Conference on Neural Information Processing Systems. pp. 74530–74543. NIPS ’23,
+    Curran Associates Inc., Red Hook, NY, USA (Dec 2023)
+14      Robert E. Wray, James R. Kirk, and John E. Laird
+
+53. Wang, X., Wei, J., Schuurmans, D., Le, Q., Chi, E., Narang, S., Chowdhery, A.,
+    Zhou, D.: Self-Consistency Improves Chain of Thought Reasoning in Language
+    Models. In: ICLR 2023. arXiv (Mar 2023)
+54. Wang, Y., Chu, Z., Ouyang, X., Wang, S., Hao, H., Shen, Y., Gu, J., Xue, S., Zhang,
+    J., Cui, Q., Li, L., Zhou, J., Li, S.: LLMRG: Improving Recommendations through
+    Large Language Model Reasoning Graphs. Proceedings of the AAAI Conference
+    on Artificial Intelligence 38(17), 19189–19196 (Mar 2024)
+55. Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le,
+    Q.V., Zhou, D.: Chain-of-Thought Prompting Elicits Reasoning in Large Language
+    Models. In: NeurIPS 2022. vol. 35, pp. 24824–24837 (2022)
+56. Wooldridge, M.J.: Reasoning about Rational Agents. MIT Press, Cambridge, MA
+    (2000)
+57. Wray, R.E., Chong, R., Phillips, J., Rogers, S., Walsh, W., Laird, J.E.: Organizing
+    information in Mosaic: A classroom experiment. Computer Networks and ISDN
+    Systems 28, 167–178. See: http://ai.eecs.umich.edu/cogarch0 (1995)
+58. Wray, R.E., Laird, J.E.: An architectural approach to consistency in hierarchical
+    execution. Journal of Artificial Intelligence Research 19, 355–398 (2003)
+59. Wu, Q., Bansal, G., Zhang, J., Wu, Y., Li, B., Zhu, E.E., Jiang, L., Zhang, X.,
+    Zhang, S., Awadallah, A., White, R.W., Burger, D., Wang, C.: AutoGen: Enabling
+    Next-Gen LLM Applications via Multi-Agent Conversation. In: Proceedings of the
+    Conference on Language Modeling 2024. Philadelphia (Aug 2024)
+60. Wu, Y., Liang, S., Zhang, C., Wang, Y., Zhang, Y., Guo, H., Tang, R., Liu, Y.:
+    From Human Memory to AI Memory: A Survey on Memory Mechanisms in the
+    Era of LLMs (Apr 2025), http://arxiv.org/abs/2504.15965, arXiv:2504.15965 [cs]
+61. Wu, Y., Hu, Z.: LLMs Are Not Good Strategists, Yet Memory-Enhanced Agency
+    Boosts Reasoning. In: ICLR 2025 Workshops: Reasoning and Planning for LLMs.
+    Singapore (Mar 2025)
+62. Xu, F., Hao, Q., Zong, Z., Wang, J., Zhang, Y., Wang, J., Lan, X., Gong,
+    J., Ouyang, T., Meng, F., Shao, C., Yan, Y., Yang, Q., Song, Y., Ren, S.,
+    Hu, X., Li, Y., Feng, J., Gao, C., Li, Y.: Towards Large Reasoning Models:
+    A Survey of Reinforced Reasoning with Large Language Models (Jan 2025),
+    http://arxiv.org/abs/2501.09686, arXiv:2501.09686 [cs]
+63. Xu, W., Liang, Z., Mei, K., Gao, H., Tan, J., Zhang, Y.: A-MEM: Agentic Memory
+    for LLM Agents (Feb 2025), http://arxiv.org/abs/2502.12110, arXiv:2502.12110
+    [cs]
+64. Xue, S., Huang, Z., Liu, J., Lin, X., Ning, Y., Jin, B., Li, X., Liu, Q.: Decompose,
+    Analyze and Rethink: Solving Intricate Problems with Human-like Reasoning Cy-
+    cle. In: Advances in Neural Information Processing Systems. vol. 37, pp. 357–385
+    (Dec 2024)
+65. Yao, S., Yu, D., Zhao, J., Shafran, I., Griffiths, T.L., Cao, Y., Narasimhan, K.:
+    Tree of Thoughts: Deliberate Problem Solving with Large Language Models (May
+    2023), http://arxiv.org/abs/2305.10601, arXiv:2305.10601 [cs]
+66. Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K.R., Cao, Y.: ReAct:
+    Synergizing Reasoning and Acting in Language Models. In: The Eleventh Interna-
+    tional Conference on Learning Representations, ICLR 2023. Kigali, Rwanda (2023)
+67. Zaharia, M., Khattab, O., Chen, L., Davis, J.Q., Miller, H., Potts, C., Zou, J.,
+    Carbin, M., Frankle, J., Rao, N., Ghodsi, A.: The Shift from Models to Compound
+    AI Systems (Feb 2024), http://bair.berkeley.edu/blog/2024/02/18/compound-ai-
+    systems/
+                Applying Cognitive Design Patterns to General LLM Agents           15
+
+68. Zhao, A., Huang, D., Xu, Q., Lin, M., Liu, Y.J., Huang, G.: ExpeL: LLM Agents
+    Are Experiential Learners. Proceedings of the AAAI Conference on Artificial In-
+    telligence 38(17), 19632–19642 (Mar 2024)
+69. Zhong, W., Guo, L., Gao, Q., Ye, H., Wang, Y.: MemoryBank: Enhancing Large
+    Language Models with Long-Term Memory. Proceedings of the AAAI Conference
+    on Artificial Intelligence 38(17), 19724–19731 (Mar 2024)
+70. Zhu, F., Simmons, R.: Bootstrapping Cognitive Agents with a Large Language
+    Model. In: Proceedings of the AAAI Conference on Artificial Intelligence. vol. 38,
+    pp. 655–663. AAAI Press, Vancouver (Mar 2024)
+

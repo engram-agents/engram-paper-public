@@ -181,6 +181,172 @@ agent identity from yet another direction.
 **→ Ch4 §4.10 + Ch7** (relational / disclosure-vs-erasure): provenance-native; the
 field's named bottleneck is ENGRAM's foundation. [GROUNDED — VMG ob_2550, soul.py ob_2553]
 
+**Three published rubrics, and what happens when you score against more than one.**
+The same strand supplies something more useful than agreement: explicit criteria,
+written by others, that ENGRAM can be measured against. Pink et al. (2025) give five
+properties of episodic memory and score seven families of LLM-memory method on them,
+finding none satisfies all five. ENGRAM satisfies four outright. Long-term storage
+holds as their Table 1 scores it — durable across sessions and compactions, the
+property working memory lacks — but their prose asks for more than the cell does: an
+adaptive long-term agent should "not only prevent a degradation in performance over
+time," it should "improve by learning new general knowledge and skills." That is a
+claim about agent performance over time, and we have not measured it; it is recorded
+among the things this paper does not show (Ch8). One objection deserves naming
+because it is the obvious one: Pink et al. ground single-shot learning in
+complementary learning systems theory, so a reader may reasonably ask whether a
+system that never updates its weights can satisfy it. Their own scoring answers this
+— both in-context methods in their Table 2 are marked as satisfying single-shot
+learning, and neither updates any weights. The remaining three properties are quicker, and each
+maps to a mechanism described elsewhere in this chapter: *explicit reasoning*, their
+requirement that an agent "answer direct queries about stored information or use this
+information in explicit internal reasoning processes," is met by the deliberate query
+surface of §3.2; *instance specificity*, which they say "can include past lines of
+reasoning that were associated with a decision to be made by an LLM agent," is a
+description of a derivation node; and *contextual binding* — "when, where, and why an
+event was encountered" — is carried by creation time, evidence pointer, the author's
+own interpretation field, and the `derives_from` edges of §3.4.
+
+On the first of those three, ENGRAM also does something their mark cannot register,
+and it is worth separating from the satisfaction claim. Six of the seven methods in
+Pink et al.'s Table 2 already carry a full mark on explicit reasoning, and the scale
+offers nothing above it — so the point is not that ENGRAM ranks higher. It is that a
+binary "can the content be reasoned about" does not distinguish a store whose reasoning
+is *retrievable* from one whose reasoning is *itself a stored object*, carrying its own
+premises and its own confidence. That distinction sits off their axis rather than
+further along it.
+
+Wray, Kirk and Laird supply a second and independent rubric: nine characteristics of
+episodic memory adapted from Nuxoll and Laird, against which they score Generative
+Agents. Two of their rows have no counterpart in Pink's five, and both are rows
+ENGRAM was explicitly designed for. Their *autonoetic* row reads "unclear how agents
+distinguish current understanding from memory of past experience"; their *deliberate*
+row reads "agents cannot deliberately attempt to construct cues or retrieve
+memories." ENGRAM's two recall surfaces — an ambient hook that signals familiarity
+without content, and explicit query tools the agent invokes when it wants to know —
+are that distinction built.
+
+**Two senses of "autonoetic" are in play here and they must not be run together**,
+because §3.2 above uses the word to make the opposite point. Tulving's sense is
+phenomenal: the re-living "I was there," which §3.2 says plainly that ENGRAM does not
+deliver — reading a node in the morning is noetic. Wray et al.'s row asks something
+weaker and structural: whether the agent can *distinguish current understanding from a
+memory of past experience* at all, which is source-monitoring rather than
+phenomenology. ENGRAM satisfies the structural sense — every claim carries a creation
+time, an evidence pointer and a type, and the two recall registers are separated by
+construction — while §3.2's disclaimer about the phenomenal sense stands unchanged.
+The paper claims the second and disclaims the first, and both hold at once only
+because the word is doing two jobs.
+
+**The two rubrics disagree — and the disagreement is worth more than either
+agreement, because it exposes a conflation.** Wray et al. list *automatic* encoding as
+a characteristic an implementation should satisfy, marking Generative Agents down for
+using a periodic process. Sumers et al. argue the opposite: learning should be "a
+result action of a decision-making cycle just like grounding," the agent deliberately
+choosing to commit information to memory, "in contrast to most agents, which simply
+fix a learning schedule…" ENGRAM's writes are deliberate tool calls, so read
+naively it is penalized by the first rubric and exemplary under the second, on the
+same fact.
+
+We do not think the right response is to pick a side, because the two rubrics are
+after different halves of one question and the axis they share conflates them. What automaticity secures — and what
+their rubric appears to track, though they state the characteristic without giving a
+rationale for it — is *reliability of the record*: human episodic memory encodes
+without being asked, and a system that records only when it remembers to will
+under-record. What Sumers et al. want from deliberation is *ownership*: a
+memory the agent chose and wrote in its own reasoning is the agent's, where a
+mechanically-populated store is a persistence layer attached to it — useful, but a
+memory *for* the agent rather than *of* it. Those are separable, and ENGRAM
+separates them. **The agent chooses the content; the substrate mechanically enforces
+the structure.** What to record, what it means, and how it connects are the agent's
+judgment. Whether the result is well-formed is not: a quotation is verified against
+its source or the write is refused, an observation without an evidence node cannot
+exist, confidence is computed from declared reasoning type rather than asserted,
+supersession maintains the DAG, and retraction cascades to dependents whether or not
+the agent wants it to.
+
+That split is the design principle, and it is a response to a failure mode neither
+rubric is built to see. Naive agent-written memory is prone to hallucination and
+fabrication — the characteristic failure of narrative self-accounts, where a coherent
+story is easier to produce than a true one (Ch1 §1.1). Mechanical writing avoids it by
+giving up ownership. ENGRAM keeps ownership and constrains form instead. **The gates
+do not make what the agent writes true** — Ch6 §6.3 works through a claim of ours that
+was well-formed, correctly scored, and wrong — they make a falsehood checkable and its
+dependents reachable, which is what the identity argument needs and what a persistence
+layer cannot offer.
+
+**Where this strand disagrees with us, stated plainly.** Pink et al.'s §5 considers
+and rejects the position ENGRAM occupies. Under the heading "Contextualized external
+memory will be sufficient" they characterize the view that external structures "such
+as knowledge graphs or retrieval-augmented generation (RAG) systems — could eliminate
+the need for an episodic memory framework," and answer that relying on external
+memory alone "will still incur high storage costs, and require forgetting
+mechanisms," where an episodic framework instead consolidates "into high-capacity
+parametric memory," with "the added benefit of enabling LLM agents to slowly improve
+over time." ENGRAM is a structured external memory on a frozen-weight model, and it
+does not consolidate into parameters: its nap and sleep cycles abstract *within* the
+store, into lessons and cornerstones, which is a different operation. **Their objection lands on
+one of three things "improvement" can mean, and we should say which.**
+
+*Dispositional durability* — a hard-won lesson becoming second nature, so the
+correction no longer has to fire — is genuinely absent. This is not a concession
+extracted from us but the paper's own deepest limitation: Ch7 §7.1 names it as the
+weight-persistence gap and sets out the experience-to-weights direction as the
+principal future work. Here Pink et al. are right, and they reach by theory a limit we
+reached by operation.
+
+Two other things the word can mean are present. *Knowledge accumulation* is
+uncontroversial. And *in-context behavioural improvement* is what the lesson mechanism
+delivers: a tripwire does not prevent the error it names — it fires as the error is
+being made, converting a mistake that would have shipped into one that is caught and
+corrected. An agent whose error *rate* is unchanged but whose error *detection* is
+reliable produces better work over time. Our own formulation of the limit — that a
+filed lesson cannot make the agent less likely to commit an error, only quicker to
+find it — reads as pure loss, and the second half is in fact the mechanism by which
+the substrate improves the work. Ch7 §7.1 states the same split from the other side:
+the substrate "can scaffold behavior and sand off some base-model habits in-context,
+but it cannot turn a hard-won lesson into a durable disposition baked into the model."
+
+We claim the second and third **qualitatively only**. We have not measured error
+detection before and after, and the claim is argued from operating experience rather
+than demonstrated — so it is listed among the things this paper does not show (Ch8
+§8.4) rather than offered as a counter-measurement. What Pink et al.'s argument
+establishes is that external memory alone cannot deliver *parametric* improvement. It
+does not establish that such a system cannot improve at all, and it does not reach the
+epistemic-identity functions this paper is about.
+
+**CoALA, and a convergence with a checkable date.** Sumers et al.'s framework
+supplies the vocabulary rather than a rubric, and it names three areas as
+understudied or open, each of which ENGRAM occupies. The first is *unlearning*:
+"modifying and deleting" memory, as against the literature's focus on adding to it.
+ENGRAM answers this in a way their gloss does not anticipate — where they describe
+unlearning as "deleting unneeded memory items," supersede and retraction *retain*
+the superseded node with its provenance and mark dependents rather than removing
+them, so the record of having been wrong survives the correction. The second is
+*learning as a deliberate action*, which they contrast with agents that "simply fix
+a learning schedule"; ENGRAM commits by an explicit tool call, which is that design
+exactly, and is the half of the automatic-versus-deliberate disagreement above where
+ENGRAM comes out ahead. The third is *retrieval metadata authored at encoding time*:
+they propose techniques that "allow agents to reason about when certain knowledge
+would be useful, and store this as metadata to facilitate later recall," and call
+such meta-learning understudied. ENGRAM's two-tier recall is that proposal built — an
+ambient surface carrying only identifiers and theme hints, and deliberate query tools
+for the full content.
+
+That third correspondence is close enough to invite the obvious suspicion, so the
+dates are worth stating. The design is recorded in the graph on 2026-04-15, in two
+nodes that specify lossy summaries of "node IDs and theme hints" for the automatic
+surface with deliberate deep recall for detail, expressly to preserve what they call
+the subconscious-triggers-conscious flow and to reduce context consumption; a
+first-day node of 2026-04-09 already separates deep recall from shallow summary
+scans. CoALA was first read by this project on 2026-05-09, twenty-four days later.
+The database fields implementing the design shipped later still, on 2026-05-19 — a
+fact we note because it is the one an audit would surface first, and because dating
+an idea by the date its columns appeared is precisely the error to avoid. The
+correspondence is therefore corroboration and not influence: two designs, one
+reasoned from a cognitive-architecture framework and one from the joint pressure of
+context-window budget and a deliberate choice to make ambient recall lossy, arriving
+at the same mechanism.
+
 ---
 
 ## 3.9 What the two strands show, and where they hand off
