@@ -27,6 +27,7 @@ PAPER = Path("paper")
 
 # Assembly order. The rendered paper is exactly this, in exactly this sequence.
 BODY = [
+    "ch0_abstract.md",
     "ch1.md", "ch2.md", "ch3.md", "ch4.md",
     "ch5.md", "ch6.md", "ch7.md", "ch8.md",
     "appendix_A_independence.md",

@@ -28,15 +28,19 @@ import argparse, glob, json, os, sqlite3, statistics, sys
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 
+import sys as _sys, pathlib as _pl
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent))
+import _ssot
+
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", default=None)
+    _ssot.add_db_arg(ap)
     ap.add_argument("--step-days", type=int, default=14)
     ap.add_argument("--min-n", type=int, default=10, help="suppress a cell below this count")
     a = ap.parse_args()
-    db = a.db or sorted(glob.glob(os.path.join(REPO, "dataset", "engram-paper-ssot-*.db")))[-1]
+    db = _ssot.resolve_db(a.db, allow_unpinned=a.allow_unpinned)
     c = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
 
     rows = []

@@ -34,6 +34,10 @@ import argparse, glob, os, sqlite3, subprocess, sys, tempfile
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 
+import sys as _sys, pathlib as _pl
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent))
+import _ssot
+
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def lcc_share(nodes, edges):
@@ -142,11 +146,11 @@ def validate_git(db, commitish, engram_repo=os.path.expanduser("~/.engram")):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", default=None)
+    _ssot.add_db_arg(ap)
     ap.add_argument("--step-days", type=int, default=7)
     ap.add_argument("--validate-git", metavar="COMMITISH", default=None)
     a = ap.parse_args()
-    db = a.db or default_db()
+    db = _ssot.resolve_db(a.db, allow_unpinned=a.allow_unpinned)
     if a.validate_git:
         validate_git(db, a.validate_git)
     else:

@@ -26,6 +26,10 @@ transcripts, both raw `~/.claude/projects/…` paths and content-hashed snapshot
 import argparse, glob, json, os, sqlite3
 from collections import defaultdict, Counter
 
+import sys as _sys, pathlib as _pl
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent))
+import _ssot
+
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CB = {"observation_factual", "observation_predictive", "derivation", "theory", "axiom", "conjecture"}
 
@@ -53,9 +57,9 @@ def lcc(ids, edges):
     return best, comps, iso, kept
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--db", default=None)
+    ap = argparse.ArgumentParser(); _ssot.add_db_arg(ap)
     a = ap.parse_args()
-    db = a.db or sorted(glob.glob(os.path.join(REPO, "dataset", "engram-paper-ssot-*.db")))[-1]
+    db = _ssot.resolve_db(a.db, allow_unpinned=a.allow_unpinned)
     c = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
     print(f"# source: {os.path.relpath(db, REPO)}\n")
 

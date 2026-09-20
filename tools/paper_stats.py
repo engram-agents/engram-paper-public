@@ -16,6 +16,10 @@ Usage:  python3 tools/paper_stats.py [--db dataset/engram-paper-ssot-<stamp>.db]
 import argparse, glob, json, os, sqlite3, statistics, sys
 from collections import Counter, defaultdict
 
+import sys as _sys, pathlib as _pl
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent))
+import _ssot
+
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def pct(nom, den):
@@ -34,17 +38,9 @@ def quantiles(vals):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", default=None)
+    _ssot.add_db_arg(ap)
     a = ap.parse_args()
-    db = a.db
-    if db is None:
-        cands = sorted(glob.glob(os.path.join(REPO, "dataset", "engram-paper-ssot-*.db")))
-        if not cands:
-            sys.exit("no SSoT snapshot found in dataset/ — run tools/freeze_paper_snapshot.py first")
-        if len(cands) > 1:
-            print(f"# NOTE: {len(cands)} SSoT snapshots present; using the newest. "
-                  f"The paper's SSoT is named in dataset/DATASET.md — check they agree.", file=sys.stderr)
-        db = cands[-1]
+    db = _ssot.resolve_db(a.db, allow_unpinned=a.allow_unpinned)
     c = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
     print(f"# source: {os.path.relpath(db, REPO)}")
     print(f"# every figure below is computed from that file and nothing else\n")

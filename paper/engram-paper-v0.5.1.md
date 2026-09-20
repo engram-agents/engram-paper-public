@@ -17,7 +17,9 @@
 
 ---
 
-## Abstract
+---
+
+# Abstract
 
 Large language model agents can now carry information across sessions, but not
 themselves. Retrieval-augmented memory answers *what did I store*; it does not answer
@@ -63,8 +65,6 @@ establish.
 
 **Keywords** — agent memory · epistemic identity · belief revision · provenance ·
 confidence calibration · retraction cascade · LLM agents · personal identity
-
----
 
 ---
 

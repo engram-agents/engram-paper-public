@@ -17,6 +17,10 @@ Every arm prints its denominator.
 import argparse, glob, os, sqlite3, sys
 from collections import defaultdict, Counter
 
+import sys as _sys, pathlib as _pl
+_sys.path.insert(0, str(_pl.Path(__file__).resolve().parent))
+import _ssot
+
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CB = {"observation_factual", "observation_predictive", "derivation", "theory", "axiom", "conjecture"}
 
@@ -40,9 +44,9 @@ def components(ids, edges):
     return comps, kept
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--db", default=None)
+    ap = argparse.ArgumentParser(); _ssot.add_db_arg(ap)
     a = ap.parse_args()
-    db = a.db or sorted(glob.glob(os.path.join(REPO, "dataset", "engram-paper-ssot-*.db")))[-1]
+    db = _ssot.resolve_db(a.db, allow_unpinned=a.allow_unpinned)
     c = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
     ntype = {i: t for i, t in c.execute("SELECT id, type FROM nodes WHERE is_current=1")}
     edges = c.execute("SELECT source_id, target_id FROM edges").fetchall()

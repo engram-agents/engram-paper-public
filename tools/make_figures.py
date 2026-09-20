@@ -19,6 +19,9 @@ import sqlite3
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import _ssot
 import matplotlib
 
 matplotlib.use("Agg")
@@ -302,15 +305,19 @@ def fig_census(con, out: Path) -> str:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--db", required=True)
+    _ssot.add_db_arg(ap)
     ap.add_argument("--out", default="paper/figures")
     a = ap.parse_args()
+    db = _ssot.resolve_db(a.db, allow_unpinned=a.allow_unpinned)
+    pin_note = ("pin NOT verified (--allow-unpinned)" if a.allow_unpinned
+                else "sha256 pin verified against dataset/DATASET.md")
 
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
-    con = sqlite3.connect(a.db)
+    con = sqlite3.connect(db)
 
-    print(f"# source: {a.db}")
+    print(f"# source: {db}")
+    print(f"# {pin_note}")
     print("# every figure below is computed from that file and nothing else\n")
     for fn in (fig_reasoning_type, fig_node_type, fig_quote_type,
                fig_depth_inversion, fig_growth, fig_census):
