@@ -209,7 +209,7 @@ The argument, not the benchmark, is the contribution.
 | Three-layer taxonomy (persistence / narrative / epistemic) | dv_0463 (supersedes dv_0179), cs_0004 | 0.95 |
 | Layer-1 systems = A-MEM / Mem0 / Zep | ob_0291, ob_0410, ob_0425 | — |
 | Sophia = closest narrative-identity system | ob_0413 | — |
-| Narrative ⊥ epistemic, complementary not competing | dv_0182 | 0.93 |
+| Narrative and epistemic identity are orthogonal — complementary, not competing | dv_0182 | 0.93 |
 | Honesty fails loudly (epistemic) vs silently (narrative) | ax_0001 / ax_0002 | axiom |
 | ENGRAM name + R/A/M expansion | df_0048 (supersedes df_0007) | def |
 | **Spine = breadth-of-convergence + identity-as-history (OCC demoted to one result)** | **ob_2547 / cs_0059** | restructure decision |

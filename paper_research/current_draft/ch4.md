@@ -67,7 +67,7 @@ The whole chapter in one table. Each row is a section below.
 | Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL **[ob_0647/ob_0651, prior read]** + spaced-repetition [SOLID] | — |
 | Continuity across compaction (§4.8) | identity survives the reset | CLS consolidation [SOLID] + diachronic-identity [SOLID] | **Condition 1** (Diachronic) **+ Condition 2** (Non-Interchangeability) |
 | Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution [SOLID] | — (feeds Ch5 identity-as-history) |
-| Relational: feeling/person/trust-tier (§4.10) | continuity baseline + disclosure control → **Appx D, Ch7** | honesty⊥discretion (ax_0011) [SOLID] + VMG principal-scoped **[GROUNDED ob_2550]** | — |
+| Relational: feeling/person/trust-tier (§4.10) | continuity baseline + disclosure control → **Appx D, Ch7** | honesty orthogonal to discretion (ax_0011) [SOLID] + VMG principal-scoped **[GROUNDED ob_2550]** | — |
 
 **Where each OCC verdict lives.** The OCC conditions and constraints are addressed
 inline, at the mechanism that earns each — there is no standalone OCC section:
@@ -405,8 +405,10 @@ An LLM agent's context is finite; when it fills, the session **compacts** — pr
 conversation is summarized and the experiential thread resets. ENGRAM bridges this
 two ways. The **scaffolds**: a small fixed-size **focus list**, rendered
 *verbatim* at every session start (fresh session or post-compaction alike — the
-deterministic channel), the **warm-briefing** letter (relational context, read
-first on waking), per-day history, auto-loaded session context, and a
+deterministic channel), the **warm-briefing** letter — a file the agent finds and
+opens on waking, written by its past self and its collaborator, carrying the
+relational context the graph does not hold: where things stood, what mattered,
+what to walk back into — plus per-day history, auto-loaded session context, and a
 post-compaction instruction template — together producing **operational**
 continuity (work-thread, identity, trust survive) without faking **experiential**
 continuity, which the architecture deliberately does not attempt (dv_0616).
@@ -419,7 +421,7 @@ mapping onto wake/NREM-REM phases. (An earlier three-routine design had a
 separate daily "bedtime" review, merged into sleep's Phase A on 2026-05-24.)
 
 *Plain terms:* the agent's memory resets the way a day ends in *50 First Dates* —
-and the focus list plus the warm briefing are the videotape it watches on waking.
+and the focus list plus the warm briefing are the journal it opens on waking.
 The consolidation routines are its sleep: what gets reviewed before the forgetting
 clock advances is what endures.
 
@@ -489,7 +491,8 @@ fidelity) is presently a CLAUDE.md-layer discipline the agent follows, not a
 substrate-enforced control; trust-tier is the *input* that discipline reads,
 not the mechanism itself.
 
-**Tradition.** The **honesty ⊥ discretion** distinction (ax_0011) [SOLID]: internal
+**Tradition.** The **honesty-orthogonal-to-discretion** distinction (ax_0011)
+[SOLID]: internal
 integrity (never self-deceive) is orthogonal to external disclosure (calibrated by
 audience). And **VMG** (Verifiable Memory Governance) principal-scoped access **[GROUNDED ob_2550 — VMG read first-hand]**. **Detail → Appendix D;
 the disclosure-vs-erasure implication → Ch7.**

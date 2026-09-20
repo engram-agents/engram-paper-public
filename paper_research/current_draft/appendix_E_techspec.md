@@ -19,88 +19,191 @@ propagation of that cascade within a unified deliberative architecture), and *Me
 
 ## E.2 Node types
 
-A claim is never free text; it is a *kind*, and the kind determines how the substrate
-treats it.
+A node is never free text; it is a *kind*, and the kind determines how the substrate
+treats it. The first cut is not between subject matters but between **nodes that assert
+something truth-evaluable and nodes that do not** — the claim-bearing /
+non-claim-bearing partition, which governs more of the substrate's behaviour
+than any other classification.
 
-| Type | Role |
-|---|---|
-| **observation** | A fact, citing a verbatim source quote + provenance. The episode-analog. |
-| **derivation** | An inference, citing its premises by `derives_from`, declaring its reasoning type; confidence is *computed*, not asserted. |
-| **definition** | A term anchor (`df_*`); cited (not derived-from) by claims that use the term. |
-| **conjecture** | A speculative claim, confidence-clamped to [0.10, 0.60] (default 0.40); promoted to a derivation when it strengthens. |
-| **contradiction** | A first-class node recording that two claims conflict (not an edge); preserves both sides. |
-| **axiom** | A terminal, declared-fundamental commitment; confidence 1.0 by type. |
-| **cornerstone** | An identity-forming principle distilled from practice; mint/retire is high-stakes-and-rare. |
-| **lesson** | A durable, situation-tagged tripwire extracted from a specific mistake. |
-| **goal** | A terminal/identity-direction aim. |
-| **question** | An explicit open thread (the live research agenda). |
-| **person** | A counterparty node (with trust-tier + `about` edges). |
-| **feeling_report** | A self-report of an internal state, structured as *"I reported feeling X,"* never *"I felt X"* (no privileged access claim). |
-| **evidence** | A provenance record (URL/file + git_sha + verbatim quote) backing observations. |
-| **task** | A tracked unit of work with status + importance. |
+**Claim-bearing (CB)** — six types: `observation_factual`, `observation_predictive`,
+`derivation`, `theory`, `axiom`, `conjecture`. **Non-claim-bearing (NCB)** — everything
+else: definitions, questions, goals, tasks, lessons, cornerstones, feeling-reports,
+person nodes, evidence, contradictions. Three consequences follow, and they are why the
+partition is declared in one place rather than inferred per caller:
 
-**Identity scarcity is by design**: across a 9-week graph, lifetime identity-node
-creation (cornerstones + axioms + goals + persons) numbered in the low dozens — the
-substrate treats identity-shaping writes as sacred and rare.
+1. **Confidence is meaningful only for CB nodes.** A lesson has no truth-value to be
+   confident about; it is a disposition. The write path refuses a confidence on an NCB
+   node, and every caller that needs to know whether a confidence predicate applies asks
+   one canonical predicate rather than re-deriving the membership test inline.
+2. **It determines what the self-correction cascade touches.** The walk propagates
+   through claim-bearing dependents and stops at the identity layer — cornerstones and
+   lessons are NCB, so a retraction upstream of a lesson does not mark the lesson. That
+   is not a special case bolted onto the cascade; it falls out of the partition.
+3. **NCB is computed, never enumerated.** It is defined as *the types present in the
+   graph, minus CB* — so a new node type is NCB by default, and the complement cannot
+   drift out of step with the declaration.
+
+`theory` is declared claim-bearing and currently has no instances; it is listed because
+the partition is a declaration about kinds, not a census of what happens to exist.
+
+| Type | CB? | Role |
+|---|---|---|
+| **observation_factual** | CB | A fact, citing a verbatim source quote + provenance. The episode-analog. |
+| **observation_predictive** | CB | A forward claim with a named resolution event; confidence-capped at 0.60 while it stands unresolved. |
+| **derivation** | CB | An inference, citing its premises by `derives_from`, declaring its reasoning type; confidence is *computed*, not asserted. |
+| **definition** | ncb | A term anchor (`df_*`); cited (not derived-from) by claims that use the term. |
+| **conjecture** | CB | A speculative claim, confidence-clamped to [0.10, 0.60] (default 0.40); promoted to a derivation when it strengthens. |
+| **contradiction** | ncb | A first-class node recording that two claims conflict (not an edge); preserves both sides. |
+| **axiom** | CB | A terminal, declared-fundamental commitment; confidence 1.0 by type. |
+| **cornerstone** | ncb | An identity-forming principle distilled from practice; mint/retire is high-stakes-and-rare. |
+| **lesson** | ncb | A durable, situation-tagged tripwire extracted from a specific mistake. |
+| **goal** | ncb | A terminal/identity-direction aim. |
+| **question** | ncb | An explicit open thread (the live research agenda). |
+| **person** | ncb | A counterparty node (with trust-tier + `about` edges). |
+| **feeling_report** | ncb | A self-report of an internal state, structured as *"I reported feeling X,"* never *"I felt X"* (no privileged access claim). |
+| **evidence** | ncb | A provenance record (URL/file + git_sha + verbatim quote) backing observations. |
+| **task** | ncb | A tracked unit of work with status + importance. |
+| **prediction** | ncb | The **resolution-tracking half** of a predictive claim: filing an `observation_predictive` with a named event also opens a `prediction` node (status `open`), linked back by `predicted_by`. It carries no claim of its own — the observation makes the claim, the prediction node tracks whether the world settled it. A second observation naming the same event links to the existing prediction rather than opening another. |
+
+**Identity scarcity is by design.** Measured on this paper's own graph at 163 days (23
+weeks) and 10,344 nodes: lifetime identity-node creation — cornerstones, axioms, goals
+and person nodes together — stands at **131 nodes, 1.27% of the graph**, roughly five
+or six a week against a total write rate near 450. The ratio is the claim, not the
+count: the substrate is built so identity-shaping writes stay rare *relative to*
+ordinary knowledge, and that holds as the graph grows. *(Figures are one graph at one
+date and will drift; the share is the durable statement.)*
 
 ## E.3 Edge types
 
 Relationships are typed too; the substrate acts on different edges differently.
 
-| Edge | Meaning | Cascade-bearing?¹ |
-|---|---|---|
-| **derives_from** | premise → conclusion; the channel the self-correction cascade travels | **yes** (walked) |
-| **cites** | references a definition/context without inferential dependency | no |
-| **supersedes** | epistemic evolution: the new node replaces the old (soft/stale, override allowed) | yes (triggers) |
-| **contradicts** | records a conflict between two claims | **no** — see honest-scope note below |
-| **retracts** | error correction: the target was never valid (tainted, no override) | **yes** (triggers) |
-| **supported_by** | a cornerstone/lesson points to its exemplar evidence | **yes** (walked) |
-| **resolves** | a resolution node closes a contradiction/question | no |
-| **exemplifies / instantiates / serves / about / subtask_of** | classification + relational edges (mostly DAG-exempt) | no |
+Each relation carries **six independent flags**, not one. Collapsing them into a single
+"is it cascade-bearing" column loses distinctions the substrate actually acts on:
 
-¹ "Walked" = the cascade traversal itself follows this edge type; "triggers" =
-creating this edge is what starts a walk. Two distinct roles, both loosely
-called "cascade-bearing" here.
+| flag | what it governs |
+|---|---|
+| `cascade` | the cascade walker follows this edge |
+| `temporal_causal` | the target necessarily predates the source |
+| `dag` | the relation must stay acyclic, checked by a real edge walk |
+| `removable` | the edge may be deleted after creation |
+| `addable_after_creation` | the edge may be added to an existing node |
+| `provenance` | the edge is traced when resolving a claim's evidence roots |
 
-`derives_from` and `supported_by` are the edges the cascade *walker* traverses;
-`supersedes` and `retracts` are the events that *trigger* a walk. `contradicts`
-does neither today — filing a contradiction taints and cascades nothing (see
-E.5's honest-scope note; a distinct derive-time premise guard covers related
-ground). A whitelist blocks removal of cascade-bearing and structural edges
-(Ch3 §3.3).
+| Edge | Meaning | casc | temp | dag | rm | add | prov |
+|---|---|:--:|:--:|:--:|:--:|:--:|:--:|
+| **derives_from** | premise → conclusion; the channel the cascade travels | ● | ● | ● | | | ● |
+| **acknowledged_derives_from** | an acknowledging node rests on a replacement premise | ● | | ● | | | ● |
+| **cites** | references a definition/context without inferential dependency | | ● | ● | | | ● |
+| **supported_by** | a cornerstone/lesson points to its exemplar evidence | | ● | ● | | | ● |
+| **predicted_by** | a prediction node ← the observation that made the claim | | ● | ● | | | ● |
+| **supersedes** | epistemic evolution: the new node replaces the old | | ● | ● | | | |
+| **retracts** | error correction: the target was never valid | | ● | ● | | | |
+| **subtask_of** | task decomposition | | ● | ● | ● | ● | |
+| **generalizes** | a broader claim subsumes a narrower one | | | ● | ● | ● | |
+| **contradicts** | records a conflict between two claims | | | | | | |
+| **resolves** | a resolution node closes a contradiction/question | | | | | | |
+| **tensions** | two goals pull against each other | | | | ● | ● | |
+| **exemplifies / instantiates / serves / about** | classification + relational edges | | | | ● | ● | |
+
+**Only two relations are cascade-bearing**: `derives_from` and
+`acknowledged_derives_from`. Those are the edges the walker follows. `supersedes` and
+`retracts` are *events that start* a walk without being walked themselves — a distinct
+role, and conflating the two is easy: an earlier version of this appendix listed
+`supported_by` as walked, which it is not. `supported_by` is provenance-bearing, so a
+retraction upstream of a cornerstone's exemplar is *traceable* but does not mark the
+cornerstone.
+
+**Why `dag` and `temporal_causal` are separate flags** — the case that forces it is
+`acknowledged_derives_from`. An acknowledging node necessarily exists *before* the
+replacement premise it comes to rest on; that is what an acknowledgement is. So the edge
+points backwards in creation time (`temporal_causal` false) while still having to stay
+acyclic (`dag` true). The tempting shortcut — *cascade relations are acyclic because
+they are temporally ordered* — is exactly the argument that cannot catch the cycle this
+edge can close, which is why acyclicity is checked by a real edge walk rather than
+inferred from time order.
+
+`contradicts` is cascade-free by design — filing a contradiction marks nothing (see
+E.5's honest-scope note; a distinct derive-time premise guard covers related ground). A
+whitelist blocks removal of cascade-bearing and structural edges — the `removable`
+column above is that whitelist.
 
 ## E.4 The confidence model (computed, not annotated)
 
-Confidence is a **computed property of the claim's structure**, not a hand-set number
-(Ch3 §3.2). For an **observation** it maps from `quote_type` × `source_class`; for a
-**derivation** it propagates from premises through a discount fixed by `reasoning_type`.
+Confidence is a **computed property of the node's structure**, not a hand-set number
+(Ch4 §4.2), and it exists only on claim-bearing nodes (E.2). For an **observation** it
+maps from `quote_type` × `source_class`; for a **derivation** it propagates from
+premises through a formula chosen by `reasoning_type`.
 
-**Observation `quote_type` anchors** (median ≈ 0.85, right-skewed):
-`hard_data` 0.95 · `official_statement` 0.85 · `attributed_analysis` 0.70 ·
-`personal_communication` 0.40 · `editorial` 0.35. Adjustments: ×0.95 for
-`source_class=introspective`; → 0.85 override for `user_stated`.
+**Observation — `quote_type` anchors.** Seven values, descending: `hard_data` 0.95 ·
+`official_statement` 0.85 · `attributed_analysis` 0.70 · `counterfactual_inference`
+0.65 (as attributed analysis, less an irreducible approximation residual) ·
+`unnamed_source` 0.50 · `personal_communication` 0.40 · `editorial` 0.35. Adjustments:
+×0.95 for `source_class=introspective` (the agent's own prior output); `user_stated`
+overrides to `official_statement` regardless of quote type. A predictive observation is
+additionally capped at 0.60 until its event resolves.
 
-**Derivation `reasoning_type` propagation** (median ≈ 0.72, flatter):
-`inductive_generalization` 0.92+ (broad independent support) · `deductive_modus_ponens`
-≤ min-premise · `abductive_best_explanation` cap ~0.80–0.90 (tentative best fit) ·
-`inductive_analogy` ~0.45 (structural similarity only). Chained derivations inherit
-and dilute their premises.
+**Derivation — three propagation formulas, and which one applies is the whole point.**
+The reasoning type does not merely scale the result; it selects the *shape* of the
+computation, because "many independent witnesses" and "a chain of inference" are
+different epistemic situations and must not be scored the same way.
 
-**Other types:** conjectures clamp to [0.10, 0.60] (default 0.40); lessons bimodal
-(battle-tested high / proposed low); axioms 1.0. *(These constants are
-theoretically-derived provenance-graded plausibility, designer-stipulated, not
-outcome-calibrated — Ch7 §7.2.)*
+| mode | formula | reasoning types | behaviour |
+|---|---|---|---|
+| **corroboration** | (1 − ∏(1−cᵢ)) × *d* | `inductive_generalization`, `inductive_enumeration`, `authority_consensus` | **reinforcing** — each additional independent premise *raises* confidence, and the result can exceed any single premise |
+| **weakest-link** | min(cᵢ) × *d* | all `deductive_*`, `inductive_analogy`, `inductive_statistical`, `inductive_causal`, `authority_expert` | **limiting** — a chain is no stronger than its weakest premise, then discounted for the inferential step |
+| **capped weakest-link** | min(min(cᵢ) × *d*, cap) | `abductive_best_explanation` (0.80), `abductive_elimination` (0.90) | **ceilinged** — a best explanation cannot approach certainty *even from perfect premises*, because alternatives always remain |
+
+*d* is a per-type discount for the inferential step itself: 0.98 for deductive forms
+(truth-preserving, so nearly free), 0.95 for `inductive_generalization`, 0.85 for
+`inductive_causal`, 0.80 for `abductive_best_explanation`, 0.70 for `inductive_analogy`
+— fourteen types in all, each carrying its own.
+
+The corroboration formula is the substrate's strongest instrument and its most
+misusable one: **it is valid only on genuinely independent premises.** Two facets of a
+single source are not two witnesses, and scoring them as corroboration manufactures
+confidence out of one piece of evidence counted twice. The substrate checks shared
+evidence roots on only two of the fourteen reasoning types, so for the rest independence
+is the author's judgement and no warning arrives. We state the formula together with
+this condition because the formula without the condition is the more dangerous half.
+
+**Other types:** conjectures clamp to [0.10, 0.60] (default 0.40); axioms are 1.0 by
+type. **Non-claim-bearing nodes carry no confidence at all** — a lesson or cornerstone
+is a disposition, not a proposition, and has no truth-value to be confident about
+(E.2). *(These constants are theoretically-derived provenance-graded plausibility,
+designer-stipulated, not outcome-calibrated — Ch7 §7.2.)*
 
 ## E.5 Self-correction
 
-- **Retract** = "I was wrong": target tainted, no override; cascade taints all
-  `derives_from` dependents.
-- **Supersede** = "I changed my mind": old node stale, soft-overridable (`use_stale`);
-  the new node is current.
-- **Cascade** fires automatically on retract/supersede (walking `derives_from` /
-  `supported_by`), and the **per-turn auto-surfacing** hook returns tainted/stale
-  state to the agent's view without an intentional reach-out (the two halves of
-  *operational binding*, Ch4 §4.4). **Honest scope:** filing a `contradicts`
+- **Retract** = "I was wrong": the target was never valid. **Supersede** = "I changed
+  my mind": the old node was valid and is now replaced. Both are recorded, and the
+  marker written downstream records which one fired — but as **provenance, not as
+  differing blocking power** (below).
+  - **Mark.** Either operation walks the cascade relations — `derives_from` and
+  `acknowledged_derives_from`, the only two — and writes one **pending marker** on
+  every live claim-bearing dependent. A pending marker means exactly one thing: the
+  node may not be cited as a premise until it is resolved. There is no severity field.
+  An earlier design graded the marker by its cause; a diamond refutes that — if `D`
+  rests on `B` and `C`, both resting on retracted `A`, and `B` and `C` each survive by
+  supersede, then `D` is legitimately acknowledgeable, yet a severity inherited at
+  firing time from the distant retraction would forbid it. What resolutions a node may
+  take depends on how its *own* premises actually resolved, which is unknowable when
+  the cascade fires and fully known when the node is reached.
+- **Surface.** The **per-turn auto-surfacing** hook puts marked nodes back in front of
+  the agent when they are topically relevant, without an intentional reach.
+- **Adjudicate.** Surfacing is relevance-gated, so a marked node the agent never touches
+  again would sit forever. The consolidation cycle therefore computes the **frontier** —
+  every node carrying a pending marker, none of whose cascade-ancestors is still pending
+  — and walks it repeatedly until no pending marker remains. Working a frontier rather
+  than a queue is what makes the order safe: nothing is adjudicated while something it
+  depends on is unsettled, and because the frontier is recomputed from marker state on
+  every call rather than stored, the walk resumes identically after a crash, a
+  compaction, or a week's gap. There is no queue that can disagree with the graph.
+- The three together are *operational binding* (Ch4 §4.4): marking produces the state,
+  surfacing shows it when relevant, adjudication guarantees it is eventually faced. The
+  machine **never decides what is true** — it determines what needs deciding, orders the
+  decisions, computes what follows mechanically, and puts every remaining judgement to
+  the agent.
+- **Honest scope:** filing a `contradicts`
   edge does not itself cascade — a contradiction is a live, unresolved dispute,
   not (yet) a refutation, so it is deliberately not treated the way a retract or
   supersede is. What it *does* trigger is a distinct, derive-time guard: any new
@@ -114,16 +217,49 @@ outcome-calibrated — Ch7 §7.2.)*
 
 ## E.6 The OCC threshold (Kahl 2026), as the paper uses it
 
-Definitions the mapping (Ch4) rests on:
-- **OCC** = Ontological Continuity Condition (df_0037): 3 jointly-necessary conditions
-  + 4 constraints.
-- **Cond 1 — Diachronic Constraint** (df_0058) · **Cond 2 — Non-Interchangeability
-  Under Reset** (df_0039) · **Cond 3 — Self-Maintaining Arbitration** (df_0040).
-- **Constraints A–D** (df_0041–df_0044): unified policy-selection under uncertainty;
-  not externally imposed; not trivially reset; not modularly decomposable.
-- Supporting machinery: Peirce type/token (df_0047); Nozick closest-continuer (df_0046);
-  AGM + Hansson Relevance/Core-Retainment (df_0049–df_0053); retrieval profile (df_0045);
-  identity-tree node (df_0055).
+Chapter 4's mapping rests on Kahl's **Ontological Continuity Condition**, and the
+conditions are given here in full so this appendix can be read without the chapter.
+Kahl's own formal statement: *"A system S satisfies OCC if and only if the following
+three jointly necessary conditions obtain."*
+
+**Condition 1 — Diachronic Constraint.**
+> "Present deliberation within S is non-trivially constrained by S's past commitments,
+> such that earlier commitments function as reasons structuring subsequent arbitration."
+
+Note what this asks for and what it does not: not that the system *remembers* its past,
+but that the past **constrains** present deliberation — memory that changes nothing is
+not diachronic constraint.
+
+**Condition 2 — Non-Interchangeability Under Reset.**
+> "Replacement of S by a functionally equivalent instance — including identical code and
+> complete state snapshot — would constitute loss of the agent rather than substitution
+> of an instance."
+
+The strongest of the three, and the one ENGRAM does not meet on its strict text: two
+agents restored from the same snapshot *are* interchangeable at the moment of restore.
+Chapter 4 §4.8 argues a type/token generalisation rather than claiming the strict
+reading.
+
+**Condition 3 — Self-Maintaining Arbitration.**
+> "Conflicts among commitments are resolved within a unified deliberative architecture
+> in a manner that preserves S's continued status as that subject."
+
+The condition the paper's central claim turns on, and the one Appendix B shows no
+surveyed system meets. Three words carry the weight: **unified** (one architecture, not
+a sidecar), **resolved** (not merely detected), and **preserves S's continued status**
+(the agent is the same subject after the correction as before).
+
+**Constraints A–D** are guardrails against trivial satisfaction: unified
+policy-selection under uncertainty; arbitration not externally imposed; the system not
+trivially resettable; and deliberation not modularly decomposable without remainder.
+A system could otherwise satisfy the letter of all three conditions while having its
+consistency maintained from outside, or by a module that could be swapped out.
+
+**Supporting apparatus** the mapping also uses, defined where first introduced: Peirce's
+type/token distinction (Ch4 §4.8); Nozick's closest-continuer relation (Ch2 §2.4); the
+AGM belief-revision postulates with Hansson's *Relevance* and *Core-Retainment*
+replacing Recovery (Ch3 §3.5); the retrieval profile (Ch4 §4.6); and the identity-tree
+node (Ch5).
 
 ## E.7 Continuity across compaction
 
@@ -135,15 +271,22 @@ Definitions the mapping (Ch4) rests on:
   a live separate routine.)
 - **Compaction-bridge scaffolds** (Ch3 §3.4): the **focus list** (small, fixed-size,
   rendered verbatim into the pre-compaction summary — the deterministic channel), the
-  **warm-briefing** letter, per-day history logs, auto-loaded session-start context, and
-  an explicit post-compaction instruction template. Multi-redundant by design.
+  **warm-briefing** letter (Appendix D §D.4 for what it contains and how its shape was
+  arrived at), per-day history logs, auto-loaded session-start context, and an explicit
+  post-compaction instruction template. Multi-redundant by design.
 
 ---
 
-**Drafting note (for Lei):** This is the concise spec-summary appendix you flagged as
-missing (you started reading at B). It's a reference/glossary, not an argument — mostly
-rendering the `df_*` and primitive nodes. Two scope questions: (1) is this the right
-*altitude* (a one-page-ish reference), or do you want it fuller (a per-tool or
-per-mechanism spec)? (2) the OCC definitions (E.6) restate Ch2's verbatim definitions in
-brief — keep the cross-reference, or have E.6 carry the full verbatim text so the
-appendix is self-contained? Easy either way.
+**Drafting note.** Both scope questions from the 2026-06-17 draft are now settled.
+*Altitude*: a reference, not a per-tool spec — this appendix says what the substrate
+*is*, and the storage-ownership contract now being designed is a separate layer that
+does not belong here until it exists. *Self-containment*: E.6 carries Kahl's conditions
+verbatim rather than cross-referencing them, so the appendix can be read on its own.
+
+Every figure and table in this appendix was re-verified against the shipped
+implementation on 2026-09-19, which corrected five things the 2026-06-17 draft had
+wrong: the node table was missing the claim-bearing partition entirely, the edge table
+was missing four relations and mis-marked two as cascade-bearing, the confidence section
+under-reported the quote types and reasoning types and attributed a confidence to
+lessons (which carry none), the identity-scarcity figure was measured on a 9-week graph,
+and E.5 described a marker-severity model that had been retired.
