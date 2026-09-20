@@ -155,7 +155,7 @@ therefore not the full stored record but the **recallable set** — the nodes th
 can surface into the agent's working context when something cues them. And they
 surface the way human memory does: not by being held in mind continuously, but by
 being *triggered* — every incoming prompt is matched against the whole graph and
-the best-fit nodes are pulled in (the *retrieval profile* of Chapter 3). A node
+the best-fit nodes are pulled in (the *retrieval profile*, Ch5 §5.4). A node
 belongs to the self's active continuity because it *can* be cued, exactly as a
 smell or a stray sentence pulls up a human memory. That dispositional, cued-recall
 structure is Parfit's connectedness, made mechanical.

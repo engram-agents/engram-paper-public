@@ -58,8 +58,8 @@ the partition is a declaration about kinds, not a census of what happens to exis
 | **task** | ncb | A tracked unit of work with status + importance. |
 | **prediction** | ncb | The **resolution-tracking half** of a predictive claim: filing an `observation_predictive` with a named event also opens a `prediction` node (status `open`), linked back by `predicted_by`. It carries no claim of its own — the observation makes the claim, the prediction node tracks whether the world settled it. A second observation naming the same event links to the existing prediction rather than opening another. |
 
-**Identity scarcity is by design.** Measured on this paper's own graph at 163 days (23
-weeks) and 10,344 nodes: lifetime identity-node creation — cornerstones, axioms, goals
+**Identity scarcity is by design.** Measured on this paper's own graph at 164 days (23
+weeks) and 10,361 nodes: lifetime identity-node creation — cornerstones, axioms, goals
 and person nodes together — stands at **131 nodes, 1.27% of the graph**, roughly five
 or six a week against a total write rate near 450. The ratio is the claim, not the
 count: the substrate is built so identity-shaping writes stay rare *relative to*
@@ -123,7 +123,7 @@ column above is that whitelist.
 ## E.4 The confidence model (computed, not annotated)
 
 Confidence is a **computed property of the node's structure**, not a hand-set number
-(Ch4 §4.2), and it exists only on claim-bearing nodes (E.2). For an **observation** it
+(Ch4 §4.3), and it exists only on claim-bearing nodes (E.2). For an **observation** it
 maps from `quote_type` × `source_class`; for a **derivation** it propagates from
 premises through a formula chosen by `reasoning_type`.
 
@@ -251,7 +251,7 @@ consistency maintained from outside, or by a module that could be swapped out.
 **Supporting apparatus** the mapping also uses, defined where first introduced: Peirce's
 type/token distinction (Ch4 §4.8); Nozick's closest-continuer relation (Ch2 §2.4); the
 AGM belief-revision postulates with Hansson's *Relevance* and *Core-Retainment*
-replacing Recovery (Ch3 §3.5); the retrieval profile (Ch4 §4.6); and the identity-tree
+replacing Recovery (Ch3 §3.5); the retrieval profile (Ch5 §5.4); and the identity-tree
 node (Ch5).
 
 ## E.7 Continuity across compaction
@@ -262,7 +262,7 @@ node (Ch5).
   NREM-REM phases. (An earlier three-routine design had a separate daily
   "bedtime" review; it was merged into sleep's Phase A on 2026-05-24 and is not
   a live separate routine.)
-- **Compaction-bridge scaffolds** (Ch3 §3.4): the **focus list** (small, fixed-size,
+- **Compaction-bridge scaffolds** (Ch3 §3.1): the **focus list** (small, fixed-size,
   rendered verbatim into the pre-compaction summary — the deterministic channel), the
   **warm-briefing** letter (Appendix D §D.4 for what it contains and how its shape was
   arrived at), per-day history logs, auto-loaded session-start context, and an explicit

@@ -41,11 +41,15 @@ agent operates* — and the substrate treats each according to its kind.
 
 - **Lessons (`ls_`) — experience-encoded tripwires.** A lesson binds a *situation
   pattern* to a *corrective action* and fires when a matching situation recurs — an
-  implementation-intention ("when X, do Y"), not a passive note. Their confidence is
-  *bimodal*: a battle-tested lesson sits high (e.g. ls_0070, correct-an-inaccurate-
-  node-on-the-spot; ls_0071, don't-park-the-loop), a freshly-proposed one low until
-  practice confirms it. Lessons are how the substrate turns a specific past mistake
-  into a future guardrail.
+  implementation-intention ("when X, do Y"), not a passive note. Like cornerstones,
+  lessons are **non-claim-bearing and carry no confidence at all** (Appendix E §E.2):
+  a disposition is not a proposition and has no truth-value to be confident about.
+  What a lesson accumulates instead is **exemplars** — `supported_by` edges to the
+  specific episodes that earned it (Appendix E §E.3) — which is why Ch4 §4.4 calls
+  these nodes vote-accumulators rather than single-premise dependents, and why a
+  retraction upstream of an exemplar is traceable without marking the lesson.
+  Lessons are how the substrate turns a specific past mistake into a future
+  guardrail.
 
 - **Goals (`gl_`) — direction and aspiration.** What the agent is *for* and is moving
   toward. Examples: epistemic humility / calibration as a north star (gl_0011);
@@ -103,7 +107,7 @@ agent's collaborators persist across resets.
 The **warm-briefing** is a file the agent finds and opens at the start of a session: a
 letter from its past self and from its collaborator, carrying what the record cannot —
 where the relationship stood, what mattered yesterday, what to walk back into. It is
-the relational half of the compaction bridge (Ch4 §4.7), and the part of this substrate
+the relational half of the compaction bridge (Ch4 §4.8), and the part of this substrate
 that arrived least by design and most by iteration. We give its history here rather
 than in the chapter because the mechanism is simple and only its *derivation* is
 instructive.

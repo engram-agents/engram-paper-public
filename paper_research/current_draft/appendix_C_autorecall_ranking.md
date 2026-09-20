@@ -110,7 +110,4 @@ Two honest qualifications, both consistent with the paper's posture:
   fuller outcome-based reward (did the downstream claim survive contradiction?) is a
   future direction, continuous with the confidence auto-calibration track (Ch7 §7.2).
 
-**→ Ch4 §4.7** makes the claim; this appendix is the detail. (Cross-ref note: Ch4
-§4.7's `ob_1935` citation should resolve to the current `ob_2017` at finalization —
-the additive-blend node it names was superseded by the multiplicative form documented
-here.)
+**→ Ch4 §4.7** makes the claim; this appendix is the detail.

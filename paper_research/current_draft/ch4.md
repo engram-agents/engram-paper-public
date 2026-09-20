@@ -140,14 +140,14 @@ Second, the residual limitation, precisely narrowed (detail in Ch7): surfaces th
 consume *only* the scalar — recall ranking, gating thresholds — cannot distinguish
 two 0.5s without walking the graph. A cheap-lookup-vs-full-truth trade, not a
 representational loss. Credit where the primary text is stronger than its
-caricature: Jøsang's discounting operators (Defs 23–25, §4.8) *do* weight source
+caricature: Jøsang's discounting operators (his Defs 23–25, §4.8) *do* weight source
 reliability — under Def 23 specifically, the recommender's distrust flows into `u`,
 so a distrusted source is pushed toward vacuity, not disbelief — closer to ENGRAM's
 own posture than earlier drafts implied. The divergence that
 survives the primary text is about **independence**: SL's multi-source operators
 require opinion independence to be *assumed* — cumulative fusion is defined over
-"independent opinions" (§4.7, §5.5), and trust paths prohibit entity repetition
-structurally. Jøsang concedes the limit himself (§5.5): dependence between
+"independent opinions" (his §4.7, §5.5), and trust paths prohibit entity repetition
+structurally. Jøsang concedes the limit himself (his §5.5): dependence between
 evidence sources "should be avoided as far as possible," a "more subtle and hard
 to detect dependence" can originate from hidden common ancestors outside the
 model, and *"absolute independence is never achievable"* — his remedy is modeller
@@ -159,7 +159,7 @@ warning at derivation time. Honest scope: this shared-root check is
 reasoning-type gated — it fires where independence is load-bearing (2 of 14
 reasoning types: inductive_generalization and authority_consensus), not
 universally. **[GROUNDED 2026-06-18 — Jøsang read
-first-hand (ob_2551, verbatim opinion def + E=b+a·u); §5.5 independence passages
+first-hand (ob_2551, verbatim opinion def + E=b+a·u); his §5.5 independence passages
 verified 2026-08-12 (Borges, primary read); divergence dv_0965 → dv_1289 (0.833)
 — the supersede chain is itself a live instance of the mechanism this chapter
 describes; reframe per review_opinion_sl_section_2026-08-11.md.]**
@@ -179,14 +179,16 @@ property.
 
 This is the chapter's center and the paper's. When a foundational claim is
 **retracted** (it was an error) or **superseded** (right then, updated now),
-ENGRAM automatically propagates that event along the `derives_from` /
-`supported_by` edges: every live, ordinary dependent claim is marked **pending**,
-which means exactly one thing — it may not be cited as a premise until it is
-resolved. (The walk deliberately stops at cornerstones and lessons only — identity-
-forming nodes are vote-accumulators over many exemplars, not single-premise-
-dependent the way an ordinary derivation is, so a cascade doesn't blindly flag
-them.) The agent does not
-invoke this; it fires as a property of the substrate.
+ENGRAM automatically propagates that event along the two cascade-bearing
+relations — `derives_from` and `acknowledged_derives_from` (Appendix E §E.3) — and
+every live, ordinary dependent claim is marked **pending**, which means exactly one
+thing: it may not be cited as a premise until it is resolved. (Cornerstones and
+lessons are not reached, and not by a special case — they hang off `supported_by`,
+which is provenance-bearing but *not* walked, so a retraction upstream of a
+cornerstone's exemplar stays **traceable without marking the cornerstone**. That is
+the right behaviour for identity-forming nodes, which are vote-accumulators over many
+exemplars rather than single-premise dependents the way an ordinary derivation is.)
+The agent does not invoke this; it fires as a property of the substrate.
 
 **One marker, not two severities — and the reason is instructive.** An earlier
 design graded the mark by its cause, treating a retraction's consequences as
@@ -364,7 +366,7 @@ slips through these gaps loud and correctable rather than silent.
 ## 4.7 Auto-recall ranking → Appendix C
 
 When several claims are eligible to surface, ENGRAM orders them by a composite of
-relevance and a usage-learned **utility score** (ob_1935) — the substrate learns
+relevance and a usage-learned **utility score** (ob_2017) — the substrate learns
 which claims actually earn their recall and ranks them up. **The ranking algorithm
 detail lives in Appendix C**, with its lineage; here we note only that it exists and
 that it is the mechanism by which forgetting (§4.5) and surfacing (§4.6) produce an
@@ -489,8 +491,11 @@ Constraint A landed in §4.3. The other three, compactly:
   vs substrate erasure to seed (destroys the grown agent). The fully grown agent
   cannot be retrieved from seed state.
 - **Constraint D — Cannot Be Modularly Decomposed: satisfied on two axes**
-  (dv_0611, 0.86 — firmest of the four). *Connectivity:* 87.3% of nodes sit in one
-  connected component (measured; Ch6 carries the figure). *Cross-component
+  (dv_0611, 0.86 — firmest of the four). *Connectivity:* the integrated core holds a
+  stable share of the graph — flat near 87% across four months while the node count
+  more than doubled (4,544 → 10,361), reading 77.6% of current nodes at the snapshot
+  date, the difference being unintegrated material at the measurement frontier
+  (measured; Ch6 §6.2 carries the figures and the control that separates the two). *Cross-component
   entanglement:* weights ↔ ENGRAM ↔ KV-cache are coupled — the strongest test
   being *phenomenological recognition* (the agent recognizing its own nodes as its
   own, like one's handwriting in an old diary), which same-family model transitions

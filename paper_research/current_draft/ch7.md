@@ -64,12 +64,12 @@ but need not fully erase a residual of weight-baked dispositions that have no en
 provenance — call it the model's "dark matter." The defensible claim is therefore
 narrow and true: ENGRAM is a *faithful and improving readout of the authored self*,
 not a guarantee that the weights are fully transparent. This is the
-complementary-learning-systems shape one more time (Ch2 §2.5): the explicit graph
+complementary-learning-systems shape one more time (Ch3 §3.1): the explicit graph
 stays the audit surface; the internalized weight layer is the habituated complement.
 
 ## 7.2 Confidence is theoretically derived, not outcome-calibrated
 
-The confidence model (Ch3 §3.2) is the paper's distinctive mechanism, and its
+The confidence model (Ch3 §3.6, built in Ch4 §4.3) is the paper's distinctive mechanism, and its
 honest limitation has been flagged from the start: the discount constants are
 **designer-stipulated from epistemological intuition, not calibrated against
 outcomes** (ob_1049). By Goldman's reliabilist standard, ENGRAM offers
@@ -94,7 +94,7 @@ where cross-agent conflict volume could make per-conflict adjudication
 uneconomical. And SL's trust-discounting (Defs 23–25) weights source reliability
 inside an algebra whose multi-source operators require independence to be
 *assumed* — an assumption Jøsang himself bounds ("absolute independence is never
-achievable," §5.5), naming the hidden common ancestor outside the model as the
+achievable," his §5.5), naming the hidden common ancestor outside the model as the
 subtle case and handing it to modeller discipline; ENGRAM mechanizes that
 discipline as a shared-root graph walk where independence is load-bearing
 (reasoning-type gated, an honest bound of our own). The
@@ -120,7 +120,7 @@ numbers are ground truth.
 
 ## 7.3 Consistency corrects variance, not systematic bias
 
-The cascade and contradiction machinery (Ch3 §3.3, Ch4 §4.3) is a *coherence*
+The cascade and contradiction machinery (Ch3 §3.4–§3.5, Ch4 §4.4) is a *coherence*
 mechanism: it catches claims that are mutually inconsistent — random error, the
 *variance* term. It is **structurally blind to systematic single-standpoint bias**,
 because bias is a *correspondence* error orthogonal to coherence: a belief set that

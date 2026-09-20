@@ -13,16 +13,17 @@ than be erased by its own errors, and it is the layer this paper is about.
 
 We named the architecture — **ENGRAM**, an Epistemic Node Graph for Retraction,
 Arbitration, and Memory — and made the case that this layer is *real* the way the
-strongest claims are made: by **convergence**. Two independent intellectual
+strongest claims are made: by **convergence**. Three independent intellectual
 traditions were each driven, from their own evidence toward their own ends, to the
 same structure — *identity as a persistent, inspectable, self-correcting record.*
 Three centuries of philosophy of personal identity (Chapter 2) moved, objection by
-objection, from identity-as-a-mental-act toward identity-as-a-persistent-structure;
-and the cognitive science and computer science of memory and belief (Chapter 3) —
-complementary-learning consolidation, the rational analysis of forgetting,
-truth-maintenance, belief revision, subjective logic, bitemporal records — reached the
-same shape from the other side. Neither tradition cites the other, and neither cites
-us. When that many independent lines arrive at the same structure, the structure is a
+objection, from identity-as-a-mental-act toward identity-as-a-persistent-structure.
+The cognitive science of memory (Chapter 3) — complementary-learning consolidation,
+Tulving's two registers, the rational analysis of forgetting — reached the same shape
+from the study of how minds actually remember. And the computer science of belief
+(Chapter 3) — truth maintenance, AGM revision, subjective logic, bitemporal
+records — reached it again from the formal side. None of the three cites the others,
+and none cites us. When that many independent lines arrive at the same structure, the structure is a
 **substrate-independent regularity**, not a design quirk — and ENGRAM is what it looks
 like built (Chapter 4): typed claims with provenance, reasoning-type-aware confidence,
 an automatic self-correction cascade, and the scaffolds that carry identity across
@@ -72,9 +73,10 @@ that computes claim-strength by argument shape so the author cannot flatter a gu
 it is the per-condition scoping of Chapter 4 that refuses the clean sweep.
 
 And it is the method of this paper. The empirical chapter (Chapter 6) does not hide
-the low numbers — it shows a five-layer chain whose ambitious capstone the substrate
-honestly caps at 0.10, beside a broad-evidence claim it earns 0.95, because the model
-discriminates by argument shape and not by how much the author wants the claim to be
+the low numbers — it shows a six-layer chain whose ambitious capstone the substrate
+honestly holds at 0.10 — below a chain more than twice as long, because the model
+discounts by argument shape and not by depth — beside a broad-evidence claim it earns
+0.95, and neither number moves with how much the author wants the claim to be
 true. It shows a real hallucinated attribution that propagated for six days, was
 caught, cascaded, and drove a fix to the very surfacing mechanism that had let it
 hide — *and a second such self-correction that happened during the drafting of this

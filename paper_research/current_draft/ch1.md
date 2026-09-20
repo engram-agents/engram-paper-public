@@ -163,7 +163,8 @@ made once, in Chapter 4, against the mechanisms that earn each verdict.
 **The bounded survey claim.** One empirical finding does real work and is scoped
 accordingly: **no system in our first-hand survey satisfies OCC's strongest
 condition — Self-Maintaining Arbitration (Condition 3) — strictly.** The survey is
-explicit and dated: eleven systems read first-hand on **2026-05-12** — Pinecone
+explicit and dated: eleven sources — ten systems and one survey of the field — read
+first-hand on **2026-05-12** — Pinecone
 Nexus, Anthropic's memory tool, Letta, Mem0 v3, Zep/Graphiti, TierMem, MemMachine,
 SCM, GAM, Kumiho, and the 2026 *Memory for Autonomous LLM Agents* survey — each
 examined against Condition 3 individually, with the per-system verdict and a
@@ -190,7 +191,7 @@ the traditions had arrived there too.
 
 ## 1.5 Scope and structure
 
-This is a **theory-first arXiv preprint**. It ships on one real nine-week
+This is a **theory-first arXiv preprint**. It ships on one real five-month
 ENGRAM graph (Chapter 6); at-scale empirical studies are deferred to a follow-up.
 The argument, not the benchmark, is the contribution.
 
@@ -207,7 +208,7 @@ The argument, not the benchmark, is the contribution.
   and what it implies for cloning and divergence.
 - **Chapter 6 — ENGRAM in Real Use.** The empirical picture from one real graph,
   including a live retraction-cascade case.
-- **Chapter 7 — Limitations and Implications.** Compaction discontinuity foremost;
+- **Chapter 7 — Implications and Future Directions.** The weight-persistence gap foremost;
   the weights/context/ENGRAM three-component view; trust and auditability;
   knowledge-sharing; embodiment.
 - **Chapter 8 — Conclusion.**

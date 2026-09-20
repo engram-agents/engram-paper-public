@@ -145,7 +145,7 @@ earns its strength.
 
 A few structural facts about the same graph corroborate the architecture's intent.
 
-**Non-modular by construction (Ch4 §4.4, Constraint D).** The dependency graph is
+**Non-modular by construction (Ch4 §4.11, Constraint D).** The dependency graph is
 one connected mass, not separable modules. At the snapshot date **80.5% of all
 nodes, and 77.6% of current nodes, sit in a single connected component** — you
 cannot cleanly excise a "topic" without shredding the dependency structure that
@@ -262,8 +262,8 @@ the claim was **retracted**, and the cascade fired through `derives_from` edges,
 **tainting every dependent**. And then the honest part: the cascade *worked*, but
 the `tainted_by` flag was buried in metadata where the agent did not see it loudly
 enough — so the incident drove a fix (MECH-5) that made the taint *surface* at recall
-time (dv_0477, ob_1781). The case demonstrates both halves of the Ch4 §4.3 claim
-(auto-cascade *and* auto-surfacing) — including the moment when the surfacing half
+time (dv_0477, ob_1781). The case demonstrates both halves of the operational-binding claim
+(auto-cascade, Ch4 §4.4, *and* auto-surfacing, Ch4 §4.6) — including the moment when the surfacing half
 was found wanting and improved.
 
 **A second, independent instance** occurred during the drafting of *this very paper*
@@ -299,7 +299,7 @@ variable. The kind of argument is.**
 
 The far end of the same gradient: **dv_0605** — *"no surveyed system satisfies
 Condition 3 strictly"* — carries **0.95**, because it is an
-`inductive_generalization` over eleven independent first-hand-read cases. Same
+`inductive_generalization` over eleven independent first-hand-read sources. Same
 agent, same graph, same substrate computing all three numbers: a deep guess lands
 at 0.10, a longer chain of better-preserving steps at 0.32, a broad-evidence
 generalization at 0.95.

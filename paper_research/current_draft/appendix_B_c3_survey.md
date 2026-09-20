@@ -2,7 +2,8 @@
 
 ## B.0 Scope, date, and method
 
-**The survey.** Eleven systems, read first-hand on **2026-05-12**: Pinecone Nexus,
+**The survey.** Eleven sources — ten systems and one survey of the field — read
+first-hand on **2026-05-12**: Pinecone Nexus,
 Anthropic's memory tool, Letta (MemGPT), Mem0 v3, Zep/Graphiti, TierMem,
 MemMachine, SCM, GAM, Kumiho, and the 2026 *Memory for Autonomous LLM Agents*
 survey (Du et al.). This is a **bounded claim about that surveyed set as of that
@@ -35,11 +36,11 @@ we quote it verbatim. Where the failure is *absence* of the construct entirely
 documented absence, not an invented quote.
 
 **Synthesis node:** dv_0605 (conf 0.95, inductive_generalization over the 11
-systems). The field has converged on the structural *primitives* C3 needs (typed
+sources). The field has converged on the structural *primitives* C3 needs (typed
 edges, provenance, cascade-traversable graphs, supersede semantics — Kumiho most
 fully); what is missing everywhere is the **operational binding** that makes
-arbitration automatic state-change. ENGRAM's contribution is that binding (Ch3
-§3.3, Ch4 §4.3), not the primitives.
+arbitration automatic state-change. ENGRAM's contribution is that binding (Ch4
+§4.4), not the primitives.
 
 ---
 
@@ -204,7 +205,7 @@ A survey, not a system: it names contradiction-handling as something robust syst
   newest record), source attribution (user statement > agent inference),
   **contradiction detection (flag conflicts for resolution)**, and periodic
   consolidation..." — *normative* ("need"), not descriptive ("do").
-- *paper-verbatim* (§9.3): "Future systems need external validation... uncertainty
+- *paper-verbatim* (their §9.3): "Future systems need external validation... uncertainty
   quantification... adversarial probing... and expiration policies" — the proposed
   fixes are all **external** interventions, not structural primitives. The survey
   names the C3 problem and cites zero solutions.
@@ -234,7 +235,7 @@ we report that as *not documented* rather than asserting overwrite. Verdict: C3 
 | Pinecone Nexus | External/undocumented; read-only consumer | yes (list-item) + analysis |
 | Letta | No claim structure (strings) | yes ("just strings") |
 | Anthropic memory tool | No claim structure (manual coherence) | yes ("keep... coherent") |
-| Memory survey 2026 | Named as aspiration, no implementation | yes (§7.3, §9.3) |
+| Memory survey 2026 | Named as aspiration, no implementation | yes (their §7.3, §9.3) |
 | TierMem | Construct absent (C3 N/A) | **none — by honest design** |
 
 Across the surveyed set, the pattern is uniform: the field has the *primitives*
