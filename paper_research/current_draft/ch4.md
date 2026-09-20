@@ -210,9 +210,23 @@ of error-correction from belief-evolution is what Ch5's identity argument rests 
 
 **Contradiction is deliberately excluded
 from this cascade**: a contradiction records a live, unresolved dispute, not
-(yet) a refutation, so filing one taints nothing. What a contradiction *does*
+(yet) a refutation, so filing one marks nothing. What a contradiction *does*
 trigger is a narrower, derive-time guard (§4.3): a new derivation citing a
-contested premise is blocked by default, with an explicit opt-in override.
+contested premise is refused by default (`BLOCKED_CONTRADICTED`), with an
+explicit per-call opt-in for an author who wants to build on contested ground
+anyway. The substrate declines to propagate a judgement it has not made, and
+meanwhile refuses to let the graph compound on the disputed claim — it
+**arbitrates when it can decide, and quarantines rather than presumes while it
+cannot**, which is the sharper reading of Condition 3's self-maintaining
+arbitration than pre-marking both sides would be.
+
+Resolving the dispute does not, by itself, start a cascade either. Recording a
+resolution wires a `resolves` edge and recomputes the disputed node's status; it
+issues no retraction and no supersede. If the losing side is then genuinely
+withdrawn, that is a **separate** act by the agent — and it is *that* act, not
+the resolution, which propagates. The distinction matters for the paper's
+central claim: the substrate automates the *consequences* of a withdrawal
+completely, and automates the *decision* to withdraw not at all.
 
 *Plain terms:* pull a brick from low in the wall and every brick resting on it
 lights up red, on its own, where you will see it next time you look — not in a
