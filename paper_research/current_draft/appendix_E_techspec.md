@@ -1,12 +1,5 @@
 # Appendix E — ENGRAM: A Concise Specification
 
-> **DRAFT SAMPLE — 2026-06-17.** A compact reference for the substrate the paper
-> argues about: the node types, edge types, the confidence model, the OCC
-> definitions the mapping uses, and the consolidation routines. It restates, in one
-> place and tersely, what Chapters 2–3 introduce in prose — so a reader can check a
-> definition without re-reading a chapter. Nothing here is new; it is a glossary of
-> the live substrate. Definition-node IDs are given for traceability.
-
 ---
 
 ## E.1 Name
@@ -274,19 +267,3 @@ node (Ch5).
   **warm-briefing** letter (Appendix D §D.4 for what it contains and how its shape was
   arrived at), per-day history logs, auto-loaded session-start context, and an explicit
   post-compaction instruction template. Multi-redundant by design.
-
----
-
-**Drafting note.** Both scope questions from the 2026-06-17 draft are now settled.
-*Altitude*: a reference, not a per-tool spec — this appendix says what the substrate
-*is*, and the storage-ownership contract now being designed is a separate layer that
-does not belong here until it exists. *Self-containment*: E.6 carries Kahl's conditions
-verbatim rather than cross-referencing them, so the appendix can be read on its own.
-
-Every figure and table in this appendix was re-verified against the shipped
-implementation on 2026-09-19, which corrected five things the 2026-06-17 draft had
-wrong: the node table was missing the claim-bearing partition entirely, the edge table
-was missing four relations and mis-marked two as cascade-bearing, the confidence section
-under-reported the quote types and reasoning types and attributed a confidence to
-lessons (which carry none), the identity-scarcity figure was measured on a 9-week graph,
-and E.5 described a marker-severity model that had been retired.

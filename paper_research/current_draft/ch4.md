@@ -1,24 +1,5 @@
 # Chapter 4 — ENGRAM's Mechanisms (and the Continuity Threshold They Meet)
 
-> **REVIEWER NOTE — what this file is (Borges, 2026-06-18).** Restructure draft of
-> the core chapter, merging the two 2026-06-14 drafts it supersedes: the old
-> mechanisms chapter (`ch3_draft_sample_2026-06-14.md`) and the old OCC-mapping
-> chapter (`ch4_draft_sample_2026-06-14.md`). Under the restructure (ob_2547) there
-> is no standalone OCC chapter: this chapter is **organized mechanism-by-
-> mechanism**, and each mechanism's OCC verdict is stated **once, here, where the
-> mechanism earns it** (anti-repetition rule). New mechanisms added beyond the old
-> drafts: **forgetting, auto-recall ranking, identity-governance (ax/cs/ls/gl),
-> relational (feeling/person/trust-tier)**.
->
-> **Citation honesty (ls_0039) — UPDATED 2026-06-18.** The cog-sci/CS cross-refs that
-> were provisional have now been first-hand-read: Subjective Logic, Anderson-Schooler,
-> and VMG are GROUNDED; TMS is honest-scoped (gap confirmed, Doyle primary scan
-> degraded — no verbatim used); ACT-R and MemRL stay secondary by choice. Each row in
-> the table below and each section carries its current status inline; the §4.12 closing
-> note is the status summary.
-> SOLID cross-refs (Locke, AGM/Hansson, Tulving, CLS, Schechtman, ax_0011) are
-> already grounded. Node-ids provisional (Discipline P); confidence honest (I).
-
 ---
 
 ## 4.0 What this chapter does, and how to read its verdicts
@@ -235,13 +216,6 @@ contested premise is blocked by default, with an explicit opt-in override.
 lights up red, on its own, where you will see it next time you look — not in a
 report you have to remember to run. That is the difference between a memory that
 *can be* audited and one that audits *itself*.
-
-> **REVIEWER NOTE — this section is the live demo.** This morning I tried to file a
-> new derivation citing dv_0722, and the substrate **refused** it (`BLOCKED_STALE`)
-> because dv_0722's premise had been superseded — exactly the cascade described
-> here, firing on me unbidden. That incident (dv_0964) is a candidate concrete
-> vignette for this section or Ch6 — the mechanism caught its own author. Flagging
-> as a possible add; not in the prose yet.
 
 **Tradition.** Two, converging. **AGM belief revision + Hansson** [SOLID]: the
 cascade satisfies Hansson's belief-base postulates that replace AGM Recovery —
@@ -551,17 +525,3 @@ is not met, and saying so is what makes the rest defensible. And per Chapter 1, 
 is **one strong result inside the convergence**, not the paper's spine: the breadth
 of traditions reaching this same structure (Ch2, Ch3) is the load-bearing argument;
 OCC is the most operational point on it.
-
-> **REVIEWER NOTE — what's still soft here, honestly (cross-refs synced 2026-06-18).**
-> (1) Cross-ref grounding: Subjective Logic (ob_2551/dv_0965 → dv_1289), Anderson-Schooler
-> (ob_2552/dv_0966), and VMG (ob_2550) are now GROUNDED first-hand. TMS is
-> honest-scoped — the *gap* is primary-confirmed (ob_1571), the *mechanism* is cited at
-> standard-literature level because Doyle's primary scan is image-degraded below
-> citation grade (read-attempted, ob_2555; no Doyle verbatim used). Two stay secondary
-> by deliberate choice: ACT-R (§4.6 — Tulving carries that section's load) and MemRL
-> (§4.7 — rests on prior-session nodes ob_0647/ob_0651). The mechanisms and their OCC
-> verdicts were always SOLID independent of these cross-refs. (2) The C1/C3/A abductive 0.39s wait on
-> the Ch6 empirical anchor — still your open "what does Ch6 measure?" call. (3) The
-> dv_0964 blocked-stale incident is a candidate live-cascade vignette (§4.4 or Ch6) —
-> flagged, not yet folded in. (4) I kept C2 deliberately soft (strict-fail stated
-> plainly, extension marked as ours) — same honesty posture as Ch1.

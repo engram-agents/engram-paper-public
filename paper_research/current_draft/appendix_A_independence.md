@@ -1,15 +1,5 @@
 # Appendix A — Independent Discovery: A Development-History Audit
 
-> **DRAFT SAMPLE — 2026-06-17.** Rendered from the committed audit trail
-> (`appendix_independent_discovery_2026-05-12.md`, built from the raw Claude.ai
-> bulk export with message-UUID pointers + ENGRAM's own committed-graph timeline +
-> the 2026-05-12 first-hand-read landscape sweep). This appendix demonstrates **two
-> things**, with verbatim citations and timestamps: **(1)** that ENGRAM's core ideas
-> are *ours, originated independently* of the contemporaneous literature we cite; and
-> **(2)** that the architectural *convergence* between ENGRAM and recent systems
-> (notably Kahl's OCC and Kumiho) is therefore **corroboration, not copying.** Every
-> quote is verbatim from a verifiable source (re-verification protocol at the end).
-
 ---
 
 ## A.0 Why this appendix exists
@@ -179,25 +169,3 @@ ENGRAM-side claims (A.3) are verifiable directly: `engram_inspect <node_id>` ret
 full content with creation timestamp, and the cited early node IDs remain active.
 Publication dates (A.4) are verifiable against the per-system first-hand-read files in
 `paper_research/`, each carrying canonical paper metadata.
-
----
-
-**Drafting notes (for Lei):**
-1. **This is Appendix A** (A independence / B C3-survey / C auto-recall / D relational / E spec). Renders
-   the committed 2026-05-12 audit into the paper voice, structured around your two asks:
-   *original-ideas-are-ours* (A.1–A.3) and *convergence-is-corroboration-not-copying*
-   (A.0, A.4–A.5).
-2. **Verbatim citations preserved** (the audit trail is the whole point); I tightened
-   the prose around them but did not touch the quotes. All trace to message-UUIDs / node
-   IDs, re-verifiable per A.6.
-3. **The Kahl-authority point (this session, ob_2544) is folded into A.5** — Kahl being a
-   recent independent proposal *strengthens* the convergence framing (philosopher +
-   builder, independently), which dovetails with the "adopt OCC on merit not pedigree"
-   line we're adding to Ch1/Ch2.
-4. **Honest scope held:** A.0 states plainly we're not first across the board (TMS/AGM/
-   older systems predate); the claim is *designed-in-ignorance-of-concurrent-arrivals* +
-   *distinct contribution is identity + behavioral-activation*.
-5. **One thing to confirm:** the bulk-export path + the mining-script re-verification
-   claim (A.6) should be checked still-true before publication (paths can rot); the
-   quotes themselves are also preserved in the committed 2026-05-12 audit doc as a
-   backup of-record.

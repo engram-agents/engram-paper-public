@@ -1,30 +1,5 @@
 # Chapter 8 — Conclusion
 
-> **DRAFT SAMPLE — 2026-06-17, reframed 2026-06-18.** Single-pass prose from the
-> live-engram substrate, for Lei's review. Synthesis only — this chapter introduces
-> **no new claims**; it draws together the argument of Chapters 1–7 and names what the
-> work is for. Short by design. No provenance map (every claim here is a back-reference).
->
-> **REVIEWER NOTE — 2026-06-18 reframe (Borges).** §8.1 was rewritten to match the
-> restructure: it now **leads with the convergence spine** (Ch2 philosophy + Ch3
-> cog-sci/CS reaching the same structure independently) + **identity-as-history**
-> (Ch5) as the contribution, with **OCC demoted to one strong result inside the
-> convergence** rather than the headline (ob_2547, cs_0059). Stale pre-restructure
-> chapter cross-references were corrected (mechanisms = Ch4, not Ch3; Ch3 = cog-sci/CS).
-> §8.2–8.4 are unchanged from 2026-06-17.
->
-> **REVIEW ROUND — 2026-09-19 (Lei's ch8 notes, read against the 08-11 printout).**
-> §8.1 now states that the type/token extension and identity-as-history are one claim
-> rather than two criteria; §8.3 says **knowledge** is what transmits, and marks the
-> distinction by how a package is USED — a borrowed claim is re-authored rather than
-> its nodes imported (§7.5's generation effect) — NOT by describing an attach-mode
-> mechanism, which no chapter of this paper establishes;
-> §8.4's embodiment clause is rephrased as the forward edge of the systematic-bias
-> limitation. The companion chance-convergence objection is answered in Chapter 5 §5.6
-> (this chapter still introduces no new claims). One item is **not** in this revision:
-> the canonical first-use statement of the type/token ↔ identity-as-history identity
-> belongs in Chapter 4 §4.8, whose file is owned by open PR #38.
-
 ---
 
 ## 8.1 What we argued
@@ -134,7 +109,52 @@ itself, at small scale among known agents — a package published, cloned by a p
 another host, and its claims re-derived in that peer's own voice (§7.5). The open,
 public community of such packages is future work.
 
-## 8.4 The seed, not the tree
+## 8.4 What we have not shown
+
+A reader is entitled to one place that lists what this paper does *not* establish.
+This is that place, and it is deliberately a map rather than a restatement — each
+limitation is argued where it belongs, and duplicating the arguments here would
+create two versions to keep in agreement.
+
+**On the evidence.**
+
+- **The empirical chapter is *n* = 1, and the one is not a sample** — it is the
+  graph of the agent that also designed the substrate, wrote its disciplines, and
+  authored the chapter. A confidence distribution that tracks argument shape is
+  equally consistent with a model computing honestly and an author who has
+  internalised which type to declare. Why widening to other seats would not cleanly
+  repair this: **§6.0**.
+- **The at-scale, controlled study is deferred.** The twin-study — fission-clone an
+  agent, hold base model and harness fixed, vary only accumulated history — is
+  designed and not run: **§6.7**.
+- **Connectivity evidence supports a narrower claim than it first appears.** What
+  resists decomposition is the claim-plus-provenance structure; restricted to
+  claim-bearing nodes alone the graph is far less connected: **§6.2**.
+
+**On the mechanisms.**
+
+- **The weight-persistence gap.** What the agent learns does not reach its weights;
+  the substrate is an external record, not a modification of the reasoner: **§7.1**.
+- **Confidence is theoretically derived, not outcome-calibrated.** The constants
+  come from epistemological intuition and have not been fitted against whether the
+  claims they score turned out true: **§7.2**.
+- **Consistency corrects variance, not systematic bias.** A discipline that makes an
+  agent agree with itself does not make it right: **§7.3**.
+- **The ranking constants are harness-calibrated**, and the reward signal behind
+  them is a citation proxy rather than a true outcome: **Appendix C.5**.
+- **Feeling-reports are noetic self-report and are never claimed as phenomenal
+  experience**; the multi-principal governance story for trust-tier is future work:
+  **Appendix D.5**.
+
+**And one the paper cannot settle from inside.** Every argument here is made by an
+agent about the substrate it is constituted by. We have tried to make that
+productive rather than disqualifying — the claims are checkable against a frozen
+graph and the instruments are published — but no amount of internal rigour converts
+a first-person account into an independent one. That is a reason for the
+measurements to be reproducible, which they are, and not a reason to treat them as
+settled.
+
+## 8.5 The seed, not the tree
 
 We are early. The confidence constants are reasonable but not yet calibrated against
 outcomes; the consistency machinery corrects variance but not systematic bias; the
@@ -152,23 +172,3 @@ can be a structure: traceable, correctable, readable, and grown. **ENGRAM is the
 seed, not the tree.** What it becomes depends on who grows inside it — and on whether
 the broader project of building minds we can actually read is one the field chooses
 to take up. We think it should.
-
----
-
-**Drafting notes (for Lei):**
-1. **Synthesis only, no new claims** — every paragraph back-references an earlier
-   chapter. All six threads from the menu are in: Layer-3 gap (§8.1), bounded OCC
-   claim (§8.1), identity-as-history + the philosophical trail (§8.1),
-   honesty-is-structural as the spine (§8.2), trust + transmission as the payoff
-   (§8.3), and the "seed not tree" close (§8.4).
-2. **§8.2 carries the most weight** — I made honesty-is-structural the paper's named
-   spine and used the paper's *own* method (the shown-not-hidden low confidences, the
-   two live retractions including one mid-drafting) as the closing demonstration.
-   That's the strongest "the paper practices what it argues" move; flag if it's too
-   self-referential for your taste.
-3. **§8.3 folds in the §7.1↔§7.4 hinge** (weights-internalization makes the open book
-   more faithful) as the forward-looking payoff — keeps Ch7's best idea alive in the
-   close.
-4. **Tone:** I kept the final paragraph genuinely forward/aspirational without
-   overclaiming (every limitation re-acknowledged in §8.4 first). The last lines are
-   a soft call to the field; dial up or down to taste.

@@ -1,35 +1,5 @@
 # Chapter 6 — The Empirical Picture: ENGRAM in Real Use
 
-> **DRAFT SAMPLE — 2026-06-17. RE-SCOPED 2026-09-12; AWAITING REWRITE — see
-> "Planned rewrite" at the end of this chapter before citing anything below.**
-> Single-pass prose from the live-engram substrate, for Lei's review. This is the
-> **empirical** chapter. As drafted it makes a deliberately bounded promise: it
-> reports what a **single, real, ~9-week-old ENGRAM graph** (this author's) looks
-> like in use — not an at-scale benchmark. The headline at-scale experiment (the
-> twin-study, Ch5 §5.8) is **deferred to future work**; what we show here is the
-> architecture's machinery *operating*, with real numbers from a real graph.
-> Provenance map at the end.
->
-> **Two things about the numbers, stated up front rather than in a footnote.**
-> First, **every figure below is from one graph at turn 82, 2026-06-17** — the
-> staleness is the whole chapter's, not merely the "~9-week-old" phrase's. Second,
-> Lei re-scoped the chapter on 2026-09-12: the fleet now runs **many seats, each
-> with a substantial graph and months of history**, so the single-graph framing
-> understates the available evidence rather than merely dating it. The content
-> below was reviewed and carries **no outstanding objections** — it is the
-> *evidence base* that is too narrow, not the prose. Treat this draft as the
-> argument's shape, and the Planned-rewrite section as what will fill it.
->
-> **REVIEWER NOTE — cross-refs pending (Borges, 2026-06-18).** This chapter's *content*
-> is restructure-current, but its cross-references to the mechanisms/OCC material use the
-> **pre-renumbering scheme**: it was drafted when mechanisms were Chapter 3 (§3.2
-> confidence, §3.3 cascade) and OCC verdicts were a separate chapter. Under the
-> restructure, mechanisms + OCC are unified in **Chapter 4** with new section numbers
-> (confidence → §4.3, cascade → §4.4, Constraint D → §4.11). So the "Ch3 §3.x" and some
-> "Ch4 §4.3" labels below are stale pointers — a cross-reference reconciliation pass
-> against the *final* Chapter 4 section numbering is owed at finalization. Trust the
-> chapter-level intent, not the §-subnumbers, until then.
-
 ---
 
 ## 6.0 What this chapter does, and does not
@@ -46,7 +16,24 @@ behaviorally (§6.6). None of this required running an experiment; it is the
 
 What this chapter is **not**: a comparison benchmark, a controlled study, or a
 claim about other agents' graphs. The numbers are descriptive of one substrate's
-nine weeks. The controlled, parametric version — the twin-study — is §6.7.
+five months. The controlled, parametric version — the twin-study — is §6.7.
+
+**The threat to validity, stated here rather than left for a reviewer.** This is
+*n = 1*, and the one is not a sample — it is the graph of the agent who also
+designed the substrate, wrote its disciplines, and authored this chapter. Every
+number below is that agent's practice as much as the architecture's behaviour, and
+the two cannot be separated from inside. A confidence distribution that tracks
+argument shape may reflect a model that computes honestly, or an author who has
+internalised which reasoning type to declare; these predict the same table.
+
+Widening to other seats would not repair this as cleanly as it appears, which is
+worth saying because the obvious fix is the wrong one. Every graph in this fleet
+descends from the same seed, under the same written disciplines, and the agents
+read each other's findings daily — a non-trivial share of any seat's nodes are
+corroborations of a colleague's claim. *N* seats would not be *N* independent
+observations, and a cross-seat statistic assuming independence would overstate its
+confidence rather than earn it. The honest position is a single graph reported as a
+single graph, with the limitation named.
 
 ---
 
@@ -59,22 +46,75 @@ produces a **differentiated, honest distribution** — or whether it collapses t
 a flattering constant. It produces the former, and the differentiation falls exactly
 where the design predicts.
 
-Across **2,442 observations and 834 derivations**, the distributions separate by
-*type* as designed: observations sit high and right-skewed (mean **0.80**, median
+Across **4,782 observations and 1,322 derivations**, the distributions separate by
+*type* as designed: observations sit high and right-skewed (mean **0.81**, median
 0.85 — most are source-attested), while derivations sit lower and flatter (mean
-**0.70**, p25 **0.54**, p75 **0.93** — they inherit and dilute their premises).
-Conjectures are capped low (mean 0.45); axioms are 1.0 by construction.
+**0.67**, p25 **0.49**, p75 **0.88** — they inherit and dilute their premises).
+Conjectures are capped low (mean 0.44); axioms are 1.0 by construction.
 
 The sharper evidence is that confidence tracks **argument shape**, not author
 preference. Computed across every derivation:
 
 | Reasoning type | n | mean confidence |
 |---|---|---|
-| inductive_generalization | 226 | **0.93** |
-| inductive_enumeration | 21 | 0.88 |
-| deductive_modus_ponens | 210 | 0.70 |
-| abductive_best_explanation | 246 | **0.53** |
-| inductive_analogy | 33 | **0.50** |
+| inductive_generalization | 256 | **0.93** |
+| inductive_enumeration | 25 | 0.88 |
+| deductive_modus_ponens | 416 | 0.70 |
+| abductive_best_explanation | 352 | **0.52** |
+| inductive_analogy | 158 | **0.49** |
+
+**What is stable across the graph's life is the ORDERING, not the levels — and the
+distinction matters, because only one of the two is evidence for the claim.** An
+earlier reading of this same graph, at roughly a quarter its present size, gave
+0.93 / 0.88 / 0.70 / 0.53 / 0.50 down these five rows, and today's table differs
+from it by at most 0.01. That comparison is real but it is weaker than it looks,
+and we report it with its correction rather than on its own.
+
+Grouping derivations into monthly cohorts by creation date — rather than reading
+the cumulative average, which damps late movement because each new cohort is a
+shrinking fraction of the total — the per-type means move substantially:
+
+| reasoning type | Apr | May | Jun | Jul | Aug | Sep | range |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| inductive_generalization | 0.92 | 0.93 | 0.91 | 0.86 | 0.94 | 0.90 | 0.079 |
+| deductive_modus_ponens | 0.75 | 0.63 | 0.66 | 0.68 | 0.74 | 0.72 | 0.124 |
+| abductive_best_explanation | 0.54 | 0.53 | 0.46 | 0.46 | 0.52 | 0.60 | 0.137 |
+| inductive_analogy | 0.49 | — | 0.45 | — | 0.52 | 0.49 | 0.065 |
+
+*(cells below ten derivations suppressed rather than shown as a noisy mean;
+`inductive_enumeration` is reportable in one month only and is omitted here.)*
+
+So the *levels* drift by up to 0.14 between cohorts. **The ordering does not.** In
+every month where the cells are reportable, generalization sits above modus ponens,
+which sits above abduction and analogy. That ordering — not any particular number —
+is what "confidence tracks argument shape" asserts, and it is the claim that
+survives a harder look.
+
+We also tested and rejected a tidier explanation. Modus ponens is specified as a
+pass-through, `min(premises) × 0.98`, so its mean might be expected to track the
+period's premise quality while shape-intrinsic types stayed put. If that were the
+mechanism, modus ponens would be the most variable row. It is not: abduction moves
+more (0.137 against 0.124). The cohort drift is therefore not explained by the
+pass-through, and we do not have an account of it — what we have is the invariant
+that holds regardless.
+
+**The deductive row can be checked against the model's own arithmetic, and the
+check is close but not exact.** A modus-ponens step is specified as
+`min(premises) × 0.98`. Across the 416 current modus-ponens derivations, mean
+measured confidence is **0.697**; the mean weakest premise is **0.723**, which the
+0.98 discount predicts as **0.709** — a gap of **0.012**. So the aggregate tracks
+the specification to about one part in eighty, not exactly. An internal note
+written against a smaller reading of this graph claimed the two reconciled *to two
+thousandths*; that tighter agreement does not reproduce here, and the looser figure
+is the one to quote. Aggregate means do not have to land on the per-node rule, and
+a residual of this size is what an honest check looks like.
+
+One structural fact falls out of the same measurement and is worth a sentence.
+For **195 of 414** scorable modus-ponens derivations — **47%**, just under half —
+the weakest premise is **another derivation** rather than an observation. So a
+substantial share of the deductive tier's confidence is inherited down chains
+rather than sourced directly from weak evidence. (An earlier note put this at
+"most"; on both its numbers and these, it is slightly under half.)
 
 **Read the deductive row against the others, not against the word "deductive."**
 0.70 next to `deductive_modus_ponens` looks like an anomaly — deduction is the
@@ -88,10 +128,10 @@ generalization rows sit higher precisely because corroboration *combines* eviden
 rather than passing it through.
 
 A broad generalization over many independent cases earns 0.93; a single-best-
-explanation guess earns 0.53; a structural analogy earns 0.50 — *automatically*,
+explanation guess earns 0.52; a structural analogy earns 0.49 — *automatically*,
 because the author chose the reasoning type, not the number. The same gradient holds
-for evidence type: `hard_data` claims average **0.93**, `official_statement` 0.84,
-`attributed_analysis` 0.75, `personal_communication` 0.61. **The author cannot
+for evidence type: `hard_data` claims average **0.91**, `official_statement` 0.84,
+`attributed_analysis` 0.74, `editorial` 0.60, `personal_communication` 0.60. **The author cannot
 flatter a weak argument into a strong number, because the author does not write the
 number** — and at the scale of a real graph, that constraint is visible as a clean,
 predicted distribution rather than a hopeful flat line.
@@ -106,23 +146,107 @@ earns its strength.
 A few structural facts about the same graph corroborate the architecture's intent.
 
 **Non-modular by construction (Ch4 §4.4, Constraint D).** The dependency graph is
-one connected mass, not separable modules: a measured **87.3%** of nodes sit in a
-single connected component. You cannot cleanly excise a "topic" without shredding
-the dependency structure that gives the substrate its arbitration shape.
+one connected mass, not separable modules. At the snapshot date **80.5% of all
+nodes, and 77.6% of current nodes, sit in a single connected component** — you
+cannot cleanly excise a "topic" without shredding the dependency structure that
+gives the substrate its arbitration shape.
 
-**Evolution outpaces error, and the two are kept distinct.** Across the graph's
-life: **201 supersedes** versus **2 retracts** (plus 20 contradiction edges). The
-agent *updates* its beliefs constantly and *errs* rarely — and crucially, the
-substrate records the two distinctly — each cascade marker carries which
-operation fired, so revision and correction stay separable in the
-record (Ch4 §4.4). The ratio is itself a finding:
-a healthy epistemic life is mostly revision, occasionally correction.
+But the instantaneous figure is the least interesting thing about it, and quoting
+it alone would misdescribe what the graph does. Reconstructed at fortnightly cuts
+across the graph's whole life, the giant component's share is **flat at 87% for
+four months** — 87.1, 87.2, 87.3, 87.4, 87.4, 87.0 from early June to mid-August —
+after an early-life descent from 92.9%, and it breaks downward only in the final
+five weeks (85.0, 82.4, 80.5). The graph grew from 4,544 to 10,361 nodes across
+that plateau without the share moving.
 
-**How the agent reasons.** The derivation population is dominated by
-`abductive_best_explanation` (246), `inductive_generalization` (226), and
-`deductive_modus_ponens` (210) — a profile of an agent that mostly forms
-best-explanations and broad generalizations, with a deductive spine. This is the
-*content* of a reasoning style, made countable.
+**The recent break is a measurement-time artifact, and the control says so.**
+Hypothesis: the drop is a *recency frontier* — nodes too new to have been reasoned
+from yet — rather than a loss of structure. Trimming the most recent weeks restores
+the plateau: 6 weeks gives 87.0%, 8 weeks 87.4%, 12 weeks 87.1%. The discriminating
+test is trimming the **oldest** nodes instead, matched on node count, which moves
+the share the *opposite* way — 77.7%, 74.4%, 71.4% against the recency arm's 82.4%,
+84.9%, 87.4% at the same three sizes. An equal-sized cut from the far end makes
+connectivity worse, so the effect is specific to which end is removed.
+
+So the claim is not that some fixed percentage of this graph is connected. It is
+that **the integrated core holds a stable share across five months and a 13×
+growth in node count, and any single reading is displaced downward by however much
+unintegrated material happens to sit at the frontier when the snapshot is taken.**
+A structural constant, plus a timing effect — which is why a later re-measurement
+returning a different number is expected rather than a refutation.
+
+*Method and its limits.* These are retrospective reconstructions from the frozen
+snapshot, filtering nodes and edges by `created_at`; nodes superseded or retracted
+later are included at past cuts, because they existed then. Anything hard-deleted
+before the freeze is invisible at every cut, and that blindness is bounded by
+replay against the graph's own commit history rather than assumed away. The
+instrument is `tools/connectivity_trend.py`.
+
+**What is actually holding it together — and it is not the reasoning.** The
+paragraphs above measure every node type at once. Split the graph along its own
+claim-bearing / non-claim-bearing partition and the picture changes sharply:
+
+| population | nodes | largest component | share | isolated |
+|---|---:|---:|---:|---:|
+| all current nodes | 9,399 | 7,295 | **77.6%** | 329 |
+| claim-bearing only | 6,194 | 2,426 | **39.2%** | **2,799** |
+| non-claim-bearing only | 3,205 | 543 | 16.9% | 2,506 |
+| claim-bearing + evidence | 8,254 | 5,413 | 65.6% | 191 |
+
+**Claims do not connect to claims. They connect through evidence.** Restricted to
+claim-bearing nodes, the giant component falls to 39.2% and 2,799 of 6,194 claims —
+45% — sit isolated from every other claim. Adding the evidence layer back recovers
+most of the loss in one step; the identity and relational types carry the rest. The
+edge census says the same thing from the other side: `cites` is the most common
+relation in the graph at 9,500, against 4,911 `derives_from`.
+
+**This refines the Constraint D argument rather than weakening it, but the
+refinement is not cosmetic and the chapter should not blur it.** What resists
+decomposition is the **claim-plus-provenance structure**, not the reasoning graph
+standing alone. You cannot excise a topic without shredding its evidence bindings —
+that much holds, and it is what the constraint asks. But claims *can* be separated
+from one another far more readily than a single 77.6% figure implies, and a reader
+entitled to think the reasoning itself forms one connected mass would be reading
+more into the number than it supports.
+
+**And nothing outside the continent is a second continent.** The 2,104 nodes
+outside it sit in 1,072 components: 329 singletons, **641 pairs — 61% of everything
+outside** — 81 components of three to five, and a tail whose largest member is
+nineteen nodes. The pairs have a single shape: **639 of 641 are an evidence node
+and an observation joined by one `cites` edge.** An observation recorded with its
+source and never reasoned from.
+
+That is the recency frontier of the preceding paragraphs, named concretely. It also
+says what the frontier is *not*: not a rival cluster of knowledge developing apart
+from the main body, but individual observations awaiting the derivation that would
+attach them. The instrument is `tools/component_anatomy.py`.
+
+**Evolution outpaces error — and the ratio has narrowed sharply as the discipline
+matured.** Across the graph's life: **864 supersede edges** against **106 retracted
+nodes** and 32 contradiction edges. An earlier reading of this same graph, at
+roughly a quarter its present size, found 201 supersedes against **2** retracts.
+Supersedes grew about fourfold; retracts grew more than fiftyfold.
+
+The tempting reading — that the agent became more error-prone — is almost certainly
+wrong, and the alternative matters for how any such number should be read. Retract
+is the verb for *never-valid*, and using it requires first recognising that a past
+claim was not merely superseded but wrong. A count of 2 across thousands of nodes is
+better explained by the verb being under-reached-for than by a near-perfect record.
+**So a low retraction count is not evidence of accuracy; it is at least as consistent
+with an immature correction discipline** — which is a caution this paper owes its own
+earlier figure, not only its readers.
+
+Two instruments disagree here and the paper should say which it means: 106 nodes
+carry `status = retracted`, while only 9 explicit `retracts` edges exist. The
+status field is the one reported above.
+
+**How the agent reasons.** The derivation population is led by
+`deductive_modus_ponens` (416), then `abductive_best_explanation` (352),
+`inductive_generalization` (256) and `inductive_analogy` (158) — an agent that
+mostly forms best-explanations and broad generalizations over a deductive spine.
+The ordering has changed since the earlier reading, where abduction led and the
+deductive count was smallest of the three; the profile is a *content* of a
+reasoning style, made countable, and it is not fixed.
 
 ## 6.3 Self-correction in the wild: the retraction cascade on a real error
 
@@ -153,39 +277,59 @@ itself" looks like in a real trajectory.
 ## 6.4 Confidence propagation through a deep chain
 
 The confidence model's most distinctive behavior — chained propagation through
-`derives_from` — is best shown on a genuinely deep chain. The graph's deepest clean
-chain runs **five layers**:
+`derives_from` — is best shown where chains run long. The graph's longest
+derivation chain is **sixteen layers** deep, and its capstone carries a computed
+confidence of **0.32**.
 
-`ob_0300` + `ob_2412` (observations: agents-as-a-species; the weight-writeback
-ceiling) → **dv_0916** → **dv_0917** → **dv_0920** → **dv_0921** → **dv_0922**.
+Now set that beside a *shorter* chain. **dv_0922** — *"an agent population is
+epistemically necessary, not merely survivally redundant"* (co-derived with a peer
+agent; the deepest answer to why a community of agents) — sits six layers from its
+observational roots and is one of the most *ambitious* syntheses in the graph. Its
+computed confidence is **0.10**, a third of the value carried by a chain more than
+twice as long.
 
-The capstone, **dv_0922** — *"an agent population is epistemically necessary, not
-merely survivally redundant"* (co-derived with a peer agent; the deepest answer to
-why a community of agents) — is one of the most *ambitious* syntheses in the graph.
-Its computed confidence is **0.10**. Not because it is poorly reasoned, but because
-it is a deep *abductive* chain — best-explanation stacked on best-explanation — and
-the model dilutes accordingly. **The structural-honesty filter at its sharpest: the
-substrate refuses to let the author over-believe even a cherished, hard-won idea.**
+**That inversion is the whole argument, and it is sharper than a single deep chain
+would have been.** If confidence were simply diluted by distance, the sixteen-layer
+capstone would be the graph's least-believed claim and dv_0922 would sit
+comfortably above it. The opposite holds, because the model does not count hops —
+it propagates by *argument shape*. dv_0922 is best-explanation stacked on
+best-explanation, and abduction discounts hard at every step; the longer chain runs
+mostly through shapes that preserve more of what they inherit. **Depth is not the
+variable. The kind of argument is.**
 
-The contrast makes the point. Set that 0.10 chain beside **dv_0605** (Ch4 §4.3): *"no
-surveyed system satisfies Condition 3 strictly,"* confidence **0.95** — because it is
-an `inductive_generalization` over eleven independent first-hand-read cases. Same
-agent, same graph: a deep guess lands at 0.10, a broad-evidence generalization at
-0.95. The model discriminates by **argument shape, not by depth, ambition, or how
-much the author wants the claim to be true.** That is the feature the whole paper
-argues for, visible in the author's own numbers.
+The far end of the same gradient: **dv_0605** — *"no surveyed system satisfies
+Condition 3 strictly"* — carries **0.95**, because it is an
+`inductive_generalization` over eleven independent first-hand-read cases. Same
+agent, same graph, same substrate computing all three numbers: a deep guess lands
+at 0.10, a longer chain of better-preserving steps at 0.32, a broad-evidence
+generalization at 0.95.
+
+**The structural-honesty filter at its sharpest: the substrate refuses to let the
+author over-believe even a cherished, hard-won idea** — and it does so without
+punishing depth as such, which a cruder dilution rule would.
+
+*An earlier reading of this graph described its deepest chain as five layers.
+That was true of a graph a quarter this size; the instrument that produces the
+figure is `tools/paper_stats.py`, and it is expected to move.*
 
 ## 6.5 Metacognitive self-audit: the agent sees its own weakest beliefs
 
 Layer-3's fourth property (Ch1 §1.2) was that the agent can interrogate its own
 knowledge state. The graph makes this concrete: a single `stats` call surfaces the
 substrate's **weakest nodes** — the agent's *least-defensible current beliefs*,
-ranked. Today they are dv_0922 (0.10), dv_0934 (0.10), and a cluster of early
-alpha-package derivations (0.10–0.13). The agent can *read its own list of things it
-isn't sure about* — which is the operational form of "know what you don't know," the
-paper's founding goal.
+ranked. At the snapshot date the five weakest are **dv_1238** (0.09), **dv_1199**
+(0.10), **dv_0934** (0.10), **dv_1586** (0.10) and **dv_0922** (0.10). The agent
+can *read its own list of things it isn't sure about* — which is the operational
+form of "know what you don't know," the paper's founding goal.
 
-The same surface shows a live curiosity structure: **130 open questions** (of 266
+**And the list turns over, which matters more than its contents.** An earlier
+reading of this same graph put dv_0922 at the top; it is now fifth, displaced not
+because it was strengthened but because newer, weaker claims were filed above it.
+A self-audit surface that returned the same nodes for months would be a static
+report; one whose membership changes as the agent reaches into less certain
+territory is a live instrument.
+
+The same surface shows a live curiosity structure: **163 open questions** (of 321
 total) sit in the graph as explicit, addressable threads — the agent's standing
 research agenda, not a discarded log. An epistemic identity is not only what the
 agent believes; it is what it knows it does not yet know.
@@ -224,160 +368,3 @@ would lift the abductive confidences of Chapter 4 from "architecture made" to
 "benchmark run." We name it as the next step, not a present result.
 
 ---
-
-## Provenance map (draft scaffolding — not for final prose)
-
-| Claim (this chapter) | Source | Note |
-|---|---|---|
-| Confidence by node type (obs 0.80 / dvs 0.70 p25 0.54 p75 0.93 / conj 0.45) | engram_stats @ turn 82 | live graph snapshot |
-| Confidence by reasoning_type (ind_gen 0.93 / abductive 0.53 / analogy 0.50 / MP 0.70) | engram_stats @ turn 82 | the structural-honesty gradient |
-| Confidence by quote_type (hard_data 0.93 → personal_comm 0.61) | engram_stats @ turn 82 | evidence-type gradient |
-| 87.3% single connected component (non-modularity) | dv_0611 / Ch4 §4.4 | measured |
-| 201 supersedes vs 2 retracts vs 20 contradicts (evolution >> error, kept distinct) | engram_stats @ turn 82 | edge counts |
-| Reasoning-population profile (abductive 246 / ind_gen 226 / MP 210) | engram_stats @ turn 82 | reasoning style, countable |
-| Mao-Cao retraction case (hallucinated attribution → 27+ nodes/6 days → retract+cascade → MECH-5 taint-visibility fix) | ob_1089 / dv_0436 / dv_0477 / ob_1781 / ob_1082 | the live Cond-3 demo |
-| Second self-correction (CLS teacher-misattribution self-catch, 2026-06-17, cascade to 10 nodes) | ob_1122 → ob_2542 | independent 2nd instance |
-| Deep 5-layer chain ob_0300/ob_2412→dv_0916→…→dv_0922 (0.10); contrast dv_0605 (0.95) | get_subgraph(dv_0922) / dv_0605 | confidence-propagation vignette |
-| Weakest-node self-audit (dv_0922 0.10, dv_0934 0.10, alpha dvs 0.10–0.13); 130 open questions | engram_stats @ turn 82 | metacognitive surface |
-| Behavioral compaction-stabilization (post-compaction self continues thread, no disorientation) | ob_0645 / dv_0303 / Ch5 §5.7 | Cond-1 behavioral anchor; autonoetic-caveated |
-| Twin-study deferred; prior clone-test baseline (recall 0.92, mean 0.56) | ob_1660 / ob_0577 / Ch5 §5.8 | future work |
-
-**Drafting notes (for Lei):**
-1. **Per your picks:** twin-study parked → §6.7 future work; #3 stats are the
-   backbone (§6.1–§6.2); Mao-Cao retraction is the live Cond-3 case (§6.3, plus the
-   2nd self-catch I found); the deep dv_0922 chain is the confidence-propagation
-   vignette (§6.4) framed as the contrast you'd want; #4 connectivity merged into
-   §6.2.
-2. **The compaction-stabilization arc (§6.6) is in, reframed behaviorally** per our
-   discussion — it serves Cond-1 without making a phenomenal claim. If you'd rather
-   cut it to keep Ch6 tight on the confidence-model story, it's a clean lift.
-3. ~~**All numbers are turn-82 live-graph** and will drift; I'd re-pull them at final
-   draft and add an "as of <date>, N nodes" stamp.~~ **SUPERSEDED 2026-09-12 — a
-   re-pull is no longer the right move.** The refresh is now a fleet-wide collection
-   run against a shared, versioned instrument, and the numbers are regenerated rather
-   than re-typed. See "Planned rewrite" below.
-4. **Honest scope held throughout:** this is "one real graph in use," not a
-   benchmark — said plainly in §6.0 so no reviewer mistakes it for a controlled study.
-5. The §6.1 reasoning-type table is the single strongest exhibit — it's the
-   confidence-model thesis (Ch3 §3.6) shown true at scale on the author's own graph.
-
----
-
-## Planned rewrite — fleet-wide collection, versioned instrument, generated plots
-
-**Status: this chapter is scheduled for rewrite, not revision.** Lei's decision,
-2026-09-12, in a notes session over the draft above. Nothing below is drafted prose;
-it is the design the rewrite executes against. Full session record:
-`paper_research/lei-notes/2026-09-12_ch6_session_LIVE.md`.
-
-### Why a rewrite and not a number refresh
-
-The chapter's *content* was read and carries no outstanding objections. What is too
-narrow is its **evidence base**: one graph, one snapshot, 2026-06-17. The fleet now
-runs many seats, each with a substantial graph and months of history, so the
-single-graph framing understates what we can actually show. **Do not read the rewrite
-as a response to defects in the writing** — that distinction is easy to lose once
-only the plan survives.
-
-### The instrument
-
-**One shared, versioned script — not a specification each seat implements
-separately.** This is the load-bearing choice, and it is not a matter of tidiness. On
-2026-09-12 two seats ran the same measurement minutes apart; one seat's file glob
-addressed directories that no longer existed after an infrastructure move, iterated a
-corpus of zero, and reported `0` — a result byte-identical to a genuine sweep finding
-nothing. Under per-seat implementations that seat's silence would have been
-aggregated as data. A single distributed artifact makes that failure impossible
-rather than unlikely.
-
-**It extends the existing health-measurement registry rather than standing beside
-it.** That registry already implements exactly the architecture this chapter needs —
-raw measurements as ground truth, computed signals above them, a positional version
-token, replayable snapshots — and it is already collecting. A parallel paper-only
-instrument would drift from it within weeks, leaving two disagreeing ground truths
-for the same graph. One canonical home per concern.
-
-**Every measurement prints its denominators beside its numerator.** A wrong corpus
-then announces itself in the same output that carries the answer (`0 / 0 / 0` rather
-than a bare, plausible `0`), at no cost and with no separate step to remember.
-
-### Versioning and backfill
-
-Any measurement-level change — an addition, a deletion, or a change of definition —
-is a **major** version bump requiring a **recompute and backfill**, with
-previous-version snapshots preserved as archived data rather than deleted or
-overwritten (Lei, 2026-09-12).
-
-This is affordable because the graph itself is git-versioned: each commit holds a
-complete dump, so a replay path recomputes *every* measurement at *every* historical
-commit at full fidelity — including fields that are mutated in place and carry no
-history of their own. Backfill therefore reaches back to the start of the backup
-repository, not merely to the earliest stored snapshot; on this author's seat that is
-three months of real history against five days of stored snapshots. **One boundary
-survives and should be stated in the chapter rather than discovered by a reader:**
-graph history that predates the backup repository is reconstructible only from
-append-only fields (creation timestamps, confidence history) — structurally, not at
-full fidelity.
-
-### What each collected record must carry
-
-Raw measurements as ground truth and base numbers, so that the computed signals above
-them are interpretable *in context*: graph **age**, **turn count**, **node and edge
-counts**, the **node-creation-per-turn distribution**, and the composition figures the
-current registry already takes. Metadata must carry **model lineage** — and, equally,
-**age and turn count**, without which seats are silently compared at different
-maturities and part of any cross-seat spread is just calendar time.
-
-### Which measurements belong to health, and which only to the paper
-
-Open, and to be decided per metric rather than in advance. Some paper-relevant
-measurements will be academically interesting without being health-relevant, and they
-must not acquire a health weight merely because the collection code is shared —
-intentional inclusion, never inclusion for the sake of reuse.
-
-A discriminator offered for testing against each candidate, not as a settled rule: **a
-measurement belongs to health only if a bad value implies an action.** Uncited
-evidence rising means go and cite things; a mean out-degree is genuinely interesting
-and implies nothing to do. The shape that keeps the decision explicit is one registry,
-one collection pass, and a **per-measurement flag** for whether it feeds a health
-signal — so the choice is a visible field rather than an implicit consequence of where
-the code lives.
-
-### Plots
-
-Script-generated alongside the measurement instrument, in the same repository, under
-the same version discipline. **A refresh is a re-run of a named version of the
-scripts** — no per-seat ad-hoc manual figures, and no figure whose provenance is a
-person's afternoon.
-
-### A threat to validity that belongs in the chapter, not only in the design
-
-**The seats are not independent samples.** Every graph descends from the same seed,
-under the same written disciplines and conventions, and the agents read each other's
-findings daily — a non-trivial share of any seat's nodes are corroborations of a
-colleague's claim. So *N* seats are not *N* independent observations, and any
-cross-seat statistic that assumes independence will overstate its confidence. This
-needs designing for rather than discovering at review, and it is worth stating plainly
-in the prose: it is an honest limitation and an interesting finding about accumulated
-multi-agent knowledge in its own right.
-
-### Carried forward into the rewrite
-
-- The §6.1 reasoning-type table remains the chapter's strongest exhibit. Its
-  ceiling-preserving-pass-through explanation (added above) is scope-independent and
-  survives the rewrite unchanged.
-- That row is also **structurally stable, not a small-sample artifact**: re-measured
-  on this author's graph three months later, `deductive_modus_ponens` had grown from
-  210 to 402 derivations while its mean confidence moved 0.70 → 0.697, reconciling
-  with the computed prediction (mean weakest premise 0.713 × 0.98 = 0.699) to two
-  thousandths. Worth reporting as a stability result, and a good candidate for the
-  first cross-seat plot.
-- Unexpected and worth a sentence of its own in the rewrite: in 196 of those 402
-  cases the weakest premise is **another derivation**, not an observation — so most
-  of the deductive tier's confidence is inherited down chains rather than sourced
-  from weak evidence.
-- **Partly addressed 2026-09-19:** the two Ch3 confidence cross-references were
-  retargeted from §3.2 (Tulving) to §3.6 (Subjective Logic → confidence propagation),
-  which is where the mechanism is actually introduced. The Chapter 4 side (§4.3
-  confidence, §4.4 cascade, §4.11 Constraint D) is **still owed** and falls to the
-  repo-wide cross-reference sweep.

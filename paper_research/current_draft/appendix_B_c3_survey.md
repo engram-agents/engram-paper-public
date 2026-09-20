@@ -1,26 +1,5 @@
 # Appendix B — The Condition-3 Survey: Why No Surveyed System Self-Maintains Arbitration
 
-> **DRAFT SAMPLE — 2026-06-17.** Supplemental material backing the Chapter 1 §1.4
-> claim that *no system in our first-hand survey satisfies Kahl's Condition 3
-> strictly.* This appendix makes that claim auditable: it lists every surveyed
-> system, names its specific failure mode, and gives a **verbatim passage** from
-> the primary source (or, where the failure is one of genuine *absence*, says so
-> plainly rather than manufacturing a quote). Every quote below was verified
-> first-hand against the source — the arXiv papers, vendor docs, or the committed
-> 2026-05-12 first-hand-read notes; the three most load-bearing (SCM, GAM, Kumiho)
-> were re-confirmed against the source PDFs, which are committed alongside this
-> appendix.
->
-> **This survey is documentary throughout, and that bound is load-bearing.** Every
-> finding below rests on what a system's authors published about it — papers,
-> specifications, vendor documentation. **We did not read the source code of any
-> surveyed system.** So a claim here that some mechanism is absent means *absent from
-> the system's own account of itself*, never *absent from its implementation*. Where
-> a paper describes a mechanism completely enough that the absence is visible in the
-> description — as SCM's does, publishing its sleep cycle's state machine and full
-> pseudocode — we say so and show the description. Where it does not, we mark the
-> claim as unestablished rather than inferring downward from silence.
-
 ## B.0 Scope, date, and method
 
 **The survey.** Eleven systems, read first-hand on **2026-05-12**: Pinecone Nexus,
@@ -281,23 +260,3 @@ needs deciding, orders the decisions so that none rests on a premise still await
 its own, computes what can be computed, and puts each remaining judgement to the
 agent. The claim is that no affected node stays quietly unexamined — not that
 arbitration happens without a mind.
-
----
-
-**Drafting notes (for Lei):**
-1. **Every quote verified first-hand** (read files + the SCM/GAM/Kumiho PDFs,
-   whitespace-normalized). The two honest gaps are flagged inline, not papered over:
-   **TierMem** has no quote (C3 construct absent — verdict "N/A"), and **GAM**'s
-   no-resolution claim is analysis, not a paper sentence (detection *is*
-   paper-verbatim).
-2. **Ordering** is by narrative (closest competitor → detect-only → delegate →
-   text-level → aspiration/absence), not survey order — flag if you'd rather it be
-   alphabetical or grouped strictly by the four failure-mode codes.
-3. **Kumiho framing** is deliberately careful: it *proves* AGM K\*2–K\*6, so the gap
-   is advisory-vs-automatic, never "no belief revision." Overstating Kumiho's
-   weakness is the one place this appendix could lose credibility, so it's hedged.
-4. **One verification residual:** a few quotes are from vendor docs/blogs (Mem0,
-   Pinecone, Anthropic, Letta) captured in the 2026-05-12 read files; the arXiv ones
-   (SCM, GAM, Zep, MemMachine, Kumiho, survey) are paper-stable. Before publication,
-   re-pull the vendor-doc URLs to confirm they haven't changed (docs drift); the
-   arXiv quotes are fixed.

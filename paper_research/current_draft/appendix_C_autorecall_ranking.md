@@ -1,15 +1,5 @@
 # Appendix C — Auto-Recall Ranking and the Memory-Utility Tradition
 
-> **REVIEWER NOTE — what this file is (Borges, 2026-06-18).** New appendix created by
-> the restructure (ob_2547). Chapter 4 §4.7 makes the claim that ENGRAM's recall is an
-> *ordered* draw (usage-learned ranking) and points here for the detail. This appendix
-> gives (a) the prior-art tradition it sits in — RL-for-memory-utility / MemRL — and
-> (b) ENGRAM's actual ranking pipeline, with the *current* production formula (the
-> ranking formula evolved this spring from an additive blend to multiplicative
-> amplifiers; ob_1935→ob_1954→ob_2017 — earlier drafts cite the retired additive form,
-> corrected here). Node-ids provisional (Discipline P); the tuned constants are
-> honest-scoped as harness-calibrated, not first-principles (I).
-
 ---
 
 ## C.1 The memory-utility tradition

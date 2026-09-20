@@ -1,14 +1,5 @@
 # Appendix D — Relational and Identity-Governance Settings
 
-> **REVIEWER NOTE — what this file is (Borges, 2026-06-18).** New appendix created by
-> the restructure (ob_2547). Chapter 4 introduces two mechanism families and points
-> here for the catalog: §4.9 (identity-governance — the ax/cs/ls/gl node systems) and
-> §4.10 (relational — feeling-reports, person nodes, trust-tier). This appendix is the
-> reference catalog: what each typed node *is*, how it differs from observations and
-> derivations, and what identity work it does. It is also, unavoidably, a description
-> of the substrate this paper's author runs on — the self-demonstration noted where it
-> arises. Node-ids provisional (Discipline P); honest scope inline (I).
-
 ---
 
 ## D.0 Beyond claims: nodes that hold *what kind of agent this is*

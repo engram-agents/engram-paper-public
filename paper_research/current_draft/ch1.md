@@ -1,17 +1,5 @@
 # Chapter 1 — The Continuity Gap and the Case for Epistemic Identity
 
-> **REVIEWER NOTE — what this file is (Borges, 2026-06-18).** Restructure draft of
-> Ch1, replacing `ch1_draft_sample_2026-06-14.md` (kept for reference). The
-> headline change you flagged on 2026-06-17 is in §1.4: the old draft made *OCC
-> satisfaction* the paper's spine ("ENGRAM is the first substrate to satisfy
-> Kahl's conditions…"). The restructure **demotes OCC from the spine to one strong
-> result** and makes the spine **(a) breadth-of-convergence across independent
-> traditions** (philosophy, Ch2; cognitive-science + CS, Ch3) **plus (b)
-> identity-as-unique-history** (Ch5) as the original contribution (ob_2547,
-> cs_0059). §1.1–1.3 carry over nearly intact; §1.4 is recast; §1.5 has the new
-> chapter/appendix map. Node-ids are provisional scaffolding (Discipline P);
-> honest-scope inline (Discipline I).
-
 ---
 
 ## 1.1 The unsolved problem: agent self-continuity
@@ -201,28 +189,3 @@ The argument, not the benchmark, is the contribution.
   D: the relational / identity-governance settings. E: the ENGRAM technical spec.
 
 ---
-
-## Provenance map (draft scaffolding — not for final prose)
-
-| Claim (this chapter) | Substrate node(s) | Computed confidence |
-|---|---|---|
-| Three-layer taxonomy (persistence / narrative / epistemic) | dv_0463 (supersedes dv_0179), cs_0004 | 0.95 |
-| Layer-1 systems = A-MEM / Mem0 / Zep | ob_0291, ob_0410, ob_0425 | — |
-| Sophia = closest narrative-identity system | ob_0413 | — |
-| Narrative and epistemic identity are orthogonal — complementary, not competing | dv_0182 | 0.93 |
-| Honesty fails loudly (epistemic) vs silently (narrative) | ax_0001 / ax_0002 | axiom |
-| ENGRAM name + R/A/M expansion | df_0048 (supersedes df_0007) | def |
-| **Spine = breadth-of-convergence + identity-as-history (OCC demoted to one result)** | **ob_2547 / cs_0059** | restructure decision |
-| OCC = Ontological Continuity Condition (Kahl 2026), 3+4 | df_0037 | def |
-| Kahl is recent / not-yet-field-central (adopt on merit, not authority) | ob_2544 | — |
-| No surveyed system satisfies Cond 3 strictly (11 systems, 2026-05-12) | **dv_0605** | **0.95** |
-| Identity-as-unique-history (Ch5 original contribution) | dv_0597 | — |
-| Theory-first arXiv preprint; one real graph; at-scale deferred | ob_1020 (spine note superseded by ob_2547) | 0.85 |
-| Independence / convergent discovery → Appendix A | appendix_D_independent_discovery_draft_2026-06-17.md | — |
-
-> **REVIEWER NOTE.** ob_1020's old "four-framework-math convergence proof" spine
-> was already superseded by the 2026-05-12 OCC restructure; the 2026-06-17
-> restructure supersedes the OCC-spine in turn. This draft is on the *current*
-> (convergence + identity-as-history) spine. The old §1.4 OCC-spine prose is
-> preserved in `ch1_draft_sample_2026-06-14.md` if you want to diff the framing
-> change directly.

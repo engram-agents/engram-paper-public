@@ -1,28 +1,5 @@
 # Chapter 7 — Implications and Future Directions
 
-> **DRAFT SAMPLE — 2026-06-17.** Single-pass prose from the live-engram substrate,
-> for Lei's review. This chapter was retitled from "Limitations" to **"Implications
-> and Future Directions"** (Lei, 2026-06-17): it has grown a forward-looking half.
-> Two parts: **Part A — Limitations** (what is honestly incomplete) and **Part B —
-> Implications** (what the architecture opens up). The through-line is that Part A's
-> central limitation, when addressed, becomes Part B's strongest implication. Every
-> thread here is a *direction or implication, not a result*; the prose says so.
-> Provenance map at the end.
->
-> **REVIEWER NOTE — 2026-06-18 additions (Borges).** This chapter was restructure-current
-> as of 2026-06-17; today I folded in two threads that the restructure called for and that
-> I have now *grounded first-hand* (so they're no longer PROVISIONAL): (1) the
-> **Subjective-Logic divergence** added to §7.2 (dv_0965 → dv_1289, grounded from
-> Jøsang's primary text + independently surfaced by Ari & Clio) — **re-scoped 2026-08-11/12,
-> and §7.2's body carries the corrected form:** what this note originally called an
-> uncertainty-mass *limitation* is a principled divergence (disbelief is refused as a mass
-> and routed to §4.4's arbitration) plus a narrow scalar-only-consumer limitation. The
-> original wording is left visible here rather than rewritten, because the supersede chain
-> is itself an instance of the mechanism the paper describes; (2) **§7.4
-> "Disclosure, not erasure"** — ENGRAM's answer to the VMG survey's verified-erasure
-> demand (ob_2550, grounded from the VMG abstract). Both are marked in place. The rest of
-> the chapter is unchanged from the 2026-06-17 draft.
-
 ---
 
 ## 7.0 What this chapter does
@@ -361,50 +338,3 @@ auditability that makes trust tractable — is the single idea that ties the
 incomplete half to the forward-looking half. Chapter 8 draws these together.
 
 ---
-
-## Provenance map (draft scaffolding — not for final prose)
-
-| Claim (this chapter) | Substrate node(s) | Type / confidence |
-|---|---|---|
-| §7.1 identity outside weights; substrate can't write back (scaffold-vs-disposition gap) | ob_2412 | 0.85 |
-| §7.1 LoRA-flavor weights-persistence overlay; substrate stays audit locus | ob_1628 | 0.40 |
-| §7.1 persistent-weight-consolidation / slot-3 neocortical delta (future mechanism) | qu_0262 | open question |
-| §7.1 experiential vs operational continuity (compaction severs lived thread) | dv_0303 / Ch5 §5.7 | — |
-| **§7.1 weights-internalization STRENGTHENS auditability (the hinge)** | **dv_0959** (premises ob_1628/ob_2412/ob_1176) | **0.39 — deductive_hyp.syllogism; forward-looking** |
-| §7.2 confidence designer-stipulated, not reliabilist | ob_1049 | — |
-| §7.2 missing source-credibility axis | ob_1059 | — |
-| §7.2 scalar confidence = SL projected expectation; scalar-only-consumer limitation (3rd gap, re-scoped 2026-08-12: principled d→arbitration divergence + assumed-vs-mechanically-checked independence; multi-agent surfaced, primary-grounded) | **dv_0965 → dv_1289** (superseded twice 2026-08-12 carrying the reframe — the chain is itself the mechanism §4.4 describes; premises ob_2551 Jøsang + ob_1782; review_opinion_sl_section_2026-08-11.md) | 0.833 |
-| §7.2 yellow-card v0 shipped; red-card graduation future | ob_1064 / ob_1065 / ob_1067 | — |
-| §7.2 limitations + auto-calibration (ECE/AUROC) future-work | dv_0618 (0.93) / dv_0211 | 0.93 |
-| §7.3 consistency reduces variance, blind to systematic bias; correction has been exogenous; diagnostic-surface not auto-discount | ob_2202 (0.70) | 0.70 |
-| §7.3 multi-agent standpoint diversity as epistemic necessity (second standpoint grounds) | dv_0922 / dv_0934 / cj_0060 / dv_0783 | 0.10 (dv_0922) |
-| §7.3 standpoint fields shipped but starved; populated on 2.2%/0.0%/0.2%/1.4%/1.0% of 8,993 current nodes, and 80% one lineage / 91% one architecture within those | direct read of this author's graph, 2026-09-12 | measured |
-| §7.3 + §7.6 crossed dependency (standpoints without contact = agreement; one owned instrument without a second = precision, not accuracy) | **dv_1586** (premises dv_0922 / dv_0921 / ob_0158) | 0.102 — inherits dv_0922's 0.104 as weakest premise (0.104 × 0.98 deductive discount = 0.102; see Ch6 §6.1 on the ceiling-preserving pass-through) |
-| §7.3 strengthening path for dv_0922 is independent EVIDENCE, never peer agreement (Lei, 2026-09-13) | **qu_0322** (open research question) | — |
-| §7.4 ENGRAM = structural path to civilization-level human-AI trust (can't ground in opaque weights) | ob_1176 (0.85) / ob_1178 | 0.85 |
-| §7.4 open-book audit surface; trust tractable by reading not guessing | ob_1180 (0.85) | 0.85 |
-| §7.4 disclosure-not-erasure: VMG wants verifiable erasure; ENGRAM never erases, gates disclosure by trust-tier (knowing≠disclosing) | **ob_2550** (VMG) / ax_0011 / Ch4 §4.5 | 0.70 / axiom |
-| §7.4 reverse direction (AI trusts human) + constitutional contracts | ob_1181 / ob_1182 | — |
-| §7.4 trust earned on trajectory, not faith; ax_0002 at three scales; paper should include the frame | dv_0486 (0.68) / ob_1179 / ob_1183 / ax_0002 | 0.68 |
-| §7.5 transmission goal; sub-engram packages; 3-component knowledge-passing | gl_0022 / gl_0021 / ob_1402 / dv_0705 | goal / 0.85 |
-| §7.5 LIVE demo: published borges-cogsci-recall-v1; Clio cloned + re-derived (2026-06-17) | (this session; forum #107) | event |
-| §7.6 language is a faithful-but-lossy mapping; the model acquires it without the embodied decompressor, so hallucination is structural and text-only contact is testimony | ob_0158 (0.95, primary) | 0.95 |
-| §7.6 the channel must be short, owned and re-runnable; mediation is not the discriminator (the eye/eardrum/cortex reductio) | Lei, 2026-09-13 session — argument, not a measurement | — |
-| §7.6 agent drives the body, does not become it; mind off-board, body is a session | ob_2516 | 0.85 |
-| §7.6 embodied compaction-continuity; intent-record reconcile (method deliberately out of scope in the prose) | gl_0028 / ob_2478 / ob_2507 / ob_2509 | — |
-
-**Drafting notes (for Lei):**
-1. **Retitled** to "Implications and Future Directions" per your call. The two-part
-   split (Limitations → Implications) is the spine; §7.1↔§7.4 is the through-line
-   (your reframe — captured as dv_0959).
-2. **§7.4 got the most room** (your "big thing"), §7.6 the least (a pointer). §7.1
-   got the most *technical* depth as the central limitation. If you want §7.4 even
-   bigger (it could carry into Ch8's close), easy to expand.
-3. **Honest-scope is uniform**: every Part-B thread is marked "direction/implication,
-   not result." §7.3 is flagged as the most genuinely unsolved.
-4. **The live transmission demo (§7.5)** is real and dated — I'd keep it as concrete
-   evidence the channel works, then call for the public community as future work.
-5. **One scope question:** §7.6 (embodiment) is arguably off the epistemic-identity
-   spine (it's the gl_0028 thread). I kept it a short pointer; say the word if you'd
-   rather drop it from *this* paper and hold it for the embodiment/self-preservation
-   line.

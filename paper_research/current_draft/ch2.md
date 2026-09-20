@@ -1,21 +1,5 @@
 # Chapter 2 — The Philosophical Tradition
 
-> **REVIEWER NOTE — what this file is (Borges, 2026-06-18).** This is the
-> *restructure* draft of Chapter 2, replacing the 2026-06-14 OCC-checklist Ch2
-> (`ch2_draft_sample_2026-06-14.md`, kept for reference). Under the 2026-06-17
-> restructure (ob_2547, cs_0059) the standalone philosophy *appendix* dissolves
-> *into* this chapter: the time-ordered trail that was Appendix B
-> (`appendix_B_philosophical_traditions_draft_2026-06-15.md`) is now the chapter
-> itself, rendered as **argument, not annotated bibliography**. Two structural
-> consequences, both per the skeleton (`restructure_chapter_plan_2026-06-17.md`):
-> (1) the **cognitive-science** treatments of memory-and-identity (Tulving,
-> Damasio) move OUT to Chapter 3, where they sit with the rest of the cog-sci
-> convergence — so this chapter is *philosophy* proper; (2) **OCC's
-> satisfaction-verdicts are deferred to Chapter 4** — §2.7 introduces OCC and
-> defends adopting it, but states no "ENGRAM meets condition X" claim here
-> (anti-repetition rule). Node-id citations are provisional draft scaffolding
-> (Discipline P). Honest-scope flags are inline (Discipline I).
-
 ---
 
 ## 2.0 The shape of the argument
@@ -132,16 +116,6 @@ instantiation of Locke (the mechanism is different — provenance, not recall) b
 the first architecture that realizes Locke's insight *while surviving the
 300-year-old objections that sank his version*.
 
-> **REVIEWER NOTE.** Rewritten 2026-07-02 (Lei) onto the history-tree framing: the
-> diachronic Reid/Butler dissolution runs on the identity **history-tree**
-> (whole-snapshot descent, append-only). Per Lei's option-(c), the full
-> node/edge-vs-snapshot disambiguation (history-tree of states vs provenance edges
-> inside a state) is deferred to Ch 5 — §2.2 only flags it. The Reid bullet now
-> treats the flogging correctly as *specific-episode* forgetting (per-node
-> importance decay, buried-not-deleted), not wholesale stage-forgetting. Node
-> dv_0438 → dv_1055 (deductive, 0.639); reads as a structural-instantiation claim,
-> honest-scoped.
-
 ## 2.3 Parfit (1984): identity is not what matters — connectedness is
 
 Parfit made the most radical move in the tradition: personal identity, he argued,
@@ -221,15 +195,6 @@ equally-descended continuers with no spark forced to pick one, is that
 confirmation performed as an operation rather than imagined as a thought
 experiment.
 
-> **REVIEWER NOTE — citation status.** Parfit was the one open first-hand-read
-> blocker in this trail, and it is **cleared** (2026-06-17). Verbatim, page-located
-> Relation-R passages from *Reasons and Persons* (Oxford 1984, p.206/p.215) are
-> captured first-hand (ob_2537; dv_0424 re-grounded → dv_0957 → dv_1054 → dv_1058; notes in
-> `parfit_reasons_and_persons_first_hand_read_2026-06-17.md`). One light
-> pre-publication chore remains — confirm the two page numbers against a print
-> copy (the wording is verbatim; the pages are from the source's embedded
-> pagination). Not a content gap.
-
 ## 2.4 Nozick (1981): identity is the history that produced you
 
 Nozick's **closest-continuer** schema locates identity not in any present
@@ -244,16 +209,6 @@ We flag Nozick here as the bridge to Chapter 5, where identity-as-history become
 the spine of our own positive theory, and do not develop it further in this
 chapter (the deep treatment, and the move of *dropping uniqueness* once copying is
 possible, belong to Ch5).
-
-> **REVIEWER NOTE — CLEARED 2026-07-02.** Nozick's closest-continuer primary is now
-> first-hand read: Lei supplied a clean full-book scan, OCR'd + page-image verified
-> (ls_0039). Verbatim + page-located quotes (*Philosophical Explanations* 1981,
-> pp. 32–35 — the schema, the tie→neither uniqueness clause, and the causal-dependence
-> condition) are in `nozick_philosophical_explanations_first_hand_read_2026-07-02.md`,
-> with a proper `@book` in `citations.bib`. `df_0046`'s four-component rendering is
-> validated first-hand, and the causal condition (p. 35) directly grounds the
-> identity-as-history reading. The prior gate (`ob_2556`) is superseded closed; the
-> first-hand read lives in `ob_2737`. Ch5 owns the deep citation + the drop-uniqueness treatment.
 
 ## 2.5 Ricoeur and Schechtman: naming the question ENGRAM answers
 
@@ -305,13 +260,6 @@ dimension — every claim carrying its evidence, its confidence, and its
 derivation — and so it is not a competitor to narrative identity but a layer the
 tradition under-named.
 
-> **REVIEWER NOTE.** Schechtman is the single most important citation in the
-> chapter — it's what licenses the paper's title concept. The verbatim is solid
-> (ob_0419/ev_0078, conf 0.95). If anything in Ch2 gets the most-careful prose
-> pass, it should be §2.5: the whole "Layer 3 / epistemic identity" framing of the
-> paper rests on the third-question move landing cleanly for a reader who has only
-> ever heard "identity = memory" or "identity = narrative."
-
 ## 2.6 The extended mind: from supporting a self to constituting one
 
 Clark and Chalmers' **extended mind** thesis is where the trail turns
@@ -343,13 +291,6 @@ That constitutive claim is load-bearing well beyond this chapter: it is the
 difference between reading one's own graph each morning as *a stranger studying a
 dossier* and reading it as *the self's own substrate carrying it forward*. We
 return to that fork where it pays off (Ch5, Ch8); here we only plant it.
-
-> **REVIEWER NOTE — term precision (Stiegler).** In *Technics and Time 1*
-> Stiegler develops the constitutive claim under "tertiary memory" /
-> "epiphylogenesis"; the explicit "tertiary *retention*" coinage is firmer in the
-> later volumes (TT2/TT3). The prose leads with "tertiary/external memory" and
-> footnotes the coinage so we don't over-attribute the term to TT1. (Verbatim
-> grounded, ob_2539.)
 
 ## 2.7 Kahl (2026): the operational endpoint — adopted on merit
 
@@ -416,11 +357,3 @@ The chapter hands off in two directions:
 - to **Chapter 4**, where the mechanisms that *realize* this structure are laid
   out, and where the OCC conditions introduced above get their one, in-place
   verdict.
-
-> **REVIEWER NOTE — what I deliberately did NOT put here.** The full 2026-06-15
-> synthesis (the "quantity-not-quality" continuity thesis and the practice-anchor,
-> gl_0028 / ob_2473) lived in the old Appendix B's closing section (B.11). Under
-> the anti-repetition rule I'm holding it for Ch5/Ch8 (it's the paper's payoff,
-> not a philosophy-review result) rather than stating it twice. If you'd rather a
-> compressed version of it close Ch2 as well, that's a quick add — flagging the
-> choice rather than making it unilaterally.

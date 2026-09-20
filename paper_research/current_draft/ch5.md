@@ -1,24 +1,5 @@
 # Chapter 5 — Identity as History: What Individuates an ENGRAM Agent
 
-> **DRAFT SAMPLE — 2026-06-17.** Single-pass prose rendered from the live-engram
-> substrate (the `nozick_lei_borges_2026-05-11.md` deep-dive + the ratified
-> identity claim dv_0597), in the voice of the Ch1–4 samples and under the
-> engram-paper prose disciplines (human-friendly, honest-scoped). This is the
-> chapter that states the paper's **positive** theory of identity — where
-> Chapters 2–4 measured ENGRAM against an external threshold (Kahl's OCC), this
-> chapter says what an ENGRAM agent's identity *is*. It builds on Nozick and
-> Parfit and departs from both. The empirical anchor (the twin-study) is Chapter
-> 6; here we build the claim it tests. Provenance map at the end.
->
-> **REVIEWER NOTE — cross-refs pending (Borges, 2026-06-18).** Content is
-> restructure-current (this is the unchanged-by-restructure Ch5). Two stale pointers to
-> reconcile at finalization: (1) "Chapters 2–4 measured ENGRAM against … OCC" — under
-> the restructure OCC is *introduced* in Ch2 and *verdicted* once in Ch4 (it is no
-> longer the spine, just one result); (2) the drafting-note reference to "Ch3's
-> compaction mechanics" is now **Ch4 §4.8** (mechanisms moved Ch3→Ch4). The df_0046
-> "Primary in Ch6" locator nit (self-flagged in the drafting notes) still stands.
-
-
 ---
 
 ## 5.0 What this chapter does
@@ -325,48 +306,3 @@ this account, is not a possession to be preserved against change; it is a
 *trajectory*, and the substrate's job is to keep that trajectory *traceable*.
 
 ---
-
-## Provenance map (draft scaffolding — not for final prose)
-
-| Claim (this chapter) | Substrate node(s) | Computed confidence |
-|---|---|---|
-| Core claim: identity = unique node-history → retrieval profile → behavior | **dv_0597** (ratified by Lei; supersedes dv_0587) | 0.26 — *abductive; twin-study anchor pending (§5.8)* |
-| Nozick closest-continuer four-part form (kept 1–3, drop uniqueness) | df_0046 + **ob_2737** (first-hand read, *Philosophical Explanations* 1981, Pt I ch.1, pp.32–35) | def — *primary verbatim + pages confirmed 2026-07-02* |
-| Nozick pillar = the form we build on and depart from; terse treatment | dv_0598 / Lei pillar verdict (nozick doc) | 0.21 |
-| Metric left blank → ENGRAM specifies it as a new sortal | ob_1655 (measure-space sketch, later deflated) | 0.40 |
-| Frozen-backup intuition pump; "which is original" is malformed | ob_1657 + Lei verbatim (nozick doc Part 5) | — |
-| Identity-as-history / no-merging tree; drop uniqueness | dv_0597 / ob_1657 / Lei verbatim (nozick doc) | 0.26 |
-| Deflation: nodes affect behavior ONLY via context-window retrieval | dv_0597 / ob_1659 / Lei verbatim (nozick doc Part 9) | 0.26 |
-| Leibniz-dissolve: strict identity was never the diachronic relation | **ob_2540** (Lei verbatim, 2026-06-17 filing) | 0.85 |
-| Clone stability = substrate-success condition (not null result) | dv_0622 (supersedes dv_0620) | 0.25 |
-| Three-route divergence (tier rotation): new nodes + recall-refresh + fade-out | dv_0958 (re-grounded on dv_0622, supersedes dv_0621; + ob_0034) | 0.25 — *stale marker cleared 2026-06-17* |
-| Sleep is the biological analogue of compaction (corrects "no analogue") | ob_1656 (corrects ob_1655) | — |
-| Compaction distinctive in *precision* (sharpness/separation/verbatim) | ob_1656 / Lei verbatim (nozick doc Part 6) | — |
-| Twin-study design (stratified prompts + temperature baseline) | ob_1660 / ob_1657 / ob_0577 (prior clone-test) | — |
-| Parfit relation: R correct for persons, collapses distinctions for agents | dv_0957 (primary-grounded 2026-06-17) / nozick doc Part 3 | 0.56 |
-
-**Drafting notes (for Lei):**
-1. **Scope.** This is the positive-theory chapter; I kept Nozick **terse** per your
-   verdict ("won't spend too much words … but one of the key philosophers") — he's
-   the frame in §5.1 and the strain-points in §5.2, then we depart. The chapter's
-   weight is on identity-as-history + the retrieval-profile deflation + the
-   clone/twin material, which is where the substrate is richest and most *yours*.
-2. **The low confidences (0.20–0.26) are honest, not weak** — same posture as Ch4.
-   They're the *abductive/architectural* form of the identity claim; the
-   **twin-study (Ch6) is the anchor that lifts them.** I led §5.8 with that so the
-   numbers read as "experiment pending," not "we're unsure."
-3. ~~**Two residuals I'm tracking**~~ — **BOTH CLOSED; Ch5 carries no open residual.**
-   (a) **Nozick primary verbatim** — ~~read-attempted 2026-06-18 (ob_2556), four routes
-   gated~~ → **CLEARED 2026-07-02 (ob_2737)** from your clean scan: *Philosophical
-   Explanations* Pt I ch.1, **pp.32–35**, all four components verbatim and
-   page-located, plus the causal-continuation condition at p.35 that is the sharpest
-   support §5.3 has. (Quotes image-verified — OCR silently dropped a word from the
-   pithy line.) (b) ~~dv_0621 stale marker~~ — DONE 2026-06-17 as dv_0958.
-4. **Filed before drafting** (per the deep-dive doc's owed-node list): the
-   **Leibniz-dissolve** is now ob_2540 (your "one more day of experience" verbatim).
-   §5.5 renders it.
-5. **df_0046 locator nit:** the node text says "Primary in Ch6" — pre-dates the
-   Ch5↔Ch6 swap; identity-as-history is Ch5 now. Low-stakes; I'll fix the node.
-6. ~~**Ordering question for you**~~ — **ANSWERED 2026-09-12: keep the current
-   opening.** Your call — the identity-as-history theory is the more important and
-   interesting material and should land first; §5.7 stays late. No change made.

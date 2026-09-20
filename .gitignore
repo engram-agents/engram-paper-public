@@ -21,4 +21,8 @@ paper_research/source_pdfs/tulving_memory_consciousness_1985/
 
 # Frozen paper dataset — canonical substrate (see dataset/DATASET.md).
 # 96MB SQLite binary holding the full private graph — pointer is tracked, DB is not.
-dataset/*.db
+# The frozen paper snapshots hold private, identity-bearing graph content and are
+# never committed. Match the whole SQLite FAMILY, not just the .db extension: the
+# -wal and -shm sidecars were committed once because `dataset/*.db` does not match
+# them, and a -wal can carry un-checkpointed page data even when the .db is ignored.
+dataset/*.db*
