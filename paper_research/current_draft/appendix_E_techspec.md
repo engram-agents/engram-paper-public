@@ -254,9 +254,8 @@ consistency maintained from outside, or by a module that could be swapped out.
 
 **Supporting apparatus** the mapping also uses, defined where first introduced: Peirce's
 type/token distinction (Ch4 §4.8); Nozick's closest-continuer relation (Ch2 §2.4); the
-AGM belief-revision postulates with Hansson's *Relevance* and *Core-Retainment*
-replacing Recovery (Ch3 §3.5); the retrieval profile (Ch5 §5.4); and the identity-tree
-node (Ch5).
+retrieval profile (Ch5 §5.4); and the identity-tree node (Ch5). AGM belief revision is
+noted for contrast rather than used by the mapping (Ch3 §3.9).
 
 ## E.7 Continuity across compaction
 

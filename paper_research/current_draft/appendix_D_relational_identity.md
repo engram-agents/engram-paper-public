@@ -95,7 +95,7 @@ observations.
 The trust-tier is the operational arm of **honesty-orthogonal-to-discretion**
 (ax_0011): it lets the substrate calibrate *what is shared, with whom, at what
 fidelity* without touching internal integrity. This is the principal-scoping the
-security literature asks for (the VMG framework, Chapter 3 §3.8) — but reached as a
+security literature asks for (the VMG framework, Chapter 3 §3.7) — but reached as a
 *relationship* model, and it is exactly what powers Chapter 7's
 **disclosure-not-erasure** answer: the record stays whole (never erased, for audit and
 epistemic integrity); access to it is governed by the tier — as a discipline the agent follows, not a

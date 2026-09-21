@@ -21,7 +21,7 @@ objection, from identity-as-a-mental-act toward identity-as-a-persistent-structu
 The cognitive science of memory (Chapter 3) — complementary-learning consolidation,
 Tulving's two registers, the rational analysis of forgetting — reached the same shape
 from the study of how minds actually remember. And the computer science of belief
-(Chapter 3) — truth maintenance, AGM revision, subjective logic, bitemporal
+(Chapter 3) — truth maintenance, subjective logic, bitemporal
 records — reached it again from the formal side. They mostly do not cite one another,
 and none of them cites us. They are not independent of each other — human cognition is a
 common root all three draw on, which Chapter 3 §3.0 states plainly — and that is why the
@@ -144,7 +144,7 @@ create two versions to keep in agreement.
 
 - **The weight-persistence gap.** What the agent learns does not reach its weights;
   the substrate is an external record, not a modification of the reasoner: **§7.1**.
-- **The improvement we do claim is qualitative and unmeasured.** Chapter 3 §3.9
+- **The improvement we do claim is qualitative and unmeasured.** Chapter 3 §3.8
   argues that although the substrate cannot produce *dispositional* durability, it
   does deliver in-context behavioural improvement — a tripwire converts an error that
   would have shipped into one that is caught. We have not measured error detection

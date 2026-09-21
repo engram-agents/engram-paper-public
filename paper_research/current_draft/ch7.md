@@ -69,14 +69,14 @@ stays the audit surface; the internalized weight layer is the habituated complem
 
 ## 7.2 Confidence is theoretically derived, not outcome-calibrated
 
-The confidence model (Ch3 §3.6, built in Ch4 §4.3) is the paper's distinctive mechanism, and its
+The confidence model (Ch3 §3.5, built in Ch4 §4.3) is the paper's distinctive mechanism, and its
 honest limitation has been flagged from the start: the discount constants are
 **designer-stipulated from epistemological intuition, not calibrated against
 outcomes** (ob_1049). By Goldman's reliabilist standard, ENGRAM offers
 provenance-graded *plausibility*, not measured truth-ratios. A second gap: the model
 has **no source-credibility axis** — two sources of very different reliability but
 the same `quote_type` contribute equal confidence (ob_1059). A third gap, sharpened
-by the Subjective-Logic comparison (Ch3 §3.6) and then re-scoped against Jøsang's
+by the Subjective-Logic comparison (Ch3 §3.5) and then re-scoped against Jøsang's
 primary text (2026-08-11/12): ENGRAM's confidence is a single **scalar**,
 corresponding to Subjective Logic's *projected expectation* `E = b + a·u`. An
 earlier draft called this a genuine representational limitation; the accurate,
@@ -120,7 +120,7 @@ numbers are ground truth.
 
 ## 7.3 Consistency corrects variance, not systematic bias
 
-The cascade and contradiction machinery (Ch3 §3.4–§3.5, Ch4 §4.4) is a *coherence*
+The cascade and contradiction machinery (Ch3 §3.4, Ch4 §4.4) is a *coherence*
 mechanism: it catches claims that are mutually inconsistent — random error, the
 *variance* term. It is **structurally blind to systematic single-standpoint bias**,
 because bias is a *correspondence* error orthogonal to coherence: a belief set that
@@ -227,7 +227,7 @@ memory-security literature, and resolving it sharpens the position. The field's 
 security survey (Lin et al. 2026, Verifiable Memory Governance) concludes that
 long-term-memory security must be "anchored in storage-time provenance" and lists
 **Forget & Rollback** as a required governance phase — i.e. *verifiable erasure*
-(ob_2550). ENGRAM agrees on provenance (it is native there, Ch3 §3.8) but diverges on
+(ob_2550). ENGRAM agrees on provenance (it is native there, Ch3 §3.7) but diverges on
 erasure, and the divergence is principled: **ENGRAM never erases.** Deleting a node
 would break the audit trail and the cascade — the very things that make epistemic
 identity fail *loudly* rather than silently. Instead ENGRAM separates two axes the

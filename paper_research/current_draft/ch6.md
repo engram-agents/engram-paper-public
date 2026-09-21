@@ -39,7 +39,7 @@ single graph, with the limitation named.
 
 ## 6.1 The confidence model, in real use — the structural-honesty filter at scale
 
-The paper's distinctive mechanism is reasoning-type-aware confidence (Ch3 §3.6):
+The paper's distinctive mechanism is reasoning-type-aware confidence (Ch3 §3.5):
 the author declares the *kind* of argument, and the substrate *computes* the number.
 The empirical question is whether, across hundreds of real claims, that computation
 produces a **differentiated, honest distribution** — or whether it collapses toward

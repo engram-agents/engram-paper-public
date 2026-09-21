@@ -73,14 +73,14 @@ revision — it is that the cascade **advises** rather than **acts**.
 ### SCM — Sleep-Consolidated Memory (arXiv 2604.20943) — **(N) no resolution**
 Has a `contradicts` edge predicate and a sleep cycle, but the resolution is
 promised, not implemented: the same edges that §3.2 says are "flagged for
-resolution" are used in §3.6 only as a **trigger metric**.
+resolution" are used in §3.5 only as a **trigger metric**.
 
 - *paper-verbatim* (§3.2): "when a user states a preference that contradicts a
   previously stored preference, the system records a contradicts edge and **flags
   the conflict for resolution during sleep**."
-- *paper-verbatim* (§3.6): "Conflict density is the ratio of contradicts edges to
+- *paper-verbatim* (§3.5): "Conflict density is the ratio of contradicts edges to
   total edges in the long-term memory graph: ρ(G) = |E_contradicts|/|E|."
-- *paper-verbatim* (§3.6): the sleep cycle is "implementing three distinct offline
+- *paper-verbatim* (§3.5): the sleep cycle is "implementing three distinct offline
   processes" — NREM consolidation (Hebbian strengthening plus proportional
   downscaling), REM dreaming (random-walk sequence integration), and value-based
   forgetting — presented as a state machine (Figure 2) with "the full pseudocode
@@ -91,7 +91,7 @@ resolution" are used in §3.6 only as a **trigger metric**.
   level of the whole document: the string *resolution* occurs **twice** in the SCM
   paper — once in §3.2's promise quoted above, and once in future work, listing
   "contradictory information resolution" among capabilities harder evaluations
-  should test. It occurs nowhere in §3.6, §3.7, or Algorithm 1. Because SCM
+  should test. It occurs nowhere in §3.5, §3.6, or Algorithm 1. Because SCM
   publishes its sleep cycle's complete state machine and pseudocode, this absence is
   visible *in the paper's own account*, and needs no claim about SCM's code. SCM has
   the surface appearance of structural conflict handling without the substance: no
@@ -227,7 +227,7 @@ we report that as *not documented* rather than asserting overwrite. Verdict: C3 
 | System | C3 failure mode | Verbatim available? |
 |---|---|---|
 | Kumiho | **Advisory / opt-in** (revision exists, not automatic) | yes (AnalyzeImpact, Depends_On "may be") |
-| SCM | No resolution (aspirational flag, trigger-only) | yes (§3.2 vs §3.6) |
+| SCM | No resolution (aspirational flag, trigger-only) | yes (§3.2 vs §3.5) |
 | GAM | Detect-only (no resolution prose) | partial — `contradict` edge yes; resolution-gap = analysis |
 | Zep/Graphiti | Ephemeral, single-edge, no cascade | yes (§2.2.3) |
 | Mem0 v3 | External delegation (retrieval ranking) | yes — cleanest in survey |

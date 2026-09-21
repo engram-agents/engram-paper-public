@@ -118,20 +118,7 @@ in typed LLM-agent memory, not the first *naming*.
 **→ Ch4 §4.2 + §4.4** (provenance primitives; retraction cascade → Condition 3). [gap
 SOLID ob_1571; mechanism first-hand from Doyle 1979 via the Ginsberg reprint — ob_2555 closed]
 
-### 3.5 AGM belief revision + Hansson → supersede / retract semantics
-
-The AGM framework (Alchourrón, Gärdenfors & Makinson) is the canonical formal theory of
-rational belief change; Hansson's belief-base postulates — *Relevance* and
-*Core-Retainment* — replace AGM's Recovery for the realistic case where beliefs have
-explicit support. ENGRAM's cascade meets exactly these postulates (only genuinely
-dependent claims are touched; every marked claim provably depended on the retracted
-source), and meets them at the **architectural-cascade** level rather than the
-retrieval-surface level (dv_0613) — the distinction from the closest competitor.
-
-**→ Ch4 §4.4** (retraction cascade → Condition 3): AGM/Hansson is the formal precedent
-for the supersede/retract semantics. [SOLID: df_0049–df_0053, dv_0613]
-
-### 3.6 Subjective Logic → confidence propagation, with an honest divergence
+### 3.5 Subjective Logic → confidence propagation, with an honest divergence
 
 Jøsang's Subjective Logic is an algebra of graded opinions: an opinion is (belief,
 disbelief, uncertainty, base-rate) with `b+d+u=1`, and fusion operators combine opinions
@@ -154,7 +141,7 @@ future direction, not hidden.
 **→ Ch4 §4.3** (reasoning-type confidence → Constraint A) and **Ch7** (the divergence).
 [GROUNDED this session]
 
-### 3.7 Bitemporal data / TOKI → supersede-retains-the-old
+### 3.6 Bitemporal data / TOKI → supersede-retains-the-old
 
 Bitemporal databases distinguish *valid time* (when a fact was true in the world) from
 *transaction time* (when the system recorded it), so an update never destroys the prior
@@ -165,7 +152,7 @@ node is not deleted but kept, with the supersede edge preserving the history (th
 
 **→ Ch4 §4.4 / §4.8** (supersede semantics; continuity history). [GROUNDED — ob_2554]
 
-### 3.8 The 2025–26 agent-identity strand → provenance-native, ahead on the named axis
+### 3.7 The 2025–26 agent-identity strand → provenance-native, ahead on the named axis
 
 The newest convergence is live, in the agent-memory literature itself. The **VMG
 survey** (Lin et al. 2026, *A Survey on Long-Term Memory Security in LLM Agents*, arXiv
@@ -183,13 +170,13 @@ field's named bottleneck is ENGRAM's foundation. [GROUNDED — VMG ob_2550, soul
 
 ---
 
-### 3.9 Where the contemporary field disagrees with us
+### 3.8 Where the contemporary field disagrees with us
 
 The sections above name traditions ENGRAM *answers*. This one is different in kind
 and is separated for that reason: it is the paper's **positioning against live,
 contemporary work** — rubrics written by others that ENGRAM can be scored against,
 and the places where that work's authors would object to what we claim. A reader
-arriving from §3.8 expecting one more precedent should read what follows as the
+arriving from §3.7 expecting one more precedent should read what follows as the
 argument with the field, not as another ancestor.
 
 **Three published rubrics, and what happens when you score against more than one.**
@@ -360,6 +347,29 @@ reasoned from a cognitive-architecture framework and one from the joint pressure
 context-window budget and a deliberate choice to make ambient recall lossy, arriving
 at the same mechanism.
 
+### 3.9 A note on AGM belief revision, for readers who see the resemblance
+
+Readers who know the AGM framework (Alchourrón, Gärdenfors & Makinson 1985) will notice a
+family resemblance between belief contraction and ENGRAM's retract-with-cascade. The two
+efforts are oriented differently, and this paper does not claim AGM's postulates for
+ENGRAM. AGM asks how a *closed* theory — a set of propositions closed under logical
+consequence — should give up one proposition and stay closed and consistent; its own first
+paragraph poses "which propositions should be rejected along with x so that the contracted
+theory will be closed under logical consequence", and its named application is legal
+derogation (AGM 1985, p. 510). ENGRAM asks how an agent should keep a *living* record of
+what it has actually committed — never closed, its dependencies recorded and uncertain —
+honest as new evidence arrives: it moves toward consistency through the agent's own
+adjudication and, by design, never arrives. The formal precedent for the cascade itself is
+Doyle's truth maintenance (§3.4, Ch4 §4.4). What the two share is the imperative both
+mechanisms serve from opposite directions — a rejected claim must not stay silently
+load-bearing — and AGM's own authors' observation that the intuitive process lives at the
+level of a theory's base rather than the theory as a whole (Alchourrón & Makinson 1982,
+p. 21).
+
+[SOLID: dv_1658 — AGM/Hansson as the closed-theory contrast, from first-hand reads of
+AGM 1985 p. 510 and Alchourrón & Makinson 1982 pp. 16, 21; postulate statements via
+Hansson's own encyclopedia entry and Rocha & Wassermann. Hansson 1991 itself unread.]
+
 ---
 
 ## 3.10 What the two strands show, and where they hand off
@@ -367,7 +377,7 @@ at the same mechanism.
 Two literatures that mostly do not cite each other — and neither of which cites
 us — reached every structure ENGRAM is built from: CLS for consolidation, Tulving for the
 two recall registers, rational-analysis for adaptive forgetting, TMS for
-provenance-and-cascade, AGM/Hansson for revision semantics, Subjective Logic for graded
+provenance-and-cascade, Subjective Logic for graded
 confidence, bitemporal/TOKI for supersede-retains-old, and the 2026 agent-security
 literature for provenance-first governance. Add Chapter 2's philosophy line and the
 convergence spans **three** traditions — not disjoint ones, per §3.0: they share
@@ -380,7 +390,7 @@ ENGRAM's structure a substrate-independent regularity — well-founded, not unor
 and relocates ENGRAM's honest distinctiveness to the integration layer and the
 epistemic-identity purpose. One genuine *divergence* (Subjective
 Logic's belief/disbelief/uncertainty simplex, which ENGRAM does not collapse but
-normalizes away into structure — §3.6) and one genuine *gap-it-fills* (the unwalked
+normalizes away into structure — §3.5) and one genuine *gap-it-fills* (the unwalked
 TMS→agent-memory bridge) are carried forward rather than smoothed over.
 
 **Hands off to Chapter 4**, where each of these mechanisms is built and mapped — every

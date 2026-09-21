@@ -142,7 +142,7 @@ author having studied these results*.
 - **Cognitive science and computer science** (Chapter 3) reach the same structures
   from the other side: complementary-learning-systems consolidation, Tulving's
   memory taxonomy, rational-analysis forgetting; and truth-maintenance systems,
-  AGM belief revision, subjective logic, bitemporal databases, and the 2025–26
+  subjective logic, bitemporal databases, and the 2025–26
   agent-memory work. No component of ENGRAM is uniquely novel — and *that is the
   point*: a mechanism precedented across fields that reason from different evidence
   toward different ends is a **substrate-independent regularity**, not a local

@@ -42,7 +42,7 @@ The whole chapter in one table. Each row is a section below.
 |---|---|---|---|
 | Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle **[gap SOLID ob_1571; primary first-hand 2026-07-02]** | — (structural prerequisite) |
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang **[GROUNDED ob_2551/dv_0965 → dv_1289]**, w/ honest divergence | **Constraint A** (unified policy-selection) |
-| Retraction cascade (§4.4) | auto error-correction through `derives_from` | AGM + Hansson [SOLID]; TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) |
+| Retraction cascade (§4.4) | auto error-correction through `derives_from` | TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) |
 | Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus [SOLID] + Anderson-Schooler **[GROUNDED ob_2552/dv_0966]** | — (scopes what Cond-3 arbitration ranges over) |
 | Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving [SOLID] + ACT-R spreading activation **[secondary — not first-hand; Tulving carries it]** | — (binds Cond 3: can't suppress by not looking) |
 | Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL **[ob_0647/ob_0651, prior read]** + spaced-repetition [SOLID] | — |
@@ -235,15 +235,16 @@ lights up red, on its own, where you will see it next time you look — not in a
 report you have to remember to run. That is the difference between a memory that
 *can be* audited and one that audits *itself*.
 
-**Tradition.** Two, converging. **AGM belief revision + Hansson** [SOLID]: the
-cascade satisfies Hansson's belief-base postulates that replace AGM Recovery —
-*Relevance* (only genuinely dependent claims are touched) and *Core-Retainment*
-(every marked claim provably depended on the retracted source, by `derives_from`
-traversal) — and meets them at the **architectural-cascade** level (the mark
-propagates as commitment), not at the **retrieval-surface** level (deprecated items
-filtered at query time). That last distinction is what separates ENGRAM from its
-closest competitor (dv_0613). And **TMS dependency-directed backtracking** (Doyle)
-**[gap SOLID ob_1571; mechanism first-hand from Doyle via the Ginsberg reprint, read visually — ob_2555 closed, as §4.2]** is the CS-side precedent for the same move.
+**Tradition.** **TMS dependency-directed backtracking** (Doyle)
+**[gap SOLID ob_1571; mechanism first-hand from Doyle via the Ginsberg reprint, read visually — ob_2555 closed, as §4.2]**: a retracted justification propagates to
+everything that rested on it. That is the precedent; this paper claims no
+belief-revision postulate for the cascade, and AGM's different orientation is noted at
+the end of Chapter 3 (§3.9). What the cascade *does* claim is where the marking happens
+— at the **architectural-cascade** level (the mark propagates as commitment), not at the
+**retrieval-surface** level (deprecated items filtered at query time). That distinction
+rests on how a correction is *bound* — a state change the substrate performs versus an
+analysis a caller may run — and it is what separates ENGRAM from its closest
+competitor (dv_1657).
 
 **OCC — Condition 3 (Self-Maintaining Arbitration): strict satisfaction, sole
 satisfier in the surveyed field.** Kahl's strongest condition asks that conflicts
@@ -340,7 +341,7 @@ relevant to the current context without the agent reaching for them. There are t
 registers, and the split is deliberate (dv_0264): an **auto-surface** ("this sounds
 familiar" — noetic, lossy, hint-level) that signals *something is relevant*, and
 **deliberate recall** ("I need to know exactly" — source-monitored, full-content
-query; the structural sense only, never Tulving's phenomenal one — §3.8) that the agent invokes when the auto-surface signals there is something to
+query; the structural sense only, never Tulving's phenomenal one — §3.2) that the agent invokes when the auto-surface signals there is something to
 fetch. The lossy auto-surface is what *teaches* the agent to invoke deliberate
 recall.
 

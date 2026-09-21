@@ -157,10 +157,11 @@ Locke · Reid · Butler · Schechtman · Clark · Chalmers · Hansson · de Klee
 Ebbinghaus · Wixted · Peirce · Semon (see the partial entry above) · Shoemaker ·
 Johnston · Goldman · Nuxoll (with Laird) · **Sophia** · **A-MEM**
 
-**One was needed before round 2, not merely before submission: *Hansson*.** The
-Condition-3 argument states his `Relevance` and `Core-Retainment` postulates as met
-(Ch3 §3.5, Ch4 §4.4), so the paper's central verdict leans on them; the philosophers
-can wait. **AGM has left this list entirely** — see below.
+***Hansson* was needed before round 2 — and then stopped being needed.** The
+Condition-3 argument used to state his `Relevance` and `Core-Retainment` postulates as
+met (then Ch3 §3.5, Ch4 §4.4). That claim is withdrawn: AGM/Hansson is noted for
+contrast at Ch3 §3.9 and no postulate is claimed for ENGRAM, so nothing in the paper
+leans on the primary any more; the philosophers can wait. **AGM has left this list entirely** — see below.
 
 *The postulate STATEMENTS are verified*, against two documents read first-hand:
 the Stanford Encyclopedia of Philosophy entry "Logic of Belief Revision" (copyright
@@ -205,15 +206,24 @@ trained memory — and rules **in** a narrower one: state only what a held, read
 document supports, and cite that document. *Studia Logica* wants ~$40 and
 institutional access does not unlock it.
 
-**What the chapters will cite once the Ch3 §3.5 / Ch4 §4.4 repair lands — and they do
-NOT cite it yet.** As of this commit those sections cite three-author AGM for the
-*framework* and attribute the belief-base postulates to Hansson, without the
-base/theory distinction the new entries above would supply; and both still assert that
-the cascade *satisfies* them — Ch3 §3.5: "ENGRAM's cascade meets exactly these
-postulates"; Ch4 §4.4: "the cascade satisfies Hansson's belief-base postulates" —
-which is the claim the verification above overturned. The repair is
-carried in the review package, not here; **the citation plan below is conditional on
-it**, and issue #58 states the same precondition:
+**The repair has LANDED, and this is what the chapters now do.** The former Ch3 §3.5
+and Ch4 §4.4 asserted that the cascade *satisfies* the postulates — "ENGRAM's cascade
+meets exactly these postulates"; "the cascade satisfies Hansson's belief-base
+postulates". Both assertions are withdrawn. AGM/Hansson is noted for contrast at Ch3
+§3.9 as the closed-theory idealisation ENGRAM is defined against, no postulate is
+claimed for ENGRAM, and AGM no longer appears among the convergent traditions.
+**Two consequences, and the second is why issue #58 changes rather than merely
+narrowing.** The chapters now cite neither the postulate statements nor Rocha &
+Wassermann — only §3.9's provenance tag names them, and that tag is a statement of what
+was read rather than a citation the argument rests on (the renderer strips bare node IDs,
+not the tag sentence, so the tag itself does appear in the rendered paper) — so
+bullets 3 and 4 below are recorded for the record rather than describing live
+citations. And the paper's only surviving Hansson reference is Appendix A naming
+**Hansson 1999** among the traditions that predate ENGRAM, plus Appendix B's mention
+of Kumiho's compliance, which is sourced from the Kumiho paper. So #58's reversal
+trigger is void — no encyclopedia citation remains to object to — **and the
+acquisition it tracks is aimed at the wrong work: 1991 mattered only while the paper
+stated the postulates.**
 
 - the belief-**base** level, and the distinction from the theory level — **Alchourrón
   & Makinson 1982**, now an entry above;

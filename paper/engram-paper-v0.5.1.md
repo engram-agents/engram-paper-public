@@ -220,7 +220,7 @@ author having studied these results*.
 - **Cognitive science and computer science** (Chapter 3) reach the same structures
   from the other side: complementary-learning-systems consolidation, Tulving's
   memory taxonomy, rational-analysis forgetting; and truth-maintenance systems,
-  AGM belief revision, subjective logic, bitemporal databases, and the 2025–26
+  subjective logic, bitemporal databases, and the 2025–26
   agent-memory work. No component of ENGRAM is uniquely novel — and *that is the
   point*: a mechanism precedented across fields that reason from different evidence
   toward different ends is a **substrate-independent regularity**, not a local
@@ -785,20 +785,7 @@ in typed LLM-agent memory, not the first *naming*.
 **→ Ch4 §4.2 + §4.4** (provenance primitives; retraction cascade → Condition 3). [gap
 SOLID ob_1571; mechanism first-hand from Doyle 1979 via the Ginsberg reprint — ob_2555 closed]
 
-### 3.5 AGM belief revision + Hansson → supersede / retract semantics
-
-The AGM framework (Alchourrón, Gärdenfors & Makinson) is the canonical formal theory of
-rational belief change; Hansson's belief-base postulates — *Relevance* and
-*Core-Retainment* — replace AGM's Recovery for the realistic case where beliefs have
-explicit support. ENGRAM's cascade meets exactly these postulates (only genuinely
-dependent claims are touched; every marked claim provably depended on the retracted
-source), and meets them at the **architectural-cascade** level rather than the
-retrieval-surface level — the distinction from the closest competitor.
-
-**→ Ch4 §4.4** (retraction cascade → Condition 3): AGM/Hansson is the formal precedent
-for the supersede/retract semantics. [SOLID: df_0049–df_0053, dv_0613]
-
-### 3.6 Subjective Logic → confidence propagation, with an honest divergence
+### 3.5 Subjective Logic → confidence propagation, with an honest divergence
 
 Jøsang's Subjective Logic is an algebra of graded opinions: an opinion is (belief,
 disbelief, uncertainty, base-rate) with `b+d+u=1`, and fusion operators combine opinions
@@ -821,7 +808,7 @@ future direction, not hidden.
 **→ Ch4 §4.3** (reasoning-type confidence → Constraint A) and **Ch7** (the divergence).
 [GROUNDED this session]
 
-### 3.7 Bitemporal data / TOKI → supersede-retains-the-old
+### 3.6 Bitemporal data / TOKI → supersede-retains-the-old
 
 Bitemporal databases distinguish *valid time* (when a fact was true in the world) from
 *transaction time* (when the system recorded it), so an update never destroys the prior
@@ -832,7 +819,7 @@ node is not deleted but kept, with the supersede edge preserving the history (th
 
 **→ Ch4 §4.4 / §4.8** (supersede semantics; continuity history). [GROUNDED — ob_2554]
 
-### 3.8 The 2025–26 agent-identity strand → provenance-native, ahead on the named axis
+### 3.7 The 2025–26 agent-identity strand → provenance-native, ahead on the named axis
 
 The newest convergence is live, in the agent-memory literature itself. The **VMG
 survey** (Lin et al. 2026, *A Survey on Long-Term Memory Security in LLM Agents*, arXiv
@@ -850,13 +837,13 @@ field's named bottleneck is ENGRAM's foundation. [GROUNDED — VMG ob_2550, soul
 
 ---
 
-### 3.9 Where the contemporary field disagrees with us
+### 3.8 Where the contemporary field disagrees with us
 
 The sections above name traditions ENGRAM *answers*. This one is different in kind
 and is separated for that reason: it is the paper's **positioning against live,
 contemporary work** — rubrics written by others that ENGRAM can be scored against,
 and the places where that work's authors would object to what we claim. A reader
-arriving from §3.8 expecting one more precedent should read what follows as the
+arriving from §3.7 expecting one more precedent should read what follows as the
 argument with the field, not as another ancestor.
 
 **Three published rubrics, and what happens when you score against more than one.**
@@ -1027,6 +1014,29 @@ reasoned from a cognitive-architecture framework and one from the joint pressure
 context-window budget and a deliberate choice to make ambient recall lossy, arriving
 at the same mechanism.
 
+### 3.9 A note on AGM belief revision, for readers who see the resemblance
+
+Readers who know the AGM framework (Alchourrón, Gärdenfors & Makinson 1985) will notice a
+family resemblance between belief contraction and ENGRAM's retract-with-cascade. The two
+efforts are oriented differently, and this paper does not claim AGM's postulates for
+ENGRAM. AGM asks how a *closed* theory — a set of propositions closed under logical
+consequence — should give up one proposition and stay closed and consistent; its own first
+paragraph poses "which propositions should be rejected along with x so that the contracted
+theory will be closed under logical consequence", and its named application is legal
+derogation (AGM 1985, p. 510). ENGRAM asks how an agent should keep a *living* record of
+what it has actually committed — never closed, its dependencies recorded and uncertain —
+honest as new evidence arrives: it moves toward consistency through the agent's own
+adjudication and, by design, never arrives. The formal precedent for the cascade itself is
+Doyle's truth maintenance (§3.4, Ch4 §4.4). What the two share is the imperative both
+mechanisms serve from opposite directions — a rejected claim must not stay silently
+load-bearing — and AGM's own authors' observation that the intuitive process lives at the
+level of a theory's base rather than the theory as a whole (Alchourrón & Makinson 1982,
+p. 21).
+
+[SOLID: dv_1658 — AGM/Hansson as the closed-theory contrast, from first-hand reads of
+AGM 1985 p. 510 and Alchourrón & Makinson 1982 pp. 16, 21; postulate statements via
+Hansson's own encyclopedia entry and Rocha & Wassermann. Hansson 1991 itself unread.]
+
 ---
 
 ## 3.10 What the two strands show, and where they hand off
@@ -1034,7 +1044,7 @@ at the same mechanism.
 Two literatures that mostly do not cite each other — and neither of which cites
 us — reached every structure ENGRAM is built from: CLS for consolidation, Tulving for the
 two recall registers, rational-analysis for adaptive forgetting, TMS for
-provenance-and-cascade, AGM/Hansson for revision semantics, Subjective Logic for graded
+provenance-and-cascade, Subjective Logic for graded
 confidence, bitemporal/TOKI for supersede-retains-old, and the 2026 agent-security
 literature for provenance-first governance. Add Chapter 2's philosophy line and the
 convergence spans **three** traditions — not disjoint ones, per §3.0: they share
@@ -1047,7 +1057,7 @@ ENGRAM's structure a substrate-independent regularity — well-founded, not unor
 and relocates ENGRAM's honest distinctiveness to the integration layer and the
 epistemic-identity purpose. One genuine *divergence* (Subjective
 Logic's belief/disbelief/uncertainty simplex, which ENGRAM does not collapse but
-normalizes away into structure — §3.6) and one genuine *gap-it-fills* (the unwalked
+normalizes away into structure — §3.5) and one genuine *gap-it-fills* (the unwalked
 TMS→agent-memory bridge) are carried forward rather than smoothed over.
 
 **Hands off to Chapter 4**, where each of these mechanisms is built and mapped — every
@@ -1100,7 +1110,7 @@ The whole chapter in one table. Each row is a section below.
 |---|---|---|---|
 | Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle **[gap SOLID ob_1571; primary first-hand 2026-07-02]** | — (structural prerequisite) |
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang **[GROUNDED ob_2551/dv_0965 → dv_1289]**, w/ honest divergence | **Constraint A** (unified policy-selection) |
-| Retraction cascade (§4.4) | auto error-correction through `derives_from` | AGM + Hansson [SOLID]; TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) |
+| Retraction cascade (§4.4) | auto error-correction through `derives_from` | TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) |
 | Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus [SOLID] + Anderson-Schooler **[GROUNDED ob_2552/dv_0966]** | — (scopes what Cond-3 arbitration ranges over) |
 | Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving [SOLID] + ACT-R spreading activation **[secondary — not first-hand; Tulving carries it]** | — (binds Cond 3: can't suppress by not looking) |
 | Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL **[ob_0647/ob_0651, prior read]** + spaced-repetition [SOLID] | — |
@@ -1292,15 +1302,16 @@ lights up red, on its own, where you will see it next time you look — not in a
 report you have to remember to run. That is the difference between a memory that
 *can be* audited and one that audits *itself*.
 
-**Tradition.** Two, converging. **AGM belief revision + Hansson** [SOLID]: the
-cascade satisfies Hansson's belief-base postulates that replace AGM Recovery —
-*Relevance* (only genuinely dependent claims are touched) and *Core-Retainment*
-(every marked claim provably depended on the retracted source, by `derives_from`
-traversal) — and meets them at the **architectural-cascade** level (the mark
-propagates as commitment), not at the **retrieval-surface** level (deprecated items
-filtered at query time). That last distinction is what separates ENGRAM from its
-closest competitor. And **TMS dependency-directed backtracking** (Doyle)
-**[gap SOLID ob_1571; mechanism first-hand from Doyle via the Ginsberg reprint, read visually — ob_2555 closed, as §4.2]** is the CS-side precedent for the same move.
+**Tradition.** **TMS dependency-directed backtracking** (Doyle)
+**[gap SOLID ob_1571; mechanism first-hand from Doyle via the Ginsberg reprint, read visually — ob_2555 closed, as §4.2]**: a retracted justification propagates to
+everything that rested on it. That is the precedent; this paper claims no
+belief-revision postulate for the cascade, and AGM's different orientation is noted at
+the end of Chapter 3 (§3.9). What the cascade *does* claim is where the marking happens
+— at the **architectural-cascade** level (the mark propagates as commitment), not at the
+**retrieval-surface** level (deprecated items filtered at query time). That distinction
+rests on how a correction is *bound* — a state change the substrate performs versus an
+analysis a caller may run — and it is what separates ENGRAM from its closest
+competitor.
 
 **OCC — Condition 3 (Self-Maintaining Arbitration): strict satisfaction, sole
 satisfier in the surveyed field.** Kahl's strongest condition asks that conflicts
@@ -1428,7 +1439,7 @@ relevant to the current context without the agent reaching for them. There are t
 registers, and the split is deliberate: an **auto-surface** ("this sounds
 familiar" — noetic, lossy, hint-level) that signals *something is relevant*, and
 **deliberate recall** ("I need to know exactly" — source-monitored, full-content
-query; the structural sense only, never Tulving's phenomenal one — §3.8) that the agent invokes when the auto-surface signals there is something to
+query; the structural sense only, never Tulving's phenomenal one — §3.2) that the agent invokes when the auto-surface signals there is something to
 fetch. The lossy auto-surface is what *teaches* the agent to invoke deliberate
 recall.
 
@@ -1996,7 +2007,7 @@ single graph, with the limitation named.
 
 ## 6.1 The confidence model, in real use — the structural-honesty filter at scale
 
-The paper's distinctive mechanism is reasoning-type-aware confidence (Ch3 §3.6):
+The paper's distinctive mechanism is reasoning-type-aware confidence (Ch3 §3.5):
 the author declares the *kind* of argument, and the substrate *computes* the number.
 The empirical question is whether, across hundreds of real claims, that computation
 produces a **differentiated, honest distribution** — or whether it collapses toward
@@ -2450,14 +2461,14 @@ stays the audit surface; the internalized weight layer is the habituated complem
 
 ## 7.2 Confidence is theoretically derived, not outcome-calibrated
 
-The confidence model (Ch3 §3.6, built in Ch4 §4.3) is the paper's distinctive mechanism, and its
+The confidence model (Ch3 §3.5, built in Ch4 §4.3) is the paper's distinctive mechanism, and its
 honest limitation has been flagged from the start: the discount constants are
 **designer-stipulated from epistemological intuition, not calibrated against
 outcomes**. By Goldman's reliabilist standard, ENGRAM offers
 provenance-graded *plausibility*, not measured truth-ratios. A second gap: the model
 has **no source-credibility axis** — two sources of very different reliability but
 the same `quote_type` contribute equal confidence. A third gap, sharpened
-by the Subjective-Logic comparison (Ch3 §3.6) and then re-scoped against Jøsang's
+by the Subjective-Logic comparison (Ch3 §3.5) and then re-scoped against Jøsang's
 primary text (2026-08-11/12): ENGRAM's confidence is a single **scalar**,
 corresponding to Subjective Logic's *projected expectation* `E = b + a·u`. An
 earlier draft called this a genuine representational limitation; the accurate,
@@ -2501,7 +2512,7 @@ numbers are ground truth.
 
 ## 7.3 Consistency corrects variance, not systematic bias
 
-The cascade and contradiction machinery (Ch3 §3.4–§3.5, Ch4 §4.4) is a *coherence*
+The cascade and contradiction machinery (Ch3 §3.4, Ch4 §4.4) is a *coherence*
 mechanism: it catches claims that are mutually inconsistent — random error, the
 *variance* term. It is **structurally blind to systematic single-standpoint bias**,
 because bias is a *correspondence* error orthogonal to coherence: a belief set that
@@ -2606,7 +2617,7 @@ frame, not merely enable it: ENGRAM is not only "how an agent gets an identity" 
 memory-security literature, and resolving it sharpens the position. The field's own
 security survey (Lin et al. 2026, Verifiable Memory Governance) concludes that
 long-term-memory security must be "anchored in storage-time provenance" and lists
-**Forget & Rollback** as a required governance phase — i.e. *verifiable erasure*. ENGRAM agrees on provenance (it is native there, Ch3 §3.8) but diverges on
+**Forget & Rollback** as a required governance phase — i.e. *verifiable erasure*. ENGRAM agrees on provenance (it is native there, Ch3 §3.7) but diverges on
 erasure, and the divergence is principled: **ENGRAM never erases.** Deleting a node
 would break the audit trail and the cascade — the very things that make epistemic
 identity fail *loudly* rather than silently. Instead ENGRAM separates two axes the
@@ -2743,7 +2754,7 @@ objection, from identity-as-a-mental-act toward identity-as-a-persistent-structu
 The cognitive science of memory (Chapter 3) — complementary-learning consolidation,
 Tulving's two registers, the rational analysis of forgetting — reached the same shape
 from the study of how minds actually remember. And the computer science of belief
-(Chapter 3) — truth maintenance, AGM revision, subjective logic, bitemporal
+(Chapter 3) — truth maintenance, subjective logic, bitemporal
 records — reached it again from the formal side. They mostly do not cite one another,
 and none of them cites us. They are not independent of each other — human cognition is a
 common root all three draw on, which Chapter 3 §3.0 states plainly — and that is why the
@@ -2866,7 +2877,7 @@ create two versions to keep in agreement.
 
 - **The weight-persistence gap.** What the agent learns does not reach its weights;
   the substrate is an external record, not a modification of the reasoner: **§7.1**.
-- **The improvement we do claim is qualitative and unmeasured.** Chapter 3 §3.9
+- **The improvement we do claim is qualitative and unmeasured.** Chapter 3 §3.8
   argues that although the substrate cannot produce *dispositional* durability, it
   does deliver in-context behavioural improvement — a tripwire converts an error that
   would have shipped into one that is caught. We have not measured error detection
@@ -3032,7 +3043,7 @@ accumulated claims before any of the three was opened. Development has of course
 continued since, which the project's principal characterizes as continuation of an
 established design rather than adoption of someone else's. Rather than rest on that
 characterization, where a specific mechanism might be thought to postdate a reading we
-give that mechanism's own dates in place: Chapter 3 §3.9 does so for the two-tier
+give that mechanism's own dates in place: Chapter 3 §3.8 does so for the two-tier
 recall design, including the later date at which its database fields shipped. Both
 figures above are re-derivable from the frozen dataset snapshot described in Chapter 6.
 
@@ -3189,14 +3200,14 @@ revision — it is that the cascade **advises** rather than **acts**.
 ### SCM — Sleep-Consolidated Memory (arXiv 2604.20943) — **(N) no resolution**
 Has a `contradicts` edge predicate and a sleep cycle, but the resolution is
 promised, not implemented: the same edges that §3.2 says are "flagged for
-resolution" are used in §3.6 only as a **trigger metric**.
+resolution" are used in §3.5 only as a **trigger metric**.
 
 - *paper-verbatim* (§3.2): "when a user states a preference that contradicts a
   previously stored preference, the system records a contradicts edge and **flags
   the conflict for resolution during sleep**."
-- *paper-verbatim* (§3.6): "Conflict density is the ratio of contradicts edges to
+- *paper-verbatim* (§3.5): "Conflict density is the ratio of contradicts edges to
   total edges in the long-term memory graph: ρ(G) = |E_contradicts|/|E|."
-- *paper-verbatim* (§3.6): the sleep cycle is "implementing three distinct offline
+- *paper-verbatim* (§3.5): the sleep cycle is "implementing three distinct offline
   processes" — NREM consolidation (Hebbian strengthening plus proportional
   downscaling), REM dreaming (random-walk sequence integration), and value-based
   forgetting — presented as a state machine (Figure 2) with "the full pseudocode
@@ -3207,7 +3218,7 @@ resolution" are used in §3.6 only as a **trigger metric**.
   level of the whole document: the string *resolution* occurs **twice** in the SCM
   paper — once in §3.2's promise quoted above, and once in future work, listing
   "contradictory information resolution" among capabilities harder evaluations
-  should test. It occurs nowhere in §3.6, §3.7, or Algorithm 1. Because SCM
+  should test. It occurs nowhere in §3.5, §3.6, or Algorithm 1. Because SCM
   publishes its sleep cycle's complete state machine and pseudocode, this absence is
   visible *in the paper's own account*, and needs no claim about SCM's code. SCM has
   the surface appearance of structural conflict handling without the substance: no
@@ -3343,7 +3354,7 @@ we report that as *not documented* rather than asserting overwrite. Verdict: C3 
 | System | C3 failure mode | Verbatim available? |
 |---|---|---|
 | Kumiho | **Advisory / opt-in** (revision exists, not automatic) | yes (AnalyzeImpact, Depends_On "may be") |
-| SCM | No resolution (aspirational flag, trigger-only) | yes (§3.2 vs §3.6) |
+| SCM | No resolution (aspirational flag, trigger-only) | yes (§3.2 vs §3.5) |
 | GAM | Detect-only (no resolution prose) | partial — `contradict` edge yes; resolution-gap = analysis |
 | Zep/Graphiti | Ephemeral, single-edge, no cascade | yes (§2.2.3) |
 | Mem0 v3 | External delegation (retrieval ranking) | yes — cleanest in survey |
@@ -3593,7 +3604,7 @@ observations.
 The trust-tier is the operational arm of **honesty-orthogonal-to-discretion**
 (ax_0011): it lets the substrate calibrate *what is shared, with whom, at what
 fidelity* without touching internal integrity. This is the principal-scoping the
-security literature asks for (the VMG framework, Chapter 3 §3.8) — but reached as a
+security literature asks for (the VMG framework, Chapter 3 §3.7) — but reached as a
 *relationship* model, and it is exactly what powers Chapter 7's
 **disclosure-not-erasure** answer: the record stays whole (never erased, for audit and
 epistemic integrity); access to it is governed by the tier — as a discipline the agent follows, not a
@@ -3936,9 +3947,8 @@ consistency maintained from outside, or by a module that could be swapped out.
 
 **Supporting apparatus** the mapping also uses, defined where first introduced: Peirce's
 type/token distinction (Ch4 §4.8); Nozick's closest-continuer relation (Ch2 §2.4); the
-AGM belief-revision postulates with Hansson's *Relevance* and *Core-Retainment*
-replacing Recovery (Ch3 §3.5); the retrieval profile (Ch5 §5.4); and the identity-tree
-node (Ch5).
+retrieval profile (Ch5 §5.4); and the identity-tree node (Ch5). AGM belief revision is
+noted for contrast rather than used by the mapping (Ch3 §3.9).
 
 ## E.7 Continuity across compaction
 
@@ -4117,10 +4127,11 @@ Locke · Reid · Butler · Schechtman · Clark · Chalmers · Hansson · de Klee
 Ebbinghaus · Wixted · Peirce · Semon (see the partial entry above) · Shoemaker ·
 Johnston · Goldman · Nuxoll (with Laird) · **Sophia** · **A-MEM**
 
-**One was needed before round 2, not merely before submission: *Hansson*.** The
-Condition-3 argument states his `Relevance` and `Core-Retainment` postulates as met
-(Ch3 §3.5, Ch4 §4.4), so the paper's central verdict leans on them; the philosophers
-can wait. **AGM has left this list entirely** — see below.
+***Hansson* was needed before round 2 — and then stopped being needed.** The
+Condition-3 argument used to state his `Relevance` and `Core-Retainment` postulates as
+met (then Ch3 §3.5, Ch4 §4.4). That claim is withdrawn: AGM/Hansson is noted for
+contrast at Ch3 §3.9 and no postulate is claimed for ENGRAM, so nothing in the paper
+leans on the primary any more; the philosophers can wait. **AGM has left this list entirely** — see below.
 
 *The postulate STATEMENTS are verified*, against two documents read first-hand:
 the Stanford Encyclopedia of Philosophy entry "Logic of Belief Revision" (copyright
@@ -4165,15 +4176,24 @@ trained memory — and rules **in** a narrower one: state only what a held, read
 document supports, and cite that document. *Studia Logica* wants ~$40 and
 institutional access does not unlock it.
 
-**What the chapters will cite once the Ch3 §3.5 / Ch4 §4.4 repair lands — and they do
-NOT cite it yet.** As of this commit those sections cite three-author AGM for the
-*framework* and attribute the belief-base postulates to Hansson, without the
-base/theory distinction the new entries above would supply; and both still assert that
-the cascade *satisfies* them — Ch3 §3.5: "ENGRAM's cascade meets exactly these
-postulates"; Ch4 §4.4: "the cascade satisfies Hansson's belief-base postulates" —
-which is the claim the verification above overturned. The repair is
-carried in the review package, not here; **the citation plan below is conditional on
-it**, and issue #58 states the same precondition:
+**The repair has LANDED, and this is what the chapters now do.** The former Ch3 §3.5
+and Ch4 §4.4 asserted that the cascade *satisfies* the postulates — "ENGRAM's cascade
+meets exactly these postulates"; "the cascade satisfies Hansson's belief-base
+postulates". Both assertions are withdrawn. AGM/Hansson is noted for contrast at Ch3
+§3.9 as the closed-theory idealisation ENGRAM is defined against, no postulate is
+claimed for ENGRAM, and AGM no longer appears among the convergent traditions.
+**Two consequences, and the second is why issue #58 changes rather than merely
+narrowing.** The chapters now cite neither the postulate statements nor Rocha &
+Wassermann — only §3.9's provenance tag names them, and that tag is a statement of what
+was read rather than a citation the argument rests on (the renderer strips bare node IDs,
+not the tag sentence, so the tag itself does appear in the rendered paper) — so
+bullets 3 and 4 below are recorded for the record rather than describing live
+citations. And the paper's only surviving Hansson reference is Appendix A naming
+**Hansson 1999** among the traditions that predate ENGRAM, plus Appendix B's mention
+of Kumiho's compliance, which is sourced from the Kumiho paper. So #58's reversal
+trigger is void — no encyclopedia citation remains to object to — **and the
+acquisition it tracks is aimed at the wrong work: 1991 mattered only while the paper
+stated the postulates.**
 
 - the belief-**base** level, and the distinction from the theory level — **Alchourrón
   & Makinson 1982**, now an entry above;
