@@ -10,6 +10,24 @@ database. Where a source does not print a field, the field is **omitted** rather
 reconstructed, and the entry carries a bracketed note naming exactly what is missing.
 A thin entry is therefore never mistaken for a checked one.
 
+Alchourrón, C. E., Gärdenfors, P., & Makinson, D. (1985). On the logic of theory
+change: Partial meet contraction and revision functions. *The Journal of Symbolic
+Logic*, 50(2), 510–530. Association for Symbolic Logic. CCC fee code
+0022-4812/85/5002-0025/$03.10 printed on the title page — its leading segment is the
+journal's ISSN, decoded rather than printed as such; the string "ISSN" appears nowhere
+in the document. Universidad de Buenos Aires, Buenos Aires, Argentina; Lunds Universitet, Lund, Sweden; American
+University of Beirut, Beirut, Lebanon. Received 18 October 1983; revised 1 May 1984.
+
+Alchourrón, C. E., & Makinson, D. (1982). On the logic of theory change: Contraction
+functions and their associated revision functions. *Theoria*, issue 1, 1982, 14–37.
+Universidad de Buenos Aires and Unesco. Received 18 January 1982; revised version
+received 24 March 1982.
+*[Metadata incomplete: this offprint scan prints no volume number. Its footer signature
+reads "2 – Theoria 1:1982", which gives issue and year only; secondary reference lists
+give vol. 48, a field not read off this document and therefore omitted. Folios 15–37
+are printed on the pages themselves; only the opening page 14 carries none, and it
+follows from that sequence rather than being read.]*
+
 Anderson, J. R., & Schooler, L. J. (1991). Reflections of the environment in memory.
 *Psychological Science*, 2(6), 396–408. Department of Psychology, Carnegie Mellon
 University.
@@ -129,21 +147,101 @@ University.
 
 ## Works cited in the text without a verified entry
 
-Nineteen further works are cited in the chapters for which no source document is
+Eighteen further works are cited in the chapters for which no source document is
 currently held. They are listed here rather than given reconstructed entries, because
 a bibliographic entry built from memory is indistinguishable from a checked one once
 it is on the page — which is the failure mode the extraction rule above exists to
 prevent. **Each requires sourcing before this paper is submitted.**
 
-Locke · Reid · Butler · Schechtman · Clark · Chalmers · Hansson · AGM
-(Alchourrón–Gärdenfors–Makinson) · de Kleer · Ebbinghaus · Wixted · Peirce · Semon
-(see the partial entry above) · Shoemaker · Johnston · Goldman · Nuxoll (with Laird)
-· **Sophia** · **A-MEM**
+Locke · Reid · Butler · Schechtman · Clark · Chalmers · Hansson · de Kleer ·
+Ebbinghaus · Wixted · Peirce · Semon (see the partial entry above) · Shoemaker ·
+Johnston · Goldman · Nuxoll (with Laird) · **Sophia** · **A-MEM**
 
-**Two are needed before round 2, not merely before submission:** *Hansson* and
-*AGM*. The Condition-3 argument states their `Relevance` and `Core-Retainment`
-postulates as met (Ch3 §3.5, Ch4 §4.4), so the paper's central verdict leans on
-them; the philosophers can wait.
+**One was needed before round 2, not merely before submission: *Hansson*.** The
+Condition-3 argument states his `Relevance` and `Core-Retainment` postulates as met
+(Ch3 §3.5, Ch4 §4.4), so the paper's central verdict leans on them; the philosophers
+can wait. **AGM has left this list entirely** — see below.
+
+*The postulate STATEMENTS are verified*, against two documents read first-hand:
+the Stanford Encyclopedia of Philosophy entry "Logic of Belief Revision" (copyright
+2026 Sven Ove Hansson — the postulates' own author),
+<https://plato.stanford.edu/entries/logic-belief-revision/>, and Rocha, A. C. &
+Wassermann, R., "Postulates Here, Postulates Everywhere: A Discussion of Contraction
+Postulates", CEUR-WS Vol-4239,
+<https://ceur-ws.org/Vol-4239/paper-Rocha-11.pdf>. Both are free, and both are now
+**held as well as linked** — `paper_research/source_pdfs/rocha_wassermann_postulates_ceur4239.pdf`,
+which is CC BY 4.0 and therefore committed, and `.../hansson_sep_logic_belief_revision.html`,
+which is copyrighted and so held on disk but **git-ignored**, exactly like the two
+primaries below. A reader cloning this repository gets the first and not the second. Neither is a bibliography entry and neither is
+claimed as one. The verification changed the argument rather
+than confirming it. `Relevance` requires a witnessing set that contains the
+contraction result and `Core-Retainment` does not, so the two are not
+interchangeable; and both quantify over beliefs *upstream* of the contracted belief
+— ones that help derive it — whereas the retraction cascade marks beliefs
+*downstream*. Neither postulate is therefore a property the cascade has or lacks.
+The resulting claim change sits with the reviewer, not in this file.
+
+**AGM 1985 AND ALCHOURRÓN & MAKINSON 1982 ARE NOW ENTRIES ABOVE, BUILT FIRST-HAND.**
+Lei located a free full text of AGM 1985 on 2026-09-21 after the not-acquiring
+decision was taken, which retires that decision for this work rather than arguing
+against it. Both PDFs are held at `paper_research/source_pdfs/`
+(`agm_1985_partial_meet.pdf`, `alchourron_makinson_1982_theoria.pdf`), git-ignored
+like the other copyrighted primaries but present on disk, so each is checkable exactly
+as the Doyle, Parfit, Tulving and Nozick entries are — by holding the file, not by
+cloning this repository. Entries here rest on three different footings and it is worth
+saying so once: some on committed files a cloner receives, some on held-but-ignored
+ones, and one — Semon — on no file at all, as its own note states. Every field in both was read off the
+document — title page, final page, running heads, footer signature — with exactly two
+exceptions, each noted in place rather than here: the 1982 offprint's volume number,
+which it does not print at all, and its opening page number 14, which follows from the
+folio sequence. The volume is omitted rather than lifted from AGM 1985's
+reference list, which does print it.
+
+***Hansson 1991* remains unacquired, and that is a decision rather than a gap.** Lei's
+ruling, 2026-09-21, in his own words: *"We shouldn't rely on our memory for claims
+that OTHERS make, we should always cite the sources directly."* Applied here that
+rules out the tempting middle path — softening the claims and attributing them to
+trained memory — and rules **in** a narrower one: state only what a held, read
+document supports, and cite that document. *Studia Logica* wants ~$40 and
+institutional access does not unlock it.
+
+**What the chapters will cite once the Ch3 §3.5 / Ch4 §4.4 repair lands — and they do
+NOT cite it yet.** As of this commit those sections cite three-author AGM for the
+*framework* and attribute the belief-base postulates to Hansson, without the
+base/theory distinction the new entries above would supply; and both still assert that
+the cascade *satisfies* them — Ch3 §3.5: "ENGRAM's cascade meets exactly these
+postulates"; Ch4 §4.4: "the cascade satisfies Hansson's belief-base postulates" —
+which is the claim the verification above overturned. The repair is
+carried in the review package, not here; **the citation plan below is conditional on
+it**, and issue #58 states the same precondition:
+
+- the belief-**base** level, and the distinction from the theory level — **Alchourrón
+  & Makinson 1982**, now an entry above;
+- partial meet contraction and revision, and the Gärdenfors postulates in their
+  original form — **AGM 1985**, now an entry above;
+- the statements of `Relevance` and `Core-Retainment` — **Hansson's own Stanford
+  Encyclopedia entry**, cited *as the encyclopedia entry* and never as the 1991 paper;
+- that `Relevance` is strictly stronger than `Core-Retainment` — **Rocha & Wassermann**.
+
+**What the remaining decision costs, stated rather than hidden:** we cannot establish
+whether Hansson *argues* for the consistency-restoration imperative or merely
+inherits it from AGM, so Ch4 defends ENGRAM's divergence against the postulate as
+stated rather than against his reasoning for it.
+
+**One descriptor is retained for a single purpose — ordering the document if the
+decision is reversed.** It is read off a secondary source's reference list, so it
+fails this file's extraction rule and **may not be lifted into an entry**:
+**Hansson 1991**, "Belief contraction without recovery", *Studia Logica*, vol. 50,
+reported as pp. 251–260 — which the secondary sources give as the postulates' primary
+home rather than the 1999 Kluwer textbook these notes had been crediting. It is
+marked in place rather than trusted to a caveat further up the page, because a caveat
+four lines away from a number is the exact separation this file's rule exists to
+prevent.
+
+**Reversal trigger, tracked at issue #58:** a reviewer objecting to an encyclopedia
+citation for a formal result. That objection is the evidence the primary is
+load-bearing after all; absent it we would be paying to verify a citation the paper
+has stopped leaning on.
 
 *Sophia and A-MEM were added after a reviewer found them missing, and the reason
 they were missing is worth recording, because it was a classification error rather
@@ -159,7 +257,7 @@ is cited as a precedent in Ch4 with no source file, and is not covered by the so
 Anderson & Schooler (1991), which is a different work. It is omitted from the list
 above because the text marks it in place as secondary and declines to rest weight on
 it. If the final pass decides a flagged-secondary precedent still requires an entry,
-this list becomes eighteen.*
+this list becomes nineteen.*
 
 ---
 

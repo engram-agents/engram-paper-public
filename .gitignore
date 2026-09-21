@@ -26,3 +26,6 @@ paper_research/source_pdfs/tulving_memory_consciousness_1985/
 # -wal and -shm sidecars were committed once because `dataset/*.db` does not match
 # them, and a -wal can carry un-checkpointed page data even when the .db is ignored.
 dataset/*.db*
+paper_research/source_pdfs/agm_1985_partial_meet.pdf
+paper_research/source_pdfs/alchourron_makinson_1982_theoria.pdf
+paper_research/source_pdfs/hansson_sep_logic_belief_revision.html
