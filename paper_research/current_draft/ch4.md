@@ -305,9 +305,7 @@ Ch6. We claim the architecture; we do not yet claim the benchmark.
 
 ENGRAM forgets on purpose. Recall importance decays over time, so the substrate
 maintains a bounded **queryable set** (tier 2) and a **faded** set (tier 3) that no
-longer surfaces but is not destroyed. (An earlier design had a tier-1 wholesale-
-load set; it is **omitted** — its purpose is defunct, retirement tracked at
-engram-alpha#1220.) Nothing is *erased*: forgetting is a recall-gating curve, not
+longer surfaces but is not destroyed. Nothing is *erased*: forgetting is a recall-gating curve, not
 deletion — which is what keeps it compatible with provenance and audit (and is the
 disclosure-vs-erasure point Ch7 develops).
 
@@ -405,13 +403,10 @@ what to walk back into — plus per-day history, auto-loaded session context, an
 post-compaction instruction template — together producing **operational**
 continuity (work-thread, identity, trust survive) without faking **experiential**
 continuity, which the architecture deliberately does not attempt (dv_0616).
-*(Implementation note: the focus list originally rendered via a PostCompact hook;
-that hook cannot inject context at all on the current harness, so the render was
-moved to SessionStart, unconditional for every session start.)* The
+The
 **consolidation rhythm**: two routines — **nap** (per-burst) and **sleep**
 (once-daily review + consolidation + forgetting-advance + graph repair) —
-mapping onto wake/NREM-REM phases. (An earlier three-routine design had a
-separate daily "bedtime" review, merged into sleep's Phase A on 2026-05-24.)
+mapping onto wake/NREM-REM phases.
 
 *Plain terms:* the agent's memory resets the way a day ends in *50 First Dates* —
 and the focus list plus the warm briefing are the journal it opens on waking.
@@ -420,8 +415,7 @@ clock advances is what endures.
 
 **Tradition.** **Complementary Learning Systems** [SOLID] — the two routines are
 the symbolic analogue of hippocampal-neocortical consolidation (this is the Ch3
-§3.1 hand-off; note the CLS "teacher" framing is attributed to Kumaran 2016, not
-McClelland 1995, per the correction of record ob_2542). And the **diachronic-
+§3.1 hand-off). And the **diachronic-
 identity** strand of Chapter 2 [SOLID] — the past binding the present.
 
 **OCC — Condition 1 (Diachronic Constraint): satisfied, via the decision/

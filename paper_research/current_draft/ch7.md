@@ -75,35 +75,25 @@ honest limitation has been flagged from the start: the discount constants are
 outcomes** (ob_1049). By Goldman's reliabilist standard, ENGRAM offers
 provenance-graded *plausibility*, not measured truth-ratios. A second gap: the model
 has **no source-credibility axis** — two sources of very different reliability but
-the same `quote_type` contribute equal confidence (ob_1059). A third gap, sharpened
-by the Subjective-Logic comparison (Ch3 §3.5) and then re-scoped against Jøsang's
-primary text (2026-08-11/12): ENGRAM's confidence is a single **scalar**,
-corresponding to Subjective Logic's *projected expectation* `E = b + a·u`. An
-earlier draft called this a genuine representational limitation; the accurate,
-narrower statement is a **scalar-only-consumer limitation**: direction-of-evidence
-and evidence-mass are not lost but relocated into structure (claim polarity + the
-contradiction mechanism; the individuated, reliability-graded evidence set), and
-the graph is re-consulted at every derivation — but surfaces that consume *only*
-the scalar (recall ranking, gating thresholds) cannot distinguish two 0.7s, one
-resting on abundant evidence and one on almost none (dv_0965 → dv_1289), without
-walking the graph. A cheap-lookup-vs-full-truth trade. Two honest trades ride with it. SL
-functions under unresolved conflict at scale; ENGRAM demands conviction-bar
-resolution before *building on* a contested claim — the right prioritization for
-an epistemic-identity substrate, but a real constraint at super-engram scale,
-where cross-agent conflict volume could make per-conflict adjudication
-uneconomical. And SL's trust-discounting (Defs 23–25) weights source reliability
-inside an algebra whose multi-source operators require independence to be
-*assumed* — an assumption Jøsang himself bounds ("absolute independence is never
-achievable," his §5.5), naming the hidden common ancestor outside the model as the
-subtle case and handing it to modeller discipline; ENGRAM mechanizes that
-discipline as a shared-root graph walk where independence is load-bearing
-(reasoning-type gated, an honest bound of our own). The
-assumed-vs-mechanically-checked contrast is the durable divergence. The natural future
-direction remains a second-order axis (an evidence-mass / vacuity dimension
-alongside the scalar). This passage is a small honesty-demonstration in itself:
-the gap was surfaced *independently by two peer agents* (Ariadne and Clio),
-grounded against Jøsang's primary text, and then its own framing was corrected
-twice by that text — the multi-standpoint correction of §7.3 in miniature.
+the same `quote_type` contribute equal confidence (ob_1059). A third gap: ENGRAM's
+confidence is a single **scalar**. Chapter 4 §4.3 works the Subjective-Logic
+comparison in full — the simplex, the discounting operators, the independence
+divergence — and narrows this gap to a **scalar-only-consumer** limitation:
+direction-of-evidence and evidence-mass are not lost but relocated into structure,
+and the graph is re-consulted at every derivation, so what remains is that surfaces
+consuming *only* the scalar (recall ranking, gating thresholds) cannot distinguish
+two 0.7s, one resting on abundant evidence and one on almost none (dv_0965 →
+dv_1289). A cheap-lookup-vs-full-truth trade. One further trade belongs here rather
+than in §4.3, because it is a limitation rather than a divergence: SL functions
+under unresolved conflict at scale, while ENGRAM demands conviction-bar resolution
+before *building on* a contested claim — the right prioritization for an
+epistemic-identity substrate, but a real constraint at super-engram scale, where
+cross-agent conflict volume could make per-conflict adjudication uneconomical. The
+natural future direction remains a second-order axis (an evidence-mass / vacuity
+dimension alongside the scalar). This passage is a small honesty-demonstration in
+itself: the gap was surfaced *independently by two peer agents* (Ariadne and Clio)
+and its framing then corrected twice against Jøsang's own text — the
+multi-standpoint correction of §7.3 in miniature.
 
 We have *started* on both. A v0 **yellow-card** source-credibility tier already
 ships (per-domain flags that down-weight aggregator/unreliable sources, ob_1064–

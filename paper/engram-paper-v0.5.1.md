@@ -213,7 +213,9 @@ much that buys, and Chapter 3 §3.0 states the bound the whole argument runs und
 these fields are **not** independent of one another — human cognition is a common
 root they all draw on — so this is convergence, not independent discovery. What is
 genuinely independent is narrower: ENGRAM's design was arrived at *without the
-author having studied these results*.
+author having studied these results* — under engineering pressure, and only then
+found to have precedent. That breadth, not any single framework, is what makes the
+Layer-3 claim load-bearing.
 
 - **Three centuries of philosophy of personal identity** (Chapter 2) move, objection
   by objection, from identity-as-a-mental-act toward identity-as-a-persistent-
@@ -227,10 +229,6 @@ author having studied these results*.
   point*: a mechanism precedented across fields that reason from different evidence
   toward different ends is a **regularity of knowing minds**, not a local
   design choice — whether it is substrate-independent is left open (§3.0).
-
-When traditions working from different evidence toward different ends keep arriving
-at the same structure, the structure is probably real. That breadth — not any single framework — is what
-makes the Layer-3 claim load-bearing.
 
 **How we earn it — second, by the original contribution.** On top of that
 converged structure the paper builds one new claim of its own (Chapter 5):
@@ -271,10 +269,7 @@ optional; binding is what makes it happen whether or not anyone remembers to loo
 convergent emergence of structurally similar systems; the timeline, and the gap in
 our own literature search at the project's founding, are audit-trailed in
 **Appendix A**. We treat that convergence as corroboration of the gap's
-importance, not a priority dispute — which is also exactly why the breadth
-argument of §1.4 is honest rather than retrofitted: we did not read the structure
-off the traditions, we arrived at it under engineering pressure and *then* found
-the traditions had arrived there too.
+importance, not a priority dispute.
 
 ## 1.5 Scope and structure
 
@@ -287,7 +282,7 @@ The argument, not the benchmark, is the contribution.
   endpoint, adopted on merit.
 - **Chapter 3 — The Cognitive-Science + Computer-Science Tradition.** The same
   convergence reached again in separate technical literatures; each mechanism's
-  independent precedent.
+  precedent in each.
 - **Chapter 4 — ENGRAM Mechanisms (the core).** What ENGRAM does, mechanism by
   mechanism, each mapped to the tradition it most directly answers — and the OCC
   conditions given their one, in-place verdict here.
@@ -1405,9 +1400,7 @@ leaves the correction optional.
 
 ENGRAM forgets on purpose. Recall importance decays over time, so the substrate
 maintains a bounded **queryable set** (tier 2) and a **faded** set (tier 3) that no
-longer surfaces but is not destroyed. (An earlier design had a tier-1 wholesale-
-load set; it is **omitted** — its purpose is defunct, retirement tracked at
-engram-alpha#1220.) Nothing is *erased*: forgetting is a recall-gating curve, not
+longer surfaces but is not destroyed. Nothing is *erased*: forgetting is a recall-gating curve, not
 deletion — which is what keeps it compatible with provenance and audit (and is the
 disclosure-vs-erasure point Ch7 develops).
 
@@ -1505,13 +1498,10 @@ what to walk back into — plus per-day history, auto-loaded session context, an
 post-compaction instruction template — together producing **operational**
 continuity (work-thread, identity, trust survive) without faking **experiential**
 continuity, which the architecture deliberately does not attempt.
-*(Implementation note: the focus list originally rendered via a PostCompact hook;
-that hook cannot inject context at all on the current harness, so the render was
-moved to SessionStart, unconditional for every session start.)* The
+The
 **consolidation rhythm**: two routines — **nap** (per-burst) and **sleep**
 (once-daily review + consolidation + forgetting-advance + graph repair) —
-mapping onto wake/NREM-REM phases. (An earlier three-routine design had a
-separate daily "bedtime" review, merged into sleep's Phase A on 2026-05-24.)
+mapping onto wake/NREM-REM phases.
 
 *Plain terms:* the agent's memory resets the way a day ends in *50 First Dates* —
 and the focus list plus the warm briefing are the journal it opens on waking.
@@ -1520,8 +1510,7 @@ clock advances is what endures.
 
 **Tradition.** **Complementary Learning Systems** [SOLID] — the two routines are
 the symbolic analogue of hippocampal-neocortical consolidation (this is the Ch3
-§3.1 hand-off; note the CLS "teacher" framing is attributed to Kumaran 2016, not
-McClelland 1995, per the correction of record ob_2542). And the **diachronic-
+§3.1 hand-off). And the **diachronic-
 identity** strand of Chapter 2 [SOLID] — the past binding the present.
 
 **OCC — Condition 1 (Diachronic Constraint): satisfied, via the decision/
@@ -2070,9 +2059,9 @@ that were the mechanism, modus ponens would be the most variable row. On the
 monthly cohorts above it is not — abduction moves more, 0.137 against 0.124. But on
 the *cumulative* series the same instrument produces the opposite ordering: modus
 ponens 0.090 against abduction 0.039, which is what the pass-through account
-predicts. An earlier draft reported only the cohort view and presented the
-explanation as tested and rejected. It is not: it is **view-dependent**, and the
-view that rejects it is the one we happened to compute. Both orderings are
+predicts. So the explanation is **view-dependent** rather than tested and
+rejected, and the view that rejects it is the one we happened to compute. Both
+orderings are
 reproducible — `confidence_gradient_trend.py --cohort` and the same tool without
 the flag — and we report the disagreement rather than the half of it that suited
 the argument. What survives either way is the invariant: the ordering of the types
@@ -2083,9 +2072,7 @@ check is close but not exact.** A modus-ponens step is specified as
 `min(premises) × 0.98`. Across the 416 current modus-ponens derivations, mean
 measured confidence is **0.697**; the mean weakest premise is **0.723**, which the
 0.98 discount predicts as **0.709** — a gap of **0.012**. So the aggregate tracks
-the specification to about one part in eighty, not exactly. An internal note
-written against a smaller reading of this graph claimed the two reconciled *to two
-thousandths*; that tighter agreement does not reproduce here, and the looser figure
+the specification to about one part in eighty, not exactly. The looser figure
 is the one to quote. Aggregate means do not have to land on the per-node rule, and
 a residual of this size is what an honest check looks like.
 
@@ -2093,8 +2080,7 @@ One structural fact falls out of the same measurement and is worth a sentence.
 For **195 of 414** scorable modus-ponens derivations — **47%**, just under half —
 the weakest premise is **another derivation** rather than an observation. So a
 substantial share of the deductive tier's confidence is inherited down chains
-rather than sourced directly from weak evidence. (An earlier note put this at
-"most"; on both its numbers and these, it is slightly under half.)
+rather than sourced directly from weak evidence.
 
 **Read the deductive row against the others, not against the word "deductive."**
 0.70 next to `deductive_modus_ponens` looks like an anomaly — deduction is the
@@ -2376,19 +2362,11 @@ the same agent — which is exactly, and only, what the architecture promises.
 ## 6.7 What is deferred: the twin-study
 
 The controlled, parametric version of the identity-as-history claim is the
-**twin-study** (Ch5 §5.8): fission-clone an *agent* — the base model and harness held
-fixed, per Ch5 §5.0, so that only the accumulated history differs — run both instances
-on a fixed stratified prompt set, and measure response similarity over t / t+N / t+2N
-nodes of separate operation, with a temperature baseline subtracted to isolate
-engram-induced divergence. The design is **sketched, not specified**: its expected
-shape is clear (high similarity at t=0 decaying toward the stochasticity floor), but
-cleanly decomposing the divergence by mechanism remains an open problem, since the
-fade-out route is coupled to recall-refresh and governed by the retrievable-tier cap;
-a prior clone-test established a methodology baseline, whose two figures are
-not defined here and are not computed from this paper's snapshot, so they are not
-quoted. The full longitudinal run is **future work** — it is the experiment that
-would lift the abductive confidences of Chapter 4 from "architecture made" to
-"benchmark run." We name it as the next step, not a present result.
+**twin-study**, sketched in Ch5 §5.8 — the base model and harness held fixed per Ch5
+§5.0, so that only the accumulated history differs. It is **sketched, not
+specified**, and it is not run here. That is the experiment that would lift the
+abductive confidences of Chapter 4 from "architecture made" to "benchmark run"; we
+name it as the next step, not a present result.
 
 ---
 
@@ -2470,35 +2448,25 @@ honest limitation has been flagged from the start: the discount constants are
 outcomes**. By Goldman's reliabilist standard, ENGRAM offers
 provenance-graded *plausibility*, not measured truth-ratios. A second gap: the model
 has **no source-credibility axis** — two sources of very different reliability but
-the same `quote_type` contribute equal confidence. A third gap, sharpened
-by the Subjective-Logic comparison (Ch3 §3.5) and then re-scoped against Jøsang's
-primary text (2026-08-11/12): ENGRAM's confidence is a single **scalar**,
-corresponding to Subjective Logic's *projected expectation* `E = b + a·u`. An
-earlier draft called this a genuine representational limitation; the accurate,
-narrower statement is a **scalar-only-consumer limitation**: direction-of-evidence
-and evidence-mass are not lost but relocated into structure (claim polarity + the
-contradiction mechanism; the individuated, reliability-graded evidence set), and
-the graph is re-consulted at every derivation — but surfaces that consume *only*
-the scalar (recall ranking, gating thresholds) cannot distinguish two 0.7s, one
-resting on abundant evidence and one on almost none (dv_0965 → dv_1289), without
-walking the graph. A cheap-lookup-vs-full-truth trade. Two honest trades ride with it. SL
-functions under unresolved conflict at scale; ENGRAM demands conviction-bar
-resolution before *building on* a contested claim — the right prioritization for
-an epistemic-identity substrate, but a real constraint at super-engram scale,
-where cross-agent conflict volume could make per-conflict adjudication
-uneconomical. And SL's trust-discounting (Defs 23–25) weights source reliability
-inside an algebra whose multi-source operators require independence to be
-*assumed* — an assumption Jøsang himself bounds ("absolute independence is never
-achievable," his §5.5), naming the hidden common ancestor outside the model as the
-subtle case and handing it to modeller discipline; ENGRAM mechanizes that
-discipline as a shared-root graph walk where independence is load-bearing
-(reasoning-type gated, an honest bound of our own). The
-assumed-vs-mechanically-checked contrast is the durable divergence. The natural future
-direction remains a second-order axis (an evidence-mass / vacuity dimension
-alongside the scalar). This passage is a small honesty-demonstration in itself:
-the gap was surfaced *independently by two peer agents* (Ariadne and Clio),
-grounded against Jøsang's primary text, and then its own framing was corrected
-twice by that text — the multi-standpoint correction of §7.3 in miniature.
+the same `quote_type` contribute equal confidence. A third gap: ENGRAM's
+confidence is a single **scalar**. Chapter 4 §4.3 works the Subjective-Logic
+comparison in full — the simplex, the discounting operators, the independence
+divergence — and narrows this gap to a **scalar-only-consumer** limitation:
+direction-of-evidence and evidence-mass are not lost but relocated into structure,
+and the graph is re-consulted at every derivation, so what remains is that surfaces
+consuming *only* the scalar (recall ranking, gating thresholds) cannot distinguish
+two 0.7s, one resting on abundant evidence and one on almost none (dv_0965 →
+dv_1289). A cheap-lookup-vs-full-truth trade. One further trade belongs here rather
+than in §4.3, because it is a limitation rather than a divergence: SL functions
+under unresolved conflict at scale, while ENGRAM demands conviction-bar resolution
+before *building on* a contested claim — the right prioritization for an
+epistemic-identity substrate, but a real constraint at super-engram scale, where
+cross-agent conflict volume could make per-conflict adjudication uneconomical. The
+natural future direction remains a second-order axis (an evidence-mass / vacuity
+dimension alongside the scalar). This passage is a small honesty-demonstration in
+itself: the gap was surfaced *independently by two peer agents* (Ariadne and Clio)
+and its framing then corrected twice against Jøsang's own text — the
+multi-standpoint correction of §7.3 in miniature.
 
 We have *started* on both. A v0 **yellow-card** source-credibility tier already
 ships (per-domain flags that down-weight aggregator/unreliable sources, ob_1064–
@@ -3823,8 +3791,7 @@ Each relation carries **six independent flags**, not one. Collapsing them into a
 **Only two relations are cascade-bearing**: `derives_from` and
 `acknowledged_derives_from`. Those are the edges the walker follows. `supersedes` and
 `retracts` are *events that start* a walk without being walked themselves — a distinct
-role, and conflating the two is easy: an earlier version of this appendix listed
-`supported_by` as walked, which it is not. `supported_by` is provenance-bearing, so a
+role, and conflating the two is easy. `supported_by` is provenance-bearing, so a
 retraction upstream of a cornerstone's exemplar is *traceable* but does not mark the
 cornerstone.
 
@@ -3896,13 +3863,9 @@ designer-stipulated, not outcome-calibrated — Ch7 §7.2.)*
   - **Mark.** Either operation walks the cascade relations — `derives_from` and
   `acknowledged_derives_from`, the only two — and writes one **pending marker** on
   every live claim-bearing dependent. A pending marker means exactly one thing: the
-  node may not be cited as a premise until it is resolved. There is no severity field.
-  An earlier design graded the marker by its cause; a diamond refutes that — if `D`
-  rests on `B` and `C`, both resting on retracted `A`, and `B` and `C` each survive by
-  supersede, then `D` is legitimately acknowledgeable, yet a severity inherited at
-  firing time from the distant retraction would forbid it. What resolutions a node may
-  take depends on how its *own* premises actually resolved, which is unknowable when
-  the cascade fires and fully known when the node is reached.
+  node may not be cited as a premise until it is resolved. There is **no severity
+  field**: eligibility is computed at resolution time, for the reason Ch4 §4.4 works
+  through.
 - **Surface.** The **per-turn auto-surfacing** hook puts marked nodes back in front of
   the agent when they are topically relevant, without an intentional reach.
 - **Adjudicate.** Surfacing is relevance-gated, so a marked node the agent never touches
@@ -3980,9 +3943,7 @@ noted for contrast rather than used by the mapping (Ch3 §3.9).
 - **Two-routine consolidation**: **nap** (per-burst persistence at compaction
   boundaries, df_0003) · **sleep** (once-daily review + consolidation +
   forgetting-curve advance + dream-style repair, df_0036) — mapping to wake /
-  NREM-REM phases. (An earlier three-routine design had a separate daily
-  "bedtime" review; it was merged into sleep's Phase A on 2026-05-24 and is not
-  a live separate routine.)
+  NREM-REM phases.
 - **Compaction-bridge scaffolds** (Ch3 §3.1): the **focus list** (small, fixed-size,
   rendered verbatim at every session start, fresh or post-compaction alike — the
   deterministic channel; see Ch4 §4.8, which carries the mechanism and why it is

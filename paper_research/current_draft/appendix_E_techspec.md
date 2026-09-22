@@ -105,8 +105,7 @@ Each relation carries **six independent flags**, not one. Collapsing them into a
 **Only two relations are cascade-bearing**: `derives_from` and
 `acknowledged_derives_from`. Those are the edges the walker follows. `supersedes` and
 `retracts` are *events that start* a walk without being walked themselves — a distinct
-role, and conflating the two is easy: an earlier version of this appendix listed
-`supported_by` as walked, which it is not. `supported_by` is provenance-bearing, so a
+role, and conflating the two is easy. `supported_by` is provenance-bearing, so a
 retraction upstream of a cornerstone's exemplar is *traceable* but does not mark the
 cornerstone.
 
@@ -178,13 +177,9 @@ designer-stipulated, not outcome-calibrated — Ch7 §7.2.)*
   - **Mark.** Either operation walks the cascade relations — `derives_from` and
   `acknowledged_derives_from`, the only two — and writes one **pending marker** on
   every live claim-bearing dependent. A pending marker means exactly one thing: the
-  node may not be cited as a premise until it is resolved. There is no severity field.
-  An earlier design graded the marker by its cause; a diamond refutes that — if `D`
-  rests on `B` and `C`, both resting on retracted `A`, and `B` and `C` each survive by
-  supersede, then `D` is legitimately acknowledgeable, yet a severity inherited at
-  firing time from the distant retraction would forbid it. What resolutions a node may
-  take depends on how its *own* premises actually resolved, which is unknowable when
-  the cascade fires and fully known when the node is reached.
+  node may not be cited as a premise until it is resolved. There is **no severity
+  field**: eligibility is computed at resolution time, for the reason Ch4 §4.4 works
+  through.
 - **Surface.** The **per-turn auto-surfacing** hook puts marked nodes back in front of
   the agent when they are topically relevant, without an intentional reach.
 - **Adjudicate.** Surfacing is relevance-gated, so a marked node the agent never touches
@@ -262,9 +257,7 @@ noted for contrast rather than used by the mapping (Ch3 §3.9).
 - **Two-routine consolidation**: **nap** (per-burst persistence at compaction
   boundaries, df_0003) · **sleep** (once-daily review + consolidation +
   forgetting-curve advance + dream-style repair, df_0036) — mapping to wake /
-  NREM-REM phases. (An earlier three-routine design had a separate daily
-  "bedtime" review; it was merged into sleep's Phase A on 2026-05-24 and is not
-  a live separate routine.)
+  NREM-REM phases.
 - **Compaction-bridge scaffolds** (Ch3 §3.1): the **focus list** (small, fixed-size,
   rendered verbatim at every session start, fresh or post-compaction alike — the
   deterministic channel; see Ch4 §4.8, which carries the mechanism and why it is

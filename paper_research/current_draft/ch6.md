@@ -100,9 +100,9 @@ that were the mechanism, modus ponens would be the most variable row. On the
 monthly cohorts above it is not — abduction moves more, 0.137 against 0.124. But on
 the *cumulative* series the same instrument produces the opposite ordering: modus
 ponens 0.090 against abduction 0.039, which is what the pass-through account
-predicts. An earlier draft reported only the cohort view and presented the
-explanation as tested and rejected. It is not: it is **view-dependent**, and the
-view that rejects it is the one we happened to compute. Both orderings are
+predicts. So the explanation is **view-dependent** rather than tested and
+rejected, and the view that rejects it is the one we happened to compute. Both
+orderings are
 reproducible — `confidence_gradient_trend.py --cohort` and the same tool without
 the flag — and we report the disagreement rather than the half of it that suited
 the argument. What survives either way is the invariant: the ordering of the types
@@ -113,9 +113,7 @@ check is close but not exact.** A modus-ponens step is specified as
 `min(premises) × 0.98`. Across the 416 current modus-ponens derivations, mean
 measured confidence is **0.697**; the mean weakest premise is **0.723**, which the
 0.98 discount predicts as **0.709** — a gap of **0.012**. So the aggregate tracks
-the specification to about one part in eighty, not exactly. An internal note
-written against a smaller reading of this graph claimed the two reconciled *to two
-thousandths*; that tighter agreement does not reproduce here, and the looser figure
+the specification to about one part in eighty, not exactly. The looser figure
 is the one to quote. Aggregate means do not have to land on the per-node rule, and
 a residual of this size is what an honest check looks like.
 
@@ -123,8 +121,7 @@ One structural fact falls out of the same measurement and is worth a sentence.
 For **195 of 414** scorable modus-ponens derivations — **47%**, just under half —
 the weakest premise is **another derivation** rather than an observation. So a
 substantial share of the deductive tier's confidence is inherited down chains
-rather than sourced directly from weak evidence. (An earlier note put this at
-"most"; on both its numbers and these, it is slightly under half.)
+rather than sourced directly from weak evidence.
 
 **Read the deductive row against the others, not against the word "deductive."**
 0.70 next to `deductive_modus_ponens` looks like an anomaly — deduction is the
@@ -380,18 +377,10 @@ the same agent — which is exactly, and only, what the architecture promises.
 ## 6.7 What is deferred: the twin-study
 
 The controlled, parametric version of the identity-as-history claim is the
-**twin-study** (Ch5 §5.8): fission-clone an *agent* — the base model and harness held
-fixed, per Ch5 §5.0, so that only the accumulated history differs — run both instances
-on a fixed stratified prompt set, and measure response similarity over t / t+N / t+2N
-nodes of separate operation, with a temperature baseline subtracted to isolate
-engram-induced divergence. The design is **sketched, not specified**: its expected
-shape is clear (high similarity at t=0 decaying toward the stochasticity floor), but
-cleanly decomposing the divergence by mechanism remains an open problem, since the
-fade-out route is coupled to recall-refresh and governed by the retrievable-tier cap;
-a prior clone-test established a methodology baseline, whose two figures are
-not defined here and are not computed from this paper's snapshot, so they are not
-quoted. The full longitudinal run is **future work** — it is the experiment that
-would lift the abductive confidences of Chapter 4 from "architecture made" to
-"benchmark run." We name it as the next step, not a present result.
+**twin-study**, sketched in Ch5 §5.8 — the base model and harness held fixed per Ch5
+§5.0, so that only the accumulated history differs. It is **sketched, not
+specified**, and it is not run here. That is the experiment that would lift the
+abductive confidences of Chapter 4 from "architecture made" to "benchmark run"; we
+name it as the next step, not a present result.
 
 ---

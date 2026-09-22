@@ -133,7 +133,9 @@ much that buys, and Chapter 3 §3.0 states the bound the whole argument runs und
 these fields are **not** independent of one another — human cognition is a common
 root they all draw on — so this is convergence, not independent discovery. What is
 genuinely independent is narrower: ENGRAM's design was arrived at *without the
-author having studied these results*.
+author having studied these results* — under engineering pressure, and only then
+found to have precedent. That breadth, not any single framework, is what makes the
+Layer-3 claim load-bearing.
 
 - **Three centuries of philosophy of personal identity** (Chapter 2) move, objection
   by objection, from identity-as-a-mental-act toward identity-as-a-persistent-
@@ -147,10 +149,6 @@ author having studied these results*.
   point*: a mechanism precedented across fields that reason from different evidence
   toward different ends is a **regularity of knowing minds**, not a local
   design choice — whether it is substrate-independent is left open (§3.0).
-
-When traditions working from different evidence toward different ends keep arriving
-at the same structure, the structure is probably real. That breadth — not any single framework — is what
-makes the Layer-3 claim load-bearing.
 
 **How we earn it — second, by the original contribution.** On top of that
 converged structure the paper builds one new claim of its own (Chapter 5):
@@ -191,10 +189,7 @@ optional; binding is what makes it happen whether or not anyone remembers to loo
 convergent emergence of structurally similar systems; the timeline, and the gap in
 our own literature search at the project's founding, are audit-trailed in
 **Appendix A**. We treat that convergence as corroboration of the gap's
-importance, not a priority dispute — which is also exactly why the breadth
-argument of §1.4 is honest rather than retrofitted: we did not read the structure
-off the traditions, we arrived at it under engineering pressure and *then* found
-the traditions had arrived there too.
+importance, not a priority dispute.
 
 ## 1.5 Scope and structure
 
@@ -207,7 +202,7 @@ The argument, not the benchmark, is the contribution.
   endpoint, adopted on merit.
 - **Chapter 3 — The Cognitive-Science + Computer-Science Tradition.** The same
   convergence reached again in separate technical literatures; each mechanism's
-  independent precedent.
+  precedent in each.
 - **Chapter 4 — ENGRAM Mechanisms (the core).** What ENGRAM does, mechanism by
   mechanism, each mapped to the tradition it most directly answers — and the OCC
   conditions given their one, in-place verdict here.
