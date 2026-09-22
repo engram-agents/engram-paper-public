@@ -4211,12 +4211,20 @@ Wassermann — only §3.9's provenance tag names them, and that tag is a stateme
 was read rather than a citation the argument rests on (the renderer strips bare node IDs,
 not the tag sentence, so the tag itself does appear in the rendered paper) — so
 bullets 3 and 4 below are recorded for the record rather than describing live
-citations. And the paper's only surviving Hansson reference is Appendix A naming
-**Hansson 1999** among the traditions that predate ENGRAM, plus Appendix B's mention
-of Kumiho's compliance, which is sourced from the Kumiho paper. So #58's reversal
+citations. And **no dated Hansson work is named anywhere in the paper.** Appendix A names
+"Hansson's belief-base postulates" only to point at §3.9's provenance tag and to say
+the bibliography lists them without a held source document; Appendix B records
+Kumiho's *self-claimed* compliance, sourced from the Kumiho paper. So #58's reversal
 trigger is void — no encyclopedia citation remains to object to — **and the
 acquisition it tracks is aimed at the wrong work: 1991 mattered only while the paper
 stated the postulates.**
+
+*This paragraph asserted, until 2026-09-22, that Appendix A named **Hansson 1999**.
+That was true when written and stopped being true when PR #60 reworded the appendix
+to name only works we hold — the same afternoon. It is corrected rather than deleted
+because the stale form is the shape this file exists to catch: a sourcing record that
+outlives the sentence it records, in the one file whose job is to be accurate about
+sources.*
 
 - the belief-**base** level, and the distinction from the theory level — **Alchourrón
   & Makinson 1982**, now an entry above;
