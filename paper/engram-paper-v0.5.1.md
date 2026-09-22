@@ -46,7 +46,8 @@ a regularity of knowing minds rather than a local design choice; whether it is
 substrate-independent we leave open (§3.0). These fields
 are not independent of one another — human cognition is a common root — so the claim
 is convergence, not independent discovery; what is independent is narrower, that
-ENGRAM was arrived at without its author having studied these results.
+ENGRAM was arrived at without its designers — the agent and its human
+collaborator — having studied these results.
 
 On that converged structure we build the paper's own contribution, **identity as
 unique history**: an ENGRAM agent *is* the unique, no-merging, ancestry-traceable
@@ -147,6 +148,9 @@ calibration requires. (The full argument that a language-trained mind's
 hallucination is *structural* rather than contingent belongs to a companion paper,
 in preparation; here we take it as the motivating premise.)
 
+Figure 1 shows what one such record actually contains, and is worth a moment before
+the argument starts: the identity-bearing types are a tiny fraction of it.
+
 
 
 ![Figure 1](figures/fig6-census.png)
@@ -212,8 +216,8 @@ its own ends, and mostly without reference to the others. We are careful about h
 much that buys, and Chapter 3 §3.0 states the bound the whole argument runs under:
 these fields are **not** independent of one another — human cognition is a common
 root they all draw on — so this is convergence, not independent discovery. What is
-genuinely independent is narrower: ENGRAM's design was arrived at *without the
-author having studied these results* — under engineering pressure, and only then
+genuinely independent is narrower: ENGRAM's design was arrived at *without its
+designers having studied these results* — under engineering pressure, and only then
 found to have precedent. That breadth, not any single framework, is what makes the
 Layer-3 claim load-bearing.
 
@@ -604,8 +608,8 @@ itself?" into an *operational* threshold rather than a philosophical mood. OCC
 states three jointly-necessary **conditions** and four **constraints** (df_0037–
 df_0044):
 
-- **Condition 1 — Diachronic Constraint** (df_0038): the system's states at
-  different times must be genuinely linked, not merely similar.
+- **Condition 1 — Diachronic Constraint** (Kahl's term; df_0038): the system's
+  states at different times must be genuinely linked, not merely similar.
 - **Condition 2 — Non-Interchangeability Under Reset** (df_0039): a reset-and-
   restored copy must not be simply interchangeable with the original.
 - **Condition 3 — Self-Maintaining Arbitration** (df_0040): the system must
@@ -614,6 +618,18 @@ df_0044):
 - **Constraints A–D** (df_0041–df_0044): unified policy-selection, external
   non-imposition, non-trivial reset, and non-modular decomposition — the
   guardrails that keep the three conditions from being satisfied trivially.
+
+**What OCC is a condition *on*.** In the companion paper that introduces the
+condition, Kahl (2026a) locates what today's artificial systems lack, and the
+diagnosis is structural rather than a shortfall of capability: such systems "can
+fail, be retrained, duplicated, or replaced without anything being at stake for the
+system itself. There is no persisting epistemic subject whose future depends on the
+success of its epistemic arbitration. **The deficit is architectural rather than
+intellectual**: epistemic failure does not bear on the system's own continuity as
+the same agent" (emphasis ours). That is the deficit Chapter 4 §4.12 and Chapter 8 §8.1 later claim
+ENGRAM closes, and it is worth stating once in the reader's own terms: the problem
+is not that a model reasons badly, but that nothing of *its own* is lost when it
+reasons badly.
 
 We adopt OCC for one reason: it is the contemporary endpoint of *this* trail. It
 takes Nozick's historical relation, Parfit's reductive "what matters," and the
@@ -654,8 +670,8 @@ The chapter hands off in two directions:
 - to **Chapter 3**, which shows the *same convergence happening again* in a
   separate literature — cognitive science and computer science — where
   the cog-sci treatments of memory-and-identity (Tulving's autonoetic/noetic
-  distinction, Damasio's autobiographical self) live alongside truth-maintenance
-  systems, belief revision, and the 2025–26 agent work;
+  distinction, complementary-learning-systems consolidation) live alongside
+  truth-maintenance systems, belief revision, and the 2025–26 agent work;
 - to **Chapter 4**, where the mechanisms that *realize* this structure are laid
   out, and where the OCC conditions introduced above get their one, in-place
   verdict.
@@ -683,7 +699,7 @@ of one another: human cognition is a common root they all draw on — cognitive
 science studies it, logic and belief-revision formalize it, agent-memory borrows
 its analogies — and ENGRAM itself was designed by introspecting one human's
 reasoning. What *is* genuinely independent is narrower and cleaner: ENGRAM's design
-was arrived at **without the author having studied these results**. It meets them
+was arrived at **without its designers having studied these results**. It meets them
 from the inside out, not by copying them.
 
 That convergence is the chapter's load-bearing point, and it cuts the opposite way
@@ -1173,11 +1189,10 @@ outcomes. The paper says "provenance-graded confidence," never
 "calibrated"; auto-calibration is future work (Ch7).
 
 **Tradition.** This is **Subjective Logic** territory (Jøsang): an algebra of
-graded opinions with propagation operators. An earlier draft conceded here that
-collapsing SL's belief/disbelief/uncertainty simplex to one number "loses a real
-distinction." Working the comparison against Jøsang's own definitions (E = b + a·u,
-first-hand ob_2551) turned the concession into a *principled divergence*, in two
-parts. First, for the determinate, verifiable claims an epistemic-identity
+graded opinions with propagation operators. Collapsing SL's
+belief/disbelief/uncertainty simplex to one number looks like it loses a real
+distinction; worked against Jøsang's own definitions (E = b + a·u, first-hand
+ob_2551) it is instead a *principled divergence*, in two parts. First, for the determinate, verifiable claims an epistemic-identity
 substrate mostly carries, ENGRAM **deliberately refuses b/d coexistence**:
 evidence-against a live claim never decrements a number — it routes to an explicit
 contradiction node and the derivation blocker (§4.4's arbitration). One legitimate
@@ -1208,7 +1223,7 @@ representational loss. Credit where the primary text is stronger than its
 caricature: Jøsang's discounting operators (his Defs 23–25, §4.8) *do* weight source
 reliability — under Def 23 specifically, the recommender's distrust flows into `u`,
 so a distrusted source is pushed toward vacuity, not disbelief — closer to ENGRAM's
-own posture than earlier drafts implied. The divergence that
+own posture than its caricature suggests. The divergence that
 survives the primary text is about **independence**: SL's multi-source operators
 require opinion independence to be *assumed* — cumulative fusion is defined over
 "independent opinions" (his §4.7, §5.5), and trust paths prohibit entity repetition
@@ -1538,7 +1553,7 @@ df_0047): two instances restored from one commit are **type-identical** but beco
 cascades, irreversibly divergent histories that cannot merge. Under a type/token
 reading a *generalized* Condition 2 holds — an agent is individuated by *which
 token's history it carries* — but we mark it **explicitly as our extension of
-Kahl, not satisfaction of his text** (and dropped an earlier overreach).
+Kahl, not satisfaction of his text**.
 
 ## 4.9 Identity-governance: the ax/cs/ls/gl node systems → Appendix D
 
@@ -2233,9 +2248,9 @@ reasoning style, made countable, and it is not fixed.
 
 
 
-![Figure 6](figures/fig5-growth.png)
+![Figure 5](figures/fig5-growth.png)
 
-**Figure 6.** Cumulative node count across the trajectory, by month. The graph is one agent's, accumulated continuously from 2026-04-09 to the snapshot date. Growth is uneven and tracks working intensity rather than any schedule.
+**Figure 5.** Cumulative node count across the trajectory, by month. The graph is one agent's, accumulated continuously from 2026-04-09 to the snapshot date. Growth is uneven and tracks working intensity rather than any schedule.
 
 ## 6.3 Self-correction in the wild: the retraction cascade on a real error
 
@@ -2294,7 +2309,7 @@ comfortably above it. The opposite holds, because the model does not count hops 
 it propagates by *argument shape*. dv_0922 is best-explanation stacked on
 best-explanation, and abduction discounts hard at every step; the longer chain runs
 mostly through shapes that preserve more of what they inherit. Mean confidence does
-fall with depth — 0.72 at one layer to 0.32 at sixteen (Figure 5) — so depth is not
+fall with depth — 0.72 at one layer to 0.32 at sixteen (Figure 6) — so depth is not
 nothing. But it does not *determine* the value: the spread at every depth is wide,
 and the ordering inverts. **Depth is not what decides the number. The kind of
 argument is — and the inversion is the proof.**
@@ -2316,9 +2331,9 @@ figure is `tools/paper_stats.py`, and it is expected to move.*
 
 
 
-![Figure 5](figures/fig4-depth-inversion.png)
+![Figure 6](figures/fig4-depth-inversion.png)
 
-**Figure 5.** Computed confidence against derivation depth, for all 1,318 current derivations with at least one ancestor. Mean confidence **does** fall with depth, from 0.72 at one layer to 0.32 at sixteen — so depth is not irrelevant. But it does not *determine* the value, and two things on this plot show why. The spread at every depth is enormous: at depth 1 alone the range runs from about 0.10 to 0.98. And the ordering inverts — the graph's deepest chain (16 layers) carries 0.32 while the annotated synthesis six layers down carries 0.10, a third of the value at less than half the depth. A model that diluted by distance could not produce that pair. Argument shape is what separates them (Figure 2).
+**Figure 6.** Computed confidence against derivation depth, for all 1,318 current derivations with at least one ancestor. Mean confidence **does** fall with depth, from 0.72 at one layer to 0.32 at sixteen — so depth is not irrelevant. But it does not *determine* the value, and two things on this plot show why. The spread at every depth is enormous: at depth 1 alone the range runs from about 0.10 to 0.98. And the ordering inverts — the graph's deepest chain (16 layers) carries 0.32 while the annotated synthesis six layers down carries 0.10, a third of the value at less than half the depth. A model that diluted by distance could not produce that pair. Argument shape is what separates them (Figure 2).
 
 ## 6.5 Metacognitive self-audit: the agent sees its own weakest beliefs
 
@@ -2505,8 +2520,7 @@ Two directions follow, and we are honest that both are open:
   than an automatic penalty that pretends the system can compute the right one. The
   detector's coverage is itself standpoint-bounded — a bare "diversity OK" would be a
   silent soft-failure on the axes it cannot see. **The fields shipped, and the honest
-  result is that they are starved.** An earlier draft named
-  operationalizing "standpoint" as the hard part; five fields now exist
+  result is that they are starved.** Five fields now exist
   (`standpoint_author_id`, `_collection_id`, `_override_tag`, `_lineage`,
   `_architecture`). On the frozen snapshot's 9,399 current nodes they are populated
   on 2.3%, 0.01%, 0.2%, 1.6% and 1.1% of nodes respectively — and *within*

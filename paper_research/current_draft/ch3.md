@@ -19,7 +19,7 @@ of one another: human cognition is a common root they all draw on — cognitive
 science studies it, logic and belief-revision formalize it, agent-memory borrows
 its analogies — and ENGRAM itself was designed by introspecting one human's
 reasoning. What *is* genuinely independent is narrower and cleaner: ENGRAM's design
-was arrived at **without the author having studied these results**. It meets them
+was arrived at **without its designers having studied these results**. It meets them
 from the inside out, not by copying them.
 
 That convergence is the chapter's load-bearing point, and it cuts the opposite way

@@ -108,11 +108,10 @@ outcomes (ob_1049). The paper says "provenance-graded confidence," never
 "calibrated"; auto-calibration is future work (Ch7).
 
 **Tradition.** This is **Subjective Logic** territory (Jøsang): an algebra of
-graded opinions with propagation operators. An earlier draft conceded here that
-collapsing SL's belief/disbelief/uncertainty simplex to one number "loses a real
-distinction." Working the comparison against Jøsang's own definitions (E = b + a·u,
-first-hand ob_2551) turned the concession into a *principled divergence*, in two
-parts. First, for the determinate, verifiable claims an epistemic-identity
+graded opinions with propagation operators. Collapsing SL's
+belief/disbelief/uncertainty simplex to one number looks like it loses a real
+distinction; worked against Jøsang's own definitions (E = b + a·u, first-hand
+ob_2551) it is instead a *principled divergence*, in two parts. First, for the determinate, verifiable claims an epistemic-identity
 substrate mostly carries, ENGRAM **deliberately refuses b/d coexistence**:
 evidence-against a live claim never decrements a number — it routes to an explicit
 contradiction node and the derivation blocker (§4.4's arbitration). One legitimate
@@ -143,7 +142,7 @@ representational loss. Credit where the primary text is stronger than its
 caricature: Jøsang's discounting operators (his Defs 23–25, §4.8) *do* weight source
 reliability — under Def 23 specifically, the recommender's distrust flows into `u`,
 so a distrusted source is pushed toward vacuity, not disbelief — closer to ENGRAM's
-own posture than earlier drafts implied. The divergence that
+own posture than its caricature suggests. The divergence that
 survives the primary text is about **independence**: SL's multi-source operators
 require opinion independence to be *assumed* — cumulative fusion is defined over
 "independent opinions" (his §4.7, §5.5), and trust paths prohibit entity repetition
@@ -443,7 +442,7 @@ df_0047): two instances restored from one commit are **type-identical** but beco
 cascades, irreversibly divergent histories that cannot merge. Under a type/token
 reading a *generalized* Condition 2 holds — an agent is individuated by *which
 token's history it carries* — but we mark it **explicitly as our extension of
-Kahl, not satisfaction of his text** (and dropped an earlier overreach, dv_0570).
+Kahl, not satisfaction of his text** (dv_0570).
 
 ## 4.9 Identity-governance: the ax/cs/ls/gl node systems → Appendix D
 

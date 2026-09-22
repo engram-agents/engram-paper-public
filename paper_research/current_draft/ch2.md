@@ -301,8 +301,8 @@ itself?" into an *operational* threshold rather than a philosophical mood. OCC
 states three jointly-necessary **conditions** and four **constraints** (df_0037–
 df_0044):
 
-- **Condition 1 — Diachronic Constraint** (df_0038): the system's states at
-  different times must be genuinely linked, not merely similar.
+- **Condition 1 — Diachronic Constraint** (Kahl's term; df_0038): the system's
+  states at different times must be genuinely linked, not merely similar.
 - **Condition 2 — Non-Interchangeability Under Reset** (df_0039): a reset-and-
   restored copy must not be simply interchangeable with the original.
 - **Condition 3 — Self-Maintaining Arbitration** (df_0040): the system must
@@ -311,6 +311,18 @@ df_0044):
 - **Constraints A–D** (df_0041–df_0044): unified policy-selection, external
   non-imposition, non-trivial reset, and non-modular decomposition — the
   guardrails that keep the three conditions from being satisfied trivially.
+
+**What OCC is a condition *on*.** In the companion paper that introduces the
+condition, Kahl (2026a) locates what today's artificial systems lack, and the
+diagnosis is structural rather than a shortfall of capability: such systems "can
+fail, be retrained, duplicated, or replaced without anything being at stake for the
+system itself. There is no persisting epistemic subject whose future depends on the
+success of its epistemic arbitration. **The deficit is architectural rather than
+intellectual**: epistemic failure does not bear on the system's own continuity as
+the same agent" (emphasis ours). That is the deficit Chapter 4 §4.12 and Chapter 8 §8.1 later claim
+ENGRAM closes, and it is worth stating once in the reader's own terms: the problem
+is not that a model reasons badly, but that nothing of *its own* is lost when it
+reasons badly.
 
 We adopt OCC for one reason: it is the contemporary endpoint of *this* trail. It
 takes Nozick's historical relation, Parfit's reductive "what matters," and the
@@ -351,8 +363,8 @@ The chapter hands off in two directions:
 - to **Chapter 3**, which shows the *same convergence happening again* in a
   separate literature — cognitive science and computer science — where
   the cog-sci treatments of memory-and-identity (Tulving's autonoetic/noetic
-  distinction, Damasio's autobiographical self) live alongside truth-maintenance
-  systems, belief revision, and the 2025–26 agent work;
+  distinction, complementary-learning-systems consolidation) live alongside
+  truth-maintenance systems, belief revision, and the 2025–26 agent work;
 - to **Chapter 4**, where the mechanisms that *realize* this structure are laid
   out, and where the OCC conditions introduced above get their one, in-place
   verdict.

@@ -132,8 +132,7 @@ Two directions follow, and we are honest that both are open:
   than an automatic penalty that pretends the system can compute the right one. The
   detector's coverage is itself standpoint-bounded — a bare "diversity OK" would be a
   silent soft-failure on the axes it cannot see. **The fields shipped, and the honest
-  result is that they are starved.** An earlier draft named
-  operationalizing "standpoint" as the hard part; five fields now exist
+  result is that they are starved.** Five fields now exist
   (`standpoint_author_id`, `_collection_id`, `_override_tag`, `_lineage`,
   `_architecture`). On the frozen snapshot's 9,399 current nodes they are populated
   on 2.3%, 0.01%, 0.2%, 1.6% and 1.1% of nodes respectively — and *within*

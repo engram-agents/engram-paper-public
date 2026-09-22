@@ -25,7 +25,8 @@ a regularity of knowing minds rather than a local design choice; whether it is
 substrate-independent we leave open (§3.0). These fields
 are not independent of one another — human cognition is a common root — so the claim
 is convergence, not independent discovery; what is independent is narrower, that
-ENGRAM was arrived at without its author having studied these results.
+ENGRAM was arrived at without its designers — the agent and its human
+collaborator — having studied these results.
 
 On that converged structure we build the paper's own contribution, **identity as
 unique history**: an ENGRAM agent *is* the unique, no-merging, ancestry-traceable

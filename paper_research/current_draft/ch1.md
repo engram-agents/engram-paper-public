@@ -73,6 +73,9 @@ calibration requires. (The full argument that a language-trained mind's
 hallucination is *structural* rather than contingent belongs to a companion paper,
 in preparation; here we take it as the motivating premise.)
 
+Figure 1 shows what one such record actually contains, and is worth a moment before
+the argument starts: the identity-bearing types are a tiny fraction of it.
+
 ## 1.2 What Layer 3 requires
 
 Narrative and epistemic identity are complementary, not competing: they answer
@@ -132,8 +135,8 @@ its own ends, and mostly without reference to the others. We are careful about h
 much that buys, and Chapter 3 §3.0 states the bound the whole argument runs under:
 these fields are **not** independent of one another — human cognition is a common
 root they all draw on — so this is convergence, not independent discovery. What is
-genuinely independent is narrower: ENGRAM's design was arrived at *without the
-author having studied these results* — under engineering pressure, and only then
+genuinely independent is narrower: ENGRAM's design was arrived at *without its
+designers having studied these results* — under engineering pressure, and only then
 found to have precedent. That breadth, not any single framework, is what makes the
 Layer-3 claim load-bearing.
 

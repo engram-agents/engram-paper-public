@@ -117,7 +117,7 @@ INSERTS: list[tuple[str, str, str]] = [
     ),
     (
         "ch6.md", "## 6.4",
-        _fig("figures/fig4-depth-inversion.png", 5,
+        _fig("figures/fig4-depth-inversion.png", 6,
              "Computed confidence against derivation depth, for all 1,318 current derivations "
              "with at least one ancestor. Mean confidence **does** fall with depth, from 0.72 "
              "at one layer to 0.32 at sixteen — so depth is not irrelevant. But it does not "
@@ -130,7 +130,7 @@ INSERTS: list[tuple[str, str, str]] = [
     ),
     (
         "ch6.md", "## 6.2",
-        _fig("figures/fig5-growth.png", 6,
+        _fig("figures/fig5-growth.png", 5,
              "Cumulative node count across the trajectory, by month. The graph is one agent's, "
              "accumulated continuously from 2026-04-09 to the snapshot date. Growth is uneven "
              "and tracks working intensity rather than any schedule."),

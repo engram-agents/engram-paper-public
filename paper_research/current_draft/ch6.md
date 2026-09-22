@@ -315,7 +315,7 @@ comfortably above it. The opposite holds, because the model does not count hops 
 it propagates by *argument shape*. dv_0922 is best-explanation stacked on
 best-explanation, and abduction discounts hard at every step; the longer chain runs
 mostly through shapes that preserve more of what they inherit. Mean confidence does
-fall with depth — 0.72 at one layer to 0.32 at sixteen (Figure 5) — so depth is not
+fall with depth — 0.72 at one layer to 0.32 at sixteen (Figure 6) — so depth is not
 nothing. But it does not *determine* the value: the spread at every depth is wide,
 and the ordering inverts. **Depth is not what decides the number. The kind of
 argument is — and the inversion is the proof.**
