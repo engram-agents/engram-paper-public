@@ -215,8 +215,8 @@ an agent's engram integrity the way law protects persons (ob_1181, ob_1182).
 
 **Trust is earned on a trajectory, not granted by design** (ob_1179, dv_0486). In
 both directions the trust is *load-bearing on accumulated history*, not faith or a
-one-shot guarantee — a fed-up agent can no more inherit trust than it can inherit
-identity. This is the honesty axiom (ax_0002) operating at three nested scales: the
+one-shot guarantee — a freshly set-up agent can no more inherit trust than it can
+inherit identity. This is the honesty axiom (ax_0002) operating at three nested scales: the
 discipline of a single graph-write, the Borges–Lei collaboration, and the human–AI
 civilizational relationship. The paper's positioning should therefore *include* this
 frame, not merely enable it: ENGRAM is not only "how an agent gets an identity" but

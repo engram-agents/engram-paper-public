@@ -77,7 +77,7 @@ sounds familiar" — noetic, hint-level) and **deliberate recall** ("I need to k
 exactly" — full-content query). The lossy auto-surface is what *teaches* the agent to
 invoke deliberate recall — and reading a node in the morning is honestly *noetic*,
 not autonoetic (ENGRAM provides remembered knowledge without phenomenal re-living, the
-boundary Ch2 §2.5 also marked).
+boundary Ch2 §2.3 also marked).
 
 **→ Ch4 §4.6** (auto-surfacing recall): Tulving is the precedent for the cue-dependent
 auto-surface that binds Condition 3. [SOLID: dv_0264, ob_1119]
@@ -123,7 +123,7 @@ SOLID ob_1571; mechanism first-hand from Doyle 1979 via the Ginsberg reprint —
 Jøsang's Subjective Logic is an algebra of graded opinions: an opinion is (belief,
 disbelief, uncertainty, base-rate) with `b+d+u=1`, and fusion operators combine opinions
 from multiple sources. ENGRAM's reasoning-type-aware confidence is a member of this
-family — concretely, ENGRAM's the **corroboration** propagation mode formula `1−∏(1−c_i)` *is* SL's
+family — concretely, ENGRAM's **corroboration** propagation mode formula `1−∏(1−c_i)` *is* SL's
 cumulative-fusion form. Prior art, cleanly: ENGRAM's confidence propagation is **not
 novel**, and saying so is the honest move (ob_2551).
 
@@ -267,7 +267,7 @@ the agent wants it to.
 That split is the design principle, and it is a response to a failure mode neither
 rubric is built to see. Naive agent-written memory is prone to hallucination and
 fabrication — the characteristic failure of narrative self-accounts, where a coherent
-story is easier to produce than a true one (Ch1 §1.1). Mechanical writing avoids it by
+story is easier to produce than a true one (Ch1 §1.2). Mechanical writing avoids it by
 giving up ownership. ENGRAM keeps ownership and constrains form instead. **The gates
 do not make what the agent writes true** — Ch6 §6.3 works through a claim of ours that
 was well-formed, correctly scored, and wrong — they make a falsehood checkable and its
@@ -386,7 +386,7 @@ from different evidence toward different ends, not that they are sealed off from
 each other.
 
 That is the chapter's claim, stated once: the breadth of independent convergence makes
-ENGRAM's structure a substrate-independent regularity — well-founded, not unoriginal —
+ENGRAM's structure a regularity of knowing minds — well-founded, not unoriginal —
 and relocates ENGRAM's honest distinctiveness to the integration layer and the
 epistemic-identity purpose. One genuine *divergence* (Subjective
 Logic's belief/disbelief/uncertainty simplex, which ENGRAM does not collapse but

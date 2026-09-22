@@ -32,7 +32,7 @@ model doing its job. These are *abductive* claims whose *empirical* confirmation
 pilot-stage. Read "0.39" as **"the architectural case is made; the benchmark that
 would lift this to 0.9 has not been run yet"** — not as "we are 39% sure." The
 paper showing its own honest, low, *computed* confidences is itself a demonstration
-of the thesis (Ch6 §confidence-at-scale; Ch8).
+of the thesis (Ch6 §6.1; Ch8).
 
 ## 4.1 The map: mechanism → tradition → OCC condition
 
@@ -317,8 +317,7 @@ depend on elapsed time, not on the absolute clock, so a claim's decay from now
 looks the same whichever "now" you start from (dv_0962). The well-known
 *power-law* forgetting curve is consistent with this, not a rival: a population of
 exponential decayers with mixed rates aggregates to a power law (ob_0521/dv_0243),
-and over short times the two are indistinguishable (Taylor expansion). One
-footnote, no deep rigor.
+and over short times the two are indistinguishable (Taylor expansion).
 
 *Plain terms:* the agent's working memory is a desk, not a warehouse — what you
 haven't touched in a long time slides off the desk into the drawers, still there if

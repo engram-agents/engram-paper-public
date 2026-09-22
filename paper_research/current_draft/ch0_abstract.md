@@ -21,7 +21,8 @@ science of memory, and the computer science of belief revision — were each dri
 from their own evidence toward their own ends, to the same structure: identity as a persistent, inspectable, self-correcting record. No
 component of ENGRAM is uniquely novel, and that is the argument: a mechanism
 precedented across fields reasoning from different evidence toward different ends is
-a substrate-independent regularity rather than a local design choice. These fields
+a regularity of knowing minds rather than a local design choice; whether it is
+substrate-independent we leave open (§3.0). These fields
 are not independent of one another — human cognition is a common root — so the claim
 is convergence, not independent discovery; what is independent is narrower, that
 ENGRAM was arrived at without its author having studied these results.
@@ -36,7 +37,8 @@ measurable one.
 We report one strong, bounded empirical result — across eleven agent-memory sources
 read first-hand, none satisfies the strictest published criterion for genuine
 persistence, while ENGRAM meets two of three conditions outright — and we measure a
-real five-month graph of 10,361 nodes, in which argument shape, not chain depth,
+real five-month graph of 10,361 nodes (9,399 of them current, as Figure 1 counts
+them), in which argument shape, not chain depth,
 determines computed confidence, and a hallucinated citation is caught, retracted, and
 cascaded through its dependents.
 

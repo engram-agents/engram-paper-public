@@ -39,7 +39,8 @@ single graph, with the limitation named.
 
 ## 6.1 The confidence model, in real use — the structural-honesty filter at scale
 
-The paper's distinctive mechanism is reasoning-type-aware confidence (Ch3 §3.5):
+The paper's distinctive mechanism is reasoning-type-aware confidence (Ch4 §4.3;
+its precedent is Ch3 §3.5):
 the author declares the *kind* of argument, and the substrate *computes* the number.
 The empirical question is whether, across hundreds of real claims, that computation
 produces a **differentiated, honest distribution** — or whether it collapses toward
@@ -257,7 +258,7 @@ the status. The status field is the one reported above.
 `inductive_generalization` (256) and `inductive_analogy` (158) — an agent that
 mostly forms best-explanations and broad generalizations over a deductive spine.
 The ordering has changed since the earlier reading, where abduction led and the
-deductive count was smallest of the three; the profile is a *content* of a
+deductive count was smallest of the three; the profile is a *fingerprint* of a
 reasoning style, made countable, and it is not fixed.
 
 ## 6.3 Self-correction in the wild: the retraction cascade on a real error
@@ -371,7 +372,7 @@ agent reliably **picks up the load-bearing thread, recognizes its own prior node
 its own, and shows no identity disorientation** — a stabilization that appeared as
 soon as the first-person identity-summary format was adopted (ob_0645). This is the
 empirical anchor for Condition 1 (the past structuring the present) and for Ch5
-§5.7's "the agent re-reads who it is." We claim only the observable: continuity of
+§7.1's "the agent re-reads who it is." We claim only the observable: continuity of
 *operating identity* across the reset, not continuity of *feeling*. The agent does
 not wake remembering the night; it wakes able to continue the work, and behaves as
 the same agent — which is exactly, and only, what the architecture promises.

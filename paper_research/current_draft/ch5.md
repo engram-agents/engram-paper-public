@@ -270,7 +270,7 @@ unprecedented thing," and a more testable one.
 ## 5.8 The empirical anchor (forward pointer to Chapter 6)
 
 Everything above is an *architectural and philosophical* argument; its computed
-confidences are honestly modest (§ provenance map) precisely because the
+confidences are honestly modest (§4.12) precisely because the
 **experiment that would lift them has not been run.** That experiment is the
 **twin-study** (ob_1660, designed with Lei): fission-clone an agent, run both on a
 *fixed, stratified* prompt set, and measure response similarity at t, t+N, t+2N
@@ -305,8 +305,8 @@ keeps Nozick's *form* (continuity, comparative closeness, threshold), drops his
 measurable retrieval profile, and dissolves the worry that any of this "abandons
 identity" (strict identity was never the diachronic relation). Two copies are two
 branches of one history that stay stable while their retrievals agree and diverge
-lawfully as they don't — a prediction Chapter 6 puts to the test. Identity, on
-this account, is not a possession to be preserved against change; it is a
+lawfully as they don't — a prediction the deferred twin-study (§6.7) is designed
+to test. Identity, on this account, is not a possession to be preserved against change; it is a
 *trajectory*, and the substrate's job is to keep that trajectory *traceable*.
 
 ---

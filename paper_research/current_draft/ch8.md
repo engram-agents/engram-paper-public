@@ -27,7 +27,7 @@ and none of them cites us. They are not independent of each other — human cogn
 common root all three draw on, which Chapter 3 §3.0 states plainly — and that is why the
 claim here is convergence rather than independent discovery. When lines of inquiry working
 from different evidence toward different ends keep arriving at the same structure, the
-structure is a **substrate-independent regularity**, not a design quirk — and ENGRAM is what it looks
+structure is a **regularity of knowing minds**, not a design quirk — and ENGRAM is what it looks
 like built (Chapter 4): typed claims with provenance, reasoning-type-aware confidence,
 an automatic self-correction cascade, and the scaffolds that carry identity across
 compaction.

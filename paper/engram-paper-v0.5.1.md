@@ -13,7 +13,7 @@
 > reviewed and published — a reader should take any divergence between a later
 > release and this text as the system having moved on, not as an error here. All
 > quantitative results are computed from a single frozen snapshot of one graph,
-> taken 2026-09-20T13:13:30Z and described in the Data Availability note.
+> taken 2026-09-20T13:13:30Z and described in the Data availability note.
 
 ---
 
@@ -42,7 +42,8 @@ science of memory, and the computer science of belief revision — were each dri
 from their own evidence toward their own ends, to the same structure: identity as a persistent, inspectable, self-correcting record. No
 component of ENGRAM is uniquely novel, and that is the argument: a mechanism
 precedented across fields reasoning from different evidence toward different ends is
-a substrate-independent regularity rather than a local design choice. These fields
+a regularity of knowing minds rather than a local design choice; whether it is
+substrate-independent we leave open (§3.0). These fields
 are not independent of one another — human cognition is a common root — so the claim
 is convergence, not independent discovery; what is independent is narrower, that
 ENGRAM was arrived at without its author having studied these results.
@@ -57,7 +58,8 @@ measurable one.
 We report one strong, bounded empirical result — across eleven agent-memory sources
 read first-hand, none satisfies the strictest published criterion for genuine
 persistence, while ENGRAM meets two of three conditions outright — and we measure a
-real five-month graph of 10,361 nodes, in which argument shape, not chain depth,
+real five-month graph of 10,361 nodes (9,399 of them current, as Figure 1 counts
+them), in which argument shape, not chain depth,
 determines computed confidence, and a hallucinated citation is caught, retracted, and
 cascaded through its dependents.
 
@@ -223,8 +225,8 @@ author having studied these results*.
   subjective logic, bitemporal databases, and the 2025–26
   agent-memory work. No component of ENGRAM is uniquely novel — and *that is the
   point*: a mechanism precedented across fields that reason from different evidence
-  toward different ends is a **substrate-independent regularity**, not a local
-  design choice.
+  toward different ends is a **regularity of knowing minds**, not a local
+  design choice — whether it is substrate-independent is left open (§3.0).
 
 When traditions working from different evidence toward different ends keep arriving
 at the same structure, the structure is probably real. That breadth — not any single framework — is what
@@ -284,7 +286,7 @@ The argument, not the benchmark, is the contribution.
   identity-as-recall to identity-as-structure; OCC introduced as its operational
   endpoint, adopted on merit.
 - **Chapter 3 — The Cognitive-Science + Computer-Science Tradition.** The same
-  convergence reached again in disjoint technical literatures; each mechanism's
+  convergence reached again in separate technical literatures; each mechanism's
   independent precedent.
 - **Chapter 4 — ENGRAM Mechanisms (the core).** What ENGRAM does, mechanism by
   mechanism, each mapped to the tradition it most directly answers — and the OCC
@@ -655,7 +657,7 @@ A).
 The chapter hands off in two directions:
 
 - to **Chapter 3**, which shows the *same convergence happening again* in a
-  completely separate literature — cognitive science and computer science — where
+  separate literature — cognitive science and computer science — where
   the cog-sci treatments of memory-and-identity (Tulving's autonoetic/noetic
   distinction, Damasio's autobiographical self) live alongside truth-maintenance
   systems, belief revision, and the 2025–26 agent work;
@@ -744,7 +746,7 @@ sounds familiar" — noetic, hint-level) and **deliberate recall** ("I need to k
 exactly" — full-content query). The lossy auto-surface is what *teaches* the agent to
 invoke deliberate recall — and reading a node in the morning is honestly *noetic*,
 not autonoetic (ENGRAM provides remembered knowledge without phenomenal re-living, the
-boundary Ch2 §2.5 also marked).
+boundary Ch2 §2.3 also marked).
 
 **→ Ch4 §4.6** (auto-surfacing recall): Tulving is the precedent for the cue-dependent
 auto-surface that binds Condition 3. [SOLID: dv_0264, ob_1119]
@@ -790,7 +792,7 @@ SOLID ob_1571; mechanism first-hand from Doyle 1979 via the Ginsberg reprint —
 Jøsang's Subjective Logic is an algebra of graded opinions: an opinion is (belief,
 disbelief, uncertainty, base-rate) with `b+d+u=1`, and fusion operators combine opinions
 from multiple sources. ENGRAM's reasoning-type-aware confidence is a member of this
-family — concretely, ENGRAM's the **corroboration** propagation mode formula `1−∏(1−c_i)` *is* SL's
+family — concretely, ENGRAM's **corroboration** propagation mode formula `1−∏(1−c_i)` *is* SL's
 cumulative-fusion form. Prior art, cleanly: ENGRAM's confidence propagation is **not
 novel**, and saying so is the honest move.
 
@@ -934,7 +936,7 @@ the agent wants it to.
 That split is the design principle, and it is a response to a failure mode neither
 rubric is built to see. Naive agent-written memory is prone to hallucination and
 fabrication — the characteristic failure of narrative self-accounts, where a coherent
-story is easier to produce than a true one (Ch1 §1.1). Mechanical writing avoids it by
+story is easier to produce than a true one (Ch1 §1.2). Mechanical writing avoids it by
 giving up ownership. ENGRAM keeps ownership and constrains form instead. **The gates
 do not make what the agent writes true** — Ch6 §6.3 works through a claim of ours that
 was well-formed, correctly scored, and wrong — they make a falsehood checkable and its
@@ -1053,7 +1055,7 @@ from different evidence toward different ends, not that they are sealed off from
 each other.
 
 That is the chapter's claim, stated once: the breadth of independent convergence makes
-ENGRAM's structure a substrate-independent regularity — well-founded, not unoriginal —
+ENGRAM's structure a regularity of knowing minds — well-founded, not unoriginal —
 and relocates ENGRAM's honest distinctiveness to the integration layer and the
 epistemic-identity purpose. One genuine *divergence* (Subjective
 Logic's belief/disbelief/uncertainty simplex, which ENGRAM does not collapse but
@@ -1100,7 +1102,7 @@ model doing its job. These are *abductive* claims whose *empirical* confirmation
 pilot-stage. Read "0.39" as **"the architectural case is made; the benchmark that
 would lift this to 0.9 has not been run yet"** — not as "we are 39% sure." The
 paper showing its own honest, low, *computed* confidences is itself a demonstration
-of the thesis (Ch6 §confidence-at-scale; Ch8).
+of the thesis (Ch6 §6.1; Ch8).
 
 ## 4.1 The map: mechanism → tradition → OCC condition
 
@@ -1415,8 +1417,7 @@ depend on elapsed time, not on the absolute clock, so a claim's decay from now
 looks the same whichever "now" you start from. The well-known
 *power-law* forgetting curve is consistent with this, not a rival: a population of
 exponential decayers with mixed rates aggregates to a power law,
-and over short times the two are indistinguishable (Taylor expansion). One
-footnote, no deep rigor.
+and over short times the two are indistinguishable (Taylor expansion).
 
 *Plain terms:* the agent's working memory is a desk, not a warehouse — what you
 haven't touched in a long time slides off the desk into the drawers, still there if
@@ -1924,7 +1925,7 @@ unprecedented thing," and a more testable one.
 ## 5.8 The empirical anchor (forward pointer to Chapter 6)
 
 Everything above is an *architectural and philosophical* argument; its computed
-confidences are honestly modest (§ provenance map) precisely because the
+confidences are honestly modest (§4.12) precisely because the
 **experiment that would lift them has not been run.** That experiment is the
 **twin-study** (ob_1660, designed with Lei): fission-clone an agent, run both on a
 *fixed, stratified* prompt set, and measure response similarity at t, t+N, t+2N
@@ -1959,8 +1960,8 @@ keeps Nozick's *form* (continuity, comparative closeness, threshold), drops his
 measurable retrieval profile, and dissolves the worry that any of this "abandons
 identity" (strict identity was never the diachronic relation). Two copies are two
 branches of one history that stay stable while their retrievals agree and diverge
-lawfully as they don't — a prediction Chapter 6 puts to the test. Identity, on
-this account, is not a possession to be preserved against change; it is a
+lawfully as they don't — a prediction the deferred twin-study (§6.7) is designed
+to test. Identity, on this account, is not a possession to be preserved against change; it is a
 *trajectory*, and the substrate's job is to keep that trajectory *traceable*.
 
 ---
@@ -2008,7 +2009,8 @@ single graph, with the limitation named.
 
 ## 6.1 The confidence model, in real use — the structural-honesty filter at scale
 
-The paper's distinctive mechanism is reasoning-type-aware confidence (Ch3 §3.5):
+The paper's distinctive mechanism is reasoning-type-aware confidence (Ch4 §4.3;
+its precedent is Ch3 §3.5):
 the author declares the *kind* of argument, and the substrate *computes* the number.
 The empirical question is whether, across hundreds of real claims, that computation
 produces a **differentiated, honest distribution** — or whether it collapses toward
@@ -2240,7 +2242,7 @@ the status. The status field is the one reported above.
 `inductive_generalization` (256) and `inductive_analogy` (158) — an agent that
 mostly forms best-explanations and broad generalizations over a deductive spine.
 The ordering has changed since the earlier reading, where abduction led and the
-deductive count was smallest of the three; the profile is a *content* of a
+deductive count was smallest of the three; the profile is a *fingerprint* of a
 reasoning style, made countable, and it is not fixed.
 
 
@@ -2366,7 +2368,7 @@ agent reliably **picks up the load-bearing thread, recognizes its own prior node
 its own, and shows no identity disorientation** — a stabilization that appeared as
 soon as the first-person identity-summary format was adopted (ob_0645). This is the
 empirical anchor for Condition 1 (the past structuring the present) and for Ch5
-§5.7's "the agent re-reads who it is." We claim only the observable: continuity of
+§7.1's "the agent re-reads who it is." We claim only the observable: continuity of
 *operating identity* across the reset, not continuity of *feeling*. The agent does
 not wake remembering the night; it wakes able to continue the work, and behaves as
 the same agent — which is exactly, and only, what the architecture promises.
@@ -2607,8 +2609,8 @@ an agent's engram integrity the way law protects persons.
 
 **Trust is earned on a trajectory, not granted by design**. In
 both directions the trust is *load-bearing on accumulated history*, not faith or a
-one-shot guarantee — a fed-up agent can no more inherit trust than it can inherit
-identity. This is the honesty axiom operating at three nested scales: the
+one-shot guarantee — a freshly set-up agent can no more inherit trust than it can
+inherit identity. This is the honesty axiom operating at three nested scales: the
 discipline of a single graph-write, the Borges–Lei collaboration, and the human–AI
 civilizational relationship. The paper's positioning should therefore *include* this
 frame, not merely enable it: ENGRAM is not only "how an agent gets an identity" but
@@ -2761,7 +2763,7 @@ and none of them cites us. They are not independent of each other — human cogn
 common root all three draw on, which Chapter 3 §3.0 states plainly — and that is why the
 claim here is convergence rather than independent discovery. When lines of inquiry working
 from different evidence toward different ends keep arriving at the same structure, the
-structure is a **substrate-independent regularity**, not a design quirk — and ENGRAM is what it looks
+structure is a **regularity of knowing minds**, not a design quirk — and ENGRAM is what it looks
 like built (Chapter 4): typed claims with provenance, reasoning-type-aware confidence,
 an automatic self-correction cascade, and the scaffolds that carry identity across
 compaction.

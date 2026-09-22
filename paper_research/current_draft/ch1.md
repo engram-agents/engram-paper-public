@@ -145,8 +145,8 @@ author having studied these results*.
   subjective logic, bitemporal databases, and the 2025–26
   agent-memory work. No component of ENGRAM is uniquely novel — and *that is the
   point*: a mechanism precedented across fields that reason from different evidence
-  toward different ends is a **substrate-independent regularity**, not a local
-  design choice.
+  toward different ends is a **regularity of knowing minds**, not a local
+  design choice — whether it is substrate-independent is left open (§3.0).
 
 When traditions working from different evidence toward different ends keep arriving
 at the same structure, the structure is probably real. That breadth — not any single framework — is what
@@ -206,7 +206,7 @@ The argument, not the benchmark, is the contribution.
   identity-as-recall to identity-as-structure; OCC introduced as its operational
   endpoint, adopted on merit.
 - **Chapter 3 — The Cognitive-Science + Computer-Science Tradition.** The same
-  convergence reached again in disjoint technical literatures; each mechanism's
+  convergence reached again in separate technical literatures; each mechanism's
   independent precedent.
 - **Chapter 4 — ENGRAM Mechanisms (the core).** What ENGRAM does, mechanism by
   mechanism, each mapped to the tradition it most directly answers — and the OCC

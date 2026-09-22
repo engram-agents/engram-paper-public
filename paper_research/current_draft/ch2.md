@@ -349,7 +349,7 @@ A).
 The chapter hands off in two directions:
 
 - to **Chapter 3**, which shows the *same convergence happening again* in a
-  completely separate literature — cognitive science and computer science — where
+  separate literature — cognitive science and computer science — where
   the cog-sci treatments of memory-and-identity (Tulving's autonoetic/noetic
   distinction, Damasio's autobiographical self) live alongside truth-maintenance
   systems, belief revision, and the 2025–26 agent work;
