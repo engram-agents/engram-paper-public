@@ -48,8 +48,24 @@ arbitration automatic state-change. ENGRAM's contribution is that binding (Ch4
 
 ### Kumiho (arXiv 2603.17244) — **(A) advisory / opt-in**
 The strongest competitor in the survey: typed `Depends_On` edges, an `AnalyzeImpact`
-traversal, and *proven AGM K\*2–K\*6 + Hansson compliance*. The gap is not belief
-revision — it is that the cascade **advises** rather than **acts**.
+traversal, and *self-claimed* AGM K\*2–K\*6 and Hansson belief-base compliance. The gap
+is not belief revision — it is that the cascade **advises** rather than **acts**.
+
+**The compliance claim is theirs, recorded at the fidelity we can vouch for.** The AGM
+and Hansson properties above are Kumiho's own claims about Kumiho, and its paper makes
+them in two parts — a formal part, "proving satisfaction of the basic AGM postulates
+(K\*2–K\*6) and Hansson's belief base postulates (Relevance, Core-Retainment)", and an
+implementation part, "Automated AGM compliance testing (49 scenarios, 7 postulates)
+confirms 100% operational adherence to the claimed formal properties." That structure is
+careful rather than confused: the proofs are offered for the semantics, the scenarios for
+the running system. **We can vouch for neither half.** We have read their paper; we have
+not worked through their proofs step by step, and we have no access to their
+implementation to re-run anything — and 49 passing scenarios would in any case establish
+that no counterexample was found in 49 cases, not that none exists. So we record the
+compliance as *claimed* rather than as established and leave it unadjudicated: nothing in
+this survey turns on it, because the contrast drawn here is about **where a correction
+binds**, not about whose postulates are satisfied. (On why satisfaction is the wrong
+relation for *this* paper to assert of itself, see Ch3 §3.9.)
 
 - *paper-verbatim* (§6.5): "AnalyzeImpact traverses typed Depends_On edges to
   identify all downstream conclusions that **may need re-evaluation**—a capability
@@ -239,8 +255,8 @@ we report that as *not documented* rather than asserting overwrite. Verdict: C3 
 | TierMem | Construct absent (C3 N/A) | **none — by honest design** |
 
 Across the surveyed set, the pattern is uniform: the field has the *primitives*
-(detection, typed edges, even formal AGM compliance in Kumiho) but stops short of
-**automatic arbitration as internal state-change**. What separates ENGRAM is
+(detection, typed edges, even Kumiho's self-claimed formal AGM compliance) but stops
+short of **automatic arbitration as internal state-change**. What separates ENGRAM is
 operational binding (Ch4 §4.4, dv_0606/dv_0612), and it has **three** parts, not two:
 the cascade marks every affected node without being asked; auto-surfacing puts those
 marks back in front of the agent without an intentional reach; and the **cascade

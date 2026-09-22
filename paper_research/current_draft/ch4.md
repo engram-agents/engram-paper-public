@@ -286,12 +286,13 @@ agent's mind for it; Condition 3 asks for the former.
 conf 0.95 — the firmest claim in the chapter): the field has converged on the
 necessary *primitives* (typed edges, provenance, cascade-traversable graphs,
 supersede semantics) but those are necessary, not sufficient; what is missing
-everywhere else is operational binding. Kumiho has the primitives *and* formal AGM
-compliance but its impact analysis is *advisory* (opt-in, no automatic state-
-change); SCM records contradiction edges its sleep-cycle never resolves; Mem0
-delegates conflict to retrieval ranking; others operate below claim structure
-entirely. **The per-system detail lives in Appendix B** (the C3 survey of record) —
-this chapter makes the synthesizing claim and points there.
+everywhere else is operational binding. Kumiho has the primitives *and* claims formal
+AGM compliance (their claim, not our verification — Appendix B), but its impact
+analysis is *advisory* (opt-in, no automatic state-change); SCM records contradiction
+edges its sleep-cycle never resolves; Mem0 delegates conflict to retrieval ranking;
+others operate below claim structure entirely. **The per-system detail lives in Appendix
+B** (the C3 survey of record) — this chapter makes the synthesizing claim and points
+there.
 
 **Honest scope (load-bearing).** The architectural argument is strong and largely
 *enabled*-level (you can read the cascade and the hook in the substrate). The 0.39

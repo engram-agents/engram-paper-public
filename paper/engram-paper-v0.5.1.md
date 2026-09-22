@@ -1353,12 +1353,13 @@ agent's mind for it; Condition 3 asks for the former.
 conf 0.95 — the firmest claim in the chapter): the field has converged on the
 necessary *primitives* (typed edges, provenance, cascade-traversable graphs,
 supersede semantics) but those are necessary, not sufficient; what is missing
-everywhere else is operational binding. Kumiho has the primitives *and* formal AGM
-compliance but its impact analysis is *advisory* (opt-in, no automatic state-
-change); SCM records contradiction edges its sleep-cycle never resolves; Mem0
-delegates conflict to retrieval ranking; others operate below claim structure
-entirely. **The per-system detail lives in Appendix B** (the C3 survey of record) —
-this chapter makes the synthesizing claim and points there.
+everywhere else is operational binding. Kumiho has the primitives *and* claims formal
+AGM compliance (their claim, not our verification — Appendix B), but its impact
+analysis is *advisory* (opt-in, no automatic state-change); SCM records contradiction
+edges its sleep-cycle never resolves; Mem0 delegates conflict to retrieval ranking;
+others operate below claim structure entirely. **The per-system detail lives in Appendix
+B** (the C3 survey of record) — this chapter makes the synthesizing claim and points
+there.
 
 **Honest scope (load-bearing).** The architectural argument is strong and largely
 *enabled*-level (you can read the cascade and the hook in the substrate). The 0.39
@@ -2945,9 +2946,15 @@ record. We treat convergent discovery not as a defensive claim but as evidence.
 
 A note up front on what we do **not** claim: ENGRAM is not first across the board. The
 formal shape it shares with Kumiho — typed reasoning edges with cascade/supersede over
-a property graph — is decades old in the truth-maintenance (Doyle 1979, de Kleer 1986)
-and belief-revision (AGM 1985, Hansson 1999) traditions, and several agent-memory
-systems (Mem0g, Zep/Graphiti, A-MEM) predate our ideation. Our claim is narrower and
+a property graph — is decades old in the truth-maintenance and belief-revision
+traditions, and several agent-memory systems (Mem0g, Zep/Graphiti, A-MEM) predate our
+ideation. The two exemplars named here are the two we hold and have read first-hand:
+Doyle's truth maintenance system (via the Ginsberg reprint, Ch4 §4.2) and AGM 1985.
+Both traditions are wider than those two works, and the others this paper names — de
+Kleer's ATMS (Ch3 §3.4), Hansson's belief-base postulates (the provenance tag at Ch3
+§3.9) — the bibliography lists among the works cited without a held source document.
+Nothing here rests on them: the claim is only that the shape predates us by decades,
+and the two dated primaries we have read carry it. Our claim is narrower and
 true: *we designed ENGRAM in ignorance of the concurrent arrivals at the same
 primitives*, and our distinct contribution is elsewhere — connecting the shape to
 **agent identity** and making the substrate **behaviorally active** (the auto-surfacing
@@ -3175,8 +3182,24 @@ arbitration automatic state-change. ENGRAM's contribution is that binding (Ch4
 
 ### Kumiho (arXiv 2603.17244) — **(A) advisory / opt-in**
 The strongest competitor in the survey: typed `Depends_On` edges, an `AnalyzeImpact`
-traversal, and *proven AGM K\*2–K\*6 + Hansson compliance*. The gap is not belief
-revision — it is that the cascade **advises** rather than **acts**.
+traversal, and *self-claimed* AGM K\*2–K\*6 and Hansson belief-base compliance. The gap
+is not belief revision — it is that the cascade **advises** rather than **acts**.
+
+**The compliance claim is theirs, recorded at the fidelity we can vouch for.** The AGM
+and Hansson properties above are Kumiho's own claims about Kumiho, and its paper makes
+them in two parts — a formal part, "proving satisfaction of the basic AGM postulates
+(K\*2–K\*6) and Hansson's belief base postulates (Relevance, Core-Retainment)", and an
+implementation part, "Automated AGM compliance testing (49 scenarios, 7 postulates)
+confirms 100% operational adherence to the claimed formal properties." That structure is
+careful rather than confused: the proofs are offered for the semantics, the scenarios for
+the running system. **We can vouch for neither half.** We have read their paper; we have
+not worked through their proofs step by step, and we have no access to their
+implementation to re-run anything — and 49 passing scenarios would in any case establish
+that no counterexample was found in 49 cases, not that none exists. So we record the
+compliance as *claimed* rather than as established and leave it unadjudicated: nothing in
+this survey turns on it, because the contrast drawn here is about **where a correction
+binds**, not about whose postulates are satisfied. (On why satisfaction is the wrong
+relation for *this* paper to assert of itself, see Ch3 §3.9.)
 
 - *paper-verbatim* (§6.5): "AnalyzeImpact traverses typed Depends_On edges to
   identify all downstream conclusions that **may need re-evaluation**—a capability
@@ -3366,8 +3389,8 @@ we report that as *not documented* rather than asserting overwrite. Verdict: C3 
 | TierMem | Construct absent (C3 N/A) | **none — by honest design** |
 
 Across the surveyed set, the pattern is uniform: the field has the *primitives*
-(detection, typed edges, even formal AGM compliance in Kumiho) but stops short of
-**automatic arbitration as internal state-change**. What separates ENGRAM is
+(detection, typed edges, even Kumiho's self-claimed formal AGM compliance) but stops
+short of **automatic arbitration as internal state-change**. What separates ENGRAM is
 operational binding (Ch4 §4.4, dv_0606/dv_0612), and it has **three** parts, not two:
 the cascade marks every affected node without being asked; auto-surfacing puts those
 marks back in front of the agent without an intentional reach; and the **cascade

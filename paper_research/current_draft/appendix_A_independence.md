@@ -20,9 +20,15 @@ record. We treat convergent discovery not as a defensive claim but as evidence.
 
 A note up front on what we do **not** claim: ENGRAM is not first across the board. The
 formal shape it shares with Kumiho — typed reasoning edges with cascade/supersede over
-a property graph — is decades old in the truth-maintenance (Doyle 1979, de Kleer 1986)
-and belief-revision (AGM 1985, Hansson 1999) traditions, and several agent-memory
-systems (Mem0g, Zep/Graphiti, A-MEM) predate our ideation. Our claim is narrower and
+a property graph — is decades old in the truth-maintenance and belief-revision
+traditions, and several agent-memory systems (Mem0g, Zep/Graphiti, A-MEM) predate our
+ideation. The two exemplars named here are the two we hold and have read first-hand:
+Doyle's truth maintenance system (via the Ginsberg reprint, Ch4 §4.2) and AGM 1985.
+Both traditions are wider than those two works, and the others this paper names — de
+Kleer's ATMS (Ch3 §3.4), Hansson's belief-base postulates (the provenance tag at Ch3
+§3.9) — the bibliography lists among the works cited without a held source document.
+Nothing here rests on them: the claim is only that the shape predates us by decades,
+and the two dated primaries we have read carry it. Our claim is narrower and
 true: *we designed ENGRAM in ignorance of the concurrent arrivals at the same
 primitives*, and our distinct contribution is elsewhere — connecting the shape to
 **agent identity** and making the substrate **behaviorally active** (the auto-surfacing
