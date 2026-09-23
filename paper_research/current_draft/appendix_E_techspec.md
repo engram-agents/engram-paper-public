@@ -54,6 +54,7 @@ the partition is a declaration about kinds, not a census of what happens to exis
 | **question** | ncb | An explicit open thread (the live research agenda). |
 | **person** | ncb | A counterparty node (with trust-tier + `about` edges). |
 | **feeling_report** | ncb | A self-report of an internal state, structured as *"I reported feeling X,"* never *"I felt X"* (no privileged access claim). |
+| **theory** | CB | A declared claim-bearing kind with no instances in this graph (see above). |
 | **evidence** | ncb | A provenance record (URL/file + git_sha + verbatim quote) backing observations. |
 | **task** | ncb | A tracked unit of work with status + importance. |
 | **prediction** | ncb | The **resolution-tracking half** of a predictive claim: filing an `observation_predictive` with a named event also opens a `prediction` node (status `open`), linked back by `predicted_by`. It carries no claim of its own — the observation makes the claim, the prediction node tracks whether the world settled it. A second observation naming the same event links to the existing prediction rather than opening another. |
@@ -119,9 +120,9 @@ edge can close, which is why acyclicity is checked by a real edge walk rather th
 inferred from time order.
 
 `contradicts` is cascade-free by design — filing a contradiction marks nothing (see
-E.5's honest-scope note; a distinct derive-time premise guard covers related ground). A
-whitelist blocks removal of cascade-bearing and structural edges — the `removable`
-column above is that whitelist.
+E.5's honest-scope note; a distinct derive-time premise guard covers related ground). An edge
+can be removed only if its type is on a whitelist, which is the `removable` column
+above; cascade-bearing and structural edges are not on it.
 
 ## E.4 The confidence model (computed, not annotated)
 
@@ -146,13 +147,14 @@ different epistemic situations and must not be scored the same way.
 | mode | formula | reasoning types | behaviour |
 |---|---|---|---|
 | **corroboration** | (1 − ∏(1−cᵢ)) × *d* | `inductive_generalization`, `inductive_enumeration`, `authority_consensus` | **reinforcing** — each additional independent premise *raises* confidence, and the result can exceed any single premise. **The shared-root independence check (§4.3) fires on only two of these three: `inductive_generalization` and `authority_consensus`. `inductive_enumeration` runs the reinforcing formula unguarded**, so its independence is the author's judgement and no warning arrives. |
-| **weakest-link** | min(cᵢ) × *d* | all `deductive_*`, `inductive_analogy`, `inductive_statistical`, `inductive_causal`, `authority_expert` | **limiting** — a chain is no stronger than its weakest premise, then discounted for the inferential step |
+| **weakest-link** | min(cᵢ) × *d* | all five `deductive_*`, `inductive_analogy`, `inductive_statistical`, `inductive_causal`, `authority_expert` | **limiting** — a chain is no stronger than its weakest premise, then discounted for the inferential step |
 | **capped weakest-link** | min(min(cᵢ) × *d*, cap) | `abductive_best_explanation` (0.80), `abductive_elimination` (0.90) | **ceilinged** — a best explanation cannot approach certainty *even from perfect premises*, because alternatives always remain |
 
 *d* is a per-type discount for the inferential step itself: 0.98 for deductive forms
 (truth-preserving, so nearly free), 0.95 for `inductive_generalization`, 0.85 for
 `inductive_causal`, 0.80 for `abductive_best_explanation`, 0.70 for `inductive_analogy`
-— fourteen types in all, each carrying its own.
+— fourteen types in all (the five deductive types, five inductive, two abductive and
+two authority), each carrying its own.
 
 The corroboration formula is the substrate's strongest instrument and its most
 misusable one: **it is valid only on genuinely independent premises.** Two facets of a

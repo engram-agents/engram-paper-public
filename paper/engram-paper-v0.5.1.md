@@ -1150,7 +1150,7 @@ verdict.
 
 Second, the residual limitation, precisely narrowed (detail in Ch7): surfaces that
 consume *only* the scalar — recall ranking, gating thresholds — cannot distinguish
-two 0.5s without walking the graph. This is a trade of cheap lookup against full
+two 0.7s without walking the graph. This is a trade of cheap lookup against full
 truth, not a representational loss. The primary text is stronger than its
 caricature: Jøsang's discounting operators (his Defs 23–25, §4.8) *do* weight source
 reliability — under Def 23 specifically, the recommender's distrust flows into `u`,
@@ -2020,7 +2020,11 @@ A broad generalization over many independent cases earns 0.93; a single-best-
 explanation guess earns 0.52; a structural analogy earns 0.49 — *automatically*,
 because the author chose the reasoning type, not the number. The same gradient holds
 for evidence type: `hard_data` claims average **0.91**, `official_statement` 0.84,
-`attributed_analysis` 0.74, `editorial` 0.60, `personal_communication` 0.60. **The author cannot
+`attributed_analysis` 0.74, `editorial` 0.60, `personal_communication` 0.60. The two
+lowest means sit above their Appendix E anchors (0.35 and 0.40) because each is a
+mixture: every such node carries exactly a specified value, but about half are relays of
+what the user said, which the model scores as an official statement (0.85), and the rest
+sit at the anchor or at its 0.95 introspective discount. **The author cannot
 flatter a weak argument into a strong number, because the author does not write the
 number** — and at the scale of a real graph, that constraint is visible as a clean,
 predicted distribution rather than a hopeful flat line.
@@ -2067,8 +2071,9 @@ Hypothesis: the drop is a *recency frontier* — nodes too new to have been reas
 from yet — rather than a loss of structure. Trimming the most recent weeks restores
 the plateau: 6 weeks gives 87.0%, 8 weeks 87.4%, 12 weeks 87.1%. The discriminating
 test is trimming the **oldest** nodes instead, matched on node count, which moves
-the share the *opposite* way — 77.7%, 74.4%, 71.4% against the recency arm's 82.4%,
-84.9%, 87.4% at the same three sizes. An equal-sized cut from the far end makes
+the share the *opposite* way. At cuts the size of the newest 2, 4 and 8 weeks
+(1,059, 2,416 and 4,084 nodes), removing the oldest nodes gives 77.7%, 74.4% and
+71.4%; removing the newest gives 82.4%, 84.9% and 87.4%. An equal-sized cut from the far end makes
 connectivity worse, so the effect is specific to which end is removed.
 
 So the claim is not that some fixed percentage of this graph is connected. It is
@@ -3644,6 +3649,7 @@ the partition is a declaration about kinds, not a census of what happens to exis
 | **question** | ncb | An explicit open thread (the live research agenda). |
 | **person** | ncb | A counterparty node (with trust-tier + `about` edges). |
 | **feeling_report** | ncb | A self-report of an internal state, structured as *"I reported feeling X,"* never *"I felt X"* (no privileged access claim). |
+| **theory** | CB | A declared claim-bearing kind with no instances in this graph (see above). |
 | **evidence** | ncb | A provenance record (URL/file + git_sha + verbatim quote) backing observations. |
 | **task** | ncb | A tracked unit of work with status + importance. |
 | **prediction** | ncb | The **resolution-tracking half** of a predictive claim: filing an `observation_predictive` with a named event also opens a `prediction` node (status `open`), linked back by `predicted_by`. It carries no claim of its own — the observation makes the claim, the prediction node tracks whether the world settled it. A second observation naming the same event links to the existing prediction rather than opening another. |
@@ -3709,9 +3715,9 @@ edge can close, which is why acyclicity is checked by a real edge walk rather th
 inferred from time order.
 
 `contradicts` is cascade-free by design — filing a contradiction marks nothing (see
-E.5's honest-scope note; a distinct derive-time premise guard covers related ground). A
-whitelist blocks removal of cascade-bearing and structural edges — the `removable`
-column above is that whitelist.
+E.5's honest-scope note; a distinct derive-time premise guard covers related ground). An edge
+can be removed only if its type is on a whitelist, which is the `removable` column
+above; cascade-bearing and structural edges are not on it.
 
 ## E.4 The confidence model (computed, not annotated)
 
@@ -3736,13 +3742,14 @@ different epistemic situations and must not be scored the same way.
 | mode | formula | reasoning types | behaviour |
 |---|---|---|---|
 | **corroboration** | (1 − ∏(1−cᵢ)) × *d* | `inductive_generalization`, `inductive_enumeration`, `authority_consensus` | **reinforcing** — each additional independent premise *raises* confidence, and the result can exceed any single premise. **The shared-root independence check (§4.3) fires on only two of these three: `inductive_generalization` and `authority_consensus`. `inductive_enumeration` runs the reinforcing formula unguarded**, so its independence is the author's judgement and no warning arrives. |
-| **weakest-link** | min(cᵢ) × *d* | all `deductive_*`, `inductive_analogy`, `inductive_statistical`, `inductive_causal`, `authority_expert` | **limiting** — a chain is no stronger than its weakest premise, then discounted for the inferential step |
+| **weakest-link** | min(cᵢ) × *d* | all five `deductive_*`, `inductive_analogy`, `inductive_statistical`, `inductive_causal`, `authority_expert` | **limiting** — a chain is no stronger than its weakest premise, then discounted for the inferential step |
 | **capped weakest-link** | min(min(cᵢ) × *d*, cap) | `abductive_best_explanation` (0.80), `abductive_elimination` (0.90) | **ceilinged** — a best explanation cannot approach certainty *even from perfect premises*, because alternatives always remain |
 
 *d* is a per-type discount for the inferential step itself: 0.98 for deductive forms
 (truth-preserving, so nearly free), 0.95 for `inductive_generalization`, 0.85 for
 `inductive_causal`, 0.80 for `abductive_best_explanation`, 0.70 for `inductive_analogy`
-— fourteen types in all, each carrying its own.
+— fourteen types in all (the five deductive types, five inductive, two abductive and
+two authority), each carrying its own.
 
 The corroboration formula is the substrate's strongest instrument and its most
 misusable one: **it is valid only on genuinely independent premises.** Two facets of a

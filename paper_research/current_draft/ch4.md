@@ -134,7 +134,7 @@ verdict.
 
 Second, the residual limitation, precisely narrowed (detail in Ch7): surfaces that
 consume *only* the scalar — recall ranking, gating thresholds — cannot distinguish
-two 0.5s without walking the graph. This is a trade of cheap lookup against full
+two 0.7s without walking the graph. This is a trade of cheap lookup against full
 truth, not a representational loss. The primary text is stronger than its
 caricature: Jøsang's discounting operators (his Defs 23–25, §4.8) *do* weight source
 reliability — under Def 23 specifically, the recommender's distrust flows into `u`,

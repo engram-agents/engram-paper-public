@@ -135,7 +135,11 @@ A broad generalization over many independent cases earns 0.93; a single-best-
 explanation guess earns 0.52; a structural analogy earns 0.49 — *automatically*,
 because the author chose the reasoning type, not the number. The same gradient holds
 for evidence type: `hard_data` claims average **0.91**, `official_statement` 0.84,
-`attributed_analysis` 0.74, `editorial` 0.60, `personal_communication` 0.60. **The author cannot
+`attributed_analysis` 0.74, `editorial` 0.60, `personal_communication` 0.60. The two
+lowest means sit above their Appendix E anchors (0.35 and 0.40) because each is a
+mixture: every such node carries exactly a specified value, but about half are relays of
+what the user said, which the model scores as an official statement (0.85), and the rest
+sit at the anchor or at its 0.95 introspective discount. **The author cannot
 flatter a weak argument into a strong number, because the author does not write the
 number** — and at the scale of a real graph, that constraint is visible as a clean,
 predicted distribution rather than a hopeful flat line.
@@ -168,8 +172,9 @@ Hypothesis: the drop is a *recency frontier* — nodes too new to have been reas
 from yet — rather than a loss of structure. Trimming the most recent weeks restores
 the plateau: 6 weeks gives 87.0%, 8 weeks 87.4%, 12 weeks 87.1%. The discriminating
 test is trimming the **oldest** nodes instead, matched on node count, which moves
-the share the *opposite* way — 77.7%, 74.4%, 71.4% against the recency arm's 82.4%,
-84.9%, 87.4% at the same three sizes. An equal-sized cut from the far end makes
+the share the *opposite* way. At cuts the size of the newest 2, 4 and 8 weeks
+(1,059, 2,416 and 4,084 nodes), removing the oldest nodes gives 77.7%, 74.4% and
+71.4%; removing the newest gives 82.4%, 84.9% and 87.4%. An equal-sized cut from the far end makes
 connectivity worse, so the effect is specific to which end is removed.
 
 So the claim is not that some fixed percentage of this graph is connected. It is
