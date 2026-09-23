@@ -1,0 +1,20 @@
+{
+ "type": "request/header",
+ "seq": 10,
+ "time": 1790182940361,
+ "data": {
+  "header": {
+   "config": {
+    "provider": "deepseek-official",
+    "model": "deepseek-flash",
+    "maxTokens": 256000,
+    "reasoningEffort": "high"
+   },
+   "adapterDefaults": {
+    "reasoningEffort": true,
+    "maxTokens": true
+   }
+  },
+  "reason": "initial"
+ }
+}

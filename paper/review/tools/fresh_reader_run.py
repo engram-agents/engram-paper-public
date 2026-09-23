@@ -55,6 +55,7 @@ below).
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import re
 import subprocess
@@ -62,10 +63,46 @@ import sys
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
+from types import ModuleType
 from typing import Optional
 
 SECTION_HEADING_RE = re.compile(r"^# (.+?)\s*$", re.MULTILINE)
 DEEPSEEK_API_KEY_ENV = "DEEPSEEK_API_KEY"
+
+
+def _load_guard() -> ModuleType:
+    """Loads the sibling `fresh_reader_guard.py` module by its own file
+    path rather than as a package (`from paper.review.tools.fresh_reader_guard
+    import ...`) -- the package-style import only resolves when the repo
+    root happens to be on `sys.path` (e.g. under pytest, invoked from the
+    repo root), and raises `ModuleNotFoundError: No module named 'paper'`
+    under the script's actual invocation shapes: `python3
+    paper/review/tools/fresh_reader_run.py` from another cwd, or an import
+    by file path with the tools directory on `sys.path` and the repo root
+    NOT on it. Measured live (coordinator report, 2026-09-23): the
+    package-style import failed exactly this way at the guard-import line
+    inside run_live(). This loader depends only on `__file__`, so it
+    resolves identically regardless of cwd, invocation method, or whether
+    `paper` is importable as a package at all."""
+    guard_path = Path(__file__).parent / "fresh_reader_guard.py"
+    spec = importlib.util.spec_from_file_location("fresh_reader_guard", guard_path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"could not load guard module spec from {guard_path}")
+    module = importlib.util.module_from_spec(spec)
+    # Register under its own name BEFORE exec: fresh_reader_guard.py
+    # defines @dataclass classes under `from __future__ import
+    # annotations`, and dataclasses' own forward-ref resolution looks the
+    # defining module up via `sys.modules[cls.__module__]` while the class
+    # body is being processed -- omitting this line raises
+    # `AttributeError: 'NoneType' object has no attribute '__dict__'` from
+    # inside dataclasses.py the moment NoToolsReport's @dataclass
+    # decorator runs, a second invocation-shape defect caught only by the
+    # coordinator-requested invocation-shape test actually calling
+    # _load_guard() end to end (an earlier version of this function passed
+    # a shallower manual check that never got far enough to hit it).
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
 
 
 @dataclass
@@ -416,17 +453,60 @@ def dry_run_report(ctx: RunContext, model_patch: Path) -> str:
         "called the exposure 'unverified' and left the overlay unwired "
         "for ~3 minutes after Kepler's own measurement landed in this "
         "same PR thread -- caught by the round-3 reviewer-fairy, not by "
-        "re-reading the thread myself in time.) Kepler separately "
-        "suggested a run_live() runtime assertion -- decode the actual "
-        "request/header after turn 1 and refuse if any tool name is "
-        "present, turning the persona instruction into a checked fact -- "
-        "not implemented here: it needs the session-store JSONL/zstd "
-        "decode format verified against the pinned SDK release first, "
-        "which this seat cannot do without the SDK installed. Flagged "
-        "as a real follow-up, not attempted from an unverified guess at "
-        "the record shape.",
+        "re-reading the thread myself in time.) The run_live() runtime "
+        "assertion Kepler suggested -- decode the actual request/header "
+        "after turn 0 and refuse if any tool name is present, turning the "
+        "persona instruction into a checked fact -- IS implemented, in "
+        "paper/review/tools/fresh_reader_guard.py (assert_no_tools), "
+        "wired into run_live() immediately after the turn-0 harness.run() "
+        "call returns.",
     ]
     return "\n".join(lines)
+
+
+def _final_no_tools_check(
+    dsh_home: Path, session_id: str, out_md: Path, manifest_path: Path
+) -> None:
+    """Called once, after the turn loop finishes NORMALLY (every turn
+    completed with no exception) -- colleague-pass fold round on
+    spec-no-tools-guard.md. The turn-0 check in run_live() only verifies
+    the first request/header record; this re-decodes the FULL session
+    store so every request/header of the whole session is checked, not
+    just turn 0's.
+
+    On success: appends `no_tools_check_final: passed (<N> request
+    header(s), 0 tools)` to out_md.
+
+    On GuardError (including NoToolsViolation): the reader log (out_md) is
+    already complete at this point -- nothing in it is touched or
+    deleted. One manifest entry is appended with turn_index=-1,
+    label='no_tools_check_final', error=str(exc), and the exception is
+    re-raised so the run exits non-zero (the caller's own `finally`
+    closes the harness).
+
+    Factored out of run_live() as its own module-level function
+    specifically so it can be tested directly against a fake session
+    store built from the fixtures, without spinning up a harness."""
+    guard_mod = _load_guard()
+    try:
+        report = guard_mod.assert_no_tools(dsh_home, session_id)
+    except guard_mod.GuardError as exc:
+        entry = RunManifestEntry(
+            turn_index=-1,
+            label="no_tools_check_final",
+            prompt_chars=0,
+            error=str(exc),
+            finished_at=datetime.now(timezone.utc).isoformat(),
+        )
+        with manifest_path.open("a", encoding="utf-8") as fh:
+            fh.write(json.dumps(entry.__dict__) + "\n")
+        raise
+
+    with out_md.open("a", encoding="utf-8") as fh:
+        fh.write(
+            f"no_tools_check_final: passed ({report.header_count} "
+            "request header(s), 0 tools)\n"
+        )
 
 
 def run_live(
@@ -483,6 +563,19 @@ def run_live(
     across every run on the same day -- without this guard, retrying
     after a crash silently destroys the very progress persist-per-turn
     just saved."""
+    # Deferred (not module-level) for the same reason as the SDK import
+    # below: the dry-run path never calls run_live() at all, so this never
+    # executes there, but keeping it out of the module header keeps that
+    # invariant visible at the call site rather than relying on control
+    # flow elsewhere in the file. Loaded via _load_guard() -- a package-
+    # style `from paper.review.tools.fresh_reader_guard import ...` only
+    # resolves when the repo root happens to be on sys.path (e.g. under
+    # pytest); it raises ModuleNotFoundError under this script's actual
+    # invocation shapes (see _load_guard's own docstring). The guard
+    # module itself is stdlib-only (its own zstandard use is a further-
+    # nested lazy import inside decode_session).
+    assert_no_tools = _load_guard().assert_no_tools
+
     try:
         from deepseek_harness import DeepSeekHarness, DeepSeekHarnessConfig
     except ImportError as exc:
@@ -562,6 +655,22 @@ def run_live(
                 result = harness.run(turn.text, session_id=session_id)
                 response_text = result.final_response
                 entry.response_chars = len(response_text)
+                if i == 0:
+                    # Turns the persona's "cannot look ahead, search the
+                    # web, or open any file" sentence into a checked fact
+                    # (spec-no-tools-guard.md): decode the dsh session
+                    # store immediately after this first harness.run()
+                    # returns and refuse to continue if any tool reached
+                    # the model. Not caught here -- GuardError/
+                    # NoToolsViolation fall through to the except clause
+                    # below like any other exception, which records
+                    # entry.error and re-raises so the run aborts.
+                    report = assert_no_tools(Path(config.dsh_home), session_id)
+                    with out_md.open("a", encoding="utf-8") as fh:
+                        fh.write(
+                            f"no_tools_check: passed ({report.header_count} "
+                            "request header(s), 0 tools)\n"
+                        )
                 with out_md.open("a", encoding="utf-8") as fh:
                     fh.write(f"## {turn.label}\n\n{response_text}\n\n")
             except Exception as exc:  # noqa: BLE001 -- record and re-raise
@@ -575,6 +684,15 @@ def run_live(
             with manifest_path.open("a", encoding="utf-8") as fh:
                 fh.write(json.dumps(entry.__dict__) + "\n")
             ctx.manifest.append(entry)
+
+        # Every turn completed with no exception -- re-check the FULL
+        # session store now, not just turn 0's (colleague-pass fold
+        # round). A GuardError/NoToolsViolation here still propagates
+        # through this same try/finally, so harness.close() below still
+        # runs, and the run still exits non-zero.
+        _final_no_tools_check(
+            Path(config.dsh_home), session_id, out_md, manifest_path
+        )
     finally:
         # The runtime subprocess is owned by this instance (Kepler's read,
         # forum #428 post 10476) -- close it whether the run succeeded,
