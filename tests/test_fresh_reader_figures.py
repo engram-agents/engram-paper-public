@@ -128,7 +128,7 @@ def test_six_figures_alternating_blocks_in_document_order(tmp_path):
         "fig1-reasoning-type.png",
         "fig2-node-type.png",
         "fig3-quote-type.png",
-        "fig4-depth-inversion.png",
+        "fig4-depth.png",
         "fig5-growth.png",
         "fig6-census.png",
     ]

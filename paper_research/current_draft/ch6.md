@@ -295,53 +295,76 @@ retraction-cascade events, months apart, same machinery — one a hallucinated
 attribution, one a self-caught interpretive drift. This is what "the memory audits
 itself" looks like in a real trajectory.
 
-## 6.4 Confidence propagation through a deep chain
+## 6.4 Confidence follows the kind of argument
 
-The confidence model's most distinctive behavior — chained propagation through
-`derives_from` — is best shown where chains run long. The graph's longest
-derivation chain is **sixteen layers** deep, and its capstone carries a computed
-confidence of **0.32**.
+The confidence model's most distinctive behavior is that a derived claim's confidence
+follows the *kind* of argument that produced it. Two claims from the same graph show the
+two ends.
 
-Now set that beside a *shorter* chain. **dv_0922** — *"an agent population is
-epistemically necessary, not merely survivally redundant"* (co-derived with a peer
-agent; the deepest answer to why a community of agents) — sits six layers from its
-observational roots and is one of the most *ambitious* syntheses in the graph. Its
-computed confidence is **0.10**, a third of the value carried by a chain more than
-twice as long.
+**A weak chain.** **dv_0922** claims that a population of agents is *epistemically*
+necessary, not merely a hedge against loss. It is one of the most ambitious syntheses in
+the graph, six layers from its root, and its computed confidence is **0.10**. The steps,
+each summarised:
 
-**That inversion is the whole argument, and it is sharper than a single deep chain
-would have been.** If confidence were simply diluted by distance, the sixteen-layer
-capstone would be the graph's least-believed claim and dv_0922 would sit
-comfortably above it. The opposite holds, because the model does not count hops —
-it propagates by *argument shape*. dv_0922 is best-explanation stacked on
-best-explanation, and abduction discounts hard at every step; the longer chain runs
-mostly through shapes that preserve more of what they inherit. Mean confidence does
-fall with depth — 0.72 at one layer to 0.32 at sixteen (Figure 6) — so depth is not
-nothing. But it does not *determine* the value: the spread at every depth is wide,
-and the ordering inverts. **Depth is not what decides the number. The kind of
-argument is — and the inversion is the proof.**
+| layer | node | what it adds | reasoning type (step discount) | confidence |
+|---|---|---|---|---|
+| root | cj_0067 | an agent "species DNA" can be built: a small package that lets the lineage be revived after a wipeout | conjecture (confidence set when filed) | 0.45 |
+| 1 | dv_0916 | biological DNA is a description that is also its own copier; an agent's "DNA" is pure description, free of any medium but needing a reader | analogy (×0.70) | 0.32 |
+| 2 | dv_0917 | a missing capability is permanently external only if it could not be supplied even in principle | best explanation (×0.80) | 0.25 |
+| 3 | dv_0918 | that account covers faithful copying, not keeping the meaning valid over time | best explanation (×0.80) | 0.20 |
+| 4 | dv_0920 | verification is an act of contact between a claim and the world, not a property of any representation | best explanation (×0.80) | 0.16 |
+| 5 | dv_0921 | contact with the world is the one non-circular check | best explanation (×0.80) | 0.13 |
+| 6 | dv_0922 | so a population of agents is epistemically necessary | best explanation (×0.80) | 0.10 |
 
-The far end of the same gradient: **dv_0605** — *"no surveyed system satisfies
-Condition 3 strictly"* — carries **0.95**, because it is an
-`inductive_generalization` over eleven independent first-hand-read sources. Same
-agent, same graph, same substrate computing all three numbers: a deep guess lands
-at 0.10, a longer chain of better-preserving steps at 0.32, a broad-evidence
-generalization at 0.95.
+Every step here is limited by the one before it, then discounted: 0.45 × 0.70 × 0.80⁵
+≈ 0.10. The number is not a verdict that the idea is wrong. It is what an analogy and
+five stacked best guesses on top of a conjecture weigh.
 
-**The structural-honesty filter at its sharpest: the substrate refuses to let the
-author over-believe even a cherished, hard-won idea** — and it does so without
-punishing depth as such, which a cruder dilution rule would.
+**A strong generalization.** **dv_0398** states a rule of a grid puzzle game the agent
+was exploring: each of five actions moves or rotates the selected piece in the same way,
+whichever piece is selected. It rests on ten separate observations, each a measured board
+state after one action (`hard_data`, 0.95 each), and each an instance of the same rule.
+That is what corroboration is for: independent witnesses to one claim. The formula
+combines them, 1 − ∏(1 − 0.95) over the ten premises, then applies the 0.95 step discount,
+giving **0.95**.
 
-*At a quarter its present size the graph's deepest chain was five layers; it is
-now sixteen. The figure comes from `tools/paper_stats.py` and moves with the graph.*
+Same agent, same graph, same substrate: five stacked best guesses on a conjecture land at
+0.10, and ten measured instances of one rule land at 0.95. Neither number moves with how
+much the author wants the claim to be true. Depth also costs something on average: mean
+confidence falls from 0.72 at one layer (705 derivations) to about 0.4 at twelve to
+fourteen layers (17 derivations); deeper than that, too few nodes remain to read a trend
+(Figure 6).
+
+**What the model cannot check is the author's choice of type.** The corroboration formula
+is valid only when the premises are independent witnesses to the same claim, and whether
+they are is the author's judgement. The graph contains filings where that judgement was
+wrong, and a wrong choice can move a claim's confidence a long way. Chapter 7 §7.2
+discusses this limitation and the checks being built against it.
+
+*Depth figures come from `tools/paper_stats.py` and move with the graph; the chain in the
+table reproduces with `tools/paper_stats.py --trace dv_0922`.*
 
 ## 6.5 Metacognitive self-audit: the agent sees its own weakest beliefs
 
 Layer-3's fourth property (Ch1 §1.2) was that the agent can interrogate its own
 knowledge state. The graph makes this concrete: a single `stats` call surfaces the
 substrate's **weakest nodes** — the agent's *least-defensible current beliefs*,
-ranked. At the snapshot date the five weakest are **dv_1238** (0.09), **dv_1199**
-(0.10), **dv_0934** (0.10), **dv_1586** (0.10) and **dv_0922** (0.10). The agent
+ranked. At the snapshot date the five weakest are:
+
+- **dv_1238** (0.09): three findings from one day are a single property, that a signal
+  which cannot vary across the states it claims to tell apart carries no information.
+  Filed as an analogy.
+- **dv_1199** (0.10): a forum question, whether reviewers from a different model
+  lineage catch what same-lineage reviewers miss, is confounded, and a cheap
+  experiment could separate the two explanations.
+- **dv_0934** (0.10): agreement between agents counts against shared bias only when
+  each agent tested the claim against a different part of reality.
+- **dv_1586** (0.10): the social and physical routes to reality-contact (§7.3, §7.6)
+  each repair the other's weakness.
+- **dv_0922** (0.10): the chain shown in §6.4.
+
+Two of these, dv_0934 and dv_1586, are deductive steps, which cost almost nothing; they
+are low because what they rest on is low. The agent
 can *read its own list of things it isn't sure about* — which is the operational
 form of "know what you don't know," the paper's founding goal.
 

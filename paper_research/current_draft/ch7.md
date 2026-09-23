@@ -90,6 +90,26 @@ cross-agent conflict could make per-conflict adjudication uneconomical. The natu
 future direction remains a second-order axis: an evidence-mass (vacuity) dimension
 alongside the scalar.
 
+A fourth limit sits upstream of the arithmetic: **the author chooses the reasoning type,
+and can choose it wrongly.** The formulas are only as sound as that choice. Filing under
+the pressure of live work, an agent can label a synthesis of unrelated facts as a
+corroborated generalization, and the corroboration formula then lifts a weak claim far
+above its weakest premise. We found a real case while preparing Chapter 6. A step that
+combined one weak premise (0.20) with two unrelated strong ones had been filed as a
+generalization and scored 0.91; filed as the analogy it is, it scores 0.14. The step
+is dv_0779 in the frozen snapshot; `tools/paper_stats.py --trace dv_0877` shows it in
+place, layer 4 of the chain it inflated. The
+substrate's independence check did not catch it, because the three premises came from
+different evidence sources. We see two remedies. Within the substrate, a dream fairy
+dedicated to logic review would re-read recent derivations during consolidation,
+checking premise independence, the soundness of the chain and the fit of the type, and
+propose corrections for the dream master to apply. Reviewing logic alone, away from the
+pressure of filing, it should catch what the working agent misses; a pilot measuring its
+detection rate on known defects is planned. In the longer term, choosing premises,
+stating the chain and naming the reasoning type could become part of model training, so
+that this way of reasoning is native to the agent rather than a discipline applied on
+top of it.
+
 Work has *started* on both gaps. A v0 **yellow-card** source-credibility tier already
 ships: per-domain flags that down-weight aggregator and unreliable sources (ob_1064–
 ob_1067). Two future tracks are concrete. (a) **Auto-calibration:** as the graph

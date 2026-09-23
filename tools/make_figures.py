@@ -198,8 +198,8 @@ def _depths(con):
     return {n: depth(n) for n in parents}
 
 
-def fig_depth_inversion(con, out: Path) -> str:
-    """The inversion: depth does not predict confidence."""
+def fig_depth(con, out: Path) -> str:
+    """Confidence by derivation depth."""
     d = _depths(con)
     conf = dict(
         con.execute(
@@ -219,14 +219,6 @@ def fig_depth_inversion(con, out: Path) -> str:
     ds = sorted(by_depth)
     ax.plot(ds, [sum(by_depth[k]) / len(by_depth[k]) for k in ds], color=ACCENT, linewidth=1.8, label="mean at depth")
 
-    deepest = max(pts, key=lambda p: p[0])
-    ax.scatter([deepest[0]], [deepest[1]], s=54, color=ACCENT, zorder=5, edgecolor="white", linewidth=1.1)
-    ax.annotate(
-        f"deepest chain\ndepth {deepest[0]}, conf {deepest[1]:.2f}",
-        xy=deepest, xytext=(deepest[0] - 4.6, deepest[1] + 0.20), fontsize=8, color=INK,
-        arrowprops=dict(arrowstyle="-", color=MUTED, linewidth=0.8),
-    )
-
     # Annotate the node the PROSE names, never an auto-picked extremum: an
     # auto-pick silently drifts away from the text as the graph grows, and the
     # figure then illustrates a different claim than the one beside it.
@@ -244,12 +236,20 @@ def fig_depth_inversion(con, out: Path) -> str:
     ax.set_ylim(0, 1.0)
     ax.legend(frameon=False, fontsize=8, loc="upper right")
     _style(ax, xlabel="derivation depth (longest path to a root)", ylabel="computed confidence",
-           title="Depth is not the variable")
-    fig.savefig(out / "fig4-depth-inversion.png")
+           title="Confidence by derivation depth")
+    fig.savefig(out / "fig4-depth.png")
     plt.close(fig)
 
-    return (f"fig4  derivations with depth>0: {len(pts):,}   max depth={deepest[0]} at conf={deepest[1]:.2f}\n"
-            f"fig4  exemplar {EXEMPLAR}: depth={low[0]} conf={low[1]:.2f}")
+    lines = [
+        f"fig4  derivations with depth>0: {len(pts):,}",
+        f"fig4  exemplar {EXEMPLAR}: depth={low[0]} conf={low[1]:.2f}",
+    ]
+    for dep in (1, 12, 13, 14, 15, 16):
+        vals = by_depth.get(dep)
+        if not vals:  # fail loud rather than quietly reporting a zero row the caption doesn't expect
+            raise SystemExit(f"depth {dep} absent from the snapshot — the caption names it")
+        lines.append(f"fig4  depth={dep:>2}  n={len(vals):>4}  mean={sum(vals) / len(vals):.3f}")
+    return "\n".join(lines)
 
 
 def fig_growth(con, out: Path) -> str:
@@ -320,7 +320,7 @@ def main() -> int:
     print(f"# {pin_note}")
     print("# every figure below is computed from that file and nothing else\n")
     for fn in (fig_reasoning_type, fig_node_type, fig_quote_type,
-               fig_depth_inversion, fig_growth, fig_census):
+               fig_depth, fig_growth, fig_census):
         print(fn(con, out))
         print()
     print(f"# wrote {len(list(out.glob('*.png')))} figures to {out}/")

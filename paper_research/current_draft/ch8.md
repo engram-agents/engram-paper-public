@@ -77,8 +77,7 @@ scoping of Chapter 4 that declines the clean sweep.
 
 It is also the method of this paper. The empirical chapter (Chapter 6) does not hide
 low numbers. It shows a six-layer chain whose ambitious capstone the substrate holds at
-0.10 — below a chain more than twice as long, because the model discounts by argument
-shape, not by depth alone — beside a broad-evidence claim at 0.95, and neither number
+0.10, beside a claim resting on ten measured observations at 0.95, and neither number
 moves with how much the author wants the claim to be true. It shows a real
 hallucinated attribution that propagated for six days, was caught, cascaded, and drove
 a fix to the surfacing mechanism that had let it hide — *and a second such

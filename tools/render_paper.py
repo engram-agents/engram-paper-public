@@ -117,16 +117,15 @@ INSERTS: list[tuple[str, str, str]] = [
     ),
     (
         "ch6.md", "## 6.4",
-        _fig("figures/fig4-depth-inversion.png", 6,
+        _fig("figures/fig4-depth.png", 6,
              "Computed confidence against derivation depth, for all 1,318 current derivations "
-             "with at least one ancestor. Mean confidence **does** fall with depth, from 0.72 "
-             "at one layer to 0.32 at sixteen — so depth is not irrelevant. But it does not "
-             "*determine* the value, and two things on this plot show why. The spread at every "
-             "depth is enormous: at depth 1 alone the range runs from about 0.10 to 0.98. And "
-             "the ordering inverts — the graph's deepest chain (16 layers) carries 0.32 while "
-             "the annotated synthesis six layers down carries 0.10, a third of the value at "
-             "less than half the depth. A model that diluted by distance could not produce "
-             "that pair. Argument shape is what separates them (Figure 2)."),
+             "with at least one ancestor. Mean confidence falls with depth, from 0.72 at one "
+             "layer (705 derivations) to about 0.4 at twelve to fourteen layers (17 "
+             "derivations); the deepest layers hold one node each, too few to read a trend. "
+             "The spread at every depth is wide: at depth 1 alone it runs from about 0.2 to "
+             "0.98. The annotated point is the six-layer chain worked through in §6.4 (0.10). "
+             "Depth costs something on average; the kind of argument sets an individual "
+             "claim's number (Figure 2)."),
     ),
     (
         "ch6.md", "## 6.2",
