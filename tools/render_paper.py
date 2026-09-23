@@ -172,6 +172,74 @@ def strip_provenance_ids(name: str, text: str) -> tuple[str, int]:
     return text, n
 
 
+# --- apparatus-tag stripping: working notes bracketed onto argument sentences ----
+#
+# A bracketed span like `[SOLID]`, `[GROUNDED ob_2551/dv_0965]`, or
+# `**[gap SOLID ob_1571; primary first-hand 2026-07-02]**` is grounding/verification
+# apparatus the AUTHOR needed while writing — not something the READER needs. The
+# chapter sources keep these; the RENDER does not. Unlike `strip_provenance_ids`
+# above (bare parenthetical node-ID citations), these are square-bracketed, often
+# bold-wrapped, and sometimes span multiple lines — a line-based strip would miss
+# them, so the tag's content is matched with a character class that spans newlines.
+_APPARATUS_OPENERS = (
+    r"(?:SOLID|GROUNDED|gap\s+SOLID|Honest\s+scope|via\s+ob_|ob_\d{4}|secondary)"
+)
+
+# Two shapes, tried in order at every match position (alternation commits to the
+# first that succeeds, so listing the more specific ISOLATED shape first is what
+# makes it win whenever both could apply):
+#
+#   ISOLATED — the tag is the only non-whitespace content of its own paragraph
+#   (bounded on each side by a blank line, a single line break, or the start/end
+#   of the text). Both the leading and trailing boundary are captured so the
+#   replacement can be computed explicitly (see _apparatus_repl): two genuine
+#   blank lines collapse to exactly one, a single line break on either side
+#   survives as the paragraph separator, and a text-start/end edge contributes
+#   nothing (no spurious leading/trailing break is introduced).
+#
+#   INLINE — the tag sits inside a line alongside other content. Only the
+#   whitespace immediately before the tag is removed (at most one newline, so a
+#   blank line further back is never touched); whatever follows the tag —
+#   including punctuation with no space, per the "punctuation is kept and
+#   re-attached" rule — is left exactly as it was.
+_APPARATUS_TAG = re.compile(
+    r"(?P<iso_pre>\A|\n\n|\n)[ \t]*(?P<iso_bold>\*\*)?"
+    r"\[\s*" + _APPARATUS_OPENERS + r"[^\]]*\](?(iso_bold)\*\*)[ \t]*"
+    r"(?P<iso_post>\n\n|\n|\Z)"
+    r"|"
+    r"(?P<inl_pre>[ \t]*(?:\n[ \t]*)?)(?P<inl_bold>\*\*)?"
+    r"\[\s*" + _APPARATUS_OPENERS + r"[^\]]*\](?(inl_bold)\*\*)"
+)
+
+
+def _apparatus_repl(m: re.Match) -> str:
+    if m.group("iso_pre") is not None:
+        # `\A` and `\Z` are zero-width, so a matched anchor (text edge) comes
+        # back as the empty string, not the pattern's own escape text.
+        pre, post = m.group("iso_pre"), m.group("iso_post")
+        at_start, at_end = pre == "", post == ""
+        if pre == "\n\n" and post == "\n\n":
+            return "\n\n"           # two genuine blank lines -> exactly one
+        if pre == "\n\n":
+            return "" if at_end else "\n\n"
+        if post == "\n\n":
+            return "" if at_start else "\n\n"
+        if at_start or at_end:
+            return ""               # nothing to separate from/into at a text edge
+        return "\n"                 # ordinary single line break on both sides
+    return ""                       # INLINE: preceding whitespace + tag, nothing kept
+
+
+def strip_apparatus_tags(name: str, text: str) -> tuple[str, int]:
+    """Remove bracketed working-apparatus tags from the RENDER (sources keep them).
+
+    Applies to all BODY files — unlike `strip_provenance_ids`, apparatus tags are
+    not scoped to a subset of chapters; `name` is accepted for signature symmetry
+    with the sibling function and for future scoping if it's ever needed.
+    """
+    return _APPARATUS_TAG.subn(_apparatus_repl, text)
+
+
 def load(path: Path) -> str:
     if not path.exists():
         raise SystemExit(f"missing source: {path}")
@@ -213,11 +281,14 @@ def main() -> int:
     parts = [load(PAPER / "front-matter.md")]
 
     stripped_total = 0
+    apparatus_total = 0
     for name in BODY:
         body = load(DRAFT / name)
         body = apply_inserts(name, body)
         body, n = strip_provenance_ids(name, body)
         stripped_total += n
+        body, m = strip_apparatus_tags(name, body)
+        apparatus_total += m
         parts.append(body)
 
     parts.append(load(PAPER / "bibliography.md"))
@@ -235,6 +306,8 @@ def main() -> int:
     print(f"  figures    {figs} placed")
     print(f"  node IDs   {stripped_total} provenance markers stripped from the render "
           f"(sources keep them; audit anchors, data points and df_* labels untouched)")
+    print(f"  apparatus  {apparatus_total} bracketed working tags stripped from the "
+          f"render (sources keep them)")
     return 0
 
 

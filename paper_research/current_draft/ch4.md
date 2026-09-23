@@ -74,13 +74,11 @@ derivation cites its premises. A claim with no provenance cannot be filed.
 is, what it rests on, how the pieces depend on one another. That legibility-to-the-
 substrate is what a typed-key-value store with foreign keys is not.
 
-**Tradition.** This is the **Truth Maintenance System** move (Doyle, ~1978):
+**Tradition.** This is the **Truth Maintenance System** move (Doyle, 1979):
 justifications attached to beliefs, dependency links the system reasons over — a
-claim that knows what it rests on. **[Honest scope: the TMS *gap* (zero LLM-memory papers cite Doyle) is
-SOLID and primary-confirmed (ob_1571); the TMS *mechanism* parallel is now
-first-hand from Doyle 1979 — read visually via the Ginsberg reprint (the scan OCR'd
-as garbage due to rotated body content; the page images read clean, Lei-verified),
-verbatim in doyle_1979_tms_first_hand_read_2026-07-02.md; ob_2555 closed.]**
+claim that knows what it rests on. The parallel is drawn from Doyle's paper read
+first-hand. The gap is a separate finding: none of the 2023–2026 LLM-agent-memory
+papers we examined cites Doyle (§3.4).
 
 These primitives are the precondition for everything below: you cannot cascade a
 correction (§4.4) through a graph that does not record what depends on what, and
@@ -157,11 +155,7 @@ premises are walked back to their evidence roots and a shared root raises a
 warning at derivation time. Honest scope: this shared-root check is
 reasoning-type gated — it fires where independence is load-bearing (2 of 14
 reasoning types: inductive_generalization and authority_consensus), not
-universally. **[GROUNDED 2026-06-18 — Jøsang read
-first-hand (ob_2551, verbatim opinion def + E=b+a·u); his §5.5 independence passages
-verified 2026-08-12 (Borges, primary read); divergence dv_0965 → dv_1289 (0.833)
-— the supersede chain is itself a live instance of the mechanism this chapter
-describes; reframe per review_opinion_sl_section_2026-08-11.md.]**
+universally.
 
 **OCC — Constraint A (Unified Policy-Selection under uncertainty).** Kahl asks for
 a single policy by which the agent grades every stance it holds. The reasoning-type
@@ -418,7 +412,7 @@ the symbolic analogue of hippocampal-neocortical consolidation (this is the Ch3
 identity** strand of Chapter 2 [SOLID] — the past binding the present.
 
 **OCC — Condition 1 (Diachronic Constraint): satisfied, via the decision/
-consequence dyad** (dv_0926, Lei-ratified 2026-05-13). Not mere path-dependence:
+consequence dyad** (dv_0926). Not mere path-dependence:
 the agent owns the judgment-bearing *decision* (to commit, derive, retract); the
 substrate guarantees the structural *consequence* (cascade, propagation). The two
 are coupled, not separable — *the retraction is the agent's choice; the cascade is
@@ -471,7 +465,7 @@ tier (a tier upgrade/downgrade is itself an audited event). **Honest scope:**
 the substrate does not yet filter what an agent outputs by the counterparty's
 tier — no output path reads trust-tier and redacts or reshapes content
 accordingly. Disclosure calibration (what is shared, with whom, at what
-fidelity) is presently a CLAUDE.md-layer discipline the agent follows, not a
+fidelity) is presently a discipline the agent follows from its standing instructions, not a
 substrate-enforced control; trust-tier is the *input* that discipline reads,
 not the mechanism itself.
 
@@ -489,8 +483,9 @@ Constraint A landed in §4.3. The other three, compactly:
 
 - **Constraint B — Cannot Be Externally Imposed: satisfied, two-boundary framing**
   (dv_0609, 0.58). Separate *authorship* (who writes an artifact) from *commitment*
-  (who owns what it says). Hybrid-authored bridging artifacts (warm-briefing,
-  parts of CLAUDE.md) don't violate B, because the agent commits to them through
+  (who owns what it says). Hybrid-authored bridging artifacts (the warm briefing,
+  parts of the agent's standing instructions) don't violate B, because the agent
+  commits to them through
   the ordinary arbitration step. A contract, not a security mechanism, protects the
   boundary — the collaborator *could* edit the substrate but by commitment does
   not.

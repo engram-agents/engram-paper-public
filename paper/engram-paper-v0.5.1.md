@@ -703,7 +703,7 @@ two-phase sleep (a day-wide review, then dream consolidation) — as the transfe
 process.
 
 **→ Ch4 §4.8** (continuity across compaction): CLS is the cog-sci precedent for the
-two-routine consolidation that meets OCC Conditions 1 and 2. [SOLID]
+two-routine consolidation that meets OCC Conditions 1 and 2.
 
 ### 3.2 Tulving → the two registers of recall
 
@@ -718,7 +718,7 @@ not autonoetic (ENGRAM provides remembered knowledge without phenomenal re-livin
 boundary Ch2 §2.3 also marked).
 
 **→ Ch4 §4.6** (auto-surfacing recall): Tulving is the precedent for the cue-dependent
-auto-surface that binds Condition 3. [SOLID: dv_0264, ob_1119]
+auto-surface that binds Condition 3.
 
 ### 3.3 Rational analysis of memory → designed forgetting
 
@@ -736,7 +736,7 @@ utility score ranking what stays. That is the need-probability principle, instan
 what the agent is most likely to need stays queryable; the rest fades.
 
 **→ Ch4 §4.5** (forgetting): the rational-analysis tradition is the cog-sci anchor for
-ENGRAM's queryable/faded sets and the exponential kernel. [GROUNDED this session]
+ENGRAM's queryable/faded sets and the exponential kernel.
 
 ---
 
@@ -753,8 +753,7 @@ Kleer** (ob_1571, primary-confirmed): the TMS→modern-agent-memory bridge is re
 unwalked, so ENGRAM is the first *implementation* of TMS-style dependency propagation
 in typed LLM-agent memory, not the first *naming*.
 
-**→ Ch4 §4.2 + §4.4** (provenance primitives; retraction cascade → Condition 3). [gap
-SOLID ob_1571; mechanism first-hand from Doyle 1979 via the Ginsberg reprint — ob_2555 closed]
+**→ Ch4 §4.2 + §4.4** (provenance primitives; retraction cascade → Condition 3).
 
 ### 3.5 Subjective Logic → confidence propagation, with an honest divergence
 
@@ -776,7 +775,6 @@ walking the graph. That scalar-only-consumer limitation is carried forward to Ch
 future direction, not hidden.
 
 **→ Ch4 §4.3** (reasoning-type confidence → Constraint A) and **Ch7** (the divergence).
-[GROUNDED this session]
 
 ### 3.6 Bitemporal data / TOKI → supersede-retains-the-old
 
@@ -787,7 +785,7 @@ applies this to agent memory. That is ENGRAM's supersede semantics exactly: a su
 node is not deleted but kept, with the supersede edge preserving the history (the
 "I changed my mind" vs "I was wrong" distinction).
 
-**→ Ch4 §4.4 / §4.8** (supersede semantics; continuity history). [GROUNDED — ob_2554]
+**→ Ch4 §4.4 / §4.8** (supersede semantics; continuity history).
 
 ### 3.7 The 2025–26 agent-identity strand → provenance-native, ahead on the named axis
 
@@ -803,7 +801,7 @@ already built on. And **soul.py** (arXiv 2604.09588) reaches multi-anchor persis
 agent identity from yet another direction.
 
 **→ Ch4 §4.10 + Ch7** (relational / disclosure-vs-erasure): provenance-native; the
-field's named bottleneck is ENGRAM's foundation. [GROUNDED — VMG ob_2550, soul.py ob_2553]
+field's named bottleneck is ENGRAM's foundation.
 
 ---
 
@@ -1003,10 +1001,6 @@ load-bearing — and AGM's own authors' observation that the intuitive process l
 level of a theory's base rather than the theory as a whole (Alchourrón & Makinson 1982,
 p. 21).
 
-[SOLID: dv_1658 — AGM/Hansson as the closed-theory contrast, from first-hand reads of
-AGM 1985 p. 510 and Alchourrón & Makinson 1982 pp. 16, 21; postulate statements via
-Hansson's own encyclopedia entry and Rocha & Wassermann. Hansson 1991 itself unread.]
-
 ---
 
 ## 3.10 What the two strands show, and where they hand off
@@ -1078,15 +1072,15 @@ The whole chapter in one table. Each row is a section below.
 
 | Mechanism | What it does | Tradition it answers | OCC verdict |
 |---|---|---|---|
-| Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle **[gap SOLID ob_1571; primary first-hand 2026-07-02]** | — (structural prerequisite) |
-| Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang **[GROUNDED ob_2551/dv_0965 → dv_1289]**, w/ honest divergence | **Constraint A** (unified policy-selection) |
-| Retraction cascade (§4.4) | auto error-correction through `derives_from` | TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) |
-| Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus [SOLID] + Anderson-Schooler **[GROUNDED ob_2552/dv_0966]** | — (scopes what Cond-3 arbitration ranges over) |
-| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving [SOLID] + ACT-R spreading activation **[secondary — not first-hand; Tulving carries it]** | — (binds Cond 3: can't suppress by not looking) |
-| Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL **[ob_0647/ob_0651, prior read]** + spaced-repetition [SOLID] | — |
-| Continuity across compaction (§4.8) | identity survives the reset | CLS consolidation [SOLID] + diachronic-identity [SOLID] | **Condition 1** (Diachronic) **+ Condition 2** (Non-Interchangeability) |
-| Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution [SOLID] | — (feeds Ch5 identity-as-history) |
-| Relational: feeling/person/trust-tier (§4.10) | continuity baseline + disclosure control → **Appx D, Ch7** | honesty orthogonal to discretion [SOLID] + VMG principal-scoped **[GROUNDED ob_2550]** | — |
+| Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle | — (structural prerequisite) |
+| Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang, w/ honest divergence | **Constraint A** (unified policy-selection) |
+| Retraction cascade (§4.4) | auto error-correction through `derives_from` | TMS backtracking | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) |
+| Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus + Anderson-Schooler | — (scopes what Cond-3 arbitration ranges over) |
+| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving + ACT-R spreading activation | — (binds Cond 3: can't suppress by not looking) |
+| Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL + spaced-repetition | — |
+| Continuity across compaction (§4.8) | identity survives the reset | CLS consolidation + diachronic-identity | **Condition 1** (Diachronic) **+ Condition 2** (Non-Interchangeability) |
+| Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution | — (feeds Ch5 identity-as-history) |
+| Relational: feeling/person/trust-tier (§4.10) | continuity baseline + disclosure control → **Appx D, Ch7** | honesty orthogonal to discretion + VMG principal-scoped | — |
 
 **Where each OCC verdict lives.** The OCC conditions and constraints are addressed
 inline, at the mechanism that earns each — there is no standalone OCC section:
@@ -1112,13 +1106,11 @@ derivation cites its premises. A claim with no provenance cannot be filed.
 is, what it rests on, how the pieces depend on one another. That legibility-to-the-
 substrate is what a typed-key-value store with foreign keys is not.
 
-**Tradition.** This is the **Truth Maintenance System** move (Doyle, ~1978):
+**Tradition.** This is the **Truth Maintenance System** move (Doyle, 1979):
 justifications attached to beliefs, dependency links the system reasons over — a
-claim that knows what it rests on. **[Honest scope: the TMS *gap* (zero LLM-memory papers cite Doyle) is
-SOLID and primary-confirmed; the TMS *mechanism* parallel is now
-first-hand from Doyle 1979 — read visually via the Ginsberg reprint (the scan OCR'd
-as garbage due to rotated body content; the page images read clean, Lei-verified),
-verbatim in doyle_1979_tms_first_hand_read_2026-07-02.md; ob_2555 closed.]**
+claim that knows what it rests on. The parallel is drawn from Doyle's paper read
+first-hand. The gap is a separate finding: none of the 2023–2026 LLM-agent-memory
+papers we examined cites Doyle (§3.4).
 
 These primitives are the precondition for everything below: you cannot cascade a
 correction (§4.4) through a graph that does not record what depends on what, and
@@ -1195,11 +1187,7 @@ premises are walked back to their evidence roots and a shared root raises a
 warning at derivation time. Honest scope: this shared-root check is
 reasoning-type gated — it fires where independence is load-bearing (2 of 14
 reasoning types: inductive_generalization and authority_consensus), not
-universally. **[GROUNDED 2026-06-18 — Jøsang read
-first-hand (ob_2551, verbatim opinion def + E=b+a·u); his §5.5 independence passages
-verified 2026-08-12 (Borges, primary read); divergence dv_0965 → dv_1289 (0.833)
-— the supersede chain is itself a live instance of the mechanism this chapter
-describes; reframe per review_opinion_sl_section_2026-08-11.md.]**
+universally.
 
 **OCC — Constraint A (Unified Policy-Selection under uncertainty).** Kahl asks for
 a single policy by which the agent grades every stance it holds. The reasoning-type
@@ -1271,8 +1259,7 @@ lights up red, on its own, where you will see it next time you look — not in a
 report you have to remember to run. That is the difference between a memory that
 *can be* audited and one that audits *itself*.
 
-**Tradition.** **TMS dependency-directed backtracking** (Doyle)
-**[gap SOLID ob_1571; mechanism first-hand from Doyle via the Ginsberg reprint, read visually — ob_2555 closed, as §4.2]**: a retracted justification propagates to
+**Tradition.** **TMS dependency-directed backtracking** (Doyle): a retracted justification propagates to
 everything that rested on it. That is the precedent; this paper claims no
 belief-revision postulate for the cascade, and AGM's different orientation is noted at
 the end of Chapter 3 (§3.9). What the cascade *does* claim is where the marking happens
@@ -1390,10 +1377,7 @@ you go looking, just not in your face. Forgetting is *what keeps the desk usable
 
 **Tradition.** The **rational analysis of memory** — Anderson & Schooler's
 need-probability account (you retain what you are likely to need), Ebbinghaus's
-original forgetting curve, and Wixted's work on retention. **[GROUNDED 2026-06-18 —
-Anderson & Schooler read first-hand (ob_2552, need-probability verbatim); the
-ENGRAM mapping is dv_0966; the exponential-vs-power-law reconciliation is dv_0962 +
-ob_0521. Wixted is cited via A&S's discussion; a dedicated Wixted read is optional.]**
+original forgetting curve, and Wixted's work on retention.
 
 **OCC:** none directly, but forgetting **scopes** Condition 3 — arbitration ranges
 over the *queryable* set, so "the agent can't suppress a correction by not looking"
@@ -1410,10 +1394,9 @@ query; the structural sense only, never Tulving's phenomenal one — §3.2) that
 fetch. The lossy auto-surface is what *teaches* the agent to invoke deliberate
 recall.
 
-**Tradition.** **Tulving** [SOLID]: encoding specificity and the autonoetic/noetic
+**Tradition.** **Tulving**: encoding specificity and the autonoetic/noetic
 distinction — the two registers map onto Tulving's two ways of having the past
-present. And **ACT-R spreading activation** **[secondary — not first-hand-read;
-Tulving carries this section's load, ACT-R is a supplementary precedent]** is the
+present. And **ACT-R spreading activation** is the
 CS-side precedent for cue-dependent automatic retrieval.
 
 **OCC:** none of its own, but auto-surfacing is the **binding half of Condition 3**
@@ -1454,8 +1437,7 @@ detail lives in Appendix C**, with its lineage; here we note only that it exists
 that it is the mechanism by which forgetting (§4.5) and surfacing (§4.6) produce an
 *ordered* draw, not just a filtered one.
 
-**Tradition.** **MemRL / memory-utility** approaches (utility as a learned value)
-**[via ob_0647/ob_0651 — prior first-hand read; current ranking formula + detail in Appx C]** and the **spaced-repetition** tradition [SOLID]. Detail → Appx C.
+**Tradition.** **MemRL / memory-utility** approaches (utility as a learned value) and the **spaced-repetition** tradition. Detail → Appx C.
 
 ## 4.8 Continuity across compaction → Conditions 1 and 2
 
@@ -1480,13 +1462,13 @@ and the focus list plus the warm briefing are the journal it opens on waking.
 The consolidation routines are its sleep: what gets reviewed before the forgetting
 clock advances is what endures.
 
-**Tradition.** **Complementary Learning Systems** [SOLID] — the two routines are
+**Tradition.** **Complementary Learning Systems** — the two routines are
 the symbolic analogue of hippocampal-neocortical consolidation (this is the Ch3
 §3.1 hand-off). And the **diachronic-
-identity** strand of Chapter 2 [SOLID] — the past binding the present.
+identity** strand of Chapter 2 — the past binding the present.
 
 **OCC — Condition 1 (Diachronic Constraint): satisfied, via the decision/
-consequence dyad** (dv_0926, Lei-ratified 2026-05-13). Not mere path-dependence:
+consequence dyad**. Not mere path-dependence:
 the agent owns the judgment-bearing *decision* (to commit, derive, retract); the
 substrate guarantees the structural *consequence* (cascade, propagation). The two
 are coupled, not separable — *the retraction is the agent's choice; the cascade is
@@ -1521,7 +1503,7 @@ Chapter 5's identity-as-history. **The full node-type catalog lives in Appendix 
 here we note the systems exist and that they are the structural home of the
 agent's standing character.
 
-**Tradition.** **Schechtman's narrative self-constitution** [SOLID] — identity as
+**Tradition.** **Schechtman's narrative self-constitution** — identity as
 authored, durable structure rather than momentary recall. The ax/cs/ls/gl layer is
 where ENGRAM is *most* narrative-adjacent (Layer 2 of Ch1's taxonomy), even though
 the paper's contribution sits at Layer 3.
@@ -1539,14 +1521,13 @@ tier (a tier upgrade/downgrade is itself an audited event). **Honest scope:**
 the substrate does not yet filter what an agent outputs by the counterparty's
 tier — no output path reads trust-tier and redacts or reshapes content
 accordingly. Disclosure calibration (what is shared, with whom, at what
-fidelity) is presently a CLAUDE.md-layer discipline the agent follows, not a
+fidelity) is presently a discipline the agent follows from its standing instructions, not a
 substrate-enforced control; trust-tier is the *input* that discipline reads,
 not the mechanism itself.
 
-**Tradition.** The **honesty-orthogonal-to-discretion** distinction
-[SOLID]: internal
+**Tradition.** The **honesty-orthogonal-to-discretion** distinction: internal
 integrity (never self-deceive) is orthogonal to external disclosure (calibrated by
-audience). And **VMG** (Verifiable Memory Governance) principal-scoped access **[GROUNDED ob_2550 — VMG read first-hand]**. **Detail → Appendix D;
+audience). And **VMG** (Verifiable Memory Governance) principal-scoped access. **Detail → Appendix D;
 the disclosure-vs-erasure implication → Ch7.**
 
 **OCC:** none directly.
@@ -1557,8 +1538,9 @@ Constraint A landed in §4.3. The other three, compactly:
 
 - **Constraint B — Cannot Be Externally Imposed: satisfied, two-boundary framing**
   (dv_0609, 0.58). Separate *authorship* (who writes an artifact) from *commitment*
-  (who owns what it says). Hybrid-authored bridging artifacts (warm-briefing,
-  parts of CLAUDE.md) don't violate B, because the agent commits to them through
+  (who owns what it says). Hybrid-authored bridging artifacts (the warm briefing,
+  parts of the agent's standing instructions) don't violate B, because the agent
+  commits to them through
   the ordinary arbitration step. A contract, not a security mechanism, protects the
   boundary — the collaborator *could* edit the substrate but by commitment does
   not.
@@ -2216,7 +2198,7 @@ days** before being caught (dv_0436). When it was caught, the machinery did its 
 the claim was **retracted**, and the cascade fired through `derives_from` edges,
 **tainting every dependent**. And then the honest part: the cascade *worked*, but
 the `tainted_by` flag was buried in metadata where the agent did not see it loudly
-enough — so the incident drove a fix (MECH-5) that made the taint *surface* at recall
+enough — so the incident drove a fix that made the taint *surface* at recall
 time (dv_0477, ob_1781).
 
 *Scoping this evidence to the mechanism it evidences.* The incident ran on the
@@ -2882,8 +2864,9 @@ traditions, and several agent-memory systems (Mem0g, Zep/Graphiti, A-MEM) predat
 ideation. The two exemplars named here are the two we hold and have read first-hand:
 Doyle's truth maintenance system (via the Ginsberg reprint, Ch4 §4.2) and AGM 1985.
 Both traditions are wider than those two works, and the others this paper names — de
-Kleer's ATMS (Ch3 §3.4), Hansson's belief-base postulates (the provenance tag at Ch3
-§3.9) — the bibliography lists among the works cited without a held source document.
+Kleer's ATMS (Ch3 §3.4), Hansson's belief-base postulates (named only in Appendix B,
+as Kumiho's self-claimed compliance) — the bibliography lists among the works cited
+without a held source document.
 Nothing here rests on them: the claim is only that the shape predates us by decades,
 and the two dated primaries we have read carry it. Our claim is narrower and
 true: *we designed ENGRAM in ignorance of the concurrent arrivals at the same
@@ -4074,125 +4057,17 @@ Locke · Reid · Butler · Schechtman · Clark · Chalmers · Hansson · de Klee
 Ebbinghaus · Wixted · Peirce · Semon (see the partial entry above) · Shoemaker ·
 Johnston · Goldman · Nuxoll (with Laird) · **Sophia** · **A-MEM**
 
-***Hansson* was needed before round 2 — and then stopped being needed.** The
-Condition-3 argument used to state his `Relevance` and `Core-Retainment` postulates as
-met (then Ch3 §3.5, Ch4 §4.4). That claim is withdrawn: AGM/Hansson is noted for
-contrast at Ch3 §3.9 and no postulate is claimed for ENGRAM, so nothing in the paper
-leans on the primary any more; the philosophers can wait. **AGM has left this list entirely** — see below.
-
-*The postulate STATEMENTS are verified*, against two documents read first-hand:
-the Stanford Encyclopedia of Philosophy entry "Logic of Belief Revision" (copyright
-2026 Sven Ove Hansson — the postulates' own author),
-<https://plato.stanford.edu/entries/logic-belief-revision/>, and Rocha, A. C. &
-Wassermann, R., "Postulates Here, Postulates Everywhere: A Discussion of Contraction
-Postulates", CEUR-WS Vol-4239,
-<https://ceur-ws.org/Vol-4239/paper-Rocha-11.pdf>. Both are free, and both are now
-**held as well as linked** — `paper_research/source_pdfs/rocha_wassermann_postulates_ceur4239.pdf`,
-which is CC BY 4.0 and therefore committed, and `.../hansson_sep_logic_belief_revision.html`,
-which is copyrighted and so held on disk but **git-ignored**, exactly like the two
-primaries below. A reader cloning this repository gets the first and not the second. Neither is a bibliography entry and neither is
-claimed as one. The verification changed the argument rather
-than confirming it. `Relevance` requires a witnessing set that contains the
-contraction result and `Core-Retainment` does not, so the two are not
-interchangeable; and both quantify over beliefs *upstream* of the contracted belief
-— ones that help derive it — whereas the retraction cascade marks beliefs
-*downstream*. Neither postulate is therefore a property the cascade has or lacks.
-The resulting claim change sits with the reviewer, not in this file.
-
-**AGM 1985 AND ALCHOURRÓN & MAKINSON 1982 ARE NOW ENTRIES ABOVE, BUILT FIRST-HAND.**
-Lei located a free full text of AGM 1985 on 2026-09-21 after the not-acquiring
-decision was taken, which retires that decision for this work rather than arguing
-against it. Both PDFs are held at `paper_research/source_pdfs/`
-(`agm_1985_partial_meet.pdf`, `alchourron_makinson_1982_theoria.pdf`), git-ignored
-like the other copyrighted primaries but present on disk, so each is checkable exactly
-as the Doyle, Parfit, Tulving and Nozick entries are — by holding the file, not by
-cloning this repository. Entries here rest on three different footings and it is worth
-saying so once: some on committed files a cloner receives, some on held-but-ignored
-ones, and one — Semon — on no file at all, as its own note states. Every field in both was read off the
-document — title page, final page, running heads, footer signature — with exactly two
-exceptions, each noted in place rather than here: the 1982 offprint's volume number,
-which it does not print at all, and its opening page number 14, which follows from the
-folio sequence. The volume is omitted rather than lifted from AGM 1985's
-reference list, which does print it.
-
-***Hansson 1991* remains unacquired, and that is a decision rather than a gap.** Lei's
-ruling, 2026-09-21, in his own words: *"We shouldn't rely on our memory for claims
-that OTHERS make, we should always cite the sources directly."* Applied here that
-rules out the tempting middle path — softening the claims and attributing them to
-trained memory — and rules **in** a narrower one: state only what a held, read
-document supports, and cite that document. *Studia Logica* wants ~$40 and
-institutional access does not unlock it.
-
-**The repair has LANDED, and this is what the chapters now do.** The former Ch3 §3.5
-and Ch4 §4.4 asserted that the cascade *satisfies* the postulates — "ENGRAM's cascade
-meets exactly these postulates"; "the cascade satisfies Hansson's belief-base
-postulates". Both assertions are withdrawn. AGM/Hansson is noted for contrast at Ch3
-§3.9 as the closed-theory idealisation ENGRAM is defined against, no postulate is
-claimed for ENGRAM, and AGM no longer appears among the convergent traditions.
-**Two consequences, and the second is why issue #58 changes rather than merely
-narrowing.** The chapters now cite neither the postulate statements nor Rocha &
-Wassermann — only §3.9's provenance tag names them, and that tag is a statement of what
-was read rather than a citation the argument rests on (the renderer strips bare node IDs,
-not the tag sentence, so the tag itself does appear in the rendered paper) — so
-bullets 3 and 4 below are recorded for the record rather than describing live
-citations. And **no dated Hansson work is named anywhere in the paper.** Appendix A names
-"Hansson's belief-base postulates" only to point at §3.9's provenance tag and to say
-the bibliography lists them without a held source document; Appendix B records
-Kumiho's *self-claimed* compliance, sourced from the Kumiho paper. So #58's reversal
-trigger is void — no encyclopedia citation remains to object to — **and the
-acquisition it tracks is aimed at the wrong work: 1991 mattered only while the paper
-stated the postulates.**
-
-*This paragraph asserted, until 2026-09-22, that Appendix A named **Hansson 1999**.
-That was true when written and stopped being true when PR #60 reworded the appendix
-to name only works we hold — the same afternoon. It is corrected rather than deleted
-because the stale form is the shape this file exists to catch: a sourcing record that
-outlives the sentence it records, in the one file whose job is to be accurate about
-sources.*
-
-- the belief-**base** level, and the distinction from the theory level — **Alchourrón
-  & Makinson 1982**, now an entry above;
-- partial meet contraction and revision, and the Gärdenfors postulates in their
-  original form — **AGM 1985**, now an entry above;
-- the statements of `Relevance` and `Core-Retainment` — **Hansson's own Stanford
-  Encyclopedia entry**, cited *as the encyclopedia entry* and never as the 1991 paper;
-- that `Relevance` is strictly stronger than `Core-Retainment` — **Rocha & Wassermann**.
-
-**What the remaining decision costs, stated rather than hidden:** we cannot establish
-whether Hansson *argues* for the consistency-restoration imperative or merely
-inherits it from AGM, so Ch4 defends ENGRAM's divergence against the postulate as
-stated rather than against his reasoning for it.
-
-**One descriptor is retained for a single purpose — ordering the document if the
-decision is reversed.** It is read off a secondary source's reference list, so it
-fails this file's extraction rule and **may not be lifted into an entry**:
-**Hansson 1991**, "Belief contraction without recovery", *Studia Logica*, vol. 50,
-reported as pp. 251–260 — which the secondary sources give as the postulates' primary
-home rather than the 1999 Kluwer textbook these notes had been crediting. It is
-marked in place rather than trusted to a caveat further up the page, because a caveat
-four lines away from a number is the exact separation this file's rule exists to
-prevent.
-
-**Reversal trigger, tracked at issue #58:** a reviewer objecting to an encyclopedia
-citation for a formal result. That objection is the evidence the primary is
-load-bearing after all; absent it we would be paying to verify a citation the paper
-has stopped leaning on.
-
-*Sophia and A-MEM were added after a reviewer found them missing, and the reason
-they were missing is worth recording, because it was a classification error rather
-than an oversight. The sweep that produced this list triaged candidates by whether
-they were a person's name, and both are system names — so both were excluded
-deliberately. But this bibliography already carries entries for systems (Kumiho,
-SCM, GAM): the operative question is whether a citation needs a reference, not
-whether it names a person. The sweep was complete over names and the population was
-citations.*
-
-*One judgment call, recorded rather than silently made: ACT-R's spreading activation
-is cited as a precedent in Ch4 with no source file, and is not covered by the sourced
-Anderson & Schooler (1991), which is a different work. It is omitted from the list
-above because the text marks it in place as secondary and declines to rest weight on
-it. If the final pass decides a flagged-secondary precedent still requires an entry,
-this list becomes nineteen.*
+Hansson is listed for the belief-base postulates that Appendix B records as Kumiho's
+self-claimed compliance; the paper claims no postulate for ENGRAM and notes AGM only
+for contrast (Ch3 §3.9); the postulate statements were checked against Hansson's
+Stanford Encyclopedia of Philosophy entry "Logic of Belief
+Revision" (<https://plato.stanford.edu/entries/logic-belief-revision/>) and Rocha &
+Wassermann, "Postulates Here, Postulates Everywhere" (CEUR-WS Vol-4239,
+<https://ceur-ws.org/Vol-4239/paper-Rocha-11.pdf>), neither of which is claimed as a
+bibliography entry. AGM 1985 and Alchourrón & Makinson 1982 are entries above, built
+first-hand from held copies. ACT-R's spreading activation is cited in Ch4 as a
+secondary precedent with no source file and no weight rested on it; it is omitted
+from this list on that basis.
 
 ---
 

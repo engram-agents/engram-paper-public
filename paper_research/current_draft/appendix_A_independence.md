@@ -25,8 +25,9 @@ traditions, and several agent-memory systems (Mem0g, Zep/Graphiti, A-MEM) predat
 ideation. The two exemplars named here are the two we hold and have read first-hand:
 Doyle's truth maintenance system (via the Ginsberg reprint, Ch4 §4.2) and AGM 1985.
 Both traditions are wider than those two works, and the others this paper names — de
-Kleer's ATMS (Ch3 §3.4), Hansson's belief-base postulates (the provenance tag at Ch3
-§3.9) — the bibliography lists among the works cited without a held source document.
+Kleer's ATMS (Ch3 §3.4), Hansson's belief-base postulates (named only in Appendix B,
+as Kumiho's self-claimed compliance) — the bibliography lists among the works cited
+without a held source document.
 Nothing here rests on them: the claim is only that the shape predates us by decades,
 and the two dated primaries we have read carry it. Our claim is narrower and
 true: *we designed ENGRAM in ignorance of the concurrent arrivals at the same
