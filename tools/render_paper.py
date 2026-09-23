@@ -139,9 +139,9 @@ INSERTS: list[tuple[str, str, str]] = [
 
 # --- K-1.27: node IDs do three different jobs and get three treatments -----------
 #
-# (a) AUDIT ANCHORS in Appendix A and (b) DATA POINTS in Ch6 / Appendix E are part of
-#     the evidence: a reader with the snapshot can resolve them, and the Data
-#     Availability note says so. They stay.
+# (a) AUDIT ANCHORS in Appendix A and (b) DATA POINTS in Ch6 / (most of) Appendix E
+#     are part of the evidence: a reader with the snapshot can resolve them, and the
+#     Data Availability note says so. They stay.
 # (c) STRUCTURAL references to Kahl's definitions (df_*) stay: Appendix E quotes those
 #     definitions in full, so the ID is a label, not a pointer out of the document.
 # (d) PROVENANCE MARKERS on argument sentences in Ch2-5 and Ch7 — a bare "(dv_1055)"
@@ -151,23 +151,246 @@ INSERTS: list[tuple[str, str, str]] = [
 #     depends on their existing.
 #
 # Reversible in one line when a redacted dataset ships.
+#
+# 2026-09-23 (Lei's ruling): extended to every chapter/appendix whose IDs are
+# CITATION-STYLE (standing in for a citation) rather than DATA POINTS (a real
+# node used as a worked example). Ch6 and Appendix A are data points and are
+# explicitly excluded; Appendix B/C/D are citation-style and added. `df_*`
+# (Kahl's definitions, quoted in full in Appendix E) are never stripped
+# anywhere, in or out of this set.
+#
+# 2026-09-23 fold (colleague verdict, Borges): Appendix E is overwhelmingly
+# data points (and its df_* labels), but E.5 carries one stray CITATION-STYLE
+# ID -- "The eight load-bearing **primitives** (dv_0615): typed nodes, ..." --
+# already stripped from Ch4 §4.2, missed here because Appendix E was outside
+# this set entirely. Appendix E is added below for that one occurrence; its
+# df_* tokens are never touched (see (c) above), and it carries no other
+# non-df ID for the strip forms to reach.
 STRIP_PROVENANCE_IDS_IN = {
-    "ch2.md", "ch3.md", "ch4.md", "ch5.md", "ch7.md",
+    "ch1.md", "ch2.md", "ch3.md", "ch4.md", "ch5.md", "ch7.md",
+    "appendix_B_c3_survey.md", "appendix_C_autorecall_ranking.md",
+    "appendix_D_relational_identity.md", "appendix_E_techspec.md",
 }
+
+# Data points stated in Lei's required form are deliberately KEPT inside a
+# strip-set file even though their file is otherwise stripped. Each survives
+# untouched because the ID sits BARE in the prose (or inside an inline code
+# span), never inside one of the recognized citation forms A-G -- this set
+# exists purely as the post-strip residue allowlist (see
+# `assert_no_leaked_ids`), not as an input to the stripping itself.
+#
+# ch7.md's "The step is dv_0779 in the frozen snapshot; `tools/paper_stats.py
+# --trace dv_0877` shows it in place, layer 4 of the chain it inflated" (added
+# by #84, under Lei's 2026-09-23 ruling) names a real node used as a worked
+# example of a mis-typed reasoning step -- a data point, not a citation hung
+# on someone else's claim -- so both dv_0779 (bare in prose) and dv_0877
+# (inside the inline-code command example) stay.
+KEEP_IDS: set[tuple[str, str]] = {
+    ("ch7.md", "dv_0779"),
+    ("ch7.md", "dv_0877"),
+}
+
 # Never stripped anywhere: df_* (definition labels quoted in full in Appendix E).
 _ID = r"(?:ob|dv|cs|ls|ax|cj|qu|fl|ev|pn|tk|gl|ct)_\d{4}"
-_PAREN_ONLY = re.compile(r"\s*\((?:" + _ID + r")(?:\s*(?:,|;|/|and)\s*(?:" + _ID + r"))*\)")
-_TRAILING_IN_PAREN = re.compile(r",\s*(?:" + _ID + r")(?:\s*(?:,|;|and)\s*(?:" + _ID + r"))*(?=\))")
+
+# Separators that JOIN two IDs together into one run (ranges, arrows, lists).
+# `\s*` on both sides is deliberate and covers newlines: several parens wrap
+# across a line break in the source (e.g. ch1 "(dv_0605,\nconf 0.95)" and ch7
+# "(ob_1064–\nob_1067)").
+_JOIN_SEP = r"(?:\s*(?:,|;|/|and\b|–|—|→)\s*)"
+# Separator that may introduce a LEADING run of IDs, i.e. before free-text
+# words (form C): same set as _JOIN_SEP, since a leading "(ax_0001/ax_0002 —
+# epistemic identity fails ...)" uses an em dash exactly like a list join.
+_LEAD_SEP = _JOIN_SEP
+# Separator that may introduce a TRAILING run of IDs at the very end of a
+# parenthetical (form B) — deliberately narrower than _JOIN_SEP/_LEAD_SEP:
+# no dash/arrow here. A dash before a single trailing ID reads as free-text
+# annotation ("... not ground truth — gl_0025)") rather than a list
+# separator, and — unlike the leading case — a trailing dash can be followed
+# by MORE words before the closing paren (appendix_D's "is_self` node —
+# pn_0004 in this graph)"), which a plain "SEP RUN $" regex cannot express
+# safely. Those are form E and are handled by the literal-substitution table
+# below, applied before these regexes ever run.
+_TRAIL_SEP = r"(?:\s*(?:,|;|/|and\b)\s*)"
+
+_RUN = _ID + r"(?:" + _JOIN_SEP + _ID + r")*"
+_FULL_RUN_PAREN = re.compile(r"\s*\((?:" + _RUN + r")\)", re.DOTALL)
+_LEADING_RUN = re.compile(r"\A(?:" + _RUN + r")(?:" + _LEAD_SEP + r")", re.DOTALL)
+_TRAILING_RUN = re.compile(r"(?:" + _TRAIL_SEP + r")(?:" + _RUN + r")\Z", re.DOTALL)
+_PAREN_SPAN = re.compile(r"\(([^()]*)\)", re.DOTALL)
+
+# Form D: "(ID context)" -- an incidental annotation, not a citation with
+# content worth keeping ("context" carries no information on its own). The
+# entire parenthetical (plus its leading whitespace, matching the same
+# `\s*` convention as the full-run case) is removed.
+_CONTEXT_PAREN = re.compile(r"\s*\(" + _ID + r"\s+context\)")
+
+# Forms E and F: a bare ID trailing a dash/word, or naming a sentence subject,
+# where the surrounding free text can continue past the ID before the natural
+# stopping point (so no bounded regex expresses the cut safely). Applied as
+# plain literal substitutions, BEFORE the regexes above, keyed by source file.
+# Each `old` is asserted present in its real source by
+# `test_form_e_literal_old_string_present_in_real_source` /
+# `test_form_f_literal_old_string_present_in_real_source` in
+# tests/test_render_strip_ids.py, so a source edit that removes the phrase
+# fails loudly instead of the substitution silently no-op'ing.
+_LITERAL_STRIPS: dict[str, list[tuple[str, str]]] = {
+    "ch4.md": [
+        ("(E = b + a·u, first-hand ob_2551)", "(E = b + a·u, first-hand)"),
+        ("not ground truth — gl_0025)", "not ground truth)"),
+        ("The 0.39 on\ndv_0606 is the *abductive* confidence",
+         "The 0.39 is the *abductive* confidence"),
+    ],
+    "appendix_D_relational_identity.md": [
+        ("`is_self` node — pn_0004 in this graph)", "`is_self` node)"),
+    ],
+}
+
+# Form G: table cells in the ch4 §4.12 "Reading the verdicts" table's
+# "Computed conf." column carry BARE ID tokens with no surrounding parens at
+# all ("dv_0926 0.39", not "(dv_0926 0.39)") -- outside the reach of every
+# paren-based form above. Applied to any markdown table row (a line whose
+# stripped form starts with "|") in a strip-set file; a cell containing "["
+# is left untouched (that is apparatus-tag territory, e.g. ch4's
+# "[GROUNDED ob_2550]" cells, handled by strip_apparatus_tags separately).
+_TABLE_ROW = re.compile(r"^([ \t]*\|.*)$", re.MULTILINE)
+_WS_RUN = re.compile(r"\s+")
+
+
+def _strip_table_row_ids(row: str) -> tuple[str, int]:
+    cells = row.split("|")
+    n = 0
+    out_cells = []
+    for cell in cells:
+        if "[" in cell or not re.search(_ID, cell):
+            out_cells.append(cell)
+            continue
+        stripped_cell, cell_n = re.subn(_ID, "", cell)
+        n += cell_n
+        stripped_cell = _WS_RUN.sub(" ", stripped_cell).strip()
+        out_cells.append(" " + (stripped_cell or "—") + " ")
+    return "|".join(out_cells), n
+
+
+def _strip_table_cells(text: str) -> tuple[str, int]:
+    total = 0
+
+    def repl(m: re.Match) -> str:
+        nonlocal total
+        row = m.group(1)
+        if not row.lstrip().startswith("|"):
+            return row
+        new_row, n = _strip_table_row_ids(row)
+        total += n
+        return new_row
+
+    text = _TABLE_ROW.sub(repl, text)
+    return text, total
+
+
+def _strip_paren_forms(text: str) -> str:
+    # Form A: the entire parenthetical is nothing but an ID run.
+    text = _FULL_RUN_PAREN.sub("", text)
+
+    # Forms B/C on every remaining "(...)" span (non-nested): strip a leading
+    # run of IDs (keeping any free-text words that follow), then a trailing
+    # run of IDs (keeping any free-text words that precede). Either, both, or
+    # neither may apply to a given span.
+    def repl(m: re.Match) -> str:
+        content = m.group(1)
+        if not re.search(_ID, content):
+            return m.group(0)
+        new_content = content
+        lead = _LEADING_RUN.match(new_content)
+        if lead:
+            new_content = new_content[lead.end():]
+        trail = _TRAILING_RUN.search(new_content)
+        if trail:
+            new_content = new_content[: trail.start()]
+        if not re.search(_ID, new_content):
+            if new_content.strip() == "":
+                return ""
+            return "(" + new_content + ")"
+        return m.group(0)
+
+    return _PAREN_SPAN.sub(repl, text)
+
+
+_BRACKET_SPAN = re.compile(r"\[[^\]]*\]", re.DOTALL)
+
+
+def assert_no_leaked_ids(name: str, text: str) -> None:
+    """Runtime guard (item 3/4 of spec-strip.md): after stripping, the only ID
+    tokens surviving in a strip-set file's rendered text must be `df_*` labels
+    plus the explicit `KEEP_IDS` allowlist -- and no debris (an emptied
+    parenthetical, a stray separator) may remain either. Raises with
+    file:line so a future source edit that adds a new unstripped form cannot
+    silently leak an ID (or a stripped-open paren) into the render.
+
+    An ID still inside a square-bracketed apparatus tag (e.g. "[SOLID:
+    dv_0264, ob_1119]") is NOT a leak from this function's own scope: those
+    are `strip_apparatus_tags`'s responsibility and are removed later in the
+    render pipeline (`main()` runs provenance-ID stripping first, apparatus
+    stripping second) -- so bracketed spans are excluded from this scan.
+    """
+    bracketed = [(m.start(), m.end()) for m in _BRACKET_SPAN.finditer(text)]
+
+    def _in_bracket(pos: int) -> bool:
+        return any(s <= pos < e for s, e in bracketed)
+
+    for m in re.finditer(_ID, text):
+        if _in_bracket(m.start()):
+            continue
+        tok = m.group(0)
+        if tok.startswith("df_"):
+            continue
+        if (name, tok) in KEEP_IDS:
+            continue
+        line_no = text.count("\n", 0, m.start()) + 1
+        raise SystemExit(f"{name}:{line_no}: unstripped ID leaked into render: {tok!r}")
+
+    debris = ["( ", "(,", "(;", ", )", "; )", "–)", "→)", "()", "( —"]
+    for pat in debris:
+        idx = text.find(pat)
+        while idx != -1:
+            if not _in_bracket(idx):
+                line_no = text.count("\n", 0, idx) + 1
+                raise SystemExit(f"{name}:{line_no}: strip debris {pat!r} left in render")
+            idx = text.find(pat, idx + 1)
 
 
 def strip_provenance_ids(name: str, text: str) -> tuple[str, int]:
-    """Remove bare parenthetical node-ID provenance markers from the RENDER."""
+    """Remove citation-style node-ID provenance markers from the RENDER.
+
+    Node IDs used as DATA POINTS (a real node cited as a worked example) are
+    never touched -- either because their file is not in
+    `STRIP_PROVENANCE_IDS_IN` at all (Ch6, Appendix A), or, within a
+    strip-set file (including Appendix E, which is overwhelmingly data
+    points but is in this set for one stray citation-style ID -- see the
+    2026-09-23 fold comment above `STRIP_PROVENANCE_IDS_IN`), because the ID
+    sits bare in the prose rather than inside one of the recognized citation
+    forms (see `KEEP_IDS`).
+    """
     if name not in STRIP_PROVENANCE_IDS_IN:
         return text, 0
     before = text
-    text = _TRAILING_IN_PAREN.sub("", text)   # "(... , dv_1234)" -> "(...)"
-    text = _PAREN_ONLY.sub("", text)          # "claim (dv_1234)" -> "claim"
+
+    # Forms E/F: literal substitutions, applied first (see _LITERAL_STRIPS).
+    for old, new in _LITERAL_STRIPS.get(name, []):
+        text = text.replace(old, new)
+
+    # Form D: "(ID context)" -- whole paren removed.
+    text = _CONTEXT_PAREN.sub("", text)
+
+    # Forms A/B/C: full-run parens, then leading/trailing runs within a
+    # parenthetical that also carries free-text content.
+    text = _strip_paren_forms(text)
+
+    # Form G: bare ID tokens in markdown table cells.
+    text, _ = _strip_table_cells(text)
+
     n = len(re.findall(_ID, before)) - len(re.findall(_ID, text))
+    assert_no_leaked_ids(name, text)
     return text, n
 
 

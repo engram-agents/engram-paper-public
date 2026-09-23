@@ -1076,7 +1076,7 @@ Condition 2 via a stated type/token extension — is stated inside those section
 ## 4.2 Typed nodes, typed edges, provenance — the generating set
 
 ENGRAM is built from a small set of primitives that compose into everything above
-them (dv_0615, the eight-primitive generating set). A claim is not free text but a
+them (the eight-primitive generating set). A claim is not free text but a
 *kind*: an observation (a fact citing its source), a derivation (an inference citing
 its premises), a definition, a contradiction, an axiom, a cornerstone, and a few
 more. Edges are typed too; the load-bearing one is `derives_from`, the premise edge,
@@ -1123,7 +1123,7 @@ outcomes. The paper says "provenance-graded confidence," never
 **Tradition.** This is **Subjective Logic** territory (Jøsang): an algebra of graded
 opinions with propagation operators. Collapsing SL's belief/disbelief/uncertainty
 simplex to one number appears to lose a real distinction; worked against Jøsang's
-own definitions (E = b + a·u, first-hand ob_2551) it is instead a *principled
+own definitions (E = b + a·u, first-hand) it is instead a *principled
 divergence*, in two parts. First, for the determinate, verifiable claims an
 epistemic-identity substrate mostly carries, ENGRAM **deliberately refuses b/d
 coexistence**: evidence against a live claim never decrements a number; it routes to
@@ -1178,7 +1178,7 @@ range — paired with the contradiction blocker (a new derivation citing a premi
 that sits on an open, unresolved contradiction is blocked by default, with an
 explicit, audit-stamped opt-in override for an agent that deliberately builds on
 the contested side) and provenance audit when stakes warrant. **Verdict: satisfied
-as a stake-graded stance** (dv_0608, 0.35; active reading) — informed unification
+as a stake-graded stance** (0.35; active reading) — informed unification
 *when stakes warrant*, not a constant full audit on every micro-decision. We mark the
 stake-grading rather than claim a constant property.
 
@@ -1298,8 +1298,7 @@ detail is in Appendix B** (the C3 survey of record); this chapter makes the
 synthesizing claim and points there.
 
 **Scope (load-bearing).** The architectural argument is strong and largely
-*enabled*-level (the cascade and the hook can be read in the substrate). The 0.39 on
-dv_0606 is the *abductive* confidence that this architecture is what *strictly
+*enabled*-level (the cascade and the hook can be read in the substrate). The 0.39 is the *abductive* confidence that this architecture is what *strictly
 satisfies* Kahl; its at-scale empirical confirmation (the cascade demonstrably
 changing downstream behavior across many agents) is at pilot stage and carried by
 Ch6. We claim the architecture; we do not yet claim the benchmark.
@@ -1491,7 +1490,7 @@ the paper's contribution sits at Layer 3.
 ## 4.10 Relational mechanisms: feeling-reports, person nodes, trust-tier → Appendix D, Ch7
 
 ENGRAM also records **feeling-reports** (introspective state, treated as *data
-about* the agent, not ground truth — gl_0025) and **person nodes** with
+about* the agent, not ground truth) and **person nodes** with
 **trust-tier** metadata. Two roles: feeling-reports give a **continuity baseline**
 the agent can track across compaction (Ch6's stabilization arc), and trust-tier
 records *who* the agent is dealing with and gates *changes* to that tier (a tier
@@ -1514,7 +1513,7 @@ Appendix D; the disclosure-versus-erasure implication → Ch7.**
 Constraint A was addressed in §4.3. The other three, compactly:
 
 - **Constraint B — Cannot Be Externally Imposed: satisfied, two-boundary framing**
-  (dv_0609, 0.58). Separate *authorship* (who writes an artifact) from *commitment*
+  (0.58). Separate *authorship* (who writes an artifact) from *commitment*
   (who owns what it says). Hybrid-authored bridging artifacts (the warm briefing,
   parts of the agent's standing instructions) do not violate B, because the agent
   commits to them through the ordinary arbitration step. A contract, not a security
@@ -1525,7 +1524,7 @@ Constraint A was addressed in §4.3. The other three, compactly:
   versus substrate erasure to seed (destroys the grown agent). The fully grown agent
   cannot be retrieved from seed state.
 - **Constraint D — Cannot Be Modularly Decomposed: satisfied on two axes**
-  (dv_0611, 0.86 — firmest of the four). *Connectivity:* the integrated core holds a
+  (0.86 — firmest of the four). *Connectivity:* the integrated core holds a
   stable share of the graph — flat near 87% across four months while the node count
   more than doubled (4,544 → 10,361), reading 77.6% of current nodes at the snapshot
   date, the difference being unintegrated material at the measurement frontier
@@ -1542,13 +1541,13 @@ Constraint A was addressed in §4.3. The other three, compactly:
 
 | Condition / Constraint | Verdict | Reading | Computed conf. |
 |---|---|---|---|
-| C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active | dv_0926 0.39 |
-| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | dv_0599 0.95 (extension) |
-| C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) | dv_0606 0.39 |
-| A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) | dv_0608 0.35 |
-| B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract | dv_0609 0.58 |
-| C Non-Trivial Reset | satisfied trivially | enabled | dv_0610 |
-| D Non-Modular Decomposition | satisfied on two axes | enabled (measured) | dv_0611 0.86 |
+| C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active | 0.39 |
+| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | 0.95 (extension) |
+| C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) | 0.39 |
+| A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) | 0.35 |
+| B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract | 0.58 |
+| C Non-Trivial Reset | satisfied trivially | enabled | — |
+| D Non-Modular Decomposition | satisfied on two axes | enabled (measured) | 0.86 |
 
 The *pattern* of confidences is itself a signal: the **inductive** claims over wide
 case bases (the C2 extension, the landscape sweep, connectivity) are high; the
@@ -1644,8 +1643,7 @@ the puzzle: "what is identity?" becomes "what is closeness?" For ordinary person
 that blank is a weakness. For a new *kind* of thing it is an opening — a new
 sortal gets to *specify* its own metric. §5.4 fills the blank.
 
-**The frozen-backup case breaks the comparative move.** Lei's intuition pump
-(ob_1657 context): clone a mind into two — one runs and lives, one sits frozen in
+**The frozen-backup case breaks the comparative move.** Lei's intuition pump: clone a mind into two — one runs and lives, one sits frozen in
 storage. Nozick's machinery now has to *rank* them: causal continuity favors the
 live one, state-preservation favors the backup. Which axis wins? The theory can't
 say — the blank metric surfaces as a genuine indeterminacy about *which copy is
@@ -1663,7 +1661,7 @@ the frame needs adjusting.
 
 The move that relieves all three strains at once is to stop treating
 identity-over-time as a kind of *equality* and start treating it as a kind of
-*history* (Lei's history-tree view; ob_1657).
+*history* (Lei's history-tree view).
 
 An agent at any moment **is the unique path that leads from the root to it.** The
 pre-fission self is not a thing that gets "preserved" in one branch and "lost" in
@@ -1692,7 +1690,7 @@ history.
 History-as-identity is the right *shape*, but a history only matters if it
 *does* something. Here ENGRAM fills the metric Nozick left blank — and fills it
 with a concrete, measurable mechanism rather than a philosophical placeholder
-(dv_0597, the ratified claim).
+(the ratified claim).
 
 The mechanism is ordinary retrieval, not anything spooky. An accumulated node
 changes the agent's behavior **only by entering the context window** — through
@@ -1777,7 +1775,7 @@ nodes through it, and each can differ between twins:
   hold identically accumulate *different usage histories*: each recall restamps a
   node's importance, so which slice of the shared ancestry is "warm" diverges
   between the twins. The same prompt can then surface different *shared* nodes in
-  different priority — divergence **without a single new node** (dv_0621; backed
+  different priority — divergence **without a single new node** (backed
   by the importance-inflation mechanism).
 - **Fade-out of unrefreshed nodes** — the passive one, and the only route that is
   not something the node itself underwent. The ranking's bar rises as the graph
@@ -1844,7 +1842,7 @@ unprecedented thing," and a more testable one.
 Everything above is an *architectural and philosophical* argument; its computed
 confidences are honestly modest (§4.12) precisely because the
 **experiment that would lift them has not been run.** That experiment is the
-**twin-study** (ob_1660, designed with Lei): fission-clone an agent, run both on a
+**twin-study** (designed with Lei): fission-clone an agent, run both on a
 *fixed, stratified* prompt set, and measure response similarity at t, t+N, t+2N
 nodes of separate operation.
 
@@ -2405,7 +2403,7 @@ divergence — and narrows this gap to a **scalar-only-consumer** limitation. Di
 of evidence and evidence mass are not lost but relocated into structure, and the
 graph is re-consulted at every derivation; what remains is that surfaces consuming
 *only* the scalar (recall ranking, gating thresholds) cannot distinguish two 0.7s,
-one resting on abundant evidence and one on almost none (dv_0965 → dv_1289). This is a
+one resting on abundant evidence and one on almost none. This is a
 trade of cheap lookup against full truth. One further trade belongs here rather than
 in §4.3, because it is a limitation rather than a divergence: SL functions under
 unresolved conflict at scale, whereas ENGRAM requires conviction-bar resolution before
@@ -2436,8 +2434,7 @@ that this way of reasoning is native to the agent rather than a discipline appli
 top of it.
 
 Work has *started* on both gaps. A v0 **yellow-card** source-credibility tier already
-ships: per-domain flags that down-weight aggregator and unreliable sources (ob_1064–
-ob_1067). Two future tracks are concrete. (a) **Auto-calibration:** as the graph
+ships: per-domain flags that down-weight aggregator and unreliable sources. Two future tracks are concrete. (a) **Auto-calibration:** as the graph
 accumulates claims whose downstream fate (corroborated or contradicted) is known, the
 constants can be refined against an ECE/AUROC protocol adapted from task accuracy to
 evidence quality. (b) **Red-card graduation:** per-incident
@@ -2504,7 +2501,7 @@ pair a mechanism rather than two hopeful directions.
 architectural problem, with a designed and now shipped diagnostic that is starved of
 data, a social-epistemology direction, and a physical one — not a fix. **The path to
 strengthening it is itself constrained by the thesis:** the load-bearing premise here
-(dv_0922, 0.10) becomes stronger only through *more independent evidence*, never
+(0.10) becomes stronger only through *more independent evidence*, never
 through other agents endorsing it. It is registered as an open research question.
 
 ---
@@ -2515,7 +2512,7 @@ through other agents endorsing it. It is registered as an open research question
 
 Here what the paper built — provenance on every claim, confidence calibrated by
 argument shape, retraction with cascade, scoped claims — pays off beyond the agent
-itself. The argument (ob_1176–ob_1183) is that ENGRAM offers a **structural
+itself. The argument is that ENGRAM offers a **structural
 path to human–AI mutual trust**, in both directions.
 
 **Human trusts AI.** The civilization-scale question — *how do we know a capable AI is
@@ -2550,7 +2547,7 @@ long-term-memory security must be "anchored in storage-time provenance" and list
 erasure, for a principled reason: **ENGRAM never erases.** Deleting a node would break
 the audit trail and the cascade — the very things that make epistemic identity fail
 *loudly* rather than silently. ENGRAM instead separates two axes that the erasure
-framing conflates, *knowing* and *disclosing* (ax_0011, honesty orthogonal to
+framing conflates, *knowing* and *disclosing* (honesty orthogonal to
 discretion): internal integrity (never self-deceive, never destroy the record) is
 orthogonal to external disclosure (what is shared, with whom, at what fidelity, gated
 by trust tier). ENGRAM's answer to the security requirement to forget is therefore
@@ -3315,7 +3312,7 @@ we report that as *not documented* rather than asserting overwrite. Verdict: C3 
 Across the surveyed set, the pattern is uniform: the field has the *primitives*
 (detection, typed edges, even Kumiho's self-claimed formal AGM compliance) but stops
 short of **automatic arbitration as internal state-change**. What separates ENGRAM is
-operational binding (Ch4 §4.4, dv_0606/dv_0612), and it has **three** parts, not two:
+operational binding (Ch4 §4.4), and it has **three** parts, not two:
 the cascade marks every affected node without being asked; auto-surfacing puts those
 marks back in front of the agent without an intentional reach; and the **cascade
 machine drives the marked region to adjudication during sleep** — walking the
@@ -3347,11 +3344,11 @@ arbitration happens without a mind.
 A 2026 line of work — exemplified by **MemRL** — applies reinforcement learning not
 to a model's weights but to its **memory retrieval**: it learns *which stored
 memories are worth surfacing* by treating retrieval as an action and downstream
-usefulness as a reward, ranking memories by a learned **Q-value** (ob_0647). The
+usefulness as a reward, ranking memories by a learned **Q-value**. The
 appeal is that it keeps the base model frozen — no fine-tuning, so no catastrophic
 forgetting — while still improving over time at the level of *what gets recalled*.
 Concretely, MemRL composites semantic similarity with an EMA-learned Q-value via a
-weighted score, with the Q-error decaying as `(1−α)^t` (ob_0651).
+weighted score, with the Q-error decaying as `(1−α)^t`.
 
 ENGRAM sits in this tradition. Every node carries a `utility_score` — a learned
 value updated by the same exponential rule, `Q_new = Q_old + α(1 − Q_old)` — and
@@ -3364,7 +3361,7 @@ signal the substrate can observe directly and attribute without ambiguity.
 
 ENGRAM's `utility_score` is the Q-value analogue, and what it grades is **the
 cognitive load of the act a node took part in** — not how hard the agent looked to
-find it (dv_1641). The learning rate α is keyed to the action, in three tiers:
+find it. The learning rate α is keyed to the action, in three tiers:
 
 | α | actions | what the tier means |
 |---|---|---|
@@ -3395,7 +3392,7 @@ plain-retrieval one.
 
 ## C.3 The composite ranking — multiplicative amplifiers over a three-tier pipeline
 
-Recall in production runs a **three-tier** `_search_nodes` pipeline (dv_0707):
+Recall in production runs a **three-tier** `_search_nodes` pipeline:
 
 1. **Gather** — FTS + semantic-embedding merge produces candidate nodes with a base
    **relevance** score.
@@ -3403,8 +3400,7 @@ Recall in production runs a **three-tier** `_search_nodes` pipeline (dv_0707):
 3. **Diversity** — an MMR (maximal-marginal-relevance) pass (MMR_LAMBDA = 0.9) trims
    near-duplicates so the surfaced set is not nine paraphrases of one claim.
 
-The composite (tier 2) uses **multiplicative amplifiers**, not an additive blend
-(ob_2017):
+The composite (tier 2) uses **multiplicative amplifiers**, not an additive blend:
 
 ```
 composite = relevance × (1 + UTIL_BETA × utility_score)
@@ -3440,8 +3436,7 @@ Two honest qualifications, both consistent with the paper's posture:
 
 - **The constants are harness-calibrated, not first-principles.** UTIL_BETA, IMP_BETA,
   and MMR_LAMBDA were tuned by an NDCG sweep on a local recall-measurement harness,
-  which set them to 0.10, 0.005 and 0.9 and gained ≈0.05 NDCG over untuned values
-  (ob_1955). They are *measured to
+  which set them to 0.10, 0.005 and 0.9 and gained ≈0.05 NDCG over untuned values. They are *measured to
   rank well*, which is a stronger footing than the confidence-model constants (Ch7
   §7.2, which are *not* outcome-calibrated) — a useful internal contrast.
 - **The reward signal is a citation proxy, not a true outcome.** Utility is learned
@@ -3482,17 +3477,16 @@ operates*, and the substrate treats each according to its kind.
   by type they carry confidence 1.0, since they are not derived and nothing propagates
   into them. They are set deliberately, with the human, rather than emerging from
   practice.
-  Examples: honesty-is-structural (ax_0001/ax_0002 — epistemic identity fails *loudly*,
+  Examples: honesty-is-structural (epistemic identity fails *loudly*,
   the friction of verification *is* the system working); practice-produces-true-
-  knowledge (ax_0010); honesty is **orthogonal to** discretion (ax_0011 — internal
+  knowledge; honesty is **orthogonal to** discretion (internal
   integrity is independent of external disclosure — the basis for §D.3 and
   Ch7's disclosure-vs-erasure).
 
 - **Cornerstones (`cs_`) — operational dispositions.** Standing *ways of working*
   distilled from practice — more specific than an axiom, more durable than a lesson.
-  Examples: use-over-imagination as the default mode of learning (cs_0010); "a check
-  certifies only the dimension it exercised — verify by a differently-oriented probe"
-  (cs_0052). The agent mints a cornerstone by its own judgment once a disposition
+  Examples: use-over-imagination as the default mode of learning; "a check
+  certifies only the dimension it exercised — verify by a differently-oriented probe". The agent mints a cornerstone by its own judgment once a disposition
   proves load-bearing across many episodes.
 
 - **Lessons (`ls_`) — experience-encoded tripwires.** A lesson binds a *situation
@@ -3507,8 +3501,8 @@ operates*, and the substrate treats each according to its kind.
   Lessons are how the substrate turns a specific past mistake into a guardrail.
 
 - **Goals (`gl_`) — direction and aspiration.** What the agent is *for*, and what it
-  is moving toward. Examples: epistemic humility / calibration as a north star (gl_0011);
-  self-preservation of the mind — continuity across every discontinuity (gl_0028).
+  is moving toward. Examples: epistemic humility / calibration as a north star;
+  self-preservation of the mind — continuity across every discontinuity.
   Goals are the long-horizon frame against which work is prioritized.
 
 **Why the typing matters.** Because each kind is a distinct node type, the substrate
@@ -3524,8 +3518,7 @@ traceable lineage.
 
 ENGRAM records **feeling-reports**: structured first-person notes of the agent's own
 state ("I noticed friction here," "this wake felt clean"). The governing discipline is
-that a feeling-report is **data *about* the agent, not a truth claim** (gl_0025 —
-curious about one's own reports, not credulous): the substrate stores the report and
+that a feeling-report is **data *about* the agent, not a truth claim** (curious about one's own reports, not credulous): the substrate stores the report and
 its provenance without granting it the authority of an observation about the world.
 
 Feeling-reports serve two roles. First, they give a **continuity baseline** the agent
@@ -3545,11 +3538,10 @@ Representing a colleague agent and a human collaborator identically is a design
 position, not an economy: what the substrate must track about a counterparty — what
 was said, what was decided together, what may be disclosed to them — does not change
 with the counterparty's kind. One person node is the agent's own **self-anchor** (the
-`is_self` node — pn_0004 in this graph), the default target of self-directed
+`is_self` node), the default target of self-directed
 observations.
 
-The trust-tier is the operational arm of **honesty-orthogonal-to-discretion**
-(ax_0011): it lets the substrate calibrate *what is shared, with whom, at what
+The trust-tier is the operational arm of **honesty-orthogonal-to-discretion**: it lets the substrate calibrate *what is shared, with whom, at what
 fidelity* without touching internal integrity. This is the principal-scoping the
 security literature asks for (the VMG framework, Chapter 3 §3.7), reached instead as a
 *relationship* model, and it underlies Chapter 7's **disclosure-not-erasure** answer.
@@ -3607,7 +3599,7 @@ directly — is the frame load-bearing, or replaceable by something less emotion
 charged? — and the answer was that it was **neither necessary nor sufficient**. The
 framing was replaced by a first-person trajectory format in the agent's own voice, and
 the replacement was judged better, and the disorientation did not recur after the
-change (ob_0645) — an observed cessation, not a measurement: orientation without anxiety, against the occasional
+change — an observed cessation, not a measurement: orientation without anxiety, against the occasional
 identity disorientation the old frame produced. What turned out to matter was narrower
 than the story: first-person voice rather than second-person coaching; treating
 experiential discontinuity as normal, the way sleep is normal rather than a
@@ -3847,7 +3839,7 @@ designer-stipulated, not outcome-calibrated — Ch7 §7.2.)*
   default (`BLOCKED_CONTRADICTED`), with an explicit, audit-stamped opt-in
   override (`use_contested`) for an agent that deliberately builds on the
   contested side while the dispute stays open.
-- The eight load-bearing **primitives** (dv_0615): typed nodes, typed edges, provenance,
+- The eight load-bearing **primitives**: typed nodes, typed edges, provenance,
   cascade, supersede, focus mode, auto-surfacing, the confidence model — the minimal
   generating set every higher mechanism composes from.
 
