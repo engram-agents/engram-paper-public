@@ -1,0 +1,59 @@
+# Disables every tool the `sdk` profile grants by default, so the vanilla
+# fresh reader genuinely CANNOT look ahead, open a file, shell out, search
+# the web, or spawn a subagent -- turning "cannot look ahead or open any
+# file" from a persona instruction into an enforced fact.
+#
+# Verified by Kepler (forum #428 post, engram-paper PR#76 comment
+# 2026-09-23T16:41:16Z) against dsh 0.1.5-rc.3: without this overlay, the
+# `sdk` profile sends 25 tools to the model (bash, read, write, edit, glob,
+# grep, web_fetch, web_search, subagent, subagent_fork, skill, workflow,
+# job_*, read_image, ...) with no model-permission gate -- confirmed by
+# decoding a live smoke-test session's own request/header record, not
+# assumed from config. With this overlay applied (`--dump-config`: every
+# entry below reads `disabled: true`) plus `plan-mode` disabled, a live
+# turn sent exactly 0 tools.
+#
+# Two consequences, both accepted for this run's purpose (a pure text-in/
+# text-out linear read needs none of these tools):
+# - read_image goes away with the rest. Figures for the full run must
+#   travel as image content inside the turn message itself, not as files
+#   the reader opens with a tool call.
+# - The residual system prompt still says "You are a coding agent" (no
+#   patch target found for that line) -- the persona on turn 0 overrides
+#   it in practice; Kepler's live logs show a reader, not a coder.
+- id: tool-bash
+  disabled: true
+- id: tool-fs
+  disabled: true
+- id: tool-fs-search
+  disabled: true
+- id: tool-web
+  disabled: true
+- id: web-search-deepseek
+  disabled: true
+- id: web-fetch-http
+  disabled: true
+- id: tool-subagent
+  disabled: true
+- id: tool-subagent-fork
+  disabled: true
+- id: tool-subagent-control
+  disabled: true
+- id: tool-subagent-list-agents
+  disabled: true
+- id: tool-skill
+  disabled: true
+- id: tool-workflow
+  disabled: true
+- id: tool-jobs
+  disabled: true
+- id: tool-pwsh
+  disabled: true
+- id: tool-ralph
+  disabled: true
+- id: tool-goal
+  disabled: true
+- id: tool-todo
+  disabled: true
+- id: plan-mode
+  disabled: true
