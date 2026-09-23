@@ -272,8 +272,8 @@ and puts every remaining judgement to the agent. This is the line between a
 substrate that maintains its own consistency and one that would quietly make up the
 agent's mind for it; Condition 3 asks for the former.
 
-**Why ENGRAM is the sole satisfier** (dv_0605, the 11-system first-hand survey,
-conf 0.95 — the firmest claim in the chapter): the field has converged on the
+**Why ENGRAM is the sole satisfier** (the first-hand survey of ten systems and one survey
+paper, Appendix B; the conclusion rests on each per-system verdict there): the field has converged on the
 necessary *primitives* (typed edges, provenance, cascade-traversable graphs,
 supersede semantics), but those are necessary, not sufficient; what is missing
 everywhere else is operational binding. Kumiho has the primitives *and* claims
@@ -506,7 +506,7 @@ Constraint A was addressed in §4.3. The other three, compactly:
 |---|---|---|---|
 | C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active | dv_0926 0.39 |
 | C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | dv_0599 0.95 (extension) |
-| C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) | dv_0606 0.39; dv_0605 0.95 |
+| C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) | dv_0606 0.39 |
 | A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) | dv_0608 0.35 |
 | B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract | dv_0609 0.58 |
 | C Non-Trivial Reset | satisfied trivially | enabled | dv_0610 |

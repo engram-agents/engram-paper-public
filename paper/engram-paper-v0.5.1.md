@@ -242,8 +242,8 @@ dated: eleven sources — ten systems and one survey of the field — read first
 **2026-05-12**: Pinecone Nexus, Anthropic's memory tool, Letta, Mem0 v3,
 Zep/Graphiti, TierMem, MemMachine, SCM, GAM, Kumiho, and the 2026 *Memory for
 Autonomous LLM Agents* survey. Each was examined against Condition 3 individually;
-**Appendix B** gives the per-system verdict and a verbatim failure passage (dv_0605,
-conf 0.95). The claim is bounded to that set as of that date; agent memory moves
+**Appendix B** gives the per-system verdict and a verbatim failure passage. The claim holds
+exactly as far as each of those verdicts holds, and it is bounded to that set as of that date; agent memory moves
 quickly, and we make no claim about systems outside the survey or released after it.
 The field has converged on the necessary structural *primitives* — typed reasoning
 edges, provenance, cascade-traversable graphs, supersede semantics — but these are
@@ -1285,8 +1285,8 @@ and puts every remaining judgement to the agent. This is the line between a
 substrate that maintains its own consistency and one that would quietly make up the
 agent's mind for it; Condition 3 asks for the former.
 
-**Why ENGRAM is the sole satisfier** (dv_0605, the 11-system first-hand survey,
-conf 0.95 — the firmest claim in the chapter): the field has converged on the
+**Why ENGRAM is the sole satisfier** (the first-hand survey of ten systems and one survey
+paper, Appendix B; the conclusion rests on each per-system verdict there): the field has converged on the
 necessary *primitives* (typed edges, provenance, cascade-traversable graphs,
 supersede semantics), but those are necessary, not sufficient; what is missing
 everywhere else is operational binding. Kumiho has the primitives *and* claims
@@ -1544,7 +1544,7 @@ Constraint A was addressed in §4.3. The other three, compactly:
 |---|---|---|---|
 | C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active | dv_0926 0.39 |
 | C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | dv_0599 0.95 (extension) |
-| C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) | dv_0606 0.39; dv_0605 0.95 |
+| C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) | dv_0606 0.39 |
 | A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) | dv_0608 0.35 |
 | B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract | dv_0609 0.58 |
 | C Non-Trivial Reset | satisfied trivially | enabled | dv_0610 |
@@ -3050,8 +3050,9 @@ we quote it verbatim. Where the failure is *absence* of the construct entirely
 (GAM), there is no sentence to quote — we say so and rest the verdict on the
 documented absence, not an invented quote.
 
-**Synthesis node:** dv_0605 (conf 0.95, inductive_generalization over the 11
-sources). The field has converged on the structural *primitives* C3 needs (typed
+**Synthesis.** Across the eleven sources, none satisfies Condition 3 strictly. The
+conclusion is the conjunction of the verdicts above, so it holds exactly as far as each of
+them does. The field has converged on the structural *primitives* C3 needs (typed
 edges, provenance, cascade-traversable graphs, supersede semantics — Kumiho most
 fully); what is missing everywhere is the **operational binding** that makes
 arbitration automatic state-change. ENGRAM's contribution is that binding (Ch4

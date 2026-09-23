@@ -162,8 +162,8 @@ dated: eleven sources — ten systems and one survey of the field — read first
 **2026-05-12**: Pinecone Nexus, Anthropic's memory tool, Letta, Mem0 v3,
 Zep/Graphiti, TierMem, MemMachine, SCM, GAM, Kumiho, and the 2026 *Memory for
 Autonomous LLM Agents* survey. Each was examined against Condition 3 individually;
-**Appendix B** gives the per-system verdict and a verbatim failure passage (dv_0605,
-conf 0.95). The claim is bounded to that set as of that date; agent memory moves
+**Appendix B** gives the per-system verdict and a verbatim failure passage. The claim holds
+exactly as far as each of those verdicts holds, and it is bounded to that set as of that date; agent memory moves
 quickly, and we make no claim about systems outside the survey or released after it.
 The field has converged on the necessary structural *primitives* — typed reasoning
 edges, provenance, cascade-traversable graphs, supersede semantics — but these are
