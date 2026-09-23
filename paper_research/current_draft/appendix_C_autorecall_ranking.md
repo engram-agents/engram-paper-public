@@ -99,9 +99,9 @@ decaying importance — rather than a static similarity sort.
 Two honest qualifications, both consistent with the paper's posture:
 
 - **The constants are harness-calibrated, not first-principles.** UTIL_BETA, IMP_BETA,
-  and MMR_LAMBDA were tuned by an NDCG sweep on a local recall-measurement harness
-  (ob_1955: the round-1 PR-#218 defaults were over-aggressive — UTIL_BETA 0.5→0.10,
-  IMP_BETA 0.05→0.005, MMR_LAMBDA 0.5→0.9 recovered ≈0.05 NDCG). They are *measured to
+  and MMR_LAMBDA were tuned by an NDCG sweep on a local recall-measurement harness,
+  which set them to 0.10, 0.005 and 0.9 and gained ≈0.05 NDCG over untuned values
+  (ob_1955). They are *measured to
   rank well*, which is a stronger footing than the confidence-model constants (Ch7
   §7.2, which are *not* outcome-calibrated) — a useful internal contrast.
 - **The reward signal is a citation proxy, not a true outcome.** Utility is learned

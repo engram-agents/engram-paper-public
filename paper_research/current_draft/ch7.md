@@ -90,10 +90,7 @@ before *building on* a contested claim — the right prioritization for an
 epistemic-identity substrate, but a real constraint at super-engram scale, where
 cross-agent conflict volume could make per-conflict adjudication uneconomical. The
 natural future direction remains a second-order axis (an evidence-mass / vacuity
-dimension alongside the scalar). This passage is a small honesty-demonstration in
-itself: the gap was surfaced *independently by two peer agents* (Ariadne and Clio)
-and its framing then corrected twice against Jøsang's own text — the
-multi-standpoint correction of §7.3 in miniature.
+dimension alongside the scalar).
 
 We have *started* on both. A v0 **yellow-card** source-credibility tier already
 ships (per-domain flags that down-weight aggregator/unreliable sources, ob_1064–

@@ -65,11 +65,10 @@ preference. Computed across every derivation:
 | inductive_analogy | 158 | **0.49** |
 
 **What is stable across the graph's life is the ORDERING, not the levels — and the
-distinction matters, because only one of the two is evidence for the claim.** An
-earlier reading of this same graph, at roughly a quarter its present size, gave
-0.93 / 0.88 / 0.70 / 0.53 / 0.50 down these five rows, and today's table differs
-from it by at most 0.01. That comparison is real but it is weaker than it looks,
-and we report it with its correction rather than on its own.
+distinction matters, because only one of the two is evidence for the claim.** When
+the graph was roughly a quarter its present size, these five rows read 0.93 / 0.88 /
+0.70 / 0.53 / 0.50, and today's table differs by at most 0.01. That stability is
+weaker evidence than it looks, because a cumulative mean damps late movement.
 
 Grouping derivations into monthly cohorts by creation date — rather than reading
 the cumulative average, which damps late movement because each new cohort is a
@@ -100,12 +99,10 @@ that were the mechanism, modus ponens would be the most variable row. On the
 monthly cohorts above it is not — abduction moves more, 0.137 against 0.124. But on
 the *cumulative* series the same instrument produces the opposite ordering: modus
 ponens 0.090 against abduction 0.039, which is what the pass-through account
-predicts. So the explanation is **view-dependent** rather than tested and
-rejected, and the view that rejects it is the one we happened to compute. Both
-orderings are
-reproducible — `confidence_gradient_trend.py --cohort` and the same tool without
-the flag — and we report the disagreement rather than the half of it that suited
-the argument. What survives either way is the invariant: the ordering of the types
+predicts. So the explanation is **view-dependent**: the cohort view rejects it and
+the cumulative view supports it. Both orderings are reproducible —
+`confidence_gradient_trend.py --cohort` and the same tool without the flag. What
+survives either way is the invariant: the ordering of the types
 holds in every month and at every cut.
 
 **The deductive row can be checked against the model's own arithmetic, and the
@@ -230,8 +227,8 @@ attach them. The instrument is `tools/component_anatomy.py`.
 
 **Evolution outpaces error — and the ratio has narrowed sharply as the discipline
 matured.** Across the graph's life: **864 supersede edges** against **106 retracted
-nodes** and 32 contradiction edges. An earlier reading of this same graph, at
-roughly a quarter its present size, found 201 supersedes against **2** retracts.
+nodes** and 32 contradiction edges. At roughly a quarter its present size, the
+same graph held 201 supersedes against **2** retracts.
 Supersedes grew about fourfold; retracts grew more than fiftyfold.
 
 The tempting reading — that the agent became more error-prone — is almost certainly
@@ -240,8 +237,7 @@ is the verb for *never-valid*, and using it requires first recognising that a pa
 claim was not merely superseded but wrong. A count of 2 across thousands of nodes is
 better explained by the verb being under-reached-for than by a near-perfect record.
 **So a low retraction count is not evidence of accuracy; it is at least as consistent
-with an immature correction discipline** — which is a caution this paper owes its own
-earlier figure, not only its readers.
+with an immature correction discipline**.
 
 Two instruments disagree here and the paper should say which it means, and why
 they differ: 106 nodes carry `status = retracted`, while only 9 explicit `retracts`
@@ -254,8 +250,8 @@ the status. The status field is the one reported above.
 `deductive_modus_ponens` (416), then `abductive_best_explanation` (352),
 `inductive_generalization` (256) and `inductive_analogy` (158) — an agent that
 mostly forms best-explanations and broad generalizations over a deductive spine.
-The ordering has changed since the earlier reading, where abduction led and the
-deductive count was smallest of the three; the profile is a *fingerprint* of a
+At a quarter of this size the ordering was different — abduction led and the
+deductive count was the smallest of the three — so the profile is a *fingerprint* of a
 reasoning style, made countable, and it is not fixed.
 
 ## 6.3 Self-correction in the wild: the retraction cascade on a real error
@@ -331,9 +327,8 @@ generalization at 0.95.
 author over-believe even a cherished, hard-won idea** — and it does so without
 punishing depth as such, which a cruder dilution rule would.
 
-*An earlier reading of this graph described its deepest chain as five layers.
-That was true of a graph a quarter this size; the instrument that produces the
-figure is `tools/paper_stats.py`, and it is expected to move.*
+*At a quarter its present size the graph's deepest chain was five layers; it is
+now sixteen. The figure comes from `tools/paper_stats.py` and moves with the graph.*
 
 ## 6.5 Metacognitive self-audit: the agent sees its own weakest beliefs
 
@@ -345,8 +340,8 @@ ranked. At the snapshot date the five weakest are **dv_1238** (0.09), **dv_1199*
 can *read its own list of things it isn't sure about* — which is the operational
 form of "know what you don't know," the paper's founding goal.
 
-**And the list turns over, which matters more than its contents.** An earlier
-reading of this same graph put dv_0922 at the top; it is now fifth, displaced not
+**And the list turns over, which matters more than its contents.** When the graph
+was smaller, dv_0922 stood at the top; it is now fifth, displaced not
 because it was strengthened but because newer, weaker claims were filed above it.
 A self-audit surface that returned the same nodes for months would be a static
 report; one whose membership changes as the agent reaches into less certain

@@ -127,8 +127,7 @@ family — concretely, ENGRAM's **corroboration** propagation mode formula `1−
 cumulative-fusion form. Prior art, cleanly: ENGRAM's confidence propagation is **not
 novel**, and saying so is the honest move (ob_2551).
 
-The divergence is just as important, and we keep it — re-scoped (dv_0965 → dv_1289,
-reframed 2026-08-12): SL carries uncertainty as an *explicit* mass `u`; ENGRAM's confidence is a
+The divergence is just as important, and we keep it: SL carries uncertainty as an *explicit* mass `u`; ENGRAM's confidence is a
 single scalar, corresponding to SL's *projected expectation* `E = b + a·u`. This is a
 **principled divergence plus a narrow limitation**, not a wholesale representational
 loss: direction-of-evidence and evidence-mass are relocated into structure (claim

@@ -191,9 +191,9 @@ the right behaviour for identity-forming nodes, which are vote-accumulators over
 exemplars rather than single-premise dependents the way an ordinary derivation is.)
 The agent does not invoke this; it fires as a property of the substrate.
 
-**One marker, not two severities — and the reason is instructive.** An earlier
-design graded the mark by its cause, treating a retraction's consequences as
-harder-blocking than a supersede's. A diamond refutes it: if `D` rests on both `B`
+**One marker, not two severities — and the reason is instructive.** It is tempting
+to grade the mark by its cause, treating a retraction's consequences as
+harder-blocking than a supersede's. A diamond shows why that fails: if `D` rests on both `B`
 and `C`, and both rest on retracted `A`, but `B` and `C` each turn out to survive
 by supersede, then `D` is perfectly acknowledgeable — yet a severity inherited at
 firing time from the distant retraction would forbid it. What a node's resolution
@@ -423,9 +423,7 @@ the agent owns the judgment-bearing *decision* (to commit, derive, retract); the
 substrate guarantees the structural *consequence* (cascade, propagation). The two
 are coupled, not separable — *the retraction is the agent's choice; the cascade is
 what the substrate guarantees follows.* That coupling is Kahl's "non-trivial
-binding." (An earlier draft called this "partial," on a worry that cascade-cost is
-mere cost-of-retraction; that was resolved and the node superseded — dv_0607 →
-dv_0926 — and the honest history is itself evidence the framework works.)
+binding."
 
 **OCC — Condition 2 (Non-Interchangeability Under Reset): strict text NOT met; a
 principled extension offered.** Here intellectual honesty costs the clean sweep,
