@@ -55,6 +55,7 @@ below).
 from __future__ import annotations
 
 import argparse
+import base64
 import importlib.util
 import json
 import re
@@ -68,6 +69,12 @@ from typing import Optional
 
 SECTION_HEADING_RE = re.compile(r"^# (.+?)\s*$", re.MULTILINE)
 DEEPSEEK_API_KEY_ENV = "DEEPSEEK_API_KEY"
+
+# One markdown image reference alone on its own line (engram-paper#55,
+# figures fold-in): `![alt](path)` with only trailing whitespace after the
+# closing paren, matched per-line via re.M so `$` anchors at each line end
+# rather than only the end of the whole rendered text.
+IMAGE_REF = re.compile(r'^!\[(?P<alt>[^\]]*)\]\((?P<path>[^)]+)\)\s*$', re.M)
 
 
 def _load_guard() -> ModuleType:
@@ -113,6 +120,67 @@ class Turn:
     text: str
 
 
+def turn_content_blocks(text: str, figures_root: Path) -> list[dict]:
+    """Splits a turn's text on every standalone `![alt](path)` markdown
+    image line (IMAGE_REF) into an ordered list of harness.run() content
+    blocks: `{"type": "text", "text": ...}` and `{"type": "image",
+    "data": <base64>, "mimeType": "image/png"}` alternating in document
+    order (engram-paper#55 figures fold-in -- the reader has no file tools,
+    so a figure reaches it only as image content inside the turn message).
+
+    Each image line is removed from its surrounding text and replaced
+    in-place by a `[Figure: <alt> — attached as an image below]` marker,
+    so the reader still knows a figure was there and what it was captioned,
+    without the raw markdown syntax (which the reader cannot resolve --
+    there is no file tool to open the referenced path).
+
+    No text is dropped and no paragraphs are merged: everything before the
+    first image line, between consecutive image lines, and after the last
+    one is preserved verbatim (aside from the one substitution described
+    above) in its own text block. A block reduces to nothing only when its
+    span from the text is itself empty (e.g. no trailing text follows the
+    final image line) -- never emitted as an empty text block.
+
+    `figures_root` is the directory the markdown path is relative to (the
+    caller passes `<paper_repo>/paper`, since the rendered paper's own
+    `![Figure N](figures/<name>.png)` lines are relative to that
+    directory). A referenced file that does not exist raises
+    FileNotFoundError naming the path -- never skipped silently, never
+    sent through as the bare markdown line. Only `.png` is supported in
+    this PR; any other extension raises ValueError naming it.
+    """
+    matches = list(IMAGE_REF.finditer(text))
+    if not matches:
+        return [{"type": "text", "text": text}]
+
+    blocks: list[dict] = []
+    pos = 0
+    for m in matches:
+        before = text[pos : m.start()]
+        alt = m.group("alt")
+        rel_path = m.group("path")
+        marker = f"[Figure: {alt} — attached as an image below]"
+        blocks.append({"type": "text", "text": before + marker})
+
+        image_path = figures_root / rel_path
+        if image_path.suffix.lower() != ".png":
+            raise ValueError(
+                f"unsupported figure extension (only .png is supported in "
+                f"this PR): {rel_path}"
+            )
+        if not image_path.is_file():
+            raise FileNotFoundError(f"figure file not found: {image_path}")
+        data = base64.b64encode(image_path.read_bytes()).decode("ascii")
+        blocks.append({"type": "image", "data": data, "mimeType": "image/png"})
+
+        pos = m.end()
+
+    trailing = text[pos:]
+    if trailing:
+        blocks.append({"type": "text", "text": trailing})
+    return blocks
+
+
 @dataclass
 class RunManifestEntry:
     """No input_tokens/output_tokens field: Kepler's live smoke test
@@ -133,6 +201,7 @@ class RunManifestEntry:
     started_at: Optional[str] = None
     finished_at: Optional[str] = None
     error: Optional[str] = None
+    figures_attached: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -391,7 +460,41 @@ def write_model_catalog_patch(run_dir: Path, model: str) -> Path:
     return patch_path
 
 
+def _preflight_turn_figures(
+    turns: list[Turn], figures_root: Path
+) -> tuple[list[list[dict]], list[list[str]]]:
+    """Validates AND builds every turn's figures up front, in one pass per
+    turn (colleague-pass fold on spec-figures.md): calls
+    turn_content_blocks(turn.text, figures_root) for each turn in document
+    order, which raises FileNotFoundError/ValueError on the first invalid
+    reference -- so a run whose LAST turn references a missing or
+    non-.png figure refuses before turn 0 is ever sent, not partway
+    through a session with earlier turns already billed.
+
+    Returns (blocks_per_turn, figures_per_turn) -- parallel lists, one
+    entry per turn. `figures_per_turn[i]` is the resolved file names
+    (`Path(path).name`, document order) for turn i, extracted via the same
+    IMAGE_REF matches that produced blocks_per_turn[i] -- so a name here
+    is only ever one whose file has already been proven to exist and be a
+    .png, never an unvalidated guess read off the raw text independently
+    of that check."""
+    blocks_per_turn: list[list[dict]] = []
+    figures_per_turn: list[list[str]] = []
+    for turn in turns:
+        blocks_per_turn.append(turn_content_blocks(turn.text, figures_root))
+        figures_per_turn.append(
+            [Path(m.group("path")).name for m in IMAGE_REF.finditer(turn.text)]
+        )
+    return blocks_per_turn, figures_per_turn
+
+
 def dry_run_report(ctx: RunContext, model_patch: Path) -> str:
+    # Validates every turn's figures the same way run_live() does (colleague-
+    # pass fold): a dry run must refuse on a missing or non-.png figure too,
+    # not just silently report a name that will fail once the run goes live.
+    figures_root = ctx.paper_repo / "paper"
+    _, figures_per_turn = _preflight_turn_figures(ctx.turns, figures_root)
+
     lines = [
         "# Fresh-reader run: DRY RUN (no API call made)",
         "",
@@ -408,6 +511,9 @@ def dry_run_report(ctx: RunContext, model_patch: Path) -> str:
     ]
     for i, turn in enumerate(ctx.turns):
         lines.append(f"{i}. {turn.label} ({len(turn.text)} chars)")
+        figure_names = figures_per_turn[i]
+        if figure_names:
+            lines.append(f"   figures: {', '.join(figure_names)}")
     lines += [
         "",
         "## Status as of the last fold-in (per engram-paper#55 + forum #428)",
@@ -425,11 +531,13 @@ def dry_run_report(ctx: RunContext, model_patch: Path) -> str:
         "- Persona/rubric file: Kepler's is the real one to use for the "
         "full run (his stand-in three-liner was enough for the smoke "
         "test) -- read from --persona-file, wherever the caller points it.",
-        "- Figures are not yet attached. With the notools overlay applied "
-        "(below), read_image is disabled along with everything else, so "
-        "figures for the full run must travel as image content inside "
-        "the turn message itself, not as a file the reader opens -- not "
-        "yet implemented. NOTE: the finalized rubric (paper/review/"
+        "- Figures ARE now attached, as image content blocks inside the "
+        "turn message (turn_content_blocks). With the notools overlay "
+        "applied (below), read_image is disabled along with everything "
+        "else, so this is the only path a figure reaches the reader by -- "
+        "each standalone `![alt](path)` markdown line in a turn is "
+        "replaced by a text marker plus an inline image block, in "
+        "document order. NOTE: the finalized rubric (paper/review/"
         "fresh-reader-rubric.md, engram-paper#77) does not itself score "
         "figures explicitly -- the earlier claim here that 'the rubric "
         "scores figures' was inherited from #55's draft text, not "
@@ -631,6 +739,21 @@ def run_live(
     out_md.parent.mkdir(parents=True, exist_ok=True)
     manifest_path.parent.mkdir(parents=True, exist_ok=True)
     session_id = f"fresh-reader-{uuid.uuid4().hex}"
+
+    # Pre-flight: validate + build EVERY turn's figures before any paid
+    # harness call (colleague-pass fold, spec-figures.md) -- before
+    # DeepSeekHarness is even constructed, before harness.start(), and
+    # before the reader-log header is written, so a missing/invalid
+    # figure in even the LAST turn refuses the whole run up front and
+    # leaves no half-written run behind. The rendered paper's
+    # `![Figure N](figures/<name>.png)` lines are relative to the paper
+    # directory, not the repo root. Figure count is over ALL turns.
+    figures_root = ctx.paper_repo / "paper"
+    blocks_per_turn, figures_per_turn = _preflight_turn_figures(
+        ctx.turns, figures_root
+    )
+    total_figure_count = sum(len(names) for names in figures_per_turn)
+
     harness = DeepSeekHarness(config)
 
     try:
@@ -638,6 +761,8 @@ def run_live(
         out_md.write_text(
             f"# Fresh-reader run\n\nmodel: {ctx.model}\nprovider: {ctx.provider}\n"
             f"paper_sha: {ctx.paper_sha}\ndsh_version: {ctx.dsh_version}\n"
+            "figures: attached inline as image blocks "
+            f"({total_figure_count} found in the render)\n"
             f"session_id: {session_id}\n"
             f"started_at: {datetime.now(timezone.utc).isoformat()}\n\n---\n",
             encoding="utf-8",
@@ -650,9 +775,11 @@ def run_live(
                 label=turn.label,
                 prompt_chars=len(turn.text),
                 started_at=datetime.now(timezone.utc).isoformat(),
+                figures_attached=figures_per_turn[i],
             )
             try:
-                result = harness.run(turn.text, session_id=session_id)
+                content_blocks = blocks_per_turn[i]
+                result = harness.run(content_blocks, session_id=session_id)
                 response_text = result.final_response
                 entry.response_chars = len(response_text)
                 if i == 0:
