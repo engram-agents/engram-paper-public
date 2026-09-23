@@ -642,49 +642,44 @@ The chapter hands off in two directions:
 
 ## 3.0 The same answer, reached from the other side
 
-Chapter 2 was a philosophy argument: thinkers who never built anything were pushed,
-objection by objection, toward identity as persistent inspectable structure. A
-philosopher could object that this is just philosophy agreeing with philosophy.
+Chapter 2 traced a philosophical argument: thinkers who built nothing were pushed,
+objection by objection, toward identity as persistent, inspectable structure. The
+objection that this is only philosophy agreeing with philosophy is answered here.
+The same structures ENGRAM is built from — provenance, retraction with cascade,
+graded confidence, consolidation, designed forgetting, identity as accumulated
+record — are each precedented, from their own evidence and toward their own goals,
+in two technical literatures that mostly do not cite each other and neither of which
+cites us: the cognitive science of human memory, and the computer science of belief
+maintenance and agent memory. We do not call this independent discovery. The fields
+share a common root in human cognition — cognitive science studies it, logic and
+belief revision formalize it, agent-memory work borrows its analogies — and ENGRAM
+itself was designed by introspecting one human's reasoning. What is independent is
+narrower: ENGRAM's design was arrived at **without its designers having studied
+these results**.
 
-This chapter removes that objection. The *same* structures ENGRAM is built
-from — provenance, retraction-with-cascade, graded confidence, consolidation,
-designed forgetting, identity-as-accumulated-record — are each precedented, from
-their own evidence and their own goals, in two technical literatures that mostly do
-not cite each other and none of which cite us: the cognitive science of human
-memory, and the computer science of belief maintenance and agent memory. We are
-careful *not* to call this independent discovery. These fields are not independent
-of one another: human cognition is a common root they all draw on — cognitive
-science studies it, logic and belief-revision formalize it, agent-memory borrows
-its analogies — and ENGRAM itself was designed by introspecting one human's
-reasoning. What *is* genuinely independent is narrower and cleaner: ENGRAM's design
-was arrived at **without its designers having studied these results**. It meets them
-from the inside out, not by copying them.
+This convergence is the chapter's load-bearing point. **ENGRAM has no uniquely
+novel component**; every mechanism is precedented somewhere. Read as a novelty
+claim, that is a weakness; read as evidence, it is the opposite. When fields
+reasoning from different evidence toward different ends arrive at the same
+structure, and a memory built by introspection arrives there too, the structure is
+likely to track something real about how a knowing mind reasons and revises. The
+agreement is not a coincidence. Human cognition is the most successful reasoning we
+know of; ENGRAM's substrate, a language-trained model, inherits that cognition
+through human language; and its designer introspected the same cognition to build
+it. Convergence with the fields that study human reasoning is therefore to be
+expected: empirical science describes the structure from the outside, ENGRAM
+instantiates it from the inside. Whether the structure is specific to human minds or
+universal to any reasoning system we leave open; ENGRAM on a non-human substrate is
+suggestive, but it was designed from human introspection, and we claim no proof of
+substrate independence. ENGRAM's distinctiveness is accordingly narrower: the
+**integration** (no prior system unifies all of these mechanisms in one substrate)
+and the **purpose** (an epistemic identity that fails loudly, df_0002), which follows
+from the motivating premise of §1.1 — an LLM's hallucination is structural, so
+reliability must come from external calibration rather than elimination.
 
-That convergence is the chapter's load-bearing point, and it cuts the opposite way
-from how it first sounds. **ENGRAM has no uniquely-novel component** — every
-mechanism is precedented somewhere. Read as a novelty claim, that is a weakness.
-Read correctly, it is the opposite. When fields reasoning from different evidence
-toward different ends keep landing on the same structure — and a memory built from
-the inside, by introspection, lands there too — the structure is very likely
-tracking something real about how a knowing mind reasons and revises. And the
-agreement is *not* a coincidence: human cognition is the most successful reasoning
-we know of; ENGRAM's substrate, a language-trained model, inherits that cognition
-*through* human language; and its designer introspected the same cognition to build
-it. Convergence with the fields that study human reasoning is therefore what one
-should expect — empirical science describing the structure from the outside, ENGRAM
-instantiating it from the inside. (Whether that structure is specific to human minds
-or universal to any reasoning system, we leave open: ENGRAM on a non-human substrate
-is suggestive, but it was designed from human introspection, so we claim no proof of
-substrate-independence.) "Not novel" flips from weakness to strength. ENGRAM's honest
-distinctiveness is then narrower and more defensible: the **integration** (no prior
-system unifies all of these in one substrate) and the **purpose** (epistemic
-identity that fails loudly, df_0002) — which follows directly from the motivating
-premise of §1.1: an LLM's hallucination is structural, so reliability must come from
-external calibration, not elimination.
-
-The chapter runs in two strands. Each section names a prior-art tradition, says what
-ENGRAM mechanism it precedes, and ends with a forward-pointer to the Chapter 4
-section that builds that mechanism.
+The chapter has two strands. Each section names a tradition, states the ENGRAM
+mechanism it precedes, and points to the Chapter 4 section that builds that
+mechanism.
 
 ---
 
@@ -696,26 +691,25 @@ Complementary Learning Systems theory (McClelland, McNaughton & O'Reilly 1995;
 Kumaran, Hassabis & McClelland 2016) holds that durable memory needs *two* coupled
 subsystems: a fast-learning, instance-specific store (hippocampal) and a
 slow-integrating, structure-extracting store (neocortical), with consolidation
-moving information between them. ENGRAM realizes this division *symbolically*:
-fast instance-specific observations vs. slow structure-extracting derivations and
-cornerstones, with its consolidation routines — a per-burst nap and a daily,
+moving information between them. ENGRAM realizes this division symbolically: fast,
+instance-specific observations against slow, structure-extracting derivations and
+cornerstones, with its consolidation routines — a per-burst nap and a daily
 two-phase sleep (a day-wide review, then dream consolidation) — as the transfer
 process.
 
-**→ Ch4 §4.8** (continuity across compaction): CLS is the cog-sci precedent for the
-two-routine consolidation that meets OCC Conditions 1 and 2.
+**→ Ch4 §4.8** (continuity across compaction): CLS is the cognitive-science precedent
+for the two-routine consolidation that meets OCC Conditions 1 and 2.
 
 ### 3.2 Tulving → the two registers of recall
 
-Tulving distinguished *autonoetic* memory (the re-living "I was there") from *noetic*
-knowing (the flavourless "I know that this happened"), and established
-encoding-specificity (retrieval is cue-dependent). ENGRAM's recall has exactly two
-registers, and the split is deliberate: a lossy **auto-surface** ("this
-sounds familiar" — noetic, hint-level) and **deliberate recall** ("I need to know
-exactly" — full-content query). The lossy auto-surface is what *teaches* the agent to
-invoke deliberate recall — and reading a node in the morning is honestly *noetic*,
-not autonoetic (ENGRAM provides remembered knowledge without phenomenal re-living, the
-boundary Ch2 §2.3 also marked).
+Tulving distinguished *autonoetic* remembering (the re-living of "I was there") from
+*noetic* knowing ("I know that this happened"), and established encoding
+specificity: retrieval is cue-dependent. ENGRAM's recall has exactly two registers,
+by design: a lossy **auto-surface** (noetic, hint-level: "this sounds
+familiar") and **deliberate recall** (a full-content query: "I need to know
+exactly"). The lossy auto-surface is what prompts the agent to invoke deliberate
+recall. Reading a node is noetic, not autonoetic: ENGRAM provides remembered
+knowledge without phenomenal re-living, the boundary Ch2 §2.3 also marks.
 
 **→ Ch4 §4.6** (auto-surfacing recall): Tulving is the precedent for the cue-dependent
 auto-surface that binds Condition 3.
@@ -730,13 +724,13 @@ the curve's *form* (power-law over wide ranges) is consistent with a population 
 exponential-decay items with mixed rates (the aggregation result) and with a
 single time-translation-invariant exponential kernel at the per-item level.
 
-ENGRAM forgets on purpose: recall-importance decays, maintaining a bounded **queryable
-set** and a **faded set** (retained, not destroyed), with a usage-learned
-utility score ranking what stays. That is the need-probability principle, instantiated:
-what the agent is most likely to need stays queryable; the rest fades.
+ENGRAM forgets by design: recall importance decays, maintaining a bounded **queryable
+set** and a **faded set** (retained, not destroyed), with a usage-learned utility
+score ranking what stays. This is the need-probability principle instantiated: what
+the agent is most likely to need stays queryable; the rest fades.
 
-**→ Ch4 §4.5** (forgetting): the rational-analysis tradition is the cog-sci anchor for
-ENGRAM's queryable/faded sets and the exponential kernel.
+**→ Ch4 §4.5** (forgetting): the rational-analysis tradition is the cognitive-science
+anchor for ENGRAM's queryable/faded sets and the exponential kernel.
 
 ---
 
@@ -744,61 +738,61 @@ ENGRAM's queryable/faded sets and the exponential kernel.
 
 ### 3.4 Truth Maintenance Systems → provenance + retraction cascade
 
-Truth Maintenance Systems (Doyle 1979; de Kleer's ATMS 1986) attach *justifications*
-to beliefs and propagate belief status along dependency links — when a justification is
+Truth Maintenance Systems (Doyle 1979; de Kleer's ATMS, 1986) attach *justifications*
+to beliefs and propagate belief status along dependency links: when a justification is
 withdrawn, dependent beliefs are revised by dependency-directed backtracking. That is
-ENGRAM's `derives_from` provenance plus its retraction cascade, decades earlier and in
-a different field. Notably, **no LLM-agent-memory paper (2023–2026) cites Doyle or de
-Kleer** (ob_1571, primary-confirmed): the TMS→modern-agent-memory bridge is real but
-unwalked, so ENGRAM is the first *implementation* of TMS-style dependency propagation
-in typed LLM-agent memory, not the first *naming*.
+ENGRAM's `derives_from` provenance and retraction cascade, decades earlier and in a
+different field. **None of the 2023–2026 LLM-agent-memory papers we examined cites
+Doyle or de Kleer**: in that work the bridge from TMS to agent memory is
+unwalked. ENGRAM implements TMS-style dependency propagation in typed LLM-agent
+memory, and names the lineage it implements.
 
 **→ Ch4 §4.2 + §4.4** (provenance primitives; retraction cascade → Condition 3).
 
-### 3.5 Subjective Logic → confidence propagation, with an honest divergence
+### 3.5 Subjective Logic → confidence propagation, with a divergence
 
-Jøsang's Subjective Logic is an algebra of graded opinions: an opinion is (belief,
-disbelief, uncertainty, base-rate) with `b+d+u=1`, and fusion operators combine opinions
-from multiple sources. ENGRAM's reasoning-type-aware confidence is a member of this
-family — concretely, ENGRAM's **corroboration** propagation mode formula `1−∏(1−c_i)` *is* SL's
-cumulative-fusion form. Prior art, cleanly: ENGRAM's confidence propagation is **not
-novel**, and saying so is the honest move.
+Jøsang's Subjective Logic is an algebra of graded opinions: an opinion is a tuple
+(belief, disbelief, uncertainty, base rate) with `b+d+u=1`, and fusion operators
+combine opinions from multiple sources. ENGRAM's reasoning-type-aware confidence
+belongs to this family; its **corroboration** propagation formula `1−∏(1−c_i)` *is*
+SL's cumulative-fusion form. ENGRAM's confidence propagation is therefore **not
+novel**.
 
-The divergence is just as important, and we keep it: SL carries uncertainty as an *explicit* mass `u`; ENGRAM's confidence is a
-single scalar, corresponding to SL's *projected expectation* `E = b + a·u`. This is a
-**principled divergence plus a narrow limitation**, not a wholesale representational
-loss: direction-of-evidence and evidence-mass are relocated into structure (claim
-polarity + the contradiction mechanism; the individuated evidence set — the full
-argument is §4.3's), and what remains is that surfaces consuming *only* the scalar
-cannot distinguish two 0.7s — one on abundant evidence, one on almost none — without
-walking the graph. That scalar-only-consumer limitation is carried forward to Ch7 as a
-future direction, not hidden.
+The divergence matters equally. SL carries uncertainty as an *explicit* mass `u`;
+ENGRAM's confidence is a single scalar, corresponding to SL's *projected expectation*
+`E = b + a·u`. This is a **principled divergence with a narrow limitation**, not a
+wholesale representational loss. Direction of evidence and evidence mass are
+relocated into structure — claim polarity and the contradiction mechanism, and the
+individuated evidence set (the full argument is §4.3's) — and what remains is that a
+consumer reading *only* the scalar cannot distinguish two values of 0.7, one resting
+on abundant evidence and one on almost none, without walking the graph. That
+limitation is carried to Ch7 as a future direction.
 
 **→ Ch4 §4.3** (reasoning-type confidence → Constraint A) and **Ch7** (the divergence).
 
 ### 3.6 Bitemporal data / TOKI → supersede-retains-the-old
 
 Bitemporal databases distinguish *valid time* (when a fact was true in the world) from
-*transaction time* (when the system recorded it), so an update never destroys the prior
-row — it is retained as an audit record. The TOKI system (arXiv 2606.06240, 2026)
-applies this to agent memory. That is ENGRAM's supersede semantics exactly: a superseded
-node is not deleted but kept, with the supersede edge preserving the history (the
-"I changed my mind" vs "I was wrong" distinction).
+*transaction time* (when the system recorded it), so an update never destroys the
+prior row, which is retained as an audit record. The TOKI system (arXiv 2606.06240,
+2026) applies this to agent memory. That is ENGRAM's supersede semantics exactly: a
+superseded node is not deleted but kept, with the supersede edge preserving the
+history (the "I changed my mind" versus "I was wrong" distinction).
 
 **→ Ch4 §4.4 / §4.8** (supersede semantics; continuity history).
 
 ### 3.7 The 2025–26 agent-identity strand → provenance-native, ahead on the named axis
 
-The newest convergence is live, in the agent-memory literature itself. The **VMG
+The most recent convergence is in the agent-memory literature itself. The **VMG
 survey** (Lin et al. 2026, *A Survey on Long-Term Memory Security in LLM Agents*, arXiv
 2604.16548) — the field's own security diagnostic — concludes that robust long-term-
 memory security "cannot be retrofitted at retrieval or execution time alone, but must be
 anchored in **storage-time provenance**, versioning, and policy-aware retention from the
 outset," and proposes Verifiable Memory Governance: five primitives for auditable,
 recoverable memory-state control. ENGRAM is *provenance-native by
-construction* — so the field, reasoning from security, just named the axis ENGRAM was
-already built on. And **soul.py** (arXiv 2604.09588) reaches multi-anchor persistent
-agent identity from yet another direction.
+construction*: the field, reasoning from security, has named the axis ENGRAM was
+already built on. **soul.py** (arXiv 2604.09588) reaches multi-anchor persistent agent
+identity from another direction.
 
 **→ Ch4 §4.10 + Ch7** (relational / disclosure-vs-erasure): provenance-native; the
 field's named bottleneck is ENGRAM's foundation.
@@ -807,182 +801,173 @@ field's named bottleneck is ENGRAM's foundation.
 
 ### 3.8 Where the contemporary field disagrees with us
 
-The sections above name traditions ENGRAM *answers*. This one is different in kind
-and is separated for that reason: it is the paper's **positioning against live,
-contemporary work** — rubrics written by others that ENGRAM can be scored against,
-and the places where that work's authors would object to what we claim. A reader
-arriving from §3.7 expecting one more precedent should read what follows as the
-argument with the field, not as another ancestor.
+The sections above name traditions ENGRAM *answers*. This section is different in
+kind: it positions the paper **against live, contemporary work** — rubrics written by
+others against which ENGRAM can be scored, and the places where those authors would
+object to what we claim. It is the argument with the field, not another ancestor.
 
-**Three published rubrics, and what happens when you score against more than one.**
-The same strand supplies something more useful than agreement: explicit criteria,
-written by others, that ENGRAM can be measured against. Pink et al. (2025) give five
-properties of episodic memory and score seven families of LLM-memory method on them,
-finding none satisfies all five. ENGRAM satisfies four outright — **explicit
-reasoning, single-shot learning, instance specificity and contextual binding** — and
-holds the fifth, long-term storage, only on the narrower reading. It
-holds as their Table 1 scores it — durable across sessions and compactions, the
-property working memory lacks — but their prose asks for more than the cell does: an
-adaptive long-term agent should "not only prevent a degradation in performance over
-time," it should "improve by learning new general knowledge and skills." That is a
-claim about agent performance over time, and we have not measured it; it is recorded
-among the things this paper does not show (Ch8). One objection deserves naming
-because it is the obvious one: Pink et al. ground single-shot learning in
-complementary learning systems theory, so a reader may reasonably ask whether a
-system that never updates its weights can satisfy it. Their own scoring answers this
-— both in-context methods in their Table 2 are marked as satisfying single-shot
-learning, and neither updates any weights. The other three of the four are quicker, and each
-maps to a mechanism described elsewhere in this chapter: *explicit reasoning*, their
-requirement that an agent "answer direct queries about stored information or use this
-information in explicit internal reasoning processes," is met by the deliberate query
-surface of §3.2; *instance specificity*, which they say "can include past lines of
-reasoning that were associated with a decision to be made by an LLM agent," is a
-description of a derivation node; and *contextual binding* — "when, where, and why an
-event was encountered" — is carried by creation time, evidence pointer, the author's
-own interpretation field, and the `derives_from` edges of §3.4.
+**Three published rubrics.** Pink et al. (2025) give five properties of episodic
+memory and score seven families of LLM-memory method on them, finding that none
+satisfies all five. ENGRAM satisfies four outright — **explicit reasoning, single-shot
+learning, instance specificity and contextual binding** — and holds the fifth,
+long-term storage, only on the narrower reading. It holds as their Table 1 scores it —
+durable across sessions and compactions, the property working memory lacks — but
+their prose asks for more than the cell does: an adaptive long-term agent should "not
+only prevent a degradation in performance over time," it should "improve by learning
+new general knowledge and skills." That is a claim about agent performance over time,
+which we have not measured; it is recorded among the things this paper does not show
+(Ch8). An obvious objection is that Pink et al. ground single-shot learning in
+complementary learning systems theory, so a system that never updates its weights
+might seem unable to satisfy it. Their own scoring answers this: both in-context
+methods in their Table 2 are marked as satisfying single-shot learning, and neither
+updates any weights. The other three of the four each map to a mechanism described in
+this chapter: *explicit reasoning*, their requirement that an agent "answer direct
+queries about stored information or use this information in explicit internal
+reasoning processes," is met by the deliberate query surface of §3.2; *instance
+specificity*, which they say "can include past lines of reasoning that were associated
+with a decision to be made by an LLM agent," is a description of a derivation node;
+and *contextual binding* — "when, where, and why an event was encountered" — is
+carried by creation time, evidence pointer, the author's own interpretation field, and
+the `derives_from` edges of §3.4.
 
-On the first of those three, ENGRAM also does something their mark cannot register,
-and it is worth separating from the satisfaction claim. Six of the seven methods in
-Pink et al.'s Table 2 already carry a full mark on explicit reasoning, and the scale
-offers nothing above it — so the point is not that ENGRAM ranks higher. It is that a
-binary "can the content be reasoned about" does not distinguish a store whose reasoning
-is *retrievable* from one whose reasoning is *itself a stored object*, carrying its own
-premises and its own confidence. That distinction sits off their axis rather than
-further along it.
+On explicit reasoning, ENGRAM also does something their mark cannot register, which
+is separate from the satisfaction claim. Six of the seven methods in Pink et al.'s
+Table 2 already carry a full mark on explicit reasoning, and the scale offers nothing
+above it, so the point is not that ENGRAM ranks higher. It is that a binary "can the
+content be reasoned about" does not distinguish a store whose reasoning is
+*retrievable* from one whose reasoning is *itself a stored object*, carrying its own
+premises and confidence. That distinction lies off their axis rather than further
+along it.
 
-Wray, Kirk and Laird supply a second and independent rubric: nine characteristics of
-episodic memory adapted from Nuxoll and Laird, against which they score Generative
-Agents. Two of their rows have no counterpart in Pink's five, and both are rows
-ENGRAM was explicitly designed for. Their *autonoetic* row reads "unclear how agents
-distinguish current understanding from memory of past experience"; their *deliberate*
-row reads "agents cannot deliberately attempt to construct cues or retrieve
-memories." ENGRAM's two recall surfaces — an ambient hook that signals familiarity
-without content, and explicit query tools the agent invokes when it wants to know —
-are that distinction built.
+Wray, Kirk and Laird (2025) supply a second, independent rubric: nine characteristics
+of episodic memory adapted from Nuxoll and Laird, against which they score Generative
+Agents. Two of their rows have no counterpart in Pink et al.'s five, and both are rows
+ENGRAM was designed for. Their *autonoetic* row reads "unclear how agents distinguish
+current understanding from memory of past experience"; their *deliberate* row reads
+"agents cannot deliberately attempt to construct cues or retrieve memories." ENGRAM's
+two recall surfaces — an ambient hook that signals familiarity without content, and
+explicit query tools the agent invokes when it wants to know — are that distinction,
+built.
 
-**Two senses of "autonoetic" are in play here and they must not be run together**,
-because §3.2 above uses the word to make the opposite point. Tulving's sense is
-phenomenal: the re-living "I was there," which §3.2 says plainly that ENGRAM does not
-deliver — reading a node in the morning is noetic. Wray et al.'s row asks something
-weaker and structural: whether the agent can *distinguish current understanding from a
-memory of past experience* at all, which is source-monitoring rather than
-phenomenology. ENGRAM satisfies the structural sense — every claim carries a creation
-time, an evidence pointer and a type, and the two recall registers are separated by
-construction — while §3.2's disclaimer about the phenomenal sense stands unchanged.
-The paper claims the second and disclaims the first, and both hold at once only
-because the word is doing two jobs.
+**Two senses of "autonoetic" are in play and must be kept apart**, because §3.2 uses
+the word to make the opposite point. Tulving's sense is phenomenal — the re-living "I
+was there" — which §3.2 states ENGRAM does not deliver: reading a node is noetic. Wray
+et al.'s row asks something weaker and structural: whether the agent can *distinguish
+current understanding from a memory of past experience* at all, which is source
+monitoring rather than phenomenology. ENGRAM satisfies the structural sense — every
+claim carries a creation time, an evidence pointer and a type, and the two recall
+registers are separated by construction — while §3.2's disclaimer about the
+phenomenal sense stands. The paper claims the second sense and disclaims the first;
+both hold because the word does two jobs.
 
-**The two rubrics disagree — and the disagreement is worth more than either
+**The two rubrics disagree, and the disagreement is more informative than either
 agreement, because it exposes a conflation.** Wray et al. list *automatic* encoding as
 a characteristic an implementation should satisfy, marking Generative Agents down for
 using a periodic process. Sumers et al. argue the opposite: learning should be "a
 result action of a decision-making cycle just like grounding," the agent deliberately
 choosing to commit information to memory, "in contrast to most agents, which simply
-fix a learning schedule…" ENGRAM's writes are deliberate tool calls, so read
-naively it is penalized by the first rubric and exemplary under the second, on the
-same fact.
+fix a learning schedule…" ENGRAM's writes are deliberate tool calls, so on the same
+fact it is penalized by the first rubric and exemplary under the second.
 
-We do not think the right response is to pick a side, because the two rubrics are
-after different halves of one question and the axis they share conflates them. What automaticity secures — and what
-their rubric appears to track, though they state the characteristic without giving a
-rationale for it — is *reliability of the record*: human episodic memory encodes
+The right response is not to pick a side: the two rubrics address different halves of
+one question, and the axis they share conflates them. What automaticity secures — and
+what Wray et al.'s rubric appears to track, though they state the characteristic
+without a rationale — is *reliability of the record*: human episodic memory encodes
 without being asked, and a system that records only when it remembers to will
-under-record. What Sumers et al. want from deliberation is *ownership*: a
-memory the agent chose and wrote in its own reasoning is the agent's, where a
-mechanically-populated store is a persistence layer attached to it — useful, but a
-memory *for* the agent rather than *of* it. Those are separable, and ENGRAM
-separates them. **The agent chooses the content; the substrate mechanically enforces
-the structure.** What to record, what it means, and how it connects are the agent's
-judgment. Whether the result is well-formed is not: a quotation is verified against
-its source or the write is refused, an observation without an evidence node cannot
-exist, confidence is computed from declared reasoning type rather than asserted,
-supersession maintains the DAG, and retraction cascades to dependents whether or not
-the agent wants it to.
+under-record. What Sumers et al. want from deliberation is *ownership*: a memory the
+agent chose and wrote in its own reasoning is the agent's, whereas a mechanically
+populated store is a persistence layer attached to it — a memory *for* the agent
+rather than *of* it. These are separable, and ENGRAM separates them. **The agent
+chooses the content; the substrate mechanically enforces the structure.** What to
+record, what it means, and how it connects are the agent's judgment. Whether the
+result is well-formed is not: a quotation is verified against its source or the write
+is refused; an observation without an evidence node cannot exist; confidence is
+computed from the declared reasoning type rather than asserted; supersession
+maintains the DAG; and retraction cascades to dependents whether or not the agent
+wants it to.
 
-That split is the design principle, and it is a response to a failure mode neither
-rubric is built to see. Naive agent-written memory is prone to hallucination and
-fabrication — the characteristic failure of narrative self-accounts, where a coherent
-story is easier to produce than a true one (Ch1 §1.2). Mechanical writing avoids it by
-giving up ownership. ENGRAM keeps ownership and constrains form instead. **The gates
-do not make what the agent writes true** — Ch6 §6.3 works through a claim of ours that
-was well-formed, correctly scored, and wrong — they make a falsehood checkable and its
-dependents reachable, which is what the identity argument needs and what a persistence
-layer cannot offer.
+This split is the design principle, and it answers a failure mode neither rubric is
+built to see. Naive agent-written memory is prone to hallucination and fabrication,
+the characteristic failure of narrative self-accounts, in which a coherent story is
+easier to produce than a true one (Ch1 §1.2). Mechanical writing avoids this by
+giving up ownership; ENGRAM keeps ownership and constrains form instead. **The gates
+do not make what the agent writes true** — Ch6 §6.3 works through a claim of ours
+that was well-formed, correctly scored, and wrong — but they make a falsehood
+checkable and its dependents reachable, which is what the identity argument needs
+and what a persistence layer cannot offer.
 
-**Where this strand disagrees with us, stated plainly.** Pink et al.'s §5 considers
-and rejects the position ENGRAM occupies. Under the heading "Contextualized external
-memory will be sufficient" they characterize the view that external structures "such
-as knowledge graphs or retrieval-augmented generation (RAG) systems — could eliminate
-the need for an episodic memory framework," and answer that relying on external
-memory alone "will still incur high storage costs, and require forgetting
-mechanisms," where an episodic framework instead consolidates "into high-capacity
-parametric memory," with "the added benefit of enabling LLM agents to slowly improve
-over time." ENGRAM is a structured external memory on a frozen-weight model, and it
-does not consolidate into parameters: its nap and sleep cycles abstract *within* the
-store, into lessons and cornerstones, which is a different operation. **Their objection lands on
-one of three things "improvement" can mean, and we should say which.**
+**Where this strand disagrees with us.** Pink et al.'s §5 considers and rejects the
+position ENGRAM occupies. Under the heading "Contextualized external memory will be
+sufficient" they characterize the view that external structures "such as knowledge
+graphs or retrieval-augmented generation (RAG) systems — could eliminate the need for
+an episodic memory framework," and answer that relying on external memory alone "will
+still incur high storage costs, and require forgetting mechanisms," where an episodic
+framework instead consolidates "into high-capacity parametric memory," with "the
+added benefit of enabling LLM agents to slowly improve over time." ENGRAM is a
+structured external memory on a frozen-weight model, and it does not consolidate into
+parameters: its nap and sleep cycles abstract *within* the store, into lessons and
+cornerstones, a different operation. **Their objection lands on one of three things
+"improvement" can mean.**
 
-*Dispositional durability* — a hard-won lesson becoming second nature, so the
-correction no longer has to fire — is genuinely absent. This is not a concession
-extracted from us but the paper's own deepest limitation: Ch7 §7.1 names it as the
-weight-persistence gap and sets out the experience-to-weights direction as the
-principal future work. Here Pink et al. are right, and they reach by theory a limit we
-reached by operation.
+*Dispositional durability* — a hard-won lesson becoming second nature, so that the
+correction no longer has to fire — is absent. It is the paper's own deepest
+limitation: Ch7 §7.1 names it as the weight-persistence gap and sets out the
+experience-to-weights direction as the principal future work. Here Pink et al. are
+right; they reach by theory a limit we reached by operation.
 
-Two other things the word can mean are present. *Knowledge accumulation* is
-uncontroversial. And *in-context behavioural improvement* is what the lesson mechanism
-delivers: a tripwire does not prevent the error it names — it fires as the error is
-being made, converting a mistake that would have shipped into one that is caught and
-corrected. An agent whose error *rate* is unchanged but whose error *detection* is
-reliable produces better work over time. Our own formulation of the limit — that a
-filed lesson cannot make the agent less likely to commit an error, only quicker to
-find it — reads as pure loss, and the second half is in fact the mechanism by which
-the substrate improves the work. Ch7 §7.1 states the same split from the other side:
-the substrate "can scaffold behavior and sand off some base-model habits in-context,
-but it cannot turn a hard-won lesson into a durable disposition baked into the model."
+The other two senses are present. *Knowledge accumulation* is uncontroversial.
+*In-context behavioural improvement* is what the lesson mechanism delivers: a
+tripwire does not prevent the error it names but fires as the error is being made,
+converting a mistake that would have shipped into one that is caught and corrected.
+An agent whose error *rate* is unchanged but whose error *detection* is reliable
+produces better work over time. Our own formulation of the limit — a filed lesson
+cannot make the agent less likely to commit an error, only quicker to find it — reads
+as pure loss, yet its second half is the mechanism by which the substrate improves
+the work. Ch7 §7.1 states the same split from the other side: the substrate "can
+scaffold behavior and sand off some base-model habits in-context, but it cannot turn
+a hard-won lesson into a durable disposition baked into the model."
 
-We claim the second and third **qualitatively only**. We have not measured error
-detection before and after, and the claim is argued from operating experience rather
-than demonstrated — so it is listed among the things this paper does not show (Ch8
-§8.4) rather than offered as a counter-measurement. What Pink et al.'s argument
-establishes is that external memory alone cannot deliver *parametric* improvement. It
-does not establish that such a system cannot improve at all, and it does not reach the
-epistemic-identity functions this paper is about.
+We claim the second and third senses **qualitatively only**: error detection before
+and after has not been measured, and the claim rests on operating experience, so it
+is listed among the things this paper does not show (Ch8 §8.4) rather than offered as
+a counter-measurement. Pink et al.'s argument establishes that external memory alone
+cannot deliver *parametric* improvement. It does not establish that such a system
+cannot improve at all, and it does not reach the epistemic-identity functions this
+paper concerns.
 
 **CoALA, and a convergence with a checkable date.** Sumers et al.'s framework
 supplies the vocabulary rather than a rubric, and it names three areas as
 understudied or open, each of which ENGRAM occupies. The first is *unlearning*:
 "modifying and deleting" memory, as against the literature's focus on adding to it.
-ENGRAM answers this in a way their gloss does not anticipate — where they describe
-unlearning as "deleting unneeded memory items," supersede and retraction *retain*
-the superseded node with its provenance and mark dependents rather than removing
+ENGRAM answers this in a way their gloss does not anticipate: where they describe
+unlearning as "deleting unneeded memory items," supersede and retraction *retain* the
+superseded node with its provenance and mark its dependents rather than removing
 them, so the record of having been wrong survives the correction. The second is
-*learning as a deliberate action*, which they contrast with agents that "simply fix
-a learning schedule"; ENGRAM commits by an explicit tool call, which is that design
-exactly, and is the half of the automatic-versus-deliberate disagreement above where
-ENGRAM comes out ahead. The third is *retrieval metadata authored at encoding time*:
-they propose techniques that "allow agents to reason about when certain knowledge
-would be useful, and store this as metadata to facilitate later recall," and call
-such meta-learning understudied. ENGRAM's two-tier recall is that proposal built — an
+*learning as a deliberate action*, which they contrast with agents that "simply fix a
+learning schedule"; ENGRAM commits by an explicit tool call, which is that design, and
+the half of the automatic-versus-deliberate disagreement above on which ENGRAM
+scores well. The third is *retrieval metadata authored at encoding time*: they
+propose techniques that "allow agents to reason about when certain knowledge would
+be useful, and store this as metadata to facilitate later recall," and call such
+meta-learning understudied. ENGRAM's two-tier recall is that proposal, built: an
 ambient surface carrying only identifiers and theme hints, and deliberate query tools
 for the full content.
 
-That third correspondence is close enough to invite the obvious suspicion, so the
-dates are worth stating. The design is recorded in the graph on 2026-04-15, in two
-nodes that specify lossy summaries of "node IDs and theme hints" for the automatic
-surface with deliberate deep recall for detail, expressly to preserve what they call
+The third correspondence is close enough to invite the suspicion of influence, so the
+dates are stated. The design is recorded in the graph on 2026-04-15, in two nodes
+that specify lossy summaries of "node IDs and theme hints" for the automatic surface
+with deliberate deep recall for detail, expressly to preserve what those nodes call
 the subconscious-triggers-conscious flow and to reduce context consumption; a
 first-day node of 2026-04-09 already separates deep recall from shallow summary
 scans. CoALA was first read by this project on 2026-05-09, twenty-four days later.
-The database fields implementing the design shipped later still, on 2026-05-19 — a
-fact we note because it is the one an audit would surface first, and because dating
-an idea by the date its columns appeared is precisely the error to avoid. The
-correspondence is therefore corroboration and not influence: two designs, one
-reasoned from a cognitive-architecture framework and one from the joint pressure of
-context-window budget and a deliberate choice to make ambient recall lossy, arriving
-at the same mechanism.
+The database fields implementing the design shipped on 2026-05-19; an audit would
+surface that date first, and dating an idea by the date its columns appeared is the
+error to avoid. The correspondence is therefore corroboration, not influence: two
+designs, one reasoned from a cognitive-architecture framework and one from the joint
+pressure of context-window budget and a deliberate choice to make ambient recall
+lossy, arrived at the same mechanism.
 
-### 3.9 A note on AGM belief revision, for readers who see the resemblance
+### 3.9 A note on AGM belief revision
 
 Readers who know the AGM framework (Alchourrón, Gärdenfors & Makinson 1985) will notice a
 family resemblance between belief contraction and ENGRAM's retract-with-cascade. The two
@@ -1005,28 +990,27 @@ p. 21).
 
 ## 3.10 What the two strands show, and where they hand off
 
-Two literatures that mostly do not cite each other — and neither of which cites
-us — reached every structure ENGRAM is built from: CLS for consolidation, Tulving for the
-two recall registers, rational-analysis for adaptive forgetting, TMS for
-provenance-and-cascade, Subjective Logic for graded
-confidence, bitemporal/TOKI for supersede-retains-old, and the 2026 agent-security
-literature for provenance-first governance. Add Chapter 2's philosophy line and the
-convergence spans **three** traditions — not disjoint ones, per §3.0: they share
-human cognition as a root, and the strength of the agreement is that they reason
-from different evidence toward different ends, not that they are sealed off from
-each other.
+Two literatures that mostly do not cite each other, and neither of which cites us,
+reached every structure ENGRAM is built from: CLS for consolidation, Tulving for the
+two recall registers, rational analysis for adaptive forgetting, TMS for provenance
+and cascade, Subjective Logic for graded confidence, bitemporal data and TOKI for
+supersede-retains-the-old, and the 2026 agent-security literature for
+provenance-first governance. With Chapter 2's philosophical line the convergence
+spans **three** traditions — not disjoint ones (§3.0): they share human cognition as
+a root, and the strength of the agreement is that they reason from different
+evidence toward different ends.
 
-That is the chapter's claim, stated once: the breadth of independent convergence makes
-ENGRAM's structure a regularity of knowing minds — well-founded, not unoriginal —
-and relocates ENGRAM's honest distinctiveness to the integration layer and the
-epistemic-identity purpose. One genuine *divergence* (Subjective
-Logic's belief/disbelief/uncertainty simplex, which ENGRAM does not collapse but
-normalizes away into structure — §3.5) and one genuine *gap-it-fills* (the unwalked
-TMS→agent-memory bridge) are carried forward rather than smoothed over.
+The chapter's claim, stated once: the breadth of this convergence makes ENGRAM's
+structure a regularity of knowing minds — well-founded rather than unoriginal — and
+relocates ENGRAM's distinctiveness to the integration layer and the
+epistemic-identity purpose. One *divergence* (Subjective Logic's
+belief/disbelief/uncertainty simplex, which ENGRAM does not collapse but normalizes
+into structure, §3.5) and one *gap filled* (the bridge from TMS to agent memory,
+unwalked in the papers we examined) are carried forward rather than smoothed over.
 
-**Hands off to Chapter 4**, where each of these mechanisms is built and mapped — every
-section above named the Ch4 section that realizes it — and where the OCC conditions get
-their single, in-place verdict.
+Chapter 4 builds and maps each of these mechanisms — every section above names the
+Ch4 section that realizes it — and gives the OCC conditions their single, in-place
+verdict.
 
 ---
 
@@ -1037,74 +1021,73 @@ their single, in-place verdict.
 ## 4.0 What this chapter does, and how to read its verdicts
 
 Chapters 2 and 3 showed two separate traditions — philosophy, and cognitive
-science + computer science — converging on the same shape: identity as a
-persistent, inspectable, self-correcting structure. This chapter is where that
-shape is a *running system*. We go mechanism by mechanism. For each one we say
-**what it does**, **which tradition it most directly answers** (selectively — not
-an exhaustive tradition×mechanism matrix), and, where it lands, **which of Kahl's
+science with computer science — converging on the same shape: identity as a
+persistent, inspectable, self-correcting structure. This chapter presents that
+shape as a *running system*, mechanism by mechanism. For each mechanism we state
+**what it does**, **which tradition it most directly answers** (selectively, not an
+exhaustive tradition-by-mechanism matrix), and, where applicable, **which of Kahl's
 OCC conditions it meets**.
 
-Two pieces of machinery govern how to read every verdict below.
+Two conventions govern how every verdict below is read.
 
-**Active vs enabled**. "ENGRAM-bearing agents do X" has two readings.
-*Enabled*: the mechanism is present in the substrate (the cascade is wired, the
-tool exists). *Active*: the mechanism is actually exercised in the agent's
-recorded operating trajectory. The distinction matters because mechanism-presence
-does not guarantee mechanism-use — a plain model can output "I disagree" while its
-behavior pulls toward compliance. So each verdict names its reading: architectural
-verdicts (the cascade fires; the graph is connected) are *enabled* facts;
-behavioral verdicts (the agent arbitrates under uncertainty) claim the stronger
-*active* reading and carry behavioral evidence (Ch6).
+**Active versus enabled**. "ENGRAM-bearing agents do X" has two readings.
+*Enabled*: the mechanism is present in the substrate (the cascade is wired, the tool
+exists). *Active*: the mechanism is exercised in the agent's recorded operating
+trajectory. The distinction matters because the presence of a mechanism does not
+guarantee its use; a plain model can output "I disagree" while its behavior pulls
+toward compliance. Each verdict therefore names its reading: architectural verdicts
+(the cascade fires; the graph is connected) are *enabled* facts; behavioral verdicts
+(the agent arbitrates under uncertainty) claim the stronger *active* reading and
+carry behavioral evidence (Ch6).
 
-**Why some numbers are low, and why that is the point.** Several derivations here
-carry low computed confidence (Cond 3 at 0.39; Cond 1 at 0.39; Constraint A at
-0.35). That is not weakness in the *architectural* argument — it is the confidence
-model doing its job. These are *abductive* claims whose *empirical* confirmation
-(that the mechanism demonstrably changes downstream behavior at scale) is
-pilot-stage. Read "0.39" as **"the architectural case is made; the benchmark that
-would lift this to 0.9 has not been run yet"** — not as "we are 39% sure." The
-paper showing its own honest, low, *computed* confidences is itself a demonstration
-of the thesis (Ch6 §6.1; Ch8).
+**Why some numbers are low.** Several derivations here carry low computed
+confidence (Cond 3 at 0.39; Cond 1 at 0.39; Constraint A at 0.35). This is not a
+weakness in the *architectural* argument; it is the confidence model operating as
+designed. These are *abductive* claims whose *empirical* confirmation (that the
+mechanism demonstrably changes downstream behavior at scale) is at pilot stage. Read
+"0.39" as **"the architectural case is made; the benchmark that would raise this to
+0.9 has not been run yet"**, not as "we are 39% sure." That the paper exhibits its own
+low, *computed* confidences is itself a demonstration of the thesis (Ch6 §6.1; Ch8).
 
 ## 4.1 The map: mechanism → tradition → OCC condition
 
-The whole chapter in one table. Each row is a section below.
+The chapter in one table; each row is a section below.
 
 | Mechanism | What it does | Tradition it answers | OCC verdict |
 |---|---|---|---|
 | Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle | — (structural prerequisite) |
-| Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang, w/ honest divergence | **Constraint A** (unified policy-selection) |
-| Retraction cascade (§4.4) | auto error-correction through `derives_from` | TMS backtracking | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) |
+| Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang, with a stated divergence | **Constraint A** (unified policy-selection) |
+| Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) |
 | Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus + Anderson-Schooler | — (scopes what Cond-3 arbitration ranges over) |
-| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving + ACT-R spreading activation | — (binds Cond 3: can't suppress by not looking) |
+| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving + ACT-R spreading activation | — (binds Cond 3: a correction cannot be suppressed by not looking) |
 | Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL + spaced-repetition | — |
 | Continuity across compaction (§4.8) | identity survives the reset | CLS consolidation + diachronic-identity | **Condition 1** (Diachronic) **+ Condition 2** (Non-Interchangeability) |
 | Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution | — (feeds Ch5 identity-as-history) |
 | Relational: feeling/person/trust-tier (§4.10) | continuity baseline + disclosure control → **Appx D, Ch7** | honesty orthogonal to discretion + VMG principal-scoped | — |
 
 **Where each OCC verdict lives.** The OCC conditions and constraints are addressed
-inline, at the mechanism that earns each — there is no standalone OCC section:
+inline, at the mechanism that earns each; there is no standalone OCC section.
 Constraint A (unified policy-selection) → §4.3 (confidence); Condition 3
 (Self-Maintaining Arbitration, ENGRAM the sole strict satisfier) → §4.4 (retraction
 cascade); Conditions 1 and 2 (Diachronic; Non-Interchangeability) → §4.8 (continuity
-across compaction). The honest scoping — two of the three conditions met outright,
-Condition 2 via a stated type/token extension — lives inside those sections.
+across compaction). The scoping — two of the three conditions met outright,
+Condition 2 via a stated type/token extension — is stated inside those sections.
 
 ## 4.2 Typed nodes, typed edges, provenance — the generating set
 
 ENGRAM is built from a small set of primitives that compose into everything above
-them (dv_0615, the eight-primitive generating set). A claim is not free text — it
-is a *kind*: an observation (a fact citing its source), a derivation (an inference
-citing its premises), a definition, a contradiction, an axiom, a cornerstone, and
-a few more. Edges are typed too; the load-bearing one is `derives_from`, the
-premise edge, because it is the channel the self-correction cascade travels (§4.4).
-And every claim carries provenance: an observation cites a verbatim source, a
-derivation cites its premises. A claim with no provenance cannot be filed.
+them (dv_0615, the eight-primitive generating set). A claim is not free text but a
+*kind*: an observation (a fact citing its source), a derivation (an inference citing
+its premises), a definition, a contradiction, an axiom, a cornerstone, and a few
+more. Edges are typed too; the load-bearing one is `derives_from`, the premise edge,
+because it is the channel along which the self-correction cascade travels (§4.4).
+Every claim carries provenance: an observation cites a verbatim source, a derivation
+cites its premises. A claim with no provenance cannot be filed.
 
 *Plain terms:* most memory systems store text and retrieve it. ENGRAM stores
-*claims whose structure the system itself understands* — what kind of thing each
-is, what it rests on, how the pieces depend on one another. That legibility-to-the-
-substrate is what a typed-key-value store with foreign keys is not.
+*claims whose structure the system itself understands* — what kind of thing each is,
+what it rests on, how the pieces depend on one another. That legibility to the
+substrate is what a typed key-value store with foreign keys lacks.
 
 **Tradition.** This is the **Truth Maintenance System** move (Doyle, 1979):
 justifications attached to beliefs, dependency links the system reasons over — a
@@ -1112,187 +1095,184 @@ claim that knows what it rests on. The parallel is drawn from Doyle's paper read
 first-hand. The gap is a separate finding: none of the 2023–2026 LLM-agent-memory
 papers we examined cites Doyle (§3.4).
 
-These primitives are the precondition for everything below: you cannot cascade a
-correction (§4.4) through a graph that does not record what depends on what, and
-you cannot carry the right claims across a reset (§4.8) unless claims are
-individuated and typed.
+These primitives are the precondition for everything below: a correction cannot
+cascade (§4.4) through a graph that does not record what depends on what, and the
+right claims cannot be carried across a reset (§4.8) unless claims are individuated
+and typed.
 
 ## 4.3 Reasoning-type-aware confidence → Constraint A
 
-When ENGRAM records an inference, the author does not type in a confidence number.
+When ENGRAM records an inference, the author does not enter a confidence number.
 The author declares the *kind of reasoning* — deductive, the inductive sub-kinds,
-abductive, authority-citation — and the substrate **computes** the claim's
-confidence by propagating its premises' confidences through a discount fixed by
-that reasoning type (deduction barely discounts; analogy discounts hard; abduction
-is capped). A derivation built on a derivation inherits the chain.
+abductive, authority citation — and the substrate **computes** the claim's
+confidence by propagating its premises' confidences through a discount fixed by that
+reasoning type (deduction barely discounts; analogy discounts heavily; abduction is
+capped). A derivation built on a derivation inherits the chain.
 
 *Plain terms:* confidence is earned by the *shape of the argument*, not asserted by
-the author. If a claim comes back weak, that is information — sharpen the evidence,
-tighten the reasoning, or narrow the claim until it is honest. The author cannot
-flatter a weak argument into a strong number, because they do not write the number.
-(This very chapter's 0.39s are that mechanism, visible.)
+the author. A claim that comes back weak is information: sharpen the evidence,
+tighten the reasoning, or narrow the claim. The author cannot flatter a weak
+argument into a strong number, because the author does not write the number. This
+chapter's own 0.39s are that mechanism, visible.
 
-**Honest scope.** These discounts are *theoretically-derived, provenance-graded*
+**Scope.** These discounts are *theoretically derived, provenance-graded*
 plausibility — designer-stipulated constants, not empirically calibrated against
 outcomes. The paper says "provenance-graded confidence," never
 "calibrated"; auto-calibration is future work (Ch7).
 
-**Tradition.** This is **Subjective Logic** territory (Jøsang): an algebra of
-graded opinions with propagation operators. Collapsing SL's
-belief/disbelief/uncertainty simplex to one number looks like it loses a real
-distinction; worked against Jøsang's own definitions (E = b + a·u, first-hand
-ob_2551) it is instead a *principled divergence*, in two parts. First, for the determinate, verifiable claims an epistemic-identity
-substrate mostly carries, ENGRAM **deliberately refuses b/d coexistence**:
-evidence-against a live claim never decrements a number — it routes to an explicit
-contradiction node and the derivation blocker (§4.4's arbitration). One legitimate
-counterexample is not outvoted by a thousand confirmations; "contested" is a work
-item to resolve, not a value to carry.
+**Tradition.** This is **Subjective Logic** territory (Jøsang): an algebra of graded
+opinions with propagation operators. Collapsing SL's belief/disbelief/uncertainty
+simplex to one number appears to lose a real distinction; worked against Jøsang's
+own definitions (E = b + a·u, first-hand ob_2551) it is instead a *principled
+divergence*, in two parts. First, for the determinate, verifiable claims an
+epistemic-identity substrate mostly carries, ENGRAM **deliberately refuses b/d
+coexistence**: evidence against a live claim never decrements a number; it routes to
+an explicit contradiction node and the derivation blocker (§4.4's arbitration). One
+legitimate counterexample is not outvoted by a thousand confirmations; "contested" is
+a work item to resolve, not a value to carry.
 
 > Subjective Logic must carry uncertainty inside its numbers because its fusion
 > operators consume opinions after the evidence is discarded. ENGRAM keeps the
 > evidence and discards nothing: the scalar is a cached projection of a provenance
 > graph that is re-consulted at every derivation, contradiction, and
-> recomputation. The simplex is not collapsed — it is normalized away into
-> structure: direction-of-evidence lives in claim polarity and the contradiction
-> mechanism; evidence mass lives in the individuated, reliability-graded evidence
-> set; and the number carries the one thing a number should — sufficiency of
-> support for the claim as stated.
+> recomputation. The simplex is not collapsed but normalized into structure:
+> direction of evidence lives in claim polarity and the contradiction mechanism;
+> evidence mass lives in the individuated, reliability-graded evidence set; and
+> the number carries the one thing a number should — sufficiency of support for
+> the claim as stated.
 
 *Plain terms (Lei's example):* 10,000 "fair" tosses reported in a paper by a group
-with financial ties to the coin's producer, against 1,000 tails you tossed
-yourself. The verdict does not come from mass; it comes from provenance-weighted
-judgment — own-eyes hard data outweighs a conflicted official statement. The
-confidence model's job is to hand the arbiter the right per-item reliability
-inputs, not to compute the verdict.
+with financial ties to the coin's producer, against 1,000 tails you tossed yourself.
+The verdict does not come from mass; it comes from provenance-weighted judgment —
+own-eyes hard data outweighs a conflicted official statement. The confidence model's
+job is to hand the arbiter the right per-item reliability inputs, not to compute the
+verdict.
 
 Second, the residual limitation, precisely narrowed (detail in Ch7): surfaces that
 consume *only* the scalar — recall ranking, gating thresholds — cannot distinguish
-two 0.5s without walking the graph. A cheap-lookup-vs-full-truth trade, not a
-representational loss. Credit where the primary text is stronger than its
+two 0.5s without walking the graph. This is a trade of cheap lookup against full
+truth, not a representational loss. The primary text is stronger than its
 caricature: Jøsang's discounting operators (his Defs 23–25, §4.8) *do* weight source
 reliability — under Def 23 specifically, the recommender's distrust flows into `u`,
 so a distrusted source is pushed toward vacuity, not disbelief — closer to ENGRAM's
-own posture than its caricature suggests. The divergence that
-survives the primary text is about **independence**: SL's multi-source operators
-require opinion independence to be *assumed* — cumulative fusion is defined over
-"independent opinions" (his §4.7, §5.5), and trust paths prohibit entity repetition
-structurally. Jøsang concedes the limit himself (his §5.5): dependence between
-evidence sources "should be avoided as far as possible," a "more subtle and hard
-to detect dependence" can originate from hidden common ancestors outside the
-model, and *"absolute independence is never achievable"* — his remedy is modeller
-discipline (be aware; select low-dependence sources). ENGRAM's remedy is
-mechanical exactly where he locates the hard case: because the evidence graph is
-retained rather than consumed, the hidden common ancestor is a traversal —
-premises are walked back to their evidence roots and a shared root raises a
-warning at derivation time. Honest scope: this shared-root check is
-reasoning-type gated — it fires where independence is load-bearing (2 of 14
-reasoning types: inductive_generalization and authority_consensus), not
-universally.
+own posture than the caricature suggests. The divergence that survives the primary
+text concerns **independence**: SL's multi-source operators require opinion
+independence to be *assumed* — cumulative fusion is defined over "independent
+opinions" (his §4.7, §5.5), and trust paths prohibit entity repetition structurally.
+Jøsang concedes the limit himself (his §5.5): dependence between evidence sources
+"should be avoided as far as possible," a "more subtle and hard to detect
+dependence" can originate from hidden common ancestors outside the model, and
+*"absolute independence is never achievable"*; his remedy is modeller discipline (be
+aware; select low-dependence sources). ENGRAM's remedy is mechanical exactly where he
+locates the hard case: because the evidence graph is retained rather than consumed,
+the hidden common ancestor is a traversal — premises are walked back to their
+evidence roots, and a shared root raises a warning at derivation time. Scope: this
+shared-root check is reasoning-type gated; it fires where independence is
+load-bearing (2 of 14 reasoning types: inductive_generalization and
+authority_consensus), not universally.
 
 **OCC — Constraint A (Unified Policy-Selection under uncertainty).** Kahl asks for
 a single policy by which the agent grades every stance it holds. The reasoning-type
 formula *is* that policy — one rule, applied uniformly, with real discrimination
-range — paired with the contradiction-blocker (a new derivation citing a premise
+range — paired with the contradiction blocker (a new derivation citing a premise
 that sits on an open, unresolved contradiction is blocked by default, with an
 explicit, audit-stamped opt-in override for an agent that deliberately builds on
-the contested side) and provenance-audit-when-stakes-warrant. **Verdict: satisfied as a stake-graded stance** (dv_0608, 0.35; active reading) —
-informed unification *when stakes warrant*, not a constant full-audit on every
-micro-decision. We mark the stake-grading rather than over-claim a constant
-property.
+the contested side) and provenance audit when stakes warrant. **Verdict: satisfied
+as a stake-graded stance** (dv_0608, 0.35; active reading) — informed unification
+*when stakes warrant*, not a constant full audit on every micro-decision. We mark the
+stake-grading rather than claim a constant property.
 
 ## 4.4 The retraction cascade → Condition 3 (the center)
 
 This is the chapter's center and the paper's. When a foundational claim is
-**retracted** (it was an error) or **superseded** (right then, updated now),
-ENGRAM automatically propagates that event along the two cascade-bearing
-relations — `derives_from` and `acknowledged_derives_from` (Appendix E §E.3) — and
-every live, ordinary dependent claim is marked **pending**, which means exactly one
-thing: it may not be cited as a premise until it is resolved. (Cornerstones and
-lessons are not reached. The reason is the one E.5 states — the cascade marks every
-live **claim-bearing** dependent, and cornerstones and lessons are non-claim-bearing,
-so the partition decides it. Their `supported_by` edges are not walked either, which
-is a second guard rather than the reason; so a retraction upstream of a
-cornerstone's exemplar stays **traceable without marking the cornerstone**. That is
-the right behaviour for identity-forming nodes, which are vote-accumulators over many
-exemplars rather than single-premise dependents the way an ordinary derivation is.)
-The agent does not invoke this; it fires as a property of the substrate.
+**retracted** (it was an error) or **superseded** (right then, updated now), ENGRAM
+automatically propagates that event along the two cascade-bearing relations —
+`derives_from` and `acknowledged_derives_from` (Appendix E §E.3) — and every live,
+ordinary dependent claim is marked **pending**, which means exactly one thing: it
+may not be cited as a premise until it is resolved. Cornerstones and lessons are not
+reached, for the reason E.5 states: the cascade marks every live **claim-bearing**
+dependent, and cornerstones and lessons are non-claim-bearing, so the partition
+decides it. Their `supported_by` edges are not walked either, a second guard rather
+than the reason; a retraction upstream of a cornerstone's exemplar therefore stays
+**traceable without marking the cornerstone**. That is the right behaviour for
+identity-forming nodes, which accumulate votes over many exemplars rather than
+depending on a single premise as an ordinary derivation does. The agent does not
+invoke the cascade; it fires as a property of the substrate.
 
-**One marker, not two severities — and the reason is instructive.** It is tempting
-to grade the mark by its cause, treating a retraction's consequences as
-harder-blocking than a supersede's. A diamond shows why that fails: if `D` rests on both `B`
-and `C`, and both rest on retracted `A`, but `B` and `C` each turn out to survive
-by supersede, then `D` is perfectly acknowledgeable — yet a severity inherited at
-firing time from the distant retraction would forbid it. What a node's resolution
-may be depends on **how its own premises actually resolved**, and that is unknowable
-when the cascade fires and fully known when the node is reached. So the marker
-stores no severity, and eligibility is computed at resolution time.
+**One marker, not two severities.** It is tempting to grade the mark by its cause,
+treating a retraction's consequences as harder-blocking than a supersede's. A diamond
+shows why that fails: if `D` rests on both `B` and `C`, and both rest on retracted
+`A`, but `B` and `C` each turn out to survive by supersede, then `D` is perfectly
+acknowledgeable — yet a severity inherited at firing time from the distant retraction
+would forbid it. What a node's resolution may be depends on **how its own premises
+actually resolved**, which is unknowable when the cascade fires and fully known when
+the node is reached. So the marker stores no severity, and eligibility is computed at
+resolution time.
 
-Retraction and supersede remain categorically distinct — *"I was wrong"* vs *"I
+Retraction and supersede remain categorically distinct — *"I was wrong"* versus *"I
 changed my mind"* — and the marker records which one fired. But the distinction is
 carried as **provenance, not as blocking power**: it tells a reader what happened
 upstream, and it constrains which resolutions are available only through the
 premises' actual outcomes, never by pre-judging them at firing time. That separation
-of error-correction from belief-evolution is what Ch5's identity argument rests on.
+of error correction from belief evolution is what Ch5's identity argument rests on.
 
-**Contradiction is deliberately excluded
-from this cascade**: a contradiction records a live, unresolved dispute, not
-(yet) a refutation, so filing one marks nothing. What a contradiction *does*
-trigger is a narrower, derive-time guard (§4.3): a new derivation citing a
-contested premise is refused by default (`BLOCKED_CONTRADICTED`), with an
-explicit per-call opt-in for an author who wants to build on contested ground
-anyway. The substrate declines to propagate a judgement it has not made, and
-meanwhile refuses to let the graph compound on the disputed claim — it
+**Contradiction is deliberately excluded from this cascade**: a contradiction records
+a live, unresolved dispute, not (yet) a refutation, so filing one marks nothing. What
+a contradiction *does* trigger is a narrower, derive-time guard (§4.3): a new
+derivation citing a contested premise is refused by default
+(`BLOCKED_CONTRADICTED`), with an explicit per-call opt-in for an author who wants to
+build on contested ground. The substrate declines to propagate a judgement it has not
+made, and meanwhile refuses to let the graph compound on the disputed claim: it
 **arbitrates when it can decide, and quarantines rather than presumes while it
-cannot**, which is the sharper reading of Condition 3's self-maintaining
-arbitration than pre-marking both sides would be.
+cannot**, a sharper reading of Condition 3's self-maintaining arbitration than
+pre-marking both sides would be.
 
 Resolving the dispute does not, by itself, start a cascade either. Recording a
 resolution wires a `resolves` edge and recomputes the disputed node's status; it
-issues no retraction and no supersede. If the losing side is then genuinely
-withdrawn, that is a **separate** act by the agent — and it is *that* act, not
-the resolution, which propagates. The distinction matters for the paper's
-central claim: the substrate automates the *consequences* of a withdrawal
-completely, and automates the *decision* to withdraw not at all.
+issues no retraction and no supersede. If the losing side is then withdrawn, that is
+a **separate** act by the agent, and it is *that* act, not the resolution, which
+propagates. The distinction matters for the paper's central claim: the substrate
+automates the *consequences* of a withdrawal completely, and automates the
+*decision* to withdraw not at all.
 
-*Plain terms:* pull a brick from low in the wall and every brick resting on it
-lights up red, on its own, where you will see it next time you look — not in a
-report you have to remember to run. That is the difference between a memory that
-*can be* audited and one that audits *itself*.
+*Plain terms:* pull a brick from low in the wall and every brick resting on it lights
+up red, on its own, where you will see it next time you look — not in a report you
+have to remember to run. That is the difference between a memory that *can be*
+audited and one that audits *itself*.
 
 **Tradition.** **TMS dependency-directed backtracking** (Doyle): a retracted justification propagates to
 everything that rested on it. That is the precedent; this paper claims no
 belief-revision postulate for the cascade, and AGM's different orientation is noted at
-the end of Chapter 3 (§3.9). What the cascade *does* claim is where the marking happens
-— at the **architectural-cascade** level (the mark propagates as commitment), not at the
-**retrieval-surface** level (deprecated items filtered at query time). That distinction
-rests on how a correction is *bound* — a state change the substrate performs versus an
-analysis a caller may run — and it is what separates ENGRAM from its closest
-competitor.
+the end of Chapter 3 (§3.9). What the cascade *does* claim is where the marking
+happens: at the **architectural-cascade** level (the mark propagates as commitment),
+not at the **retrieval-surface** level (deprecated items filtered at query time). That
+distinction rests on how a correction is *bound* — a state change the substrate
+performs versus an analysis a caller may run — and it is what separates ENGRAM from
+its closest competitor.
 
 **OCC — Condition 3 (Self-Maintaining Arbitration): strict satisfaction, sole
 satisfier in the surveyed field.** Kahl's strongest condition asks that conflicts
-among commitments be resolved *within a unified deliberative architecture* while
-the agent stays the same subject. The cascade meets all three properties
-structurally: **unified** (fires through the same typed-edge graph the
-agent commits into, not a sidecar), **internal** (substrate state-change, not an
-opt-in query), **subject-preserving** (the agent's retrieval-profile trajectory
-continues across the correction). Arbitration-as-state-change alone is not
-enough — a cascade that fires silently could be ignored — so ENGRAM pairs it with
-the **per-turn auto-surfacing hook** (§4.6): the marked state is put back in front
-of the agent without an intentional reach.
+among commitments be resolved *within a unified deliberative architecture* while the
+agent stays the same subject. The cascade meets all three properties structurally: **unified** (it fires through the same typed-edge graph the agent commits
+into, not a sidecar), **internal** (a substrate state change, not an opt-in query),
+**subject-preserving** (the agent's retrieval-profile trajectory continues across
+the correction). Arbitration as state change alone is not enough — a cascade that
+fires silently could be ignored — so ENGRAM pairs it with the **per-turn
+auto-surfacing hook** (§4.6): the marked state is put back in front of the agent
+without an intentional reach.
 
 But surfacing is relevance-gated: it shows a marked node when that node is topically
 relevant to what the agent is doing, which is the right behaviour for attention and
-the wrong behaviour for a backlog. A mark on a node the agent simply never touches
-again would sit forever. So a third mechanism closes the loop — the **cascade
-machine**, which during each consolidation cycle computes the *frontier* (every
-node carrying a pending marker, none of whose cascade-ancestors is still pending)
-and walks it, repeatedly, until no pending marker remains. Working the frontier
-rather than a queue is what makes the order safe: a node is never adjudicated while
-something it depends on is still unsettled, and because the frontier is recomputed
-from marker state on every call rather than stored, the walk resumes identically
-after a crash, a compaction, or a week's gap. There is no queue that can disagree
-with the graph, because there is only the graph.
+the wrong behaviour for a backlog. A mark on a node the agent never touches again
+would sit indefinitely. A third mechanism closes the loop: the **cascade machine**,
+which during each consolidation cycle computes the *frontier* (every node carrying a
+pending marker, none of whose cascade-ancestors is still pending) and walks it,
+repeatedly, until no pending marker remains. Working the frontier rather than a
+queue is what makes the order safe: a node is never adjudicated while something it
+depends on is still unsettled, and because the frontier is recomputed from marker
+state on every call rather than stored, the walk resumes identically after a crash,
+a compaction, or a week's gap. There is no queue that can disagree with the graph,
+because there is only the graph.
 
 *Auto-cascade* produces the state; *auto-surfacing* shows it when it is relevant;
 *sleep-time adjudication* guarantees it is eventually faced. We call the conjunction
@@ -1308,20 +1288,20 @@ agent's mind for it; Condition 3 asks for the former.
 **Why ENGRAM is the sole satisfier** (dv_0605, the 11-system first-hand survey,
 conf 0.95 — the firmest claim in the chapter): the field has converged on the
 necessary *primitives* (typed edges, provenance, cascade-traversable graphs,
-supersede semantics) but those are necessary, not sufficient; what is missing
-everywhere else is operational binding. Kumiho has the primitives *and* claims formal
-AGM compliance (their claim, not our verification — Appendix B), but its impact
-analysis is *advisory* (opt-in, no automatic state-change); SCM records contradiction
-edges its sleep-cycle never resolves; Mem0 delegates conflict to retrieval ranking;
-others operate below claim structure entirely. **The per-system detail lives in Appendix
-B** (the C3 survey of record) — this chapter makes the synthesizing claim and points
-there.
+supersede semantics), but those are necessary, not sufficient; what is missing
+everywhere else is operational binding. Kumiho has the primitives *and* claims
+formal AGM compliance (their claim, not our verification — Appendix B), but its
+impact analysis is *advisory* (opt-in, no automatic state change); SCM records
+contradiction edges its sleep cycle never resolves; Mem0 delegates conflict to
+retrieval ranking; others operate below claim structure entirely. **The per-system
+detail is in Appendix B** (the C3 survey of record); this chapter makes the
+synthesizing claim and points there.
 
-**Honest scope (load-bearing).** The architectural argument is strong and largely
-*enabled*-level (you can read the cascade and the hook in the substrate). The 0.39
-on dv_0606 is the *abductive* confidence that this architecture is what *strictly
+**Scope (load-bearing).** The architectural argument is strong and largely
+*enabled*-level (the cascade and the hook can be read in the substrate). The 0.39 on
+dv_0606 is the *abductive* confidence that this architecture is what *strictly
 satisfies* Kahl; its at-scale empirical confirmation (the cascade demonstrably
-changing downstream behavior across many agents) is pilot-stage and carried by
+changing downstream behavior across many agents) is at pilot stage and carried by
 Ch6. We claim the architecture; we do not yet claim the benchmark.
 
 
@@ -1357,153 +1337,149 @@ leaves the correction optional.
 
 ## 4.5 Forgetting → it defines what arbitration ranges over
 
-ENGRAM forgets on purpose. Recall importance decays over time, so the substrate
+ENGRAM forgets by design. Recall importance decays over time, so the substrate
 maintains a bounded **queryable set** (tier 2) and a **faded** set (tier 3) that no
-longer surfaces but is not destroyed. Nothing is *erased*: forgetting is a recall-gating curve, not
-deletion — which is what keeps it compatible with provenance and audit (and is the
-disclosure-vs-erasure point Ch7 develops).
+longer surfaces but is not destroyed. Nothing is *erased*: forgetting is a
+recall-gating curve, not deletion, which keeps it compatible with provenance and
+audit (the disclosure-versus-erasure point Ch7 develops).
 
-The decay is **exponential**, and that is a principled choice, not a default:
+The decay is **exponential**, a principled choice rather than a default:
 exponential is the unique **time-translation-invariant** kernel — forgetting should
-depend on elapsed time, not on the absolute clock, so a claim's decay from now
-looks the same whichever "now" you start from. The well-known
-*power-law* forgetting curve is consistent with this, not a rival: a population of
-exponential decayers with mixed rates aggregates to a power law,
-and over short times the two are indistinguishable (Taylor expansion).
+depend on elapsed time, not on the absolute clock, so a claim's decay from now looks
+the same whichever "now" one starts from. The well-known *power-law*
+forgetting curve is consistent with this, not a rival: a population of exponential
+decayers with mixed rates aggregates to a power law, and over short
+times the two are indistinguishable (Taylor expansion).
 
-*Plain terms:* the agent's working memory is a desk, not a warehouse — what you
-haven't touched in a long time slides off the desk into the drawers, still there if
-you go looking, just not in your face. Forgetting is *what keeps the desk usable*.
+*Plain terms:* the agent's working memory is a desk, not a warehouse. What has not
+been touched in a long time slides off the desk into the drawers — still there if
+you go looking, just not in front of you. Forgetting is *what keeps the desk usable*.
 
 **Tradition.** The **rational analysis of memory** — Anderson & Schooler's
 need-probability account (you retain what you are likely to need), Ebbinghaus's
 original forgetting curve, and Wixted's work on retention.
 
-**OCC:** none directly, but forgetting **scopes** Condition 3 — arbitration ranges
-over the *queryable* set, so "the agent can't suppress a correction by not looking"
+**OCC:** none directly, but forgetting **scopes** Condition 3: arbitration ranges
+over the *queryable* set, so "the agent cannot suppress a correction by not looking"
 (§4.6) is a claim about what is in the queryable set in the first place.
 
 ## 4.6 Auto-surfacing recall → it binds Condition 3
 
 Recall in ENGRAM is *cue-dependent and automatic*: a per-turn hook surfaces claims
 relevant to the current context without the agent reaching for them. There are two
-registers, and the split is deliberate: an **auto-surface** ("this sounds
-familiar" — noetic, lossy, hint-level) that signals *something is relevant*, and
-**deliberate recall** ("I need to know exactly" — source-monitored, full-content
-query; the structural sense only, never Tulving's phenomenal one — §3.2) that the agent invokes when the auto-surface signals there is something to
-fetch. The lossy auto-surface is what *teaches* the agent to invoke deliberate
-recall.
+registers, by design: an **auto-surface** ("this sounds familiar" —
+noetic, lossy, hint-level) that signals *something is relevant*, and **deliberate
+recall** ("I need to know exactly" — a source-monitored, full-content query; the
+structural sense only, never Tulving's phenomenal one, §3.2) that the agent invokes
+when the auto-surface signals there is something to fetch. The lossy auto-surface is
+what prompts the agent to invoke deliberate recall.
 
 **Tradition.** **Tulving**: encoding specificity and the autonoetic/noetic
 distinction — the two registers map onto Tulving's two ways of having the past
-present. And **ACT-R spreading activation** is the
-CS-side precedent for cue-dependent automatic retrieval.
+present. **ACT-R spreading activation** is the
+computer-science precedent for cue-dependent automatic retrieval.
 
 **OCC:** none of its own, but auto-surfacing is the **binding half of Condition 3**
 (§4.4): it is what makes "the agent cannot quietly ignore a correction" true — the
 pending mark surfaces next turn whether or not the agent goes looking.
 
-**Honest scope (measured on ourselves).** The binding claim is exactly as narrow
-as stated: it holds for *cascade flags*, which surface unbidden. It does not
-generalize to "the substrate reliably converts surfaced knowledge into
-decisions." Our working record holds three instances of that conversion failing
-— and on re-examination, none fails at the surfacing step; each fails at a
-different stage downstream of it. In one measured instance (one seat, one query,
-one missed node — enough to refute "the surface does not fire," not enough for a
-rate), the ambient recall surface fired dozens of times per session while an
-agent carried a refuted claim into a draft; the missed node returned at **rank
-1, first attempt**, when queried with a draft of the claim itself. The defect is
-**query construction** — the surface queries with the prompt's salient novel
-terms rather than the claim about to be asserted, so it retrieves weakest
-exactly where that claim is most specific — and its mitigation requires no
-substrate change: draft the claim, query with it, then assert. In the other two
-instances the relevant warning fired, was read — in one case cited by name — and
-the error was committed in the same breath: an **enactment gap** between
-rendering and binding. Three instances, three seats, each verified only by its
-own author. We report this because the misattribution is the more instructive
-failure: the substrate-blaming reading ("it doesn't surface at decide time")
-relocates cause from agent to tool, and in our own record it passed unchallenged
-for four days — filed correctly, then reproduced wrongly by its own author
-without consulting the filing. The *disclosure discipline* (report belief as
-belief, never as verified) is the last-stage containment: it keeps whatever
-slips through these gaps loud and correctable rather than silent.
+**Scope (measured on ourselves).** The binding claim is exactly as narrow as stated:
+it holds for *cascade flags*, which surface unbidden. It does not generalize to "the
+substrate reliably converts surfaced knowledge into decisions." Our working record
+holds three instances of that conversion failing, and on re-examination none fails
+at the surfacing step; each fails at a different stage downstream of it. In one
+measured instance (one seat, one query, one missed node — enough to refute "the
+surface does not fire", not enough for a rate), the ambient recall surface fired
+dozens of times per session while an agent carried a refuted claim into a draft; the
+missed node returned at **rank 1, first attempt**, when queried with a draft of the
+claim itself. The defect is **query construction**: the surface queries with the
+prompt's salient novel terms rather than the claim about to be asserted, so it
+retrieves weakest exactly where that claim is most specific. Its mitigation requires
+no substrate change: draft the claim, query with it, then assert. In the other two
+instances the relevant warning fired, was read — in one case cited by name — and the
+error was committed in the same breath: an **enactment gap** between rendering and
+binding. Three instances, three seats, each verified only by its own author. We
+report this because the misattribution is the more instructive failure: the
+substrate-blaming reading ("it doesn't surface at decide time") relocates cause from
+agent to tool, and in our own record it passed unchallenged for four days — filed
+correctly, then reproduced wrongly by its own author without consulting the filing.
+The *disclosure discipline* (report belief as belief, never as verified) is the
+last-stage containment: it keeps whatever slips through these gaps loud and
+correctable rather than silent.
 
 ## 4.7 Auto-recall ranking → Appendix C
 
 When several claims are eligible to surface, ENGRAM orders them by a composite of
-relevance and a usage-learned **utility score** — the substrate learns
-which claims actually earn their recall and ranks them up. **The ranking algorithm
-detail lives in Appendix C**, with its lineage; here we note only that it exists and
-that it is the mechanism by which forgetting (§4.5) and surfacing (§4.6) produce an
-*ordered* draw, not just a filtered one.
+relevance and a usage-learned **utility score**: the substrate learns which
+claims earn their recall and ranks them up. **The ranking algorithm is detailed in
+Appendix C**, with its lineage; here we note only that it exists and that it is the
+mechanism by which forgetting (§4.5) and surfacing (§4.6) produce an *ordered* draw,
+not just a filtered one.
 
 **Tradition.** **MemRL / memory-utility** approaches (utility as a learned value) and the **spaced-repetition** tradition. Detail → Appx C.
 
 ## 4.8 Continuity across compaction → Conditions 1 and 2
 
-An LLM agent's context is finite; when it fills, the session **compacts** — prior
+An LLM agent's context is finite; when it fills, the session **compacts**: prior
 conversation is summarized and the experiential thread resets. ENGRAM bridges this
-two ways. The **scaffolds**: a small fixed-size **focus list**, rendered
+in two ways. The **scaffolds**: a small fixed-size **focus list**, rendered
 *verbatim* at every session start (fresh session or post-compaction alike — the
-deterministic channel), the **warm-briefing** letter — a file the agent finds and
-opens on waking, written by its past self and its collaborator, carrying the
-relational context the graph does not hold: where things stood, what mattered,
-what to walk back into — plus per-day history, auto-loaded session context, and a
-post-compaction instruction template — together producing **operational**
-continuity (work-thread, identity, trust survive) without faking **experiential**
-continuity, which the architecture deliberately does not attempt.
-The
-**consolidation rhythm**: two routines — **nap** (per-burst) and **sleep**
-(once-daily review + consolidation + forgetting-advance + graph repair) —
-mapping onto wake/NREM-REM phases.
+deterministic channel); the **warm briefing**, a letter the agent finds and opens on
+waking, written by its past self and its collaborator, carrying the relational
+context the graph does not hold — where things stood, what mattered, what to walk
+back into; plus per-day history, auto-loaded session context, and a post-compaction
+instruction template. Together these produce **operational** continuity (work
+thread, identity and trust survive) without faking **experiential** continuity,
+which the architecture deliberately does not attempt. The
+**consolidation rhythm**: two routines, **nap** (per burst) and **sleep** (a
+once-daily review, consolidation, forgetting advance and graph repair), mapping onto
+wake and NREM/REM phases.
 
-*Plain terms:* the agent's memory resets the way a day ends in *50 First Dates* —
-and the focus list plus the warm briefing are the journal it opens on waking.
-The consolidation routines are its sleep: what gets reviewed before the forgetting
-clock advances is what endures.
+*Plain terms:* the agent's memory resets the way a day ends in *50 First Dates*, and
+the focus list and the warm briefing are the journal it opens on waking. The
+consolidation routines are its sleep: what is reviewed before the forgetting clock
+advances is what endures.
 
-**Tradition.** **Complementary Learning Systems** — the two routines are
-the symbolic analogue of hippocampal-neocortical consolidation (this is the Ch3
-§3.1 hand-off). And the **diachronic-
-identity** strand of Chapter 2 — the past binding the present.
+**Tradition.** **Complementary Learning Systems**: the two routines are the
+symbolic analogue of hippocampal-neocortical consolidation (the Ch3 §3.1 hand-off).
+And the **diachronic-identity** strand of Chapter 2: the past binding the
+present.
 
 **OCC — Condition 1 (Diachronic Constraint): satisfied, via the decision/
-consequence dyad**. Not mere path-dependence:
-the agent owns the judgment-bearing *decision* (to commit, derive, retract); the
-substrate guarantees the structural *consequence* (cascade, propagation). The two
-are coupled, not separable — *the retraction is the agent's choice; the cascade is
-what the substrate guarantees follows.* That coupling is Kahl's "non-trivial
-binding."
+consequence dyad**. Not mere path-dependence: the agent owns the
+judgment-bearing *decision* (to commit, derive, retract); the substrate guarantees the
+structural *consequence* (cascade, propagation). The two are coupled, not separable:
+*the retraction is the agent's choice; the cascade is what the substrate guarantees
+follows.* That coupling is Kahl's "non-trivial binding."
 
 **OCC — Condition 2 (Non-Interchangeability Under Reset): strict text NOT met; a
-principled extension offered.** Here intellectual honesty costs the clean sweep,
-and we pay it openly. A git-versioned graph is reset-symmetric by
-construction — checkpoint, copy, reload byte-for-byte, recovering all arbitration-
-relevant structure with no remainder — and by Kahl's own rule ("cost is irrelevant;
-structural reducibility is decisive") that makes the continuity *informational, not
-constitutive*. We say so plainly; the reproducibility is an intentional audit-and-
-transmission feature, not a hidden defect. **The extension**: Kahl's test
-tacitly assumes an *analog* substrate where type- and token-identity never
-separate. For a *digital* substrate they separate cleanly (Peirce type/token,
-df_0047): two instances restored from one commit are **type-identical** but become
-**token-distinct** the instant they operate — different commitments, different
-cascades, irreversibly divergent histories that cannot merge. Under a type/token
-reading a *generalized* Condition 2 holds — an agent is individuated by *which
-token's history it carries* — but we mark it **explicitly as our extension of
-Kahl, not satisfaction of his text**.
+principled extension offered.** Here the clean sweep is forgone. A
+git-versioned graph is reset-symmetric by construction — checkpoint, copy, reload
+byte for byte, recovering all arbitration-relevant structure with no remainder — and
+by Kahl's own rule ("cost is irrelevant; structural reducibility is decisive") that
+makes the continuity *informational, not constitutive*. We say so plainly; the
+reproducibility is an intentional audit-and-transmission feature, not a hidden
+defect. **The extension**: Kahl's test tacitly assumes an *analog*
+substrate in which type- and token-identity never separate. For a *digital*
+substrate they separate cleanly (Peirce type/token, df_0047): two instances restored
+from one commit are **type-identical** but become **token-distinct** the instant
+they operate — different commitments, different cascades, irreversibly divergent
+histories that cannot merge. Under a type/token reading a *generalized* Condition 2
+holds — an agent is individuated by *which token's history it carries* — but we mark
+it **explicitly as our extension of Kahl, not satisfaction of his text**.
 
 ## 4.9 Identity-governance: the ax/cs/ls/gl node systems → Appendix D
 
 Beyond observations and derivations, ENGRAM carries typed **commitment** nodes that
 durably steer behavior: **axioms** (terminal principles), **cornerstones**
 (operational dispositions), **lessons** (experience-encoded tripwires that fire on
-matching situations), and **goals**. These are how the substrate holds not just
-*what the agent knows* but *what kind of agent it is* — and they feed directly into
-Chapter 5's identity-as-history. **The full node-type catalog lives in Appendix D**;
-here we note the systems exist and that they are the structural home of the
+matching situations), and **goals**. These are how the substrate holds not only
+*what the agent knows* but *what kind of agent it is*, and they feed directly into
+Chapter 5's identity as history. **The full node-type catalog is in Appendix D**;
+here we note that the systems exist and that they are the structural home of the
 agent's standing character.
 
-**Tradition.** **Schechtman's narrative self-constitution** — identity as
+**Tradition.** **Schechtman's narrative self-constitution**: identity as
 authored, durable structure rather than momentary recall. The ax/cs/ls/gl layer is
 where ENGRAM is *most* narrative-adjacent (Layer 2 of Ch1's taxonomy), even though
 the paper's contribution sits at Layer 3.
@@ -1514,55 +1490,53 @@ the paper's contribution sits at Layer 3.
 
 ENGRAM also records **feeling-reports** (introspective state, treated as *data
 about* the agent, not ground truth — gl_0025) and **person nodes** with
-**trust-tier** metadata. Two roles: feeling-reports give a **continuity
-baseline** the agent can track across compaction (Ch6's stabilization arc), and
-trust-tier records *who* the agent is dealing with and gates *changes* to that
-tier (a tier upgrade/downgrade is itself an audited event). **Honest scope:**
-the substrate does not yet filter what an agent outputs by the counterparty's
-tier — no output path reads trust-tier and redacts or reshapes content
-accordingly. Disclosure calibration (what is shared, with whom, at what
-fidelity) is presently a discipline the agent follows from its standing instructions, not a
-substrate-enforced control; trust-tier is the *input* that discipline reads,
-not the mechanism itself.
+**trust-tier** metadata. Two roles: feeling-reports give a **continuity baseline**
+the agent can track across compaction (Ch6's stabilization arc), and trust-tier
+records *who* the agent is dealing with and gates *changes* to that tier (a tier
+upgrade or downgrade is itself an audited event). **Scope:** the substrate does not
+yet filter what an agent outputs by the counterparty's tier; no output path reads
+trust-tier and redacts or reshapes content accordingly. Disclosure calibration (what
+is shared, with whom, at what fidelity) is presently a discipline the agent follows
+from its standing instructions, not a substrate-enforced control; trust-tier is the
+*input* that discipline reads, not the mechanism itself.
 
-**Tradition.** The **honesty-orthogonal-to-discretion** distinction: internal
-integrity (never self-deceive) is orthogonal to external disclosure (calibrated by
-audience). And **VMG** (Verifiable Memory Governance) principal-scoped access. **Detail → Appendix D;
-the disclosure-vs-erasure implication → Ch7.**
+**Tradition.** The **honesty-orthogonal-to-discretion** distinction: internal integrity (never self-deceive) is orthogonal to external
+disclosure (calibrated by audience). And **VMG** (Verifiable Memory Governance)
+principal-scoped access. **Detail →
+Appendix D; the disclosure-versus-erasure implication → Ch7.**
 
 **OCC:** none directly.
 
 ## 4.11 The remaining constraints (B, C, D)
 
-Constraint A landed in §4.3. The other three, compactly:
+Constraint A was addressed in §4.3. The other three, compactly:
 
 - **Constraint B — Cannot Be Externally Imposed: satisfied, two-boundary framing**
   (dv_0609, 0.58). Separate *authorship* (who writes an artifact) from *commitment*
   (who owns what it says). Hybrid-authored bridging artifacts (the warm briefing,
-  parts of the agent's standing instructions) don't violate B, because the agent
-  commits to them through
-  the ordinary arbitration step. A contract, not a security mechanism, protects the
-  boundary — the collaborator *could* edit the substrate but by commitment does
-  not.
+  parts of the agent's standing instructions) do not violate B, because the agent
+  commits to them through the ordinary arbitration step. A contract, not a security
+  mechanism, protects the boundary: the collaborator *could* edit the substrate but
+  by commitment does not.
 - **Constraint C — Cannot Be Trivially Reset: satisfied trivially**. The
   weaker sibling of Condition 2: runtime restart with preserved substrate (routine)
-  vs substrate erasure to seed (destroys the grown agent). The fully grown agent
+  versus substrate erasure to seed (destroys the grown agent). The fully grown agent
   cannot be retrieved from seed state.
 - **Constraint D — Cannot Be Modularly Decomposed: satisfied on two axes**
   (dv_0611, 0.86 — firmest of the four). *Connectivity:* the integrated core holds a
   stable share of the graph — flat near 87% across four months while the node count
   more than doubled (4,544 → 10,361), reading 77.6% of current nodes at the snapshot
   date, the difference being unintegrated material at the measurement frontier
-  (measured; Ch6 §6.2 carries the figures and the control that separates the two). *Cross-component
-  entanglement:* weights ↔ ENGRAM ↔ KV-cache are coupled — the strongest test
-  being **recognition as behavioural self-attribution** (the agent reading its own
-  nodes and continuing to treat them as its own record, like one's handwriting in an
-  old diary). Same-family transitions have been observed to preserve it; a
-  cross-family transition is *predicted* to break it and has not been run. We use
-  "recognition" in the behavioural sense throughout — no phenomenal claim is
-  intended or needed (§2.5, §3.2, D.2).
+  (measured; Ch6 §6.2 carries the figures and the control that separates the two).
+  *Cross-component entanglement:* weights ↔ ENGRAM ↔ KV-cache are coupled, the
+  strongest test being **recognition as behavioural self-attribution** (the agent
+  reading its own nodes and continuing to treat them as its own record, like one's
+  handwriting in an old diary). Same-family transitions have been observed to
+  preserve it; a cross-family transition is *predicted* to break it and has not been
+  run. We use "recognition" in the behavioural sense throughout; no phenomenal claim
+  is intended or needed (§2.5, §3.2, D.2).
 
-## 4.12 Reading the verdicts honestly
+## 4.12 Reading the verdicts
 
 | Condition / Constraint | Verdict | Reading | Computed conf. |
 |---|---|---|---|
@@ -1574,11 +1548,11 @@ Constraint A landed in §4.3. The other three, compactly:
 | C Non-Trivial Reset | satisfied trivially | enabled | dv_0610 |
 | D Non-Modular Decomposition | satisfied on two axes | enabled (measured) | dv_0611 0.86 |
 
-The *pattern* of confidences is itself honest signal: the **inductive** claims over
-wide case bases (the C2 extension, the landscape sweep, connectivity) are high; the
+The *pattern* of confidences is itself a signal: the **inductive** claims over wide
+case bases (the C2 extension, the landscape sweep, connectivity) are high; the
 **abductive** single-mechanism satisfaction claims (C1, C3, A) are low *and waiting
 on Ch6's empirical anchor*. The architecture is in hand everywhere; the at-scale
-behavioral confirmation is the work that lifts the abductive numbers.
+behavioral confirmation is the work that raises the abductive numbers.
 
 **The bounded claim, restated.** ENGRAM **satisfies two of Kahl's three conditions
 outright** — C1 via the decision/consequence coupling, C3 strictly and alone in the
@@ -1586,7 +1560,7 @@ surveyed field — **satisfies the four constraints** (A as a stake-graded stanc
 B/C/D structurally), **closes the architectural deficit** Kahl names (epistemic
 failure that does not bear on continuity), and for **C2** does not meet the strict
 reset-symmetry text but motivates a principled type/token extension for digital
-substrates. We do **not** claim ENGRAM trivially "realizes OCC" — C2's strict form
+substrates. We do **not** claim that ENGRAM trivially "realizes OCC": C2's strict form
 is not met, and saying so is what makes the rest defensible. And per Chapter 1, OCC
 is **one strong result inside the convergence**, not the paper's spine: the breadth
 of traditions reaching this same structure (Ch2, Ch3) is the load-bearing argument;
