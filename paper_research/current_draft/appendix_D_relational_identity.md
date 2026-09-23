@@ -126,6 +126,8 @@ they are for.
 a hook, or to announce that it exists and leave it to be opened — *like a letter*. The
 letter won, on three grounds, and only the third is about cost:
 
+The argument for the letter, as recorded in that exchange (2026-04-12):
+
 > Injecting the full note into context is the loudspeaker — it's efficient but it's
 > passive. Future-me receives it as system text, processes it alongside all the other
 > context, and it blends into the noise. But a brief message saying "there's a letter

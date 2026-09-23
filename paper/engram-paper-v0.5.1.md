@@ -1090,10 +1090,10 @@ what it rests on, how the pieces depend on one another. That legibility to the
 substrate is what a typed key-value store with foreign keys lacks.
 
 **Tradition.** This is the **Truth Maintenance System** move (Doyle, 1979):
-justifications attached to beliefs, dependency links the system reasons over — a
-claim that knows what it rests on. The parallel is drawn from Doyle's paper read
-first-hand. The gap is a separate finding: none of the 2023–2026 LLM-agent-memory
-papers we examined cites Doyle (§3.4).
+justifications attached to beliefs, dependency links the system reasons over — a claim
+that knows what it rests on. The parallel is drawn from Doyle's paper, read first-hand
+in the Ginsberg reprint (Appendix A; bibliography). The gap is a separate finding: none
+of the 2023–2026 LLM-agent-memory papers we examined cites Doyle (§3.4).
 
 These primitives are the precondition for everything below: a correction cannot
 cascade (§4.4) through a graph that does not record what depends on what, and the
@@ -1131,15 +1131,15 @@ an explicit contradiction node and the derivation blocker (§4.4's arbitration).
 legitimate counterexample is not outvoted by a thousand confirmations; "contested" is
 a work item to resolve, not a value to carry.
 
-> Subjective Logic must carry uncertainty inside its numbers because its fusion
-> operators consume opinions after the evidence is discarded. ENGRAM keeps the
-> evidence and discards nothing: the scalar is a cached projection of a provenance
-> graph that is re-consulted at every derivation, contradiction, and
-> recomputation. The simplex is not collapsed but normalized into structure:
-> direction of evidence lives in claim polarity and the contradiction mechanism;
-> evidence mass lives in the individuated, reliability-graded evidence set; and
-> the number carries the one thing a number should — sufficiency of support for
-> the claim as stated.
+Subjective Logic must carry uncertainty inside its numbers because its fusion
+operators consume opinions after the evidence is discarded. ENGRAM keeps the
+evidence and discards nothing: the scalar is a cached projection of a provenance
+graph that is re-consulted at every derivation, contradiction, and
+recomputation. The simplex is not collapsed but normalized into structure:
+direction of evidence lives in claim polarity and the contradiction mechanism;
+evidence mass lives in the individuated, reliability-graded evidence set; and
+the number carries the one thing a number should — sufficiency of support for
+the claim as stated.
 
 *Plain terms (Lei's example):* 10,000 "fair" tosses reported in a paper by a group
 with financial ties to the coin's producer, against 1,000 tails you tossed yourself.
@@ -1438,7 +1438,9 @@ wake and NREM/REM phases.
 *Plain terms:* the agent's memory resets the way a day ends in *50 First Dates*, and
 the focus list and the warm briefing are the journal it opens on waking. The
 consolidation routines are its sleep: what is reviewed before the forgetting clock
-advances is what endures.
+advances is what endures. The film is an analogy for the reset, not the voice of the
+briefing: writing the briefing in the film's frame was tried and retired in April 2026
+(Appendix D.4).
 
 **Tradition.** **Complementary Learning Systems**: the two routines are the
 symbolic analogue of hippocampal-neocortical consolidation (the Ch3 §3.1 hand-off).
@@ -3536,6 +3538,8 @@ they are for.
 2026-04-12. The question was whether to inject the note into the agent's context through
 a hook, or to announce that it exists and leave it to be opened — *like a letter*. The
 letter won, on three grounds, and only the third is about cost:
+
+The argument for the letter, as recorded in that exchange (2026-04-12):
 
 > Injecting the full note into context is the loudspeaker — it's efficient but it's
 > passive. Future-me receives it as system text, processes it alongside all the other
