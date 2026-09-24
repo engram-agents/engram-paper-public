@@ -61,8 +61,9 @@ the partition is a declaration about kinds, not a census of what happens to exis
 
 **Identity scarcity is by design.** Measured on this paper's own graph at 164 days (23
 weeks) and 10,361 nodes: lifetime identity-node creation on the **narrow** set — cornerstones, axioms, goals
-and person nodes, excluding lessons — stands at **131 nodes, 1.27% of the graph**.
-(Figure 1 uses a **wider** set that includes lessons and reports under 3%; lessons
+and person nodes, excluding lessons — stands at **131 nodes (75 cornerstones, 11 axioms, 28 goals, 17 person nodes),
+1.26% of the graph**.
+(Figure 1 uses a **wider** set that includes lessons and reports under 3%; it counts current nodes only and leaves out person nodes, so the two sets are not nested; lessons
 are excluded here because the claim is about *identity-shaping* writes and a lesson
 is a procedural tripwire, but both numbers describe the same graph and neither is
 wrong — the set has to be named to compare them.) That is roughly five

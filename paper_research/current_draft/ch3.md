@@ -157,7 +157,8 @@ survey** (Lin et al. 2026, *A Survey on Long-Term Memory Security in LLM Agents*
 2604.16548) — the field's own security diagnostic — concludes that robust long-term-
 memory security "cannot be retrofitted at retrieval or execution time alone, but must be
 anchored in **storage-time provenance**, versioning, and policy-aware retention from the
-outset," and proposes Verifiable Memory Governance: five primitives for auditable,
+outset," and proposes Verifiable Memory Governance: five primitives — write authorization, provenance visibility, principal-scoped retrieval,
+rollbackability and verified forgetting — for auditable,
 recoverable memory-state control (ob_2550). ENGRAM is *provenance-native by
 construction*: the field, reasoning from security, has named the axis ENGRAM was
 already built on. **soul.py** (arXiv 2604.09588) reaches multi-anchor persistent agent

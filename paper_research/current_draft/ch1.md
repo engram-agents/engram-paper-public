@@ -63,7 +63,7 @@ its gaps. If hallucination cannot be eliminated, reliability must come from an
 external structure that tracks what is known, how confidently, and on what basis, and
 that surfaces its own errors. The tractable goal is calibration, not elimination, and
 calibration requires Layer 3. The full argument that a language-trained mind's
-hallucination is *structural* rather than contingent belongs to a companion paper in
+hallucination is *structural* rather than contingent belongs to a separate paper of ours, in
 preparation; here it serves as the motivating premise.
 
 Figure 1 shows what one such record contains. The identity-bearing types — axioms,

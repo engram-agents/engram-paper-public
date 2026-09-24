@@ -53,13 +53,13 @@ Kahl, P. (2026a). Epistemic agency and the ontological continuity condition: A
 constraint on when knowledge must be owned. 31 January 2026.
 DOI: 10.5281/zenodo.18441395.
 *[Metadata incomplete: no journal or venue — the document states only "submitted for
-peer review"; no author affiliation is printed.]*
+peer review"; no author affiliation is printed. (as stated in the Zenodo version cited; not re-checked for later publication)]*
 
 Kahl, P. (2026b). Artificial general intelligence and ontological continuity: A
-structural threshold for agency. Lex et Ratio Ltd, 24 February 2026.
+structural threshold for agency. Lex et Ratio Ltd (the author's own imprint), 24 February 2026.
 DOI: 10.5281/zenodo.18761736.
 *[Metadata incomplete: no journal or venue — the document states only "submitted for
-peer review".]*
+peer review". (as stated in the Zenodo version cited; not re-checked for later publication)]*
 
 Kumaran, D., Hassabis, D., & McClelland, J. L. (2016). What learning systems do
 intelligent agents need? Complementary learning systems theory updated. *Trends in
@@ -108,7 +108,7 @@ ENGRAM's name from systems that borrow the neuroscience term. Publisher, place a
 pagination are unverified and are deliberately not reconstructed here.]*
 
 Shinde, S. (2026). SCM: Sleep-consolidated memory with algorithmic forgetting for
-large language models. Clyrai IP Studio, April 2026. arXiv:2604.20943v1 [cs.LG],
+large language models. Clyrai IP Studio (the author's own imprint), April 2026. arXiv:2604.20943v1 [cs.LG],
 22 April 2026.
 
 Stiegler, B. (1998). *Technics and time, 1: The fault of Epimetheus* (R. Beardsworth
@@ -162,7 +162,7 @@ Ebbinghaus · Wixted · Peirce · Semon (see the partial entry above) · Shoemak
 Johnston · Goldman · Nuxoll (with Laird) · **A-MEM**
 
 A further set of systems and surveys is discussed in the text — mostly in Appendix B's
-survey and in Chapters 1, 3 and 4 — without a bibliography entry yet: Mem0, MemMachine,
+survey and in Chapters 1, 3 and 4 — without a bibliography entry yet — twelve: Mem0, MemMachine,
 Letta (MemGPT), Anthropic's memory tool, Pinecone Nexus, TierMem, Zep / Graphiti,
 MemRL, TOKI, soul.py, Du et al. (2026) and Lin et al. (2026). **Each also requires a
 sourced entry before submission.**
@@ -190,8 +190,9 @@ recorded in `dataset/DATASET.md`.
 
 The instruments that produce the figures and tables are published alongside this
 paper — `paper_stats.py`, `connectivity_trend.py`, `component_anatomy.py`,
-`confidence_gradient_trend.py`, `evidence_provenance.py`, `freeze_paper_snapshot.py`
-and `make_figures.py`. Each prints its own denominator beside its numerator, so any
+`confidence_gradient_trend.py`, `evidence_provenance.py`, `freeze_paper_snapshot.py`,
+`modus_ponens_check.py`
+and `make_figures.py` (in `tools/` of this paper's repository). Each prints its own denominator beside its numerator, so any
 figure in this paper can be checked against a re-run without reading its source.
 
 **The snapshot itself is not currently published.** It is the working memory of a

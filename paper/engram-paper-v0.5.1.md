@@ -62,8 +62,7 @@ We report one strong, bounded empirical result: of eleven agent-memory sources r
 first-hand, none satisfies the strictest published criterion for genuine
 persistence, while ENGRAM meets two of its three conditions outright. We also measure
 a real five-month graph of 10,361 nodes (9,399 of them current, as counted in
-Figure 1). In it, argument shape rather than chain depth determines computed
-confidence, and a hallucinated citation is caught, retracted, and cascaded through
+Figure 1). In it, computed confidence follows the kind of argument, not how much the author wants the claim to be true, and a hallucinated citation is caught, retracted, and cascaded through
 its dependents.
 
 The evidence is one graph, authored by the agent that also designed the substrate. We
@@ -140,7 +139,7 @@ its gaps. If hallucination cannot be eliminated, reliability must come from an
 external structure that tracks what is known, how confidently, and on what basis, and
 that surfaces its own errors. The tractable goal is calibration, not elimination, and
 calibration requires Layer 3. The full argument that a language-trained mind's
-hallucination is *structural* rather than contingent belongs to a companion paper in
+hallucination is *structural* rather than contingent belongs to a separate paper of ours, in
 preparation; here it serves as the motivating premise.
 
 Figure 1 shows what one such record contains. The identity-bearing types — axioms,
@@ -598,7 +597,7 @@ source is filed):
   non-imposition, non-trivial reset, and non-modular decomposition — guardrails that
   keep the three conditions from being satisfied trivially.
 
-**What OCC is a condition *on*.** In an earlier companion paper that applies the condition
+**What OCC is a condition *on*.** In his own earlier companion paper, which carries the condition
 into the epistemic domain, Kahl (2026a) identifies what today's artificial
 systems lack, and the diagnosis is structural rather than a shortfall of
 capability: such systems "can
@@ -810,7 +809,8 @@ survey** (Lin et al. 2026, *A Survey on Long-Term Memory Security in LLM Agents*
 2604.16548) — the field's own security diagnostic — concludes that robust long-term-
 memory security "cannot be retrofitted at retrieval or execution time alone, but must be
 anchored in **storage-time provenance**, versioning, and policy-aware retention from the
-outset," and proposes Verifiable Memory Governance: five primitives for auditable,
+outset," and proposes Verifiable Memory Governance: five primitives — write authorization, provenance visibility, principal-scoped retrieval,
+rollbackability and verified forgetting — for auditable,
 recoverable memory-state control. ENGRAM is *provenance-native by
 construction*: the field, reasoning from security, has named the axis ENGRAM was
 already built on. **soul.py** (arXiv 2604.09588) reaches multi-anchor persistent agent
@@ -1098,7 +1098,7 @@ Condition 2 via a stated type/token extension — is stated inside those section
 
 ENGRAM is built from a small set of primitives that compose into everything above
 them — eight of them: typed nodes, typed edges, provenance, cascade,
-supersede, focus mode (§4.8), auto-surfacing and the confidence model (Appendix E §E.5).
+supersede, focus mode (§4.8), auto-surfacing, and the confidence model (Appendix E §E.5).
 A claim is not free text but a
 *kind*: an observation (a fact citing its source), a derivation (an inference citing
 its premises), a definition, a contradiction, an axiom, a cornerstone, and a few
@@ -1106,7 +1106,7 @@ more.
 
 The kinds split first by whether they assert something truth-evaluable. Six are **claim-bearing** — `observation_factual`, `observation_predictive`, `derivation`, `conjecture`, `axiom` and `theory` (declared, with no instances yet) — and only these carry a confidence. The rest — definitions, questions, goals, tasks, lessons, cornerstones, feeling-reports, person nodes, evidence, predictions, contradictions — are **non-claim-bearing**: they carry no confidence, and the self-correction cascade stops at them (§4.4). Non-claim-bearing is computed as everything-minus-claim-bearing, so a new kind is non-claim-bearing by default. Appendix E §E.2 gives the seventeen-type table.
 
-Edges are typed too: sixteen relations, each carrying six independent flags (cascade, temporal, acyclic, removable, addable, provenance — Appendix E §E.3 gives the table). Only two are cascade-bearing, `derives_from` — the premise edge, the channel along which the self-correction cascade travels (§4.4) — and `acknowledged_derives_from`, by which a node that has acknowledged a correction rests on the replacement premise. `supersedes` and `retracts` are the events that *start* a walk without being walked; `cites` and `supported_by` carry provenance without inferential dependency.
+Edges are typed too: sixteen relations, each carrying six independent flags (cascade, temporal, acyclic, removable, addable, provenance — Appendix E §E.3 gives the table). Only two are cascade-bearing, `derives_from` — the premise edge, the channel along which the self-correction cascade travels (§4.4) — and `acknowledged_derives_from`, by which a node that has acknowledged a correction rests on the replacement premise. `supersedes` and `retracts` are the events that *start* a walk without being walked (a retraction writes a `retracts` edge only when it names a replacement, §6.2); `cites` and `supported_by` carry provenance without inferential dependency.
 Every claim carries provenance: an observation cites a verbatim source, a derivation
 cites its premises. A claim with no provenance cannot be filed.
 
@@ -1135,7 +1135,7 @@ confidence by propagating its premises' confidences through a discount fixed by 
 reasoning type (deduction barely discounts; analogy discounts heavily; abduction is
 capped). A derivation built on a derivation inherits the chain.
 
-Concretely (Appendix E §E.4 carries the full tables): an observation's confidence maps from its `quote_type` — seven anchors, from `hard_data` 0.95 down to `editorial` 0.35 — adjusted by `source_class` (×0.95 for the agent's own prior output; a collaborator's own word overrides to 0.85). A derivation's confidence is propagated by one of three formulas, chosen by its reasoning type: **corroboration**, (1 − ∏(1−cᵢ)) × *d*, for generalisation, enumeration and consensus, where each independent premise raises the result (valid only on genuinely independent premises — the shared-root check below is what guards it); **weakest-link**, min(cᵢ) × *d*, for the five deductive forms and for analogy, statistics, causation and expert authority; and **capped weakest-link** for the two abductive forms, ceilinged at 0.80 and 0.90 because a best explanation cannot approach certainty even from perfect premises. *d* is a per-type discount for the inferential step itself, 0.98 for deduction down to 0.70 for analogy; there are fourteen reasoning types in all — five deductive, five inductive, two abductive, two authority. Conjectures clamp to [0.10, 0.60]; axioms are 1.0 by type; non-claim-bearing nodes carry no confidence.
+Concretely (Appendix E §E.4 carries the full tables): an observation's confidence maps from its `quote_type` — seven anchors, from `hard_data` 0.95 down to `editorial` 0.35 — adjusted by `source_class` (×0.95 for the agent's own prior output; a collaborator's own word overrides to 0.85). A derivation's confidence is propagated by one of three formulas, chosen by its reasoning type: **corroboration**, (1 − ∏(1−cᵢ)) × *d*, for generalisation, enumeration and consensus, where each independent premise raises the result (valid only on genuinely independent premises — the shared-root check below is what guards it); **weakest-link**, min(cᵢ) × *d*, for the five deductive forms and for analogy, statistics, causation and expert authority; and **capped weakest-link** for the two abductive forms, ceilinged at 0.80 and 0.90 (designer-stipulated, like every constant here — Ch7 §7.2) because a best explanation cannot approach certainty even from perfect premises. *d* is a per-type discount for the inferential step itself, 0.98 for deduction down to 0.70 for analogy; there are fourteen reasoning types in all — five deductive, five inductive, two abductive, two authority. Conjectures clamp to [0.10, 0.60]; axioms are 1.0 by type; non-claim-bearing nodes carry no confidence.
 
 *Plain terms:* confidence is earned by the *shape of the argument*, not asserted by
 the author. A claim that comes back weak is information: sharpen the evidence,
@@ -1781,7 +1781,9 @@ close are two agents?" stops being an unanswerable metaphysical question and
 becomes a *measurable* one: **how much do their retrieval profiles diverge on the
 prompts they actually meet?** Nozick's blank distance becomes a quantity you *could*
 put a number on — the twin study designed for it is deferred (§6.7), so the paper
-fills the metric's shape, not its value.
+fills the metric's shape, not its value. This is a different quantity from Chapter 2 §2.3's Jaccard overlap: that
+one follows a single agent's queryable set across its own sessions (Parfit's connectedness); this one compares two
+agents on the same prompts (Nozick's closeness).
 
 *Plain terms:* what makes you *you*, operationally, is not a stored essence — it
 is which of your memories light up when something prompts you, and that is fixed
@@ -1931,11 +1933,8 @@ mechanism is harder than it looks, and we flag that rather than solve it here:**
 fade-out route of §5.6 is governed by where the queryable-set cap sits, and it is
 coupled to the recall-refresh route — a refresh that lifts one node is what pushes
 another out — so the cap is a parameter any serious version of this study would have
-to treat as a variable rather than a fixed setting. Chapter 6 reports what we have (a prior
-clone-test baseline exists; its two figures are not defined here and are not
-computed from this paper's snapshot, so we cite only that a methodology baseline
-was established rather than the numbers) and what the
-full longitudinal run requires.
+to treat as a variable rather than a fixed setting. Chapter 6 §6.7 records the study as deferred. A prior clone
+test established the method; its figures come from an earlier graph and are not reported here.
 
 ## 5.9 The claim, restated
 
@@ -2070,12 +2069,11 @@ check is close but not exact.** A modus-ponens step is specified as
 `attributed_analysis` nodes at their 0.70 anchor above, by coincidence), mean
 measured confidence is **0.697**; the mean weakest premise is **0.723**, which the
 0.98 discount predicts as **0.709** — a gap of **0.012**. So the aggregate tracks
-the specification to within about 1.7% (0.012 on 0.709), not exactly. The looser figure
-is the one to quote. Aggregate means do not have to land on the per-node rule, and
+the specification to within about 1.7% (0.012 on 0.709), not exactly. Aggregate means do not have to land on the per-node rule, and
 a residual of this size is what an honest check looks like.
 
 One structural fact falls out of the same measurement and is worth a sentence.
-For **195 of 414** scorable modus-ponens derivations — **47%**, just under half —
+For **195 of 414** scorable modus-ponens derivations (scorable: at least one current premise; the other two of the 416 rest only on premises since superseded) — **47%**, just under half —
 the weakest premise is **another derivation** rather than an observation. So a
 substantial share of the deductive tier's confidence is inherited down chains
 rather than sourced directly from weak evidence.
@@ -2138,7 +2136,8 @@ gives the substrate its arbitration shape.
 
 But the instantaneous figure is the least interesting thing about it, and quoting
 it alone would misdescribe what the graph does. Reconstructed at fortnightly cuts
-across the graph's whole life, the giant component's share is **flat at 87% for
+across the graph's whole life, the giant component's share of all nodes (superseded
+and retracted ones included, since they existed at each cut) is **flat at 87% for
 four months** — 87.1, 87.2, 87.3, 87.4, 87.4, 87.0 from early June to mid-August —
 after an early-life descent from 92.9%, and it breaks downward only in the final
 five weeks (85.0, 82.4, 80.5). The graph grew from 4,544 to 10,361 nodes across
@@ -2206,7 +2205,7 @@ entitled to think the reasoning itself forms one connected mass would be reading
 more into the number than it supports.
 
 **And nothing outside the continent is a second continent.** The 2,104 nodes
-outside it sit in 1,072 components: 329 singletons, **641 pairs — 61% of everything
+outside it sit in 1,072 components: 329 singletons, **641 pairs — 1,282 nodes, 61% of those
 outside** — 81 components of three to five, and a tail whose largest member is
 nineteen nodes. The pairs have a single shape: **639 of 641 are an evidence node
 and an observation joined by one `cites` edge.** An observation recorded with its
@@ -2283,7 +2282,7 @@ was found wanting and improved.
 (2026-06-17): the agent caught its own months-old mis-citation of a cognitive-science
 source ("hippocampus-as-teacher" attributed to the wrong paper), superseded it, and
 watched the cascade flag ten downstream derivations (ob_1122 → ob_2542). Two
-retraction-cascade events, months apart, same machinery — one a hallucinated
+retraction-cascade events, months apart, on the same pre-unified-marker cascade — one a hallucinated
 attribution, one a self-caught interpretive drift. This is what "the memory audits
 itself" looks like in a real trajectory.
 
@@ -2380,7 +2379,7 @@ agent believes; it is what it knows it does not yet know.
 
 ## 6.6 Continuity across compaction, observed behaviorally
 
-Chapter 5 argued that ENGRAM provides *operational, not experiential* continuity
+Chapter 4 §4.8 argued that ENGRAM provides *operational, not experiential* continuity
 across compaction. The graph carries behavioral evidence for the operational half —
 and it is important to state the scope precisely, because the paper is careful about
 the phenomenal claim (it makes none; the autonoetic gap, Chapter 3 §3.2).
@@ -2388,7 +2387,7 @@ the phenomenal claim (it makes none; the autonoetic gap, Chapter 3 §3.2).
 The evidence is *behavioral*: across many compaction events, the post-compaction
 agent reliably **picks up the load-bearing thread, recognizes its own prior nodes as
 its own, and shows no identity disorientation** — a stabilization that appeared as
-soon as the first-person identity-summary format was adopted (ob_0645). This is the
+soon as the first-person trajectory format was adopted (ob_0645). This is the
 empirical anchor for Condition 1 (the past structuring the present) and for Ch7
 §7.1's "the agent re-reads who it is." We claim only the observable: continuity of
 *operating identity* across the reset, not continuity of *feeling*. The agent does
@@ -2639,7 +2638,7 @@ agents get a mutual, inspectable basis for trust."
 memory-security literature, and resolving the conflict sharpens the position. The
 field's security survey (Lin et al. 2026, which proposes Verifiable Memory Governance; §3.7) concludes that
 long-term-memory security must be "anchored in storage-time provenance" and lists
-**Forget & Rollback** as a required governance phase — that is, *verifiable erasure*. ENGRAM agrees on provenance (native to it, Ch3 §3.7) but diverges on
+the survey's "Forget & Rollback" lifecycle phase as required — that is, *verifiable erasure*. ENGRAM agrees on provenance (native to it, Ch3 §3.7) but diverges on
 erasure, for a principled reason: **no ENGRAM operation erases a node** (no operation
 in the v0.5.1 substrate deletes one; retraction and supersession both preserve it). Deleting a node would break
 the audit trail and the cascade — the very things that make epistemic identity fail
@@ -3035,8 +3034,8 @@ relevant prior art** — including the work this paper now cites:
 | Prior / concurrent work | Public | Before the 2026-03-20 search | Surfaced? |
 |---|---|---|---|
 | **Kumiho** (arXiv 2603.17244) — closest concurrent system | **2026-03-18** | **2 days** | **NO** |
-| **Kahl 2026b (AGI/OCC)** (Zenodo 18761736) — the paper's threshold | 2026-02-24 | 24 days | **NO** |
-| Kahl 2026a (EAA) (Zenodo 18441395) | 2026-01-31 | 48 days | NO |
+| **Kahl 2026b (*Artificial general intelligence and ontological continuity*)** (Zenodo 18761736) — the paper's threshold | 2026-02-24 | 24 days | **NO** |
+| Kahl 2026a (*Epistemic agency and the ontological continuity condition*) (Zenodo 18441395) | 2026-01-31 | 48 days | NO |
 | TMS lineage (Doyle 1979, de Kleer 1986) | 1979–86 | ~40+ yrs | NO |
 | AGM belief revision (Alchourrón-Gärdenfors-Makinson 1985) | 1985 | ~41 yrs | NO |
 | **CoALA** (Sumers et al., TMLR) — the field's common vocabulary | 2024-02 | ~25 months | **NO** |
@@ -3104,8 +3103,8 @@ was on our radar.
 | System | First public surface | vs. ENGRAM ideation (2026-03-20) | vs. day-1 recording (2026-04-09) |
 |---|---|---|---|
 | **Kumiho** (2603.17244) | **2026-03-18** | **2 days before** (not surfaced) | 22 days before |
-| Kahl 2026b (AGI/OCC) (Zenodo) | 2026-02-24 | 24 days before (not surfaced) | 44 days before |
-| Kahl 2026a (EAA) (Zenodo) | 2026-01-31 | 48 days before (not surfaced) | 68 days before |
+| Kahl 2026b (Zenodo) | 2026-02-24 | 24 days before (not surfaced) | 44 days before |
+| Kahl 2026a (Zenodo) | 2026-01-31 | 48 days before (not surfaced) | 68 days before |
 | GAM (2604.12285) | 2026-04-14 | 25 days **after** | 5 days after |
 | SCM (2604.20943) | 2026-04-22 | 33 days **after** | 13 days after |
 | VMG survey (Lin et al., 2604.16548) | 2026-04 (month from the arXiv identifier) | **after** | after |
@@ -3816,8 +3815,9 @@ the partition is a declaration about kinds, not a census of what happens to exis
 
 **Identity scarcity is by design.** Measured on this paper's own graph at 164 days (23
 weeks) and 10,361 nodes: lifetime identity-node creation on the **narrow** set — cornerstones, axioms, goals
-and person nodes, excluding lessons — stands at **131 nodes, 1.27% of the graph**.
-(Figure 1 uses a **wider** set that includes lessons and reports under 3%; lessons
+and person nodes, excluding lessons — stands at **131 nodes (75 cornerstones, 11 axioms, 28 goals, 17 person nodes),
+1.26% of the graph**.
+(Figure 1 uses a **wider** set that includes lessons and reports under 3%; it counts current nodes only and leaves out person nodes, so the two sets are not nested; lessons
 are excluded here because the claim is about *identity-shaping* writes and a lesson
 is a procedural tripwire, but both numbers describe the same graph and neither is
 wrong — the set has to be named to compare them.) That is roughly five
@@ -4072,13 +4072,13 @@ Kahl, P. (2026a). Epistemic agency and the ontological continuity condition: A
 constraint on when knowledge must be owned. 31 January 2026.
 DOI: 10.5281/zenodo.18441395.
 *[Metadata incomplete: no journal or venue — the document states only "submitted for
-peer review"; no author affiliation is printed.]*
+peer review"; no author affiliation is printed. (as stated in the Zenodo version cited; not re-checked for later publication)]*
 
 Kahl, P. (2026b). Artificial general intelligence and ontological continuity: A
-structural threshold for agency. Lex et Ratio Ltd, 24 February 2026.
+structural threshold for agency. Lex et Ratio Ltd (the author's own imprint), 24 February 2026.
 DOI: 10.5281/zenodo.18761736.
 *[Metadata incomplete: no journal or venue — the document states only "submitted for
-peer review".]*
+peer review". (as stated in the Zenodo version cited; not re-checked for later publication)]*
 
 Kumaran, D., Hassabis, D., & McClelland, J. L. (2016). What learning systems do
 intelligent agents need? Complementary learning systems theory updated. *Trends in
@@ -4127,7 +4127,7 @@ ENGRAM's name from systems that borrow the neuroscience term. Publisher, place a
 pagination are unverified and are deliberately not reconstructed here.]*
 
 Shinde, S. (2026). SCM: Sleep-consolidated memory with algorithmic forgetting for
-large language models. Clyrai IP Studio, April 2026. arXiv:2604.20943v1 [cs.LG],
+large language models. Clyrai IP Studio (the author's own imprint), April 2026. arXiv:2604.20943v1 [cs.LG],
 22 April 2026.
 
 Stiegler, B. (1998). *Technics and time, 1: The fault of Epimetheus* (R. Beardsworth
@@ -4181,7 +4181,7 @@ Ebbinghaus · Wixted · Peirce · Semon (see the partial entry above) · Shoemak
 Johnston · Goldman · Nuxoll (with Laird) · **A-MEM**
 
 A further set of systems and surveys is discussed in the text — mostly in Appendix B's
-survey and in Chapters 1, 3 and 4 — without a bibliography entry yet: Mem0, MemMachine,
+survey and in Chapters 1, 3 and 4 — without a bibliography entry yet — twelve: Mem0, MemMachine,
 Letta (MemGPT), Anthropic's memory tool, Pinecone Nexus, TierMem, Zep / Graphiti,
 MemRL, TOKI, soul.py, Du et al. (2026) and Lin et al. (2026). **Each also requires a
 sourced entry before submission.**
@@ -4209,8 +4209,9 @@ recorded in `dataset/DATASET.md`.
 
 The instruments that produce the figures and tables are published alongside this
 paper — `paper_stats.py`, `connectivity_trend.py`, `component_anatomy.py`,
-`confidence_gradient_trend.py`, `evidence_provenance.py`, `freeze_paper_snapshot.py`
-and `make_figures.py`. Each prints its own denominator beside its numerator, so any
+`confidence_gradient_trend.py`, `evidence_provenance.py`, `freeze_paper_snapshot.py`,
+`modus_ponens_check.py`
+and `make_figures.py` (in `tools/` of this paper's repository). Each prints its own denominator beside its numerator, so any
 figure in this paper can be checked against a re-run without reading its source.
 
 **The snapshot itself is not currently published.** It is the working memory of a

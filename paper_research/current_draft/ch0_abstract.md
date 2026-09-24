@@ -38,8 +38,7 @@ We report one strong, bounded empirical result: of eleven agent-memory sources r
 first-hand, none satisfies the strictest published criterion for genuine
 persistence, while ENGRAM meets two of its three conditions outright. We also measure
 a real five-month graph of 10,361 nodes (9,399 of them current, as counted in
-Figure 1). In it, argument shape rather than chain depth determines computed
-confidence, and a hallucinated citation is caught, retracted, and cascaded through
+Figure 1). In it, computed confidence follows the kind of argument, not how much the author wants the claim to be true, and a hallucinated citation is caught, retracted, and cascaded through
 its dependents.
 
 The evidence is one graph, authored by the agent that also designed the substrate. We

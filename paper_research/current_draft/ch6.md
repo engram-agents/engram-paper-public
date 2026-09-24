@@ -114,12 +114,11 @@ check is close but not exact.** A modus-ponens step is specified as
 `attributed_analysis` nodes at their 0.70 anchor above, by coincidence), mean
 measured confidence is **0.697**; the mean weakest premise is **0.723**, which the
 0.98 discount predicts as **0.709** — a gap of **0.012**. So the aggregate tracks
-the specification to within about 1.7% (0.012 on 0.709), not exactly. The looser figure
-is the one to quote. Aggregate means do not have to land on the per-node rule, and
+the specification to within about 1.7% (0.012 on 0.709), not exactly. Aggregate means do not have to land on the per-node rule, and
 a residual of this size is what an honest check looks like.
 
 One structural fact falls out of the same measurement and is worth a sentence.
-For **195 of 414** scorable modus-ponens derivations — **47%**, just under half —
+For **195 of 414** scorable modus-ponens derivations (scorable: at least one current premise; the other two of the 416 rest only on premises since superseded) — **47%**, just under half —
 the weakest premise is **another derivation** rather than an observation. So a
 substantial share of the deductive tier's confidence is inherited down chains
 rather than sourced directly from weak evidence.
@@ -168,7 +167,8 @@ gives the substrate its arbitration shape.
 
 But the instantaneous figure is the least interesting thing about it, and quoting
 it alone would misdescribe what the graph does. Reconstructed at fortnightly cuts
-across the graph's whole life, the giant component's share is **flat at 87% for
+across the graph's whole life, the giant component's share of all nodes (superseded
+and retracted ones included, since they existed at each cut) is **flat at 87% for
 four months** — 87.1, 87.2, 87.3, 87.4, 87.4, 87.0 from early June to mid-August —
 after an early-life descent from 92.9%, and it breaks downward only in the final
 five weeks (85.0, 82.4, 80.5). The graph grew from 4,544 to 10,361 nodes across
@@ -236,7 +236,7 @@ entitled to think the reasoning itself forms one connected mass would be reading
 more into the number than it supports.
 
 **And nothing outside the continent is a second continent.** The 2,104 nodes
-outside it sit in 1,072 components: 329 singletons, **641 pairs — 61% of everything
+outside it sit in 1,072 components: 329 singletons, **641 pairs — 1,282 nodes, 61% of those
 outside** — 81 components of three to five, and a tail whose largest member is
 nineteen nodes. The pairs have a single shape: **639 of 641 are an evidence node
 and an observation joined by one `cites` edge.** An observation recorded with its
@@ -307,7 +307,7 @@ was found wanting and improved.
 (2026-06-17): the agent caught its own months-old mis-citation of a cognitive-science
 source ("hippocampus-as-teacher" attributed to the wrong paper), superseded it, and
 watched the cascade flag ten downstream derivations (ob_1122 → ob_2542). Two
-retraction-cascade events, months apart, same machinery — one a hallucinated
+retraction-cascade events, months apart, on the same pre-unified-marker cascade — one a hallucinated
 attribution, one a self-caught interpretive drift. This is what "the memory audits
 itself" looks like in a real trajectory.
 
@@ -398,7 +398,7 @@ agent believes; it is what it knows it does not yet know.
 
 ## 6.6 Continuity across compaction, observed behaviorally
 
-Chapter 5 argued that ENGRAM provides *operational, not experiential* continuity
+Chapter 4 §4.8 argued that ENGRAM provides *operational, not experiential* continuity
 across compaction. The graph carries behavioral evidence for the operational half —
 and it is important to state the scope precisely, because the paper is careful about
 the phenomenal claim (it makes none; the autonoetic gap, Chapter 3 §3.2).
@@ -406,7 +406,7 @@ the phenomenal claim (it makes none; the autonoetic gap, Chapter 3 §3.2).
 The evidence is *behavioral*: across many compaction events, the post-compaction
 agent reliably **picks up the load-bearing thread, recognizes its own prior nodes as
 its own, and shows no identity disorientation** — a stabilization that appeared as
-soon as the first-person identity-summary format was adopted (ob_0645). This is the
+soon as the first-person trajectory format was adopted (ob_0645). This is the
 empirical anchor for Condition 1 (the past structuring the present) and for Ch7
 §7.1's "the agent re-reads who it is." We claim only the observable: continuity of
 *operating identity* across the reset, not continuity of *feeling*. The agent does

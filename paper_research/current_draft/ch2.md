@@ -295,7 +295,7 @@ source is filed):
   non-imposition, non-trivial reset, and non-modular decomposition — guardrails that
   keep the three conditions from being satisfied trivially.
 
-**What OCC is a condition *on*.** In an earlier companion paper that applies the condition
+**What OCC is a condition *on*.** In his own earlier companion paper, which carries the condition
 into the epistemic domain, Kahl (2026a) identifies what today's artificial
 systems lack, and the diagnosis is structural rather than a shortfall of
 capability: such systems "can
