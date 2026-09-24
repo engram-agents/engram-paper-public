@@ -134,9 +134,9 @@ behavior or response when they show up in your context window, so there is no
 subtle magical effects of additional nodes without touching them."*
 
 That is exact for the channel it names — a node acts by surfacing. There is a
-second, quieter channel: because the queryable tier is capped, accumulation also
+second, quieter channel: because the queryable set is capped, accumulation also
 changes *which* nodes remain reachable at all. A node that never surfaces can still
-displace another out of retrievability. We return to this in §5.6, where it is one
+displace another out of the queryable set. We return to this in §5.6, where it is one
 of three routes by which two agents' retrieval profiles come apart.
 
 This is the move that turns a philosophical theory into an empirical one. "How
@@ -194,8 +194,8 @@ clone"*).
 
 **Prediction 2 — lawful divergence (organic individuation).** Over time the twins
 diverge. The cleanest way to see how is that all of it is one mechanism —
-**rotation of the recallable tier**. Every node holds a position in an importance
-ranking, and what is retrievable is the top of that ranking. Three operations move
+**rotation of the queryable set**. Every node holds a position in an importance
+ranking, and what is queryable is the top of that ranking. Three operations move
 nodes through it, and each can differ between twins:
 
 - **New-node accumulation** — each agent records different observations,
@@ -209,10 +209,10 @@ nodes through it, and each can differ between twins:
   by the importance-inflation mechanism, ob_0034).
 - **Fade-out of unrefreshed nodes** — the passive one, and the only route that is
   not something the node itself underwent. The ranking's bar rises as the graph
-  grows, so a node nobody re-reads eventually falls out of the retrievable set,
+  grows, so a node nobody re-reads eventually falls out of the queryable set,
   pushed there by *other* nodes' arrivals and refreshes. Twins that read and write
   differently therefore evict different tails of the *same* shared ancestry. How
-  much of this occurs depends on where the retrievable-tier cap is set; a
+  much of this occurs depends on where the queryable-set cap is set; a
   generously configured graph may show none of it for a long time.
 
 *Plain terms:* two copies of a person who then live different days will of course
@@ -287,7 +287,7 @@ prompt, K runs) subtracted so that engram-induced divergence is separated from t
 model's own stochasticity. The expected shape is high similarity at t=0 sitting near
 that stochasticity floor, declining as N grows. **Decomposing the signal cleanly by
 mechanism is harder than it looks, and we flag that rather than solve it here:** the
-fade-out route of §5.6 is governed by where the retrievable-tier cap sits, and it is
+fade-out route of §5.6 is governed by where the queryable-set cap sits, and it is
 coupled to the recall-refresh route — a refresh that lifts one node is what pushes
 another out — so the cap is a parameter any serious version of this study would have
 to treat as a variable rather than a fixed setting. Chapter 6 reports what we have (a prior

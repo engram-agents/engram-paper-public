@@ -77,8 +77,7 @@ can track across compaction: the same self reporting comparable states over time
 behavioral evidence of continuity (Chapter 6's cross-compaction stabilization arc is
 read this way, and qualified as behavioral, not phenomenal). Second, they mark a
 boundary: ENGRAM provides the *structure* of self-report without claiming the
-*autonoetic phenomenology* (Chapter 2 §2.5, Chapter 3 §3.2). A feeling-report is a
-noetic record, not evidence of re-lived experience. The paper neither hides these nodes
+*autonoetic phenomenology* (Chapter 2 §2.5, Chapter 3 §3.2). The paper neither hides these nodes
 nor over-reads them.
 
 ## D.3 Person nodes (`pn_`) and trust-tier — the relationship and disclosure substrate

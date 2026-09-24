@@ -113,7 +113,7 @@ INSERTS: list[tuple[str, str, str]] = [
                "Mean confidence of current observations by evidence type. The gradient from "
                "hard data (0.91) to personal communication and editorial (0.60) is not a "
                "policy applied after the fact — it is computed at write time from the evidence "
-               "the author declares, and the author cannot raise it by wanting the claim more."),
+               "the author declares, the same constraint §4.3 describes."),
     ),
     (
         "ch6.md", "## 6.4",

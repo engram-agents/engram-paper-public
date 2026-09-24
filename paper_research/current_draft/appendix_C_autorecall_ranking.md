@@ -24,9 +24,9 @@ signal the substrate can observe directly and attribute without ambiguity.
 
 ENGRAM's `utility_score` is the Q-value analogue, and what it grades is **the
 cognitive load of the act a node took part in** — not how hard the agent looked to
-find it (dv_1641). The learning rate α is keyed to the action, in three tiers:
+find it (dv_1641). The learning rate α is keyed to the action, in three bands:
 
-| α | actions | what the tier means |
+| α | actions | what the band means |
 |---|---|---|
 | **0.15** | `derive`, `supersede`, `contradict`, `resolve`, `register_exemplar` | the node took part in an **epistemic act** — it became a premise, drove a revision, or anchored a lesson |
 | **0.10** | `inspect`, `subgraph`, `mention`, `focus`, `history`, `citation` | the node was **engaged with** — read closely, traversed, named in reasoning, or pinned |
@@ -34,10 +34,10 @@ find it (dv_1641). The learning rate α is keyed to the action, in three tiers:
 
 When a node is reached several ways, *max-α-wins*.
 
-Note what the top tier contains: **no retrieval verb at all.** Every member is
+Note what the top band contains: **no retrieval verb at all.** Every member is
 something the agent *does with* a node once it has it. The table is not measuring
 attention spent looking; it is measuring what the looking produced. `inspect` — the
-most deliberate way to read a node — sits in the middle tier, below `derive`, because
+most deliberate way to read a node — sits in the middle band, below `derive`, because
 reading closely and then building on it are different achievements.
 
 **Two independent paths award credit**, and the second one matters more than it
@@ -53,17 +53,17 @@ This is the difference between *access frequency* (which a vector store can trac
 distinction that puts ENGRAM's ranking in the memory-utility tradition rather than the
 plain-retrieval one.
 
-## C.3 The composite ranking — multiplicative amplifiers over a three-tier pipeline
+## C.3 The composite ranking — multiplicative amplifiers over a three-stage pipeline
 
-Recall in production runs a **three-tier** `_search_nodes` pipeline (dv_0707):
+Recall in production runs a **three-stage** `_search_nodes` pipeline (dv_0707):
 
 1. **Gather** — FTS + semantic-embedding merge produces candidate nodes with a base
    **relevance** score.
-2. **Composite re-rank** — the tier this appendix is about.
+2. **Composite re-rank** — the stage this appendix is about.
 3. **Diversity** — an MMR (maximal-marginal-relevance) pass (MMR_LAMBDA = 0.9) trims
    near-duplicates so the surfaced set is not nine paraphrases of one claim.
 
-The composite (tier 2) uses **multiplicative amplifiers**, not an additive blend
+The composite (stage 2) uses **multiplicative amplifiers**, not an additive blend
 (ob_2017):
 
 ```

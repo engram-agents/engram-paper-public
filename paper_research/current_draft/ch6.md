@@ -139,10 +139,9 @@ for evidence type: `hard_data` claims average **0.91**, `official_statement` 0.8
 lowest means sit above their Appendix E anchors (0.35 and 0.40) because each is a
 mixture: every such node carries exactly a specified value, but about half are relays of
 what the user said, which the model scores as an official statement (0.85), and the rest
-sit at the anchor or at its 0.95 introspective discount. **The author cannot
-flatter a weak argument into a strong number, because the author does not write the
-number** — and at the scale of a real graph, that constraint is visible as a clean,
-predicted distribution rather than a hopeful flat line.
+sit at the anchor or at its 0.95 introspective discount. This is the same
+constraint §4.3 named, visible here as a clean, predicted distribution rather than a
+hopeful flat line.
 
 *In plain terms:* if the confidence model were decorative, every claim would drift
 toward "pretty sure." Instead the graph's own numbers show the model holding the

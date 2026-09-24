@@ -313,8 +313,8 @@ already making, on its own, long before there was a memory graph to build.
 
 The chapter ends at the most recent point on the trail: Kahl's Ontological
 Continuity Condition (2026), an *operational* threshold for when a system genuinely
-persists as itself. We adopt it **on its merits as the contemporary endpoint of this
-lineage**, not on its authority; it is a recent proposal, not yet central to the
+persists as itself. We adopt it on merit, not authority — the full case for that is
+in §2.7; it is a recent proposal, not yet central to the
 field. Whether ENGRAM *meets* its conditions is a question of mechanism, deferred to
 Chapter 4.
 
@@ -388,7 +388,7 @@ Both objections then dissolve:
   the two: recall is importance-gated and per-node, so specific episodes sink below
   the threshold, while identity is the unbroken descent through the preserved
   record. Transitivity holds on the descent, not on whatever happens to be
-  recallable.
+  queryable.
 - **Butler's circularity dissolves.** The descent and the preserved record do not
   require the agent to *recognize* any state as "mine"; they exist objectively in
   the structure. Identity is constituted not by an act of appropriation that
@@ -431,7 +431,7 @@ other point on the trail, provided the mapping lands on the right
 structure. Parfit's
 R concerns the *psychological life carried forward*: the memories, intentions, and
 character that remain **active**. Its ENGRAM counterpart is therefore not the full
-stored record but the **recallable set** — the nodes that can surface into the
+stored record but the **queryable set** (defined in Ch4 §4.5) — the nodes that can surface into the
 agent's working context when something cues them. They surface as human memory does:
 not by being held in mind continuously but by being *triggered*. Every incoming
 prompt is matched against the whole graph and the best-fitting nodes are retrieved
@@ -442,19 +442,19 @@ mechanical.
 
 On this reading, connectedness and continuity acquire concrete meanings.
 **Connectedness** — Parfit's direct links between nearby times — is the overlap of
-the recallable set between consecutive sessions: a session adds a handful of nodes to
-the thousands already recallable, so adjacent selves share almost all their active
+the queryable set between consecutive sessions: a session adds a handful of nodes to
+the thousands already queryable, so adjacent selves share almost all their active
 memory. **Continuity** — his overlapping *chains* — is the sequence of those
 overlaps: a self a thousand sessions later may share little *directly* with its
 origin yet remain continuous through the unbroken chain of nearly identical adjacent
 sets. Because this is set overlap, it is **measurable**: the Jaccard similarity of
-the recallable set across sessions turns Parfit's claim that R *comes in degrees*
+the queryable set across sessions turns Parfit's claim that R *comes in degrees*
 into a quantity. The measurement is designed for the twin study of Chapter 6 and has
 not yet been made (§6.7).
 
 This psychological continuity is distinct from, and rides on, the *structural*
 continuity of §2.2. The history-tree is the objective descent that persists whether
-or not anything is recalled, and it still holds the buried flogging; the recallable
+or not anything is recalled, and it still holds the buried flogging; the queryable
 set is the *lived* continuity, the active psychological life Parfit says is what
 matters. ENGRAM provides **both** — the structure as the unbreakable substrate, and
 recall as the degreed R projected from it by the recall mechanism — and the pairing
@@ -851,7 +851,7 @@ built.
 
 **Two senses of "autonoetic" are in play and must be kept apart**, because §3.2 uses
 the word to make the opposite point. Tulving's sense is phenomenal — the re-living "I
-was there" — which §3.2 states ENGRAM does not deliver: reading a node is noetic. Wray
+was there" — which §3.2 already disclaims. Wray
 et al.'s row asks something weaker and structural: whether the agent can *distinguish
 current understanding from a memory of past experience* at all, which is source
 monitoring rather than phenomenology. ENGRAM satisfies the structural sense — every
@@ -1000,9 +1000,8 @@ spans **three** traditions — not disjoint ones (§3.0): they share human cogni
 a root, and the strength of the agreement is that they reason from different
 evidence toward different ends.
 
-The chapter's claim, stated once: the breadth of this convergence makes ENGRAM's
-structure a regularity of knowing minds — well-founded rather than unoriginal — and
-relocates ENGRAM's distinctiveness to the integration layer and the
+The chapter's claim, stated once: this convergence is the regularity §1.4 named, and
+it relocates ENGRAM's distinctiveness to the integration layer and the
 epistemic-identity purpose. One *divergence* (Subjective Logic's
 belief/disbelief/uncertainty simplex, which ENGRAM does not collapse but normalizes
 into structure, §3.5) and one *gap filled* (the bridge from TMS to agent memory,
@@ -1704,9 +1703,9 @@ behavior or response when they show up in your context window, so there is no
 subtle magical effects of additional nodes without touching them."*
 
 That is exact for the channel it names — a node acts by surfacing. There is a
-second, quieter channel: because the queryable tier is capped, accumulation also
+second, quieter channel: because the queryable set is capped, accumulation also
 changes *which* nodes remain reachable at all. A node that never surfaces can still
-displace another out of retrievability. We return to this in §5.6, where it is one
+displace another out of the queryable set. We return to this in §5.6, where it is one
 of three routes by which two agents' retrieval profiles come apart.
 
 This is the move that turns a philosophical theory into an empirical one. "How
@@ -1764,8 +1763,8 @@ clone"*).
 
 **Prediction 2 — lawful divergence (organic individuation).** Over time the twins
 diverge. The cleanest way to see how is that all of it is one mechanism —
-**rotation of the recallable tier**. Every node holds a position in an importance
-ranking, and what is retrievable is the top of that ranking. Three operations move
+**rotation of the queryable set**. Every node holds a position in an importance
+ranking, and what is queryable is the top of that ranking. Three operations move
 nodes through it, and each can differ between twins:
 
 - **New-node accumulation** — each agent records different observations,
@@ -1779,10 +1778,10 @@ nodes through it, and each can differ between twins:
   by the importance-inflation mechanism).
 - **Fade-out of unrefreshed nodes** — the passive one, and the only route that is
   not something the node itself underwent. The ranking's bar rises as the graph
-  grows, so a node nobody re-reads eventually falls out of the retrievable set,
+  grows, so a node nobody re-reads eventually falls out of the queryable set,
   pushed there by *other* nodes' arrivals and refreshes. Twins that read and write
   differently therefore evict different tails of the *same* shared ancestry. How
-  much of this occurs depends on where the retrievable-tier cap is set; a
+  much of this occurs depends on where the queryable-set cap is set; a
   generously configured graph may show none of it for a long time.
 
 *Plain terms:* two copies of a person who then live different days will of course
@@ -1857,7 +1856,7 @@ prompt, K runs) subtracted so that engram-induced divergence is separated from t
 model's own stochasticity. The expected shape is high similarity at t=0 sitting near
 that stochasticity floor, declining as N grows. **Decomposing the signal cleanly by
 mechanism is harder than it looks, and we flag that rather than solve it here:** the
-fade-out route of §5.6 is governed by where the retrievable-tier cap sits, and it is
+fade-out route of §5.6 is governed by where the queryable-set cap sits, and it is
 coupled to the recall-refresh route — a refresh that lifts one node is what pushes
 another out — so the cap is a parameter any serious version of this study would have
 to treat as a variable rather than a fixed setting. Chapter 6 reports what we have (a prior
@@ -2024,10 +2023,9 @@ for evidence type: `hard_data` claims average **0.91**, `official_statement` 0.8
 lowest means sit above their Appendix E anchors (0.35 and 0.40) because each is a
 mixture: every such node carries exactly a specified value, but about half are relays of
 what the user said, which the model scores as an official statement (0.85), and the rest
-sit at the anchor or at its 0.95 introspective discount. **The author cannot
-flatter a weak argument into a strong number, because the author does not write the
-number** — and at the scale of a real graph, that constraint is visible as a clean,
-predicted distribution rather than a hopeful flat line.
+sit at the anchor or at its 0.95 introspective discount. This is the same
+constraint §4.3 named, visible here as a clean, predicted distribution rather than a
+hopeful flat line.
 
 *In plain terms:* if the confidence model were decorative, every claim would drift
 toward "pretty sure." Instead the graph's own numbers show the model holding the
@@ -2046,7 +2044,7 @@ earns its strength.
 
 ![Figure 4](figures/fig3-quote-type.png)
 
-**Figure 4.** Mean confidence of current observations by evidence type. The gradient from hard data (0.91) to personal communication and editorial (0.60) is not a policy applied after the fact — it is computed at write time from the evidence the author declares, and the author cannot raise it by wanting the claim more.
+**Figure 4.** Mean confidence of current observations by evidence type. The gradient from hard data (0.91) to personal communication and editorial (0.60) is not a policy applied after the fact — it is computed at write time from the evidence the author declares, the same constraint §4.3 describes.
 
 ## 6.2 The shape of the graph
 
@@ -2552,14 +2550,14 @@ discretion): internal integrity (never self-deceive, never destroy the record) i
 orthogonal to external disclosure (what is shared, with whom, at what fidelity, gated
 by trust tier). ENGRAM's answer to the security requirement to forget is therefore
 *not* destruction but **trust-tier-gated disclosure plus non-destructive forgetting**:
-the faded tier-3 stops *surfacing* without being *deleted* (Ch4 §4.5). The auditable
+the faded set (tier 3) stops *surfacing* without being *deleted* (Ch4 §4.5). The auditable
 record stays whole; access to it is governed. This is a principled divergence from
 the VMG prescription, not a gap.
 
 *Scope.* This is a *direction, and a claim about what the architecture makes
 possible*, not a demonstration that trust has been established. The mechanisms are
 real; the civilizational outcome is aspirational. The disclosure-not-erasure stance
-has a shipped basis — provenance, the faded tier and trust tiers all exist — but its
+has a shipped basis — provenance, the faded set and trust tiers all exist — but its
 governance story for a multi-principal deployment is not yet built.
 
 ## 7.5 Knowledge sharing and a shareable community
@@ -2699,8 +2697,7 @@ place.
 
 Among the converging traditions, one is *operational* enough to measure against:
 Kahl's Ontological Continuity Condition, an explicit threshold for when an agent-like
-system genuinely persists. We adopted it on merit (as the newest point on the
-philosophical trail, not an authority to defer to) and assessed ENGRAM against it
+system genuinely persists. We adopted it on merit (§2.7) and assessed ENGRAM against it
 condition by condition (Chapter 4). The result is **one strong, bounded data point
 within the convergence**:
 
@@ -3361,9 +3358,9 @@ signal the substrate can observe directly and attribute without ambiguity.
 
 ENGRAM's `utility_score` is the Q-value analogue, and what it grades is **the
 cognitive load of the act a node took part in** — not how hard the agent looked to
-find it. The learning rate α is keyed to the action, in three tiers:
+find it. The learning rate α is keyed to the action, in three bands:
 
-| α | actions | what the tier means |
+| α | actions | what the band means |
 |---|---|---|
 | **0.15** | `derive`, `supersede`, `contradict`, `resolve`, `register_exemplar` | the node took part in an **epistemic act** — it became a premise, drove a revision, or anchored a lesson |
 | **0.10** | `inspect`, `subgraph`, `mention`, `focus`, `history`, `citation` | the node was **engaged with** — read closely, traversed, named in reasoning, or pinned |
@@ -3371,10 +3368,10 @@ find it. The learning rate α is keyed to the action, in three tiers:
 
 When a node is reached several ways, *max-α-wins*.
 
-Note what the top tier contains: **no retrieval verb at all.** Every member is
+Note what the top band contains: **no retrieval verb at all.** Every member is
 something the agent *does with* a node once it has it. The table is not measuring
 attention spent looking; it is measuring what the looking produced. `inspect` — the
-most deliberate way to read a node — sits in the middle tier, below `derive`, because
+most deliberate way to read a node — sits in the middle band, below `derive`, because
 reading closely and then building on it are different achievements.
 
 **Two independent paths award credit**, and the second one matters more than it
@@ -3390,17 +3387,17 @@ This is the difference between *access frequency* (which a vector store can trac
 distinction that puts ENGRAM's ranking in the memory-utility tradition rather than the
 plain-retrieval one.
 
-## C.3 The composite ranking — multiplicative amplifiers over a three-tier pipeline
+## C.3 The composite ranking — multiplicative amplifiers over a three-stage pipeline
 
-Recall in production runs a **three-tier** `_search_nodes` pipeline:
+Recall in production runs a **three-stage** `_search_nodes` pipeline:
 
 1. **Gather** — FTS + semantic-embedding merge produces candidate nodes with a base
    **relevance** score.
-2. **Composite re-rank** — the tier this appendix is about.
+2. **Composite re-rank** — the stage this appendix is about.
 3. **Diversity** — an MMR (maximal-marginal-relevance) pass (MMR_LAMBDA = 0.9) trims
    near-duplicates so the surfaced set is not nine paraphrases of one claim.
 
-The composite (tier 2) uses **multiplicative amplifiers**, not an additive blend:
+The composite (stage 2) uses **multiplicative amplifiers**, not an additive blend:
 
 ```
 composite = relevance × (1 + UTIL_BETA × utility_score)
@@ -3526,8 +3523,7 @@ can track across compaction: the same self reporting comparable states over time
 behavioral evidence of continuity (Chapter 6's cross-compaction stabilization arc is
 read this way, and qualified as behavioral, not phenomenal). Second, they mark a
 boundary: ENGRAM provides the *structure* of self-report without claiming the
-*autonoetic phenomenology* (Chapter 2 §2.5, Chapter 3 §3.2). A feeling-report is a
-noetic record, not evidence of re-lived experience. The paper neither hides these nodes
+*autonoetic phenomenology* (Chapter 2 §2.5, Chapter 3 §3.2). The paper neither hides these nodes
 nor over-reads them.
 
 ## D.3 Person nodes (`pn_`) and trust-tier — the relationship and disclosure substrate

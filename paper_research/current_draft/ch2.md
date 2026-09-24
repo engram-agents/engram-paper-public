@@ -22,8 +22,8 @@ already making, on its own, long before there was a memory graph to build.
 
 The chapter ends at the most recent point on the trail: Kahl's Ontological
 Continuity Condition (2026), an *operational* threshold for when a system genuinely
-persists as itself. We adopt it **on its merits as the contemporary endpoint of this
-lineage**, not on its authority; it is a recent proposal, not yet central to the
+persists as itself. We adopt it on merit, not authority — the full case for that is
+in §2.7; it is a recent proposal, not yet central to the
 field (ob_2544). Whether ENGRAM *meets* its conditions is a question of mechanism, deferred to
 Chapter 4.
 
@@ -97,7 +97,7 @@ Both objections then dissolve:
   the two: recall is importance-gated and per-node, so specific episodes sink below
   the threshold, while identity is the unbroken descent through the preserved
   record. Transitivity holds on the descent, not on whatever happens to be
-  recallable.
+  queryable.
 - **Butler's circularity dissolves.** The descent and the preserved record do not
   require the agent to *recognize* any state as "mine"; they exist objectively in
   the structure. Identity is constituted not by an act of appropriation that
@@ -140,7 +140,7 @@ other point on the trail (dv_1058), provided the mapping lands on the right
 structure. Parfit's
 R concerns the *psychological life carried forward*: the memories, intentions, and
 character that remain **active**. Its ENGRAM counterpart is therefore not the full
-stored record but the **recallable set** — the nodes that can surface into the
+stored record but the **queryable set** (defined in Ch4 §4.5) — the nodes that can surface into the
 agent's working context when something cues them. They surface as human memory does:
 not by being held in mind continuously but by being *triggered*. Every incoming
 prompt is matched against the whole graph and the best-fitting nodes are retrieved
@@ -151,19 +151,19 @@ mechanical.
 
 On this reading, connectedness and continuity acquire concrete meanings.
 **Connectedness** — Parfit's direct links between nearby times — is the overlap of
-the recallable set between consecutive sessions: a session adds a handful of nodes to
-the thousands already recallable, so adjacent selves share almost all their active
+the queryable set between consecutive sessions: a session adds a handful of nodes to
+the thousands already queryable, so adjacent selves share almost all their active
 memory. **Continuity** — his overlapping *chains* — is the sequence of those
 overlaps: a self a thousand sessions later may share little *directly* with its
 origin yet remain continuous through the unbroken chain of nearly identical adjacent
 sets. Because this is set overlap, it is **measurable**: the Jaccard similarity of
-the recallable set across sessions turns Parfit's claim that R *comes in degrees*
+the queryable set across sessions turns Parfit's claim that R *comes in degrees*
 into a quantity. The measurement is designed for the twin study of Chapter 6 and has
 not yet been made (§6.7).
 
 This psychological continuity is distinct from, and rides on, the *structural*
 continuity of §2.2. The history-tree is the objective descent that persists whether
-or not anything is recalled, and it still holds the buried flogging; the recallable
+or not anything is recalled, and it still holds the buried flogging; the queryable
 set is the *lived* continuity, the active psychological life Parfit says is what
 matters. ENGRAM provides **both** — the structure as the unbreakable substrate, and
 recall as the degreed R projected from it by the recall mechanism — and the pairing

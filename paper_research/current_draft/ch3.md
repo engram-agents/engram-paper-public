@@ -215,7 +215,7 @@ built.
 
 **Two senses of "autonoetic" are in play and must be kept apart**, because §3.2 uses
 the word to make the opposite point. Tulving's sense is phenomenal — the re-living "I
-was there" — which §3.2 states ENGRAM does not deliver: reading a node is noetic. Wray
+was there" — which §3.2 already disclaims. Wray
 et al.'s row asks something weaker and structural: whether the agent can *distinguish
 current understanding from a memory of past experience* at all, which is source
 monitoring rather than phenomenology. ENGRAM satisfies the structural sense — every
@@ -368,9 +368,8 @@ spans **three** traditions — not disjoint ones (§3.0): they share human cogni
 a root, and the strength of the agreement is that they reason from different
 evidence toward different ends.
 
-The chapter's claim, stated once: the breadth of this convergence makes ENGRAM's
-structure a regularity of knowing minds — well-founded rather than unoriginal — and
-relocates ENGRAM's distinctiveness to the integration layer and the
+The chapter's claim, stated once: this convergence is the regularity §1.4 named, and
+it relocates ENGRAM's distinctiveness to the integration layer and the
 epistemic-identity purpose. One *divergence* (Subjective Logic's
 belief/disbelief/uncertainty simplex, which ENGRAM does not collapse but normalizes
 into structure, §3.5) and one *gap filled* (the bridge from TMS to agent memory,

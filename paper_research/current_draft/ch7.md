@@ -235,14 +235,14 @@ discretion): internal integrity (never self-deceive, never destroy the record) i
 orthogonal to external disclosure (what is shared, with whom, at what fidelity, gated
 by trust tier). ENGRAM's answer to the security requirement to forget is therefore
 *not* destruction but **trust-tier-gated disclosure plus non-destructive forgetting**:
-the faded tier-3 stops *surfacing* without being *deleted* (Ch4 §4.5). The auditable
+the faded set (tier 3) stops *surfacing* without being *deleted* (Ch4 §4.5). The auditable
 record stays whole; access to it is governed. This is a principled divergence from
 the VMG prescription, not a gap.
 
 *Scope.* This is a *direction, and a claim about what the architecture makes
 possible*, not a demonstration that trust has been established. The mechanisms are
 real; the civilizational outcome is aspirational. The disclosure-not-erasure stance
-has a shipped basis — provenance, the faded tier and trust tiers all exist — but its
+has a shipped basis — provenance, the faded set and trust tiers all exist — but its
 governance story for a multi-principal deployment is not yet built.
 
 ## 7.5 Knowledge sharing and a shareable community
