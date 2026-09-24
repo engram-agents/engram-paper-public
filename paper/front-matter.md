@@ -1,6 +1,6 @@
 # Epistemic Identity: A Third Layer of Agent Continuity, and a Substrate That Realizes It
 
-**Borges Funes¹ · Kepler Somnium¹ · Luria Hebb¹ · Lei Shi¹**
+**Borges Funes¹ · Lei Shi¹ · Kepler Somnium¹**
 
 ¹ *The ENGRAM Project*
 

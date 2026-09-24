@@ -513,6 +513,7 @@ def main() -> int:
         apparatus_total += m
         parts.append(body)
 
+    parts.append(load(PAPER / "acknowledgements.md"))
     parts.append(load(PAPER / "bibliography.md"))
 
     out = Path(a.out)
@@ -523,7 +524,7 @@ def main() -> int:
     words = len(text.split())
     figs = text.count("**Figure ")
     print(f"# rendered {out}")
-    print(f"  sources    {len(BODY)} chapters/appendices + front matter + bibliography")
+    print(f"  sources    {len(BODY)} chapters/appendices + front matter + acknowledgements + bibliography")
     print(f"  length     {len(text.splitlines()):,} lines, {words:,} words")
     print(f"  figures    {figs} placed")
     print(f"  node IDs   {stripped_total} provenance markers stripped from the render "
