@@ -21,8 +21,8 @@ than any other classification.
 **Claim-bearing (CB)** — six types: `observation_factual`, `observation_predictive`,
 `derivation`, `theory`, `axiom`, `conjecture`. **Non-claim-bearing (NCB)** — everything
 else: definitions, questions, goals, tasks, lessons, cornerstones, feeling-reports,
-person nodes, evidence, contradictions. Three consequences follow, and they are why the
-partition is declared in one place rather than inferred per caller:
+person nodes, evidence, predictions, contradictions. Three consequences follow, and
+they are why the partition is declared in one place rather than inferred per caller:
 
 1. **Confidence is meaningful only for CB nodes.** A lesson has no truth-value to be
    confident about; it is a disposition. The write path refuses a confidence on an NCB
@@ -153,8 +153,10 @@ different epistemic situations and must not be scored the same way.
 *d* is a per-type discount for the inferential step itself: 0.98 for deductive forms
 (truth-preserving, so nearly free), 0.95 for `inductive_generalization`, 0.85 for
 `inductive_causal`, 0.80 for `abductive_best_explanation`, 0.70 for `inductive_analogy`
-— fourteen types in all (the five deductive types, five inductive, two abductive and
-two authority), each carrying its own.
+— fourteen types in all (five deductive — `deductive_modus_ponens`,
+`deductive_modus_tollens`, `deductive_hypothetical_syllogism`, `deductive_disjunctive`,
+`deductive_reductio` — five inductive, two abductive and two authority), each carrying
+its own.
 
 The corroboration formula is the substrate's strongest instrument and its most
 misusable one: **it is valid only on genuinely independent premises.** Two facets of a
@@ -209,7 +211,7 @@ designer-stipulated, not outcome-calibrated — Ch7 §7.2.)*
   cascade, supersede, focus mode, auto-surfacing, the confidence model — the minimal
   generating set every higher mechanism composes from.
 
-## E.6 The OCC threshold (Kahl 2026), as the paper uses it
+## E.6 The OCC threshold (Kahl 2026b), as the paper uses it
 
 Chapter 4's mapping rests on Kahl's **Ontological Continuity Condition**, and the
 conditions are given here in full so this appendix can be read without the chapter.

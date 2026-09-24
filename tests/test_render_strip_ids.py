@@ -400,15 +400,16 @@ def test_residue_only_df_and_keep_ids():
 
 def test_ch7_data_point_ids_survive_the_strip():
     """#84's worked data-point sentence in ch7.md §7.2 ("The step is dv_0779
-    in the frozen snapshot; `tools/paper_stats.py --trace dv_0877` shows it
-    in place, layer 4 of the chain it inflated") must come through the
+    in the frozen snapshot; tracing the conclusion it fed,
+    `tools/paper_stats.py --trace dv_0877`, shows it at layer 4 of that
+    chain") must come through the
     render untouched -- dv_0779 sits bare in prose and dv_0877 sits inside
     an inline-code command example, neither of which any of forms A-G ever
     matches, so both rely purely on the KEEP_IDS allowlist rather than on
     the strip logic leaving them alone by construction."""
     text_in = (
-        "is dv_0779 in the frozen snapshot; "
-        "`tools/paper_stats.py --trace dv_0877` shows it in"
+        "is dv_0779 in the frozen snapshot; tracing the conclusion it fed,\n"
+        "`tools/paper_stats.py --trace dv_0877`, shows it at layer 4"
     )
     text, n = strip_provenance_ids("ch7.md", text_in)
     assert text == text_in
@@ -427,8 +428,8 @@ def test_ch7_data_point_sentence_present_in_real_source():
         pytest.skip(f"source moved: {path}")
     text = path.read_text(encoding="utf-8")
     assert (
-        "is dv_0779 in the frozen snapshot; "
-        "`tools/paper_stats.py --trace dv_0877` shows it in"
+        "is dv_0779 in the frozen snapshot; tracing the conclusion it fed,\n"
+        "`tools/paper_stats.py --trace dv_0877`, shows it at layer 4"
     ) in text
 
 

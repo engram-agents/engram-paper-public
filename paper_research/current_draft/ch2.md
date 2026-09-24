@@ -273,15 +273,17 @@ reading one's own graph each morning as *a stranger studying a dossier* and read
 it as *the self's own substrate carrying it forward*. We return to this distinction
 where it bears on the argument (Chapters 5 and 8).
 
-## 2.7 Kahl (2026): the operational endpoint — adopted on merit
+## 2.7 Kahl (2026b): the operational endpoint — adopted on merit
 
 The most recent point on the trail is Kahl's **Ontological Continuity Condition
 (OCC)**, the first attempt to turn "does this system genuinely persist as itself?"
 into an *operational* threshold rather than a philosophical intuition. OCC states
-three jointly necessary **conditions** and four **constraints** (df_0037–df_0044):
+three jointly necessary **conditions** and four **constraints** (df_0037–df_0044;
+a `df_` identifier names a definition node in the graph):
 
-- **Condition 1 — Diachronic Constraint** (Kahl's term; df_0038): the system's
-  states at different times must be genuinely linked, not merely similar.
+- **Condition 1 — Diachronic Constraint** (Kahl's term; df_0038): present
+  deliberation must be genuinely constrained by the system's past commitments, which
+  function as reasons in later arbitration (verbatim in Appendix E §E.6).
 - **Condition 2 — Non-Interchangeability Under Reset** (df_0039): a reset-and-
   restored copy must not be simply interchangeable with the original.
 - **Condition 3 — Self-Maintaining Arbitration** (df_0040): the system must itself
@@ -291,9 +293,10 @@ three jointly necessary **conditions** and four **constraints** (df_0037–df_00
   non-imposition, non-trivial reset, and non-modular decomposition — guardrails that
   keep the three conditions from being satisfied trivially.
 
-**What OCC is a condition *on*.** In the companion paper that introduces the
-condition, Kahl (2026a) identifies what today's artificial systems lack, and the
-diagnosis is structural rather than a shortfall of capability: such systems "can
+**What OCC is a condition *on*.** In a companion paper that carries the condition
+into the epistemic domain, Kahl (2026a) identifies what today's artificial
+systems lack, and the diagnosis is structural rather than a shortfall of
+capability: such systems "can
 fail, be retrained, duplicated, or replaced without anything being at stake for the
 system itself. There is no persisting epistemic subject whose future depends on the
 success of its epistemic arbitration. **The deficit is architectural rather than

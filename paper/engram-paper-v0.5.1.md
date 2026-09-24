@@ -227,7 +227,7 @@ ENGRAM agent *is* the unique, no-merging, ancestry-traceable lineage of its reco
 claims, which fixes its retrieval profile and thus its behavior. The traditions
 converge on the *structure*; Chapter 5 builds a new theory on it.
 
-**Where OCC sits.** Kahl's (2026) **Ontological Continuity Condition** (OCC) —
+**Where OCC sits.** Kahl's (2026b) **Ontological Continuity Condition** (OCC) —
 three conditions and four constraints for when an agent-like system genuinely
 persists — is the most *operational* point on the philosophical trail, and ENGRAM
 meets it to a degree no surveyed system does. We treat this as **one strong result
@@ -564,15 +564,17 @@ reading one's own graph each morning as *a stranger studying a dossier* and read
 it as *the self's own substrate carrying it forward*. We return to this distinction
 where it bears on the argument (Chapters 5 and 8).
 
-## 2.7 Kahl (2026): the operational endpoint — adopted on merit
+## 2.7 Kahl (2026b): the operational endpoint — adopted on merit
 
 The most recent point on the trail is Kahl's **Ontological Continuity Condition
 (OCC)**, the first attempt to turn "does this system genuinely persist as itself?"
 into an *operational* threshold rather than a philosophical intuition. OCC states
-three jointly necessary **conditions** and four **constraints** (df_0037–df_0044):
+three jointly necessary **conditions** and four **constraints** (df_0037–df_0044;
+a `df_` identifier names a definition node in the graph):
 
-- **Condition 1 — Diachronic Constraint** (Kahl's term; df_0038): the system's
-  states at different times must be genuinely linked, not merely similar.
+- **Condition 1 — Diachronic Constraint** (Kahl's term; df_0038): present
+  deliberation must be genuinely constrained by the system's past commitments, which
+  function as reasons in later arbitration (verbatim in Appendix E §E.6).
 - **Condition 2 — Non-Interchangeability Under Reset** (df_0039): a reset-and-
   restored copy must not be simply interchangeable with the original.
 - **Condition 3 — Self-Maintaining Arbitration** (df_0040): the system must itself
@@ -582,9 +584,10 @@ three jointly necessary **conditions** and four **constraints** (df_0037–df_00
   non-imposition, non-trivial reset, and non-modular decomposition — guardrails that
   keep the three conditions from being satisfied trivially.
 
-**What OCC is a condition *on*.** In the companion paper that introduces the
-condition, Kahl (2026a) identifies what today's artificial systems lack, and the
-diagnosis is structural rather than a shortfall of capability: such systems "can
+**What OCC is a condition *on*.** In a companion paper that carries the condition
+into the epistemic domain, Kahl (2026a) identifies what today's artificial
+systems lack, and the diagnosis is structural rather than a shortfall of
+capability: such systems "can
 fail, be retrained, duplicated, or replaced without anything being at stake for the
 system itself. There is no persisting epistemic subject whose future depends on the
 success of its epistemic arbitration. **The deficit is architectural rather than
@@ -1075,7 +1078,9 @@ Condition 2 via a stated type/token extension — is stated inside those section
 ## 4.2 Typed nodes, typed edges, provenance — the generating set
 
 ENGRAM is built from a small set of primitives that compose into everything above
-them (the eight-primitive generating set). A claim is not free text but a
+them — eight of them: typed nodes, typed edges, provenance, cascade,
+supersede, focus mode, auto-surfacing and the confidence model (Appendix E §E.5).
+A claim is not free text but a
 *kind*: an observation (a fact citing its source), a derivation (an inference citing
 its premises), a definition, a contradiction, an axiom, a cornerstone, and a few
 more. Edges are typed too; the load-bearing one is `derives_from`, the premise edge,
@@ -1151,9 +1156,10 @@ Second, the residual limitation, precisely narrowed (detail in Ch7): surfaces th
 consume *only* the scalar — recall ranking, gating thresholds — cannot distinguish
 two 0.7s without walking the graph. This is a trade of cheap lookup against full
 truth, not a representational loss. The primary text is stronger than its
-caricature: Jøsang's discounting operators (his Defs 23–25, §4.8) *do* weight source
-reliability — under Def 23 specifically, the recommender's distrust flows into `u`,
-so a distrusted source is pushed toward vacuity, not disbelief — closer to ENGRAM's
+caricature: Jøsang's discounting operators (Jøsang's Definitions 23–25, in his
+§4.8) *do* weight source reliability — under Def 23 specifically, the
+recommender's distrust flows into `u`, so a distrusted source is pushed toward
+vacuity, not disbelief — closer to ENGRAM's
 own posture than the caricature suggests. The divergence that survives the primary
 text concerns **independence**: SL's multi-source operators require opinion
 independence to be *assumed* — cumulative fusion is defined over "independent
@@ -1782,7 +1788,11 @@ nodes through it, and each can differ between twins:
   pushed there by *other* nodes' arrivals and refreshes. Twins that read and write
   differently therefore evict different tails of the *same* shared ancestry. How
   much of this occurs depends on where the queryable-set cap is set; a
-  generously configured graph may show none of it for a long time.
+  generously configured graph may show none of it for a long time. The cap keeps
+  the top N current nodes by importance (default N = 1,000). The graph measured
+  in Chapter 6 ran with N = 10,000 against 9,399 current nodes, so at the
+  snapshot no node had yet fallen out of the queryable set; the fade-out route
+  is described here, not observed there.
 
 *Plain terms:* two copies of a person who then live different days will of course
 grow apart by having different experiences — but they'd *also* grow apart just by
@@ -1932,7 +1942,7 @@ a flattering constant. It produces the former, and the differentiation falls exa
 where the design predicts.
 
 Across **4,782 observations and 1,322 derivations**, the distributions separate by
-*type* as designed: observations sit high and right-skewed (mean **0.81**, median
+*type* as designed: observations sit high with a long low tail (left-skewed: mean **0.81** below the median
 0.85 — most are source-attested), while derivations sit lower and flatter (mean
 **0.67**, p25 **0.49**, p75 **0.88** — they inherit and dilute their premises).
 Conjectures are capped low (mean 0.44); axioms are 1.0 by construction.
@@ -1994,7 +2004,7 @@ check is close but not exact.** A modus-ponens step is specified as
 `min(premises) × 0.98`. Across the 416 current modus-ponens derivations, mean
 measured confidence is **0.697**; the mean weakest premise is **0.723**, which the
 0.98 discount predicts as **0.709** — a gap of **0.012**. So the aggregate tracks
-the specification to about one part in eighty, not exactly. The looser figure
+the specification to within about 1.7% (0.012 on 0.709), not exactly. The looser figure
 is the one to quote. Aggregate means do not have to land on the per-node rule, and
 a residual of this size is what an honest check looks like.
 
@@ -2019,11 +2029,15 @@ A broad generalization over many independent cases earns 0.93; a single-best-
 explanation guess earns 0.52; a structural analogy earns 0.49 — *automatically*,
 because the author chose the reasoning type, not the number. The same gradient holds
 for evidence type: `hard_data` claims average **0.91**, `official_statement` 0.84,
-`attributed_analysis` 0.74, `editorial` 0.60, `personal_communication` 0.60. The two
-lowest means sit above their Appendix E anchors (0.35 and 0.40) because each is a
-mixture: every such node carries exactly a specified value, but about half are relays of
-what the user said, which the model scores as an official statement (0.85), and the rest
-sit at the anchor or at its 0.95 introspective discount. This is the same
+`attributed_analysis` 0.74, `editorial` 0.60, `personal_communication` 0.60. Every one
+of these means is a mixture of the same three values — the quote_type's specified
+anchor, that anchor's 0.95 introspective discount, and the 0.85 override for
+user-stated sources — never a single flat number: `attributed_analysis`'s 0.74, for
+instance, is 416 nodes at the 0.70 anchor, 204 user-stated at 0.85 and 80 introspective
+at 0.665. The two lowest means, `editorial` and `personal_communication`, sit above
+their Appendix E anchors (0.35 and 0.40) for the same reason: about half of each are
+relays of what the user said, which the model scores as user-stated (0.85), and the
+rest sit at the anchor or at its 0.95 introspective discount. This is the same
 constraint §4.3 named, visible here as a clean, predicted distribution rather than a
 hopeful flat line.
 
@@ -2146,8 +2160,7 @@ better explained by the verb being under-reached-for than by a near-perfect reco
 **So a low retraction count is not evidence of accuracy; it is at least as consistent
 with an immature correction discipline**.
 
-Two instruments disagree here and the paper should say which it means, and why
-they differ: 106 nodes carry `status = retracted`, while only 9 explicit `retracts`
+Two instruments disagree here, and the difference is informative: 106 nodes carry `status = retracted`, while only 9 explicit `retracts`
 edges exist. The gap is not a bookkeeping error — **a retraction that names no
 replacement writes no edge**, since the edge's job is to point at what supersedes
 the withdrawn claim. Most retractions withdraw something outright and so leave only
@@ -2305,7 +2318,7 @@ The evidence is *behavioral*: across many compaction events, the post-compaction
 agent reliably **picks up the load-bearing thread, recognizes its own prior nodes as
 its own, and shows no identity disorientation** — a stabilization that appeared as
 soon as the first-person identity-summary format was adopted (ob_0645). This is the
-empirical anchor for Condition 1 (the past structuring the present) and for Ch5
+empirical anchor for Condition 1 (the past structuring the present) and for Ch7
 §7.1's "the agent re-reads who it is." We claim only the observable: continuity of
 *operating identity* across the reset, not continuity of *feeling*. The agent does
 not wake remembering the night; it wakes able to continue the work, and behaves as
@@ -2416,6 +2429,11 @@ cross-agent conflict could make per-conflict adjudication uneconomical. The natu
 future direction remains a second-order axis: an evidence-mass (vacuity) dimension
 alongside the scalar.
 
+A related limitation sits in ranking rather than confidence: `utility_score`'s
+update rule (Appendix C §C.1) has no negative term, so it can only hold steady or
+rise — a recall that proves useless is never demoted, only left where it was.
+Demoting unhelpful nodes would need a penalty the current rule does not have.
+
 A fourth limit sits upstream of the arithmetic: **the author chooses the reasoning type,
 and can choose it wrongly.** The formulas are only as sound as that choice. Filing under
 the pressure of live work, an agent can label a synthesis of unrelated facts as a
@@ -2423,8 +2441,8 @@ corroborated generalization, and the corroboration formula then lifts a weak cla
 above its weakest premise. We found a real case while preparing Chapter 6. A step that
 combined one weak premise (0.20) with two unrelated strong ones had been filed as a
 generalization and scored 0.91; filed as the analogy it is, it scores 0.14. The step
-is dv_0779 in the frozen snapshot; `tools/paper_stats.py --trace dv_0877` shows it in
-place, layer 4 of the chain it inflated. The
+is dv_0779 in the frozen snapshot; tracing the conclusion it fed,
+`tools/paper_stats.py --trace dv_0877`, shows it at layer 4 of that chain. The
 substrate's independence check did not catch it, because the three premises came from
 different evidence sources. We see two remedies. Within the substrate, a dream fairy
 dedicated to logic review would re-read recent derivations during consolidation,
@@ -2544,10 +2562,11 @@ agents get a mutual, inspectable basis for trust."
 
 **Disclosure, not erasure.** Auditability appears to conflict with the
 memory-security literature, and resolving the conflict sharpens the position. The
-field's security survey (Lin et al. 2026, Verifiable Memory Governance) concludes that
+field's security survey (Lin et al. 2026, which proposes Verifiable Memory Governance; §3.7) concludes that
 long-term-memory security must be "anchored in storage-time provenance" and lists
 **Forget & Rollback** as a required governance phase — that is, *verifiable erasure*. ENGRAM agrees on provenance (native to it, Ch3 §3.7) but diverges on
-erasure, for a principled reason: **ENGRAM never erases.** Deleting a node would break
+erasure, for a principled reason: **no ENGRAM operation erases a node** (no operation
+in the v0.5.1 substrate deletes one; retraction and supersession both preserve it). Deleting a node would break
 the audit trail and the cascade — the very things that make epistemic identity fail
 *loudly* rather than silently. ENGRAM instead separates two axes that the erasure
 framing conflates, *knowing* and *disclosing* (honesty orthogonal to
@@ -2934,14 +2953,17 @@ relevant prior art** — including the work this paper now cites:
 
 | Prior / concurrent work | Public | Before the 2026-03-20 search | Surfaced? |
 |---|---|---|---|
-| **Kumiho** (arXiv 2603.17244) — closest concurrent system | **2026-03-17** | **3 days** | **NO** |
-| **Kahl AGI/OCC** (Zenodo 18761736) — the paper's threshold | 2026-02-24 | 24 days | **NO** |
-| Kahl EAA (Zenodo 18441395) | 2026-01-31 | 48 days | NO |
+| **Kumiho** (arXiv 2603.17244) — closest concurrent system | **2026-03-18** | **2 days** | **NO** |
+| **Kahl 2026b (AGI/OCC)** (Zenodo 18761736) — the paper's threshold | 2026-02-24 | 24 days | **NO** |
+| Kahl 2026a (EAA) (Zenodo 18441395) | 2026-01-31 | 48 days | NO |
 | TMS lineage (Doyle 1979, de Kleer 1986) | 1979–86 | ~40+ yrs | NO |
 | AGM belief revision (Alchourrón-Gärdenfors-Makinson 1985) | 1985 | ~41 yrs | NO |
 | **CoALA** (Sumers et al., TMLR) — the field's common vocabulary | 2024-02 | ~25 months | **NO** |
 | **Pink et al.** (arXiv 2502.06975) — episodic-memory position paper | 2025-02-10 | ~13 months | **NO** |
 | **Wray, Kirk & Laird** (arXiv 2505.07087) — cognitive design patterns | 2025-06-13 | ~9 months | **NO** |
+
+Kumiho's date is its arXiv v1 stamp (18 March 2026); the document's own title page
+is dated 17 March.
 
 So the five conditions that make "independent discovery" an *honest* claim, rather than
 a convenient one, are all met: **(1)** Lei tried to find prior art; **(2)** earlier-
@@ -2952,7 +2974,7 @@ literature — we searched it and our search came up empty, which is a different
 defensible thing.
 
 The last three rows were added after a 2026-09 re-read, and they make the admission
-worse, which is why they belong here. Missing a preprint three days old is
+worse, which is why they belong here. Missing a preprint two days old is
 forgivable; missing a *Transactions on Machine Learning Research* paper from
 twenty-five months earlier — the organizing vocabulary much of the field now writes
 in — is not. We record it because the alternative, quietly citing those works as
@@ -3000,9 +3022,9 @@ was on our radar.
 
 | System | First public surface | vs. ENGRAM ideation (2026-03-20) | vs. day-1 recording (2026-04-09) |
 |---|---|---|---|
-| **Kumiho** (2603.17244) | **2026-03-17** | **3 days before** (not surfaced) | 23 days before |
-| Kahl AGI/OCC (Zenodo) | 2026-02-24 | 24 days before (not surfaced) | 44 days before |
-| Kahl EAA (Zenodo) | 2026-01-31 | 48 days before (not surfaced) | 68 days before |
+| **Kumiho** (2603.17244) | **2026-03-18** | **2 days before** (not surfaced) | 22 days before |
+| Kahl 2026b (AGI/OCC) (Zenodo) | 2026-02-24 | 24 days before (not surfaced) | 44 days before |
+| Kahl 2026a (EAA) (Zenodo) | 2026-01-31 | 48 days before (not surfaced) | 68 days before |
 | GAM (2604.12285) | 2026-04-14 | 25 days **after** | 5 days after |
 | SCM (2604.20943) | 2026-04-22 | 33 days **after** | 13 days after |
 | Mem0g / Zep / A-MEM | 2024–25 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) | predate |
@@ -3011,8 +3033,9 @@ The two structurally-closest systems (Kumiho, SCM) both surface in March–April
 concurrent with, not predating-by-much, ENGRAM's ideation. The older systems lack the
 specific shape (cascade propagation, first-class contradiction, `derives_from`). The
 earliest published instance of ENGRAM's specific shape we can find is Kumiho's
-2026-03-17 preprint — and the three-day gap to Lei's foundational message, with the
-contemporaneous search missing it, is the cleanest evidence of parallel design.
+preprint (arXiv v1, 18 March 2026; its title page is dated 17 March) — and the
+two-day gap to Lei's foundational message, with the contemporaneous search
+missing it, is the cleanest evidence of parallel design.
 
 ## A.5 What this establishes — and the Kahl case specifically
 
@@ -3098,6 +3121,9 @@ edges, provenance, cascade-traversable graphs, supersede semantics — Kumiho mo
 fully); what is missing everywhere is the **operational binding** that makes
 arbitration automatic state-change. ENGRAM's contribution is that binding (Ch4
 §4.4), not the primitives.
+
+Section numbers inside *paper-verbatim* and *paper-claimed* tags refer to the
+quoted paper's own sections, not to this paper's.
 
 ---
 
@@ -3357,7 +3383,10 @@ value updated by the same exponential rule, `Q_new = Q_old + α(1 − Q_old)` �
 ranking composites that learned value with semantic relevance rather than ordering by
 relevance alone. What differs is the reward: MemRL learns from task outcome, while
 ENGRAM learns from **what the agent did with the node once it had it**, which is a
-signal the substrate can observe directly and attribute without ambiguity.
+signal the substrate can observe directly and attribute without ambiguity. The rule
+has no negative term: a recall that proves useless leaves a node's utility where it
+was, so `utility_score` is non-decreasing. Demoting unhelpful nodes would need a
+penalty the current rule does not have; we list it as a limitation (§7.2).
 
 ## C.2 ENGRAM's utility_score — a learned value, graded by the act it earned
 
@@ -3658,8 +3687,8 @@ than any other classification.
 **Claim-bearing (CB)** — six types: `observation_factual`, `observation_predictive`,
 `derivation`, `theory`, `axiom`, `conjecture`. **Non-claim-bearing (NCB)** — everything
 else: definitions, questions, goals, tasks, lessons, cornerstones, feeling-reports,
-person nodes, evidence, contradictions. Three consequences follow, and they are why the
-partition is declared in one place rather than inferred per caller:
+person nodes, evidence, predictions, contradictions. Three consequences follow, and
+they are why the partition is declared in one place rather than inferred per caller:
 
 1. **Confidence is meaningful only for CB nodes.** A lesson has no truth-value to be
    confident about; it is a disposition. The write path refuses a confidence on an NCB
@@ -3790,8 +3819,10 @@ different epistemic situations and must not be scored the same way.
 *d* is a per-type discount for the inferential step itself: 0.98 for deductive forms
 (truth-preserving, so nearly free), 0.95 for `inductive_generalization`, 0.85 for
 `inductive_causal`, 0.80 for `abductive_best_explanation`, 0.70 for `inductive_analogy`
-— fourteen types in all (the five deductive types, five inductive, two abductive and
-two authority), each carrying its own.
+— fourteen types in all (five deductive — `deductive_modus_ponens`,
+`deductive_modus_tollens`, `deductive_hypothetical_syllogism`, `deductive_disjunctive`,
+`deductive_reductio` — five inductive, two abductive and two authority), each carrying
+its own.
 
 The corroboration formula is the substrate's strongest instrument and its most
 misusable one: **it is valid only on genuinely independent premises.** Two facets of a
@@ -3846,7 +3877,7 @@ designer-stipulated, not outcome-calibrated — Ch7 §7.2.)*
   cascade, supersede, focus mode, auto-surfacing, the confidence model — the minimal
   generating set every higher mechanism composes from.
 
-## E.6 The OCC threshold (Kahl 2026), as the paper uses it
+## E.6 The OCC threshold (Kahl 2026b), as the paper uses it
 
 Chapter 4's mapping rests on Kahl's **Ontological Continuity Condition**, and the
 conditions are given here in full so this appendix can be read without the chapter.
@@ -3968,11 +3999,12 @@ Doyle, J. A truth maintenance system. Massachusetts Institute of Technology,
 Artificial Intelligence Laboratory, Cambridge, MA. Read here as reprinted in M. L.
 Ginsberg (Ed.), *Readings in nonmonotonic reasoning*, ch. 4, "Truth maintenance",
 pp. 259–279. Los Altos, CA: Morgan Kaufmann.
-*[Metadata incomplete: the original journal citation — given as* Artificial
-Intelligence *12: 231–272, 1979 — and the reprint volume's year (given as 1987)
-appear in this scan only as a previous reader's handwritten annotation on the title
-page, not as printed metadata. Both require confirmation against a printed source
-before this paper cites "Doyle 1979" on their authority.]*
+Originally published in *Artificial Intelligence* 12(3), 231–272, November 1979;
+DOI: 10.1016/0004-3702(79)90008-0 (confirmed against the DOI registry's Crossref
+record, 2026-09-24).
+*[Metadata incomplete: the reprint volume's year (given as 1987) appears in this scan
+only as a previous reader's handwritten annotation on the title page and is not yet
+confirmed against a printed source.]*
 
 Jøsang, A. (2013). *Subjective logic*. Draft manuscript, 18 February 2013. University
 of Oslo.
@@ -4049,6 +4081,12 @@ et de l'Industrie, 1994.
 *[Metadata incomplete: no ISBN is printed in the extracted front matter — "CIP data
 are at the end of the book".]*
 
+Sun, M., Hong, F., & Zhang, W. (2025). Sophia: A persistent agent framework of
+artificial life. arXiv:2512.18202v1 [cs.AI], 20 December 2025.
+*[Metadata incomplete: no venue beyond the arXiv identifier. The document prints two
+forms of its own title: "…Framework of Artificial Life" on the title page and "…Framework
+for Artificial Life" in the running header; the title-page form is used here.]*
+
 Sumers, T. R., Yao, S., Narasimhan, K., & Griffiths, T. L. (2024). Cognitive
 architectures for language agents. *Transactions on Machine Learning Research*,
 issue 02/2024. Princeton University. arXiv:2309.02427v3 [cs.AI], 15 March 2024.
@@ -4076,7 +4114,7 @@ University.
 
 ## Works cited in the text without a verified entry
 
-Eighteen further works are cited in the chapters for which no source document is
+Seventeen further works are cited in the chapters for which no source document is
 currently held. They are listed here rather than given reconstructed entries, because
 a bibliographic entry built from memory is indistinguishable from a checked one once
 it is on the page — which is the failure mode the extraction rule above exists to
@@ -4084,7 +4122,13 @@ prevent. **Each requires sourcing before this paper is submitted.**
 
 Locke · Reid · Butler · Schechtman · Clark · Chalmers · Hansson · de Kleer ·
 Ebbinghaus · Wixted · Peirce · Semon (see the partial entry above) · Shoemaker ·
-Johnston · Goldman · Nuxoll (with Laird) · **Sophia** · **A-MEM**
+Johnston · Goldman · Nuxoll (with Laird) · **A-MEM**
+
+A further set of systems and surveys is discussed in the text — mostly in Appendix B's
+survey and in Chapters 1, 3 and 4 — without a bibliography entry yet: Mem0, MemMachine,
+Letta (MemGPT), Anthropic's memory tool, Pinecone Nexus, TierMem, Zep / Graphiti,
+MemRL, TOKI, soul.py, Du et al. (2026) and Lin et al. (2026). **Each also requires a
+sourced entry before submission.**
 
 Hansson is listed for the belief-base postulates that Appendix B records as Kumiho's
 self-claimed compliance; the paper claims no postulate for ENGRAM and notes AGM only

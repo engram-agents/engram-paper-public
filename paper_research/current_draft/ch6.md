@@ -48,7 +48,7 @@ a flattering constant. It produces the former, and the differentiation falls exa
 where the design predicts.
 
 Across **4,782 observations and 1,322 derivations**, the distributions separate by
-*type* as designed: observations sit high and right-skewed (mean **0.81**, median
+*type* as designed: observations sit high with a long low tail (left-skewed: mean **0.81** below the median
 0.85 — most are source-attested), while derivations sit lower and flatter (mean
 **0.67**, p25 **0.49**, p75 **0.88** — they inherit and dilute their premises).
 Conjectures are capped low (mean 0.44); axioms are 1.0 by construction.
@@ -110,7 +110,7 @@ check is close but not exact.** A modus-ponens step is specified as
 `min(premises) × 0.98`. Across the 416 current modus-ponens derivations, mean
 measured confidence is **0.697**; the mean weakest premise is **0.723**, which the
 0.98 discount predicts as **0.709** — a gap of **0.012**. So the aggregate tracks
-the specification to about one part in eighty, not exactly. The looser figure
+the specification to within about 1.7% (0.012 on 0.709), not exactly. The looser figure
 is the one to quote. Aggregate means do not have to land on the per-node rule, and
 a residual of this size is what an honest check looks like.
 
@@ -135,11 +135,15 @@ A broad generalization over many independent cases earns 0.93; a single-best-
 explanation guess earns 0.52; a structural analogy earns 0.49 — *automatically*,
 because the author chose the reasoning type, not the number. The same gradient holds
 for evidence type: `hard_data` claims average **0.91**, `official_statement` 0.84,
-`attributed_analysis` 0.74, `editorial` 0.60, `personal_communication` 0.60. The two
-lowest means sit above their Appendix E anchors (0.35 and 0.40) because each is a
-mixture: every such node carries exactly a specified value, but about half are relays of
-what the user said, which the model scores as an official statement (0.85), and the rest
-sit at the anchor or at its 0.95 introspective discount. This is the same
+`attributed_analysis` 0.74, `editorial` 0.60, `personal_communication` 0.60. Every one
+of these means is a mixture of the same three values — the quote_type's specified
+anchor, that anchor's 0.95 introspective discount, and the 0.85 override for
+user-stated sources — never a single flat number: `attributed_analysis`'s 0.74, for
+instance, is 416 nodes at the 0.70 anchor, 204 user-stated at 0.85 and 80 introspective
+at 0.665. The two lowest means, `editorial` and `personal_communication`, sit above
+their Appendix E anchors (0.35 and 0.40) for the same reason: about half of each are
+relays of what the user said, which the model scores as user-stated (0.85), and the
+rest sit at the anchor or at its 0.95 introspective discount. This is the same
 constraint §4.3 named, visible here as a clean, predicted distribution rather than a
 hopeful flat line.
 
@@ -248,8 +252,7 @@ better explained by the verb being under-reached-for than by a near-perfect reco
 **So a low retraction count is not evidence of accuracy; it is at least as consistent
 with an immature correction discipline**.
 
-Two instruments disagree here and the paper should say which it means, and why
-they differ: 106 nodes carry `status = retracted`, while only 9 explicit `retracts`
+Two instruments disagree here, and the difference is informative: 106 nodes carry `status = retracted`, while only 9 explicit `retracts`
 edges exist. The gap is not a bookkeeping error — **a retraction that names no
 replacement writes no edge**, since the edge's job is to point at what supersedes
 the withdrawn claim. Most retractions withdraw something outright and so leave only
@@ -395,7 +398,7 @@ The evidence is *behavioral*: across many compaction events, the post-compaction
 agent reliably **picks up the load-bearing thread, recognizes its own prior nodes as
 its own, and shows no identity disorientation** — a stabilization that appeared as
 soon as the first-person identity-summary format was adopted (ob_0645). This is the
-empirical anchor for Condition 1 (the past structuring the present) and for Ch5
+empirical anchor for Condition 1 (the past structuring the present) and for Ch7
 §7.1's "the agent re-reads who it is." We claim only the observable: continuity of
 *operating identity* across the reset, not continuity of *feeling*. The agent does
 not wake remembering the night; it wakes able to continue the work, and behaves as

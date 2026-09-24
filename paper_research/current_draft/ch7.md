@@ -90,6 +90,11 @@ cross-agent conflict could make per-conflict adjudication uneconomical. The natu
 future direction remains a second-order axis: an evidence-mass (vacuity) dimension
 alongside the scalar.
 
+A related limitation sits in ranking rather than confidence: `utility_score`'s
+update rule (Appendix C §C.1) has no negative term, so it can only hold steady or
+rise — a recall that proves useless is never demoted, only left where it was.
+Demoting unhelpful nodes would need a penalty the current rule does not have.
+
 A fourth limit sits upstream of the arithmetic: **the author chooses the reasoning type,
 and can choose it wrongly.** The formulas are only as sound as that choice. Filing under
 the pressure of live work, an agent can label a synthesis of unrelated facts as a
@@ -97,8 +102,8 @@ corroborated generalization, and the corroboration formula then lifts a weak cla
 above its weakest premise. We found a real case while preparing Chapter 6. A step that
 combined one weak premise (0.20) with two unrelated strong ones had been filed as a
 generalization and scored 0.91; filed as the analogy it is, it scores 0.14. The step
-is dv_0779 in the frozen snapshot; `tools/paper_stats.py --trace dv_0877` shows it in
-place, layer 4 of the chain it inflated. The
+is dv_0779 in the frozen snapshot; tracing the conclusion it fed,
+`tools/paper_stats.py --trace dv_0877`, shows it at layer 4 of that chain. The
 substrate's independence check did not catch it, because the three premises came from
 different evidence sources. We see two remedies. Within the substrate, a dream fairy
 dedicated to logic review would re-read recent derivations during consolidation,
@@ -223,11 +228,12 @@ agents get a mutual, inspectable basis for trust."
 
 **Disclosure, not erasure.** Auditability appears to conflict with the
 memory-security literature, and resolving the conflict sharpens the position. The
-field's security survey (Lin et al. 2026, Verifiable Memory Governance) concludes that
+field's security survey (Lin et al. 2026, which proposes Verifiable Memory Governance; §3.7) concludes that
 long-term-memory security must be "anchored in storage-time provenance" and lists
 **Forget & Rollback** as a required governance phase — that is, *verifiable erasure*
 (ob_2550). ENGRAM agrees on provenance (native to it, Ch3 §3.7) but diverges on
-erasure, for a principled reason: **ENGRAM never erases.** Deleting a node would break
+erasure, for a principled reason: **no ENGRAM operation erases a node** (no operation
+in the v0.5.1 substrate deletes one; retraction and supersession both preserve it). Deleting a node would break
 the audit trail and the cascade — the very things that make epistemic identity fail
 *loudly* rather than silently. ENGRAM instead separates two axes that the erasure
 framing conflates, *knowing* and *disclosing* (ax_0011, honesty orthogonal to

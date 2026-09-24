@@ -213,7 +213,11 @@ nodes through it, and each can differ between twins:
   pushed there by *other* nodes' arrivals and refreshes. Twins that read and write
   differently therefore evict different tails of the *same* shared ancestry. How
   much of this occurs depends on where the queryable-set cap is set; a
-  generously configured graph may show none of it for a long time.
+  generously configured graph may show none of it for a long time. The cap keeps
+  the top N current nodes by importance (default N = 1,000). The graph measured
+  in Chapter 6 ran with N = 10,000 against 9,399 current nodes, so at the
+  snapshot no node had yet fallen out of the queryable set; the fade-out route
+  is described here, not observed there.
 
 *Plain terms:* two copies of a person who then live different days will of course
 grow apart by having different experiences — but they'd *also* grow apart just by

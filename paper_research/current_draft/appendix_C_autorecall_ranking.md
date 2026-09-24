@@ -18,7 +18,10 @@ value updated by the same exponential rule, `Q_new = Q_old + α(1 − Q_old)` �
 ranking composites that learned value with semantic relevance rather than ordering by
 relevance alone. What differs is the reward: MemRL learns from task outcome, while
 ENGRAM learns from **what the agent did with the node once it had it**, which is a
-signal the substrate can observe directly and attribute without ambiguity.
+signal the substrate can observe directly and attribute without ambiguity. The rule
+has no negative term: a recall that proves useless leaves a node's utility where it
+was, so `utility_score` is non-decreasing. Demoting unhelpful nodes would need a
+penalty the current rule does not have; we list it as a limitation (§7.2).
 
 ## C.2 ENGRAM's utility_score — a learned value, graded by the act it earned
 

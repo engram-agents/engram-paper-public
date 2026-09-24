@@ -87,14 +87,17 @@ relevant prior art** — including the work this paper now cites:
 
 | Prior / concurrent work | Public | Before the 2026-03-20 search | Surfaced? |
 |---|---|---|---|
-| **Kumiho** (arXiv 2603.17244) — closest concurrent system | **2026-03-17** | **3 days** | **NO** |
-| **Kahl AGI/OCC** (Zenodo 18761736) — the paper's threshold | 2026-02-24 | 24 days | **NO** |
-| Kahl EAA (Zenodo 18441395) | 2026-01-31 | 48 days | NO |
+| **Kumiho** (arXiv 2603.17244) — closest concurrent system | **2026-03-18** | **2 days** | **NO** |
+| **Kahl 2026b (AGI/OCC)** (Zenodo 18761736) — the paper's threshold | 2026-02-24 | 24 days | **NO** |
+| Kahl 2026a (EAA) (Zenodo 18441395) | 2026-01-31 | 48 days | NO |
 | TMS lineage (Doyle 1979, de Kleer 1986) | 1979–86 | ~40+ yrs | NO |
 | AGM belief revision (Alchourrón-Gärdenfors-Makinson 1985) | 1985 | ~41 yrs | NO |
 | **CoALA** (Sumers et al., TMLR) — the field's common vocabulary | 2024-02 | ~25 months | **NO** |
 | **Pink et al.** (arXiv 2502.06975) — episodic-memory position paper | 2025-02-10 | ~13 months | **NO** |
 | **Wray, Kirk & Laird** (arXiv 2505.07087) — cognitive design patterns | 2025-06-13 | ~9 months | **NO** |
+
+Kumiho's date is its arXiv v1 stamp (18 March 2026); the document's own title page
+is dated 17 March.
 
 So the five conditions that make "independent discovery" an *honest* claim, rather than
 a convenient one, are all met: **(1)** Lei tried to find prior art; **(2)** earlier-
@@ -105,7 +108,7 @@ literature — we searched it and our search came up empty, which is a different
 defensible thing.
 
 The last three rows were added after a 2026-09 re-read, and they make the admission
-worse, which is why they belong here. Missing a preprint three days old is
+worse, which is why they belong here. Missing a preprint two days old is
 forgivable; missing a *Transactions on Machine Learning Research* paper from
 twenty-five months earlier — the organizing vocabulary much of the field now writes
 in — is not. We record it because the alternative, quietly citing those works as
@@ -153,9 +156,9 @@ was on our radar.
 
 | System | First public surface | vs. ENGRAM ideation (2026-03-20) | vs. day-1 recording (2026-04-09) |
 |---|---|---|---|
-| **Kumiho** (2603.17244) | **2026-03-17** | **3 days before** (not surfaced) | 23 days before |
-| Kahl AGI/OCC (Zenodo) | 2026-02-24 | 24 days before (not surfaced) | 44 days before |
-| Kahl EAA (Zenodo) | 2026-01-31 | 48 days before (not surfaced) | 68 days before |
+| **Kumiho** (2603.17244) | **2026-03-18** | **2 days before** (not surfaced) | 22 days before |
+| Kahl 2026b (AGI/OCC) (Zenodo) | 2026-02-24 | 24 days before (not surfaced) | 44 days before |
+| Kahl 2026a (EAA) (Zenodo) | 2026-01-31 | 48 days before (not surfaced) | 68 days before |
 | GAM (2604.12285) | 2026-04-14 | 25 days **after** | 5 days after |
 | SCM (2604.20943) | 2026-04-22 | 33 days **after** | 13 days after |
 | Mem0g / Zep / A-MEM | 2024–25 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) | predate |
@@ -164,8 +167,9 @@ The two structurally-closest systems (Kumiho, SCM) both surface in March–April
 concurrent with, not predating-by-much, ENGRAM's ideation. The older systems lack the
 specific shape (cascade propagation, first-class contradiction, `derives_from`). The
 earliest published instance of ENGRAM's specific shape we can find is Kumiho's
-2026-03-17 preprint — and the three-day gap to Lei's foundational message, with the
-contemporaneous search missing it, is the cleanest evidence of parallel design.
+preprint (arXiv v1, 18 March 2026; its title page is dated 17 March) — and the
+two-day gap to Lei's foundational message, with the contemporaneous search
+missing it, is the cleanest evidence of parallel design.
 
 ## A.5 What this establishes — and the Kahl case specifically
 

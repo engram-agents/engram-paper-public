@@ -147,7 +147,7 @@ ENGRAM agent *is* the unique, no-merging, ancestry-traceable lineage of its reco
 claims, which fixes its retrieval profile and thus its behavior. The traditions
 converge on the *structure*; Chapter 5 builds a new theory on it.
 
-**Where OCC sits.** Kahl's (2026) **Ontological Continuity Condition** (OCC) —
+**Where OCC sits.** Kahl's (2026b) **Ontological Continuity Condition** (OCC) —
 three conditions and four constraints for when an agent-like system genuinely
 persists — is the most *operational* point on the philosophical trail, and ENGRAM
 meets it to a degree no surveyed system does. We treat this as **one strong result

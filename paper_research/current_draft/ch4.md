@@ -60,7 +60,9 @@ Condition 2 via a stated type/token extension — is stated inside those section
 ## 4.2 Typed nodes, typed edges, provenance — the generating set
 
 ENGRAM is built from a small set of primitives that compose into everything above
-them (dv_0615, the eight-primitive generating set). A claim is not free text but a
+them (dv_0615) — eight of them: typed nodes, typed edges, provenance, cascade,
+supersede, focus mode, auto-surfacing and the confidence model (Appendix E §E.5).
+A claim is not free text but a
 *kind*: an observation (a fact citing its source), a derivation (an inference citing
 its premises), a definition, a contradiction, an axiom, a cornerstone, and a few
 more. Edges are typed too; the load-bearing one is `derives_from`, the premise edge,
@@ -136,9 +138,10 @@ Second, the residual limitation, precisely narrowed (detail in Ch7): surfaces th
 consume *only* the scalar — recall ranking, gating thresholds — cannot distinguish
 two 0.7s without walking the graph. This is a trade of cheap lookup against full
 truth, not a representational loss. The primary text is stronger than its
-caricature: Jøsang's discounting operators (his Defs 23–25, §4.8) *do* weight source
-reliability — under Def 23 specifically, the recommender's distrust flows into `u`,
-so a distrusted source is pushed toward vacuity, not disbelief — closer to ENGRAM's
+caricature: Jøsang's discounting operators (Jøsang's Definitions 23–25, in his
+§4.8) *do* weight source reliability — under Def 23 specifically, the
+recommender's distrust flows into `u`, so a distrusted source is pushed toward
+vacuity, not disbelief — closer to ENGRAM's
 own posture than the caricature suggests. The divergence that survives the primary
 text concerns **independence**: SL's multi-source operators require opinion
 independence to be *assumed* — cumulative fusion is defined over "independent

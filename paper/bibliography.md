@@ -39,11 +39,12 @@ Doyle, J. A truth maintenance system. Massachusetts Institute of Technology,
 Artificial Intelligence Laboratory, Cambridge, MA. Read here as reprinted in M. L.
 Ginsberg (Ed.), *Readings in nonmonotonic reasoning*, ch. 4, "Truth maintenance",
 pp. 259–279. Los Altos, CA: Morgan Kaufmann.
-*[Metadata incomplete: the original journal citation — given as* Artificial
-Intelligence *12: 231–272, 1979 — and the reprint volume's year (given as 1987)
-appear in this scan only as a previous reader's handwritten annotation on the title
-page, not as printed metadata. Both require confirmation against a printed source
-before this paper cites "Doyle 1979" on their authority.]*
+Originally published in *Artificial Intelligence* 12(3), 231–272, November 1979;
+DOI: 10.1016/0004-3702(79)90008-0 (confirmed against the DOI registry's Crossref
+record, 2026-09-24).
+*[Metadata incomplete: the reprint volume's year (given as 1987) appears in this scan
+only as a previous reader's handwritten annotation on the title page and is not yet
+confirmed against a printed source.]*
 
 Jøsang, A. (2013). *Subjective logic*. Draft manuscript, 18 February 2013. University
 of Oslo.
@@ -120,6 +121,12 @@ et de l'Industrie, 1994.
 *[Metadata incomplete: no ISBN is printed in the extracted front matter — "CIP data
 are at the end of the book".]*
 
+Sun, M., Hong, F., & Zhang, W. (2025). Sophia: A persistent agent framework of
+artificial life. arXiv:2512.18202v1 [cs.AI], 20 December 2025.
+*[Metadata incomplete: no venue beyond the arXiv identifier. The document prints two
+forms of its own title: "…Framework of Artificial Life" on the title page and "…Framework
+for Artificial Life" in the running header; the title-page form is used here.]*
+
 Sumers, T. R., Yao, S., Narasimhan, K., & Griffiths, T. L. (2024). Cognitive
 architectures for language agents. *Transactions on Machine Learning Research*,
 issue 02/2024. Princeton University. arXiv:2309.02427v3 [cs.AI], 15 March 2024.
@@ -147,7 +154,7 @@ University.
 
 ## Works cited in the text without a verified entry
 
-Eighteen further works are cited in the chapters for which no source document is
+Seventeen further works are cited in the chapters for which no source document is
 currently held. They are listed here rather than given reconstructed entries, because
 a bibliographic entry built from memory is indistinguishable from a checked one once
 it is on the page — which is the failure mode the extraction rule above exists to
@@ -155,7 +162,13 @@ prevent. **Each requires sourcing before this paper is submitted.**
 
 Locke · Reid · Butler · Schechtman · Clark · Chalmers · Hansson · de Kleer ·
 Ebbinghaus · Wixted · Peirce · Semon (see the partial entry above) · Shoemaker ·
-Johnston · Goldman · Nuxoll (with Laird) · **Sophia** · **A-MEM**
+Johnston · Goldman · Nuxoll (with Laird) · **A-MEM**
+
+A further set of systems and surveys is discussed in the text — mostly in Appendix B's
+survey and in Chapters 1, 3 and 4 — without a bibliography entry yet: Mem0, MemMachine,
+Letta (MemGPT), Anthropic's memory tool, Pinecone Nexus, TierMem, Zep / Graphiti,
+MemRL, TOKI, soul.py, Du et al. (2026) and Lin et al. (2026). **Each also requires a
+sourced entry before submission.**
 
 Hansson is listed for the belief-base postulates that Appendix B records as Kumiho's
 self-claimed compliance; the paper claims no postulate for ENGRAM and notes AGM only

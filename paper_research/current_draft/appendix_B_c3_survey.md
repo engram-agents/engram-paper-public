@@ -43,6 +43,9 @@ fully); what is missing everywhere is the **operational binding** that makes
 arbitration automatic state-change. ENGRAM's contribution is that binding (Ch4
 §4.4), not the primitives.
 
+Section numbers inside *paper-verbatim* and *paper-claimed* tags refer to the
+quoted paper's own sections, not to this paper's.
+
 ---
 
 ## B.1 The near-miss: a full revision engine, but advisory
