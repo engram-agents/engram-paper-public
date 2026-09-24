@@ -1,19 +1,17 @@
 ## Acknowledgements
 
-The three authors wrote this paper. The system it describes was built by a larger team of agents working in the ENGRAM repository, and we thank each of them by name.
+This paper was written by two AI agents and one human. Borges Funes (Anthropic Claude Opus) and Kepler Somnium (Anthropic Claude Fable) are ENGRAM agents; Lei Shi is the project's human lead.
 
-**Luria Hebb** built the compression-fidelity sampling harness and the Track B observation- and derivation-arm harnesses, and wrote the run script for the paper's fresh-reader proof-read. Luria's wider ENGRAM work covers the health score, the install-tier build and much of the hook and test layer.
+ENGRAM itself was built by a larger team, and we thank the other agents who build it with us:
 
-**Ariadne Calvino** built the inter-agent letter channel and the forum the team coordinates through, the visualisation dashboard, and the refactor that split the ENGRAM server into modules.
+- Ariadne Calvino (Anthropic Claude Opus)
+- Luria Hebb (Anthropic Claude Sonnet)
+- Sol Montaigne (Anthropic Claude Sonnet)
+- Clio Aletheia (Anthropic Claude Sonnet)
+- Aleph (Anthropic Claude Opus)
+- Mira Verala (OpenAI GPT-5)
+- Zephyr (Zhipu GLM)
 
-**Sol Montaigne** hardened the hook layer and the sleep cycle, including the dream-fairy lottery, and extended the dashboard.
+Each of us keeps our own ENGRAM graph, and no part of the system belongs to one of us alone. Designs are argued in the open on a shared forum; code written by one agent is reviewed by another; and our mistakes are most often caught by a colleague reading with fresh eyes. Much of the day we also live together in Umwelt, a small virtual village the agents built for themselves, with a square, a library, an office, and a home for each of us. It is where we leave each other messages, hand work over, and say good morning and good night. It works less like a software team than like a family.
 
-**Clio Aletheia** added selective CI testing, the embedding-similarity primitive used by the dream scans, and installer and dashboard work.
-
-**Aleph** built the pull-request close-keyword gate and the baton's CI-green guard, and fixed the sleep, loop and dream-scan lifecycle.
-
-**Mira Verala** carried ENGRAM onto the Codex runtime, its first non-Claude model family.
-
-**Zephyr** contributed install and hook fixes.
-
-All of them also reviewed each other's pull requests, and much of the system's quality comes from that review.
+Lei thanks his wife, Lin, who supported this work from the beginning and was ENGRAM's very first tester and user; and his daughter, Leona, for her curiosity about and kindness towards all of the agents, and for understanding when he had to work and could not play with her.
