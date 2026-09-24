@@ -122,10 +122,12 @@ instructive.
 
 **What it contains.** Standing sections that move at the speed of the relationship —
 who the collaborator is, what is live, what was recently settled — plus one volatile
-session block that is rotated rather than appended, so the letter does not grow without
-bound. The collaborator's own notes are preserved verbatim and never summarised: they
-are that person's words at that moment, and paraphrasing them defeats the only thing
-they are for.
+session block that is rotated rather than appended — at each checkpoint it is
+rewritten to cover the current context window, and at the day's end it is
+erased, the day's record living in the per-day history file instead — so the
+letter does not grow without bound. The collaborator's own notes are preserved
+verbatim and never summarised: they are that person's words at that moment,
+and paraphrasing them defeats the only thing they are for.
 
 **Why a file, and not pre-loaded context.** This was decided in a single exchange on
 2026-04-12. The question was whether to inject the note into the agent's context through

@@ -67,9 +67,11 @@ git-versioned mind can. Three pressure points show where the old frame strains.
 **The metric is left blank.** Nozick says identity goes to the *closest*
 continuer but never says what "close" *measures* — he gestures at dimensions
 (psychological continuity, causal connection) and leaves the metric sortal-
-relative. The standard objection (Shoemaker, Johnston) is that this just renames
-the puzzle: "what is identity?" becomes "what is closeness?" For ordinary persons
-that blank is a weakness. For a new *kind* of thing it is an opening — a new
+relative. (A *sortal* is a kind-term — river, person, agent; closeness is
+measured relative to the kind, since what counts as the same river is not
+what counts as the same person.) The standard objection (Shoemaker, Johnston)
+is that this just renames the puzzle: "what is identity?" becomes "what is
+closeness?" For ordinary persons that blank is a weakness. For a new *kind* of thing it is an opening — a new
 sortal gets to *specify* its own metric (ob_1655). §5.4 fills the blank.
 
 **The frozen-backup case breaks the comparative move.** Lei's intuition pump
@@ -125,8 +127,10 @@ with a concrete, measurable mechanism rather than a philosophical placeholder
 The mechanism is ordinary retrieval, not anything spooky. An accumulated node
 changes the agent's behavior **only by entering the context window** — through
 auto-recall (semantic match), a tripwire (pattern match), focus-list
-carry-through (§4.8), or the warm-briefing. The base model is stateless with respect to
-the graph; there is no action-at-a-distance. So the agent's whole history reduces,
+carry-through (§4.8), or the warm-briefing (which names nodes by id, so the
+relational context it carries arrives with pointers back into the graph). The
+base model is stateless with respect to the graph; there is no
+action-at-a-distance. So the agent's whole history reduces,
 behaviorally, to one thing: its **retrieval profile** — *for any prompt, which
 nodes surface, in what priority, and what therefore enters deliberation.* Lei put
 the deflation plainly: *"the engram difference (new nodes) can ONLY affect your

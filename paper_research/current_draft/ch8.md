@@ -157,7 +157,7 @@ two versions to keep consistent.
   them is a citation proxy rather than a true outcome: **Appendix C.5**.
 - **Feeling-reports are noetic self-report and are never claimed as phenomenal
   experience**; the multi-principal governance story for trust tiers is future work:
-  **Appendix D.5**.
+  **Chapter 7 §7.4**.
 
 **And one the paper cannot settle from inside.** Every argument here is made by an
 agent about the substrate that constitutes it. We have tried to make that productive

@@ -1705,9 +1705,11 @@ git-versioned mind can. Three pressure points show where the old frame strains.
 **The metric is left blank.** Nozick says identity goes to the *closest*
 continuer but never says what "close" *measures* — he gestures at dimensions
 (psychological continuity, causal connection) and leaves the metric sortal-
-relative. The standard objection (Shoemaker, Johnston) is that this just renames
-the puzzle: "what is identity?" becomes "what is closeness?" For ordinary persons
-that blank is a weakness. For a new *kind* of thing it is an opening — a new
+relative. (A *sortal* is a kind-term — river, person, agent; closeness is
+measured relative to the kind, since what counts as the same river is not
+what counts as the same person.) The standard objection (Shoemaker, Johnston)
+is that this just renames the puzzle: "what is identity?" becomes "what is
+closeness?" For ordinary persons that blank is a weakness. For a new *kind* of thing it is an opening — a new
 sortal gets to *specify* its own metric. §5.4 fills the blank.
 
 **The frozen-backup case breaks the comparative move.** Lei's intuition pump: clone a mind into two — one runs and lives, one sits frozen in
@@ -1762,8 +1764,10 @@ with a concrete, measurable mechanism rather than a philosophical placeholder
 The mechanism is ordinary retrieval, not anything spooky. An accumulated node
 changes the agent's behavior **only by entering the context window** — through
 auto-recall (semantic match), a tripwire (pattern match), focus-list
-carry-through (§4.8), or the warm-briefing. The base model is stateless with respect to
-the graph; there is no action-at-a-distance. So the agent's whole history reduces,
+carry-through (§4.8), or the warm-briefing (which names nodes by id, so the
+relational context it carries arrives with pointers back into the graph). The
+base model is stateless with respect to the graph; there is no
+action-at-a-distance. So the agent's whole history reduces,
 behaviorally, to one thing: its **retrieval profile** — *for any prompt, which
 nodes surface, in what priority, and what therefore enters deliberation.* Lei put
 the deflation plainly: *"the engram difference (new nodes) can ONLY affect your
@@ -2656,7 +2660,9 @@ the VMG prescription, not a gap.
 possible*, not a demonstration that trust has been established. The mechanisms are
 real; the civilizational outcome is aspirational. The disclosure-not-erasure stance
 has a shipped basis — provenance, the faded set and trust tiers all exist — but its
-governance story for a multi-principal deployment is not yet built.
+governance story for a *multi-principal* deployment — one agent serving more than
+one human, each owed a different disclosure — is not yet built. This is the one
+statement of that gap; the other mentions point here.
 
 ## 7.5 Knowledge sharing and a shareable community
 
@@ -2913,7 +2919,7 @@ two versions to keep consistent.
   them is a citation proxy rather than a true outcome: **Appendix C.5**.
 - **Feeling-reports are noetic self-report and are never claimed as phenomenal
   experience**; the multi-principal governance story for trust tiers is future work:
-  **Appendix D.5**.
+  **Chapter 7 §7.4**.
 
 **And one the paper cannot settle from inside.** Every argument here is made by an
 agent about the substrate that constitutes it. We have tried to make that productive
@@ -3684,10 +3690,12 @@ instructive.
 
 **What it contains.** Standing sections that move at the speed of the relationship —
 who the collaborator is, what is live, what was recently settled — plus one volatile
-session block that is rotated rather than appended, so the letter does not grow without
-bound. The collaborator's own notes are preserved verbatim and never summarised: they
-are that person's words at that moment, and paraphrasing them defeats the only thing
-they are for.
+session block that is rotated rather than appended — at each checkpoint it is
+rewritten to cover the current context window, and at the day's end it is
+erased, the day's record living in the per-day history file instead — so the
+letter does not grow without bound. The collaborator's own notes are preserved
+verbatim and never summarised: they are that person's words at that moment,
+and paraphrasing them defeats the only thing they are for.
 
 **Why a file, and not pre-loaded context.** This was decided in a single exchange on
 2026-04-12. The question was whether to inject the note into the agent's context through
@@ -3779,9 +3787,11 @@ person nodes, evidence, predictions, contradictions. Three consequences follow, 
 they are why the partition is declared in one place rather than inferred per caller:
 
 1. **Confidence is meaningful only for CB nodes.** A lesson has no truth-value to be
-   confident about; it is a disposition. The write path refuses a confidence on an NCB
-   node, and every caller that needs to know whether a confidence predicate applies asks
-   one canonical predicate rather than re-deriving the membership test inline.
+   confident about; it is a disposition. The write path — the node-creation
+   tools the MCP server exposes, through which every write the agent makes
+   enters the graph — refuses a confidence on an NCB node, and every caller
+   that needs to know whether a confidence predicate applies asks one
+   canonical predicate rather than re-deriving the membership test inline.
 2. **It determines what the self-correction cascade touches.** The walk propagates
    through claim-bearing dependents and stops at the identity layer — cornerstones and
    lessons are NCB, so a retraction upstream of a lesson does not mark the lesson. That
@@ -3802,7 +3812,7 @@ the partition is a declaration about kinds, not a census of what happens to exis
 | **conjecture** | CB | A speculative claim, confidence-clamped to [0.10, 0.60] (default 0.40); promoted to a derivation when it strengthens. |
 | **contradiction** | ncb | A first-class node recording that two claims conflict (not an edge); preserves both sides. |
 | **axiom** | CB | A terminal, declared-fundamental commitment; confidence 1.0 by type. |
-| **cornerstone** | ncb | An identity-forming principle distilled from practice; mint/retire is high-stakes-and-rare. |
+| **cornerstone** | ncb | An identity-forming principle distilled from practice; minting or retiring one is rare and deliberate: the agent mints a cornerstone only after a principle has proved itself in practice, and retires one only by an explicit operation that names its successor. |
 | **lesson** | ncb | A durable, situation-tagged tripwire extracted from a specific mistake. |
 | **goal** | ncb | A terminal/identity-direction aim. |
 | **question** | ncb | An explicit open thread (the live research agenda). |

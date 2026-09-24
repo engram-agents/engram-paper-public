@@ -253,7 +253,9 @@ the VMG prescription, not a gap.
 possible*, not a demonstration that trust has been established. The mechanisms are
 real; the civilizational outcome is aspirational. The disclosure-not-erasure stance
 has a shipped basis — provenance, the faded set and trust tiers all exist — but its
-governance story for a multi-principal deployment is not yet built.
+governance story for a *multi-principal* deployment — one agent serving more than
+one human, each owed a different disclosure — is not yet built. This is the one
+statement of that gap; the other mentions point here.
 
 ## 7.5 Knowledge sharing and a shareable community
 

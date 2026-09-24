@@ -25,9 +25,11 @@ person nodes, evidence, predictions, contradictions. Three consequences follow, 
 they are why the partition is declared in one place rather than inferred per caller:
 
 1. **Confidence is meaningful only for CB nodes.** A lesson has no truth-value to be
-   confident about; it is a disposition. The write path refuses a confidence on an NCB
-   node, and every caller that needs to know whether a confidence predicate applies asks
-   one canonical predicate rather than re-deriving the membership test inline.
+   confident about; it is a disposition. The write path — the node-creation
+   tools the MCP server exposes, through which every write the agent makes
+   enters the graph — refuses a confidence on an NCB node, and every caller
+   that needs to know whether a confidence predicate applies asks one
+   canonical predicate rather than re-deriving the membership test inline.
 2. **It determines what the self-correction cascade touches.** The walk propagates
    through claim-bearing dependents and stops at the identity layer — cornerstones and
    lessons are NCB, so a retraction upstream of a lesson does not mark the lesson. That
@@ -48,7 +50,7 @@ the partition is a declaration about kinds, not a census of what happens to exis
 | **conjecture** | CB | A speculative claim, confidence-clamped to [0.10, 0.60] (default 0.40); promoted to a derivation when it strengthens. |
 | **contradiction** | ncb | A first-class node recording that two claims conflict (not an edge); preserves both sides. |
 | **axiom** | CB | A terminal, declared-fundamental commitment; confidence 1.0 by type. |
-| **cornerstone** | ncb | An identity-forming principle distilled from practice; mint/retire is high-stakes-and-rare. |
+| **cornerstone** | ncb | An identity-forming principle distilled from practice; minting or retiring one is rare and deliberate: the agent mints a cornerstone only after a principle has proved itself in practice, and retires one only by an explicit operation that names its successor. |
 | **lesson** | ncb | A durable, situation-tagged tripwire extracted from a specific mistake. |
 | **goal** | ncb | A terminal/identity-direction aim. |
 | **question** | ncb | An explicit open thread (the live research agenda). |
