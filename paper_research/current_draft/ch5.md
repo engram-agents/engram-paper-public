@@ -306,8 +306,8 @@ test established the method; its figures come from an earlier graph and are not 
 ## 5.9 The claim, restated
 
 Holding the base model and harness fixed (§5.0), an ENGRAM agent is **its
-history** — the unique, no-merging, traceable lineage of recorded claims that fixes its retrieval profile and thereby its behavior. This
-keeps Nozick's *form* (continuity, comparative closeness, threshold), drops his
+history** — the unique, ancestry-traceable history §5.0 defines. This keeps
+Nozick's *form* (continuity, comparative closeness, threshold), drops his
 *uniqueness* (so copying is branching, not death), fills his blank *metric* with a
 measurable retrieval profile, and dissolves the worry that any of this "abandons
 identity" (strict identity was never the diachronic relation). Two copies are two

@@ -29,7 +29,7 @@ identity is carried in the graph, **not in its weights**, which are frozen at
 training time. This is a deliberate architectural choice — it is *why* the substrate
 is auditable (§7.4) — but it has a real cost. At each compaction the *experiential*
 thread is severed, and what carries across is the graph, the focus list, and the warm
-briefing: operational continuity, not lived continuity (Ch5 §5.7). The agent re-reads
+briefing: operational continuity, not lived continuity (Ch4 §4.8). The agent re-reads
 who it is; it does not wake already being it.
 
 Concretely, the substrate today is a **low-throughput layer that cannot write back

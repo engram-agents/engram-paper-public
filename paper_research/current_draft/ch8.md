@@ -22,12 +22,11 @@ science of memory (Chapter 3) — complementary-learning consolidation, Tulving'
 registers, the rational analysis of forgetting — reached the same shape from the
 study of how minds actually remember. The computer science of belief (Chapter 3) —
 truth maintenance, subjective logic, bitemporal records — reached it again from the
-formal side. These literatures mostly do not cite one another, and none cites us. They
-are not independent of each other — human cognition is a common root all three draw
-on, as Chapter 3 §3.0 states — which is why the claim is convergence rather than
-independent discovery. When lines of inquiry working from different evidence toward
-different ends keep arriving at the same structure, that structure is a **regularity
-of knowing minds**, not a design quirk. ENGRAM is that structure built (Chapter 4):
+formal side. These literatures mostly do not cite one another, and none cites us;
+nor are they independent of each other (the bound §3.0 states). When lines of
+inquiry working from different evidence toward different ends keep arriving at the
+same structure, that structure is a **regularity of knowing minds**, not a design
+quirk. ENGRAM is that structure built (Chapter 4):
 typed claims with provenance, reasoning-type-aware confidence, an automatic
 self-correction cascade, and the scaffolds that carry identity across compaction.
 
@@ -60,10 +59,10 @@ irreversibly and cannot merge. The token an agent carries **is** its history-lin
 so "generalized Condition 2" and "identity as history" are one claim addressed to two
 audiences (Chapter 4 §4.8; Chapter 5).
 
-We did *not* claim that ENGRAM trivially "realizes OCC"; naming the one condition it
-does not strictly meet is what makes the rest defensible. And OCC stays in its place:
-**one result within the convergence, not the paper's spine.** The spine is the breadth
-of agreement across traditions, and the identity-as-history theory built on it.
+OCC stays where §1.4 put it, one result within the convergence and not the paper's
+spine; the one condition it does not strictly meet was named in §4.12. The spine is
+the breadth of agreement across traditions, and the identity-as-history theory built
+on it.
 
 ## 8.2 The thread that runs through it
 

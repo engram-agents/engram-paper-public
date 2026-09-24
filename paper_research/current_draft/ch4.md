@@ -571,7 +571,5 @@ B/C/D structurally), **closes the architectural deficit** Kahl names (epistemic
 failure that does not bear on continuity), and for **C2** does not meet the strict
 reset-symmetry text but motivates a principled type/token extension for digital
 substrates. We do **not** claim that ENGRAM trivially "realizes OCC": C2's strict form
-is not met, and saying so is what makes the rest defensible. And per Chapter 1, OCC
-is **one strong result inside the convergence**, not the paper's spine: the breadth
-of traditions reaching this same structure (Ch2, Ch3) is the load-bearing argument;
-OCC is the most operational point on it.
+is not met, and saying so is what makes the rest defensible. Its place in the
+argument is the one §1.4 gave it: one result inside the convergence.

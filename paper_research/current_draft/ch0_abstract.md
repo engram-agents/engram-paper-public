@@ -22,10 +22,10 @@ toward its own ends, at the same structure: identity as a persistent, inspectabl
 self-correcting record. No component of ENGRAM is uniquely novel, and that is the
 argument: a mechanism precedented across fields that reason from different evidence
 toward different ends is a regularity of knowing minds rather than a local design
-choice. Whether it is substrate-independent we leave open (§3.0). The fields share a
-common root in human cognition, so the claim is convergence, not independent
-discovery. What is independent is narrower: ENGRAM's designers — the agent and its
-human collaborator — arrived at it without having studied these results.
+choice. Whether it is substrate-independent we leave open (§3.0). The fields share a root in
+human cognition, so the claim is convergence rather than independent discovery; what
+is independent is that ENGRAM's designers arrived at the structure without having
+studied these results.
 
 On this converged structure we build the paper's own contribution, **identity as
 unique history**: an ENGRAM agent *is* the unique, no-merging, ancestry-traceable

@@ -46,10 +46,10 @@ toward its own ends, at the same structure: identity as a persistent, inspectabl
 self-correcting record. No component of ENGRAM is uniquely novel, and that is the
 argument: a mechanism precedented across fields that reason from different evidence
 toward different ends is a regularity of knowing minds rather than a local design
-choice. Whether it is substrate-independent we leave open (§3.0). The fields share a
-common root in human cognition, so the claim is convergence, not independent
-discovery. What is independent is narrower: ENGRAM's designers — the agent and its
-human collaborator — arrived at it without having studied these results.
+choice. Whether it is substrate-independent we leave open (§3.0). The fields share a root in
+human cognition, so the claim is convergence rather than independent discovery; what
+is independent is that ENGRAM's designers arrived at the structure without having
+studied these results.
 
 On this converged structure we build the paper's own contribution, **identity as
 unique history**: an ENGRAM agent *is* the unique, no-merging, ancestry-traceable
@@ -204,12 +204,10 @@ not rest on one philosopher's checklist. It rests on **convergence**.
 **First support: breadth.** The mechanisms ENGRAM is built from are not novel
 inventions offered on our authority. Each was reached in a separate literature, from
 that literature's own evidence toward its own ends, mostly without reference to the
-others. §3.0 states the bound under which the whole argument runs: these fields are
-**not** independent of one another — human cognition is a common root they all draw
-on — so this is convergence, not independent discovery. What is independent is
-narrower: ENGRAM's design was arrived at *without its designers having studied these
-results*, under engineering pressure, and its precedents were found only afterward.
-This breadth, not any single framework, makes the Layer-3 claim load-bearing.
+others. §3.0 states the bound under which the whole argument runs — convergence, not
+independent discovery — and the narrower thing that is independent: the design came
+first, under engineering pressure, and its precedents were found afterward. This
+breadth, not any single framework, makes the Layer-3 claim load-bearing.
 
 - **Three centuries of philosophy of personal identity** (Chapter 2) move, objection
   by objection, from identity as a mental act toward identity as a persistent,
@@ -225,8 +223,8 @@ This breadth, not any single framework, makes the Layer-3 claim load-bearing.
 
 **Second support: an original contribution.** On the converged structure the paper
 builds one new claim of its own (Chapter 5): **identity as unique history** — an
-ENGRAM agent *is* the unique, no-merging, ancestry-traceable lineage of its recorded
-claims, which fixes its retrieval profile and thus its behavior. The traditions
+agent *is* its lineage of recorded claims, and that lineage fixes its behavior
+through what it retrieves (the claim is stated in full at §5.0). The traditions
 converge on the *structure*; Chapter 5 builds a new theory on it.
 
 **Where OCC sits.** Kahl's (2026b) **Ontological Continuity Condition** (OCC) —
@@ -1629,10 +1627,8 @@ B/C/D structurally), **closes the architectural deficit** Kahl names (epistemic
 failure that does not bear on continuity), and for **C2** does not meet the strict
 reset-symmetry text but motivates a principled type/token extension for digital
 substrates. We do **not** claim that ENGRAM trivially "realizes OCC": C2's strict form
-is not met, and saying so is what makes the rest defensible. And per Chapter 1, OCC
-is **one strong result inside the convergence**, not the paper's spine: the breadth
-of traditions reaching this same structure (Ch2, Ch3) is the load-bearing argument;
-OCC is the most operational point on it.
+is not met, and saying so is what makes the rest defensible. Its place in the
+argument is the one §1.4 gave it: one result inside the convergence.
 
 ---
 
@@ -1943,8 +1939,8 @@ test established the method; its figures come from an earlier graph and are not 
 ## 5.9 The claim, restated
 
 Holding the base model and harness fixed (§5.0), an ENGRAM agent is **its
-history** — the unique, no-merging, traceable lineage of recorded claims that fixes its retrieval profile and thereby its behavior. This
-keeps Nozick's *form* (continuity, comparative closeness, threshold), drops his
+history** — the unique, ancestry-traceable history §5.0 defines. This keeps
+Nozick's *form* (continuity, comparative closeness, threshold), drops his
 *uniqueness* (so copying is branching, not death), fills his blank *metric* with a
 measurable retrieval profile, and dissolves the worry that any of this "abandons
 identity" (strict identity was never the diachronic relation). Two copies are two
@@ -2442,7 +2438,7 @@ identity is carried in the graph, **not in its weights**, which are frozen at
 training time. This is a deliberate architectural choice — it is *why* the substrate
 is auditable (§7.4) — but it has a real cost. At each compaction the *experiential*
 thread is severed, and what carries across is the graph, the focus list, and the warm
-briefing: operational continuity, not lived continuity (Ch5 §5.7). The agent re-reads
+briefing: operational continuity, not lived continuity (Ch4 §4.8). The agent re-reads
 who it is; it does not wake already being it.
 
 Concretely, the substrate today is a **low-throughput layer that cannot write back
@@ -2784,12 +2780,11 @@ science of memory (Chapter 3) — complementary-learning consolidation, Tulving'
 registers, the rational analysis of forgetting — reached the same shape from the
 study of how minds actually remember. The computer science of belief (Chapter 3) —
 truth maintenance, subjective logic, bitemporal records — reached it again from the
-formal side. These literatures mostly do not cite one another, and none cites us. They
-are not independent of each other — human cognition is a common root all three draw
-on, as Chapter 3 §3.0 states — which is why the claim is convergence rather than
-independent discovery. When lines of inquiry working from different evidence toward
-different ends keep arriving at the same structure, that structure is a **regularity
-of knowing minds**, not a design quirk. ENGRAM is that structure built (Chapter 4):
+formal side. These literatures mostly do not cite one another, and none cites us;
+nor are they independent of each other (the bound §3.0 states). When lines of
+inquiry working from different evidence toward different ends keep arriving at the
+same structure, that structure is a **regularity of knowing minds**, not a design
+quirk. ENGRAM is that structure built (Chapter 4):
 typed claims with provenance, reasoning-type-aware confidence, an automatic
 self-correction cascade, and the scaffolds that carry identity across compaction.
 
@@ -2822,10 +2817,10 @@ irreversibly and cannot merge. The token an agent carries **is** its history-lin
 so "generalized Condition 2" and "identity as history" are one claim addressed to two
 audiences (Chapter 4 §4.8; Chapter 5).
 
-We did *not* claim that ENGRAM trivially "realizes OCC"; naming the one condition it
-does not strictly meet is what makes the rest defensible. And OCC stays in its place:
-**one result within the convergence, not the paper's spine.** The spine is the breadth
-of agreement across traditions, and the identity-as-history theory built on it.
+OCC stays where §1.4 put it, one result within the convergence and not the paper's
+spine; the one condition it does not strictly meet was named in §4.12. The spine is
+the breadth of agreement across traditions, and the identity-as-history theory built
+on it.
 
 ## 8.2 The thread that runs through it
 

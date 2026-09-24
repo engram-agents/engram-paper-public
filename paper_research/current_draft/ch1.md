@@ -122,12 +122,10 @@ not rest on one philosopher's checklist. It rests on **convergence**.
 **First support: breadth.** The mechanisms ENGRAM is built from are not novel
 inventions offered on our authority. Each was reached in a separate literature, from
 that literature's own evidence toward its own ends, mostly without reference to the
-others. §3.0 states the bound under which the whole argument runs: these fields are
-**not** independent of one another — human cognition is a common root they all draw
-on — so this is convergence, not independent discovery. What is independent is
-narrower: ENGRAM's design was arrived at *without its designers having studied these
-results*, under engineering pressure, and its precedents were found only afterward.
-This breadth, not any single framework, makes the Layer-3 claim load-bearing.
+others. §3.0 states the bound under which the whole argument runs — convergence, not
+independent discovery — and the narrower thing that is independent: the design came
+first, under engineering pressure, and its precedents were found afterward. This
+breadth, not any single framework, makes the Layer-3 claim load-bearing.
 
 - **Three centuries of philosophy of personal identity** (Chapter 2) move, objection
   by objection, from identity as a mental act toward identity as a persistent,
@@ -143,8 +141,8 @@ This breadth, not any single framework, makes the Layer-3 claim load-bearing.
 
 **Second support: an original contribution.** On the converged structure the paper
 builds one new claim of its own (Chapter 5): **identity as unique history** — an
-ENGRAM agent *is* the unique, no-merging, ancestry-traceable lineage of its recorded
-claims, which fixes its retrieval profile and thus its behavior. The traditions
+agent *is* its lineage of recorded claims, and that lineage fixes its behavior
+through what it retrieves (the claim is stated in full at §5.0). The traditions
 converge on the *structure*; Chapter 5 builds a new theory on it.
 
 **Where OCC sits.** Kahl's (2026b) **Ontological Continuity Condition** (OCC) —
