@@ -55,9 +55,14 @@ subsystems: a fast-learning, instance-specific store (hippocampal) and a
 slow-integrating, structure-extracting store (neocortical), with consolidation
 moving information between them. ENGRAM realizes this division symbolically: fast,
 instance-specific observations against slow, structure-extracting derivations and
-cornerstones, with its consolidation routines — a per-burst nap and a daily
-two-phase sleep (a day-wide review, then dream consolidation) — as the transfer
-process (dv_1064).
+cornerstones, with its consolidation routines as the transfer process (dv_1064):
+a **nap** at the end of each *burst* (one stretch of work between two context
+compactions), which writes what the burst produced into nodes before the context
+is compacted; and a once-daily **sleep** in two phases, a *review* that files what
+the day left unfiled, then a *dream* phase in which scanner sub-agents
+(*dream fairies*) read the
+graph for contradictions, stale nodes and lesson candidates, and a consolidating
+sub-agent (the *dream master*) applies the results and advances the forgetting curve.
 
 **→ Ch4 §4.8** (continuity across compaction): CLS is the cognitive-science precedent
 for the two-routine consolidation that meets OCC Conditions 1 and 2. [SOLID]

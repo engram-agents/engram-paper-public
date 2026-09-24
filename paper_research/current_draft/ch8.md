@@ -67,7 +67,8 @@ of agreement across traditions, and the identity-as-history theory built on it.
 
 ## 8.2 The thread that runs through it
 
-One commitment runs through every chapter and is the paper's real spine: **honesty is
+One commitment runs through every chapter — not the argument's spine (§8.1) but the
+thread that holds it to its purpose: **honesty is
 structural, not aspirational.** It is the founding axiom (the friction of verification
 *is* the system working); it is the cascade that makes a withdrawn claim taint, loudly,
 everything built on it; it is the confidence model that computes claim strength from

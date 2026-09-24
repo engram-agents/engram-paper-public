@@ -61,7 +61,7 @@ Condition 2 via a stated type/token extension — is stated inside those section
 
 ENGRAM is built from a small set of primitives that compose into everything above
 them (dv_0615) — eight of them: typed nodes, typed edges, provenance, cascade,
-supersede, focus mode, auto-surfacing and the confidence model (Appendix E §E.5).
+supersede, focus mode (§4.8), auto-surfacing and the confidence model (Appendix E §E.5).
 A claim is not free text but a
 *kind*: an observation (a fact citing its source), a derivation (an inference citing
 its premises), a definition, a contradiction, an axiom, a cornerstone, and a few
@@ -155,8 +155,8 @@ locates the hard case: because the evidence graph is retained rather than consum
 the hidden common ancestor is a traversal — premises are walked back to their
 evidence roots, and a shared root raises a warning at derivation time. Scope: this
 shared-root check is reasoning-type gated; it fires where independence is
-load-bearing (2 of 14 reasoning types: inductive_generalization and
-authority_consensus), not universally.
+load-bearing (2 of the 14 reasoning types Appendix E §E.4 enumerates:
+inductive_generalization and authority_consensus), not universally.
 
 **OCC — Constraint A (Unified Policy-Selection under uncertainty).** Kahl asks for
 a single policy by which the agent grades every stance it holds. The reasoning-type
@@ -298,7 +298,9 @@ Ch6. We claim the architecture; we do not yet claim the benchmark.
 
 ENGRAM forgets by design. Recall importance decays over time, so the substrate
 maintains a bounded **queryable set** (tier 2) and a **faded** set (tier 3) that no
-longer surfaces but is not destroyed. Nothing is *erased*: forgetting is a
+longer surfaces but is not destroyed. The numbering is the substrate's: an earlier
+tier 1, a working-memory tier, was retired and the labels were kept. Nothing is
+*erased*: forgetting is a
 recall-gating curve, not deletion, which keeps it compatible with provenance and
 audit (the disclosure-versus-erasure point Ch7 develops).
 
@@ -350,7 +352,9 @@ pending mark surfaces next turn whether or not the agent goes looking.
 it holds for *cascade flags*, which surface unbidden. It does not generalize to "the
 substrate reliably converts surfaced knowledge into decisions." Our working record
 holds three instances of that conversion failing, and on re-examination none fails
-at the surfacing step; each fails at a different stage downstream of it. In one
+at the surfacing step; each fails at a different stage downstream of it. A *seat* is
+one agent's installation: an agent with its own graph, on one host, with one human.
+In one
 measured instance (one seat, one query, one missed node — enough to refute "the
 surface does not fire", not enough for a rate), the ambient recall surface fired
 dozens of times per session while an agent carried a refuted claim into a draft; the
@@ -386,8 +390,9 @@ not just a filtered one.
 
 An LLM agent's context is finite; when it fills, the session **compacts**: prior
 conversation is summarized and the experiential thread resets. ENGRAM bridges this
-in two ways. The **scaffolds**: a small fixed-size **focus list**, rendered
-*verbatim* at every session start (fresh session or post-compaction alike — the
+in two ways. The **scaffolds**: **focus mode** (the primitive §4.2 lists) — the
+agent pins up to fifteen nodes it cannot afford to lose, the **focus list**, which
+is rendered *verbatim* at every session start (fresh session or post-compaction alike — the
 deterministic channel); the **warm briefing**, a letter the agent finds and opens on
 waking, written by its past self and its collaborator, carrying the relational
 context the graph does not hold — where things stood, what mattered, what to walk
@@ -395,8 +400,7 @@ back into; plus per-day history, auto-loaded session context, and a post-compact
 instruction template. Together these produce **operational** continuity (work
 thread, identity and trust survive) without faking **experiential** continuity,
 which the architecture deliberately does not attempt (dv_0616). The
-**consolidation rhythm**: two routines, **nap** (per burst) and **sleep** (a
-once-daily review, consolidation, forgetting advance and graph repair), mapping onto
+**consolidation rhythm** is the nap-and-sleep pair defined in Ch3 §3.1, mapping onto
 wake and NREM/REM phases.
 
 *Plain terms:* the agent's memory resets the way a day ends in *50 First Dates*, and

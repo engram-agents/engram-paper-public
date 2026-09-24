@@ -18,7 +18,8 @@ efforts under the same problem-pressure reach the same architecture, that archit
 is corroborated as the right one. This appendix establishes the second case, on the
 record. We treat convergent discovery not as a defensive claim but as evidence.
 
-A note up front on what we do **not** claim: ENGRAM is not first across the board. The
+A note up front on what we do **not** claim: ENGRAM is not first across the board, the
+novelty disclaimer Ch3 §3.0 states in full. The
 formal shape it shares with Kumiho — typed reasoning edges with cascade/supersede over
 a property graph — is decades old in the truth-maintenance and belief-revision
 traditions, and several agent-memory systems (Mem0g — Mem0's graph-memory variant — Zep/Graphiti,

@@ -279,7 +279,9 @@ The most recent point on the trail is Kahl's **Ontological Continuity Condition
 (OCC)**, the first attempt to turn "does this system genuinely persist as itself?"
 into an *operational* threshold rather than a philosophical intuition. OCC states
 three jointly necessary **conditions** and four **constraints** (df_0037–df_0044;
-a `df_` identifier names a definition node in the graph):
+a `df_` identifier names a definition node in the graph — where one follows a
+citation to a source, it names the node under which the paper's reading of that
+source is filed):
 
 - **Condition 1 — Diachronic Constraint** (Kahl's term; df_0038): present
   deliberation must be genuinely constrained by the system's past commitments, which

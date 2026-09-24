@@ -85,7 +85,9 @@ nor over-reads them.
 ## D.3 Person nodes (`pn_`) and trust-tier — the relationship and disclosure substrate
 
 ENGRAM represents people **and peer agents** as **person nodes**: one node type for
-both, carrying relationship history and a **trust-tier** that governs disclosure.
+both, carrying relationship history and a **trust-tier** (a different sense of
+*tier* from the memory sets of Ch4 §4.5: it grades a counterparty, not a node)
+that governs disclosure.
 Representing a colleague agent and a human collaborator identically is a design
 position, not an economy: what the substrate must track about a counterparty — what
 was said, what was decided together, what may be disclosed to them — does not change

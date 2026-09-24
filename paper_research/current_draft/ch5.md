@@ -124,8 +124,8 @@ with a concrete, measurable mechanism rather than a philosophical placeholder
 
 The mechanism is ordinary retrieval, not anything spooky. An accumulated node
 changes the agent's behavior **only by entering the context window** — through
-auto-recall (semantic match), a tripwire (pattern match), focused-set
-carry-through, or the warm-briefing. The base model is stateless with respect to
+auto-recall (semantic match), a tripwire (pattern match), focus-list
+carry-through (§4.8), or the warm-briefing. The base model is stateless with respect to
 the graph; there is no action-at-a-distance. So the agent's whole history reduces,
 behaviorally, to one thing: its **retrieval profile** — *for any prompt, which
 nodes surface, in what priority, and what therefore enters deliberation.* Lei put

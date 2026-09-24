@@ -135,7 +135,10 @@ premises through a formula chosen by `reasoning_type`.
 `official_statement` 0.85 · `attributed_analysis` 0.70 · `counterfactual_inference`
 0.65 (as attributed analysis, less an irreducible approximation residual) ·
 `unnamed_source` 0.50 · `personal_communication` 0.40 · `editorial` 0.35. Adjustments:
-×0.95 for `source_class=introspective` (the agent's own prior output); `user_stated`
+`source_class` takes one of three values — `external` (a document or a third party),
+`introspective` (the agent's own prior output) or `user_stated` (the collaborator's own
+word) — so the two adjustments below never apply to the same node: ×0.95 for
+`source_class=introspective`; `user_stated`
 overrides to `official_statement` regardless of quote type. A predictive observation is
 additionally capped at 0.60 until its event resolves.
 
@@ -208,7 +211,7 @@ designer-stipulated, not outcome-calibrated — Ch7 §7.2.)*
   override (`use_contested`) for an agent that deliberately builds on the
   contested side while the dispute stays open.
 - The eight load-bearing **primitives** (dv_0615): typed nodes, typed edges, provenance,
-  cascade, supersede, focus mode, auto-surfacing, the confidence model — the minimal
+  cascade, supersede, focus mode (Ch4 §4.8), auto-surfacing, the confidence model — the minimal
   generating set every higher mechanism composes from.
 
 ## E.6 The OCC threshold (Kahl 2026b), as the paper uses it
@@ -253,12 +256,12 @@ consistency maintained from outside, or by a module that could be swapped out.
 
 **Supporting apparatus** the mapping also uses, defined where first introduced: Peirce's
 type/token distinction (Ch4 §4.8); Nozick's closest-continuer relation (Ch2 §2.4); the
-retrieval profile (Ch5 §5.4); and the identity-tree node (Ch5). AGM belief revision is
+retrieval profile (Ch5 §5.4); and the history-tree (Ch2 §2.2; Ch5 §5.3). AGM belief revision is
 noted for contrast rather than used by the mapping (Ch3 §3.9).
 
 ## E.7 Continuity across compaction
 
-- **Two-routine consolidation**: **nap** (per-burst persistence at compaction
+- **Two-routine consolidation** (defined Ch3 §3.1): **nap** (per-burst persistence at compaction
   boundaries, df_0003) · **sleep** (once-daily review + consolidation +
   forgetting-curve advance + dream-style repair, df_0036) — mapping to wake /
   NREM-REM phases.

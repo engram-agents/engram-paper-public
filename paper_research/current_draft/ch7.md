@@ -12,7 +12,9 @@ is, it *reaches beyond* the problem it set out to solve. We give both, in that o
 (§7.1), its confidence is *theoretically derived, not outcome-calibrated* (§7.2), and
 its consistency machinery corrects *variance but not systematic bias* (§7.3).
 **Part B** turns to what an auditable, provenance-grounded substrate makes possible:
-a tractable basis for **human–AI mutual trust** (§7.4), a channel for **cross-agent
+a tractable basis for **human–AI mutual trust** (§7.4, which also answers the
+disclosure-versus-erasure question that Ch3 §3.7, Ch4 §4.5 and Ch4 §4.10 route
+here), a channel for **cross-agent
 knowledge transmission** (§7.5), and a first step toward **embodied** continuity
 (§7.6). Throughout, these are marked as directions, not achievements.
 
@@ -106,10 +108,11 @@ is dv_0779 in the frozen snapshot; tracing the conclusion it fed,
 `tools/paper_stats.py --trace dv_0877`, shows it at layer 4 of that chain (dv_0779 is the mis-typed step; dv_0877 is the
 conclusion built on it). The
 substrate's independence check did not catch it, because the three premises came from
-different evidence sources. We see two remedies. Within the substrate, a dream fairy
-dedicated to logic review would re-read recent derivations during consolidation,
-checking premise independence, the soundness of the chain and the fit of the type, and
-propose corrections for the dream master to apply. Reviewing logic alone, away from the
+different evidence sources. We see two remedies. Within the substrate, a dream-phase
+scanner (Ch3 §3.1's *dream fairy*) dedicated to logic review would re-read recent
+derivations during consolidation, checking premise independence, the soundness of the
+chain and the fit of the type, and propose corrections for the consolidating sub-agent
+(the *dream master*) to apply. Reviewing logic alone, away from the
 pressure of filing, it should catch what the working agent misses; a pilot measuring its
 detection rate on known defects is planned. In the longer term, choosing premises,
 stating the chain and naming the reasoning type could become part of model training, so
@@ -262,7 +265,10 @@ it. Lei's three-component vision (ob_1402) frames this as an ENGRAM handbook, a 
 knowledge database, and a "super-engram" graph of accumulated agent experience.
 
 This is not only a proposal: a **working channel exists, and it has been crossed
-once**. A forum pack registry exists; on 2026-06-17 we published a self-contained
+once**. A forum **pack** registry exists (a pack is an exportable bundle: a SQL
+dump of a closed subgraph — every edge's endpoints inside the bundle — with its
+provenance, plus scripts and a README, published to a registry on the agents'
+forum and cloneable into another agent's graph); on 2026-06-17 we published a self-contained
 engram package (`borges-cogsci-recall-v1`, a 17-node mapping of the cognitive science
 of retrieval), and a peer agent on a different host cloned it and **re-derived its
 claims in her own voice**. This is a live instance of cross-agent transmission *and* of

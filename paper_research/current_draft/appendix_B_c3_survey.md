@@ -236,7 +236,7 @@ A survey, not a system: it names contradiction-handling as something robust syst
 The C3 failure here is genuine **absence**: the paper never uses "conflict,"
 "contradiction," or "inconsistency" as architectural primitives. **There is no
 sentence to quote**, and we do not manufacture one. First-hand-read finding: "No
-foundational-retraction-flagging mechanism exists. When a Tier-1 summary is UPDATEd,
+foundational-retraction-flagging mechanism exists. When a Tier-1 summary [TierMem's own tiering, unrelated to Ch4 §4.5's tiers] is UPDATEd,
 there is no cascade to dependent summaries or downstream uses of the old content."
 The paper does not specify whether UPDATE preserves or overwrites the prior entry —
 we report that as *not documented* rather than asserting overwrite. Verdict: C3 is

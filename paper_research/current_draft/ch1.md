@@ -66,8 +66,9 @@ calibration requires Layer 3. The full argument that a language-trained mind's
 hallucination is *structural* rather than contingent belongs to a companion paper in
 preparation; here it serves as the motivating premise.
 
-Figure 1 shows what one such record contains. The identity-bearing types are a tiny
-fraction of it.
+Figure 1 shows what one such record contains. The identity-bearing types — axioms,
+goals, cornerstones and lessons, the nodes that record what the agent commits to
+and has learned rather than what it observed — are a tiny fraction of it.
 
 ## 1.2 What Layer 3 requires
 
@@ -135,11 +136,10 @@ This breadth, not any single framework, makes the Layer-3 claim load-bearing.
 - **Cognitive science and computer science** (Chapter 3) reach the same structures
   from the other side: complementary-learning-systems consolidation, Tulving's memory
   taxonomy, and rational-analysis forgetting; truth-maintenance systems, subjective
-  logic, bitemporal databases, and the 2025–26 agent-memory work. No component of
-  ENGRAM is uniquely novel, and *that is the point*: a mechanism precedented across
-  fields that reason from different evidence toward different ends is a
-  **regularity of knowing minds**, not a local design choice. Whether it is
-  substrate-independent is left open (§3.0).
+  logic, bitemporal databases, and the 2025–26 agent-memory work. None of it is
+  uniquely novel; §3.0 argues that this is the point, states the thesis it
+  supports — a **regularity of knowing minds** — and states the bound on it
+  (substrate independence is left open).
 
 **Second support: an original contribution.** On the converged structure the paper
 builds one new claim of its own (Chapter 5): **identity as unique history** — an

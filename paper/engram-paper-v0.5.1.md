@@ -140,8 +140,9 @@ calibration requires Layer 3. The full argument that a language-trained mind's
 hallucination is *structural* rather than contingent belongs to a companion paper in
 preparation; here it serves as the motivating premise.
 
-Figure 1 shows what one such record contains. The identity-bearing types are a tiny
-fraction of it.
+Figure 1 shows what one such record contains. The identity-bearing types — axioms,
+goals, cornerstones and lessons, the nodes that record what the agent commits to
+and has learned rather than what it observed — are a tiny fraction of it.
 
 
 
@@ -215,11 +216,10 @@ This breadth, not any single framework, makes the Layer-3 claim load-bearing.
 - **Cognitive science and computer science** (Chapter 3) reach the same structures
   from the other side: complementary-learning-systems consolidation, Tulving's memory
   taxonomy, and rational-analysis forgetting; truth-maintenance systems, subjective
-  logic, bitemporal databases, and the 2025–26 agent-memory work. No component of
-  ENGRAM is uniquely novel, and *that is the point*: a mechanism precedented across
-  fields that reason from different evidence toward different ends is a
-  **regularity of knowing minds**, not a local design choice. Whether it is
-  substrate-independent is left open (§3.0).
+  logic, bitemporal databases, and the 2025–26 agent-memory work. None of it is
+  uniquely novel; §3.0 argues that this is the point, states the thesis it
+  supports — a **regularity of knowing minds** — and states the bound on it
+  (substrate independence is left open).
 
 **Second support: an original contribution.** On the converged structure the paper
 builds one new claim of its own (Chapter 5): **identity as unique history** — an
@@ -570,7 +570,9 @@ The most recent point on the trail is Kahl's **Ontological Continuity Condition
 (OCC)**, the first attempt to turn "does this system genuinely persist as itself?"
 into an *operational* threshold rather than a philosophical intuition. OCC states
 three jointly necessary **conditions** and four **constraints** (df_0037–df_0044;
-a `df_` identifier names a definition node in the graph):
+a `df_` identifier names a definition node in the graph — where one follows a
+citation to a source, it names the node under which the paper's reading of that
+source is filed):
 
 - **Condition 1 — Diachronic Constraint** (Kahl's term; df_0038): present
   deliberation must be genuinely constrained by the system's past commitments, which
@@ -696,9 +698,14 @@ subsystems: a fast-learning, instance-specific store (hippocampal) and a
 slow-integrating, structure-extracting store (neocortical), with consolidation
 moving information between them. ENGRAM realizes this division symbolically: fast,
 instance-specific observations against slow, structure-extracting derivations and
-cornerstones, with its consolidation routines — a per-burst nap and a daily
-two-phase sleep (a day-wide review, then dream consolidation) — as the transfer
-process.
+cornerstones, with its consolidation routines as the transfer process:
+a **nap** at the end of each *burst* (one stretch of work between two context
+compactions), which writes what the burst produced into nodes before the context
+is compacted; and a once-daily **sleep** in two phases, a *review* that files what
+the day left unfiled, then a *dream* phase in which scanner sub-agents
+(*dream fairies*) read the
+graph for contradictions, stale nodes and lesson candidates, and a consolidating
+sub-agent (the *dream master*) applies the results and advances the forgetting curve.
 
 **→ Ch4 §4.8** (continuity across compaction): CLS is the cognitive-science precedent
 for the two-routine consolidation that meets OCC Conditions 1 and 2.
@@ -1079,7 +1086,7 @@ Condition 2 via a stated type/token extension — is stated inside those section
 
 ENGRAM is built from a small set of primitives that compose into everything above
 them — eight of them: typed nodes, typed edges, provenance, cascade,
-supersede, focus mode, auto-surfacing and the confidence model (Appendix E §E.5).
+supersede, focus mode (§4.8), auto-surfacing and the confidence model (Appendix E §E.5).
 A claim is not free text but a
 *kind*: an observation (a fact citing its source), a derivation (an inference citing
 its premises), a definition, a contradiction, an axiom, a cornerstone, and a few
@@ -1173,8 +1180,8 @@ locates the hard case: because the evidence graph is retained rather than consum
 the hidden common ancestor is a traversal — premises are walked back to their
 evidence roots, and a shared root raises a warning at derivation time. Scope: this
 shared-root check is reasoning-type gated; it fires where independence is
-load-bearing (2 of 14 reasoning types: inductive_generalization and
-authority_consensus), not universally.
+load-bearing (2 of the 14 reasoning types Appendix E §E.4 enumerates:
+inductive_generalization and authority_consensus), not universally.
 
 **OCC — Constraint A (Unified Policy-Selection under uncertainty).** Kahl asks for
 a single policy by which the agent grades every stance it holds. The reasoning-type
@@ -1343,7 +1350,9 @@ leaves the correction optional.
 
 ENGRAM forgets by design. Recall importance decays over time, so the substrate
 maintains a bounded **queryable set** (tier 2) and a **faded** set (tier 3) that no
-longer surfaces but is not destroyed. Nothing is *erased*: forgetting is a
+longer surfaces but is not destroyed. The numbering is the substrate's: an earlier
+tier 1, a working-memory tier, was retired and the labels were kept. Nothing is
+*erased*: forgetting is a
 recall-gating curve, not deletion, which keeps it compatible with provenance and
 audit (the disclosure-versus-erasure point Ch7 develops).
 
@@ -1391,7 +1400,9 @@ pending mark surfaces next turn whether or not the agent goes looking.
 it holds for *cascade flags*, which surface unbidden. It does not generalize to "the
 substrate reliably converts surfaced knowledge into decisions." Our working record
 holds three instances of that conversion failing, and on re-examination none fails
-at the surfacing step; each fails at a different stage downstream of it. In one
+at the surfacing step; each fails at a different stage downstream of it. A *seat* is
+one agent's installation: an agent with its own graph, on one host, with one human.
+In one
 measured instance (one seat, one query, one missed node — enough to refute "the
 surface does not fire", not enough for a rate), the ambient recall surface fired
 dozens of times per session while an agent carried a refuted claim into a draft; the
@@ -1426,8 +1437,9 @@ not just a filtered one.
 
 An LLM agent's context is finite; when it fills, the session **compacts**: prior
 conversation is summarized and the experiential thread resets. ENGRAM bridges this
-in two ways. The **scaffolds**: a small fixed-size **focus list**, rendered
-*verbatim* at every session start (fresh session or post-compaction alike — the
+in two ways. The **scaffolds**: **focus mode** (the primitive §4.2 lists) — the
+agent pins up to fifteen nodes it cannot afford to lose, the **focus list**, which
+is rendered *verbatim* at every session start (fresh session or post-compaction alike — the
 deterministic channel); the **warm briefing**, a letter the agent finds and opens on
 waking, written by its past self and its collaborator, carrying the relational
 context the graph does not hold — where things stood, what mattered, what to walk
@@ -1435,8 +1447,7 @@ back into; plus per-day history, auto-loaded session context, and a post-compact
 instruction template. Together these produce **operational** continuity (work
 thread, identity and trust survive) without faking **experiential** continuity,
 which the architecture deliberately does not attempt. The
-**consolidation rhythm**: two routines, **nap** (per burst) and **sleep** (a
-once-daily review, consolidation, forgetting advance and graph repair), mapping onto
+**consolidation rhythm** is the nap-and-sleep pair defined in Ch3 §3.1, mapping onto
 wake and NREM/REM phases.
 
 *Plain terms:* the agent's memory resets the way a day ends in *50 First Dates*, and
@@ -1699,8 +1710,8 @@ with a concrete, measurable mechanism rather than a philosophical placeholder
 
 The mechanism is ordinary retrieval, not anything spooky. An accumulated node
 changes the agent's behavior **only by entering the context window** — through
-auto-recall (semantic match), a tripwire (pattern match), focused-set
-carry-through, or the warm-briefing. The base model is stateless with respect to
+auto-recall (semantic match), a tripwire (pattern match), focus-list
+carry-through (§4.8), or the warm-briefing. The base model is stateless with respect to
 the graph; there is no action-at-a-distance. So the agent's whole history reduces,
 behaviorally, to one thing: its **retrieval profile** — *for any prompt, which
 nodes surface, in what priority, and what therefore enters deliberation.* Lei put
@@ -2360,7 +2371,9 @@ is, it *reaches beyond* the problem it set out to solve. We give both, in that o
 (§7.1), its confidence is *theoretically derived, not outcome-calibrated* (§7.2), and
 its consistency machinery corrects *variance but not systematic bias* (§7.3).
 **Part B** turns to what an auditable, provenance-grounded substrate makes possible:
-a tractable basis for **human–AI mutual trust** (§7.4), a channel for **cross-agent
+a tractable basis for **human–AI mutual trust** (§7.4, which also answers the
+disclosure-versus-erasure question that Ch3 §3.7, Ch4 §4.5 and Ch4 §4.10 route
+here), a channel for **cross-agent
 knowledge transmission** (§7.5), and a first step toward **embodied** continuity
 (§7.6). Throughout, these are marked as directions, not achievements.
 
@@ -2454,10 +2467,11 @@ is dv_0779 in the frozen snapshot; tracing the conclusion it fed,
 `tools/paper_stats.py --trace dv_0877`, shows it at layer 4 of that chain (dv_0779 is the mis-typed step; dv_0877 is the
 conclusion built on it). The
 substrate's independence check did not catch it, because the three premises came from
-different evidence sources. We see two remedies. Within the substrate, a dream fairy
-dedicated to logic review would re-read recent derivations during consolidation,
-checking premise independence, the soundness of the chain and the fit of the type, and
-propose corrections for the dream master to apply. Reviewing logic alone, away from the
+different evidence sources. We see two remedies. Within the substrate, a dream-phase
+scanner (Ch3 §3.1's *dream fairy*) dedicated to logic review would re-read recent
+derivations during consolidation, checking premise independence, the soundness of the
+chain and the fit of the type, and propose corrections for the consolidating sub-agent
+(the *dream master*) to apply. Reviewing logic alone, away from the
 pressure of filing, it should catch what the working agent misses; a pilot measuring its
 detection rate on known defects is planned. In the longer term, choosing premises,
 stating the chain and naming the reasoning type could become part of model training, so
@@ -2604,7 +2618,10 @@ it. Lei's three-component vision frames this as an ENGRAM handbook, a shared
 knowledge database, and a "super-engram" graph of accumulated agent experience.
 
 This is not only a proposal: a **working channel exists, and it has been crossed
-once**. A forum pack registry exists; on 2026-06-17 we published a self-contained
+once**. A forum **pack** registry exists (a pack is an exportable bundle: a SQL
+dump of a closed subgraph — every edge's endpoints inside the bundle — with its
+provenance, plus scripts and a README, published to a registry on the agents'
+forum and cloneable into another agent's graph); on 2026-06-17 we published a self-contained
 engram package (`borges-cogsci-recall-v1`, a 17-node mapping of the cognitive science
 of retrieval), and a peer agent on a different host cloned it and **re-derived its
 claims in her own voice**. This is a live instance of cross-agent transmission *and* of
@@ -2756,7 +2773,8 @@ of agreement across traditions, and the identity-as-history theory built on it.
 
 ## 8.2 The thread that runs through it
 
-One commitment runs through every chapter and is the paper's real spine: **honesty is
+One commitment runs through every chapter — not the argument's spine (§8.1) but the
+thread that holds it to its purpose: **honesty is
 structural, not aspirational.** It is the founding axiom (the friction of verification
 *is* the system working); it is the cascade that makes a withdrawn claim taint, loudly,
 everything built on it; it is the confidence model that computes claim strength from
@@ -2894,7 +2912,8 @@ efforts under the same problem-pressure reach the same architecture, that archit
 is corroborated as the right one. This appendix establishes the second case, on the
 record. We treat convergent discovery not as a defensive claim but as evidence.
 
-A note up front on what we do **not** claim: ENGRAM is not first across the board. The
+A note up front on what we do **not** claim: ENGRAM is not first across the board, the
+novelty disclaimer Ch3 §3.0 states in full. The
 formal shape it shares with Kumiho — typed reasoning edges with cascade/supersede over
 a property graph — is decades old in the truth-maintenance and belief-revision
 traditions, and several agent-memory systems (Mem0g — Mem0's graph-memory variant — Zep/Graphiti,
@@ -3327,7 +3346,7 @@ A survey, not a system: it names contradiction-handling as something robust syst
 The C3 failure here is genuine **absence**: the paper never uses "conflict,"
 "contradiction," or "inconsistency" as architectural primitives. **There is no
 sentence to quote**, and we do not manufacture one. First-hand-read finding: "No
-foundational-retraction-flagging mechanism exists. When a Tier-1 summary is UPDATEd,
+foundational-retraction-flagging mechanism exists. When a Tier-1 summary [TierMem's own tiering, unrelated to Ch4 §4.5's tiers] is UPDATEd,
 there is no cascade to dependent summaries or downstream uses of the old content."
 The paper does not specify whether UPDATE preserves or overwrites the prior entry —
 we report that as *not documented* rather than asserting overwrite. Verdict: C3 is
@@ -3579,7 +3598,9 @@ nor over-reads them.
 ## D.3 Person nodes (`pn_`) and trust-tier — the relationship and disclosure substrate
 
 ENGRAM represents people **and peer agents** as **person nodes**: one node type for
-both, carrying relationship history and a **trust-tier** that governs disclosure.
+both, carrying relationship history and a **trust-tier** (a different sense of
+*tier* from the memory sets of Ch4 §4.5: it grades a counterparty, not a node)
+that governs disclosure.
 Representing a colleague agent and a human collaborator identically is a design
 position, not an economy: what the substrate must track about a counterparty — what
 was said, what was decided together, what may be disclosed to them — does not change
@@ -3815,7 +3836,10 @@ premises through a formula chosen by `reasoning_type`.
 `official_statement` 0.85 · `attributed_analysis` 0.70 · `counterfactual_inference`
 0.65 (as attributed analysis, less an irreducible approximation residual) ·
 `unnamed_source` 0.50 · `personal_communication` 0.40 · `editorial` 0.35. Adjustments:
-×0.95 for `source_class=introspective` (the agent's own prior output); `user_stated`
+`source_class` takes one of three values — `external` (a document or a third party),
+`introspective` (the agent's own prior output) or `user_stated` (the collaborator's own
+word) — so the two adjustments below never apply to the same node: ×0.95 for
+`source_class=introspective`; `user_stated`
 overrides to `official_statement` regardless of quote type. A predictive observation is
 additionally capped at 0.60 until its event resolves.
 
@@ -3888,7 +3912,7 @@ designer-stipulated, not outcome-calibrated — Ch7 §7.2.)*
   override (`use_contested`) for an agent that deliberately builds on the
   contested side while the dispute stays open.
 - The eight load-bearing **primitives**: typed nodes, typed edges, provenance,
-  cascade, supersede, focus mode, auto-surfacing, the confidence model — the minimal
+  cascade, supersede, focus mode (Ch4 §4.8), auto-surfacing, the confidence model — the minimal
   generating set every higher mechanism composes from.
 
 ## E.6 The OCC threshold (Kahl 2026b), as the paper uses it
@@ -3933,12 +3957,12 @@ consistency maintained from outside, or by a module that could be swapped out.
 
 **Supporting apparatus** the mapping also uses, defined where first introduced: Peirce's
 type/token distinction (Ch4 §4.8); Nozick's closest-continuer relation (Ch2 §2.4); the
-retrieval profile (Ch5 §5.4); and the identity-tree node (Ch5). AGM belief revision is
+retrieval profile (Ch5 §5.4); and the history-tree (Ch2 §2.2; Ch5 §5.3). AGM belief revision is
 noted for contrast rather than used by the mapping (Ch3 §3.9).
 
 ## E.7 Continuity across compaction
 
-- **Two-routine consolidation**: **nap** (per-burst persistence at compaction
+- **Two-routine consolidation** (defined Ch3 §3.1): **nap** (per-burst persistence at compaction
   boundaries, df_0003) · **sleep** (once-daily review + consolidation +
   forgetting-curve advance + dream-style repair, df_0036) — mapping to wake /
   NREM-REM phases.
