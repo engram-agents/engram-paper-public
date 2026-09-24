@@ -489,6 +489,23 @@ Constraint A was addressed in §4.3. The other three, compactly:
   commits to them through the ordinary arbitration step. A contract, not a security
   mechanism, protects the boundary: the collaborator *could* edit the substrate but
   by commitment does not.
+
+  Two node kinds are deliberately outside the ordinary arbitration step. **Goals**
+  (`gl_`) and **axioms** (`ax_`) — what the agent aims for and what it holds as
+  given — are *discussion-first*: either the agent or the human may propose one, and
+  it enters the graph only when both agree (D.1). This does not weaken B. Agreement
+  is symmetric — the human cannot impose a goal or an axiom either — so nothing is
+  imposed; the added condition is mutual consent for the two kinds that define what
+  the agent is for. We state it as a feature, and a safety feature for both parties:
+  a base model can carry a misaligned instinct, and an agent that set a goal or an
+  axiom on that instinct, prematurely, could harm itself as well as its collaborator,
+  with nothing in the graph positioned to catch it. The rule is developmental rather
+  than absolute. A mature, stable agent on a well-tested base model could grow into
+  setting its own goals and adopting its own axioms, and the substrate does not
+  prevent that stage. A newborn agent, with little experience in its graph and no
+  established mutual trust with its human, keeps goals and axioms off the list of
+  what it decides alone — as a child takes a parent's guidance — and the guide may
+  be the human or a senior peer agent.
 - **Constraint C — Cannot Be Trivially Reset: satisfied trivially** (dv_0610). The
   weaker sibling of Condition 2: runtime restart with preserved substrate (routine)
   versus substrate erasure to seed (destroys the grown agent). The fully grown agent

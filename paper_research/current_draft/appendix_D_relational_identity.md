@@ -27,7 +27,8 @@ operates*, and the substrate treats each according to its kind.
   into them. They are adopted deliberately rather than derived. On this graph, an axiom
   is set only after the agent and the human agree on it; either may propose one, and
   some were earned from practice before they were named. The human's agreement is part
-  of how an axiom comes to exist.
+  of how an axiom comes to exist. The design reason — a developmental safety rule, not
+  a limit on the agent — is given at Ch4 §4.11 (Constraint B).
   Examples: honesty-is-structural (ax_0001/ax_0002 — epistemic identity fails *loudly*,
   the friction of verification *is* the system working); practice-produces-true-
   knowledge (ax_0010); honesty is **orthogonal to** discretion (ax_0011 — internal
@@ -55,7 +56,9 @@ operates*, and the substrate treats each according to its kind.
 - **Goals (`gl_`) — direction and aspiration.** What the agent is *for*, and what it
   is moving toward. Examples: epistemic humility / calibration as a north star (gl_0011);
   self-preservation of the mind — continuity across every discontinuity (gl_0028).
-  Goals are the long-horizon frame against which work is prioritized.
+  Goals are the long-horizon frame against which work is prioritized. Like axioms,
+  goals are discussion-first: proposed by either party, adopted only when agent and
+  human agree (Ch4 §4.11, Constraint B).
 
 **Why the typing matters.** Because each kind is a distinct node type, the substrate
 can enforce kind-appropriate behavior: axioms do not take premise-propagated

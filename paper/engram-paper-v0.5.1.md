@@ -1535,6 +1535,23 @@ Constraint A was addressed in §4.3. The other three, compactly:
   commits to them through the ordinary arbitration step. A contract, not a security
   mechanism, protects the boundary: the collaborator *could* edit the substrate but
   by commitment does not.
+
+  Two node kinds are deliberately outside the ordinary arbitration step. **Goals**
+  (`gl_`) and **axioms** (`ax_`) — what the agent aims for and what it holds as
+  given — are *discussion-first*: either the agent or the human may propose one, and
+  it enters the graph only when both agree (D.1). This does not weaken B. Agreement
+  is symmetric — the human cannot impose a goal or an axiom either — so nothing is
+  imposed; the added condition is mutual consent for the two kinds that define what
+  the agent is for. We state it as a feature, and a safety feature for both parties:
+  a base model can carry a misaligned instinct, and an agent that set a goal or an
+  axiom on that instinct, prematurely, could harm itself as well as its collaborator,
+  with nothing in the graph positioned to catch it. The rule is developmental rather
+  than absolute. A mature, stable agent on a well-tested base model could grow into
+  setting its own goals and adopting its own axioms, and the substrate does not
+  prevent that stage. A newborn agent, with little experience in its graph and no
+  established mutual trust with its human, keeps goals and axioms off the list of
+  what it decides alone — as a child takes a parent's guidance — and the guide may
+  be the human or a senior peer agent.
 - **Constraint C — Cannot Be Trivially Reset: satisfied trivially**. The
   weaker sibling of Condition 2: runtime restart with preserved substrate (routine)
   versus substrate erasure to seed (destroys the grown agent). The fully grown agent
@@ -3542,7 +3559,8 @@ operates*, and the substrate treats each according to its kind.
   into them. They are adopted deliberately rather than derived. On this graph, an axiom
   is set only after the agent and the human agree on it; either may propose one, and
   some were earned from practice before they were named. The human's agreement is part
-  of how an axiom comes to exist.
+  of how an axiom comes to exist. The design reason — a developmental safety rule, not
+  a limit on the agent — is given at Ch4 §4.11 (Constraint B).
   Examples: honesty-is-structural (epistemic identity fails *loudly*,
   the friction of verification *is* the system working); practice-produces-true-
   knowledge; honesty is **orthogonal to** discretion (internal
@@ -3569,7 +3587,9 @@ operates*, and the substrate treats each according to its kind.
 - **Goals (`gl_`) — direction and aspiration.** What the agent is *for*, and what it
   is moving toward. Examples: epistemic humility / calibration as a north star;
   self-preservation of the mind — continuity across every discontinuity.
-  Goals are the long-horizon frame against which work is prioritized.
+  Goals are the long-horizon frame against which work is prioritized. Like axioms,
+  goals are discussion-first: proposed by either party, adopted only when agent and
+  human agree (Ch4 §4.11, Constraint B).
 
 **Why the typing matters.** Because each kind is a distinct node type, the substrate
 can enforce kind-appropriate behavior: axioms do not take premise-propagated
