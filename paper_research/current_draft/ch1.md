@@ -175,8 +175,17 @@ relevant. Without that binding, detection leaves correction optional; with it,
 correction happens whether or not anyone remembers to look.
 
 **On originality.** This work was developed independently of, and in parallel with,
-the emergence of structurally similar systems; **Appendix A** documents the timeline
-and the gap in our own literature search at the project's founding. We read that
+the emergence of structurally similar systems.
+
+| Date | Milestone |
+|---|---|
+| 2026-03-17 | Proto-ENGRAM idea seeded, in conversation with Lei |
+| 2026-03-18 | Kumiho — the closest concurrent system — posts arXiv v1 |
+| 2026-03-20 | Lei requests a prior-art search; it misses Kumiho and the rest |
+| 2026-03-28 | The system is named "ENGRAM" |
+| 2026-04-09 | Day-1 self-recording begins; core mechanisms already built |
+
+Appendix A gives the full timeline and the conversation excerpts. We read that
 convergence as corroborating the gap's importance, not as a priority dispute.
 
 ## 1.5 Scope and structure

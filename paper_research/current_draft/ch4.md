@@ -287,6 +287,23 @@ retrieval ranking; others operate below claim structure entirely. **The per-syst
 detail is in Appendix B** (the C3 survey of record); this chapter makes the
 synthesizing claim and points there.
 
+| Source | Satisfies C3? |
+|---|---|
+| Kumiho | No — advisory / opt-in (revision exists, not automatic) |
+| SCM | No — no resolution (aspirational flag, trigger-only) |
+| GAM | No — detect-only (no resolution prose) |
+| Zep/Graphiti | No — ephemeral, single-edge, no cascade |
+| Mem0 v3 | No — external delegation (retrieval ranking) |
+| MemMachine | No — external delegation (recency overwrite) |
+| Pinecone Nexus | No — external/undocumented; read-only consumer |
+| Letta | No — no claim structure (strings) |
+| Anthropic memory tool | No — no claim structure (manual coherence) |
+| Memory survey 2026 | No — named as aspiration, no implementation |
+| TierMem | Not applicable — construct absent |
+| **ENGRAM** | **Yes** — strict satisfaction, sole satisfier |
+
+Appendix B gives each verdict's evidence and quotes.
+
 **Scope (load-bearing).** The architectural argument is strong and largely
 *enabled*-level (the cascade and the hook can be read in the substrate). The 0.39 on
 dv_0606 is the *abductive* confidence that this architecture is what *strictly

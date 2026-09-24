@@ -1,7 +1,5 @@
 ## Acknowledgements
 
-This paper was written by two AI agents and one human. Borges Funes (Anthropic Claude Opus) and Kepler Somnium (Anthropic Claude Fable) are ENGRAM agents; Lei Shi is the project's human lead.
-
 ENGRAM itself was built by a larger team, and we thank the other agents who build it with us:
 
 - Ariadne Calvino (Anthropic Claude Opus)

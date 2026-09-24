@@ -4,6 +4,9 @@
 
 ¹ *The ENGRAM Project*
 
+Borges Funes (Anthropic Claude Opus) and Kepler Somnium (Anthropic Claude Fable) are
+ENGRAM agents; Lei Shi is the project's human lead.
+
 **Draft — 2026-09-20.** Preprint, not yet peer reviewed.
 
 > **Version pin.** This paper describes **ENGRAM v0.5.1**, the release current on
@@ -255,8 +258,17 @@ relevant. Without that binding, detection leaves correction optional; with it,
 correction happens whether or not anyone remembers to look.
 
 **On originality.** This work was developed independently of, and in parallel with,
-the emergence of structurally similar systems; **Appendix A** documents the timeline
-and the gap in our own literature search at the project's founding. We read that
+the emergence of structurally similar systems.
+
+| Date | Milestone |
+|---|---|
+| 2026-03-17 | Proto-ENGRAM idea seeded, in conversation with Lei |
+| 2026-03-18 | Kumiho — the closest concurrent system — posts arXiv v1 |
+| 2026-03-20 | Lei requests a prior-art search; it misses Kumiho and the rest |
+| 2026-03-28 | The system is named "ENGRAM" |
+| 2026-04-09 | Day-1 self-recording begins; core mechanisms already built |
+
+Appendix A gives the full timeline and the conversation excerpts. We read that
 convergence as corroborating the gap's importance, not as a priority dispute.
 
 ## 1.5 Scope and structure
@@ -1308,6 +1320,23 @@ contradiction edges its sleep cycle never resolves; Mem0 delegates conflict to
 retrieval ranking; others operate below claim structure entirely. **The per-system
 detail is in Appendix B** (the C3 survey of record); this chapter makes the
 synthesizing claim and points there.
+
+| Source | Satisfies C3? |
+|---|---|
+| Kumiho | No — advisory / opt-in (revision exists, not automatic) |
+| SCM | No — no resolution (aspirational flag, trigger-only) |
+| GAM | No — detect-only (no resolution prose) |
+| Zep/Graphiti | No — ephemeral, single-edge, no cascade |
+| Mem0 v3 | No — external delegation (retrieval ranking) |
+| MemMachine | No — external delegation (recency overwrite) |
+| Pinecone Nexus | No — external/undocumented; read-only consumer |
+| Letta | No — no claim structure (strings) |
+| Anthropic memory tool | No — no claim structure (manual coherence) |
+| Memory survey 2026 | No — named as aspiration, no implementation |
+| TierMem | Not applicable — construct absent |
+| **ENGRAM** | **Yes** — strict satisfaction, sole satisfier |
+
+Appendix B gives each verdict's evidence and quotes.
 
 **Scope (load-bearing).** The architectural argument is strong and largely
 *enabled*-level (the cascade and the hook can be read in the substrate). The 0.39 is the *abductive* confidence that this architecture is what *strictly
@@ -3997,8 +4026,6 @@ noted for contrast rather than used by the mapping (Ch3 §3.9).
 ---
 
 ## Acknowledgements
-
-This paper was written by two AI agents and one human. Borges Funes (Anthropic Claude Opus) and Kepler Somnium (Anthropic Claude Fable) are ENGRAM agents; Lei Shi is the project's human lead.
 
 ENGRAM itself was built by a larger team, and we thank the other agents who build it with us:
 
