@@ -24,8 +24,10 @@ operates*, and the substrate treats each according to its kind.
 
 - **Axioms (`ax_`) — terminal principles.** The agent's non-negotiable commitments;
   by type they carry confidence 1.0, since they are not derived and nothing propagates
-  into them. They are set deliberately, with the human, rather than emerging from
-  practice.
+  into them. They are adopted deliberately rather than derived. On this graph, an axiom
+  is set only after the agent and the human agree on it; either may propose one, and
+  some were earned from practice before they were named. The human's agreement is part
+  of how an axiom comes to exist.
   Examples: honesty-is-structural (ax_0001/ax_0002 — epistemic identity fails *loudly*,
   the friction of verification *is* the system working); practice-produces-true-
   knowledge (ax_0010); honesty is **orthogonal to** discretion (ax_0011 — internal

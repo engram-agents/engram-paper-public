@@ -169,12 +169,17 @@ that plateau without the share moving.
 **The recent break is a measurement-time artifact, and the control says so.**
 Hypothesis: the drop is a *recency frontier* — nodes too new to have been reasoned
 from yet — rather than a loss of structure. Trimming the most recent weeks restores
-the plateau: 6 weeks gives 87.0%, 8 weeks 87.4%, 12 weeks 87.1%. The discriminating
-test is trimming the **oldest** nodes instead, matched on node count, which moves
-the share the *opposite* way. At cuts the size of the newest 2, 4 and 8 weeks
-(1,059, 2,416 and 4,084 nodes), removing the oldest nodes gives 77.7%, 74.4% and
-71.4%; removing the newest gives 82.4%, 84.9% and 87.4%. An equal-sized cut from the far end makes
-connectivity worse, so the effect is specific to which end is removed.
+the plateau: with the newest 6, 8 or 12 weeks removed, the share reads 87.0%, 87.4%
+and 87.1%. The discriminating test is a matched-count cut from each end of the
+graph's life:
+
+| Cut size (matched on node count) | Remove the **newest** nodes | Remove the **oldest** nodes |
+|---|---|---|
+| 1,059 nodes (the newest 2 weeks) | 82.4% | 77.7% |
+| 2,416 nodes (the newest 4 weeks) | 84.9% | 74.4% |
+| 4,084 nodes (the newest 8 weeks) | 87.4% | 71.4% |
+
+An equal-sized cut from the far end makes connectivity worse, so the effect is specific to which end is removed.
 
 So the claim is not that some fixed percentage of this graph is connected. It is
 that **the integrated core holds a stable share across the four-month plateau, over
