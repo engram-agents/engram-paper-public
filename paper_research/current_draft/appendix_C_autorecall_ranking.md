@@ -107,10 +107,10 @@ Two honest qualifications, both consistent with the paper's posture:
   (ob_1955). They are *measured to
   rank well*, which is a stronger footing than the confidence-model constants (Ch7
   §7.2, which are *not* outcome-calibrated) — a useful internal contrast.
-- **The reward signal is a citation proxy, not a true outcome.** Utility is learned
-  from recall→derivation-citation, which is a good proxy for "this recall fed
-  reasoning" but not a measure of whether the *resulting reasoning was correct*. A
-  fuller outcome-based reward (did the downstream claim survive contradiction?) is a
-  future direction, continuous with the confidence auto-calibration track (Ch7 §7.2).
+- **The reward signal is an engagement proxy, not a true outcome:** utility is
+  learned from the engagement actions C.2 lists (citation among them), none of
+  which verifies that the recalled node was right. A fuller outcome-based reward
+  (did the downstream claim survive contradiction?) is a future direction,
+  continuous with the confidence auto-calibration track (Ch7 §7.2).
 
 **→ Ch4 §4.7** makes the claim; this appendix is the detail.

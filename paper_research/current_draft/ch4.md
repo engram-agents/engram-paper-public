@@ -108,8 +108,10 @@ chapter's own 0.39s are that mechanism, visible.
 
 **Scope.** These discounts are *theoretically derived, provenance-graded*
 plausibility — designer-stipulated constants, not empirically calibrated against
-outcomes (ob_1049). The paper says "provenance-graded confidence," never
-"calibrated"; auto-calibration is future work (Ch7).
+outcomes (ob_1049). Where the paper calls confidence or the agent's self-knowledge
+"calibrated" (the Abstract, Ch1 §1.1–§1.2, Ch7 §7.4, Ch8 §8.1), it means graded by
+argument shape, never outcome-calibrated against ground truth; outcome calibration
+is future work (Ch7).
 
 **Tradition.** This is **Subjective Logic** territory (Jøsang): an algebra of graded
 opinions with propagation operators. Collapsing SL's belief/disbelief/uncertainty
@@ -245,7 +247,7 @@ performs versus an analysis a caller may run — and it is what separates ENGRAM
 its closest competitor (dv_1657).
 
 **OCC — Condition 3 (Self-Maintaining Arbitration): strict satisfaction, sole
-satisfier in the surveyed field.** Kahl's strongest condition asks that conflicts
+satisfier in the surveyed field.** Kahl's third condition asks that conflicts
 among commitments be resolved *within a unified deliberative architecture* while the
 agent stays the same subject. The cascade meets all three properties structurally
 (dv_0606): **unified** (it fires through the same typed-edge graph the agent commits
@@ -368,7 +370,8 @@ computer-science precedent for cue-dependent automatic retrieval.
 
 **OCC:** none of its own, but auto-surfacing is the **binding half of Condition 3**
 (§4.4): it is what makes "the agent cannot quietly ignore a correction" true — the
-pending mark surfaces next turn whether or not the agent goes looking.
+pending mark is guaranteed to reach the agent — the next time the claim becomes
+relevant, or at the latest in the consolidation sweep (§4.4).
 
 **Scope (measured on ourselves).** The binding claim is exactly as narrow as stated:
 it holds for *cascade flags*, which surface unbidden. It does not generalize to "the

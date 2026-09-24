@@ -92,8 +92,9 @@ exponential-decay items with mixed rates (the aggregation result, ob_0521) and w
 single time-translation-invariant exponential kernel at the per-item level (dv_0962).
 
 ENGRAM forgets by design: recall importance decays, maintaining a bounded **queryable
-set** and a **faded set** (retained, not destroyed), with a usage-learned utility
-score ranking what stays. This is the need-probability principle instantiated: what
+set** and a **faded set** (retained, not destroyed), with recall importance governing
+what stays queryable (Ch4 §4.5) and a usage-learned utility score shaping how results
+are ranked (Appendix C). This is the need-probability principle instantiated: what
 the agent is most likely to need stays queryable; the rest fades (dv_0966).
 
 **→ Ch4 §4.5** (forgetting): the rational-analysis tradition is the cognitive-science

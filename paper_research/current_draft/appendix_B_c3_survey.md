@@ -15,7 +15,8 @@ the claim is scoped, dated, and listed rather than universal.
 verbatim: *"Conflicts among commitments are resolved within a unified deliberative
 architecture in a manner that preserves S's continued status as that subject."*
 In operational terms a system meets C3 only if it **automatically resolves
-contradictions among its own stored claims as an internal state-change** — the
+contradictions among its own stored claims as an internal state-change** (the
+'One precision' note below says what 'resolves' does and does not mean) — the
 cascade propagates by construction and the affected claims surface to the agent
 without an intentional reach-out. Four ways to fall short:
 

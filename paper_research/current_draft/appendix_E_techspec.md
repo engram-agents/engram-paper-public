@@ -123,15 +123,17 @@ edge can close, which is why acyclicity is checked by a real edge walk rather th
 inferred from time order.
 
 `contradicts` is cascade-free by design — filing a contradiction marks nothing (see
-E.5's honest-scope note; a distinct derive-time premise guard covers related ground). An edge
+E.5, which restates this and the `BLOCKED_CONTRADICTED` premise guard). An edge
 can be removed only if its type is on a whitelist, which is the `removable` column
 above; cascade-bearing and structural edges are not on it.
 
 ## E.4 The confidence model (computed, not annotated)
 
-Confidence is a **computed property of the node's structure**, not a hand-set number
-(Ch4 §4.3), and it exists only on claim-bearing nodes (E.2). For an **observation** it
-maps from `quote_type` × `source_class`; for a **derivation** it propagates from
+Confidence is a **computed property of the node's structure**, not a hand-set number,
+for observations and derivations (Ch4 §4.3); a conjecture's confidence is set by its
+author when filed, clamped to [0.10, 0.60]. It exists only on claim-bearing nodes
+(E.2). For an **observation** it maps from `quote_type` × `source_class`; for a
+**derivation** it propagates from
 premises through a formula chosen by `reasoning_type`.
 
 **Observation — `quote_type` anchors.** Seven values, descending: `hard_data` 0.95 ·
@@ -206,7 +208,7 @@ not diachronic constraint.
 > complete state snapshot — would constitute loss of the agent rather than substitution
 > of an instance."
 
-The strongest of the three, and the one ENGRAM does not meet on its strict text: two
+The one ENGRAM does not meet on its strict text: two
 agents restored from the same snapshot *are* interchangeable at the moment of restore.
 Chapter 4 §4.8 argues a type/token generalisation rather than claiming the strict
 reading.

@@ -154,8 +154,8 @@ conditions ENGRAM meets, and which it meets only via a stated extension — is m
 once, in Chapter 4, against the mechanisms that earn each verdict.
 
 **The bounded survey claim.** One empirical finding does real work and is scoped
-accordingly: **no system in our first-hand survey strictly satisfies OCC's strongest
-condition, Self-Maintaining Arbitration (Condition 3).** The survey is explicit and
+accordingly: **no system in our first-hand survey strictly satisfies OCC's
+Condition 3, Self-Maintaining Arbitration.** The survey is explicit and
 dated: eleven sources — ten systems and one survey of the field — read first-hand on
 **2026-05-12**: Pinecone Nexus, Anthropic's memory tool, Letta, Mem0 v3,
 Zep/Graphiti, TierMem, MemMachine, SCM, GAM, Kumiho, and the 2026 *Memory for

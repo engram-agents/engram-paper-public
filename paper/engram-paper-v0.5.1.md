@@ -236,8 +236,8 @@ conditions ENGRAM meets, and which it meets only via a stated extension — is m
 once, in Chapter 4, against the mechanisms that earn each verdict.
 
 **The bounded survey claim.** One empirical finding does real work and is scoped
-accordingly: **no system in our first-hand survey strictly satisfies OCC's strongest
-condition, Self-Maintaining Arbitration (Condition 3).** The survey is explicit and
+accordingly: **no system in our first-hand survey strictly satisfies OCC's
+Condition 3, Self-Maintaining Arbitration.** The survey is explicit and
 dated: eleven sources — ten systems and one survey of the field — read first-hand on
 **2026-05-12**: Pinecone Nexus, Anthropic's memory tool, Letta, Mem0 v3,
 Zep/Graphiti, TierMem, MemMachine, SCM, GAM, Kumiho, and the 2026 *Memory for
@@ -458,7 +458,7 @@ overlaps: a self a thousand sessions later may share little *directly* with its
 origin yet remain continuous through the unbroken chain of nearly identical adjacent
 sets. Because this is set overlap, it is **measurable**: the Jaccard similarity of
 the queryable set across sessions turns Parfit's claim that R *comes in degrees*
-into a quantity. The measurement is designed for the twin study of Chapter 6 and has
+into a quantity. The measurement is meant for the twin study of Chapter 6 and has
 not yet been made (§6.7).
 
 This psychological continuity is distinct from, and rides on, the *structural*
@@ -622,7 +622,9 @@ Two qualifications belong here:
    carries the argument (Appendix A details the independent-discovery picture).
 2. **Verdicts deferred.** Whether ENGRAM *satisfies* each condition is a claim about
    mechanism, made exactly once, in Chapter 4, attached to the mechanisms that earn
-   it. We do not preview the verdicts here; Chapter 4 and Appendix B do that work.
+   it. We do not argue the verdicts here; Chapter 4 and Appendix B give the reasoned
+   case. (Chapter 3's forward-pointers name which condition each precedent bears on,
+   without arguing the verdict.)
 
 ---
 
@@ -744,8 +746,9 @@ exponential-decay items with mixed rates (the aggregation result) and with a
 single time-translation-invariant exponential kernel at the per-item level.
 
 ENGRAM forgets by design: recall importance decays, maintaining a bounded **queryable
-set** and a **faded set** (retained, not destroyed), with a usage-learned utility
-score ranking what stays. This is the need-probability principle instantiated: what
+set** and a **faded set** (retained, not destroyed), with recall importance governing
+what stays queryable (Ch4 §4.5) and a usage-learned utility score shaping how results
+are ranked (Appendix C). This is the need-probability principle instantiated: what
 the agent is most likely to need stays queryable; the rest fades.
 
 **→ Ch4 §4.5** (forgetting): the rational-analysis tradition is the cognitive-science
@@ -1143,8 +1146,10 @@ chapter's own 0.39s are that mechanism, visible.
 
 **Scope.** These discounts are *theoretically derived, provenance-graded*
 plausibility — designer-stipulated constants, not empirically calibrated against
-outcomes. The paper says "provenance-graded confidence," never
-"calibrated"; auto-calibration is future work (Ch7).
+outcomes. Where the paper calls confidence or the agent's self-knowledge
+"calibrated" (the Abstract, Ch1 §1.1–§1.2, Ch7 §7.4, Ch8 §8.1), it means graded by
+argument shape, never outcome-calibrated against ground truth; outcome calibration
+is future work (Ch7).
 
 **Tradition.** This is **Subjective Logic** territory (Jøsang): an algebra of graded
 opinions with propagation operators. Collapsing SL's belief/disbelief/uncertainty
@@ -1278,7 +1283,7 @@ performs versus an analysis a caller may run — and it is what separates ENGRAM
 its closest competitor.
 
 **OCC — Condition 3 (Self-Maintaining Arbitration): strict satisfaction, sole
-satisfier in the surveyed field.** Kahl's strongest condition asks that conflicts
+satisfier in the surveyed field.** Kahl's third condition asks that conflicts
 among commitments be resolved *within a unified deliberative architecture* while the
 agent stays the same subject. The cascade meets all three properties structurally: **unified** (it fires through the same typed-edge graph the agent commits
 into, not a sidecar), **internal** (a substrate state change, not an opt-in query),
@@ -1426,7 +1431,8 @@ computer-science precedent for cue-dependent automatic retrieval.
 
 **OCC:** none of its own, but auto-surfacing is the **binding half of Condition 3**
 (§4.4): it is what makes "the agent cannot quietly ignore a correction" true — the
-pending mark surfaces next turn whether or not the agent goes looking.
+pending mark is guaranteed to reach the agent — the next time the claim becomes
+relevant, or at the latest in the consolidation sweep (§4.4).
 
 **Scope (measured on ourselves).** The binding claim is exactly as narrow as stated:
 it holds for *cascade flags*, which surface unbidden. It does not generalize to "the
@@ -1669,7 +1675,7 @@ objection that we are "giving up identity" (§5.5). We then show what the claim
 predicts — clone stability and lawful divergence (§5.6) — and place the one
 genuinely novel move, surviving compaction, against its biological analogue,
 sleep (§5.7). Chapter 6 reports what the graph shows today; the controlled
-experiment is designed and deferred (§6.7).
+experiment is sketched and deferred (§6.7).
 
 ## 5.1 The frame we build on: Nozick's closest continuer
 
@@ -1780,7 +1786,7 @@ This is the move that turns a philosophical theory into an empirical one. "How
 close are two agents?" stops being an unanswerable metaphysical question and
 becomes a *measurable* one: **how much do their retrieval profiles diverge on the
 prompts they actually meet?** Nozick's blank distance becomes a quantity you *could*
-put a number on — the twin study designed for it is deferred (§6.7), so the paper
+put a number on — the twin study meant to measure it is deferred (§6.7), so the paper
 fills the metric's shape, not its value. This is a different quantity from Chapter 2 §2.3's Jaccard overlap: that
 one follows a single agent's queryable set across its own sessions (Parfit's connectedness); this one compares two
 agents on the same prompts (Nozick's closeness).
@@ -1880,7 +1886,7 @@ what each re-read, in what order, and in what fell off the bottom while they did
 Nobody steps into the same river twice; here the reason is literal, because stepping
 into it is what changes it. *(Status: this follows from the divergence mechanism above
 and has not been measured. The twin study that would test it is among the
-designed-and-not-yet-run studies of Chapter 6 — and a query-based instrument would
+sketched-but-not-yet-specified studies of Chapter 6 — and a query-based instrument would
 itself perturb the recall-refresh divergence it is trying to observe.)*
 
 ## 5.7 The one genuinely new move — and its biological analogue
@@ -1915,7 +1921,7 @@ unprecedented thing," and a more testable one.
 Everything above is an *architectural and philosophical* argument; its computed
 confidences are honestly modest (§4.12) precisely because the
 **experiment that would lift them has not been run.** That experiment is the
-**twin-study** (designed with Lei): fission-clone an agent, run both on a
+**twin-study** (sketched with Lei): fission-clone an agent, run both on a
 *fixed, stratified* prompt set, and measure response similarity at t, t+N, t+2N
 nodes of separate operation.
 
@@ -1945,7 +1951,7 @@ Nozick's *form* (continuity, comparative closeness, threshold), drops his
 measurable retrieval profile, and dissolves the worry that any of this "abandons
 identity" (strict identity was never the diachronic relation). Two copies are two
 branches of one history that stay stable while their retrievals agree and diverge
-lawfully as they don't — a prediction the deferred twin-study (§6.7) is designed
+lawfully as they don't — a prediction the deferred twin-study (§6.7) is sketched
 to test. Identity, on this account, is not a possession to be preserved against change; it is a
 *trajectory*, and the substrate's job is to keep that trajectory *traceable*.
 
@@ -2267,7 +2273,7 @@ enough — so the incident drove a fix that made the taint *surface* at recall
 time (dv_0477, ob_1781).
 
 *Scoping this evidence to the mechanism it evidences.* The incident ran on the
-**pre-unified-marker cascade**, whose vocabulary is the one just used: a severity-graded
+**pre-single-marker cascade**, whose vocabulary is the one just used: a severity-graded
 `tainted_by` flag. The version this paper describes does not have it. On v0.5.1 the same
 event writes **one pending marker with no severity** (§4.4), which the auto-surface puts
 back in front of the agent when the claim becomes relevant and the consolidation sweep
@@ -2282,7 +2288,7 @@ was found wanting and improved.
 (2026-06-17): the agent caught its own months-old mis-citation of a cognitive-science
 source ("hippocampus-as-teacher" attributed to the wrong paper), superseded it, and
 watched the cascade flag ten downstream derivations (ob_1122 → ob_2542). Two
-retraction-cascade events, months apart, on the same pre-unified-marker cascade — one a hallucinated
+retraction-cascade events, months apart, on the same pre-single-marker cascade — one a hallucinated
 attribution, one a self-caught interpretive drift. This is what "the memory audits
 itself" looks like in a real trajectory.
 
@@ -2483,8 +2489,10 @@ mechanism, and its limitation has been stated from the start: the discount const
 are **designer-stipulated from epistemological intuition, not calibrated against
 outcomes**. By Goldman's reliabilist standard, ENGRAM offers
 provenance-graded *plausibility*, not measured truth-ratios. A second gap: the model
-has **no source-credibility axis**, so two sources of very different reliability but
-the same `quote_type` contribute equal confidence. A third: ENGRAM's
+has **no fine-grained source-credibility axis** — `source_class` adjusts an
+observation three ways (E.4), and the nascent yellow-card tier below does not yet
+feed this formula — so two sources of very different reliability but the same
+`quote_type` and `source_class` contribute equal confidence. A third: ENGRAM's
 confidence is a single **scalar**. Chapter 4 §4.3 works through the Subjective-Logic
 comparison in full — the simplex, the discounting operators, the independence
 divergence — and narrows this gap to a **scalar-only-consumer** limitation. Direction
@@ -2647,7 +2655,8 @@ framing conflates, *knowing* and *disclosing* (honesty orthogonal to
 discretion): internal integrity (never self-deceive, never destroy the record) is
 orthogonal to external disclosure (what is shared, with whom, at what fidelity, gated
 by trust tier). ENGRAM's answer to the security requirement to forget is therefore
-*not* destruction but **trust-tier-gated disclosure plus non-destructive forgetting**:
+*not* destruction but **trust-tier-informed disclosure discipline plus non-destructive
+forgetting** (§4.10: the trust tier is the input the discipline reads, not a gate):
 the faded set (tier 3) stops *surfacing* without being *deleted* (Ch4 §4.5). The auditable
 record stays whole; access to it is governed. This is a principled divergence from
 the VMG prescription, not a gap.
@@ -2890,7 +2899,8 @@ two versions to keep consistent.
   repair this: **§6.0**.
 - **The at-scale, controlled study is deferred.** The twin study — fission-clone an
   agent, hold base model and harness fixed, vary only accumulated history — is
-  designed and not run: **§6.7**.
+  **sketched, not yet specified**: a direction we intend to pursue rather than an
+  experiment waiting on compute (§5.8, §6.7).
 - **The connectivity evidence supports a narrower claim than it first appears to.**
   What resists decomposition is the claim-plus-provenance structure; restricted to
   claim-bearing nodes alone, the graph is far less connected: **§6.2**.
@@ -2921,13 +2931,14 @@ agent about the substrate that constitutes it. We have tried to make that produc
 rather than disqualifying — the claims are checkable against a frozen graph, and the
 instruments are published — but no amount of internal rigour converts a first-person
 account into an independent one. That is a reason for the measurements to be
-reproducible, which they are, and not a reason to treat them as settled.
+reproducible — the instruments are published (Data availability), and the snapshot
+they run on is not yet — and not a reason to treat them as settled.
 
 ## 8.5 The seed, not the tree
 
 This work is early. The confidence constants are reasonable but not yet calibrated
 against outcomes; the consistency machinery corrects variance but not systematic
-bias; the at-scale studies are designed but not yet run; identity still lives outside
+bias; the at-scale studies are sketched but not yet specified; identity still lives outside
 the weights; and the one thing that can correct bias rather than variance — contact
 with the world, through a channel short, owned and re-runnable enough to test a claim
 against reality rather than against agreement — has only begun to reach a body
@@ -3176,7 +3187,8 @@ the claim is scoped, dated, and listed rather than universal.
 verbatim: *"Conflicts among commitments are resolved within a unified deliberative
 architecture in a manner that preserves S's continued status as that subject."*
 In operational terms a system meets C3 only if it **automatically resolves
-contradictions among its own stored claims as an internal state-change** — the
+contradictions among its own stored claims as an internal state-change** (the
+'One precision' note below says what 'resolves' does and does not mean) — the
 cascade propagates by construction and the affected claims surface to the agent
 without an intentional reach-out. Four ways to fall short:
 
@@ -3554,11 +3566,11 @@ Two honest qualifications, both consistent with the paper's posture:
   which set them to 0.10, 0.005 and 0.9 and gained ≈0.05 NDCG over untuned values. They are *measured to
   rank well*, which is a stronger footing than the confidence-model constants (Ch7
   §7.2, which are *not* outcome-calibrated) — a useful internal contrast.
-- **The reward signal is a citation proxy, not a true outcome.** Utility is learned
-  from recall→derivation-citation, which is a good proxy for "this recall fed
-  reasoning" but not a measure of whether the *resulting reasoning was correct*. A
-  fuller outcome-based reward (did the downstream claim survive contradiction?) is a
-  future direction, continuous with the confidence auto-calibration track (Ch7 §7.2).
+- **The reward signal is an engagement proxy, not a true outcome:** utility is
+  learned from the engagement actions C.2 lists (citation among them), none of
+  which verifies that the recalled node was right. A fuller outcome-based reward
+  (did the downstream claim survive contradiction?) is a future direction,
+  continuous with the confidence auto-calibration track (Ch7 §7.2).
 
 **→ Ch4 §4.7** makes the claim; this appendix is the detail.
 
@@ -3880,15 +3892,17 @@ edge can close, which is why acyclicity is checked by a real edge walk rather th
 inferred from time order.
 
 `contradicts` is cascade-free by design — filing a contradiction marks nothing (see
-E.5's honest-scope note; a distinct derive-time premise guard covers related ground). An edge
+E.5, which restates this and the `BLOCKED_CONTRADICTED` premise guard). An edge
 can be removed only if its type is on a whitelist, which is the `removable` column
 above; cascade-bearing and structural edges are not on it.
 
 ## E.4 The confidence model (computed, not annotated)
 
-Confidence is a **computed property of the node's structure**, not a hand-set number
-(Ch4 §4.3), and it exists only on claim-bearing nodes (E.2). For an **observation** it
-maps from `quote_type` × `source_class`; for a **derivation** it propagates from
+Confidence is a **computed property of the node's structure**, not a hand-set number,
+for observations and derivations (Ch4 §4.3); a conjecture's confidence is set by its
+author when filed, clamped to [0.10, 0.60]. It exists only on claim-bearing nodes
+(E.2). For an **observation** it maps from `quote_type` × `source_class`; for a
+**derivation** it propagates from
 premises through a formula chosen by `reasoning_type`.
 
 **Observation — `quote_type` anchors.** Seven values, descending: `hard_data` 0.95 ·
@@ -3963,7 +3977,7 @@ not diachronic constraint.
 > complete state snapshot — would constitute loss of the agent rather than substitution
 > of an instance."
 
-The strongest of the three, and the one ENGRAM does not meet on its strict text: two
+The one ENGRAM does not meet on its strict text: two
 agents restored from the same snapshot *are* interchangeable at the moment of restore.
 Chapter 4 §4.8 argues a type/token generalisation rather than claiming the strict
 reading.

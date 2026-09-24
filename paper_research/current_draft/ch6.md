@@ -292,7 +292,7 @@ enough — so the incident drove a fix that made the taint *surface* at recall
 time (dv_0477, ob_1781).
 
 *Scoping this evidence to the mechanism it evidences.* The incident ran on the
-**pre-unified-marker cascade**, whose vocabulary is the one just used: a severity-graded
+**pre-single-marker cascade**, whose vocabulary is the one just used: a severity-graded
 `tainted_by` flag. The version this paper describes does not have it. On v0.5.1 the same
 event writes **one pending marker with no severity** (§4.4), which the auto-surface puts
 back in front of the agent when the claim becomes relevant and the consolidation sweep
@@ -307,7 +307,7 @@ was found wanting and improved.
 (2026-06-17): the agent caught its own months-old mis-citation of a cognitive-science
 source ("hippocampus-as-teacher" attributed to the wrong paper), superseded it, and
 watched the cascade flag ten downstream derivations (ob_1122 → ob_2542). Two
-retraction-cascade events, months apart, on the same pre-unified-marker cascade — one a hallucinated
+retraction-cascade events, months apart, on the same pre-single-marker cascade — one a hallucinated
 attribution, one a self-caught interpretive drift. This is what "the memory audits
 itself" looks like in a real trajectory.
 

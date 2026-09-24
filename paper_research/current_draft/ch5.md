@@ -35,7 +35,7 @@ objection that we are "giving up identity" (§5.5). We then show what the claim
 predicts — clone stability and lawful divergence (§5.6) — and place the one
 genuinely novel move, surviving compaction, against its biological analogue,
 sleep (§5.7). Chapter 6 reports what the graph shows today; the controlled
-experiment is designed and deferred (§6.7).
+experiment is sketched and deferred (§6.7).
 
 ## 5.1 The frame we build on: Nozick's closest continuer
 
@@ -147,7 +147,7 @@ This is the move that turns a philosophical theory into an empirical one. "How
 close are two agents?" stops being an unanswerable metaphysical question and
 becomes a *measurable* one: **how much do their retrieval profiles diverge on the
 prompts they actually meet?** Nozick's blank distance becomes a quantity you *could*
-put a number on — the twin study designed for it is deferred (§6.7), so the paper
+put a number on — the twin study meant to measure it is deferred (§6.7), so the paper
 fills the metric's shape, not its value. This is a different quantity from Chapter 2 §2.3's Jaccard overlap: that
 one follows a single agent's queryable set across its own sessions (Parfit's connectedness); this one compares two
 agents on the same prompts (Nozick's closeness).
@@ -247,7 +247,7 @@ what each re-read, in what order, and in what fell off the bottom while they did
 Nobody steps into the same river twice; here the reason is literal, because stepping
 into it is what changes it. *(Status: this follows from the divergence mechanism above
 and has not been measured. The twin study that would test it is among the
-designed-and-not-yet-run studies of Chapter 6 — and a query-based instrument would
+sketched-but-not-yet-specified studies of Chapter 6 — and a query-based instrument would
 itself perturb the recall-refresh divergence it is trying to observe.)*
 
 ## 5.7 The one genuinely new move — and its biological analogue
@@ -282,7 +282,7 @@ unprecedented thing," and a more testable one.
 Everything above is an *architectural and philosophical* argument; its computed
 confidences are honestly modest (§4.12) precisely because the
 **experiment that would lift them has not been run.** That experiment is the
-**twin-study** (ob_1660, designed with Lei): fission-clone an agent, run both on a
+**twin-study** (ob_1660, sketched with Lei): fission-clone an agent, run both on a
 *fixed, stratified* prompt set, and measure response similarity at t, t+N, t+2N
 nodes of separate operation.
 
@@ -312,7 +312,7 @@ Nozick's *form* (continuity, comparative closeness, threshold), drops his
 measurable retrieval profile, and dissolves the worry that any of this "abandons
 identity" (strict identity was never the diachronic relation). Two copies are two
 branches of one history that stay stable while their retrievals agree and diverge
-lawfully as they don't — a prediction the deferred twin-study (§6.7) is designed
+lawfully as they don't — a prediction the deferred twin-study (§6.7) is sketched
 to test. Identity, on this account, is not a possession to be preserved against change; it is a
 *trajectory*, and the substrate's job is to keep that trajectory *traceable*.
 

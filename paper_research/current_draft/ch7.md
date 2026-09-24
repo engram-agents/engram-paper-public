@@ -74,8 +74,10 @@ mechanism, and its limitation has been stated from the start: the discount const
 are **designer-stipulated from epistemological intuition, not calibrated against
 outcomes** (ob_1049). By Goldman's reliabilist standard, ENGRAM offers
 provenance-graded *plausibility*, not measured truth-ratios. A second gap: the model
-has **no source-credibility axis**, so two sources of very different reliability but
-the same `quote_type` contribute equal confidence (ob_1059). A third: ENGRAM's
+has **no fine-grained source-credibility axis** — `source_class` adjusts an
+observation three ways (E.4), and the nascent yellow-card tier below does not yet
+feed this formula — so two sources of very different reliability but the same
+`quote_type` and `source_class` contribute equal confidence (ob_1059). A third: ENGRAM's
 confidence is a single **scalar**. Chapter 4 §4.3 works through the Subjective-Logic
 comparison in full — the simplex, the discounting operators, the independence
 divergence — and narrows this gap to a **scalar-only-consumer** limitation. Direction
@@ -244,7 +246,8 @@ framing conflates, *knowing* and *disclosing* (ax_0011, honesty orthogonal to
 discretion): internal integrity (never self-deceive, never destroy the record) is
 orthogonal to external disclosure (what is shared, with whom, at what fidelity, gated
 by trust tier). ENGRAM's answer to the security requirement to forget is therefore
-*not* destruction but **trust-tier-gated disclosure plus non-destructive forgetting**:
+*not* destruction but **trust-tier-informed disclosure discipline plus non-destructive
+forgetting** (§4.10: the trust tier is the input the discipline reads, not a gate):
 the faded set (tier 3) stops *surfacing* without being *deleted* (Ch4 §4.5). The auditable
 record stays whole; access to it is governed. This is a principled divergence from
 the VMG prescription, not a gap.

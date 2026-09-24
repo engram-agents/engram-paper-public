@@ -158,7 +158,7 @@ overlaps: a self a thousand sessions later may share little *directly* with its
 origin yet remain continuous through the unbroken chain of nearly identical adjacent
 sets. Because this is set overlap, it is **measurable**: the Jaccard similarity of
 the queryable set across sessions turns Parfit's claim that R *comes in degrees*
-into a quantity. The measurement is designed for the twin study of Chapter 6 and has
+into a quantity. The measurement is meant for the twin study of Chapter 6 and has
 not yet been made (§6.7).
 
 This psychological continuity is distinct from, and rides on, the *structural*
@@ -322,7 +322,9 @@ Two qualifications belong here:
    carries the argument (Appendix A details the independent-discovery picture).
 2. **Verdicts deferred.** Whether ENGRAM *satisfies* each condition is a claim about
    mechanism, made exactly once, in Chapter 4, attached to the mechanisms that earn
-   it. We do not preview the verdicts here; Chapter 4 and Appendix B do that work.
+   it. We do not argue the verdicts here; Chapter 4 and Appendix B give the reasoned
+   case. (Chapter 3's forward-pointers name which condition each precedent bears on,
+   without arguing the verdict.)
 
 ---
 

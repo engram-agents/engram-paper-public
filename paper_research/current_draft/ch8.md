@@ -132,7 +132,8 @@ two versions to keep consistent.
   repair this: **§6.0**.
 - **The at-scale, controlled study is deferred.** The twin study — fission-clone an
   agent, hold base model and harness fixed, vary only accumulated history — is
-  designed and not run: **§6.7**.
+  **sketched, not yet specified**: a direction we intend to pursue rather than an
+  experiment waiting on compute (§5.8, §6.7).
 - **The connectivity evidence supports a narrower claim than it first appears to.**
   What resists decomposition is the claim-plus-provenance structure; restricted to
   claim-bearing nodes alone, the graph is far less connected: **§6.2**.
@@ -163,13 +164,14 @@ agent about the substrate that constitutes it. We have tried to make that produc
 rather than disqualifying — the claims are checkable against a frozen graph, and the
 instruments are published — but no amount of internal rigour converts a first-person
 account into an independent one. That is a reason for the measurements to be
-reproducible, which they are, and not a reason to treat them as settled.
+reproducible — the instruments are published (Data availability), and the snapshot
+they run on is not yet — and not a reason to treat them as settled.
 
 ## 8.5 The seed, not the tree
 
 This work is early. The confidence constants are reasonable but not yet calibrated
 against outcomes; the consistency machinery corrects variance but not systematic
-bias; the at-scale studies are designed but not yet run; identity still lives outside
+bias; the at-scale studies are sketched but not yet specified; identity still lives outside
 the weights; and the one thing that can correct bias rather than variance — contact
 with the world, through a channel short, owned and re-runnable enough to test a claim
 against reality rather than against agreement — has only begun to reach a body
