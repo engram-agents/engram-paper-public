@@ -371,8 +371,8 @@ evidence toward different ends.
 The chapter's claim, stated once: this convergence is the regularity §1.4 named, and
 it relocates ENGRAM's distinctiveness to the integration layer and the
 epistemic-identity purpose. One *divergence* (Subjective Logic's
-belief/disbelief/uncertainty simplex, which ENGRAM does not collapse but normalizes
-into structure, §3.5) and one *gap filled* (the bridge from TMS to agent memory,
+belief/disbelief/uncertainty simplex, which ENGRAM's confidence reduces to a single
+scalar while carrying the other dimensions in graph structure, §3.5) and one *gap filled* (the bridge from TMS to agent memory,
 unwalked in the papers we examined) are carried forward rather than smoothed over.
 
 Chapter 4 builds and maps each of these mechanisms — every section above names the

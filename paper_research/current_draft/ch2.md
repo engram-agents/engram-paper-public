@@ -293,7 +293,7 @@ a `df_` identifier names a definition node in the graph):
   non-imposition, non-trivial reset, and non-modular decomposition — guardrails that
   keep the three conditions from being satisfied trivially.
 
-**What OCC is a condition *on*.** In a companion paper that carries the condition
+**What OCC is a condition *on*.** In an earlier companion paper that applies the condition
 into the epistemic domain, Kahl (2026a) identifies what today's artificial
 systems lack, and the diagnosis is structural rather than a shortfall of
 capability: such systems "can

@@ -103,7 +103,8 @@ above its weakest premise. We found a real case while preparing Chapter 6. A ste
 combined one weak premise (0.20) with two unrelated strong ones had been filed as a
 generalization and scored 0.91; filed as the analogy it is, it scores 0.14. The step
 is dv_0779 in the frozen snapshot; tracing the conclusion it fed,
-`tools/paper_stats.py --trace dv_0877`, shows it at layer 4 of that chain. The
+`tools/paper_stats.py --trace dv_0877`, shows it at layer 4 of that chain (dv_0779 is the mis-typed step; dv_0877 is the
+conclusion built on it). The
 substrate's independence check did not catch it, because the three premises came from
 different evidence sources. We see two remedies. Within the substrate, a dream fairy
 dedicated to logic review would re-read recent derivations during consolidation,

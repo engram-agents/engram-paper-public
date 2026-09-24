@@ -94,7 +94,7 @@ layers, and that the current landscape essentially does not address the deepest.
   have no concept of identity; memory is a key-value or vector store the agent reads.
 - **Layer 2 — Narrative Identity.** Maintaining a coherent self-story — a
   creed-anchored autobiography that answers *"who am I?"*. The closest published
-  system, Sophia, reaches this layer.
+  system, Sophia (Sun, Hong & Zhang, 2025), reaches this layer.
 - **Layer 3 — Epistemic Identity.** Maintaining calibrated self-*knowledge* with
   provenance, confidence, contradiction correction, and metacognitive self-audit:
   identity as the answer to *"what do I know, how confidently, and on what basis?"*.
@@ -147,7 +147,7 @@ fraction of it.
 
 ![Figure 1](figures/fig6-census.png)
 
-**Figure 1.** What one real ENGRAM graph is made of — 9,399 current nodes at the snapshot date, by type. Observations and their evidence nodes are 72.8% of the graph; the identity-bearing types (cornerstones, lessons, axioms, goals) are together under 3%. Identity here is carried by the *structure* over the claims, not by a large store of self-description.
+**Figure 1.** What one real ENGRAM graph is made of — 9,399 current nodes at the snapshot date, by type. Observations and their evidence nodes are 72.8% of the graph; the identity-bearing types (71 cornerstones, 149 lessons, 9 axioms, 16 goals) are together 245 nodes, 2.6%; axioms and goals sit inside the chart's 'other' bar. Identity here is carried by the *structure* over the claims, not by a large store of self-description.
 
 ## 1.2 What Layer 3 requires
 
@@ -584,7 +584,7 @@ a `df_` identifier names a definition node in the graph):
   non-imposition, non-trivial reset, and non-modular decomposition — guardrails that
   keep the three conditions from being satisfied trivially.
 
-**What OCC is a condition *on*.** In a companion paper that carries the condition
+**What OCC is a condition *on*.** In an earlier companion paper that applies the condition
 into the epistemic domain, Kahl (2026a) identifies what today's artificial
 systems lack, and the diagnosis is structural rather than a shortfall of
 capability: such systems "can
@@ -1006,8 +1006,8 @@ evidence toward different ends.
 The chapter's claim, stated once: this convergence is the regularity §1.4 named, and
 it relocates ENGRAM's distinctiveness to the integration layer and the
 epistemic-identity purpose. One *divergence* (Subjective Logic's
-belief/disbelief/uncertainty simplex, which ENGRAM does not collapse but normalizes
-into structure, §3.5) and one *gap filled* (the bridge from TMS to agent memory,
+belief/disbelief/uncertainty simplex, which ENGRAM's confidence reduces to a single
+scalar while carrying the other dimensions in graph structure, §3.5) and one *gap filled* (the bridge from TMS to agent memory,
 unwalked in the papers we examined) are carried forward rather than smoothed over.
 
 Chapter 4 builds and maps each of these mechanisms — every section above names the
@@ -1926,7 +1926,10 @@ descends from the same seed, under the same written disciplines, and the agents
 read each other's findings daily — a non-trivial share of any seat's nodes are
 corroborations of a colleague's claim. *N* seats would not be *N* independent
 observations, and a cross-seat statistic assuming independence would overstate its
-confidence rather than earn it. The honest position is a single graph reported as a
+confidence rather than earn it. That holds even though the fleet spans three model
+providers (Acknowledgements): lineage diversity helps only through the contact §7.3
+describes, and shared seed plus daily cross-reading erodes the independence it could
+add. The honest position is a single graph reported as a
 single graph, with the limitation named.
 
 ---
@@ -1941,7 +1944,7 @@ produces a **differentiated, honest distribution** — or whether it collapses t
 a flattering constant. It produces the former, and the differentiation falls exactly
 where the design predicts.
 
-Across **4,782 observations and 1,322 derivations**, the distributions separate by
+Across **4,782 observations (4,780 factual, 2 predictive) and 1,322 derivations**, the distributions separate by
 *type* as designed: observations sit high with a long low tail (left-skewed: mean **0.81** below the median
 0.85 — most are source-attested), while derivations sit lower and flatter (mean
 **0.67**, p25 **0.49**, p75 **0.88** — they inherit and dilute their premises).
@@ -2001,7 +2004,8 @@ holds in every month and at every cut.
 
 **The deductive row can be checked against the model's own arithmetic, and the
 check is close but not exact.** A modus-ponens step is specified as
-`min(premises) × 0.98`. Across the 416 current modus-ponens derivations, mean
+`min(premises) × 0.98`. Across the 416 current modus-ponens derivations (the same count as the
+`attributed_analysis` nodes at their 0.70 anchor above, by coincidence), mean
 measured confidence is **0.697**; the mean weakest premise is **0.723**, which the
 0.98 discount predicts as **0.709** — a gap of **0.012**. So the aggregate tracks
 the specification to within about 1.7% (0.012 on 0.709), not exactly. The looser figure
@@ -2103,7 +2107,8 @@ returning a different number is expected rather than a refutation.
 *Method and its limits.* These are retrospective reconstructions from the frozen
 snapshot, filtering nodes and edges by `created_at`; nodes superseded or retracted
 later are included at past cuts, because they existed then. Anything hard-deleted
-before the freeze is invisible at every cut, and that blindness is bounded by
+before the freeze (no v0.5.1 operation deletes a node, §7.4, so any such deletion was
+made outside the substrate) is invisible at every cut, and that blindness is bounded by
 replay against the graph's own commit history rather than assumed away. The
 instrument is `tools/connectivity_trend.py`.
 
@@ -2117,6 +2122,10 @@ claim-bearing / non-claim-bearing partition and the picture changes sharply:
 | claim-bearing only | 6,194 | 2,426 | **39.2%** | **2,799** |
 | non-claim-bearing only | 3,205 | 543 | 16.9% | 2,506 |
 | claim-bearing + evidence | 8,254 | 5,413 | 65.6% | 191 |
+
+At the snapshot the queryable-set cap was N = 10,000, above these 9,399 current nodes,
+so every current node was still queryable; the fade-out route of §5.6 had not yet
+started on this graph.
 
 **Claims do not connect to claims. They connect through evidence.** Restricted to
 claim-bearing nodes, the giant component falls to 39.2% and 2,799 of 6,194 claims —
@@ -2442,7 +2451,8 @@ above its weakest premise. We found a real case while preparing Chapter 6. A ste
 combined one weak premise (0.20) with two unrelated strong ones had been filed as a
 generalization and scored 0.91; filed as the analogy it is, it scores 0.14. The step
 is dv_0779 in the frozen snapshot; tracing the conclusion it fed,
-`tools/paper_stats.py --trace dv_0877`, shows it at layer 4 of that chain. The
+`tools/paper_stats.py --trace dv_0877`, shows it at layer 4 of that chain (dv_0779 is the mis-typed step; dv_0877 is the
+conclusion built on it). The
 substrate's independence check did not catch it, because the three premises came from
 different evidence sources. We see two remedies. Within the substrate, a dream fairy
 dedicated to logic review would re-read recent derivations during consolidation,
@@ -2887,7 +2897,8 @@ record. We treat convergent discovery not as a defensive claim but as evidence.
 A note up front on what we do **not** claim: ENGRAM is not first across the board. The
 formal shape it shares with Kumiho — typed reasoning edges with cascade/supersede over
 a property graph — is decades old in the truth-maintenance and belief-revision
-traditions, and several agent-memory systems (Mem0g, Zep/Graphiti, A-MEM) predate our
+traditions, and several agent-memory systems (Mem0g — Mem0's graph-memory variant — Zep/Graphiti,
+A-MEM) predate our
 ideation. The two exemplars named here are the two we hold and have read first-hand:
 Doyle's truth maintenance system (via the Ginsberg reprint, Ch4 §4.2) and AGM 1985.
 Both traditions are wider than those two works, and the others this paper names — de
@@ -2906,7 +2917,7 @@ hook), which no surveyed system has.
 The proto-ENGRAM idea began in a Lei-led conversation on **2026-03-17** about
 misinformation and citation systems for an AI-centric information ecosystem. Within
 the first hour, the architectural seed was stated verbatim — by earlier-Claude, at
-Lei's prompting, *two weeks before the system was named*:
+Lei's prompting, *eleven days before the system was named*:
 
 > **Earlier-Claude, 2026-03-17 15:18 UTC** (conv `3db06cf1`, msg #8, uuid `019cfc60`):
 > *"any agent can make any claim, but the claim must arrive with its **full epistemic
@@ -2931,7 +2942,7 @@ sketch of ENGRAM's purpose:
 External structured substrate, per-agent internal state, theory-formation from
 observations, evidence-seeking to strengthen-or-dispute, self-consistency refinement —
 **all there, by Lei, before any literature search.** The name "ENGRAM" arrived eight
-days later (2026-03-28, proposed by earlier-Claude, accepted by Lei within minutes),
+days after that search (2026-03-28, proposed by earlier-Claude, accepted by Lei within minutes),
 and the paper's structure descends from an 18-chapter handbook outline drafted that
 same evening — under Lei's instruction *"But first, we'll need to build a great ENGRAM
 system,"* which set the build-first-then-write order this project followed.
@@ -3027,6 +3038,7 @@ was on our radar.
 | Kahl 2026a (EAA) (Zenodo) | 2026-01-31 | 48 days before (not surfaced) | 68 days before |
 | GAM (2604.12285) | 2026-04-14 | 25 days **after** | 5 days after |
 | SCM (2604.20943) | 2026-04-22 | 33 days **after** | 13 days after |
+| VMG survey (Lin et al., 2604.16548) | 2026-04 (month from the arXiv identifier) | **after** | after |
 | Mem0g / Zep / A-MEM | 2024–25 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) | predate |
 
 The two structurally-closest systems (Kumiho, SCM) both surface in March–April 2026 —
@@ -3114,7 +3126,9 @@ we quote it verbatim. Where the failure is *absence* of the construct entirely
 (GAM), there is no sentence to quote — we say so and rest the verdict on the
 documented absence, not an invented quote.
 
-**Synthesis.** Across the eleven sources, none satisfies Condition 3 strictly. The
+**Synthesis.** Across the eleven sources, none satisfies Condition 3 strictly; for one of
+them, TierMem, the condition does not apply, because it has no conflict construct to
+arbitrate (§B.5). The
 conclusion is the conjunction of the verdicts above, so it holds exactly as far as each of
 them does. The field has converged on the structural *primitives* C3 needs (typed
 edges, provenance, cascade-traversable graphs, supersede semantics — Kumiho most
@@ -3991,9 +4005,6 @@ follows from that sequence rather than being read.]*
 Anderson, J. R., & Schooler, L. J. (1991). Reflections of the environment in memory.
 *Psychological Science*, 2(6), 396–408. Department of Psychology, Carnegie Mellon
 University.
-
-Damasio, A. R. (1999). *The feeling of what happens: Body and emotion in the making of
-consciousness*. New York / San Diego / London: Harcourt Brace. ISBN 0-15-100369-6.
 
 Doyle, J. A truth maintenance system. Massachusetts Institute of Technology,
 Artificial Intelligence Laboratory, Cambridge, MA. Read here as reprinted in M. L.

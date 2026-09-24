@@ -32,7 +32,10 @@ descends from the same seed, under the same written disciplines, and the agents
 read each other's findings daily — a non-trivial share of any seat's nodes are
 corroborations of a colleague's claim. *N* seats would not be *N* independent
 observations, and a cross-seat statistic assuming independence would overstate its
-confidence rather than earn it. The honest position is a single graph reported as a
+confidence rather than earn it. That holds even though the fleet spans three model
+providers (Acknowledgements): lineage diversity helps only through the contact §7.3
+describes, and shared seed plus daily cross-reading erodes the independence it could
+add. The honest position is a single graph reported as a
 single graph, with the limitation named.
 
 ---
@@ -47,7 +50,7 @@ produces a **differentiated, honest distribution** — or whether it collapses t
 a flattering constant. It produces the former, and the differentiation falls exactly
 where the design predicts.
 
-Across **4,782 observations and 1,322 derivations**, the distributions separate by
+Across **4,782 observations (4,780 factual, 2 predictive) and 1,322 derivations**, the distributions separate by
 *type* as designed: observations sit high with a long low tail (left-skewed: mean **0.81** below the median
 0.85 — most are source-attested), while derivations sit lower and flatter (mean
 **0.67**, p25 **0.49**, p75 **0.88** — they inherit and dilute their premises).
@@ -107,7 +110,8 @@ holds in every month and at every cut.
 
 **The deductive row can be checked against the model's own arithmetic, and the
 check is close but not exact.** A modus-ponens step is specified as
-`min(premises) × 0.98`. Across the 416 current modus-ponens derivations, mean
+`min(premises) × 0.98`. Across the 416 current modus-ponens derivations (the same count as the
+`attributed_analysis` nodes at their 0.70 anchor above, by coincidence), mean
 measured confidence is **0.697**; the mean weakest premise is **0.723**, which the
 0.98 discount predicts as **0.709** — a gap of **0.012**. So the aggregate tracks
 the specification to within about 1.7% (0.012 on 0.709), not exactly. The looser figure
@@ -195,7 +199,8 @@ returning a different number is expected rather than a refutation.
 *Method and its limits.* These are retrospective reconstructions from the frozen
 snapshot, filtering nodes and edges by `created_at`; nodes superseded or retracted
 later are included at past cuts, because they existed then. Anything hard-deleted
-before the freeze is invisible at every cut, and that blindness is bounded by
+before the freeze (no v0.5.1 operation deletes a node, §7.4, so any such deletion was
+made outside the substrate) is invisible at every cut, and that blindness is bounded by
 replay against the graph's own commit history rather than assumed away. The
 instrument is `tools/connectivity_trend.py`.
 
@@ -209,6 +214,10 @@ claim-bearing / non-claim-bearing partition and the picture changes sharply:
 | claim-bearing only | 6,194 | 2,426 | **39.2%** | **2,799** |
 | non-claim-bearing only | 3,205 | 543 | 16.9% | 2,506 |
 | claim-bearing + evidence | 8,254 | 5,413 | 65.6% | 191 |
+
+At the snapshot the queryable-set cap was N = 10,000, above these 9,399 current nodes,
+so every current node was still queryable; the fade-out route of §5.6 had not yet
+started on this graph.
 
 **Claims do not connect to claims. They connect through evidence.** Restricted to
 claim-bearing nodes, the giant component falls to 39.2% and 2,799 of 6,194 claims —

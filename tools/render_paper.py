@@ -87,8 +87,9 @@ INSERTS: list[tuple[str, str, str]] = [
         _fig("figures/fig6-census.png", 1,
              "What one real ENGRAM graph is made of — 9,399 current nodes at the snapshot "
              "date, by type. Observations and their evidence nodes are 72.8% of the graph; "
-             "the identity-bearing types (cornerstones, lessons, axioms, goals) are together "
-             "under 3%. Identity here is carried by the *structure* over the claims, not by "
+             "the identity-bearing types (71 cornerstones, 149 lessons, 9 axioms, 16 goals) "
+             "are together 245 nodes, 2.6%; axioms and goals sit inside the chart's 'other' bar. "
+             "Identity here is carried by the *structure* over the claims, not by "
              "a large store of self-description."),
     ),
     (

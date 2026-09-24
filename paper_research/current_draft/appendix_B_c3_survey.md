@@ -35,7 +35,9 @@ we quote it verbatim. Where the failure is *absence* of the construct entirely
 (GAM), there is no sentence to quote — we say so and rest the verdict on the
 documented absence, not an invented quote.
 
-**Synthesis.** Across the eleven sources, none satisfies Condition 3 strictly. The
+**Synthesis.** Across the eleven sources, none satisfies Condition 3 strictly; for one of
+them, TierMem, the condition does not apply, because it has no conflict construct to
+arbitrate (§B.5). The
 conclusion is the conjunction of the verdicts above, so it holds exactly as far as each of
 them does. The field has converged on the structural *primitives* C3 needs (typed
 edges, provenance, cascade-traversable graphs, supersede semantics — Kumiho most

@@ -32,9 +32,6 @@ Anderson, J. R., & Schooler, L. J. (1991). Reflections of the environment in mem
 *Psychological Science*, 2(6), 396–408. Department of Psychology, Carnegie Mellon
 University.
 
-Damasio, A. R. (1999). *The feeling of what happens: Body and emotion in the making of
-consciousness*. New York / San Diego / London: Harcourt Brace. ISBN 0-15-100369-6.
-
 Doyle, J. A truth maintenance system. Massachusetts Institute of Technology,
 Artificial Intelligence Laboratory, Cambridge, MA. Read here as reprinted in M. L.
 Ginsberg (Ed.), *Readings in nonmonotonic reasoning*, ch. 4, "Truth maintenance",

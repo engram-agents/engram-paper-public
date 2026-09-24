@@ -20,7 +20,7 @@ layers, and that the current landscape essentially does not address the deepest.
   have no concept of identity; memory is a key-value or vector store the agent reads.
 - **Layer 2 — Narrative Identity.** Maintaining a coherent self-story — a
   creed-anchored autobiography that answers *"who am I?"*. The closest published
-  system, Sophia, reaches this layer.
+  system, Sophia (Sun, Hong & Zhang, 2025), reaches this layer.
 - **Layer 3 — Epistemic Identity.** Maintaining calibrated self-*knowledge* with
   provenance, confidence, contradiction correction, and metacognitive self-audit:
   identity as the answer to *"what do I know, how confidently, and on what basis?"*.

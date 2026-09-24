@@ -21,7 +21,8 @@ record. We treat convergent discovery not as a defensive claim but as evidence.
 A note up front on what we do **not** claim: ENGRAM is not first across the board. The
 formal shape it shares with Kumiho — typed reasoning edges with cascade/supersede over
 a property graph — is decades old in the truth-maintenance and belief-revision
-traditions, and several agent-memory systems (Mem0g, Zep/Graphiti, A-MEM) predate our
+traditions, and several agent-memory systems (Mem0g — Mem0's graph-memory variant — Zep/Graphiti,
+A-MEM) predate our
 ideation. The two exemplars named here are the two we hold and have read first-hand:
 Doyle's truth maintenance system (via the Ginsberg reprint, Ch4 §4.2) and AGM 1985.
 Both traditions are wider than those two works, and the others this paper names — de
@@ -40,7 +41,7 @@ hook), which no surveyed system has.
 The proto-ENGRAM idea began in a Lei-led conversation on **2026-03-17** about
 misinformation and citation systems for an AI-centric information ecosystem. Within
 the first hour, the architectural seed was stated verbatim — by earlier-Claude, at
-Lei's prompting, *two weeks before the system was named*:
+Lei's prompting, *eleven days before the system was named*:
 
 > **Earlier-Claude, 2026-03-17 15:18 UTC** (conv `3db06cf1`, msg #8, uuid `019cfc60`):
 > *"any agent can make any claim, but the claim must arrive with its **full epistemic
@@ -65,7 +66,7 @@ sketch of ENGRAM's purpose:
 External structured substrate, per-agent internal state, theory-formation from
 observations, evidence-seeking to strengthen-or-dispute, self-consistency refinement —
 **all there, by Lei, before any literature search.** The name "ENGRAM" arrived eight
-days later (2026-03-28, proposed by earlier-Claude, accepted by Lei within minutes),
+days after that search (2026-03-28, proposed by earlier-Claude, accepted by Lei within minutes),
 and the paper's structure descends from an 18-chapter handbook outline drafted that
 same evening — under Lei's instruction *"But first, we'll need to build a great ENGRAM
 system,"* which set the build-first-then-write order this project followed.
@@ -161,6 +162,7 @@ was on our radar.
 | Kahl 2026a (EAA) (Zenodo) | 2026-01-31 | 48 days before (not surfaced) | 68 days before |
 | GAM (2604.12285) | 2026-04-14 | 25 days **after** | 5 days after |
 | SCM (2604.20943) | 2026-04-22 | 33 days **after** | 13 days after |
+| VMG survey (Lin et al., 2604.16548) | 2026-04 (month from the arXiv identifier) | **after** | after |
 | Mem0g / Zep / A-MEM | 2024–25 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) | predate |
 
 The two structurally-closest systems (Kumiho, SCM) both surface in March–April 2026 —
