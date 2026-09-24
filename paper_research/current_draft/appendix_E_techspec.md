@@ -177,39 +177,8 @@ designer-stipulated, not outcome-calibrated — Ch7 §7.2.)*
 
 ## E.5 Self-correction
 
-- **Retract** = "I was wrong": the target was never valid. **Supersede** = "I changed
-  my mind": the old node was valid and is now replaced. Both are recorded, and the
-  marker written downstream records which one fired — but as **provenance, not as
-  differing blocking power** (below).
-  - **Mark.** Either operation walks the cascade relations — `derives_from` and
-  `acknowledged_derives_from`, the only two — and writes one **pending marker** on
-  every live claim-bearing dependent. A pending marker means exactly one thing: the
-  node may not be cited as a premise until it is resolved. There is **no severity
-  field**: eligibility is computed at resolution time, for the reason Ch4 §4.4 works
-  through.
-- **Surface.** The **per-turn auto-surfacing** hook puts marked nodes back in front of
-  the agent when they are topically relevant, without an intentional reach.
-- **Adjudicate.** Surfacing is relevance-gated, so a marked node the agent never touches
-  again would sit forever. The consolidation cycle therefore computes the **frontier** —
-  every node carrying a pending marker, none of whose cascade-ancestors is still pending
-  — and walks it repeatedly until no pending marker remains. Working a frontier rather
-  than a queue is what makes the order safe: nothing is adjudicated while something it
-  depends on is unsettled, and because the frontier is recomputed from marker state on
-  every call rather than stored, the walk resumes identically after a crash, a
-  compaction, or a week's gap. There is no queue that can disagree with the graph.
-- The three together are *operational binding* (Ch4 §4.4): marking produces the state,
-  surfacing shows it when relevant, adjudication guarantees it is eventually faced. The
-  machine **never decides what is true** — it determines what needs deciding, orders the
-  decisions, computes what follows mechanically, and puts every remaining judgement to
-  the agent.
-- **Honest scope:** filing a `contradicts`
-  edge does not itself cascade — a contradiction is a live, unresolved dispute,
-  not (yet) a refutation, so it is deliberately not treated the way a retract or
-  supersede is. What it *does* trigger is a distinct, derive-time guard: any new
-  derivation citing a premise that sits on an open contradiction is blocked by
-  default (`BLOCKED_CONTRADICTED`), with an explicit, audit-stamped opt-in
-  override (`use_contested`) for an agent that deliberately builds on the
-  contested side while the dispute stays open.
+Self-correction — retract versus supersede, the pending marker, the per-turn surfacing hook and the consolidation-time frontier walk — is specified in full at Ch4 §4.4 and not repeated here. Two facts the other appendices lean on: the cascade walks only `derives_from` and `acknowledged_derives_from` (E.3), and a `contradicts` edge does not cascade — a contradiction is a live dispute, not yet a refutation — but any new derivation citing a premise that sits on an open contradiction is blocked by default (`BLOCKED_CONTRADICTED`), with an explicit, audit-stamped opt-in (`use_contested`) for an agent that deliberately builds on the contested side.
+
 - The eight load-bearing **primitives** (dv_0615): typed nodes, typed edges, provenance,
   cascade, supersede, focus mode (Ch4 §4.8), auto-surfacing, the confidence model — the minimal
   generating set every higher mechanism composes from.

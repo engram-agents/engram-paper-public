@@ -65,8 +65,11 @@ supersede, focus mode (§4.8), auto-surfacing and the confidence model (Appendix
 A claim is not free text but a
 *kind*: an observation (a fact citing its source), a derivation (an inference citing
 its premises), a definition, a contradiction, an axiom, a cornerstone, and a few
-more. Edges are typed too; the load-bearing one is `derives_from`, the premise edge,
-because it is the channel along which the self-correction cascade travels (§4.4).
+more.
+
+The kinds split first by whether they assert something truth-evaluable. Six are **claim-bearing** — `observation_factual`, `observation_predictive`, `derivation`, `conjecture`, `axiom` and `theory` (declared, with no instances yet) — and only these carry a confidence. The rest — definitions, questions, goals, tasks, lessons, cornerstones, feeling-reports, person nodes, evidence, predictions, contradictions — are **non-claim-bearing**: they carry no confidence, and the self-correction cascade stops at them (§4.4). Non-claim-bearing is computed as everything-minus-claim-bearing, so a new kind is non-claim-bearing by default. Appendix E §E.2 gives the seventeen-type table.
+
+Edges are typed too: sixteen relations, each carrying six independent flags (cascade, temporal, acyclic, removable, addable, provenance — Appendix E §E.3 gives the table). Only two are cascade-bearing, `derives_from` — the premise edge, the channel along which the self-correction cascade travels (§4.4) — and `acknowledged_derives_from`, by which a node that has acknowledged a correction rests on the replacement premise. `supersedes` and `retracts` are the events that *start* a walk without being walked; `cites` and `supported_by` carry provenance without inferential dependency.
 Every claim carries provenance: an observation cites a verbatim source, a derivation
 cites its premises. A claim with no provenance cannot be filed.
 
@@ -94,6 +97,8 @@ abductive, authority citation — and the substrate **computes** the claim's
 confidence by propagating its premises' confidences through a discount fixed by that
 reasoning type (deduction barely discounts; analogy discounts heavily; abduction is
 capped). A derivation built on a derivation inherits the chain (dv_0617).
+
+Concretely (Appendix E §E.4 carries the full tables): an observation's confidence maps from its `quote_type` — seven anchors, from `hard_data` 0.95 down to `editorial` 0.35 — adjusted by `source_class` (×0.95 for the agent's own prior output; a collaborator's own word overrides to 0.85). A derivation's confidence is propagated by one of three formulas, chosen by its reasoning type: **corroboration**, (1 − ∏(1−cᵢ)) × *d*, for generalisation, enumeration and consensus, where each independent premise raises the result (valid only on genuinely independent premises — the shared-root check below is what guards it); **weakest-link**, min(cᵢ) × *d*, for the five deductive forms and for analogy, statistics, causation and expert authority; and **capped weakest-link** for the two abductive forms, ceilinged at 0.80 and 0.90 because a best explanation cannot approach certainty even from perfect premises. *d* is a per-type discount for the inferential step itself, 0.98 for deduction down to 0.70 for analogy; there are fourteen reasoning types in all — five deductive, five inductive, two abductive, two authority. Conjectures clamp to [0.10, 0.60]; axioms are 1.0 by type; non-claim-bearing nodes carry no confidence.
 
 *Plain terms:* confidence is earned by the *shape of the argument*, not asserted by
 the author. A claim that comes back weak is information: sharpen the evidence,
@@ -177,7 +182,7 @@ automatically propagates that event along the two cascade-bearing relations —
 `derives_from` and `acknowledged_derives_from` (Appendix E §E.3) — and every live,
 ordinary dependent claim is marked **pending**, which means exactly one thing: it
 may not be cited as a premise until it is resolved. Cornerstones and lessons are not
-reached, for the reason E.5 states: the cascade marks every live **claim-bearing**
+reached, for the reason E.2's partition gives: the cascade marks every live **claim-bearing**
 dependent, and cornerstones and lessons are non-claim-bearing, so the partition
 decides it. Their `supported_by` edges are not walked either, a second guard rather
 than the reason; a retraction upstream of a cornerstone's exemplar therefore stays
