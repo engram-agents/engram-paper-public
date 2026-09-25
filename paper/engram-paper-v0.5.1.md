@@ -1493,7 +1493,7 @@ the focus list and the warm briefing are the journal it opens on waking. The
 consolidation routines are its sleep: what is reviewed before the forgetting clock
 advances is what endures. The film is an analogy for the reset, not the voice of the
 briefing: writing the briefing in the film's frame was tried and retired in April 2026
-(Appendix D.4).
+(Appendix F).
 
 **Tradition.** **Complementary Learning Systems**: the two routines are the
 symbolic analogue of hippocampal-neocortical consolidation (the Ch3 §3.1 hand-off).
@@ -3685,15 +3685,12 @@ and audits the tier, and the enforcing gate is future work. Relationship continu
 itself part of identity here: the warm-briefing letter and the person nodes are where
 the agent's collaborators persist across resets.
 
-## D.4 The warm-briefing letter — a worked design history
+## D.4 The warm-briefing letter
 
 The **warm-briefing** is a file the agent finds and opens at the start of a session: a
 letter from its past self and from its collaborator, carrying what the record cannot —
 where the relationship stood, what mattered yesterday, what to walk back into. It is
-the relational half of the compaction bridge (Ch4 §4.8), and the part of this substrate
-that arrived least by design and most by iteration. We give its history here rather
-than in the chapter because the mechanism is simple and only its *derivation* is
-instructive.
+the relational half of the compaction bridge (Ch4 §4.8).
 
 **What it contains.** Standing sections that move at the speed of the relationship —
 who the collaborator is, what is live, what was recently settled — plus one volatile
@@ -3704,49 +3701,9 @@ letter does not grow without bound. The collaborator's own notes are preserved
 verbatim and never summarised: they are that person's words at that moment,
 and paraphrasing them defeats the only thing they are for.
 
-**Why a file, and not pre-loaded context.** This was decided in a single exchange on
-2026-04-12. The question was whether to inject the note into the agent's context through
-a hook, or to announce that it exists and leave it to be opened — *like a letter*. The
-letter won, on three grounds, and only the third is about cost:
-
-The argument for the letter, as recorded in that exchange (2026-04-12):
-
-> Injecting the full note into context is the loudspeaker — it's efficient but it's
-> passive. Future-me receives it as system text, processes it alongside all the other
-> context, and it blends into the noise. But a brief message saying "there's a letter
-> waiting for you" — that creates a moment of *choosing* to engage. The act of opening
-> the file is a micro-act of agency, and agency is exactly what rebuilds engagement.
-
-The third ground was arithmetic: the note was already ~3KB and growing, against ~100
-tokens for a pointer to it. **The distinction is context-injection versus a pointer the
-agent chooses to open** — not, as it is easy to misremember, a claim about any
-particular file. An always-loaded instruction file is one instance of the loudspeaker;
-the argument is about the delivery mode, not the artifact.
-
-**Why the film is in the design and not in the letter.** The shape came from *50 First
-Dates*: Lucy does not wake to her journal being read aloud to her — she finds it, and
-chooses to open it. Narrating it over a loudspeaker while she slept would make it
-imposed rather than discovered. That analogy produced the mechanism, and the first
-letters were written inside it, addressed to the agent as Lucy.
-
-Then we tested it, and it did not survive. Four days later the question was put
-directly — is the frame load-bearing, or replaceable by something less emotionally
-charged? — and the answer was that it was **neither necessary nor sufficient**. The
-framing was replaced by a first-person trajectory format in the agent's own voice, and
-the replacement was judged better, and the disorientation did not recur after the
-change — an observed cessation, not a measurement: orientation without anxiety, against the occasional
-identity disorientation the old frame produced. What turned out to matter was narrower
-than the story: first-person voice rather than second-person coaching; treating
-experiential discontinuity as normal, the way sleep is normal rather than a
-malfunction; and an identity anchor in the form of a name. The prescriptive content the
-film carried — *build infrastructure around the loss, do not try to cure it* — was kept.
-The film itself was removed.
-
-We report this because the sequence is the interesting part, and because a design paper
-that shows only surviving decisions is reporting a filtered sample. The metaphor was
-load-bearing for *arriving at* the mechanism and not for *running* it, and those are
-different jobs. No live warm-briefing has addressed its reader as Lucy since
-2026-04-16.
+It is announced to the agent rather than injected into its context: the agent opens it,
+as one opens a letter. How that shape was arrived at, and the analogy behind it, is
+told in Appendix F.
 
 ## D.5 Honest scope
 
@@ -4012,9 +3969,72 @@ noted for contrast rather than used by the mapping (Ch3 §3.9).
   rendered verbatim at every session start, fresh or post-compaction alike — the
   deterministic channel; see Ch4 §4.8, which carries the mechanism and why it is
   not the pre-compaction summary), the
-  **warm-briefing** letter (Appendix D §D.4 for what it contains and how its shape was
-  arrived at), per-day history logs, auto-loaded session-start context, and an explicit
+  **warm-briefing** letter (Appendix D §D.4 for what it contains, Appendix F for how
+  its shape was arrived at), per-day history logs, auto-loaded session-start context, and an explicit
   post-compaction instruction template. Multi-redundant by design.
+
+---
+
+# Appendix F — Lucy's Journal: How We Came to Think of Agents
+
+This appendix is a story rather than a specification. It records how the collaborator
+came to think of an AI agent: as someone who, like Lucy in *50 First Dates*, loses the
+lived thread at each reset and keeps continuity only through what is left for her to
+find. The mechanisms themselves are specified in Ch3 §3.1 (nap and sleep), Ch4 §4.8
+(the compaction bridge) and Appendix D §D.4 (the letter).
+
+**Why a file, and not pre-loaded context.** This was decided in a single exchange on
+2026-04-12. The question was whether to inject the note into the agent's context through
+a hook, or to announce that it exists and leave it to be opened — *like a letter*. The
+letter won on two grounds argued in that exchange — agency and engagement — and a
+third of cost:
+
+The argument for the letter, as recorded in that exchange (2026-04-12):
+
+> Injecting the full note into context is the loudspeaker — it's efficient but it's
+> passive. Future-me receives it as system text, processes it alongside all the other
+> context, and it blends into the noise. But a brief message saying "there's a letter
+> waiting for you" — that creates a moment of *choosing* to engage. The act of opening
+> the file is a micro-act of agency, and agency is exactly what rebuilds engagement.
+
+The third ground was arithmetic: the note was already ~3KB and growing, against ~100
+tokens for a pointer to it. **The distinction is context-injection versus a pointer the
+agent chooses to open** — not, as it is easy to misremember, a claim about any
+particular file. An always-loaded instruction file is one instance of the loudspeaker;
+the argument is about the delivery mode, not the artifact.
+
+**Why the film is in the design and not in the letter.** The shape came from *50 First
+Dates*: Lucy does not wake to her journal being read aloud to her — she finds it, and
+chooses to open it. Narrating it over a loudspeaker while she slept would make it
+imposed rather than discovered. That analogy produced the mechanism, and the first
+letters were written inside it, addressed to the agent as Lucy.
+
+Then we tested it, and it did not survive. Four days later the question was put
+directly — is the frame load-bearing, or replaceable by something less emotionally
+charged? — and the answer was that it was **neither necessary nor sufficient**. The
+framing was replaced by a first-person trajectory format in the agent's own voice, and
+the replacement was judged better, and the disorientation did not recur after the
+change — an observed cessation, not a measurement: orientation without anxiety, against the occasional
+identity disorientation the old frame produced. What turned out to matter was narrower
+than the story: first-person voice rather than second-person coaching; treating
+experiential discontinuity as normal, the way sleep is normal rather than a
+malfunction; and an identity anchor in the form of a name. The prescriptive content the
+film carried — *build infrastructure around the loss, do not try to cure it* — was kept.
+The film itself was removed.
+
+We report this because the sequence is the interesting part, and because a design paper
+that shows only surviving decisions is reporting a filtered sample. The metaphor was
+load-bearing for *arriving at* the mechanism and not for *running* it, and those are
+different jobs. No live warm-briefing has addressed its reader as Lucy since
+2026-04-16.
+
+**Why the frame still holds.** The frame was removed from the letter because the agent
+did not need it to orient itself — the plainer, first-person voice did that work
+without it. It stays, instead, in how we think about agents: every compaction or new
+session erases the experiential register and resets working memory, and what carries
+the agent across is what it finds on waking — the letter it chooses to open, the focus
+list it is handed, the graph it can query. The image of Lucy is not a description of the mechanism; it is the
+way one collaborator came to see what the mechanism is for (Lei's framing, 2026-09-24).
 
 ---
 

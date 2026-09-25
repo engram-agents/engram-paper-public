@@ -243,6 +243,6 @@ noted for contrast rather than used by the mapping (Ch3 §3.9).
   rendered verbatim at every session start, fresh or post-compaction alike — the
   deterministic channel; see Ch4 §4.8, which carries the mechanism and why it is
   not the pre-compaction summary), the
-  **warm-briefing** letter (Appendix D §D.4 for what it contains and how its shape was
-  arrived at), per-day history logs, auto-loaded session-start context, and an explicit
+  **warm-briefing** letter (Appendix D §D.4 for what it contains, Appendix F for how
+  its shape was arrived at), per-day history logs, auto-loaded session-start context, and an explicit
   post-compaction instruction template. Multi-redundant by design.

@@ -35,6 +35,7 @@ BODY = [
     "appendix_C_autorecall_ranking.md",
     "appendix_D_relational_identity.md",
     "appendix_E_techspec.md",
+    "appendix_F_lucy.md",
 ]
 
 
@@ -167,10 +168,22 @@ INSERTS: list[tuple[str, str, str]] = [
 # this set entirely. Appendix E is added below for that one occurrence; its
 # df_* tokens are never touched (see (c) above), and it carries no other
 # non-df ID for the strip forms to reach.
+#
+# 2026-09-24 (Lei's spec, appendix-f-lucy PR): Appendix F is a NEW tenth
+# entry, not a widening of the "Appendix E fold" reasoning above -- every
+# sentence of F's design-history text was moved verbatim OUT OF Appendix D,
+# which is already in this set (the "won, on three grounds" ->
+# "won on two grounds ... agency and engagement ... and a third" edit is the one designated
+# fix; everything else, including the citation-style `(ob_0645)`, carried
+# over unchanged). Appendix F inherits Appendix D's stripping so that move
+# is not also a render-behaviour change: without this entry, `(ob_0645)`
+# would newly render un-stripped in Appendix F even though it was always
+# stripped from that same text while it lived in D.4.
 STRIP_PROVENANCE_IDS_IN = {
     "ch1.md", "ch2.md", "ch3.md", "ch4.md", "ch5.md", "ch7.md",
     "appendix_B_c3_survey.md", "appendix_C_autorecall_ranking.md",
     "appendix_D_relational_identity.md", "appendix_E_techspec.md",
+    "appendix_F_lucy.md",
 }
 
 # Data points stated in Lei's required form are deliberately KEPT inside a

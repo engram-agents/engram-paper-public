@@ -433,7 +433,7 @@ the focus list and the warm briefing are the journal it opens on waking. The
 consolidation routines are its sleep: what is reviewed before the forgetting clock
 advances is what endures. The film is an analogy for the reset, not the voice of the
 briefing: writing the briefing in the film's frame was tried and retired in April 2026
-(Appendix D.4).
+(Appendix F).
 
 **Tradition.** **Complementary Learning Systems** [SOLID]: the two routines are the
 symbolic analogue of hippocampal-neocortical consolidation (the Ch3 §3.1 hand-off).

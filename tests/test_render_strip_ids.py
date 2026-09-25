@@ -9,6 +9,12 @@ standing in for a citation, in ch1-5/ch7, Appendix B/C/D, and one stray occurren
 in Appendix E — 2026-09-23 fold, Borges) are removed from the render only — the
 source chapters keep every ID as provenance. `df_*` labels are never stripped.
 
+Appendix F (added 2026-09-24, Lei's appendix-f-lucy spec) is a tenth strip-set
+file, not a new category: its design-history text was moved verbatim OUT OF
+Appendix D, so it carries the same citation-style `(ob_0645)` that was already
+stripped while that text lived in D.4, and it inherits D's strip-set membership
+rather than being independently classified.
+
 Every REAL-string example below was grepped directly from
 `paper_research/current_draft/*.md` at base commit 049d6d0a (see spec §2) — none
 are invented. Line/file citations are given in comments so a source edit that
@@ -34,17 +40,22 @@ DRAFT_FILES = [
 
 _ID_SCAN = re.compile(r"\b(?:ob|dv|cj|ax|cs|ls|gl|df|pn|qu|ev|fl|ts)_\d{4}\b")
 
+# The 2026-09-23 ruling fixed nine files; 2026-09-24 adds a tenth,
+# appendix_F_lucy.md, split out of Appendix D on that date (see module
+# docstring) -- it inherits D's stripping rather than being independently
+# classified as citation-style vs data-point.
 NEW_STRIP_FILES = {
     "ch1.md", "ch2.md", "ch3.md", "ch4.md", "ch5.md", "ch7.md",
     "appendix_B_c3_survey.md", "appendix_C_autorecall_ranking.md",
     "appendix_D_relational_identity.md", "appendix_E_techspec.md",
+    "appendix_F_lucy.md",
 }
 
 
 # ── 0. The strip set itself, and the two files that must carry zero IDs ─────
 
 
-def test_strip_set_is_the_spec_nine():
+def test_strip_set_is_the_spec_nine_plus_appendix_f():
     from tools.render_paper import STRIP_PROVENANCE_IDS_IN
 
     assert STRIP_PROVENANCE_IDS_IN == NEW_STRIP_FILES
