@@ -61,10 +61,14 @@ def test_strip_set_is_the_spec_nine_plus_appendix_f():
     assert STRIP_PROVENANCE_IDS_IN == NEW_STRIP_FILES
 
 
-@pytest.mark.parametrize("name", ["ch0_abstract.md", "ch8.md"])
+@pytest.mark.parametrize("name", ["ch0_abstract.md", "ch8.md", "appendix_G_glossary.md"])
 def test_ch0_and_ch8_carry_no_ids(name):
     """Spec §2 step 1: only add these to the strip set if they actually carry
-    IDs. Measured empirically at base commit: neither does."""
+    IDs. Measured empirically at base commit: neither does. appendix_G_glossary.md
+    (spec-glossary.md) is added under the same rule: G must carry zero node IDs
+    of any kind, and since it is deliberately NOT added to
+    STRIP_PROVENANCE_IDS_IN, a stray ID in G must fail this check loudly rather
+    than being silently stripped by the renderer."""
     path = DRAFT / name
     if not path.exists():
         pytest.skip(f"source moved: {path}")

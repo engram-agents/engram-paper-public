@@ -10,7 +10,8 @@ window that is cleared at each compaction. The field has answered one half of th
 problem well — retrieval-augmented memory carries *information* across sessions —
 and has barely named the other: whether the *agent itself* persists. An assistant
 that retrieves yesterday's notes but begins each session as the same generic model
-remembers facts; it does not remain someone.
+remembers facts; it does not remain someone. Terms of art are collected in the
+Glossary (Appendix G); each entry points to the section that defines it.
 
 We argue that agent continuity is not one problem but three progressively deeper
 layers, and that the current landscape essentially does not address the deepest.

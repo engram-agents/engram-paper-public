@@ -36,6 +36,7 @@ BODY = [
     "appendix_D_relational_identity.md",
     "appendix_E_techspec.md",
     "appendix_F_lucy.md",
+    "appendix_G_glossary.md",
 ]
 
 
