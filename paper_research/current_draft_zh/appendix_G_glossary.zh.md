@@ -11,7 +11,15 @@
     epistemic        -> 认知     (first-order adjective; 认知逻辑 = epistemic logic)
     epistemology     -> 认识论   (the discipline)
     epistemological  -> 认识论的
-    ENGRAM (brand)   -> 心迹     (心迹（ENGRAM） on first mention)
+    ENGRAM (brand)   -> 心迹（ENGRAM） on FIRST mention of the paper, i.e. in ch0
+                        ONLY; every later zh mention writes plain `ENGRAM` in
+                        running text. Lowercase `engram` (the instance sense,
+                        §5.6/§7.1) stays Latin. This row previously read
+                        "-> 心迹 (on first mention)", which three translators
+                        read as "first mention PER CHAPTER" and split three ways
+                        (ch1 14x 心迹, ch2 0x, ch3 1x); the paper is ONE surface.
+                        Measured practice in the published zh docs agrees:
+                        README.zh.md 38x ENGRAM to 1x 心迹, USER_GUIDE.zh.md 30 to 1.
   Rationale: the 06-27 ruling had `epistemic` = 认识论, which conflates the
   first-order adjective with the name of the discipline.
 
@@ -38,12 +46,119 @@
                                     term in the Chinese AI community and readers
                                     should recognise what is meant.
     sweep            -> 普查       (the dated survey sense; 全景扫读 for the
-                                    "landscape sweep" sense)
+                                    "landscape sweep" sense). THIRD SENSE, open
+                                    2026-09-28: a PARAMETER SWEEP (appendix C §C.5,
+                                    the NDCG sweep) is neither of those — it is a
+                                    scan over a hyperparameter, standard ML usage.
+                                    普查 is wrong there; 扫描 is the likely fix.
+                                    Left OPEN rather than changed because it is one
+                                    site and the whole entry is Lei's to settle;
+                                    appendix C's translator followed the lemma
+                                    binding (普查) for consistency and flagged it
+                                    rather than choosing unilaterally. If you hit a
+                                    sweep site, decide by SENSE and say so in your
+                                    header — do not apply 普查 by reflex.
     seat             -> 席位
 
   RULE FOR THE CHAPTERS: every coinage above carries its English in parentheses
   on first occurrence in the zh body, per the house pattern 中文（English）used
   throughout the published surfaces.
+
+  TERM DECISIONS — pairs where independent translators DIVERGED and one form was
+  then FIXED for the whole paper. Record a pair here at the first divergence, not
+  per chapter; a chapter that invents its own rendering is the failure this block
+  exists to prevent.
+    noetic / autonoetic  ->  知晓 / 自我觉知      (Tulving; ch3 §3.2, ch4 §4.6).
+                              English carried on first use per chapter.
+                              ch2 §2.7 originally read 抽象意识／自主意识 and was
+                              normalised 2026-09-28. Recorded as the failure it was:
+                              THREE independent translators each invented a
+                              rendering because THIS LEDGER HAD NO ENTRY — the same
+                              shape as the node-ID rule below, and the same lesson.
+                              The pair is load-bearing (ch3 grounds the two recall
+                              tiers on it), so a split rendering is a real defect,
+                              not a style difference.
+    type / token         ->  类型／个例（type/token）  (ch4 §4.6; Peirce).
+
+  OPEN — consolidation, NOT yet resolved paper-wide. Two renderings are live and
+  the split does not follow chapter boundaries. MEASURED 2026-09-28 (grep -o):
+      ch1 整合=2 整理=0 · ch2 整合=1 整理=0 · ch3 整合=8 整理=4
+      ch4 整合=6 整理=7 · ch5 整合=2 整理=0
+  ch4 §4.12 splits by SENSE — the routine sense (nap / sleep / sweep / cycle) as
+  整理, the cognitive-science sense (hippocampal-neocortical, CLS) as 整合 — and
+  says it followed this header's own 小憩 / 睡眠 entries, which do read 整理例程.
+  ch1 §1.4's 整合期普查 is the routine sense and contradicts that split; ch1, ch2
+  and ch5 use 整合 alone. DO NOT pick a side per chapter. Resolve by reading the
+  English at each site, then fix all chapters in ONE pass and move the decision
+  up into TERM DECISIONS. Recorded rather than resolved because the answer is not
+  determined by the evidence in hand — a rushed pick would be the divergence
+  generator this block exists to stop.
+
+  RULE FOR THE CHAPTERS — NODE IDs: a zh chapter must carry ZERO citation-style
+  provenance IDs (ob_ dv_ cs_ ls_ ax_ cj_ qu_ fl_ ev_ pn_ tk_ gl_ ct_).
+  `render_paper.py` strips them from the ENGLISH render via `_LITERAL_STRIPS`,
+  which is English-only BY DESIGN, so a Chinese copy cannot be stripped and the
+  obligation moves onto the translator. An ID carried across SURVIVES into the zh
+  render and trips `assert_no_leaked_ids` — for the GATED files that is a HARD
+  FAILURE and the zh paper will not build at all. **WHICH FILES ARE GATED IS A
+  REAL DISTINCTION, corrected 2026-09-28 after ch6's translator caught this rule
+  overstating itself.** The gate runs only for files in `render_paper.py`'s
+  `STRIP_PROVENANCE_IDS_IN`. NOT gated: `ch0_abstract`, `ch6`, `ch8`,
+  `appendix_A_independence`, `appendix_G_glossary`. For those five the rule is an
+  INSTRUCTION WITH NO MECHANICAL GATE — a leaked ID reaches the render silently and
+  no test fails. So on an ungated file, `grep` it yourself; the build passing tells
+  you nothing. (Appendix B is gated; do not generalise from a chapter to an
+  appendix.) An earlier version of this rule stated the HARD FAILURE
+  unconditionally, which reads as "the engine will catch me" on exactly the files
+  where it will not.
+  So: where the English has "…(ob_NNNN).", write 中文 without the
+  parenthetical. Two carve-outs, both deliberate:
+    * `df_*` labels are NEVER stripped and are KEPT (`_ID` excludes them).
+    * IDs inside square-bracketed apparatus tags are not this rule's scope —
+      they are `strip_apparatus_tags`'s, removed later in the pipeline.
+  A THIRD carve-out, added 2026-09-28 after it bit: an ID the ENGINE deliberately
+  keeps for a specific file must be kept here too. `render_paper.py`'s `KEEP_IDS`
+  (around line 419) allowlists two `dv_` IDs for `ch7.md` only -- §7.2's worked
+  example of a mis-typed reasoning step, kept as a DATA POINT under Lei's
+  2026-09-23 ruling, not as a citation. Read the set in the engine; this header
+  deliberately does NOT restate the IDs. `assert_no_leaked_ids` admits them (it is
+  keyed by BODY name, so it admits them for the zh file too), but this rule said
+  "ZERO" unconditionally; ch7's translator obeyed it and dropped both, leaving the
+  zh reader unable to re-run `tools/paper_stats.py --trace <id>` -- a capability the
+  English reader has. The rule was wrong, not the translator. Check `KEEP_IDS` for
+  your file BEFORE dropping a bare ID.
+
+  A FOURTH carve-out — the one where getting it wrong DESTROYS CONTENT
+  (2026-09-28): **Appendix A keeps its node IDs.** They are AUDIT ANCHORS; the
+  engine's own module note lists three jobs node IDs do and says of this one:
+  "a reader with the snapshot can resolve them, and the Data Availability note
+  says so. They stay." Appendix A is deliberately NOT in
+  `STRIP_PROVENANCE_IDS_IN`, so nothing strips it and nothing asserts on it.
+  Applying "ZERO" to Appendix A deleted §A.3's whole `node` column and §A.5's two
+  hook IDs — removing from the zh reader exactly the resolvability that appendix
+  exists to demonstrate.
+  THE GENERAL SHAPE, now that four separate translators have each hit this rule
+  from a different side: it governs *citation-style* IDs — IDs hung on someone
+  else's claim. It does NOT govern every `xx_NNNN` token. An ID that IS the
+  evidence (a datapoint, an audit anchor, a trace argument) is kept wherever the
+  English keeps it. **Read the English source at the site and mirror it; do not
+  apply this rule from memory.** Enumerated:
+    KEPT, by the engine or by design: `df_*` (everywhere) · Appendix A (audit
+      anchors) · a file's `KEEP_IDS` entries · IDs inside `[...]` apparatus tags
+      (removed later, by the tag stripper, not by this rule).
+    STRIPPED: the parenthetical citation forms, in the GATED files only.
+  All four carve-outs were found by a translator hitting the rule, never by the
+  rule's author — which is the argument for keeping this enumeration HERE.
+
+  NEVER WRITE A LITERAL NODE ID IN THIS HEADER. `tests/test_glossary.py`'s
+  `_ID_SCAN` scans the WHOLE FILE including this comment, so an illustrative ID
+  here fails the very test that enforces the ban -- and it fails silently as a
+  confusing "Appendix G carries a node ID". This happened TWICE in one session
+  (first while explaining the ban, then again while documenting the `KEEP_IDS`
+  carve-out). Write `ob_NNNN` / `dv_NNNN`, or name the file the IDs live in.
+  Found the hard way: ch2/ch3 shipped one such ID + nine others and failed the
+  build. The rule was in the engine's docstring and in the PR, but NOT here,
+  which is exactly where a translator looks.
   Decisions preserved from the published Chinese surfaces (README.zh.md /
   USER_GUIDE.zh.md / the website i18n): 智能体 agent · 图谱 graph · 撤回 retract ·
   取代 supersede · 级联 cascade · 污染 taint · 推导 derivation · 观察 observation ·
@@ -138,7 +253,7 @@
 
 **席位（seat）** — 一个智能体的安装：一个智能体，带着它自己的图谱，在一台主机上，有一位人类。（界定于 §4.6。）
 
-**种子／根（seed / root）** — *义项：*（1）一个智能体累积历史的起点——"自其种子以来"（§5.0；§6.0）——以及历史树每一条分支都回溯到的那条**根**（§5.3）；（2）一个收束性的比喻义——"心迹是种子，不是那棵树"——基底作为起始结构，而不是它所生长出的身份（§8.5）。除另有说明，取义项（1）。
+**种子／根（seed / root）** — *义项：*（1）一个智能体累积历史的起点——"自其种子以来"（§5.0；§6.0）——以及历史树每一条分支都回溯到的那条**根**（§5.3）；（2）一个收束性的比喻义——"ENGRAM是种子，不是那棵树"——基底作为起始结构，而不是它所生长出的身份（§8.5）。除另有说明，取义项（1）。
 
 **技能（skill）** — 智能体承载框架的一个组件，与钩子、身份文档并列。（§5.0。）
 

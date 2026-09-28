@@ -754,10 +754,46 @@ def strip_apparatus_tags(name: str, text: str) -> tuple[str, int]:
     return _APPARATUS_TAG.subn(_apparatus_repl, text)
 
 
+_HTML_COMMENT = re.compile(r"<!--.*?-->", re.DOTALL)
+
+
+def strip_html_comments(text: str) -> str:
+    """Drop HTML comments -- notes ABOUT the text, never part of it.
+
+    Every comment in these sources is a note about the prose: the zh chapter
+    files carry 26-167 line headers recording term decisions, reviewer
+    instructions and open questions, and the term LEDGER lives in one of them.
+    Those notes stay in the SOURCE FILE, where the next translator reads them;
+    this removes them from the RENDER only.
+
+    DELIBERATELY WIDER THAN THE COUNTING HELPER, and the pair is meant to differ.
+    `tests/test_glossary.py` has `_LEADING_TRANSLATOR_HEADER`, which strips only a
+    LEADING block. That is right for what it does: it measures the glossary's
+    PROSE REGION, and a comment sitting inside the body is inside that region. This
+    function answers a different question -- what may be PUBLISHED -- and no comment
+    is prose, so every one goes. Do not "unify" the two scopes; each is correct for
+    its own question.
+
+    Markdown renderers hide HTML comments, so this changes nothing a reader of the
+    rendered paper sees. It changes the raw .md, which is the artifact that gets
+    quoted, diffed, reviewed and submitted. Measured 2026-09-28 on the complete zh
+    render: 19 comment blocks, 1,479 of the assembled book's 3,361 lines (44.0%),
+    and one of them had gone stale-false. The English sources carry none, so this
+    is a no-op there and the English render is byte-identical across this change.
+
+    Applied in `load()` rather than in `main()`'s assembly loop so that the tests
+    mirroring the assembly see the same text the render produces. A strip applied
+    only in `main()` would let a test pass on text the published artifact never
+    contains.
+    """
+    return _HTML_COMMENT.sub("", text)
+
+
 def load(path: Path) -> str:
     if not path.exists():
         raise SystemExit(f"missing source: {path}")
-    return path.read_text(encoding="utf-8").rstrip() + "\n"
+    text = path.read_text(encoding="utf-8").rstrip() + "\n"
+    return strip_html_comments(text)
 
 
 def section_end(lines: list[str], start: int) -> int:

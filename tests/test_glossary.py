@@ -78,12 +78,19 @@ _G_HEADING = {
     "en": r"^# Appendix G — Glossary\s*$",
     "zh": r"^# 附录 G — 术语表\s*$",
 }
-# What ends G in the assembled render. Deliberately NOT per-language: the zh
-# acknowledgements file is still a heading-less placeholder, so a zh slice would
-# simply run to the end of the document -- which is harmless today because both
-# checks that slice G for zh (T1, T2) skip before reaching it. When the zh
-# acknowledgements file gains a real heading, this becomes language-keyed.
-_G_HEADING_END = r"^## Acknowledgements\s*$"
+# What ends G in the assembled render, per language. This became language-keyed
+# on 2026-09-28, exactly as the note here predicted: the zh slice was previously
+# pinned to the English "## Acknowledgements" heading and worked only because the
+# zh acknowledgements file was a heading-less placeholder, so the slice ran to the
+# end of the document harmlessly while T1/T2 skipped. Now that the zh file has a
+# real heading (`## 致谢`), an English-only boundary lets the zh slice swallow the
+# acknowledgements AND the bibliography -- whose section lead-ins then get
+# mis-parsed as glossary entries. Verified against
+# paper/acknowledgements.zh.md:22 (the first `## ` heading in the zh render).
+_G_HEADING_END = {
+    "en": r"^## Acknowledgements\s*$",
+    "zh": r"^## 致谢\s*$",
+}
 
 
 @pytest.fixture(params=LANGS)
@@ -159,7 +166,7 @@ def _g_section_text(lang: str, full_text: str) -> str:
     assert m, f"Appendix G heading not found in the {lang!r} render"
     rest = full_text[m.end():]
     # G ends at the next top-level heading (Acknowledgements) or end of doc.
-    m2 = re.search(_G_HEADING_END, rest, re.MULTILINE)
+    m2 = re.search(_G_HEADING_END[lang], rest, re.MULTILINE)
     return rest[: m2.start()] if m2 else rest
 
 
@@ -168,7 +175,7 @@ def _body_outside_g(lang: str, full_text: str) -> str:
     assert m
     before = full_text[: m.start()]
     rest = full_text[m.end():]
-    m2 = re.search(_G_HEADING_END, rest, re.MULTILINE)
+    m2 = re.search(_G_HEADING_END[lang], rest, re.MULTILINE)
     after = rest[m2.start():] if m2 else ""
     return before + after
 
@@ -184,15 +191,78 @@ def _parse_entries(g_text: str) -> list[str]:
     return _ENTRY_RE.findall(g_text)
 
 
+# A trailing parenthetical annotation, in EITHER paren style. The content class
+# excludes only the parens that DELIMIT an annotation, not every paren: two zh
+# headwords carry two trailing parentheticals whose outer one itself contains
+# ASCII parens ('现行（节点）（current (node)）'), so a class such as [^（()）]*
+# would stop at the inner '(' and leave the annotation un-stripped. The strip is
+# applied REPEATEDLY (see _headword_terms) because one pass removes one layer.
+_PAREN_TAIL_RE = re.compile(r"\s*[（(][^（）]*[）)]\s*$")
+
+# The compound-headword separator, in either script. The zh form is the
+# full-width '／' (U+FF0F), which an ASCII-only ' / ' split never matched; and
+# the ASCII ' / ' also occurs INSIDE a parenthetical ('种子／根（seed / root）'),
+# which split that headword into the malformed fragments '种子／根（seed' and
+# 'root）' when the parenthetical was still present.
+_TERM_SPLIT_RE = re.compile(r" / |／")
+
+
 def _headword_terms(raw_headword: str) -> list[str]:
     """Normalize one raw bold headword into the literal string(s) T1 should
-    search for in the body. Rule: strip a trailing parenthetical annotation
+    search for in the body. Rule: strip trailing parenthetical annotations
     (e.g. '(usage-derived ...)', '(utility score)', '(node)'), then split on
-    ' / ' for compound headwords (e.g. 'seed / root',
-    'claim-bearing / non-claim-bearing', 'engram / ENGRAM') so each name is
-    checked independently."""
-    stripped = re.sub(r"\s*\([^)]*\)\s*$", "", raw_headword).strip()
-    return [t.strip() for t in stripped.split(" / ") if t.strip()]
+    ' / ' or its full-width zh form '／' for compound headwords (e.g.
+    'seed / root', 'claim-bearing / non-claim-bearing', 'engram / ENGRAM') so
+    each name is checked independently.
+
+    Deliberately language-AGNOSTIC rather than keyed by `lang`: it is called
+    from the mutation test too, and the property it needs is "not ASCII-only" --
+    a property of the input string, not of the language parameter. The English
+    behaviour is unchanged (no English headword carries a full-width paren or
+    slash).
+    """
+    stripped = raw_headword.strip()
+    while True:
+        nxt = _PAREN_TAIL_RE.sub("", stripped).strip()
+        if nxt == stripped:
+            break
+        stripped = nxt
+    return [t.strip() for t in _TERM_SPLIT_RE.split(stripped) if t.strip()]
+
+
+# CJK-bearing text: the Han block, the CJK punctuation block, and the full-width
+# forms block. Used to choose the match strategy for one term -- NOT to classify
+# a whole document, so the ranges are deliberately broad.
+_CJK = re.compile(r"[㐀-鿿　-〿＀-￯]")
+
+
+def _term_regex(term: str) -> re.Pattern:
+    """The search pattern for one glossary term in the rendered body.
+
+    `\\b` is a WORD boundary, and CJK characters ARE word characters in Python's
+    `re`, so `\\b遗忘曲线\\b` cannot match 遗忘曲线 inside `的遗忘曲线所` (ch7).
+    Every zh term whose occurrences are flanked by Han characters on both sides
+    is therefore missed -- measured as the residual 12 failures once the
+    parenthetical strip and the compound split were fixed: 遗忘曲线, 身份文档,
+    保持, 技能, 快照, 陈旧, 轮次, 证据节点, 集群, 承载框架, 普查, 效用 -- none of
+    which is a translation gap.
+
+    The count moved, and the move is measured rather than guessed: this note
+    previously said 7, which is what the pure `\\b` form still gives on a
+    PRE-comment-strip tree. The five terms above past 轮次 occurred ONLY inside
+    HTML comments, so while comments reached the render they satisfied the check;
+    once `load()` began stripping comments the residual rose to 12. Measured
+    2026-09-28 both ways: 7 with `strip_html_comments` patched out, 12 without.
+    Re-measure by reverting this function to the pure `\\b` form and running
+    T1[zh] -- the list T1 prints IS the count -- rather than trusting either
+    number, which is how the 7 was left standing for a day.
+
+    Terms bearing CJK thus match as plain substrings; pure-ASCII terms keep the
+    boundary, where it is doing real work (it stops `ENGRAM` matching inside
+    `ENGRAMISH` and `skill` inside `skills`)."""
+    if _CJK.search(term):
+        return re.compile(re.escape(term), re.IGNORECASE)
+    return re.compile(r"\b" + re.escape(term) + r"\b", re.IGNORECASE)
 
 
 # Terms whose only occurrence in the current draft body is a different
@@ -224,25 +294,54 @@ _FORM_OVERRIDES: dict[str, str] = {
 # of the body). Checking the type name rather than the bare prefix is the
 # more honest test: it verifies the *concept* each prefix names is grounded
 # in the paper, which is what the entry actually claims.
+# The type names are language-keyed: the entry's own table is written in the
+# rendered language, so the zh body names the types in Chinese (观察, 推导, ...)
+# and the English names never occur there -- an English-only map reported all 18
+# prefixes as missing against the zh render. The zh values are the names the zh
+# glossary's own `节点 ID 前缀（node ID prefixes）` entry uses, in the same
+# prefix order as the English map. The English values are byte-identical to the
+# pre-zh-fix table.
 _ID_PREFIXES = {
-    "ob_": "observation",
-    "dv_": "derivation",
-    "th_": "theory",
-    "cj_": "conjecture",
-    "df_": "definition",
-    "ax_": "axiom",
-    "cs_": "cornerstone",
-    "ls_": "lesson",
-    "gl_": "goal",
-    "gt_": "goal tension",
-    "ct_": "contradiction",
-    "qu_": "question",
-    "pr_": "prediction",
-    "ev_": "evidence",
-    "fl_": "feeling",
-    "pn_": "person",
-    "tk_": "task",
-    "ts_": "trust signal",
+    "en": {
+        "ob_": "observation",
+        "dv_": "derivation",
+        "th_": "theory",
+        "cj_": "conjecture",
+        "df_": "definition",
+        "ax_": "axiom",
+        "cs_": "cornerstone",
+        "ls_": "lesson",
+        "gl_": "goal",
+        "gt_": "goal tension",
+        "ct_": "contradiction",
+        "qu_": "question",
+        "pr_": "prediction",
+        "ev_": "evidence",
+        "fl_": "feeling",
+        "pn_": "person",
+        "tk_": "task",
+        "ts_": "trust signal",
+    },
+    "zh": {
+        "ob_": "观察",
+        "dv_": "推导",
+        "th_": "理论",
+        "cj_": "猜想",
+        "df_": "定义",
+        "ax_": "公理",
+        "cs_": "基石",
+        "ls_": "教训",
+        "gl_": "目标",
+        "gt_": "目标张力",
+        "ct_": "矛盾",
+        "qu_": "问题",
+        "pr_": "预测",
+        "ev_": "证据",
+        "fl_": "感受报告",
+        "pn_": "人物",
+        "tk_": "任务",
+        "ts_": "信任信号",
+    },
 }
 
 # The entry cites the CODE's type-prefix map (engram_core.py TYPE_PREFIX at
@@ -252,6 +351,18 @@ _ID_PREFIXES = {
 # that map are never named in the paper body at all, so their prefixes are
 # exempt from the body check below and rest on the code citation alone.
 _PREFIXES_CITED_TO_CODE_ONLY = {"gt_", "ts_"}
+
+# The `node ID prefixes` entry's parsed headword term, per language (i.e. what
+# `_headword_terms` returns for it -- the zh headword is
+# `节点 ID 前缀（node ID prefixes）`, so its parsed term drops the gloss). This
+# entry is a 13-row type table in its entry body, not a phrase the prose uses, so
+# T1 skips it in the term loop and checks it through `_ID_PREFIXES` instead. The
+# skip used to compare the RAW headword against the English literal, which the zh
+# headword never satisfies -- so the zh entry fell through to the term search and
+# reported `节点 ID 前缀` as missing from prose that has no reason to contain it
+# (the word 前缀 does not occur outside Appendix G at all). Language-keyed,
+# matching `_G_HEADING` and `_ID_PREFIXES`.
+_ID_PREFIX_TABLE_HEADWORDS = {"en": "node ID prefixes", "zh": "节点 ID 前缀"}
 
 # Required terms (spec's full list) that do not occur ANYWHERE in the current
 # draft body -- not merely undefined (the spec's "current" case), but never
@@ -327,6 +438,105 @@ REQUIRED_TERMS: dict[str, list[str] | None] = {
 }
 
 
+# ── helper contracts (the zh-correct parser and matcher) ────────────────────
+#
+# Written BEFORE the helpers were made zh-correct, because the defects they pin
+# are invisible in the EN run: the file was ASCII-only in three separate places
+# (the trailing-parenthetical strip, the compound split, and the `\b` word
+# boundary), and each one alone produced a large false-failure list against the
+# zh render. The old failure list named malformed fragments -- '种子／根（seed'
+# and 'root）' -- which is the signature of the split bug, and the fix that only
+# repairs the first two leaves twelve terms still missing (`\b` around CJK; the
+# full list and the provenance of the count are in `_term_regex`'s docstring). A
+# regression to any one of the three ASCII assumptions reddens these, rather
+# than resurfacing as "the zh translation is missing ~55 terms".
+
+
+@pytest.mark.parametrize(
+    "raw,expected",
+    [
+        # zh: full-width trailing parenthetical
+        ("仲裁（arbitration）", ["仲裁"]),
+        # zh: full-width compound separator, AND an ASCII ' / ' INSIDE the
+        # parenthetical -- which split the headword into the two malformed
+        # fragments before the parenthetical was stripped.
+        ("种子／根（seed / root）", ["种子", "根"]),
+        ("承载主张／不承载主张（claim-bearing / non-claim-bearing）",
+         ["承载主张", "不承载主张"]),
+        # zh: TWO trailing parentheticals, the outer one carrying inner ASCII
+        # parens -- a single strip pass leaves `现行（节点）` behind.
+        ("现行（节点）（current (node)）", ["现行"]),
+        ("效用（效用分）（utility (utility score)）", ["效用"]),
+        # en: unchanged
+        ("cascade (retraction cascade)", ["cascade"]),
+        ("seed / root", ["seed", "root"]),
+    ],
+)
+def test_headword_terms_contract(raw: str, expected: list[str]):
+    assert _headword_terms(raw) == expected
+
+
+def test_zh_glossary_headwords_all_yield_usable_terms():
+    """Every entry in the real zh glossary yields >=1 non-empty term, and no term
+    carries an unbalanced paren. Reads the shipped source file, so a future entry
+    written in a headword form the parser mishandles reddens HERE rather than as
+    a confusing "this term is missing from the prose" failure in T1."""
+    g_path = _g_path("zh")
+    assert g_path.exists(), f"missing: {g_path}"
+    entries = _parse_entries(g_path.read_text(encoding="utf-8"))
+    assert entries, "no zh glossary entries parsed"
+    for raw in entries:
+        terms = _headword_terms(raw)
+        assert terms, f"headword {raw!r} yielded no term"
+        for term in terms:
+            assert term, f"headword {raw!r} yielded an empty term"
+            assert term.count("（") == term.count("）"), (
+                f"headword {raw!r} -> term {term!r}: unbalanced full-width paren"
+            )
+            assert term.count("(") == term.count(")"), (
+                f"headword {raw!r} -> term {term!r}: unbalanced ASCII paren"
+            )
+
+
+def test_term_regex_matches_cjk_as_substring_and_ascii_at_boundaries():
+    """`\\b` is a WORD boundary and CJK characters ARE word characters in Python's
+    `re`, so `\\b遗忘曲线\\b` cannot match 遗忘曲线 inside `的遗忘曲线所` (ch7) --
+    the exact case measured as still-failing after the paren and split fixes. A
+    pure-ASCII term keeps its boundary, where it does real work."""
+    # CJK: plain substring, so a CJK-flanked occurrence is reached.
+    assert _term_regex("遗忘曲线").search("的遗忘曲线所")
+    assert _term_regex("陈旧").search("标记陈旧，与矛盾") is not None
+    # ASCII: the boundary still prevents matching inside a longer word.
+    assert _term_regex("ENGRAM").search("ENGRAM is a graph")
+    assert _term_regex("ENGRAM").search("ENGRAMISH") is None
+    assert _term_regex("skill").search("skills") is None
+
+
+def test_id_prefixes_are_language_keyed_with_english_values_unchanged():
+    """The node-ID-prefix table's type names are English, and no English type
+    name occurs in zh prose -- so the table is language-keyed, the English values
+    stay byte-identical to the pre-zh-fix table, and the zh values are the names
+    the zh glossary's own node-ID entry uses (see
+    `appendix_G_glossary.zh.md`, the `节点 ID 前缀` entry)."""
+    assert set(_ID_PREFIXES) == set(LANGS)
+    assert set(_ID_PREFIXES["zh"]) == set(_ID_PREFIXES["en"])
+    assert _ID_PREFIXES["en"] == {
+        "ob_": "observation", "dv_": "derivation", "th_": "theory",
+        "cj_": "conjecture", "df_": "definition", "ax_": "axiom",
+        "cs_": "cornerstone", "ls_": "lesson", "gl_": "goal",
+        "gt_": "goal tension", "ct_": "contradiction", "qu_": "question",
+        "pr_": "prediction", "ev_": "evidence", "fl_": "feeling",
+        "pn_": "person", "tk_": "task", "ts_": "trust signal",
+    }
+    assert _ID_PREFIXES["zh"] == {
+        "ob_": "观察", "dv_": "推导", "th_": "理论", "cj_": "猜想",
+        "df_": "定义", "ax_": "公理", "cs_": "基石", "ls_": "教训",
+        "gl_": "目标", "gt_": "目标张力", "ct_": "矛盾", "qu_": "问题",
+        "pr_": "预测", "ev_": "证据", "fl_": "感受报告", "pn_": "人物",
+        "tk_": "任务", "ts_": "信任信号",
+    }
+
+
 # ── T1 ────────────────────────────────────────────────────────────────────
 
 
@@ -350,16 +560,19 @@ def test_t1_every_glossary_term_occurs_outside_g(lang: str):
 
     missing = []
     for raw in entries:
-        if raw.strip() == "node ID prefixes":
+        terms = _headword_terms(raw)
+        if terms == [_ID_PREFIX_TABLE_HEADWORDS[lang]]:
             # Special-cased below: this entry is a 13-row table, not a term
             # that itself appears in prose.
             continue
-        for term in _headword_terms(raw):
+        for term in terms:
             pattern = _FORM_OVERRIDES.get(term)
             if pattern is None:
-                pattern = re.escape(term)
-                regex = re.compile(r"\b" + pattern + r"\b", re.IGNORECASE)
+                regex = _term_regex(term)
             else:
+                # An override supplies its own word-form root; the leading `\b`
+                # is kept and NO trailing `\b` is added -- deliberate, see the
+                # `skill` override, which must reach the plural `skills`.
                 regex = re.compile(r"\b" + pattern, re.IGNORECASE)
             if not regex.search(body_norm):
                 missing.append(term)
@@ -367,9 +580,25 @@ def test_t1_every_glossary_term_occurs_outside_g(lang: str):
     # The node-ID-prefix table entry: each prefix's node-TYPE NAME (see
     # _ID_PREFIXES docstring above for why type name, not bare prefix) must
     # be named somewhere in the body.
-    for prefix, type_name in _ID_PREFIXES.items():
+    for prefix, type_name in _ID_PREFIXES[lang].items():
         if prefix in _PREFIXES_CITED_TO_CODE_ONLY:
             continue
+        # DELIBERATELY the strict `\b` form, NOT `_term_regex` like the headword
+        # loop above. The two loops look like the same bug and are not:
+        #
+        #   * For CJK, `\b` is STRICTER than substring -- a substring match is a
+        #     strict superset (any `\b`-bounded match implies the literal occurs),
+        #     so switching can only turn a not-found into a found. On a gate that
+        #     is the worse direction: it can only make this check PASS, silently.
+        #   * It also fixes nothing here. Measured on the shipped zh body, 0 of
+        #     the 16 checked type names change outcome under either form, and the
+        #     thinnest margins (`pn_`/人物 and `cj_`/猜想) rest on ONE `\b`-flanked
+        #     occurrence each. The headword loop was different: there `\b`
+        #     genuinely false-failed 7 terms, so `_term_regex` fixed a real defect.
+        #
+        # This loop's `\b` failure mode -- a type name that ever appears ONLY
+        # inside a Han run -- is loud and self-correcting. The permissive one is
+        # silent and permanent. Do not "fix" this loop for symmetry.
         if not re.search(r"\b" + re.escape(type_name) + r"\b", body_norm, re.IGNORECASE):
             missing.append(f"(ID prefix {prefix}) {type_name}")
 
@@ -744,20 +973,35 @@ def test_zh_chapter_paths_derive_from_the_shared_body_list():
         assert zh_path.suffix == ".md", f"{name} does not resolve to a markdown file"
 
 
-def test_zh_front_and_back_matter_exist_and_are_obvious_placeholders():
-    """Spec point 4: the three zh front/back-matter files must exist for the
-    pipeline to run, and each must be an obvious untranslated marker rather than
-    text that pretends to be a translation. (The hard-fail rule covers CHAPTERS;
-    for these three a placeholder is the accepted state while translation is
-    pending -- as long as it is unmistakable in the render.)"""
+def test_zh_front_and_back_matter_are_translated_and_substantive():
+    """Spec point 4, in its current state. These three files were one-line
+    placeholders while translation was pending, and this test used to assert that
+    placeholder state ("must carry an obvious TODO(zh) marker", "must be a
+    one-line placeholder"). They are translated now, so the property worth
+    defending is the inverse -- each exists, carries NO placeholder marker, and is
+    substantive. The 100-Han floor is deliberately well below the measured
+    minimum (233 Han characters, front-matter) so it stays non-vacuous without
+    pinning today's exact sizes. (The hard-fail rule covers CHAPTERS; these three
+    are checked here instead.)"""
     for name in (FRONT_MATTER["zh"], ACKNOWLEDGEMENTS["zh"], BIBLIOGRAPHY["zh"]):
         path = PAPER / name
         assert path.exists(), f"missing zh front/back matter: {path}"
         text = path.read_text(encoding="utf-8")
-        assert "TODO(zh)" in text, f"{path} must carry an obvious TODO(zh) marker"
-        assert len(text.strip().splitlines()) == 1, (
-            f"{path} must be a one-line placeholder, "
-            f"got {len(text.strip().splitlines())} lines"
+        for marker in ("TODO(zh)", "TODO"):
+            assert marker not in text, (
+                f"{path} still carries a {marker!r} placeholder; the three zh "
+                f"front/back-matter files are translated, so a placeholder here "
+                f"means one was reverted"
+            )
+        non_blank = len([ln for ln in text.splitlines() if ln.strip()])
+        assert non_blank > 1, (
+            f"{path} must be substantive, not a one-line placeholder; "
+            f"got {non_blank} non-blank lines"
+        )
+        han = _han_char_count(text)
+        assert han >= 100, (
+            f"{path} carries only {han} Han characters -- below the 100 floor, "
+            f"which every translated matter file clears by more than 2x"
         )
 
 
@@ -804,9 +1048,11 @@ def test_anchor_parity_guard_is_wired_at_import():
 
 
 def test_zh_pipeline_places_zh_captions_end_to_end(tmp_path, monkeypatch):
-    """The zh book cannot be assembled from real sources yet, so drive the WHOLE
-    zh pipeline over stand-in chapters (the English text under the zh filenames)
-    in a temp source dir. This is the check that `--lang zh` really routes to the
+    """Drive the WHOLE zh pipeline over stand-in chapters (the English text under
+    the zh filenames) in a temp source dir, so the routing is exercised
+    independently of the chapter sources' contents. (The zh book assembles from
+    the real sources now; this test is about ROUTING, not about what the chapters
+    say.) This is the check that `--lang zh` really routes to the
     zh insert list and the zh captions/diagram rather than the English ones --
     exactly the failure spec point 3 names ("silently render English").
 
@@ -824,36 +1070,38 @@ def test_zh_pipeline_places_zh_captions_end_to_end(tmp_path, monkeypatch):
         "the zh render must place six zh figure captions (图 N), not the English ones"
     )
     assert f"**{rp.DIAGRAM_LABEL['zh']} 1.**" in text, "the zh cascade diagram is missing"
-    assert text.count("TODO(zh)") == 3, (
-        "all three zh front/back-matter placeholders must be visible in the render"
+    assert text.count("TODO(zh)") == 0, (
+        "no zh placeholder may survive into the render"
     )
 
 
-def test_zh_render_hard_fails_naming_the_first_untranslated_chapter(tmp_path):
+def test_zh_render_hard_fails_naming_the_first_untranslated_chapter(tmp_path, monkeypatch):
     """Spec point 2: a missing zh chapter must hard-fail and name the file --
-    never a skip/optional path, and never a silently short render. Self-retiring:
-    once every zh chapter is translated the path it covers is not exercisable and
-    it skips rather than asserting something no longer true."""
-    missing = _missing_chapters("zh")
-    if not missing:
-        pytest.skip(
-            "every zh chapter is translated now, so the missing-chapter hard-fail "
-            "path this test covers is no longer exercisable"
-        )
-    out = tmp_path / "zh.md"
-    result = subprocess.run(
-        [sys.executable, "tools/render_paper.py", "--lang", "zh", "--out", str(out)],
-        cwd=REPO_ROOT,
-        capture_output=True,
-        text=True,
-    )
-    assert result.returncode != 0, (
-        "`--lang zh` succeeded although zh chapters are missing -- a silent short "
-        f"render is the failure mode this contract forbids.\nstdout:\n{result.stdout}"
-    )
-    assert str(missing[0]) in (result.stdout + result.stderr), (
-        f"the zh hard-fail must name the missing file {missing[0]}\n"
-        f"--- stdout ---\n{result.stdout}\n--- stderr ---\n{result.stderr}"
+    never a skip/optional path, and never a silently short render.
+
+    This was DATA-DRIVEN and self-retiring: it skipped when no zh chapter was
+    missing, and the day every chapter was translated it retired itself -- taking
+    the assertion with it and leaving the property unguarded. That is the wrong
+    shape for it, because the property belongs to the ENGINE (a half-translated
+    book must not render short), not to today's translation state. So the check
+    now builds the condition instead of waiting for it: the real zh chapters are
+    copied into `tmp_path` minus one, the engine's zh source dir is pointed there,
+    and the render must die naming the file it could not find. It runs on every
+    tree, translated or not."""
+    missing_name = BODY[0]
+    for name in BODY:
+        if name == missing_name:
+            continue
+        shutil.copy(chapter_path("zh", name), tmp_path / chapter_name("zh", name))
+    monkeypatch.setitem(rp.SOURCE_DIRS, "zh", tmp_path)
+    out = tmp_path / "rendered-zh.md"
+    monkeypatch.setattr(sys, "argv", ["render_paper.py", "--lang", "zh", "--out", str(out)])
+
+    with pytest.raises(SystemExit) as exc:
+        rp.main()
+    assert chapter_name("zh", missing_name) in str(exc.value), (
+        f"the zh hard-fail must name the missing file "
+        f"{chapter_name('zh', missing_name)!r}; got: {exc.value}"
     )
     assert not out.exists(), "a failed render must not leave an output file behind"
 
@@ -1078,6 +1326,69 @@ def test_strip_provenance_ids_language_contract_for_zh():
     #     not "put them where the English put them".
     with pytest.raises(SystemExit):
         strip_provenance_ids("ch2.md", "撤回（ob_1041）会传播。")
+
+
+# ── the load()-time comment strip ───────────────────────────────────────────
+
+
+def test_zh_render_carries_no_html_comments(tmp_path):
+    """The zh sibling of test_fresh_render_matches_committed_paper, and the only
+    check on what `strip_html_comments` is FOR: the published .md must reach the
+    reader with no HTML comment in it. The sources keep their translator notes
+    (they are the next translator's record); the render must not carry them.
+
+    This went unguarded until now -- reverting `load()` to its pre-strip body
+    left the whole suite green. The source-side assertion is what keeps the check
+    from being vacuous: if no zh source carried a comment, a comment-free render
+    would prove nothing. All 19 zh comment blocks are LEADING, one per source
+    file (measured 2026-09-28), so the render's emptiness is the strip's doing
+    rather than the sources'."""
+    out = tmp_path / "rendered-zh.md"
+    result = subprocess.run(
+        [sys.executable, "tools/render_paper.py", "--lang", "zh", "--out", str(out)],
+        cwd=REPO_ROOT,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, result.stderr
+    text = out.read_text(encoding="utf-8")
+    assert "<!--" not in text, (
+        "the rendered zh paper carries an HTML comment -- the sources' translator "
+        "notes are leaking into the published artifact"
+    )
+    carriers = [
+        chapter_name("zh", name)
+        for name in BODY
+        if "<!--" in chapter_path("zh", name).read_text(encoding="utf-8")
+    ]
+    assert carriers, (
+        "no zh chapter source carries an HTML comment, so a comment-free render "
+        "proves nothing -- this check has gone vacuous"
+    )
+
+
+def test_strip_html_comments_is_wider_than_the_leading_only_helper():
+    """The scope difference the engine's docstring argues for, pinned by the one
+    input that can distinguish the two scopes.
+
+    Every one of the 19 comment blocks in the zh sources is LEADING (measured
+    2026-09-28), so a strip that removed only a leading block would satisfy every
+    other check in this file -- the wider "every comment" scope and a leading-only
+    strip are indistinguishable against the shipped data. `strip_html_comments`
+    answers what may be PUBLISHED, so it takes every comment;
+    `_LEADING_TRANSLATOR_HEADER` (via `_glossary_body`) answers what the
+    glossary's PROSE REGION contains, so it takes only a leading block. This is
+    the test that reddens if someone "unifies" the two -- in either direction."""
+    interior = "# 附录 G — 术语表\n\n术语<!-- 内注 -->定义\n"
+    assert rp.strip_html_comments(interior) == "# 附录 G — 术语表\n\n术语定义\n"
+    assert _glossary_body(interior) == interior, (
+        "the counting helper must keep an interior comment -- its scope is the "
+        "leading header only, deliberately"
+    )
+    # A leading block is removed by BOTH; only the scope differs between them.
+    leading = "<!--\n  translator: Zephyr\n-->\n# 附录 G — 术语表\n\n正文\n"
+    assert "<!--" not in rp.strip_html_comments(leading)
+    assert "<!--" not in _glossary_body(leading)
 
 
 # ── render byte-check (spec verification tail) ──────────────────────────────
