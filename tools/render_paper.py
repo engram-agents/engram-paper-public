@@ -14,6 +14,13 @@ whole phase exists to catch.
 
 Usage:
     python tools/render_paper.py --out paper/engram-paper-v0.5.1.md
+    python tools/render_paper.py --lang zh          # -> engram-paper-v0.5.1.zh.md
+
+`--lang {en,zh}` (default `en`) selects the chapter-source directory: `en` reads
+`paper_research/current_draft/`, `zh` reads `paper_research/current_draft_zh/`.
+ONE `BODY` list drives both; a chapter that is missing in the selected language is
+a hard error naming the resolved file, never a skip -- a half-translated book must
+not render short.
 """
 
 from __future__ import annotations
@@ -23,7 +30,55 @@ import re
 from pathlib import Path
 
 DRAFT = Path("paper_research/current_draft")
+DRAFT_ZH = Path("paper_research/current_draft_zh")
 PAPER = Path("paper")
+
+LANGS = ("en", "zh")
+
+# --- language surface (`--lang {en,zh}`) -----------------------------------------
+#
+# ONE `BODY` list is shared across languages. A language is a source DIRECTORY
+# plus a filename convention -- never a second chapter list, so a chapter added
+# to the paper cannot be added to one language and forgotten in the other.
+#
+# zh chapters carry a `.zh` infix (`ch1.md` -> `ch1.zh.md`). That is the
+# convention the one existing zh source already uses
+# (`current_draft_zh/appendix_G_glossary.zh.md`, commit 7623554), and the same
+# one the three zh front/back-matter files need, since `paper/` is shared by
+# both languages and the suffix is the only thing that tells them apart. The
+# directory carries the language marker too; that redundancy is deliberate here
+# -- `current_draft/` and `current_draft_zh/` are otherwise identical, and a
+# file copied between them keeps its name.
+SOURCE_DIRS = {"en": DRAFT, "zh": DRAFT_ZH}
+CHAPTER_SUFFIX = {"en": "", "zh": ".zh"}
+DEFAULT_OUT = {
+    "en": "paper/engram-paper-v0.5.1.md",
+    "zh": "paper/engram-paper-v0.5.1.zh.md",
+}
+
+# Front/back matter is not per-language-directory (both languages read `paper/`),
+# so the zh files carry the suffix there. These three are the only zh sources that
+# may legitimately be an untranslated placeholder while the translation is
+# pending; every BODY chapter is a hard requirement -- `load` raises on a missing
+# one, which is the whole point (see `main`).
+FRONT_MATTER = {"en": "front-matter.md", "zh": "front-matter.zh.md"}
+ACKNOWLEDGEMENTS = {"en": "acknowledgements.md", "zh": "acknowledgements.zh.md"}
+BIBLIOGRAPHY = {"en": "bibliography.md", "zh": "bibliography.zh.md"}
+
+
+def chapter_name(lang: str, name: str) -> str:
+    """The filename `name` (a BODY entry, always English-named) has in `lang`.
+
+    `en` is the identity -- the English filenames are unchanged -- so this is the
+    single place the per-language convention lives."""
+    if not name.endswith(".md"):
+        raise SystemExit(f"BODY entry is not a markdown filename: {name!r}")
+    return f"{name[:-3]}{CHAPTER_SUFFIX[lang]}.md"
+
+
+def chapter_path(lang: str, name: str) -> Path:
+    return SOURCE_DIRS[lang] / chapter_name(lang, name)
+
 
 # Assembly order. The rendered paper is exactly this, in exactly this sequence.
 BODY = [
@@ -40,10 +95,77 @@ BODY = [
 ]
 
 
-def _fig(path: str, number: int, caption: str) -> str:
+# Figure/diagram label words. English keeps `Diagram` distinct from `Figure`
+# because the two number independently (Diagram 1 vs Figures 1-6); the zh render
+# keeps that distinction as 示意图 vs 图 rather than collapsing both to 图, which
+# would make "图 1" name two different things in one paper.
+FIGURE_LABEL = {"en": "Figure", "zh": "图"}
+DIAGRAM_LABEL = {"en": "Diagram", "zh": "示意图"}
+
+
+# --- Appendix G length budget ---------------------------------------------------
+#
+# The English glossary is budgeted in whitespace tokens. Chinese is not
+# space-delimited, so that measurement is near-vacuous on the zh glossary (427
+# whitespace tokens against 2,999 Han characters). The zh budget therefore counts
+# Han characters (Unicode CJK Unified Ideographs, U+4E00-U+9FFF) and converts them
+# to an English-token equivalent through the ratio below.
+#
+# METHOD -- stated so the figures below can be re-checked rather than just cited.
+# Both sides are measured on the GLOSSARY BODY, with the ledger's leading
+# translator header comment excluded (the `<!-- ... -->` block at the top of the zh
+# file):
+#
+#   * whitespace token = `len(text.split())` -- Python's split on runs of
+#     whitespace, the same definition the English budget already uses;
+#   * Han character   = a per-character scan of U+4E00-U+9FFF inclusive.
+#
+# Measured 2026-09-28 on zephyr/zh-translation at d35dc5f:
+#
+#   English Appendix G   1,753 whitespace tokens
+#   zh Appendix G        2,999 Han characters
+#
+# The zh figure EXCLUDES the leading header deliberately. That block is translator
+# metadata, not glossary prose: markdown hides `<!-- ... -->`, and the English
+# glossary has no counterpart to it -- so counting it would compare two different
+# things, and would move the measurement every time a translator edits the header,
+# which is a documentation change and not a translation change. The counting helper
+# in tests/test_glossary.py strips only a LEADING comment block, anchored at the
+# start of the file, so a comment appearing inside the glossary body is never
+# removed. Do not re-add the header to the count.
+#
+# PROVENANCE -- read before changing this number. 1.71 was derived from ONE
+# parallel pair, measured as above: 2999 / 1753 = 1.7108. It is a CALIBRATION FROM
+# A SINGLE PAIR, NOT A LAW -- a plausible characters-per-word density for zh prose
+# and nothing more. If a later chapter disagrees, RE-DERIVE the ratio from that
+# chapter's own en/zh pair; do not pad the text to fit this one.
+#
+# At 1.71 the zh budget is 1800 x 1.71 = 3078 Han characters, against the current
+# 2,999 -- 79 characters (2.6%) of headroom.
+#
+# CORRECTION (2026-09-28). This constant previously read 1.75, derived as
+# 3069/1753. That pair was measured on the WHOLE zh file as it stood at bff5d39,
+# translator header included, and was accurate for that revision -- but the header
+# has since grown (d2ab184, and the header edits after it), so a whole-file count
+# now reads 845 tokens / 3,109 Han while the GLOSSARY BODY has never changed
+# (2,999 Han at every revision back to the first zh source, 7623554). That is why
+# an earlier whole-file pair of 1,008 tokens / 3,111 Han is not comparable to the
+# 845 / 3,109 taken at d35dc5f: it is a LATER revision of the same file on
+# zephyr/zh-chapters, with a larger header -- not a strip-regex artifact. Reading
+# 1.75, 3,069 or 1,008 anywhere else: this is why they no longer match.
+#
+# Whether zh should carry a length budget AT ALL is a POLICY question belonging to
+# Lei. This constant and the check that consumes it are the measurable half only,
+# and must not be read as settling that question.
+ZH_HAN_PER_EN_WORD = 1.71
+
+
+def _fig(path: str, number: int, caption: str, label: str = "Figure") -> str:
+    """One figure block. `label` is the rendered word ("Figure" / "图"); its
+    default reproduces the English render byte-for-byte."""
     return (
-        f"\n![Figure {number}]({path})\n\n"
-        f"**Figure {number}.** {caption}\n"
+        f"\n![{label} {number}]({path})\n\n"
+        f"**{label} {number}.** {caption}\n"
     )
 
 
@@ -79,6 +201,44 @@ rather than an advisory note the agent may consult. Second, the pairing of
 auto-surfacing with a consolidation-time sweep means a marked claim is resolved
 whether or not anyone remembers to look for it — detection without that binding
 leaves the correction optional.
+"""
+
+
+# Chinese counterpart of DIAGRAM_CASCADE. Same graph (same node ids, same
+# edges, same `style` lines) with the labels translated; the relation names
+# (`derives_from`, `acknowledged_derives_from`, `supported_by`) stay English per
+# the house rule the zh term ledger records -- identifiers, CLI verbs, field
+# names and node codes are kept English in zh surfaces. `retract`/`supersede`
+# lead with their Chinese terms (撤回/取代) plus the English in parentheses,
+# matching the ledger's first-occurrence pattern. Diagram kept distinct from
+# figures as 示意图 vs 图 (see FIGURE_LABEL/DIAGRAM_LABEL).
+DIAGRAM_CASCADE_ZH = """
+```mermaid
+flowchart TD
+    A["一项主张被收回<br/><b>撤回（retract）</b>（从未有效）或<br/><b>取代（supersede）</b>（曾经有效，现已更新）"]
+    A --> B{"遍历两条<br/>承载级联的关系"}
+    B -->|derives_from| C["每一现行的依赖主张<br/>都被标记为 <b>待决</b>"]
+    B -->|acknowledged_derives_from| C
+    B -.->|supported_by 不遍历| X["基石与教训<br/>从不被标记：<br/>它们不承载主张，且其<br/>范例边不被遍历"]
+    C --> D["待决标记不携带严重程度——<br/>基底不预判损害"]
+    D --> E["<b>自动浮现：</b>被标记的主张<br/>在下次变得相关时<br/>重新回到智能体面前"]
+    D --> F["<b>整合期普查：</b>每一被标记的主张<br/>都被推向一个了结，即便它<br/>从未变得相关"]
+    E --> G{"智能体在前沿<br/>作出仲裁"}
+    F --> G
+    G -->|承认| H["前提移动，<br/>结论仍然成立"]
+    G -->|取代| I["被一个有名字的<br/>后继者取代"]
+    G -->|撤回| J["依次被撤回——<br/>级联继续向下游传播"]
+    J --> B
+
+    style A fill:#f6ece8,stroke:#b3593f
+    style X fill:#f3f3f3,stroke:#8a8a8a,color:#555
+    style G fill:#e9f1f4,stroke:#1f6f8b
+```
+
+**示意图 1.** ENGRAM v0.5.1 中的撤回级联。有两点把它与“只做检测”的冲突报告区分开来。
+第一，标记是一次*自动的状态变更*，而不是一份供智能体自行查阅的提示。第二，自动浮现与
+整合期普查的配对意味着：一条被标记的主张，无论有没有人记得去找它，都会被推向一个
+了结——检测若没有这一层绑定，更正就成了可选项。
 """
 
 
@@ -138,6 +298,98 @@ INSERTS: list[tuple[str, str, str]] = [
              "and tracks working intensity rather than any schedule."),
     ),
 ]
+
+# Chinese counterpart of INSERTS: the SAME anchors, in the same order, with the
+# captions translated (`label="图"` renders 图 N where English renders Figure N).
+# The anchor keys are asserted identical to INSERTS' immediately below -- see
+# `assert_insert_anchor_parity`.
+INSERTS_ZH: list[tuple[str, str, str]] = [
+    (
+        "ch1.md", "## 1.1",
+        _fig("figures/fig6-census.png", 1,
+             "一个真实 ENGRAM 图谱的构成——按类型统计的快照日期上的 9,399 个当前节点。"
+             "观察及其证据节点占全图的 72.8%；承载身份的类型（71 个基石、149 条教训、"
+             "9 条公理、16 个目标）合计 245 个节点，占 2.6%；公理与目标落在图中“其他”"
+             "那一柱之内。此处的身份由主张之上的*结构*承载，而不由一座庞大的自我描述"
+             "仓库承载。",
+             label="图"),
+    ),
+    (
+        "ch4.md", "## 4.4",
+        DIAGRAM_CASCADE_ZH,
+    ),
+    (
+        "ch6.md", "## 6.1",
+        _fig("figures/fig1-reasoning-type.png", 2,
+             "按所声明的推理类型统计的平均计算置信度，取当前推导中 n ≥ 5 的类型。这条"
+             "跨度本身就是置信度模型行为的全貌：对独立来源的归纳概括落在 0.93 附近，"
+             "类比落在 0.49 附近。作者选择的是论证的*形状*；数字由它推出来。",
+             label="图")
+        + _fig("figures/fig2-node-type.png", 3,
+               "按节点类型统计的置信度——箱体示四分位距，横线示中位数。每一类型都按"
+               "构造占据自己的带：公理是终值 1.00，猜想在创建时被钳制，观察几乎机械地"
+               "由证据类型映射而来，推导的跨度最宽，因为它从自己的前提继承。",
+               label="图")
+        + _fig("figures/fig3-quote-type.png", 4,
+               "按证据类型统计的当前观察的平均置信度。从硬数据（0.91）到个人交流与"
+               "编者意见（0.60）的梯度，不是事后施加的政策——它在写入时由作者所声明的"
+               "证据算出，与 §4.3 描述的是同一条约束。",
+               label="图"),
+    ),
+    (
+        "ch6.md", "## 6.4",
+        _fig("figures/fig4-depth.png", 6,
+             "计算置信度对推导深度的关系，取全部至少有一个祖先的 1,318 条当前推导。"
+             "平均置信度随深度下降，从一层的 0.72（705 条推导）降到十二至十四层的约 0.4"
+             "（17 条推导）；最深的几层每条只含一个节点，少到读不出趋势。每一深度上的"
+             "跨度都很宽：仅在第 1 层，就从约 0.2 延伸到 0.98。被标注的那一点是 §6.4 中"
+             "走通的六层链条（0.10）。深度平均而言有代价；而一条主张的具体数字由论证的"
+             "种类决定（图 2）。",
+             label="图"),
+    ),
+    (
+        "ch6.md", "## 6.2",
+        _fig("figures/fig5-growth.png", 5,
+             "按月份统计的整段轨迹上的累计节点数。该图属于一个智能体，从 2026-04-09 "
+             "连续累积到快照日期。增长并不均匀，跟的是工作强度，而不是任何日程。",
+             label="图"),
+    ),
+]
+
+INSERTS_BY_LANG: dict[str, list[tuple[str, str, str]]] = {
+    "en": INSERTS,
+    "zh": INSERTS_ZH,
+}
+
+
+def assert_insert_anchor_parity(
+    inserts_en: list[tuple[str, str, str]],
+    inserts_zh: list[tuple[str, str, str]],
+) -> None:
+    """The two INSERTS lists must carry identical `(file, heading)` anchor keys,
+    in the same order.
+
+    A caption added to one language and not the other would otherwise render in
+    English (or vanish) silently, which is the failure mode this guard exists to
+    convert into a loud one. Called at import below, and directly by tests --
+    which is why it is a function rather than a bare `assert`.
+    """
+    en_keys = [(f, h) for f, h, _ in inserts_en]
+    zh_keys = [(f, h) for f, h, _ in inserts_zh]
+    if en_keys == zh_keys:
+        return
+    only_en = [k for k in en_keys if k not in zh_keys]
+    only_zh = [k for k in zh_keys if k not in en_keys]
+    detail = f"en-only: {only_en}; zh-only: {only_zh}"
+    if not only_en and not only_zh:
+        detail = f"same anchors in a different order -- en={en_keys} zh={zh_keys}"
+    raise SystemExit(
+        "INSERTS / INSERTS_ZH anchor keys differ, so a caption would render in one "
+        f"language only. {detail}"
+    )
+
+
+assert_insert_anchor_parity(INSERTS, INSERTS_ZH)
 
 
 # --- K-1.27: node IDs do three different jobs and get three treatments -----------
@@ -249,6 +501,24 @@ _CONTEXT_PAREN = re.compile(r"\s*\(" + _ID + r"\s+context\)")
 # `test_form_f_literal_old_string_present_in_real_source` in
 # tests/test_render_strip_ids.py, so a source edit that removes the phrase
 # fails loudly instead of the substitution silently no-op'ing.
+#
+# LANGUAGE: this table is ENGLISH-ONLY, deliberately, and it is not mirrored for
+# zh. Its `old` values are English *sentences* -- "not ground truth — gl_0025)",
+# "The 0.39 on\ndv_0606 is the *abductive* confidence" -- not tokens, so a zh
+# counterpart cannot be derived from the English one; it could only be copied out
+# of the zh translation after that translation exists. Inventing zh strings here
+# would be a guess that silently no-ops the day the real translation lands, which
+# is worse than not having them.
+#
+# What that means for a zh render is a rule on the TRANSLATOR, not on this table:
+#   * a zh chapter must carry NO citation-style provenance IDs at all. Nothing is
+#     lost by that -- the en render strips these IDs precisely because they
+#     cannot be followed by anyone outside this graph -- and it is what the one
+#     existing zh source already does (appendix_G_glossary.zh.md: zero IDs).
+#   * if an ID is carried anyway, an ASCII parenthetical run is still reached by
+#     the general forms above; a FULL-WIDTH parenthetical （ob_1041） is not, and
+#     will reach `assert_no_leaked_ids` and hard-fail. That asymmetry is pinned by
+#     test_strip_provenance_ids_language_contract_for_zh in tests/test_glossary.py.
 _LITERAL_STRIPS: dict[str, list[tuple[str, str]]] = {
     "ch4.md": [
         ("(E = b + a·u, first-hand ob_2551)", "(E = b + a·u, first-hand)"),
@@ -385,6 +655,13 @@ def strip_provenance_ids(name: str, text: str) -> tuple[str, int]:
     2026-09-23 fold comment above `STRIP_PROVENANCE_IDS_IN`), because the ID
     sits bare in the prose rather than inside one of the recognized citation
     forms (see `KEEP_IDS`).
+
+    LANGUAGE: `name` is the ENGLISH BODY entry for every language -- `main` passes
+    the BODY name, not the resolved zh filename -- so the strip set and `KEEP_IDS`
+    keying are language-independent and need no zh twin. `_LITERAL_STRIPS` is
+    English-only by design, so a zh chapter must carry no citation-style IDs; see
+    the module note above `_LITERAL_STRIPS` for why, and for what a translator has
+    to do instead.
     """
     if name not in STRIP_PROVENANCE_IDS_IN:
         return text, 0
@@ -493,8 +770,15 @@ def section_end(lines: list[str], start: int) -> int:
     return len(lines)
 
 
-def apply_inserts(name: str, text: str) -> str:
-    blocks = [(h, b) for (f, h, b) in INSERTS if f == name]
+def apply_inserts(
+    name: str,
+    text: str,
+    inserts: list[tuple[str, str, str]] = INSERTS,
+) -> str:
+    """Append the declared figure/diagram blocks to their anchored sections of
+    `name`. `inserts` defaults to the English list, so existing call sites and
+    tests are unchanged; `main` passes the language's own list."""
+    blocks = [(h, b) for (f, h, b) in inserts if f == name]
     if not blocks:
         return text
     lines = text.split("\n")
@@ -512,33 +796,53 @@ def apply_inserts(name: str, text: str) -> str:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default="paper/engram-paper-v0.5.1.md")
+    ap.add_argument(
+        "--lang",
+        choices=LANGS,
+        default="en",
+        help="chapter-source language (default: en). Selects the source directory "
+             "and the default --out path.",
+    )
+    ap.add_argument(
+        "--out",
+        default=None,
+        help="output path (default: paper/engram-paper-v0.5.1.md for en, "
+             "paper/engram-paper-v0.5.1.zh.md for zh)",
+    )
     a = ap.parse_args()
+    lang = a.lang
+    out = Path(a.out) if a.out else Path(DEFAULT_OUT[lang])
 
-    parts = [load(PAPER / "front-matter.md")]
+    parts = [load(PAPER / FRONT_MATTER[lang])]
 
     stripped_total = 0
     apparatus_total = 0
     for name in BODY:
-        body = load(DRAFT / name)
-        body = apply_inserts(name, body)
+        # ONE BODY list, resolved per language. A chapter that is missing in this
+        # language is a hard SystemExit from `load`, naming the resolved path --
+        # never a skip, so a partially translated book cannot render short.
+        body = load(chapter_path(lang, name))
+        body = apply_inserts(name, body, INSERTS_BY_LANG[lang])
         body, n = strip_provenance_ids(name, body)
         stripped_total += n
         body, m = strip_apparatus_tags(name, body)
         apparatus_total += m
         parts.append(body)
 
-    parts.append(load(PAPER / "acknowledgements.md"))
-    parts.append(load(PAPER / "bibliography.md"))
+    parts.append(load(PAPER / ACKNOWLEDGEMENTS[lang]))
+    parts.append(load(PAPER / BIBLIOGRAPHY[lang]))
 
-    out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     text = "\n\n---\n\n".join(p.rstrip() for p in parts) + "\n"
     out.write_text(text, encoding="utf-8")
 
     words = len(text.split())
-    figs = text.count("**Figure ")
+    figs = text.count(f"**{FIGURE_LABEL[lang]} ")
     print(f"# rendered {out}")
+    if lang != "en":
+        # Printed for non-default languages only: the en stdout stays
+        # byte-identical to what it emitted before --lang existed.
+        print(f"  language   {lang} (chapter sources from {SOURCE_DIRS[lang]}/)")
     print(f"  sources    {len(BODY)} chapters/appendices + front matter + acknowledgements + bibliography")
     print(f"  length     {len(text.splitlines()):,} lines, {words:,} words")
     print(f"  figures    {figs} placed")

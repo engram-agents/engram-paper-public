@@ -7,67 +7,168 @@ T1 — every glossary term occurs at least once in the rendered body OUTSIDE
      Appendix G (case-insensitive, word-boundary).
 T2 — every section pointer in G resolves to a heading that exists in the render.
 T3 — G carries zero node IDs (reuses tests/test_render_strip_ids.py's _ID_SCAN).
-T4 — G is <= 1800 words, and every required term has an entry (or is in the
-     documented-absent set, for the two required terms that do not occur
+T4 — G is <= 1800 words in English, <= 1800 x `ZH_HAN_PER_EN_WORD` Han
+     characters in Chinese (zh is not space-delimited, so a whitespace-token
+     budget measures nothing there), and every required term has an entry (or is
+     in the documented-absent set, for the two required terms that do not occur
      anywhere in the current draft body at all).
 T5 — the Ch1 pointer sentence is present exactly once in the render.
+
+LANGUAGE PARAMETERIZATION (`--lang {en,zh}`, spec: zh translation support). Every
+glossary test is parameterized over `LANGS` so the Chinese draft gets the same
+checks as the English one — before this, the file was hardcoded to the English
+draft path and the zh twin escaped every check entirely. A check that the current
+zh draft cannot yet satisfy (because its chapters are not translated, or because
+the check is keyed to English prose) SKIPS with the reason stated, never passes
+silently. The three checks the spec names for zh — the word budget, the
+zero-node-ID scan, and the every-term-occurs-outside-G check — all run.
+
+The language-contract tests at the bottom of this file assert the engine
+contracts the zh spec states: one shared `BODY`, a per-language chapter
+resolution that hard-fails naming a missing file, anchor-key parity between
+`INSERTS` and `INSERTS_ZH`, and the per-language default output path.
 """
 
 from __future__ import annotations
 
+import ast
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
 
 import pytest
 
-from tools.render_paper import DRAFT, PAPER, BODY, load, apply_inserts, strip_provenance_ids
+import tools.render_paper as rp
+from tools.render_paper import (
+    ACKNOWLEDGEMENTS,
+    BIBLIOGRAPHY,
+    BODY,
+    CHAPTER_SUFFIX,
+    DEFAULT_OUT,
+    DIAGRAM_CASCADE,
+    DIAGRAM_CASCADE_ZH,
+    DRAFT,
+    DRAFT_ZH,
+    FRONT_MATTER,
+    INSERTS,
+    INSERTS_ZH,
+    PAPER,
+    SOURCE_DIRS,
+    apply_inserts,
+    assert_insert_anchor_parity,
+    chapter_name,
+    chapter_path,
+    load,
+    strip_provenance_ids,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-G_PATH = DRAFT / "appendix_G_glossary.md"
 CH1_POINTER = (
     "Terms of art are collected in the Glossary (Appendix G); each entry "
     "points to the section that defines it."
 )
+
+LANGS = ("en", "zh")
+
+# Appendix G's top-level heading, per language. The zh translation localises it
+# (verified against paper_research/current_draft_zh/appendix_G_glossary.zh.md).
+_G_HEADING = {
+    "en": r"^# Appendix G — Glossary\s*$",
+    "zh": r"^# 附录 G — 术语表\s*$",
+}
+# What ends G in the assembled render. Deliberately NOT per-language: the zh
+# acknowledgements file is still a heading-less placeholder, so a zh slice would
+# simply run to the end of the document -- which is harmless today because both
+# checks that slice G for zh (T1, T2) skip before reaching it. When the zh
+# acknowledgements file gains a real heading, this becomes language-keyed.
+_G_HEADING_END = r"^## Acknowledgements\s*$"
+
+
+@pytest.fixture(params=LANGS)
+def lang(request: pytest.FixtureRequest) -> str:
+    return request.param
+
+
+def _g_path(lang: str) -> Path:
+    """Appendix G's source file for `lang`, via the engine's own resolution."""
+    return SOURCE_DIRS[lang] / chapter_name(lang, "appendix_G_glossary.md")
+
+
+def _missing_chapters(lang: str) -> list[Path]:
+    return [
+        SOURCE_DIRS[lang] / chapter_name(lang, name)
+        for name in BODY
+        if not (SOURCE_DIRS[lang] / chapter_name(lang, name)).exists()
+    ]
+
+
+def _skip_if_cannot_assemble(lang: str, check: str) -> None:
+    """Skip a check that needs the whole book assembled, naming exactly what is
+    absent. Only the checks that need more than Appendix G itself take this
+    path -- the ones satisfiable from the translated G still run."""
+    missing = _missing_chapters(lang)
+    if not missing:
+        return
+    pytest.skip(
+        f"{check}: needs the full {lang!r} assembly, but {len(missing)} of "
+        f"{len(BODY)} {lang!r} chapter sources do not exist yet "
+        f"(first missing: {missing[0]}). Skipped, not silently passed -- the "
+        f"checks satisfiable from the {lang!r} Appendix G alone still run."
+    )
+
+
+def _skip_zh(lang: str, check: str, why: str) -> None:
+    """Explicit skip for a check the current zh draft cannot satisfy, quoting
+    both the check-specific reason and the shared untranslated-chapters fact."""
+    missing = _missing_chapters(lang)
+    tail = ""
+    if missing:
+        tail = (
+            f" Separately, {len(missing)} of {len(BODY)} {lang!r} chapter sources "
+            f"are untranslated (first missing: {missing[0]}), so the book cannot "
+            f"be assembled at all."
+        )
+    pytest.skip(f"{check}: {why}{tail} Skipped, not silently passed.")
 
 # _ID_SCAN copied verbatim from tests/test_render_strip_ids.py so this file has
 # no import-order dependency on that module's internals.
 _ID_SCAN = re.compile(r"\b(?:ob|dv|th|cj|df|ax|cs|ls|gl|gt|ct|qu|pr|ev|fl|pn|tk|ts)_\d{4}\b")
 
 
-def _render_full_text() -> str:
+def _render_full_text(lang: str = "en") -> str:
     """Render the whole paper via the real assembly path (front matter + BODY +
     acknowledgements + bibliography), mirroring tools/render_paper.py:main()
     exactly, so the test exercises the real render rather than a hand-rolled
     substitute."""
-    parts = [load(PAPER / "front-matter.md")]
+    parts = [load(PAPER / FRONT_MATTER[lang])]
     for name in BODY:
-        body = load(DRAFT / name)
-        body = apply_inserts(name, body)
+        body = load(SOURCE_DIRS[lang] / chapter_name(lang, name))
+        body = apply_inserts(name, body, rp.INSERTS_BY_LANG[lang])
         body, _ = strip_provenance_ids(name, body)
         parts.append(body)
-    parts.append(load(PAPER / "acknowledgements.md"))
-    parts.append(load(PAPER / "bibliography.md"))
+    parts.append(load(PAPER / ACKNOWLEDGEMENTS[lang]))
+    parts.append(load(PAPER / BIBLIOGRAPHY[lang]))
     return "\n\n---\n\n".join(p.rstrip() for p in parts) + "\n"
 
 
-def _g_section_text(full_text: str) -> str:
+def _g_section_text(lang: str, full_text: str) -> str:
     """Slice out just the Appendix G section from the full render."""
-    m = re.search(r"^# Appendix G — Glossary\s*$", full_text, re.MULTILINE)
-    assert m, "Appendix G heading not found in render"
+    m = re.search(_G_HEADING[lang], full_text, re.MULTILINE)
+    assert m, f"Appendix G heading not found in the {lang!r} render"
     rest = full_text[m.end():]
     # G ends at the next top-level heading (Acknowledgements) or end of doc.
-    m2 = re.search(r"^## Acknowledgements\s*$", rest, re.MULTILINE)
+    m2 = re.search(_G_HEADING_END, rest, re.MULTILINE)
     return rest[: m2.start()] if m2 else rest
 
 
-def _body_outside_g(full_text: str) -> str:
-    m = re.search(r"^# Appendix G — Glossary\s*$", full_text, re.MULTILINE)
+def _body_outside_g(lang: str, full_text: str) -> str:
+    m = re.search(_G_HEADING[lang], full_text, re.MULTILINE)
     assert m
     before = full_text[: m.start()]
     rest = full_text[m.end():]
-    m2 = re.search(r"^## Acknowledgements\s*$", rest, re.MULTILINE)
+    m2 = re.search(_G_HEADING_END, rest, re.MULTILINE)
     after = rest[m2.start():] if m2 else ""
     return before + after
 
@@ -229,11 +330,13 @@ REQUIRED_TERMS: dict[str, list[str] | None] = {
 # ── T1 ────────────────────────────────────────────────────────────────────
 
 
-def test_t1_every_glossary_term_occurs_outside_g():
-    assert G_PATH.exists(), f"missing: {G_PATH}"
-    full = _render_full_text()
-    body = _body_outside_g(full)
-    g_text = _g_section_text(full)
+def test_t1_every_glossary_term_occurs_outside_g(lang: str):
+    _skip_if_cannot_assemble(lang, "T1 (every glossary term occurs outside G)")
+    g_path = _g_path(lang)
+    assert g_path.exists(), f"missing: {g_path}"
+    full = _render_full_text(lang)
+    body = _body_outside_g(lang, full)
+    g_text = _g_section_text(lang, full)
 
     entries = _parse_entries(g_text)
     assert entries, "no glossary entries parsed"
@@ -277,11 +380,11 @@ def test_t1_mutation_absent_term_reddens_only_this_test(tmp_path):
     """Can-it-fail demonstration: a term that never appears in the body must
     fail T1. Runs against a temp copy of G with one bogus entry appended;
     does not touch the real file."""
-    full = _render_full_text()
-    body = _body_outside_g(full)
+    full = _render_full_text("en")
+    body = _body_outside_g("en", full)
     bogus = "zorblattian-nonexistent-term"
     assert not re.search(r"\b" + re.escape(bogus) + r"\b", body, re.IGNORECASE)
-    g_text = _g_section_text(full) + f"\n\n**{bogus}** — a term invented for this test.\n"
+    g_text = _g_section_text("en", full) + f"\n\n**{bogus}** — a term invented for this test.\n"
     entries = _parse_entries(g_text)
     missing = []
     for raw in entries:
@@ -359,9 +462,18 @@ def _pointers_in_entry(entry_text: str) -> list[str]:
     return found
 
 
-def test_t2_every_pointer_resolves():
-    full = _render_full_text()
-    g_text = _g_section_text(full)
+def test_t2_every_pointer_resolves(lang: str):
+    if lang != "en":
+        _skip_zh(
+            lang,
+            "T2 (every pointer resolves)",
+            "the pointer grammar in this file is English (`Appendix E §E.1`, `Ch8`), "
+            "while the zh translation points with localised forms (`附录 E §E.1`) that "
+            "this grammar does not recognise, so the check would report false "
+            "unresolved pointers. A zh pointer grammar is not part of this change.",
+        )
+    full = _render_full_text(lang)
+    g_text = _g_section_text(lang, full)
     section_tokens, appendix_letters, chapter_numbers, named_headings = _heading_index(full)
 
     unresolved = []
@@ -380,7 +492,7 @@ def test_t2_every_pointer_resolves():
         # Structural resolution: front-matter.md is unconditionally the first
         # part loaded (see tools/render_paper.py:main() and this file's
         # _render_full_text()); it carries no numbered heading of its own.
-        assert (PAPER / "front-matter.md").exists()
+        assert (PAPER / FRONT_MATTER[lang]).exists()
 
     if "Data availability" in g_text:
         if "Data availability" not in named_headings:
@@ -393,7 +505,7 @@ def test_t2_mutation_bad_pointer_reddens_only_this_test():
     """Can-it-fail demonstration: a pointer to a non-existent section must
     fail T2. Constructs a synthetic G excerpt with a bogus pointer; does not
     touch the real file."""
-    full = _render_full_text()
+    full = _render_full_text("en")
     section_tokens, appendix_letters, chapter_numbers, _named = _heading_index(full)
     bogus_token = "4.99"
     assert bogus_token not in section_tokens
@@ -408,27 +520,144 @@ def test_t2_mutation_bad_pointer_reddens_only_this_test():
 # ── T3 ────────────────────────────────────────────────────────────────────
 
 
-def test_t3_g_carries_zero_node_ids():
-    assert G_PATH.exists()
-    text = G_PATH.read_text(encoding="utf-8")
-    assert not _ID_SCAN.search(text), "Appendix G source carries a node ID"
+def test_t3_g_carries_zero_node_ids(lang: str):
+    g_path = _g_path(lang)
+    assert g_path.exists(), f"missing: {g_path}"
+    text = g_path.read_text(encoding="utf-8")
+    assert not _ID_SCAN.search(text), f"Appendix G source carries a node ID ({g_path})"
 
-    full = _render_full_text()
-    g_text = _g_section_text(full)
+    # The render-side half needs the whole book assembled. Where chapters are
+    # untranslated this skips after the source-side assertion above has already
+    # run and passed -- the skip reason says so, so the "skipped" line is never
+    # read as "nothing was checked".
+    _skip_if_cannot_assemble(
+        lang, "T3 render-side scan (the source-side zero-ID scan above ran and passed)"
+    )
+    full = _render_full_text(lang)
+    g_text = _g_section_text(lang, full)
     assert not _ID_SCAN.search(g_text), "Appendix G render carries a node ID"
 
 
 # ── T4 ────────────────────────────────────────────────────────────────────
 
 
-def test_t4_word_budget_and_required_terms_present():
-    assert G_PATH.exists()
-    text = G_PATH.read_text(encoding="utf-8")
-    words = len(text.split())
-    assert words <= 1800, f"Appendix G is {words} words, over the 1800 budget"
+# Han characters = the CJK Unified Ideographs block, U+4E00-U+9FFF -- the two
+# bounds below, written in hex so the block is visible in the source.
+# Deliberately NOT a "not-ASCII" count: the block excludes the CJK punctuation
+# (U+3000-U+303F) and full-width forms (U+FF00-U+FFEF) a zh caption also carries
+# (160 and 538 occurrences respectively in the current draft), plus every Latin
+# token, so the count measures *ideographic content* only.
+_HAN_BLOCK = (0x4E00, 0x9FFF)
 
-    full = _render_full_text()
-    g_text = _g_section_text(full)
+
+def _han_char_count(text: str) -> int:
+    lo, hi = _HAN_BLOCK
+    return sum(1 for ch in text if lo <= ord(ch) <= hi)
+
+
+# The zh ledger opens with a translator header -- ONE HTML comment block at the
+# top of the file (terminology convention, coinage table, the term-choice test).
+# It is translator metadata, not glossary prose: markdown hides `<!-- ... -->`,
+# and the English glossary has no counterpart block, so a count that included it
+# would not be comparable to the English figure and would drift on every
+# documentation edit. T4's zh count EXCLUDES it, via the helper below. The
+# regex is anchored at the file start (`\A`) and limited to one substitution, so
+# a comment pair appearing later in the glossary BODY is never touched -- the
+# three tests after the helper pin that contract.
+_LEADING_TRANSLATOR_HEADER = re.compile(r"\A\s*<!--.*?-->\s*", re.S)
+
+
+def _glossary_body(text: str) -> str:
+    """`text` with a LEADING translator-header comment block removed, if any.
+
+    Anchored at the start of the file (`\\A`), and removing at most one block: a
+    comment pair appearing later in the glossary BODY is prose, not a header,
+    and must survive. A no-op for a source with no leading comment -- which is
+    every English file, so T4's English branch is unaffected.
+    """
+    return _LEADING_TRANSLATOR_HEADER.sub("", text, count=1)
+
+
+def test_glossary_body_strips_a_leading_translator_header():
+    text = "<!--\n  translator: Zephyr\n-->\n# 附录 G — 术语表\n\n正文\n"
+    assert _glossary_body(text) == "# 附录 G — 术语表\n\n正文\n"
+
+
+def test_glossary_body_never_strips_a_body_comment():
+    """The strip is anchored at the file start. An UNANCHORED `<!--.*?-->` with
+    DOTALL matches the first `<!--` anywhere, so on this input it would delete
+    the body's comment and silently drop glossary text from the count -- the
+    failure mode the anchoring exists to prevent. Must be a no-op here."""
+    text = "# 附录 G — 术语表\n\n术语<!-- 内注 -->定义\n"
+    assert _glossary_body(text) == text
+
+
+def test_glossary_body_is_a_noop_without_a_leading_comment():
+    """Every English glossary source has no translator header, so the helper
+    must return it unchanged."""
+    text = "# Appendix G — Glossary\n\n**arbitration** — ...\n"
+    assert _glossary_body(text) == text
+
+
+def test_t4_word_budget_and_required_terms_present(lang: str):
+    g_path = _g_path(lang)
+    assert g_path.exists(), f"missing: {g_path}"
+    text = g_path.read_text(encoding="utf-8")
+    words = len(text.split())
+    if lang == "zh":
+        # zh is not space-delimited, so `words` above measures nothing useful: a
+        # whitespace-token count over Han text is coarsely quantized and hides
+        # most length change, so the same budget check that constrains the
+        # English draft was near-vacuous here. Measure Han characters instead,
+        # against the English budget scaled by `ZH_HAN_PER_EN_WORD` -- see that
+        # constant for the ratio's provenance and its bound (ONE en/zh pair, a
+        # calibration rather than a law, and the measured inputs it came from).
+        #
+        # The count is taken on the GLOSSARY BODY, with the ledger's leading
+        # translator header comment excluded (`_glossary_body`): that block is
+        # translator metadata rather than prose, and the English glossary has no
+        # counterpart to it. Counting it would compare two different things, and
+        # would drift on every header edit -- a documentation change, not a
+        # translation change.
+        #
+        # Whether zh should carry a length budget AT ALL is a policy call
+        # belonging to Lei; this assertion is only the measurable half, and is
+        # not to be read as settling that question.
+        body = _glossary_body(text)
+        han = _han_char_count(body)
+        budget = 1800 * rp.ZH_HAN_PER_EN_WORD
+        assert han <= budget, (
+            f"Appendix G (zh) is {han} Han characters, over the {budget:.0f} "
+            f"budget (1800 x ZH_HAN_PER_EN_WORD={rp.ZH_HAN_PER_EN_WORD}). Method: "
+            f"Han = the U+4E00-U+9FFF block, counted on the glossary body with "
+            f"the ledger's leading translator header comment excluded "
+            f"({len(body.split())} whitespace tokens in that body). The constant "
+            f"is a calibration from ONE en/zh pair, NOT a law -- its provenance "
+            f"comment in tools/render_paper.py names the pair and the method. If "
+            f"the zh text genuinely exceeds the budget, RE-DERIVE the ratio from "
+            f"the CURRENT pair, measuring the English file and this one the same "
+            f"way (header excluded on both sides), and update that constant; do "
+            f"not pad the text to fit the old one."
+        )
+    else:
+        assert words <= 1800, f"Appendix G is {words} words, over the 1800 budget"
+
+    # The required-term coverage below is keyed to the English REQUIRED_TERMS
+    # list and needs the assembled book. Neither holds for zh, so it skips
+    # explicitly -- naming both facts -- rather than reporting a pass it did not
+    # earn. The budget assertion above has already run for both languages.
+    if lang != "en":
+        _skip_zh(
+            lang,
+            "T4 required-term coverage (the word-budget check above ran and passed)",
+            "REQUIRED_TERMS is the English spec list of English headwords, while the "
+            "zh glossary's headwords are Chinese (`自动浮现（auto-surface）`) and no "
+            "zh term-to-headword map exists yet; the headword normaliser also strips "
+            "ASCII parens only.",
+        )
+
+    full = _render_full_text(lang)
+    g_text = _g_section_text(lang, full)
     entries = _parse_entries(g_text)
     all_headwords: set[str] = set()
     for raw in entries:
@@ -460,14 +689,395 @@ def test_t4_word_budget_and_required_terms_present():
 # ── T5 ────────────────────────────────────────────────────────────────────
 
 
-def test_t5_ch1_pointer_sentence_present_exactly_once():
-    full = _render_full_text()
+def test_t5_ch1_pointer_sentence_present_exactly_once(lang: str):
+    if lang != "en":
+        _skip_zh(
+            lang,
+            "T5 (Ch1 pointer sentence present exactly once)",
+            "the asserted string is the English Ch1 pointer text; the zh Ch1 is a "
+            "different string that does not exist yet.",
+        )
+    full = _render_full_text(lang)
     # Source markdown is hard-wrapped, so the sentence may straddle a line
     # break in ch1.md; collapse whitespace runs before counting (same
     # normalization as T1's body-phrase matching).
     full_norm = re.sub(r"\s+", " ", full)
     count = full_norm.count(CH1_POINTER)
     assert count == 1, f"Ch1 pointer sentence found {count} times, expected exactly 1"
+
+
+# ── language contract (`--lang {en,zh}`) ────────────────────────────────────
+
+
+def test_language_defaults_and_output_paths():
+    """Spec point 1: `--lang {en,zh}` defaults to `en`, and the zh default output
+    is the `.zh.md` sibling of the English paper. The `en` default is exercised
+    end-to-end by test_fresh_render_matches_committed_paper below, which runs the
+    tool with no `--lang` at all."""
+    assert LANGS == ("en", "zh")
+    assert DEFAULT_OUT["en"] == "paper/engram-paper-v0.5.1.md"
+    assert DEFAULT_OUT["zh"] == "paper/engram-paper-v0.5.1.zh.md"
+
+
+def test_body_is_one_shared_list_never_duplicated_per_language():
+    """Spec point 2: ONE `BODY` list shared across languages -- never a second
+    list keyed by language."""
+    body_lists = sorted(n for n in dir(rp) if n == "BODY" or n.startswith("BODY_"))
+    assert body_lists == ["BODY"], (
+        "the engine must carry exactly one BODY list shared across languages; "
+        f"found {body_lists}"
+    )
+
+
+def test_zh_chapter_paths_derive_from_the_shared_body_list():
+    """Spec point 2: the zh sources are the same chapter set, resolved into the
+    zh source dir -- not a hand-maintained parallel listing. The assertions here
+    are deliberately agnostic about the zh filename *convention* (bare vs
+    `.zh`-suffixed); they pin only what the spec fixes: the set is derived from
+    BODY, and every zh path lands inside the zh source dir."""
+    assert set(DEFAULT_OUT) == set(LANGS) == set(SOURCE_DIRS) == set(CHAPTER_SUFFIX)
+    assert CHAPTER_SUFFIX["en"] == "", "the en filenames must stay unchanged"
+    for name in BODY:
+        assert chapter_name("en", name) == name, "en chapter resolution is identity"
+        zh_path = SOURCE_DIRS["zh"] / chapter_name("zh", name)
+        assert zh_path.parent == DRAFT_ZH, f"{name} resolves outside the zh dir"
+        assert zh_path.suffix == ".md", f"{name} does not resolve to a markdown file"
+
+
+def test_zh_front_and_back_matter_exist_and_are_obvious_placeholders():
+    """Spec point 4: the three zh front/back-matter files must exist for the
+    pipeline to run, and each must be an obvious untranslated marker rather than
+    text that pretends to be a translation. (The hard-fail rule covers CHAPTERS;
+    for these three a placeholder is the accepted state while translation is
+    pending -- as long as it is unmistakable in the render.)"""
+    for name in (FRONT_MATTER["zh"], ACKNOWLEDGEMENTS["zh"], BIBLIOGRAPHY["zh"]):
+        path = PAPER / name
+        assert path.exists(), f"missing zh front/back matter: {path}"
+        text = path.read_text(encoding="utf-8")
+        assert "TODO(zh)" in text, f"{path} must carry an obvious TODO(zh) marker"
+        assert len(text.strip().splitlines()) == 1, (
+            f"{path} must be a one-line placeholder, "
+            f"got {len(text.strip().splitlines())} lines"
+        )
+
+
+def test_en_front_and_back_matter_names_are_unchanged():
+    assert FRONT_MATTER["en"] == "front-matter.md"
+    assert ACKNOWLEDGEMENTS["en"] == "acknowledgements.md"
+    assert BIBLIOGRAPHY["en"] == "bibliography.md"
+
+
+def test_zh_chapter_filename_convention_is_pinned():
+    """The zh filename convention (`ch1.md` -> `ch1.zh.md`) is pinned here on
+    purpose: it is the ONE place the spec's prose and the repo disagree. The
+    prose says "the zh sources use the SAME filenames under
+    `current_draft_zh/`", while the only zh source that exists -- the parent
+    commit's own `current_draft_zh/appendix_G_glossary.zh.md` -- carries the
+    suffix, as do the three zh front/back-matter names.
+
+    Suffix was chosen (the artifact plus the front/back-matter precedent), and
+    this test makes that choice visible rather than implied. If the bare name
+    was meant, flip `CHAPTER_SUFFIX["zh"]` and this test together."""
+    assert chapter_name("zh", "ch1.md") == "ch1.zh.md"
+    assert chapter_name("zh", "appendix_G_glossary.md") == "appendix_G_glossary.zh.md"
+    assert (DRAFT_ZH / "appendix_G_glossary.zh.md").exists()
+
+
+def test_anchor_parity_guard_is_wired_at_import():
+    """`assert_insert_anchor_parity` is only a guard if it actually RUNS at
+    import. Defining it and never calling it looks identical to the tests below,
+    which call it directly -- so assert the module-scope call exists by reading
+    the module's own source (a definition without a call is the plausible-wrong
+    implementation of "assert at import")."""
+    tree = ast.parse(Path(rp.__file__).read_text(encoding="utf-8"))
+    module_scope_calls = [
+        node
+        for node in tree.body
+        if isinstance(node, ast.Expr)
+        and isinstance(node.value, ast.Call)
+        and getattr(node.value.func, "id", None) == "assert_insert_anchor_parity"
+    ]
+    assert module_scope_calls, (
+        "assert_insert_anchor_parity is defined but never called at module scope, "
+        "so nothing enforces the INSERTS / INSERTS_ZH anchor parity"
+    )
+
+
+def test_zh_pipeline_places_zh_captions_end_to_end(tmp_path, monkeypatch):
+    """The zh book cannot be assembled from real sources yet, so drive the WHOLE
+    zh pipeline over stand-in chapters (the English text under the zh filenames)
+    in a temp source dir. This is the check that `--lang zh` really routes to the
+    zh insert list and the zh captions/diagram rather than the English ones --
+    exactly the failure spec point 3 names ("silently render English").
+
+    English chapter text is used as a stand-in for the translation, so this test
+    is about ROUTING, not about translation quality."""
+    for name in BODY:
+        shutil.copy(chapter_path("en", name), tmp_path / chapter_name("zh", name))
+    monkeypatch.setitem(rp.SOURCE_DIRS, "zh", tmp_path)
+    out = tmp_path / "rendered-zh.md"
+    monkeypatch.setattr(sys, "argv", ["render_paper.py", "--lang", "zh", "--out", str(out)])
+
+    assert rp.main() == 0
+    text = out.read_text(encoding="utf-8")
+    assert text.count(f"**{rp.FIGURE_LABEL['zh']} ") == 6, (
+        "the zh render must place six zh figure captions (图 N), not the English ones"
+    )
+    assert f"**{rp.DIAGRAM_LABEL['zh']} 1.**" in text, "the zh cascade diagram is missing"
+    assert text.count("TODO(zh)") == 3, (
+        "all three zh front/back-matter placeholders must be visible in the render"
+    )
+
+
+def test_zh_render_hard_fails_naming_the_first_untranslated_chapter(tmp_path):
+    """Spec point 2: a missing zh chapter must hard-fail and name the file --
+    never a skip/optional path, and never a silently short render. Self-retiring:
+    once every zh chapter is translated the path it covers is not exercisable and
+    it skips rather than asserting something no longer true."""
+    missing = _missing_chapters("zh")
+    if not missing:
+        pytest.skip(
+            "every zh chapter is translated now, so the missing-chapter hard-fail "
+            "path this test covers is no longer exercisable"
+        )
+    out = tmp_path / "zh.md"
+    result = subprocess.run(
+        [sys.executable, "tools/render_paper.py", "--lang", "zh", "--out", str(out)],
+        cwd=REPO_ROOT,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode != 0, (
+        "`--lang zh` succeeded although zh chapters are missing -- a silent short "
+        f"render is the failure mode this contract forbids.\nstdout:\n{result.stdout}"
+    )
+    assert str(missing[0]) in (result.stdout + result.stderr), (
+        f"the zh hard-fail must name the missing file {missing[0]}\n"
+        f"--- stdout ---\n{result.stdout}\n--- stderr ---\n{result.stderr}"
+    )
+    assert not out.exists(), "a failed render must not leave an output file behind"
+
+
+def test_insert_lists_are_anchor_key_identical():
+    """Spec point 3: `INSERTS` and `INSERTS_ZH` must carry identical
+    `(file, heading)` anchor keys, so a caption present in one language and
+    absent in the other cannot pass unnoticed."""
+    assert [(f, h) for f, h, _ in INSERTS] == [(f, h) for f, h, _ in INSERTS_ZH]
+
+
+def test_insert_parity_guard_accepts_the_shipped_lists():
+    assert_insert_anchor_parity(INSERTS, INSERTS_ZH)
+
+
+@pytest.mark.parametrize(
+    "dropped_from", ["zh", "en"], ids=["zh-lost-a-caption", "en-lost-a-caption"]
+)
+def test_insert_parity_guard_fires_when_one_language_loses_an_anchor(dropped_from):
+    """The discriminating case for spec point 3: a caption added to one language
+    and not the other must fail loudly, not silently render English."""
+    if dropped_from == "zh":
+        bad_en, bad_zh = INSERTS, INSERTS_ZH[:-1]
+    else:
+        bad_en = INSERTS + [("ch9.md", "## 9.9", "a caption only en carries")]
+        bad_zh = INSERTS_ZH
+    with pytest.raises(SystemExit) as exc:
+        assert_insert_anchor_parity(bad_en, bad_zh)
+    assert "INSERT" in str(exc.value)
+
+
+def test_zh_insert_blocks_are_not_english_copies():
+    """Anchor parity cannot see a block that was copy-pasted rather than
+    translated, and spec point 3's stated failure mode is exactly "silently
+    render English" -- so assert the zh blocks are actually distinct text."""
+    for (f, h, block_en), (f2, h2, block_zh) in zip(INSERTS, INSERTS_ZH):
+        assert (f, h) == (f2, h2)
+        assert block_en != block_zh, (
+            f"{f} :: {h!r}: the zh insert block is a byte copy of the English one"
+        )
+
+
+# ── caption numeric-drift guard ─────────────────────────────────────────────
+#
+# INSERTS_ZH and DIAGRAM_CASCADE_ZH restate numbers that also appear in their
+# English counterparts (9,399 nodes, 72.8%, 71/149/9/16, 245 = 2.6%, 0.93/0.49,
+# 0.91/0.60, 1,318 ...). Nothing tied the two sides together: the anchor-parity
+# guard above compares `(file, heading)` KEYS only, and the per-chapter English
+# render pin (`test_fresh_render_matches_committed_paper`) never reads a zh
+# caption. So an English numbers-fold could update the English captions and
+# leave the Chinese ones stating the old numbers -- CI green, the two languages
+# disagreeing. This guard closes that: the numeric tokens of the two captions
+# must form equal MULTISETS.
+#
+# TOKEN RULE -- `[0-9][0-9,\.]*%?`: a maximal run starting at a digit and
+# continuing over digits, thousands separators and decimal points, with an
+# optional trailing percent sign.
+#
+# NORMALISATION -- which differences are NOTATIONAL (compared equal) and which
+# are FACTUAL (compared different). Recorded here because neither is
+# self-evident, and a guard is only as good as its stated rule:
+#
+#   * Thousands separators are NOTATIONAL: commas are stripped, so `9,399` and
+#     `9399` compare equal. The grouping is pure typography -- no reader learns
+#     anything from it -- and a zh caption retyped without the separator states
+#     the same number.
+#   * Trailing sentence punctuation is NOTATIONAL: the greedy class swallows the
+#     period of `... near 0.49. The author`, so a trailing `.` or `,` is
+#     stripped. Without this, every number ending a sentence would differ
+#     between en (`.`) and zh (none), for no factual reason.
+#   * The percent sign is FACTUAL: it stays in the token, so `72.8%` and `72.8`
+#     are NOT equal. This is the deliberate strict choice -- a percentage and a
+#     bare proportion differ in what the caption *states*, not only in how it is
+#     written, and the captions are parallel translations that carry the sign on
+#     both sides today. The guard's failure mode is silence (a stale zh caption
+#     looks exactly like a correct one), so it errs toward firing: a false
+#     positive from a notational-only `%` difference is loud and costs one line
+#     to fix, while a false negative is invisible. If a future translation style
+#     makes this fire on a legitimate reformatting, the one-line loosening is
+#     `raw.replace("%", "")` in the normaliser below -- deliberately a loosening
+#     of this rule, never a bug fix.
+#   * Mermaid colour literals are EXCLUDED outright, not normalised. A colour is
+#     stripped before the numeric scan (`_COLOUR_LITERAL_RE`), because its hex
+#     digits are not caption FACTS: `#b3593f` would otherwise contribute '3593',
+#     `#555` -> '555', `#f6ece8` -> '6' and '8'. Every `#` form in either cascade
+#     diagram is one of these literals (measured: the seven distinct values
+#     #1f6f8b, #555, #8a8a8a, #b3593f, #e9f1f4, #f3f3f3, #f6ece8 -- six 6-digit
+#     and one 3-digit; `{3,8}` also covers the 4- and 8-digit alpha forms mermaid
+#     accepts), and the two diagrams carry identical style lines, so excluding
+#     them changes no comparison today -- which is exactly why the exclusion has
+#     to be written down rather than left implicit. Without it the guard's stated
+#     subject ("numeric facts") would not match what it compares, and an
+#     English-diagram restyle would fire a message reading "numeric tokens
+#     differ" when only a colour had changed. The exclusion is load-bearing, not
+#     cosmetic: removing it is what
+#     `test_caption_numeric_guard_ignores_a_colour_only_difference` goes red on.
+#
+# The comparison is on multisets, not sets: a caption stating `2, 2` against one
+# stating `2` has dropped an occurrence, and a set comparison would miss it.
+_NUMERIC_TOKEN_RE = re.compile(r"[0-9][0-9,\.]*%?")
+_COLOUR_LITERAL_RE = re.compile(r"#[0-9a-fA-F]{3,8}")
+
+
+def _numeric_tokens(text: str) -> list[str]:
+    """The normalised numeric tokens of one caption (rule above). Colour
+    literals are removed first -- see the EXCLUDED bullet above for why."""
+    return [
+        raw.replace(",", "").rstrip(".,")
+        for raw in _NUMERIC_TOKEN_RE.findall(_COLOUR_LITERAL_RE.sub("", text))
+    ]
+
+
+def _caption_pairs() -> list[tuple[str, str, str]]:
+    """(label, en_caption, zh_caption) for every pair the numeric guard covers.
+
+    Covers each anchor appearing in BOTH `INSERTS` and `INSERTS_ZH`, plus the
+    two cascade-diagram constants by name. The constants are also the ch4 §4.4
+    insert, but comparing them explicitly keeps the guard on the constants
+    themselves even if that INSERTS entry is ever rebuilt from an inlined copy.
+    """
+    zh_by_anchor = {(f, h): block for f, h, block in INSERTS_ZH}
+    pairs: list[tuple[str, str, str]] = [
+        (f"{f} :: {h}", block, zh_by_anchor[(f, h)])
+        for f, h, block in INSERTS
+        if (f, h) in zh_by_anchor
+    ]
+    pairs.append(
+        ("DIAGRAM_CASCADE / DIAGRAM_CASCADE_ZH", DIAGRAM_CASCADE, DIAGRAM_CASCADE_ZH)
+    )
+    return pairs
+
+
+def _numeric_mismatches(
+    pairs: list[tuple[str, str, str]],
+) -> list[tuple[str, list[str], list[str]]]:
+    """The `(label, en_tokens, zh_tokens)` triples whose multisets differ.
+
+    This is the guard itself, factored out so the colour-exclusion test below can
+    assert on the very comparison the shipped guard runs instead of
+    re-implementing it -- a test that restates the guard can pass while the guard
+    is wrong.
+    """
+    out = []
+    for label, en_caption, zh_caption in pairs:
+        en_tokens = sorted(_numeric_tokens(en_caption))
+        zh_tokens = sorted(_numeric_tokens(zh_caption))
+        if en_tokens != zh_tokens:
+            out.append((label, en_tokens, zh_tokens))
+    return out
+
+
+def test_caption_numeric_tokens_match_between_languages():
+    """Every shared caption anchor -- and the cascade diagram pair -- must state
+    the SAME numeric tokens in both languages, so an English numbers-fold cannot
+    leave the zh caption stating other numbers."""
+    mismatches = _numeric_mismatches(_caption_pairs())
+    assert not mismatches, (
+        "caption numeric tokens differ between the English and zh captions -- an "
+        "English numbers-fold has left the zh caption stale, or a zh number was "
+        "edited without its English counterpart:\n"
+        + "\n".join(
+            f"  {label}\n      en: {en_tokens}\n      zh: {zh_tokens}"
+            for label, en_tokens, zh_tokens in mismatches
+        )
+    )
+
+
+def test_caption_numeric_guard_fires_on_one_changed_digit():
+    """Can-it-fail demonstration for the guard above, committed so the
+    discrimination does not rest on a pasted transcript. Uses the real ch1 §1.1
+    caption pair, mutating it in memory -- the shipped files are not touched."""
+    pairs = {label: (en, zh) for label, en, zh in _caption_pairs()}
+    en_caption, zh_caption = pairs["ch1.md :: ## 1.1"]
+    assert sorted(_numeric_tokens(en_caption)) == sorted(_numeric_tokens(zh_caption))
+
+    mutated = zh_caption.replace("9,399", "9,398")
+    assert mutated != zh_caption, "the ch1 §1.1 zh caption no longer states 9,399"
+    assert sorted(_numeric_tokens(en_caption)) != sorted(_numeric_tokens(mutated)), (
+        "a one-digit change in the zh caption must produce a token mismatch"
+    )
+
+
+def test_caption_numeric_guard_ignores_a_colour_only_difference():
+    """The guard compares numeric FACTS, and a mermaid colour literal is not one:
+    a colour-only difference between a caption pair must NOT register as a
+    mismatch. This is the can-it-fail demonstration for the `_COLOUR_LITERAL_RE`
+    exclusion above -- drop that exclusion and `#b3593f` / `#b35940` are read as
+    the differing tokens '3593' / '35940', turning this test red. Uses the real
+    cascade pair, recoloured in memory -- the shipped files are not touched."""
+    pairs = {label: (en, zh) for label, en, zh in _caption_pairs()}
+    label = "DIAGRAM_CASCADE / DIAGRAM_CASCADE_ZH"
+    en_caption, zh_caption = pairs[label]
+    recoloured = zh_caption.replace("#b3593f", "#b35940")
+    assert recoloured != zh_caption, "the zh cascade diagram no longer uses #b3593f"
+    assert not _numeric_mismatches([(label, en_caption, recoloured)]), (
+        "a colour-only difference must not register as a numeric mismatch"
+    )
+
+
+def test_strip_provenance_ids_language_contract_for_zh():
+    """Spec point 5: `_LITERAL_STRIPS` holds literal English `(old, new)` pairs,
+    so for zh it no-ops and the zh render rests on the general regex forms plus
+    the translation rule that zh chapters carry no citation-style provenance IDs.
+    This pins what the regexes actually do to zh-shaped text, so the translator
+    contract is checked rather than assumed."""
+    # (a) the rule the translator is held to: no ID tokens -> nothing to strip.
+    zh_clean = "撤回一次推导（§1.3）会触发级联。"
+    out, n = strip_provenance_ids("ch2.md", zh_clean)
+    assert (out, n) == (zh_clean, 0)
+    rp.assert_no_leaked_ids("ch2.md", out)
+
+    # (b) an ID the translator does carry, in an ASCII parenthetical run, is
+    #     still reached by the general forms.
+    out2, n2 = strip_provenance_ids("ch2.md", "撤回（级联）(ob_1041) 会传播。")
+    assert n2 == 1 and "ob_1041" not in out2
+
+    # (c) the documented gap, asserted rather than described: a full-width
+    #     parenthetical carrying an ID is NOT reachable by the ASCII-paren
+    #     regexes, so it survives the strip and hard-fails (the guard runs inside
+    #     strip_provenance_ids itself, so the render dies at the strip call).
+    #     That is why the translator rule is "no citation-style IDs in zh text",
+    #     not "put them where the English put them".
+    with pytest.raises(SystemExit):
+        strip_provenance_ids("ch2.md", "撤回（ob_1041）会传播。")
 
 
 # ── render byte-check (spec verification tail) ──────────────────────────────
