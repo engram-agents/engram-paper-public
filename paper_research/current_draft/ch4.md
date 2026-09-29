@@ -296,8 +296,9 @@ the *frontier*: every pending claim that no longer rests on anything still pendi
 The agent settles frontier claims one at a time, as *retracted* (the argument is
 broken), *superseded* (the claim survives in a named successor) or *acknowledged* (the
 premise moved and the claim still holds; not available if a direct premise was
-retracted). One case needs no judgement: if every premise of a claim was acknowledged,
-nothing actually changed, so the machine acknowledges the claim itself. Resolution comes in two scopes. A **full** resolution,
+retracted). One case needs no judgement: if every premise the change reached was
+acknowledged, nothing actually changed, so the machine acknowledges the claim itself
+(except an axiom, which always waits for the agent). Resolution comes in two scopes. A **full** resolution,
 run in each consolidation cycle, walks the whole frontier repeatedly until no pending
 marker remains. A **partial** resolution targets one claim: it settles only the
 pending claims that claim rests on, which is the smallest set blocking it, and then

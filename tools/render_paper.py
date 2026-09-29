@@ -191,7 +191,7 @@ flowchart TD
         T --> G
         G -->|retracted| R["The argument<br/>is broken"]
         G -->|superseded| U["The claim survives in<br/>a named successor"]
-        G -->|acknowledged| K["Premise moved, claim still holds<br/>(not available if a direct<br/>premise was retracted; automatic<br/>if every premise was acknowledged)"]
+        G -->|acknowledged| K["Premise moved, claim still holds<br/>(not available if a direct<br/>premise was retracted; automatic<br/>if every premise the change reached<br/>was acknowledged)"]
         R --> N["Confidence is recomputed. No new derivation cascade:<br/>dependents were marked in phase 1<br/>and now reach the frontier in turn"]
         U --> N
         K --> N
@@ -244,7 +244,7 @@ flowchart TD
         T --> G
         G -->|撤回| R["论证<br/>已破"]
         G -->|取代| U["主张在一个有名字的<br/>后继者中存活"]
-        G -->|承认| K["前提移动，主张仍然成立<br/>（若某个直接前提<br/>已被撤回则不可选；若每个前提<br/>都被承认则自动完成）"]
+        G -->|承认| K["前提移动，主张仍然成立<br/>（若某个直接前提<br/>已被撤回则不可选；若变动所触及的<br/>每个前提都被承认则自动完成）"]
         R --> N["置信度被重算。不启动新的推导级联：<br/>依赖项已在阶段 1 被标记，<br/>现在依次抵达前沿"]
         U --> N
         K --> N
