@@ -290,20 +290,24 @@ without an intentional reach.
 But surfacing is relevance-gated: it shows a marked node when that node is topically
 relevant to what the agent is doing, which is the right behaviour for attention and
 the wrong behaviour for a backlog. A mark on a node the agent never touches again
-would sit indefinitely. A third mechanism closes the loop: **resolution**, the second
-process, which the agent drives through the **cascade machine**. The machine computes
-the *frontier*: every node carrying a pending marker, none of whose cascade-ancestors
-is still pending. The agent settles frontier nodes one at a time, as *retracted* (the
-argument is broken), *superseded* (the claim survives in a named successor) or
-*acknowledged* (the premise moved and the claim still holds; not available if a
-direct premise was retracted). Resolution comes in two scopes. A **full** resolution,
+would sit indefinitely. A third mechanism closes the loop. It is **resolution**, the second
+process, and the agent drives it through the **cascade machine**. The machine computes
+the *frontier*: every pending claim that no longer rests on anything still pending.
+The agent settles frontier claims one at a time, as *retracted* (the argument is
+broken), *superseded* (the claim survives in a named successor) or *acknowledged* (the
+premise moved and the claim still holds; not available if a direct premise was
+retracted). One case needs no judgement: if every premise of a claim was acknowledged,
+nothing actually changed, so the machine acknowledges the claim itself. Resolution comes in two scopes. A **full** resolution,
 run in each consolidation cycle, walks the whole frontier repeatedly until no pending
 marker remains. A **partial** resolution targets one claim: it settles only the
 pending claims that claim rests on, which is the smallest set blocking it, and then
 the claim itself. An agent that needs one premise now does not have to clear the whole
-backlog first. Either way, settling a node never starts a new cascade: its dependents
-were already marked when the original retraction or supersede fired, and they simply
-reach the frontier in turn. Working the frontier rather than a
+backlog first. Either way, settling a claim never starts a new derivation cascade: its
+dependents were already marked when the original retraction or supersede fired, and
+they simply reach the frontier in turn. There is one narrow exception. If the settled
+claim is retracted or superseded and has contradictions filed against it, those
+contradictions are marked for review, so the frontier can grow during a walk. That is
+why the full walk repeats until nothing is pending. Working the frontier rather than a
 queue is what makes the order safe: a node is never adjudicated while something it
 depends on is still unsettled, and because the frontier is recomputed from marker
 state on every call rather than stored, the walk resumes identically after a crash,

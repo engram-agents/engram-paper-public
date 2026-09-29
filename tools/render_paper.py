@@ -191,8 +191,8 @@ flowchart TD
         T --> G
         G -->|retracted| R["The argument<br/>is broken"]
         G -->|superseded| U["The claim survives in<br/>a named successor"]
-        G -->|acknowledged| K["Premise moved, claim still holds<br/>(not available if a direct<br/>premise was retracted)"]
-        R --> N["Confidence is recomputed. No new cascade:<br/>dependents were marked in phase 1<br/>and now reach the frontier in turn"]
+        G -->|acknowledged| K["Premise moved, claim still holds<br/>(not available if a direct<br/>premise was retracted; automatic<br/>if every premise was acknowledged)"]
+        R --> N["Confidence is recomputed. No new derivation cascade:<br/>dependents were marked in phase 1<br/>and now reach the frontier in turn"]
         U --> N
         K --> N
         N -.->|next frontier node| G
@@ -210,7 +210,7 @@ flowchart TD
 Propagation is automatic: each retraction or supersede marks everything downstream at
 once, and decides nothing. Resolution is the agent's: it settles the marked claims from
 the top down, either the whole frontier during consolidation or only the slice one claim
-needs, and it never starts a new cascade. Two things distinguish this from
+needs, and it never starts a new derivation cascade. Two things distinguish this from
 detection-only conflict reporting: marking is an automatic state change rather than an
 advisory note, and the consolidation walk means every mark is eventually faced, whether
 or not anyone remembers to look for it.
@@ -244,8 +244,8 @@ flowchart TD
         T --> G
         G -->|撤回| R["论证<br/>已破"]
         G -->|取代| U["主张在一个有名字的<br/>后继者中存活"]
-        G -->|承认| K["前提移动，主张仍然成立<br/>（若某个直接前提<br/>已被撤回则不可选）"]
-        R --> N["置信度被重算。不启动新的级联：<br/>依赖项已在阶段 1 被标记，<br/>现在依次抵达前沿"]
+        G -->|承认| K["前提移动，主张仍然成立<br/>（若某个直接前提<br/>已被撤回则不可选；若每个前提<br/>都被承认则自动完成）"]
+        R --> N["置信度被重算。不启动新的推导级联：<br/>依赖项已在阶段 1 被标记，<br/>现在依次抵达前沿"]
         U --> N
         K --> N
         N -.->|下一个前沿节点| G
@@ -261,7 +261,7 @@ flowchart TD
 
 **示意图 1.** ENGRAM v0.5.1 中的撤回级联，分为两个彼此分开的过程。传播是自动的：每一次撤回或
 取代都会一次性标记下游的一切，并且不作任何决定。解决是智能体的事：它自上而下地了结被标记的主张，
-要么在整理期走遍整个前沿，要么只走一条主张所需的那一小片，而且它从不启动新的级联。有两点把它与
+要么在整理期走遍整个前沿，要么只走一条主张所需的那一小片，而且它从不启动新的推导级联。有两点把它与
 “只做检测”的冲突报告区分开来：标记是一次自动的状态变更，而不是一份提示；整理期的遍历意味着每一个
 标记最终都会被面对，无论有没有人记得去找它。
 """
