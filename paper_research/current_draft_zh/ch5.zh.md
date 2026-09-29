@@ -11,14 +11,16 @@
   the § form in both languages. "identity as unique history" is rendered 身份即独特历史,
   the form ch1.zh.md §1.4 already fixes.
 
-  PROVENANCE IDs — the rule this file is written to, PLUS one deliberate exception.
+  PROVENANCE IDs — the rule this file is written to, with NO exception (the one
+  exception it used to carry was withdrawn 2026-09-29, #114; see the NO EXCEPTIONS
+  block below).
   `render_paper.py` strips citation-style node IDs from the ENGLISH render using a
   literal-sentence table that is ENGLISH-ONLY by design (see the module note above
   `_LITERAL_STRIPS`), so the obligation moves onto the translator: a zh chapter must
   carry no citation-style ID. Carrying one is not cosmetic — an ID inside a full-width
   parenthetical is unreachable by the ASCII-paren strip forms and hard-fails
   `assert_no_leaked_ids` at the strip call, so the paper does not build.
-  Accordingly the twelve non-df IDs the English carries (ten distinct nodes, two of
+  Accordingly the twelve non-df IDs the English carries (nine distinct nodes, three of
   them cited twice each — the §5.2/§5.3/§5.4/§5.5/§5.6/§5.7/§5.8 provenance markers)
   are DROPPED here, with any surrounding free-text gloss kept: each glossed English
   parenthetical survives as its gloss alone (the one reading "the ratified claim"
@@ -27,7 +29,8 @@
   literally in this header either — a literal ID here is itself strippable text, so
   it would both dirty the strip count and mangle this comment in the render.
   VERIFIED, NOT ASSUMED: `strip_provenance_ids("ch5.md", <this file>)` returns clean,
-  and the coordinator's ID grep returns exactly one hit — the exception below.
+  and the coordinator's ID grep returns ZERO hits (it returned one, the `df_` label,
+  until #114 dropped it — see the NO EXCEPTIONS block below).
 
   NO EXCEPTIONS (2026-09-29, #114): the `df_` definition label in §5.1 used to be kept,
   because `df_*` was exempt from the render strip. It is citation-style like the rest and

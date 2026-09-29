@@ -12,22 +12,26 @@
   A bare appendix-section pointer in the English ("(E.4)", "Appendix C §C.1") is
   written 附录 E §E.4 / 附录 C §C.1, the form ch4.zh.md already ships.
 
-  PROVENANCE IDs — ZERO, and this chapter is the one where that rule costs something.
+  PROVENANCE IDs — ZERO CITATION-STYLE ones, and this chapter is the one where that rule
+  costs something. (The body carries FOUR ID tokens — two distinct IDs, each twice — all
+  in §7.2's worked example: they are the two `KEEP_IDS` entries, kept because the English
+  render keeps them; see THE ONE KEPT SITE below. Measure with a grep for
+  `[a-z]{2}_[0-9]{4}` over the body.)
   `render_paper.py` strips citation-style node IDs from the ENGLISH render with a
   literal-sentence table that is ENGLISH-ONLY by design (module note above
   `_LITERAL_STRIPS`), so the obligation moves onto the translator: a zh chapter must
   carry no citation-style ID. Every parenthetical the English carries is therefore
   DROPPED, with any surrounding free-text gloss kept. This file also carries no `df_*`
   label, because ch7 has none in the English.
-  THE COST, disclosed rather than smoothed over. §7.2's worked example is the ONLY
-  place in the paper where the English render deliberately KEEPS two node IDs: the
-  `KEEP_IDS` allowlist in render_paper.py holds the mis-typed step and the conclusion
-  it fed, as DATA POINTS rather than citations, and the inline-code command
-  `tools/paper_stats.py --trace <id>` depends on one of them. The zh rule has no
-  KEEP_IDS twin — the translator-side obligation is unconditional — so this file
-  describes that step instead of naming it, and keeps the command without its argument.
-  Flagged for Lei: either the zh rule needs a KEEP_IDS carve-out for these two data
-  points, or the zh reader cannot re-run the trace the English reader can.
+  THE ONE KEPT SITE, disclosed. §7.2's worked example is the ONLY place in the paper
+  where the English render deliberately KEEPS two node IDs: the `KEEP_IDS` allowlist in
+  render_paper.py holds the mis-typed step and the conclusion it fed, as DATA POINTS
+  rather than citations, and the inline-code command `tools/paper_stats.py --trace <id>`
+  depends on one of them. This file mirrors the English there: both IDs are kept, so the
+  zh reader can re-run the trace the English reader can. That is the ledger's third
+  carve-out (appendix_G's header): an ID the engine keeps for a file is kept here too.
+  An earlier draft of this file dropped both and described the step instead; that draft
+  is gone, and this paragraph replaces its note.
 
   BRAND — plain ENGRAM throughout running text; the two-character Chinese brand form
   for ENGRAM does not appear on this surface. This follows the normalisation recorded

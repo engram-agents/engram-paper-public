@@ -45,12 +45,13 @@
   NUMERIC-PARITY NOTE, measured not assumed, and it is the mirror of ch1.zh.md's note.
   A multiset comparison of digit tokens between this file and its English source returns
   differences in ONE direction only: EN has digit tokens with no zh counterpart, and
-  every one of them is a NODE-ID FRAGMENT — the four digits of an `ob_`/`dv_`/`ax_`/`gl_`
+  every one of them is a NODE-ID FRAGMENT — the four digits of an `ob_`/`dv_`/`ax_`/`gl_`/`df_`
   identifier that the rule above required this file to drop (the trailing four digits of
-  a `dv_` identifier, and so on). The zh side has NO extra digit token: the one place Chinese would have introduced
+  a `dv_` identifier, and so on): 53 tokens, from 35 distinct IDs, measured on the bodies
+  with this header excluded. The zh side has NO extra digit token: the one place Chinese would have introduced
   one, "April 2026" -> "2026 年 4 月", is written 2026 年四月 so the multiset stays exact.
   Any drift-detector built on `[0-9]` runs must whitelist this ID-fragment class, or it
-  will report ~35 false errors per run.
+  will report 53 false errors per run (35 if it counts distinct IDs).
 
   DELIBERATE RENDERING CHOICES a reviewer should look at:
   1. "enabled / active" is THIS CHAPTER's load-bearing pair and no earlier zh chapter

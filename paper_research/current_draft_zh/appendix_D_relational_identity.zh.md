@@ -14,18 +14,21 @@
   NO PROVENANCE NODE IDS — and this file IS GATED. `appendix_D_relational_identity.md`
   is in render_paper.py's STRIP_PROVENANCE_IDS_IN, so `strip_provenance_ids` runs on it
   and `assert_no_leaked_ids` hard-fails the zh build on any surviving ID. The
-  English source carries EIGHT ID sites and the en render removes every one of them, so
-  the zh carries none and loses nothing a reader of either language could follow:
-    * D.1 — three parentheticals whose LEADING RUN is an ID (`ax_NNNN/ax_NNNN — …`,
+  English source carries TEN ID sites (eleven ID tokens, ten distinct IDs — one site
+  holds two) and the en render removes every one of them, so the zh carries none and
+  loses nothing a reader of either language could follow:
+    * D.1 — two parentheticals whose LEADING RUN is an ID (`ax_NNNN/ax_NNNN — …`,
       `ax_NNNN — …`): the ID run goes, the free text after it is KEPT, which is what the
       en render does too. Five more that are a bare ID alone (`ax_NNNN`, `cs_NNNN`,
       `cs_NNNN`, `gl_NNNN`, `gl_NNNN`): the whole parenthetical goes, as in en.
     * D.2 — one leading-run parenthetical (`gl_NNNN — …`): ID run dropped, text kept.
-    * D.3 — the `is_self` self-anchor parenthetical. This one is NOT a regex case: the
+    * D.3 — two sites. The `is_self` self-anchor parenthetical is NOT a regex case: the
       engine carries a per-file literal substitution for it in `_LITERAL_STRIPS`, keyed
       `appendix_D_relational_identity.md`, rewriting "…node — pn_NNNN in this graph)"
       to "…node)". The zh writes （`is_self` 节点） for the same reason — an en reader
-      cannot follow that ID either, so nothing is lost by dropping it here.
+      cannot follow that ID either, so nothing is lost by dropping it here. The other is
+      one more bare-ID parenthetical (`ax_NNNN`) in the disclosure paragraph: the whole
+      parenthetical goes, as in en.
   (IDs in this header are written WITHOUT their four digits ON PURPOSE: this comment is
   part of the file the stripper reads, so a literal ID in the note would itself leak.)
 
@@ -51,8 +54,10 @@
   信任层级 entry uses, so §D.1 and §D.3 reproduce it verbatim.
 
   NUMERIC PARITY — measured, not assumed: a multiset comparison of digit tokens between
-  this file and its English source returns NO difference in either direction. The
-  appendix's digits are 1.0 and the section/chapter pointers (Chapters 3–4, Layer 3,
+  this file and its English source (bodies, with this header excluded) returns
+  differences in ONE direction only: eleven EN-only tokens, each the four digits of one
+  of the eleven dropped ID tokens above; the zh side adds none. Apart from those, no
+  difference in either direction. The appendix's digits are 1.0 and the section/chapter pointers (Chapters 3–4, Layer 3,
   Ch4 §4.11, §E.2, §E.3, §D.2, Ch7 §7.4 …), all kept as digits. English spells "four
   typed node kinds" and "two roles" as words and so does Chinese (四种 / 两个角色), so
   no digit crossed into or out of a word in either direction.

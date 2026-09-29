@@ -86,13 +86,15 @@
 
   NUMERIC-PARITY NOTE, measured not assumed. A multiset comparison of digit tokens between
   this file and its English source returns differences in ONE direction only, and every one
-  of them is a NODE-ID FRAGMENT: the four digits of each of the two `dv_` IDs whose
-  parenthetical §B.6 required this file to drop (§4.4's operational-binding citation).
+  of them is a NODE-ID FRAGMENT: the four digits of each of the three IDs this file was
+  required to drop — the `df_` label in §B.0 and the two `dv_` IDs whose parenthetical
+  §B.6 required this file to drop (§4.4's operational-binding citation). Three digit
+  tokens in all, measured on the bodies with this header excluded.
   The zh side introduces NO extra digit token — every number in the English is carried as a
   digit here, including the ones Chinese could have written as words (十一项来源 / 十个系统 /
   四种不合格的方式 / 两次 / 三部分 / 两半 — these spell out words that are ALSO words in
   English, so neither side gains a digit token). Any drift-detector built on `[0-9]` runs
-  must whitelist the ID-fragment class, or it will report two false errors per run.
+  must whitelist the ID-fragment class, or it will report three false errors per run.
 -->
 
 # 附录 B —— 条件 3 调查：为什么受调查的系统中没有一个自我维持仲裁

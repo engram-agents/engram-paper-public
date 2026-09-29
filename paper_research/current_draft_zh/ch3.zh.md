@@ -25,7 +25,7 @@
   心迹 or ENGRAM is an OPEN question for Lei, not a settled rule. Flagged for the reviewer.
 
   QUOTED ENGLISH IS TRANSLATED, following ch1.zh.md's practice (it renders Pink et al.'s
-  "understudied" quote and Wray et al.'s "not yet adopted" quote in Chinese). The two
+  "understudied" quote and Wray et al.'s "not yet adopted" quote in Chinese). The three
   exceptions kept verbatim are the formulas `b+d+u=1`, `1−∏(1−c_i)` and `E = b + a·u`.
   A reviewer who wants the quotations verbatim-checkable against the cited sources should
   read them in the English source.

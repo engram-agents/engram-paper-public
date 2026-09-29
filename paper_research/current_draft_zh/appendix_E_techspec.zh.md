@@ -14,8 +14,9 @@
   NODE IDs — this file IS GATED. `appendix_E_techspec.md` is in render_paper.py's
   STRIP_PROVENANCE_IDS_IN, so `strip_provenance_ids` runs on it and
   `assert_no_leaked_ids` hard-fails the zh build on any surviving ID. The
-  English source carries FOUR ID sites and the en render removes exactly one of them,
-  so the zh mirrors the en render site by site:
+  English source carries FOUR ID sites and the en render removes EVERY one of them (since
+  #114 the `df_*` sites are stripped too; before it the render removed only the one `dv_`
+  site), so the zh carries none and mirrors the en render site by site:
     * §E.1 `(df_NNNN)` — DROPPED (2026-09-29, #114: `df_*` is citation-style like the
       rest and is no longer exempted from the render strip).
     * §E.5 the primitives bullet, `(dv_NNNN)` — DROPPED with its parenthetical. This is
@@ -73,8 +74,9 @@
 
   NUMERIC PARITY — measured, not assumed. A multiset comparison of digit tokens between
   this file and its English source returns differences in ONE direction only, and every
-  one of them is a NODE-ID FRAGMENT: the four digits of the one `dv_` ID whose
-  parenthetical §E.5 required this file to drop. The zh side introduces NO extra digit
+  one of them is a NODE-ID FRAGMENT: the four digits of each of the four IDs (three
+  `df_`, one `dv_`) this file was required to drop — four digit tokens in all, measured
+  on the bodies with this header excluded. The zh side introduces NO extra digit
   token — every digit in the English is carried as a digit here (0.95 · 0.85 · 0.70 ·
   0.65 · 0.50 · 0.40 · 0.35 · 0.60 · 0.80 · 0.90 · 0.98 · 1.0 · 164 · 23 · 10,361 · 131 ·
   75 · 11 · 28 · 17 · 1.26% · 3% · 450 · 2026b · every §/Ch pointer). English spells
@@ -82,7 +84,7 @@
   "three words", "fourteen types" as WORDS and so does Chinese (六种 / 三条后果 /
   六个标志 / 每周五到六个 / 三个词 / 十四种), so no digit crossed into or out of a word in
   either direction. Any drift-detector built on `[0-9]` runs must whitelist the
-  ID-fragment class, or it will report one false error per run.
+  ID-fragment class, or it will report four false errors per run.
 
   DELIBERATE RENDERING CHOICES a reviewer should look at:
   1. "an Epistemic Node Graph" -> 认知节点图谱, matching the README.zh.md title fix

@@ -112,15 +112,16 @@
   unconditionally, which reads as "the engine will catch me" on exactly the files
   where it will not.
   So: where the English has "…(ob_NNNN).", write 中文 without the
-  parenthetical. Two carve-outs, both deliberate:
-    * (RETIRED 2026-09-29, Lei's ruling, #114: `df_*` labels used to be exempt and KEPT.
+  parenthetical. Four carve-outs were recorded here; ONE is now retired, so THREE are
+  live. The first two follow, then a THIRD and a FOURTH below:
+    * FIRST carve-out — RETIRED 2026-09-29, Lei's ruling, #114: `df_*` labels used to be exempt and KEPT.
       They are citation-style like the rest and are now STRIPPED — `_ID` includes them.
-      A zh chapter carries NO `df_*` label; drop it as you would any other ID.)
-    * IDs inside square-bracketed apparatus tags are not this rule's scope —
+      A zh chapter carries NO `df_*` label; drop it as you would any other ID.
+    * SECOND carve-out — IDs inside square-bracketed apparatus tags are not this rule's scope —
       they are `strip_apparatus_tags`'s, removed later in the pipeline.
   A THIRD carve-out, added 2026-09-28 after it bit: an ID the ENGINE deliberately
   keeps for a specific file must be kept here too. `render_paper.py`'s `KEEP_IDS`
-  (around line 419) allowlists two `dv_` IDs for `ch7.md` only -- §7.2's worked
+  (search the file for the name; a line number here would rot) allowlists two `dv_` IDs for `ch7.md` only -- §7.2's worked
   example of a mis-typed reasoning step, kept as a DATA POINT under Lei's
   2026-09-23 ruling, not as a citation. Read the set in the engine; this header
   deliberately does NOT restate the IDs. `assert_no_leaked_ids` admits them (it is
@@ -150,7 +151,7 @@
       (removed later, by the tag stripper, not by this rule).
     STRIPPED: the parenthetical citation forms, in the GATED files only — `df_*`
       included (2026-09-29, #114; it was formerly listed as kept).
-  All four carve-outs were found by a translator hitting the rule, never by the
+  All four carve-outs (three live, one retired) were found by a translator hitting the rule, never by the
   rule's author — which is the argument for keeping this enumeration HERE.
 
   NEVER WRITE A LITERAL NODE ID IN THIS HEADER. `tests/test_glossary.py`'s

@@ -43,11 +43,23 @@
      the register of 画像 already familiar from user-profiling usage.
 
   NUMERIC-PARITY NOTE, measured not assumed. A multiset comparison of digit tokens
-  between this file and its English source returns exactly one difference, and it is
-  DELIBERATE and of the expected class — Chinese writes these as words, not digits:
-  "For three hundred years" -> 三百年来, and "the 300-year-old objections" -> 三百年前
-  的反驳. The facts are preserved; only the notation differs. Any drift-detector built
-  on `[0-9]` runs has this blind spot, exactly as ch1.zh.md records.
+  between this file and its English source returns differences in ONE direction only
+  (EN-only; the zh side introduces no digit token), in TWO classes. Method: take the
+  `[0-9]+` runs of each BODY with the leading header comment removed from the zh side
+  (the English has none), and subtract as multisets. Measured 2026-09-29 after #114:
+  17 EN-only tokens, of two kinds:
+    (1) ONE deliberate token, of the class ch1.zh.md records — Chinese writes it as
+        words, not digits: "the 300-year-old objections" -> 三百年前的反驳. (The English
+        phrase "For three hundred years" is already words on both sides.) The facts are
+        preserved; only the notation differs.
+    (2) SIXTEEN node-ID fragments — the four digits of each citation-style ID this file
+        was required to drop, counted per occurrence (fourteen distinct IDs in sixteen
+        occurrences; seven of those occurrences, six distinct IDs, are `df_` labels, dropped
+        since #114). Before
+        #114 the `df_` sites were kept, which is why the count was lower then.
+  Do not trust a bare number here: re-run the method above. The count rots when the
+  English gains or loses an ID. Any drift-detector built on `[0-9]` runs has the class-(1)
+  blind spot, exactly as ch1.zh.md records, and must whitelist class (2).
   BRAND NORMALISED (Zephyr, 2026-09-28): the PAPER is one surface, so
   `心迹（ENGRAM）` appears once, at the first mention in ch0; every chapter
   thereafter writes plain `ENGRAM` in running text. Applied across ch0-ch3

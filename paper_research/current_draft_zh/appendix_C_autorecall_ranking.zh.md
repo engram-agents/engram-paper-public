@@ -28,7 +28,9 @@
   file the stripper reads, so a literal ID in the note above would itself trip
   `assert_no_leaked_ids` — the same trap appendix B's header documents for itself.)
 
-  NUMERIC PARITY — every digit token survives; no number is spelled as a word here.
+  NUMERIC PARITY — every digit token survives except the four digits of each of the six
+  dropped IDs above (six EN-only tokens, measured on the bodies with this header
+  excluded; the zh side adds none); no number is spelled as a word here.
   The two formulas are reproduced BYTE-IDENTICAL, including the code block's leading
   alignment (line 2's `×` sits under line 1's `×`, so the three-factor product reads
   unambiguously as one product and not as a sum — the appendix's whole point is that
