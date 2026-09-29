@@ -29,14 +29,10 @@
   VERIFIED, NOT ASSUMED: `strip_provenance_ids("ch5.md", <this file>)` returns clean,
   and the coordinator's ID grep returns exactly one hit — the exception below.
 
-  THE ONE EXCEPTION — the `df_` definition label in §5.1. `df_*` is never stripped
-  anywhere ("definition labels quoted in full in Appendix E"): the strip pattern
-  excludes the prefix outright and `assert_no_leaked_ids` skips it explicitly, so it
-  survives in the ENGLISH render too. Dropping it would lose a pointer the zh reader
-  genuinely can follow, and would silently diverge from the English render.
-  ch2.zh.md already carries the OCC definition labels the same way and passes.
-  Flagged rather than smoothed over, because it is a literal exception to the
-  "zero IDs" instruction a reviewer will be applying.
+  NO EXCEPTIONS (2026-09-29, #114): the `df_` definition label in §5.1 used to be kept,
+  because `df_*` was exempt from the render strip. It is citation-style like the rest and
+  is no longer exempted, so it is DROPPED here as well and the zh render matches the
+  English render, which now strips it too.
 
   THE FIXED PHRASE — 身份即独特历史. ch1.zh.md §1.5 names THIS chapter by that
   phrase, and the ledger has no entry for it (only 历史树 for "history-tree"), so
@@ -97,8 +93,8 @@
   between this file and its English source returns differences of exactly two classes,
   BOTH deliberate and BOTH disclosed above: (1) the dropped provenance IDs, whose
   digits ("1655", "1657" x2, "0597" x2, "2540", "0622", "0621" x2, "0034", "1656",
-  "1660") therefore exist only in the English; (2) the one kept `df_` label, which
-  exists in both. No English digit written as a Chinese word introduces a third
+  "1660") therefore exist only in the English; (2) the `df_` label (dropped 2026-09-29,
+  #114), whose digits likewise exist only in the English. No English digit written as a Chinese word introduces a third
   class — the English spells those as words too ("three moves", "four parts", "the
   fourth", "Three operations"). A `[0-9]` drift detector will report class (1) on
   every run; that is the ID rule working, not a translation gap.
@@ -120,7 +116,7 @@
 
 ## 5.1 我们所依托的框架：Nozick 的最接近的延续者
 
-关于历时身份，最合用的理论是 Robert Nozick 的**最接近的延续者观点**（*Philosophical Explanations*，1981；df_0046）。其形态分四部分：
+关于历时身份，最合用的理论是 Robert Nozick 的**最接近的延续者观点**（*Philosophical Explanations*，1981）。其形态分四部分：
 
 1. **连续性** —— 一个较晚之物 y 要成为较早之物 x 的候选，只有当 y 的属性是从 x 的属性中生长出来的、并因果地依赖于它们。
 2. **比较性（最接近）** —— 在诸候选之中，只有当 y 是*最接近*的延续者时，y 才是 x；身份取决于整个竞争者场域，而不只是 y 到 x 的关系。

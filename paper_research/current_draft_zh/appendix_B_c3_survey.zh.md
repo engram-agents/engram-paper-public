@@ -32,10 +32,9 @@
   NO PROVENANCE NODE IDS. This file carries ZERO `ob_`/`dv_`/… identifiers in its body,
   per the rule stated in render_paper.py above `_LITERAL_STRIPS`: a zh chapter must carry
   NO citation-style provenance IDs at all, and `_LITERAL_STRIPS` is English-only by
-  design, so the obligation is the translator's. Two IDs stood in the English source:
-    * `(df_0040)` in §B.0 — KEPT. `df_*` is never stripped and is explicitly exempted by
-      `assert_no_leaked_ids`; the source calls the Kahl definition label "df_0040", so it
-      is a live reference here too.
+  design, so the obligation is the translator's. Three IDs stood in the English source:
+    * the `df_` label after Kahl's Condition 3 in §B.0 — DROPPED (2026-09-29, #114: `df_*`
+      is citation-style like the rest and is no longer exempted from the render strip).
     * two `dv_` IDs in §B.6 — DROPPED with their parenthetical, the same class of
       citation-style provenance as ch4.zh.md drops. (Written here WITHOUT their four
       digits ON PURPOSE: this header is part of the file the stripper reads, so a literal
@@ -102,7 +101,7 @@
 
 **这份调查。** 十一项来源——十个系统，外加一篇对本领域的综述——于 **2026-05-12** 第一手读完：Pinecone Nexus、Anthropic 的 memory tool、Letta（MemGPT）、Mem0 v3、Zep/Graphiti、TierMem、MemMachine、SCM、GAM、Kumiho，以及 2026 年的 *Memory for Autonomous LLM Agents* 调查（Du et al.）。这是一条**关于该受调查集合、以该日期为界的受限主张。** 智能体记忆是一个快速变动的领域；我们对调查之外的、或调查之后发布的系统不作主张。较新的或遗漏的系统，恰恰是这条主张被限定范围、标注日期并逐一列出、而非普遍化的原因。
 
-**那条标尺。** Kahl 的**条件 3——自我维持的仲裁**（df_0040），逐字："Conflicts among commitments are resolved within a unified deliberative architecture in a manner that preserves S's continued status as that subject."（中文解说：诸承诺之间的冲突，在一个统一的审议架构之内得到解决，其方式保全 S 作为那个主体的持续身份。）就操作性而言，一个系统只有在它**把自身所存储诸主张之间的矛盾作为一次内部状态变更来自动解决**时，才算满足 C3（下文"一处精确化"那条注解说明了"解决"意味着什么、不意味着什么）——级联依构造而传播，而受影响的主张不依赖任何有意的触及就浮现到智能体面前。四种不合格的方式：
+**那条标尺。** Kahl 的**条件 3——自我维持的仲裁**，逐字："Conflicts among commitments are resolved within a unified deliberative architecture in a manner that preserves S's continued status as that subject."（中文解说：诸承诺之间的冲突，在一个统一的审议架构之内得到解决，其方式保全 S 作为那个主体的持续身份。）就操作性而言，一个系统只有在它**把自身所存储诸主张之间的矛盾作为一次内部状态变更来自动解决**时，才算满足 C3（下文"一处精确化"那条注解说明了"解决"意味着什么、不意味着什么）——级联依构造而传播，而受影响的主张不依赖任何有意的触及就浮现到智能体面前。四种不合格的方式：
 
 - **（N）无解决** —— 矛盾作为一个构造缺位，或虽被检出却从不被解决（那些边／标志持续存在）。
 - **（A）咨询性／选择加入** —— 存在一个解决机制，但必须被显式调用，而且它只建议、不撤回。

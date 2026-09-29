@@ -7,7 +7,8 @@ Node IDs used as DATA POINTS (a real node cited as a worked example: Chapter 6,
 Appendix A, most of Appendix E) stay in the render. CITATION-STYLE IDs (an ID
 standing in for a citation, in ch1-5/ch7, Appendix B/C/D, and one stray occurrence
 in Appendix E — 2026-09-23 fold, Borges) are removed from the render only — the
-source chapters keep every ID as provenance. `df_*` labels are never stripped.
+source chapters keep every ID as provenance. `df_*` labels are stripped like every
+other citation-style type (Lei, 2026-09-29, #114) -- there is no df exemption.
 
 Appendix F (added 2026-09-24, Lei's appendix-f-lucy spec) is a tenth strip-set
 file, not a new category: its design-history text was moved verbatim OUT OF
@@ -374,10 +375,10 @@ def test_form_g_real_table_rows_present_in_source():
         assert row_in in text, f"ch4.md no longer contains {row_in!r}"
 
 
-# ── Residue assertion: only df_* + the ch7.md KEEP_IDS data points remain ──
+# ── Residue assertion: only the ch7.md KEEP_IDS data points remain ──
 
 
-def test_residue_only_df_and_keep_ids():
+def test_residue_only_keep_ids():
     """Mirrors the real render pipeline (`main()`): provenance-ID stripping
     runs, THEN apparatus-tag stripping -- an ID still sitting inside a
     bracketed apparatus tag (e.g. ch3.md's "[SOLID: dv_0264, ob_1119]") is
@@ -402,8 +403,6 @@ def test_residue_only_df_and_keep_ids():
         stripped, _ = strip_apparatus_tags(name, stripped)
         for m in _ID_SCAN.finditer(stripped):
             tok = m.group(0)
-            if tok.startswith("df_"):
-                continue
             if (name, tok) in KEEP_IDS:
                 keep_id_hits[(name, tok)] += 1
                 continue
@@ -503,3 +502,91 @@ def test_idempotent_over_real_sources(name):
     twice, n2 = strip_provenance_ids(name, once)
     assert once == twice
     assert n2 == 0
+
+
+# ── #114: df_* is stripped like every other citation-style id ────────────────
+
+
+def test_df_paren_stripped_in_strip_set_chapter():
+    text, n = strip_provenance_ids(
+        "ch2.md", "Kahl's **Condition 3** (df_0040): the system must arbitrate."
+    )
+    assert text == "Kahl's **Condition 3**: the system must arbitrate."
+    assert n == 1
+
+
+def test_df_range_paren_stripped_across_a_line_wrap():
+    text, _ = strip_provenance_ids(
+        "ch2.md", "four **constraints** (df_0041–\ndf_0044) bind the system."
+    )
+    assert text == "four **constraints** bind the system."
+
+
+def test_df_list_paren_stripped_in_appendix_e():
+    text, _ = strip_provenance_ids(
+        "appendix_E_techspec.md", "the machinery (df_0047, df_0046) is quoted."
+    )
+    assert text == "the machinery is quoted."
+
+
+def test_df_token_survives_in_files_outside_the_strip_set():
+    """Ch6 and Appendix A are not in the strip set, so a df token there is
+    untouched -- the same input that ch2.md strips."""
+    src = "Kahl's **Condition 3** (df_0040): the system must arbitrate."
+    for name in ("ch6.md", "appendix_A_independence.md"):
+        text, n = strip_provenance_ids(name, src)
+        assert text == src
+        assert n == 0
+
+
+def test_runtime_residue_check_raises_on_bare_df():
+    """No df exemption in the runtime guard: a df_ id that no strip form
+    reaches (bare in prose) must hard-fail, not pass silently."""
+    import tools.render_paper as rp
+
+    with pytest.raises(SystemExit):
+        rp.assert_no_leaked_ids("ch2.md", "a bare df_0040 sits in running prose")
+
+
+@pytest.mark.parametrize("lang", ["en", "zh"])
+def test_full_render_carries_zero_df_ids(lang, tmp_path, monkeypatch):
+    """End-to-end: the whole rendered book, both languages, has no df_NNNN."""
+    import tools.render_paper as rp
+
+    out = tmp_path / f"book.{lang}.md"
+    monkeypatch.setattr("sys.argv", ["render_paper.py", "--lang", lang, "--out", str(out)])
+    assert rp.main() == 0
+    assert re.findall(r"df_[0-9]{4}", out.read_text(encoding="utf-8")) == []
+
+
+# ── #114 round 2: the ch2 §2.7 df_ explanatory parenthetical is dropped whole ──
+
+_DF_EXPLAIN_OLD = (
+    " (df_0037\u2013df_0044;\na `df_` identifier names a definition node in the graph"
+    " \u2014 where one follows a\ncitation to a source, it names the node under which"
+    " the paper's reading of that\nsource is filed)"
+)
+
+
+def test_form_h_df_explanation_parenthetical_removed_whole():
+    text_in = "and four **constraints**" + _DF_EXPLAIN_OLD + ":\n\n- **Condition 1**"
+    text, _ = strip_provenance_ids("ch2.md", text_in)
+    assert text == "and four **constraints**:\n\n- **Condition 1**"
+
+
+def test_form_h_literal_old_string_present_in_real_source():
+    path = DRAFT / "ch2.md"
+    if not path.exists():
+        pytest.skip(f"source moved: {path}")
+    assert _DF_EXPLAIN_OLD in path.read_text(encoding="utf-8")
+
+
+def test_full_en_render_has_no_orphaned_df_explanation(tmp_path, monkeypatch):
+    import tools.render_paper as rp
+
+    out = tmp_path / "book.en.md"
+    monkeypatch.setattr("sys.argv", ["render_paper.py", "--lang", "en", "--out", str(out)])
+    assert rp.main() == 0
+    rendered = out.read_text(encoding="utf-8")
+    # (the Appendix G prefix legend legitimately lists `df_` -- not an explanation of ids)
+    assert "names a definition node" not in rendered

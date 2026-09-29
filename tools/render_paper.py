@@ -397,8 +397,12 @@ assert_insert_anchor_parity(INSERTS, INSERTS_ZH)
 # (a) AUDIT ANCHORS in Appendix A and (b) DATA POINTS in Ch6 / (most of) Appendix E
 #     are part of the evidence: a reader with the snapshot can resolve them, and the
 #     Data Availability note says so. They stay.
-# (c) STRUCTURAL references to Kahl's definitions (df_*) stay: Appendix E quotes those
-#     definitions in full, so the ID is a label, not a pointer out of the document.
+# (c) [REPLACED 2026-09-29, Lei's ruling, engram-paper#114] df_* used to be exempt
+#     here, on the premise that Appendix E quotes Kahl's definitions in full so the
+#     ID is an in-document label. That premise was false: df_0037-df_0044 appear
+#     nowhere in Appendix E. Bare df ids read as conceptual citations into the
+#     author's private graph, so df_* is now stripped like every other
+#     citation-style type (in the strip set; Ch6 / Appendix A stay untouched).
 # (d) PROVENANCE MARKERS on argument sentences in Ch2-5 and Ch7 — a bare "(dv_1055)"
 #     hung on a claim — read as citations and cannot be followed by anyone outside
 #     this graph. Those are stripped FROM THE RENDER ONLY. The chapter sources keep
@@ -410,17 +414,15 @@ assert_insert_anchor_parity(INSERTS, INSERTS_ZH)
 # 2026-09-23 (Lei's ruling): extended to every chapter/appendix whose IDs are
 # CITATION-STYLE (standing in for a citation) rather than DATA POINTS (a real
 # node used as a worked example). Ch6 and Appendix A are data points and are
-# explicitly excluded; Appendix B/C/D are citation-style and added. `df_*`
-# (Kahl's definitions, quoted in full in Appendix E) are never stripped
-# anywhere, in or out of this set.
+# explicitly excluded; Appendix B/C/D are citation-style and added. (`df_*` was
+# exempt from this until 2026-09-29; see (c) above.)
 #
 # 2026-09-23 fold (colleague verdict, Borges): Appendix E is overwhelmingly
-# data points (and its df_* labels), but E.5 carries one stray CITATION-STYLE
+# data points, but E.5 carries one stray CITATION-STYLE
 # ID -- "The eight load-bearing **primitives** (dv_0615): typed nodes, ..." --
 # already stripped from Ch4 §4.2, missed here because Appendix E was outside
-# this set entirely. Appendix E is added below for that one occurrence; its
-# df_* tokens are never touched (see (c) above), and it carries no other
-# non-df ID for the strip forms to reach.
+# this set entirely. Appendix E is added below for that one occurrence. (Its
+# df_* tokens are stripped too since 2026-09-29; see (c) above.)
 #
 # 2026-09-24 (Lei's spec, appendix-f-lucy PR): Appendix F is a NEW tenth
 # entry, not a widening of the "Appendix E fold" reasoning above -- every
@@ -457,8 +459,8 @@ KEEP_IDS: set[tuple[str, str]] = {
     ("ch7.md", "dv_0877"),
 }
 
-# Never stripped anywhere: df_* (definition labels quoted in full in Appendix E).
-_ID = r"(?:ob|dv|cs|ls|ax|cj|qu|fl|ev|pn|tk|gl|ct)_\d{4}"
+# No id type is exempt: df_* is stripped like the rest (2026-09-29, see (c) above).
+_ID = r"(?:ob|dv|cs|ls|ax|cj|qu|fl|ev|pn|tk|gl|ct|df)_\d{4}"
 
 # Separators that JOIN two IDs together into one run (ranges, arrows, lists).
 # `\s*` on both sides is deliberate and covers newlines: several parens wrap
@@ -520,6 +522,15 @@ _CONTEXT_PAREN = re.compile(r"\s*\(" + _ID + r"\s+context\)")
 #     will reach `assert_no_leaked_ids` and hard-fail. That asymmetry is pinned by
 #     test_strip_provenance_ids_language_contract_for_zh in tests/test_glossary.py.
 _LITERAL_STRIPS: dict[str, list[tuple[str, str]]] = {
+    # 2026-09-29 (#114 ruling A): ch2 §2.7's parenthetical is an explanation OF
+    # the df_ ids as well as the ids themselves; with the ids stripped the
+    # explanation would be orphaned, so the whole parenthetical (and the space
+    # before it) goes from the render.
+    "ch2.md": [
+        (" (df_0037\u2013df_0044;\na `df_` identifier names a definition node in the graph"
+         " \u2014 where one follows a\ncitation to a source, it names the node under which"
+         " the paper's reading of that\nsource is filed)", ""),
+    ],
     "ch4.md": [
         ("(E = b + a·u, first-hand ob_2551)", "(E = b + a·u, first-hand)"),
         ("not ground truth — gl_0025)", "not ground truth)"),
@@ -606,8 +617,8 @@ _BRACKET_SPAN = re.compile(r"\[[^\]]*\]", re.DOTALL)
 
 def assert_no_leaked_ids(name: str, text: str) -> None:
     """Runtime guard (item 3/4 of spec-strip.md): after stripping, the only ID
-    tokens surviving in a strip-set file's rendered text must be `df_*` labels
-    plus the explicit `KEEP_IDS` allowlist -- and no debris (an emptied
+    tokens surviving in a strip-set file's rendered text must be the explicit
+    `KEEP_IDS` allowlist and nothing else (no df_* exemption) -- and no debris (an emptied
     parenthetical, a stray separator) may remain either. Raises with
     file:line so a future source edit that adds a new unstripped form cannot
     silently leak an ID (or a stripped-open paren) into the render.
@@ -627,8 +638,6 @@ def assert_no_leaked_ids(name: str, text: str) -> None:
         if _in_bracket(m.start()):
             continue
         tok = m.group(0)
-        if tok.startswith("df_"):
-            continue
         if (name, tok) in KEEP_IDS:
             continue
         line_no = text.count("\n", 0, m.start()) + 1
@@ -883,7 +892,7 @@ def main() -> int:
     print(f"  length     {len(text.splitlines()):,} lines, {words:,} words")
     print(f"  figures    {figs} placed")
     print(f"  node IDs   {stripped_total} provenance markers stripped from the render "
-          f"(sources keep them; audit anchors, data points and df_* labels untouched)")
+          f"(sources keep them; audit anchors and data points untouched)")
     print(f"  apparatus  {apparatus_total} bracketed working tags stripped from the "
           f"render (sources keep them)")
     return 0

@@ -579,20 +579,17 @@ where it bears on the argument (Chapters 5 and 8).
 The most recent point on the trail is Kahl's **Ontological Continuity Condition
 (OCC)**, the first attempt to turn "does this system genuinely persist as itself?"
 into an *operational* threshold rather than a philosophical intuition. OCC states
-three jointly necessary **conditions** and four **constraints** (df_0037–df_0044;
-a `df_` identifier names a definition node in the graph — where one follows a
-citation to a source, it names the node under which the paper's reading of that
-source is filed):
+three jointly necessary **conditions** and four **constraints**:
 
-- **Condition 1 — Diachronic Constraint** (Kahl's term; df_0038): present
+- **Condition 1 — Diachronic Constraint** (Kahl's term): present
   deliberation must be genuinely constrained by the system's past commitments, which
   function as reasons in later arbitration (verbatim in Appendix E §E.6).
-- **Condition 2 — Non-Interchangeability Under Reset** (df_0039): a reset-and-
+- **Condition 2 — Non-Interchangeability Under Reset**: a reset-and-
   restored copy must not be simply interchangeable with the original.
-- **Condition 3 — Self-Maintaining Arbitration** (df_0040): the system must itself
+- **Condition 3 — Self-Maintaining Arbitration**: the system must itself
   maintain the consistency of what it carries, rather than have it imposed from
   outside.
-- **Constraints A–D** (df_0041–df_0044): unified policy selection, external
+- **Constraints A–D**: unified policy selection, external
   non-imposition, non-trivial reset, and non-modular decomposition — guardrails that
   keep the three conditions from being satisfied trivially.
 
@@ -690,7 +687,7 @@ universal to any reasoning system we leave open; ENGRAM on a non-human substrate
 suggestive, but it was designed from human introspection, and we claim no proof of
 substrate independence. ENGRAM's distinctiveness is accordingly narrower: the
 **integration** (no prior system unifies all of these mechanisms in one substrate)
-and the **purpose** (an epistemic identity that fails loudly, df_0002), which follows
+and the **purpose** (an epistemic identity that fails loudly), which follows
 from the motivating premise of §1.1 — an LLM's hallucination is structural, so
 reliability must come from external calibration rather than elimination.
 
@@ -1517,7 +1514,7 @@ makes the continuity *informational, not constitutive*. We say so plainly; the
 reproducibility is an intentional audit-and-transmission feature, not a hidden
 defect. **The extension**: Kahl's test tacitly assumes an *analog*
 substrate in which type- and token-identity never separate. For a *digital*
-substrate they separate cleanly (Peirce type/token, df_0047): two instances restored
+substrate they separate cleanly (Peirce type/token): two instances restored
 from one commit are **type-identical** but become **token-distinct** the instant
 they operate — different commitments, different cascades, irreversibly divergent
 histories that cannot merge. Under a type/token reading a *generalized* Condition 2
@@ -1681,7 +1678,7 @@ experiment is sketched and deferred (§6.7).
 ## 5.1 The frame we build on: Nozick's closest continuer
 
 The most serviceable theory of identity-over-time is Robert Nozick's
-**closest-continuer view** (*Philosophical Explanations*, 1981; df_0046). Its
+**closest-continuer view** (*Philosophical Explanations*, 1981). Its
 shape, in four parts:
 
 1. **Continuity** — a later thing y is a candidate to be the earlier thing x only
@@ -3184,7 +3181,7 @@ date.** Agent memory is a fast-moving field; we make no claim about systems
 outside the survey or released after it. Newer or missed systems are exactly why
 the claim is scoped, dated, and listed rather than universal.
 
-**The bar.** Kahl's **Condition 3 — Self-Maintaining Arbitration** (df_0040),
+**The bar.** Kahl's **Condition 3 — Self-Maintaining Arbitration**,
 verbatim: *"Conflicts among commitments are resolved within a unified deliberative
 architecture in a manner that preserves S's continued status as that subject."*
 In operational terms a system meets C3 only if it **automatically resolves
@@ -3731,7 +3728,7 @@ history; **Ch7 §7.4** builds the disclosure-not-erasure stance on §D.3's trust
 
 ## E.1 Name
 
-**ENGRAM — an Epistemic Node Graph for Retraction, Arbitration, and Memory** (df_0048).
+**ENGRAM — an Epistemic Node Graph for Retraction, Arbitration, and Memory**.
 The three differentiating mechanisms are named in the acronym: *Retraction* (error
 correction that cascades through derivation edges), *Arbitration* (the structural
 propagation of that cascade within a unified deliberative architecture), and *Memory*
@@ -3963,8 +3960,8 @@ noted for contrast rather than used by the mapping (Ch3 §3.9).
 ## E.7 Continuity across compaction
 
 - **Two-routine consolidation** (defined Ch3 §3.1): **nap** (per-burst persistence at compaction
-  boundaries, df_0003) · **sleep** (once-daily review + consolidation +
-  forgetting-curve advance + dream-style repair, df_0036) — mapping to wake /
+  boundaries) · **sleep** (once-daily review + consolidation +
+  forgetting-curve advance + dream-style repair) — mapping to wake /
   NREM-REM phases.
 - **Compaction-bridge scaffolds** (Ch3 §3.1): the **focus list** (small, fixed-size,
   rendered verbatim at every session start, fresh or post-compaction alike — the

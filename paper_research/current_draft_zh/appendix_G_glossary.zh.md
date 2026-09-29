@@ -95,7 +95,7 @@
   generator this block exists to stop.
 
   RULE FOR THE CHAPTERS — NODE IDs: a zh chapter must carry ZERO citation-style
-  provenance IDs (ob_ dv_ cs_ ls_ ax_ cj_ qu_ fl_ ev_ pn_ tk_ gl_ ct_).
+  provenance IDs (ob_ dv_ cs_ ls_ ax_ cj_ qu_ fl_ ev_ pn_ tk_ gl_ ct_ df_ — df_ added 2026-09-29, #114).
   `render_paper.py` strips them from the ENGLISH render via `_LITERAL_STRIPS`,
   which is English-only BY DESIGN, so a Chinese copy cannot be stripped and the
   obligation moves onto the translator. An ID carried across SURVIVES into the zh
@@ -113,7 +113,9 @@
   where it will not.
   So: where the English has "…(ob_NNNN).", write 中文 without the
   parenthetical. Two carve-outs, both deliberate:
-    * `df_*` labels are NEVER stripped and are KEPT (`_ID` excludes them).
+    * (RETIRED 2026-09-29, Lei's ruling, #114: `df_*` labels used to be exempt and KEPT.
+      They are citation-style like the rest and are now STRIPPED — `_ID` includes them.
+      A zh chapter carries NO `df_*` label; drop it as you would any other ID.)
     * IDs inside square-bracketed apparatus tags are not this rule's scope —
       they are `strip_apparatus_tags`'s, removed later in the pipeline.
   A THIRD carve-out, added 2026-09-28 after it bit: an ID the ENGINE deliberately
@@ -143,10 +145,11 @@
   evidence (a datapoint, an audit anchor, a trace argument) is kept wherever the
   English keeps it. **Read the English source at the site and mirror it; do not
   apply this rule from memory.** Enumerated:
-    KEPT, by the engine or by design: `df_*` (everywhere) · Appendix A (audit
+    KEPT, by the engine or by design: Appendix A (audit
       anchors) · a file's `KEEP_IDS` entries · IDs inside `[...]` apparatus tags
       (removed later, by the tag stripper, not by this rule).
-    STRIPPED: the parenthetical citation forms, in the GATED files only.
+    STRIPPED: the parenthetical citation forms, in the GATED files only — `df_*`
+      included (2026-09-29, #114; it was formerly listed as kept).
   All four carve-outs were found by a translator hitting the rule, never by the
   rule's author — which is the argument for keeping this enumeration HERE.
 

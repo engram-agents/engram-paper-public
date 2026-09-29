@@ -18,7 +18,7 @@
   nothing and the ungated-file hazard the ledger warns about has no target here.
   ch8 is NOT in `STRIP_PROVENANCE_IDS_IN`, so no strip stage and no assertion runs on
   this file either way — the count is reported on the PR rather than inferred from a
-  green build. There is also no `df_*` label to keep, and no `KEEP_IDS` entry for
+  green build. There is also no `df_*` label, and no `KEEP_IDS` entry for
   ch8.md to mirror.
 
   BRAND — plain ENGRAM throughout running text. The two-character Chinese brand form

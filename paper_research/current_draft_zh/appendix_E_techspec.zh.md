@@ -13,18 +13,18 @@
 
   NODE IDs — this file IS GATED. `appendix_E_techspec.md` is in render_paper.py's
   STRIP_PROVENANCE_IDS_IN, so `strip_provenance_ids` runs on it and
-  `assert_no_leaked_ids` hard-fails the zh build on any surviving non-`df_` ID. The
+  `assert_no_leaked_ids` hard-fails the zh build on any surviving ID. The
   English source carries FOUR ID sites and the en render removes exactly one of them,
   so the zh mirrors the en render site by site:
-    * §E.1 `(df_NNNN)` — KEPT. df_* is never stripped and is explicitly exempted by
-      `assert_no_leaked_ids`; it is the definition label for the name, a live reference.
+    * §E.1 `(df_NNNN)` — DROPPED (2026-09-29, #114: `df_*` is citation-style like the
+      rest and is no longer exempted from the render strip).
     * §E.5 the primitives bullet, `(dv_NNNN)` — DROPPED with its parenthetical. This is
       the ONE citation-style ID the engine added Appendix E to the strip set for (its
       fold comment above STRIP_PROVENANCE_IDS_IN names this exact site); the en render
       prints "The eight load-bearing **primitives**: …". A zh copy cannot be reached by
       the English-only literal table, so dropping it here is the translator's half of
       the same operation. Nothing a reader loses: the en reader cannot follow it either.
-    * §E.7, `nap` and `sleep` — `df_NNNN` twice, KEPT (same reasoning as §E.1).
+    * §E.7, `nap` and `sleep` — `df_NNNN` twice, DROPPED (same reasoning as §E.1).
   (IDs in this header are written WITHOUT their four digits ON PURPOSE: this comment is
   part of the file the stripper reads, so a literal ID in the note would itself leak.)
 
@@ -118,7 +118,7 @@
 
 ## E.1 名称
 
-**ENGRAM——一个用于撤回、仲裁与记忆的认知节点图谱**（df_0048）。三个起区分作用的机制都写在这个名称之中：*撤回*（Retraction，沿推导边级联的错误修正）、*仲裁*（Arbitration，那次级联在一个统一的审议架构之内的结构性传播），以及*记忆*（Memory，带类型的主张、证据与推导所依托的那个基底）。
+**ENGRAM——一个用于撤回、仲裁与记忆的认知节点图谱**。三个起区分作用的机制都写在这个名称之中：*撤回*（Retraction，沿推导边级联的错误修正）、*仲裁*（Arbitration，那次级联在一个统一的审议架构之内的结构性传播），以及*记忆*（Memory，带类型的主张、证据与推导所依托的那个基底）。
 
 ## E.2 节点类型
 
@@ -252,5 +252,5 @@
 
 ## E.7 跨越压缩的连续性
 
-- **双例程整理**（界定于第 3 章 §3.1）：**小憩**（压缩边界上按工作段的持久化，df_0003）· **睡眠**（每日一次的复盘 + 整理 + 遗忘曲线推进 + 做梦式修复，df_0036）——映射到清醒／NREM-REM 阶段。
+- **双例程整理**（界定于第 3 章 §3.1）：**小憩**（压缩边界上按工作段的持久化）· **睡眠**（每日一次的复盘 + 整理 + 遗忘曲线推进 + 做梦式修复）——映射到清醒／NREM-REM 阶段。
 - **压缩桥接脚手架**（第 3 章 §3.1）：**焦点清单**（小、固定大小，在每次会话开始时逐字呈现，无论新开还是压缩之后都一样——那条确定性的通道；见第 4 章 §4.8，那里载有这个机制，以及它为什么不是压缩前的摘要）、**温暖简报**那封信（它包含什么见附录 D §D.4，它的形态如何得来见附录 F）、按日历史日志、自动加载的会话开始上下文，以及一个显式的压缩后指令模板。按设计多重冗余。

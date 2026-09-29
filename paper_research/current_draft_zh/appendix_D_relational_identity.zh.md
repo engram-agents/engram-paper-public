@@ -13,7 +13,7 @@
 
   NO PROVENANCE NODE IDS — and this file IS GATED. `appendix_D_relational_identity.md`
   is in render_paper.py's STRIP_PROVENANCE_IDS_IN, so `strip_provenance_ids` runs on it
-  and `assert_no_leaked_ids` hard-fails the zh build on any non-`df_` survivor. The
+  and `assert_no_leaked_ids` hard-fails the zh build on any surviving ID. The
   English source carries EIGHT ID sites and the en render removes every one of them, so
   the zh carries none and loses nothing a reader of either language could follow:
     * D.1 — three parentheticals whose LEADING RUN is an ID (`ax_NNNN/ax_NNNN — …`,

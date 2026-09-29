@@ -17,11 +17,10 @@
   translator's; an ID carried across would reach `assert_no_leaked_ids` and hard-fail
   the zh build. Where the English had a bracketed ID citation, the parenthetical is
   dropped (it is invisible in the en render too, so nothing a reader loses).
-    THE ONE EXCEPTION: the Peirce definition label in §4.8 stays. `df_*` is never
-    stripped and is explicitly exempted by `assert_no_leaked_ids` ("Never stripped
-    anywhere: df_* (definition labels quoted in full in Appendix E)"), and ch2.zh.md
-    already ships its own df_ labels the same way — so this file's single df_ line in
-    a `grep` for `[a-z]{2}_[0-9]{4}` is EXPECTED, not a defect.
+    NO EXCEPTIONS (2026-09-29, #114): `df_*` used to be exempt, and the Peirce definition
+    label in §4.8 was kept on that basis. `df_*` is citation-style like the rest and is
+    no longer exempted from the render strip, so that label is DROPPED too — a `grep` for
+    `[a-z]{2}_[0-9]{4}` over this file should return nothing.
     Apparatus tags ([SOLID], [GROUNDED …], [gap SOLID …], [secondary …]) are KEPT in
     English as ch3.zh.md keeps them, with their ID tokens deleted — they still open
     with a word `_APPARATUS_OPENERS` recognises, so the render still strips them.
@@ -244,7 +243,7 @@ ENGRAM 中的回忆是*线索依赖且自动的*：一个每轮钩子把与当�
 
 **OCC——条件 1（历时性约束）：满足，经由决定／后果这一对偶。** 不只是路径依赖：智能体拥有那个承载判断的*决定*（去承诺、去推导、去撤回）；基底保证那个结构性的*后果*（级联、传播）。两者是耦合的，不可分离：*撤回是智能体的选择；级联是基底保证随之而来的东西。* 那一耦合就是 Kahl 的"非平凡绑定"。
 
-**OCC——条件 2（重置下的不可互换性）：严格的文本未满足；提出一处有原则的扩展。** 这里，那次干净的普查被放弃了。一张经 git 版本管理的图谱从构造上就是重置对称的——检查点、复制、逐字节重载，恢复全部与仲裁相关的结构而毫无剩余——而按 Kahl 自己的规则（"代价无关；结构上的可归约性才是决定性的"），这使那份连续性成为*信息性的，而不是构成性的*。我们明说这一点；那份可复现性是一项有意的审计与传承特性，而不是一个隐藏的缺陷。**那处扩展**：Kahl 的检验默认了一种*模拟*基底，在其中类型同一与个例同一从不分离。对一种*数字*基底，两者干净地分离（Peirce 的类型／个例（type/token），df_0047）：从同一个提交恢复出来的两个实例是**类型同一**的，但在它们运作的那一刻就变成**个例上互异**——不同的承诺、不同的级联、不可逆地分叉且无法合并的历史。在一种类型／个例的读法之下，一条*推广了的*条件 2 成立——一个智能体是由*它携带的是哪一个个例的历史*而个体化的——但我们把它**明示为我们对 Kahl 的扩展，而不是对他文本的满足**。
+**OCC——条件 2（重置下的不可互换性）：严格的文本未满足；提出一处有原则的扩展。** 这里，那次干净的普查被放弃了。一张经 git 版本管理的图谱从构造上就是重置对称的——检查点、复制、逐字节重载，恢复全部与仲裁相关的结构而毫无剩余——而按 Kahl 自己的规则（"代价无关；结构上的可归约性才是决定性的"），这使那份连续性成为*信息性的，而不是构成性的*。我们明说这一点；那份可复现性是一项有意的审计与传承特性，而不是一个隐藏的缺陷。**那处扩展**：Kahl 的检验默认了一种*模拟*基底，在其中类型同一与个例同一从不分离。对一种*数字*基底，两者干净地分离（Peirce 的类型／个例（type/token））：从同一个提交恢复出来的两个实例是**类型同一**的，但在它们运作的那一刻就变成**个例上互异**——不同的承诺、不同的级联、不可逆地分叉且无法合并的历史。在一种类型／个例的读法之下，一条*推广了的*条件 2 成立——一个智能体是由*它携带的是哪一个个例的历史*而个体化的——但我们把它**明示为我们对 Kahl 的扩展，而不是对他文本的满足**。
 
 ## 4.9 身份治理：ax/cs/ls/gl 节点系统 → 附录 D
 
