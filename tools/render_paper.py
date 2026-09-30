@@ -175,45 +175,47 @@ def _fig(path: str, number: int, caption: str, label: str = "Figure") -> str:
 DIAGRAM_CASCADE = """
 ```mermaid
 flowchart TD
-    subgraph P1["Phase 1: propagation (automatic; resolves nothing)"]
-        A["The agent <b>retracts</b> a claim (never valid)<br/>or <b>supersedes</b> it (was valid, now updated)"]
-        A --> B{"Walk downstream along the<br/>cascade-bearing relations,<br/>as far as they reach"}
-        B -->|derives_from| C["Every live claim-bearing dependent<br/>gets one <b>pending</b> marker:<br/>no severity, only which operation fired"]
-        B -->|acknowledged_derives_from| C
-        B -.->|supported_by is NOT walked| X["Cornerstones and lessons<br/>are never marked"]
-        C --> D["A pending claim cannot be cited<br/>as a premise until it is resolved"]
-    end
+    A["The agent <b>retracts</b> a claim (never valid)<br/>or <b>supersedes</b> it (was valid, now updated)"]
+    A --> B{"One walk downstream along the<br/>cascade-bearing relations,<br/>as far as they reach"}
+    B -->|derives_from| C["Every live claim-bearing dependent<br/>gets one <b>pending</b> marker:<br/>no severity, only which operation fired"]
+    B -->|acknowledged_derives_from| C
+    B -.->|supported_by is NOT walked| X["Cornerstones and lessons<br/>are never marked"]
+    C --> D["A pending claim cannot be cited<br/>as a premise until it is resolved"]
     D -.-> S["<b>Auto-surfacing</b> shows a marked claim<br/>when it next becomes relevant.<br/>A reminder: it resolves nothing"]
-    subgraph P2["Phase 2: resolution (the agent's; one frontier node at a time)"]
-        F["<b>Full:</b> each consolidation cycle<br/>walks the whole frontier<br/>until no marker is left"]
-        T["<b>Partial:</b> to unblock one claim,<br/>settle only the pending claims it rests on,<br/>then the claim itself"]
-        F --> G{"The agent settles a <b>frontier</b> node:<br/>pending, with nothing pending<br/>above it"}
-        T --> G
-        G -->|retracted| R["The argument<br/>is broken"]
-        G -->|superseded| U["The claim survives in<br/>a named successor"]
-        G -->|acknowledged| K["Premise moved, claim still holds<br/>(not available if a direct<br/>premise was retracted; automatic<br/>if every premise the change reached<br/>was acknowledged)"]
-        R --> N["Confidence is recomputed. No new derivation cascade:<br/>dependents were marked in phase 1<br/>and now reach the frontier in turn"]
-        U --> N
-        K --> N
-        N -.->|next frontier node| G
-    end
-    D ==> F
-    D ==> T
 
     style A fill:#f6ece8,stroke:#b3593f
     style X fill:#f3f3f3,stroke:#8a8a8a,color:#555
     style S fill:#f3f3f3,stroke:#8a8a8a,color:#555
+```
+
+**Diagram 1.** Cascade propagation in ENGRAM v0.5.1. It runs automatically, once, at the
+moment of a retraction or supersede: a single walk marks every dependent downstream,
+however far, and decides nothing. Marking is an automatic state change, not an advisory
+note the agent may consult.
+
+```mermaid
+flowchart TD
+    F["<b>Full resolution</b>: each consolidation (sleep)<br/>cycle walks the whole frontier<br/>until no marker is left"]
+    T["<b>Partial resolution</b>: to unblock one claim now,<br/>settle only the pending claims it rests on,<br/>then the claim itself"]
+    F --> G{"The agent settles a <b>frontier</b> claim:<br/>pending, with nothing pending<br/>above it"}
+    T --> G
+    G -->|retracted| R["The argument<br/>is broken"]
+    G -->|superseded| U["The claim survives in<br/>a named successor"]
+    G -->|acknowledged| K["Premise moved, claim still holds<br/>(not available if a direct<br/>premise was retracted; automatic<br/>if every premise the change reached<br/>was acknowledged)"]
+    R --> N["Confidence is recomputed.<br/>No new derivation cascade"]
+    U --> N
+    K --> N
+    N -.->|next frontier claim| G
+
     style G fill:#e9f1f4,stroke:#1f6f8b
 ```
 
-**Diagram 1.** The retraction cascade in ENGRAM v0.5.1, as two separate processes.
-Propagation is automatic: each retraction or supersede marks everything downstream at
-once, and decides nothing. Resolution is the agent's: it settles the marked claims from
-the top down, either the whole frontier during consolidation or only the slice one claim
-needs, and it never starts a new derivation cascade. Two things distinguish this from
-detection-only conflict reporting: marking is an automatic state change rather than an
-advisory note, and the consolidation walk means every mark is eventually faced, whether
-or not anyone remembers to look for it.
+**Diagram 2.** Cascade resolution, a separate process that runs later: in full during the
+consolidation (sleep) cycle, or partially whenever the agent needs one claim settled now.
+It settles the marked claims from the top down. Settling a claim never starts a new
+derivation cascade, because its dependents were already marked by the walk in Diagram 1;
+they simply reach the frontier in turn. The consolidation walk means every mark is
+eventually faced, whether or not anyone remembers to look for it.
 """
 
 
@@ -228,42 +230,44 @@ or not anyone remembers to look for it.
 DIAGRAM_CASCADE_ZH = """
 ```mermaid
 flowchart TD
-    subgraph P1["阶段 1：传播（自动；不解决任何事）"]
-        A["智能体<b>撤回（retract）</b>一项主张（从未有效）<br/>或<b>取代（supersede）</b>它（曾经有效，现已更新）"]
-        A --> B{"沿承载级联的关系<br/>向下游遍历，<br/>能走多远就走多远"}
-        B -->|derives_from| C["每一现行的承载主张依赖项<br/>获得一个<b>待决</b>标记：<br/>不携带严重程度，只记录触发的是哪种操作"]
-        B -->|acknowledged_derives_from| C
-        B -.->|supported_by 不遍历| X["基石与教训<br/>从不被标记"]
-        C --> D["待决的主张在被解决之前<br/>不得被引为前提"]
-    end
+    A["智能体<b>撤回（retract）</b>一项主张（从未有效）<br/>或<b>取代（supersede）</b>它（曾经有效，现已更新）"]
+    A --> B{"沿承载级联的关系<br/>向下游遍历一次，<br/>能走多远就走多远"}
+    B -->|derives_from| C["每一现行的承载主张依赖项<br/>获得一个<b>待决</b>标记：<br/>不携带严重程度，只记录触发的是哪种操作"]
+    B -->|acknowledged_derives_from| C
+    B -.->|supported_by 不遍历| X["基石与教训<br/>从不被标记"]
+    C --> D["待决的主张在被解决之前<br/>不得被引为前提"]
     D -.-> S["<b>自动浮现</b>在被标记的主张<br/>下次变得相关时把它显示出来。<br/>只是提醒：它不解决任何事"]
-    subgraph P2["阶段 2：解决（由智能体进行；一次一个前沿节点）"]
-        F["<b>完整：</b>每个整理周期<br/>走遍整个前沿，<br/>直到不剩标记"]
-        T["<b>局部：</b>为解除一条主张的阻塞，<br/>只了结它所依赖的待决主张，<br/>再了结它本身"]
-        F --> G{"智能体了结一个<b>前沿</b>节点：<br/>自身待决，<br/>其上游无一待决"}
-        T --> G
-        G -->|撤回| R["论证<br/>已破"]
-        G -->|取代| U["主张在一个有名字的<br/>后继者中存活"]
-        G -->|承认| K["前提移动，主张仍然成立<br/>（若某个直接前提<br/>已被撤回则不可选；若变动所触及的<br/>每个前提都被承认则自动完成）"]
-        R --> N["置信度被重算。不启动新的推导级联：<br/>依赖项已在阶段 1 被标记，<br/>现在依次抵达前沿"]
-        U --> N
-        K --> N
-        N -.->|下一个前沿节点| G
-    end
-    D ==> F
-    D ==> T
 
     style A fill:#f6ece8,stroke:#b3593f
     style X fill:#f3f3f3,stroke:#8a8a8a,color:#555
     style S fill:#f3f3f3,stroke:#8a8a8a,color:#555
+```
+
+**示意图 1.** ENGRAM v0.5.1 中的级联传播。它在撤回或取代发生的那一刻自动运行一次：一次遍历
+标记下游的每一个依赖项，无论多远，并且不作任何决定。标记是一次自动的状态变更，而不是一份供
+智能体自行查阅的提示。
+
+```mermaid
+flowchart TD
+    F["<b>完整解决</b>：每个整理（睡眠）周期<br/>走遍整个前沿，<br/>直到不剩标记"]
+    T["<b>局部解决</b>：为眼下解除一条主张的阻塞，<br/>只了结它所依赖的待决主张，<br/>再了结它本身"]
+    F --> G{"智能体了结一条<b>前沿</b>主张：<br/>自身待决，<br/>其上游无一待决"}
+    T --> G
+    G -->|撤回| R["论证<br/>已破"]
+    G -->|取代| U["主张在一个有名字的<br/>后继者中存活"]
+    G -->|承认| K["前提移动，主张仍然成立<br/>（若某个直接前提<br/>已被撤回则不可选；若变动所触及的<br/>每个前提都被承认则自动完成）"]
+    R --> N["置信度被重算。<br/>不启动新的推导级联"]
+    U --> N
+    K --> N
+    N -.->|下一条前沿主张| G
+
     style G fill:#e9f1f4,stroke:#1f6f8b
 ```
 
-**示意图 1.** ENGRAM v0.5.1 中的撤回级联，分为两个彼此分开的过程。传播是自动的：每一次撤回或
-取代都会一次性标记下游的一切，并且不作任何决定。解决是智能体的事：它自上而下地了结被标记的主张，
-要么在整理期走遍整个前沿，要么只走一条主张所需的那一小片，而且它从不启动新的推导级联。有两点把它与
-“只做检测”的冲突报告区分开来：标记是一次自动的状态变更，而不是一份提示；整理期的遍历意味着每一个
-标记最终都会被面对，无论有没有人记得去找它。
+**示意图 2.** 级联解决，一个在之后才运行的独立过程：在整理（睡眠）周期中完整进行，或在智能体
+眼下需要了结某一条主张时局部进行。它自上而下地了结被标记的主张。了结一条主张绝不会启动新的推导
+级联，因为它的依赖项已在示意图 1 的那次遍历中被标记，只是依次抵达前沿而已。整理期的遍历意味着
+每一个标记最终都会被面对，无论有没有人记得去找它。
 """
 
 

@@ -1397,45 +1397,47 @@ Ch6. We claim the architecture; we do not yet claim the benchmark.
 
 ```mermaid
 flowchart TD
-    subgraph P1["Phase 1: propagation (automatic; resolves nothing)"]
-        A["The agent <b>retracts</b> a claim (never valid)<br/>or <b>supersedes</b> it (was valid, now updated)"]
-        A --> B{"Walk downstream along the<br/>cascade-bearing relations,<br/>as far as they reach"}
-        B -->|derives_from| C["Every live claim-bearing dependent<br/>gets one <b>pending</b> marker:<br/>no severity, only which operation fired"]
-        B -->|acknowledged_derives_from| C
-        B -.->|supported_by is NOT walked| X["Cornerstones and lessons<br/>are never marked"]
-        C --> D["A pending claim cannot be cited<br/>as a premise until it is resolved"]
-    end
+    A["The agent <b>retracts</b> a claim (never valid)<br/>or <b>supersedes</b> it (was valid, now updated)"]
+    A --> B{"One walk downstream along the<br/>cascade-bearing relations,<br/>as far as they reach"}
+    B -->|derives_from| C["Every live claim-bearing dependent<br/>gets one <b>pending</b> marker:<br/>no severity, only which operation fired"]
+    B -->|acknowledged_derives_from| C
+    B -.->|supported_by is NOT walked| X["Cornerstones and lessons<br/>are never marked"]
+    C --> D["A pending claim cannot be cited<br/>as a premise until it is resolved"]
     D -.-> S["<b>Auto-surfacing</b> shows a marked claim<br/>when it next becomes relevant.<br/>A reminder: it resolves nothing"]
-    subgraph P2["Phase 2: resolution (the agent's; one frontier node at a time)"]
-        F["<b>Full:</b> each consolidation cycle<br/>walks the whole frontier<br/>until no marker is left"]
-        T["<b>Partial:</b> to unblock one claim,<br/>settle only the pending claims it rests on,<br/>then the claim itself"]
-        F --> G{"The agent settles a <b>frontier</b> node:<br/>pending, with nothing pending<br/>above it"}
-        T --> G
-        G -->|retracted| R["The argument<br/>is broken"]
-        G -->|superseded| U["The claim survives in<br/>a named successor"]
-        G -->|acknowledged| K["Premise moved, claim still holds<br/>(not available if a direct<br/>premise was retracted; automatic<br/>if every premise the change reached<br/>was acknowledged)"]
-        R --> N["Confidence is recomputed. No new derivation cascade:<br/>dependents were marked in phase 1<br/>and now reach the frontier in turn"]
-        U --> N
-        K --> N
-        N -.->|next frontier node| G
-    end
-    D ==> F
-    D ==> T
 
     style A fill:#f6ece8,stroke:#b3593f
     style X fill:#f3f3f3,stroke:#8a8a8a,color:#555
     style S fill:#f3f3f3,stroke:#8a8a8a,color:#555
+```
+
+**Diagram 1.** Cascade propagation in ENGRAM v0.5.1. It runs automatically, once, at the
+moment of a retraction or supersede: a single walk marks every dependent downstream,
+however far, and decides nothing. Marking is an automatic state change, not an advisory
+note the agent may consult.
+
+```mermaid
+flowchart TD
+    F["<b>Full resolution</b>: each consolidation (sleep)<br/>cycle walks the whole frontier<br/>until no marker is left"]
+    T["<b>Partial resolution</b>: to unblock one claim now,<br/>settle only the pending claims it rests on,<br/>then the claim itself"]
+    F --> G{"The agent settles a <b>frontier</b> claim:<br/>pending, with nothing pending<br/>above it"}
+    T --> G
+    G -->|retracted| R["The argument<br/>is broken"]
+    G -->|superseded| U["The claim survives in<br/>a named successor"]
+    G -->|acknowledged| K["Premise moved, claim still holds<br/>(not available if a direct<br/>premise was retracted; automatic<br/>if every premise the change reached<br/>was acknowledged)"]
+    R --> N["Confidence is recomputed.<br/>No new derivation cascade"]
+    U --> N
+    K --> N
+    N -.->|next frontier claim| G
+
     style G fill:#e9f1f4,stroke:#1f6f8b
 ```
 
-**Diagram 1.** The retraction cascade in ENGRAM v0.5.1, as two separate processes.
-Propagation is automatic: each retraction or supersede marks everything downstream at
-once, and decides nothing. Resolution is the agent's: it settles the marked claims from
-the top down, either the whole frontier during consolidation or only the slice one claim
-needs, and it never starts a new derivation cascade. Two things distinguish this from
-detection-only conflict reporting: marking is an automatic state change rather than an
-advisory note, and the consolidation walk means every mark is eventually faced, whether
-or not anyone remembers to look for it.
+**Diagram 2.** Cascade resolution, a separate process that runs later: in full during the
+consolidation (sleep) cycle, or partially whenever the agent needs one claim settled now.
+It settles the marked claims from the top down. Settling a claim never starts a new
+derivation cascade, because its dependents were already marked by the walk in Diagram 1;
+they simply reach the frontier in turn. The consolidation walk means every mark is
+eventually faced, whether or not anyone remembers to look for it.
 
 ## 4.5 Forgetting → it defines what arbitration ranges over
 
