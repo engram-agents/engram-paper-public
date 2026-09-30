@@ -146,9 +146,18 @@ _ID_SCAN = re.compile(r"\b(?:ob|dv|th|cj|df|ax|cs|ls|gl|gt|ct|qu|pr|ev|fl|pn|tk|
 
 def _render_full_text(lang: str = "en") -> str:
     """Render the whole paper via the real assembly path (front matter + BODY +
-    acknowledgements + bibliography), mirroring tools/render_paper.py:main()
-    exactly, so the test exercises the real render rather than a hand-rolled
-    substitute."""
+    acknowledgements + bibliography), so the test exercises the real render
+    rather than a hand-rolled substitute.
+
+    DELIBERATELY NOT IDENTICAL TO `tools/render_paper.py:main()`. This omits the
+    `strip_apparatus_tags(name, body)` call `main()` makes on every BODY chapter,
+    so the bracketed working-apparatus tags the chapters carry (`[SOLID]`,
+    `[GROUNDED ob_2550]`, `[gap SOLID; ...]`, ...) SURVIVE here and are ABSENT
+    from the committed render -- 33 occurrences in en, 31 in zh (measured
+    2026-09-30; stripping them from this helper's output reproduces the committed
+    book byte-for-byte). A check that needs apparatus-tag-free text must read the
+    published .md, not this helper. engram-paper#113: the previous docstring
+    claimed this mirrored `main()` "exactly", which was false."""
     parts = [load(PAPER / FRONT_MATTER[lang])]
     for name in BODY:
         body = load(SOURCE_DIRS[lang] / chapter_name(lang, name))
@@ -940,10 +949,11 @@ def test_t5_ch1_pointer_sentence_present_exactly_once(lang: str):
 
 def test_language_defaults_and_output_paths():
     """Spec point 1: `--lang {en,zh}` defaults to `en`, and the zh default output
-    is the `.zh.md` sibling of the English paper. The `en` default is exercised
-    end-to-end by test_fresh_render_matches_committed_paper below, which runs the
-    tool with no `--lang` at all."""
-    assert LANGS == ("en", "zh")
+    is the `.zh.md` sibling of the English paper. The parity test below
+    (`test_fresh_render_matches_committed_paper`) runs one case per language with
+    `--lang` passed explicitly and a third that omits it, so the renderer's own
+    `en` default is exercised end-to-end there as well."""
+    assert rp.LANGS == ("en", "zh")
     assert DEFAULT_OUT["en"] == "paper/engram-paper-v0.5.1.md"
     assert DEFAULT_OUT["zh"] == "paper/engram-paper-v0.5.1.zh.md"
 
@@ -1149,12 +1159,13 @@ def test_zh_insert_blocks_are_not_english_copies():
 # INSERTS_ZH and DIAGRAM_CASCADE_ZH restate numbers that also appear in their
 # English counterparts (9,399 nodes, 72.8%, 71/149/9/16, 245 = 2.6%, 0.93/0.49,
 # 0.91/0.60, 1,318 ...). Nothing tied the two sides together: the anchor-parity
-# guard above compares `(file, heading)` KEYS only, and the per-chapter English
-# render pin (`test_fresh_render_matches_committed_paper`) never reads a zh
-# caption. So an English numbers-fold could update the English captions and
-# leave the Chinese ones stating the old numbers -- CI green, the two languages
-# disagreeing. This guard closes that: the numeric tokens of the two captions
-# must form equal MULTISETS.
+# guard above compares `(file, heading)` KEYS only, and the render pin
+# (`test_fresh_render_matches_committed_paper`) checks each language's render
+# against its own committed book -- never an English caption's text against its
+# zh counterpart. So an English numbers-fold could update the English captions
+# and leave the Chinese ones stating the old numbers -- CI green, the two
+# languages disagreeing. This guard closes that: the numeric tokens of the two
+# captions must form equal MULTISETS.
 #
 # TOKEN RULE -- `[0-9][0-9,\.]*%?`: a maximal run starting at a digit and
 # continuing over digits, thousands separators and decimal points, with an
@@ -1332,10 +1343,14 @@ def test_strip_provenance_ids_language_contract_for_zh():
 
 
 def test_zh_render_carries_no_html_comments(tmp_path):
-    """The zh sibling of test_fresh_render_matches_committed_paper, and the only
-    check on what `strip_html_comments` is FOR: the published .md must reach the
-    reader with no HTML comment in it. The sources keep their translator notes
-    (they are the next translator's record); the render must not carry them.
+    """A fresh zh render carries no HTML comment: the published .md must reach
+    the reader without the sources' translator notes, which stay in the source
+    files (they are the next translator's record). This asserts the RENDERED
+    output; byte-parity with the committed book lives in
+    `test_fresh_render_matches_committed_paper` (parametrized over both
+    languages), and the committed artifact's own comment-freedom is folded into
+    that same parity test (for zh it is implied by this test plus the byte
+    comparison; see that test's docstring).
 
     This went unguarded until now -- reverting `load()` to its pre-strip body
     left the whole suite green. The source-side assertion is what keeps the check
@@ -1394,19 +1409,72 @@ def test_strip_html_comments_is_wider_than_the_leading_only_helper():
 # ── render byte-check (spec verification tail) ──────────────────────────────
 
 
-def test_fresh_render_matches_committed_paper():
-    """A fresh `tools/render_paper.py` run must reproduce the committed
-    paper/engram-paper-v0.5.1.md byte-for-byte (git status --porcelain empty)."""
-    out = REPO_ROOT / "paper" / "engram-paper-v0.5.1.md"
-    if not out.exists():
-        pytest.skip("rendered paper not present yet")
-    before = out.read_text(encoding="utf-8")
+# Each case carries (the language the render must equal, the argv fragment that
+# selects it). The third omits `--lang` entirely, so the renderer's own argparse
+# default is what picks the language there -- and the book it is compared against
+# is `DEFAULT_OUT["en"]`, the book that default is supposed to produce. The
+# default is load-bearing outside the tests: the fresh-reader harness under
+# `paper/review/` renders the paper with `--out` alone, so a default that drifted
+# to `zh` would silently render the zh sources there with nothing to catch it.
+_PARITY_CASES = [
+    pytest.param("en", ["--lang", "en"], id="en"),
+    pytest.param("zh", ["--lang", "zh"], id="zh"),
+    pytest.param("en", [], id="default"),
+]
+
+
+@pytest.mark.parametrize("lang, lang_args", _PARITY_CASES)
+def test_fresh_render_matches_committed_paper(lang, lang_args, tmp_path):
+    """A fresh `tools/render_paper.py` run must reproduce the committed book for
+    the language it renders BYTE-for-byte (git status --porcelain empty) -- and
+    that committed book must itself carry no HTML comment.
+
+    Rendered to a tmp path via `--out`, NEVER in place: the committed book is
+    the comparison target, not the render destination. The previous form ran the
+    renderer with no `--out` for English only, so it wrote over
+    paper/engram-paper-v0.5.1.md and then compared the file against itself -- a
+    divergence left the tracked paper rewritten by the very test that caught it
+    (engram-paper#111), and the zh book had no parity check at all
+    (engram-paper#113). Both languages are covered here now, and neither render
+    touches a tracked path.
+
+    The committed path is DERIVED from `DEFAULT_OUT[lang]` rather than written
+    out here, and a missing book is deliberately NOT a skip: a version bump must
+    fail this test loudly, never quietly retire the parity check the way a
+    literal path plus a "not present yet" skip did.
+
+    WHY THE COMMENT-FREE ASSERTION IS FOLDED IN HERE, AND WHICH HALF OF IT IS
+    ONLY IMPLIED. For `zh` the property is IMPLIED by two checks already in this
+    file, and is stated as implied rather than claimed as independent:
+    `test_zh_render_carries_no_html_comments` asserts a fresh zh render carries
+    no `<!--` (and its carrier scan asserts the zh SOURCES do carry them, so a
+    comment-free render is the strip's doing), and the byte comparison below
+    pins the committed book to that render. Together they entail a comment-free
+    committed zh book -- so injecting a comment into it reddens this assertion
+    AND the byte comparison together, with the render-side sibling still green.
+    It is kept as belt-and-braces there: it names the artifact and the cause in
+    one line. For `en` it is the ONLY check -- nothing else in this suite asserts
+    the committed English book is comment-free -- so folding it in is that
+    book's single guard, not a second opinion."""
+    out = REPO_ROOT / DEFAULT_OUT[lang]
+    before = out.read_bytes()
+    assert b"<!--" not in before, (
+        f"the committed {lang} book carries an HTML comment -- a translator note "
+        "has reached the published artifact"
+    )
+    rendered = tmp_path / f"rendered-{lang}.md"
     result = subprocess.run(
-        [sys.executable, "tools/render_paper.py"],
+        [
+            sys.executable,
+            "tools/render_paper.py",
+            *lang_args,
+            "--out",
+            str(rendered),
+        ],
         cwd=REPO_ROOT,
         capture_output=True,
         text=True,
     )
     assert result.returncode == 0, result.stderr
-    after = out.read_text(encoding="utf-8")
-    assert before == after, "fresh render diverged from the committed paper"
+    after = rendered.read_bytes()
+    assert before == after, f"fresh {lang} render diverged from {DEFAULT_OUT[lang]}"
