@@ -639,7 +639,9 @@ The other three, compactly:
 The *pattern* of confidences is itself a signal: the **inductive** claims over wide
 case bases (the landscape sweep, connectivity) are high; the
 **abductive** single-mechanism satisfaction claims (C1, C3, A) are low *and waiting
-on Ch6's empirical anchor*. The architecture is in hand everywhere; the at-scale
+on Ch6's empirical anchor*. C2's 0.59 belongs to neither group: it is the
+confidence of the strict *not met* verdict, a finding about Kahl's condition rather
+than a satisfaction claim. The architecture is in hand everywhere; the at-scale
 behavioral confirmation is the work that raises the abductive numbers.
 
 **The bounded claim, restated.** ENGRAM **satisfies two of Kahl's three conditions

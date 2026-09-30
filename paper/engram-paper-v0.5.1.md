@@ -1711,7 +1711,9 @@ The other three, compactly:
 The *pattern* of confidences is itself a signal: the **inductive** claims over wide
 case bases (the landscape sweep, connectivity) are high; the
 **abductive** single-mechanism satisfaction claims (C1, C3, A) are low *and waiting
-on Ch6's empirical anchor*. The architecture is in hand everywhere; the at-scale
+on Ch6's empirical anchor*. C2's 0.59 belongs to neither group: it is the
+confidence of the strict *not met* verdict, a finding about Kahl's condition rather
+than a satisfaction claim. The architecture is in hand everywhere; the at-scale
 behavioral confirmation is the work that raises the abductive numbers.
 
 **The bounded claim, restated.** ENGRAM **satisfies two of Kahl's three conditions
@@ -2436,7 +2438,7 @@ table reproduces with `tools/paper_stats.py --trace dv_0922`.*
 
 ![Figure 6](figures/fig4-depth.png)
 
-**Figure 6.** Computed confidence against derivation depth, for all 1,318 current derivations with at least one ancestor. Mean confidence falls with depth, from 0.72 at one layer (705 derivations) to about 0.4 at twelve to fourteen layers (17 derivations); the deepest layers hold one node each, too few to read a trend. The spread at every depth is wide: at depth 1 alone it runs from about 0.2 to 0.98. The annotated point is the six-layer chain worked through in §6.4 (0.10). Depth costs something on average; the kind of argument sets an individual claim's number (Figure 2).
+**Figure 6.** Computed confidence against derivation depth, for all 1,318 current derivations with at least one ancestor. Mean confidence falls with depth, from 0.72 at one layer (705 derivations) to about 0.4 at twelve to fourteen layers (17 derivations); the deepest layers hold one node each, too few to read a trend. The spread at every depth is wide: at depth 1 alone it runs from about 0.2 to 0.98. The annotated point is the six-layer chain worked through in §6.4, at 0.10. Depth costs something on average; the kind of argument sets an individual claim's number (Figure 2).
 
 ## 6.5 Metacognitive self-audit: the agent sees its own weakest beliefs
 
