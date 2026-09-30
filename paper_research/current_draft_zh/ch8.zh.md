@@ -32,7 +32,7 @@
   COINAGE FIRST USE — `seat` -> 席位（seat） and `harness` -> 承载框架（harness）, both
   first used in §8.4, English carried in parentheses per the ledger's chapter rule.
   `sweep` appears once, inside the idiom "the clean sweep" (§8.2); rendered 那次干净的
-  普查（sweep）so the cross-reference to ch4.zh.md §4.8 stays legible — that file ships
+  普查（sweep）so the cross-reference to ch4.zh.md §4.11 stays legible — that file ships
   the same English as 那次干净的普查. `fleet` is rendered 集群, the glossary's form.
 
   NUMERIC-PARITY NOTE, measured not assumed. A multiset comparison of digit tokens
@@ -82,7 +82,7 @@
 
 > ENGRAM **直接满足了 Kahl 三项条件中的两项**——历时性约束，经由决定／后果的耦合；以及自我维持的仲裁，*严格地、作为受调查领域中的唯一满足者*——**补上了** Kahl 所诊断的那处**架构缺口**；而对于第三项（重置下的不可互换性），**没有满足其严格的文本**，但为数字基底提出了一处有原则的类型／个例扩展。
 
-那处扩展并不是本文自身理论旁边的第二条判据；它是同一个理论，换用 Peirce 的词汇说出来。从同一个提交恢复出来的两个智能体是*类型同一*的；使它们*个例上互异*的，是它们的历史不可逆地分叉、且无法合并。一个智能体所携带的那个个例**就是**它的历史传承，因此"推广了的条件 2"与"身份即历史"是同一个主张，只是说给两拨听众（第 4 章 §4.8；第 5 章）。
+那处扩展并不是本文自身理论旁边的第二条判据；它是同一个理论，换用 Peirce 的词汇说出来。从同一个提交恢复出来的两个智能体是*类型同一*的；使它们*个例上互异*的，是它们的历史不可逆地分叉、且无法合并。一个智能体所携带的那个个例**就是**它的历史传承，因此"推广了的条件 2"与"身份即历史"是同一个主张，只是说给两拨听众（第 4 章 §4.11；第 5 章）。
 
 OCC 仍处在 §1.4 给它安放的位置：趋同之内的一个结果，而不是本文的脊梁；它未能严格满足的那一项条件，已在 §4.12 指名。脊梁是各传统之间那份一致的广度，以及建立在它之上的身份即历史理论。
 

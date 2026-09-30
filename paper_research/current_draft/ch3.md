@@ -65,7 +65,8 @@ graph for contradictions, stale nodes and lesson candidates, and a consolidating
 sub-agent (the *dream master*) applies the results and advances the forgetting curve.
 
 **→ Ch4 §4.8** (continuity across compaction): CLS is the cognitive-science precedent
-for the two-routine consolidation that meets OCC Conditions 1 and 2. [SOLID]
+for the two-routine consolidation that carries operational continuity across
+compaction. [SOLID]
 
 ### 3.2 Tulving → the two registers of recall
 

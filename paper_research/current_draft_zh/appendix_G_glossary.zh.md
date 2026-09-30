@@ -78,7 +78,7 @@
                               The pair is load-bearing (ch3 grounds the two recall
                               tiers on it), so a split rendering is a real defect,
                               not a style difference.
-    type / token         ->  类型／个例（type/token）  (ch4 §4.6; Peirce).
+    type / token         ->  类型／个例（type/token）  (ch4 §4.11; Peirce).
 
   OPEN — consolidation, NOT yet resolved paper-wide. Two renderings are live and
   the split does not follow chapter boundaries. MEASURED 2026-09-28 (grep -o):

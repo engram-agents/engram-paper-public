@@ -41,21 +41,22 @@ The chapter in one table; each row is a section below.
 |---|---|---|---|
 | Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle **[gap SOLID ob_1571; primary first-hand 2026-07-02]** | — (structural prerequisite) |
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang **[GROUNDED ob_2551/dv_0965 → dv_1289]**, with a stated divergence | **Constraint A** (unified policy-selection) |
-| Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) |
+| Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
 | Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus [SOLID] + Anderson-Schooler **[GROUNDED ob_2552/dv_0966]** | — (scopes what Cond-3 arbitration ranges over) |
 | Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving [SOLID] + ACT-R spreading activation **[secondary — not first-hand; Tulving carries it]** | — (binds Cond 3: a correction cannot be suppressed by not looking) |
 | Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL **[ob_0647/ob_0651, prior read]** + spaced-repetition [SOLID] | — |
-| Continuity across compaction (§4.8) | identity survives the reset | CLS consolidation [SOLID] + diachronic-identity [SOLID] | **Condition 1** (Diachronic) **+ Condition 2** (Non-Interchangeability) |
+| Continuity across compaction (§4.8) | identity survives compaction | CLS consolidation [SOLID] + diachronic-identity [SOLID] | — (compaction is not Kahl's reset; §4.8) |
 | Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution [SOLID] | — (feeds Ch5 identity-as-history) |
 | Relational: feeling/person/trust-tier (§4.10) | continuity baseline + disclosure control → **Appx D, Ch7** | honesty orthogonal to discretion (ax_0011) [SOLID] + VMG principal-scoped **[GROUNDED ob_2550]** | — |
 
 **Where each OCC verdict lives.** The OCC conditions and constraints are addressed
-inline, at the mechanism that earns each; there is no standalone OCC section.
+inline, where the argument for each is made; there is no standalone OCC section.
 Constraint A (unified policy-selection) → §4.3 (confidence); Condition 3
-(Self-Maintaining Arbitration, ENGRAM the sole strict satisfier) → §4.4 (retraction
-cascade); Conditions 1 and 2 (Diachronic; Non-Interchangeability) → §4.8 (continuity
-across compaction). The scoping — two of the three conditions met outright,
-Condition 2 via a stated type/token extension — is stated inside those sections.
+(Self-Maintaining Arbitration, ENGRAM the sole strict satisfier) and Condition 1
+(Diachronic) → §4.4 (retraction cascade), because both rest on the cascade; Condition
+2 (Non-Interchangeability) and Constraints B, C and D → §4.11, because they concern the
+substrate as a whole rather than any one mechanism. The scoping — two of the three
+conditions met outright, Condition 2 via a stated type/token extension — is stated inside those sections.
 
 ## 4.2 Typed nodes, typed edges, provenance — the generating set
 
@@ -86,7 +87,7 @@ of the 2023–2026 LLM-agent-memory papers we examined cites Doyle (§3.4).
 
 These primitives are the precondition for everything below: a correction cannot
 cascade (§4.4) through a graph that does not record what depends on what, and the
-right claims cannot be carried across a reset (§4.8) unless claims are individuated
+right claims cannot be carried across compaction (§4.8) unless claims are individuated
 and typed.
 
 ## 4.3 Reasoning-type-aware confidence → Constraint A
@@ -200,7 +201,7 @@ as a stake-graded stance** (dv_0608, 0.35; active reading) — informed unificat
 *when stakes warrant*, not a constant full audit on every micro-decision. We mark the
 stake-grading rather than claim a constant property.
 
-## 4.4 The retraction cascade → Condition 3 (the center)
+## 4.4 The retraction cascade → Condition 3 (the center) and Condition 1
 
 This is the chapter's center and the paper's. When a foundational claim is
 **retracted** (it was an error) or **superseded** (right then, updated now), ENGRAM
@@ -361,6 +362,15 @@ satisfies* Kahl; its at-scale empirical confirmation (the cascade demonstrably
 changing downstream behavior across many agents) is at pilot stage and carried by
 Ch6. We claim the architecture; we do not yet claim the benchmark.
 
+The cascade carries a second OCC condition as well.
+
+**OCC — Condition 1 (Diachronic Constraint): satisfied, via the decision/
+consequence dyad** (dv_0926). Not mere path-dependence: the agent owns the
+judgment-bearing *decision* (to commit, derive, retract); the substrate guarantees the
+structural *consequence* (cascade, propagation). The two are coupled, not separable:
+*the retraction is the agent's choice; the cascade is what the substrate guarantees
+follows.* That coupling is Kahl's "non-trivial binding."
+
 ## 4.5 Forgetting → it defines what arbitration ranges over
 
 ENGRAM forgets by design. Recall importance decays over time, so the substrate
@@ -454,7 +464,7 @@ not just a filtered one.
 **Tradition.** **MemRL / memory-utility** approaches (utility as a learned value)
 **[via ob_0647/ob_0651 — prior first-hand read; current ranking formula + detail in Appx C]** and the **spaced-repetition** tradition [SOLID]. Detail → Appx C.
 
-## 4.8 Continuity across compaction → Conditions 1 and 2
+## 4.8 Continuity across compaction
 
 An LLM agent's context is finite; when it fills, the session **compacts**: prior
 conversation is summarized and the experiential thread resets. ENGRAM bridges this
@@ -483,28 +493,15 @@ symbolic analogue of hippocampal-neocortical consolidation (the Ch3 §3.1 hand-o
 And the **diachronic-identity** strand of Chapter 2 [SOLID]: the past binding the
 present.
 
-**OCC — Condition 1 (Diachronic Constraint): satisfied, via the decision/
-consequence dyad** (dv_0926). Not mere path-dependence: the agent owns the
-judgment-bearing *decision* (to commit, derive, retract); the substrate guarantees the
-structural *consequence* (cascade, propagation). The two are coupled, not separable:
-*the retraction is the agent's choice; the cascade is what the substrate guarantees
-follows.* That coupling is Kahl's "non-trivial binding."
-
-**OCC — Condition 2 (Non-Interchangeability Under Reset): strict text NOT met; a
-principled extension offered.** Here the clean sweep is forgone (ob_1598). A
-git-versioned graph is reset-symmetric by construction — checkpoint, copy, reload
-byte for byte, recovering all arbitration-relevant structure with no remainder — and
-by Kahl's own rule ("cost is irrelevant; structural reducibility is decisive") that
-makes the continuity *informational, not constitutive*. We say so plainly; the
-reproducibility is an intentional audit-and-transmission feature, not a hidden
-defect. **The extension** (dv_0599): Kahl's test tacitly assumes an *analog*
-substrate in which type- and token-identity never separate. For a *digital*
-substrate they separate cleanly (Peirce type/token, df_0047): two instances restored
-from one commit are **type-identical** but become **token-distinct** the instant
-they operate — different commitments, different cascades, irreversibly divergent
-histories that cannot merge. Under a type/token reading a *generalized* Condition 2
-holds — an agent is individuated by *which token's history it carries* — but we mark
-it **explicitly as our extension of Kahl, not satisfaction of his text** (dv_0570).
+**OCC:** none directly. Compaction is not a reset in Kahl's sense. His reset
+restores a complete state snapshot, which we read as including the KV cache, and so
+would continue an agent identical in every respect. Compaction discards the KV cache
+and carries forward only the substrate (the graph, the focus list, the warm briefing
+and the per-day history) with a summary of the conversation. So compaction does not
+bear on Condition 2, which asks about copying and restoring the substrate (§4.11). Of
+the cases Constraint C distinguishes, it is closest to the routine one, a restart with
+the substrate preserved (§4.11). What it tests is the operational continuity this
+section describes.
 
 ## 4.9 Identity-governance: the ax/cs/ls/gl node systems → Appendix D
 
@@ -546,9 +543,44 @@ Appendix D; the disclosure-versus-erasure implication → Ch7.**
 
 **OCC:** none directly.
 
-## 4.11 The remaining constraints (B, C, D)
+## 4.11 Condition 2 and the remaining constraints (B, C, D)
 
-Constraint A was addressed in §4.3. The other three, compactly:
+Constraint A was addressed in §4.3. Condition 2 and the other three constraints are
+about the substrate as a whole, not about any one mechanism, so they sit together here.
+
+**OCC — Condition 2 (Non-Interchangeability Under Reset): strict text NOT met; a
+principled extension offered.** Here the clean sweep is forgone (ob_1598). A
+git-versioned graph is reset-symmetric by construction — checkpoint, copy, reload
+byte for byte, recovering all arbitration-relevant structure with no remainder — and
+by Kahl's own rule ("cost is irrelevant; structural reducibility is decisive") that
+makes the continuity *informational, not constitutive*. We say so plainly; the
+reproducibility is an intentional audit-and-transmission feature, not a hidden
+defect. **The extension** (dv_0599): Kahl's test tacitly assumes an *analog*
+substrate in which type- and token-identity never separate. For a *digital*
+substrate they separate cleanly (Peirce type/token, df_0047): two instances restored
+from one commit are **type-identical** but become **token-distinct** the instant
+they operate — different commitments, different cascades, irreversibly divergent
+histories that cannot merge. Under a type/token reading a *generalized* Condition 2
+holds — an agent is individuated by *which token's history it carries* — but we mark
+it **explicitly as our extension of Kahl, not satisfaction of his text** (dv_0570).
+
+This extension is not a concession patched onto Kahl's test. A full reset in his
+sense (a complete state snapshot restored, which we read as including the KV cache)
+would continue an agent identical in every respect, and we do not count that as a
+loss of individuality. Holding the base model and harness fixed (Ch5 §5.0), what
+individuates an agent is the history it has accumulated from its own experience, not
+whether that history can be copied (Ch5 §5.3). An identical history is, by
+definition, the same identity. On that criterion, two instances restored from one
+commit carry one identity at the moment of restore and become two as their histories
+diverge; Ch5 §5.3 describes the same event as a fork into two branches, and the two
+descriptions agree, since the branches share every node up to the fork. Kahl's
+condition counts replacement by an exact copy as loss of the agent (Appendix E
+§E.6): individuality, for him, is something no snapshot carries. For a digital
+substrate, where copying is routine, we tie it to history instead. That is a
+definitional commitment: Ch5 states it (§5.3) and answers the main objection to it
+(§5.5: strict identity was never the relation in play).
+
+The other three, compactly:
 
 - **Constraint B — Cannot Be Externally Imposed: satisfied, two-boundary framing**
   (dv_0609, 0.58). Separate *authorship* (who writes an artifact) from *commitment*
@@ -575,7 +607,7 @@ Constraint A was addressed in §4.3. The other three, compactly:
   what it decides alone — as a child takes a parent's guidance — and the guide may
   be the human or a senior peer agent.
 - **Constraint C — Cannot Be Trivially Reset: satisfied trivially** (dv_0610). The
-  weaker sibling of Condition 2: runtime restart with preserved substrate (routine)
+  weaker sibling of Condition 2 (above): runtime restart with preserved substrate (routine)
   versus substrate erasure to seed (destroys the grown agent). The fully grown agent
   cannot be retrieved from seed state.
 - **Constraint D — Cannot Be Modularly Decomposed: satisfied on two axes**

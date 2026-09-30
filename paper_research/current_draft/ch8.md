@@ -57,7 +57,7 @@ theory in Peirce's vocabulary. Two agents restored from one commit are
 *type*-identical; what makes them *token*-distinct is that their histories diverge
 irreversibly and cannot merge. The token an agent carries **is** its history-lineage,
 so "generalized Condition 2" and "identity as history" are one claim addressed to two
-audiences (Chapter 4 §4.8; Chapter 5).
+audiences (Chapter 4 §4.11; Chapter 5).
 
 OCC stays where §1.4 put it, one result within the convergence and not the paper's
 spine; the one condition it does not strictly meet was named in §4.12. The spine is
