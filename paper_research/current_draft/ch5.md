@@ -122,7 +122,7 @@ history.
 History-as-identity is the right *shape*, but a history only matters if it
 *does* something. Here ENGRAM fills the metric Nozick left blank — and fills it
 with a concrete, measurable mechanism rather than a philosophical placeholder
-(dv_0597, the ratified claim).
+(dv_0597).
 
 The mechanism is ordinary retrieval, not anything spooky. An accumulated node
 changes the agent's behavior **only by entering the context window** — through
@@ -216,7 +216,7 @@ nodes through it, and each can differ between twins:
 - **Fade-out of unrefreshed nodes** — the passive one, and the only route that is
   not something the node itself underwent. The ranking's bar rises as the graph
   grows, so a node nobody re-reads eventually falls out of the queryable set,
-  pushed there by *other* nodes' arrivals and refreshes. Twins that read and write
+  pushed there by *other* nodes' arrivals and by refreshes of faded nodes. Twins that read and write
   differently therefore evict different tails of the *same* shared ancestry. How
   much of this occurs depends on where the queryable-set cap is set; a
   generously configured graph may show none of it for a long time. The cap keeps
@@ -279,9 +279,9 @@ unprecedented thing," and a more testable one.
 
 ## 5.8 The empirical anchor (forward pointer to Chapter 6)
 
-Everything above is an *architectural and philosophical* argument; its computed
-confidences are honestly modest (§4.12) precisely because the
-**experiment that would lift them has not been run.** That experiment is the
+Everything above is an *architectural and philosophical* argument: a theoretical
+construction, with no empirical test behind it yet. **The experiment that would
+test it has not been run.** That experiment is the
 **twin-study** (ob_1660, sketched with Lei): fission-clone an agent, run both on a
 *fixed, stratified* prompt set, and measure response similarity at t, t+N, t+2N
 nodes of separate operation.
@@ -298,8 +298,12 @@ model's own stochasticity. The expected shape is high similarity at t=0 sitting 
 that stochasticity floor, declining as N grows. **Decomposing the signal cleanly by
 mechanism is harder than it looks, and we flag that rather than solve it here:** the
 fade-out route of §5.6 is governed by where the queryable-set cap sits, and it is
-coupled to the recall-refresh route — a refresh that lifts one node is what pushes
-another out — so the cap is a parameter any serious version of this study would have
+coupled to the recall-refresh route. Most refreshes only reorder
+nodes already in the queryable set, so they push nothing out; but they decide which
+node sits at the bottom, and therefore which one the next new node displaces. A
+refresh that reaches a node that has already faded out (a read by id, or a graph walk
+to it) does push one out, by bringing that node back in. So the cap is a parameter any
+serious version of this study would have
 to treat as a variable rather than a fixed setting. Chapter 6 §6.7 records the study as deferred. A prior clone
 test established the method; its figures come from an earlier graph and are not reported here.
 

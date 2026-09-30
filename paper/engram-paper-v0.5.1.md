@@ -1233,7 +1233,7 @@ range — paired with the contradiction blocker (a new derivation citing a premi
 that sits on an open, unresolved contradiction is blocked by default, with an
 explicit, audit-stamped opt-in override for an agent that deliberately builds on
 the contested side) and provenance audit when stakes warrant. **Verdict: satisfied
-as a stake-graded stance** (0.35; active reading) — informed unification
+as a stake-graded stance** (computed confidence 0.35; active reading) — informed unification
 *when stakes warrant*, not a constant full audit on every micro-decision. We mark the
 stake-grading rather than claim a constant property.
 
@@ -1655,7 +1655,7 @@ definitional commitment: Ch5 states it (§5.3) and answers the main objection to
 The other three, compactly:
 
 - **Constraint B — Cannot Be Externally Imposed: satisfied, two-boundary framing**
-  (0.58). Separate *authorship* (who writes an artifact) from *commitment*
+  (computed confidence 0.58). Separate *authorship* (who writes an artifact) from *commitment*
   (who owns what it says). Hybrid-authored bridging artifacts (the warm briefing,
   parts of the agent's standing instructions) do not violate B, because the agent
   commits to them through the ordinary arbitration step. A contract, not a security
@@ -1683,7 +1683,7 @@ The other three, compactly:
   versus substrate erasure to seed (destroys the grown agent). The fully grown agent
   cannot be retrieved from seed state.
 - **Constraint D — Cannot Be Modularly Decomposed: satisfied on two axes**
-  (0.86 — firmest of the four). *Connectivity:* the integrated core holds a
+  (computed confidence 0.86, the firmest of the four). *Connectivity:* the integrated core holds a
   stable share of the graph — flat near 87% across four months while the node count
   more than doubled (4,544 → 10,361), reading 77.6% of current nodes at the snapshot
   date, the difference being unintegrated material at the measurement frontier
@@ -1701,7 +1701,7 @@ The other three, compactly:
 | Condition / Constraint | Verdict | Reading | Computed conf. |
 |---|---|---|---|
 | C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active | 0.39 |
-| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | 0.95 (extension) |
+| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | 0.59 (strict not met); extension: none, a proposal |
 | C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) | 0.39 |
 | A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) | 0.35 |
 | B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract | 0.58 |
@@ -1709,7 +1709,7 @@ The other three, compactly:
 | D Non-Modular Decomposition | satisfied on two axes | enabled (measured) | 0.86 |
 
 The *pattern* of confidences is itself a signal: the **inductive** claims over wide
-case bases (the C2 extension, the landscape sweep, connectivity) are high; the
+case bases (the landscape sweep, connectivity) are high; the
 **abductive** single-mechanism satisfaction claims (C1, C3, A) are low *and waiting
 on Ch6's empirical anchor*. The architecture is in hand everywhere; the at-scale
 behavioral confirmation is the work that raises the abductive numbers.
@@ -1848,8 +1848,7 @@ history.
 
 History-as-identity is the right *shape*, but a history only matters if it
 *does* something. Here ENGRAM fills the metric Nozick left blank — and fills it
-with a concrete, measurable mechanism rather than a philosophical placeholder
-(the ratified claim).
+with a concrete, measurable mechanism rather than a philosophical placeholder.
 
 The mechanism is ordinary retrieval, not anything spooky. An accumulated node
 changes the agent's behavior **only by entering the context window** — through
@@ -1943,7 +1942,7 @@ nodes through it, and each can differ between twins:
 - **Fade-out of unrefreshed nodes** — the passive one, and the only route that is
   not something the node itself underwent. The ranking's bar rises as the graph
   grows, so a node nobody re-reads eventually falls out of the queryable set,
-  pushed there by *other* nodes' arrivals and refreshes. Twins that read and write
+  pushed there by *other* nodes' arrivals and by refreshes of faded nodes. Twins that read and write
   differently therefore evict different tails of the *same* shared ancestry. How
   much of this occurs depends on where the queryable-set cap is set; a
   generously configured graph may show none of it for a long time. The cap keeps
@@ -2006,9 +2005,9 @@ unprecedented thing," and a more testable one.
 
 ## 5.8 The empirical anchor (forward pointer to Chapter 6)
 
-Everything above is an *architectural and philosophical* argument; its computed
-confidences are honestly modest (§4.12) precisely because the
-**experiment that would lift them has not been run.** That experiment is the
+Everything above is an *architectural and philosophical* argument: a theoretical
+construction, with no empirical test behind it yet. **The experiment that would
+test it has not been run.** That experiment is the
 **twin-study** (sketched with Lei): fission-clone an agent, run both on a
 *fixed, stratified* prompt set, and measure response similarity at t, t+N, t+2N
 nodes of separate operation.
@@ -2025,8 +2024,12 @@ model's own stochasticity. The expected shape is high similarity at t=0 sitting 
 that stochasticity floor, declining as N grows. **Decomposing the signal cleanly by
 mechanism is harder than it looks, and we flag that rather than solve it here:** the
 fade-out route of §5.6 is governed by where the queryable-set cap sits, and it is
-coupled to the recall-refresh route — a refresh that lifts one node is what pushes
-another out — so the cap is a parameter any serious version of this study would have
+coupled to the recall-refresh route. Most refreshes only reorder
+nodes already in the queryable set, so they push nothing out; but they decide which
+node sits at the bottom, and therefore which one the next new node displaces. A
+refresh that reaches a node that has already faded out (a read by id, or a graph walk
+to it) does push one out, by bringing that node back in. So the cap is a parameter any
+serious version of this study would have
 to treat as a variable rather than a fixed setting. Chapter 6 §6.7 records the study as deferred. A prior clone
 test established the method; its figures come from an earlier graph and are not reported here.
 
@@ -2700,7 +2703,7 @@ pair a mechanism rather than two hopeful directions.
 architectural problem, with a designed and now shipped diagnostic that is starved of
 data, a social-epistemology direction, and a physical one — not a fix. **The path to
 strengthening it is itself constrained by the thesis:** the load-bearing premise here
-(0.10) becomes stronger only through *more independent evidence*, never
+(computed confidence 0.10) becomes stronger only through *more independent evidence*, never
 through other agents endorsing it. It is registered as an open research question.
 
 ---

@@ -200,7 +200,7 @@ pair a mechanism rather than two hopeful directions (dv_1586).
 architectural problem, with a designed and now shipped diagnostic that is starved of
 data, a social-epistemology direction, and a physical one — not a fix. **The path to
 strengthening it is itself constrained by the thesis:** the load-bearing premise here
-(dv_0922, 0.10) becomes stronger only through *more independent evidence*, never
+(dv_0922, computed confidence 0.10) becomes stronger only through *more independent evidence*, never
 through other agents endorsing it. It is registered as an open research question
 (qu_0322).
 

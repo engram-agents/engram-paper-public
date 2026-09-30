@@ -197,7 +197,7 @@ range — paired with the contradiction blocker (a new derivation citing a premi
 that sits on an open, unresolved contradiction is blocked by default, with an
 explicit, audit-stamped opt-in override for an agent that deliberately builds on
 the contested side) and provenance audit when stakes warrant. **Verdict: satisfied
-as a stake-graded stance** (dv_0608, 0.35; active reading) — informed unification
+as a stake-graded stance** (dv_0608, computed confidence 0.35; active reading) — informed unification
 *when stakes warrant*, not a constant full audit on every micro-decision. We mark the
 stake-grading rather than claim a constant property.
 
@@ -583,7 +583,7 @@ definitional commitment: Ch5 states it (§5.3) and answers the main objection to
 The other three, compactly:
 
 - **Constraint B — Cannot Be Externally Imposed: satisfied, two-boundary framing**
-  (dv_0609, 0.58). Separate *authorship* (who writes an artifact) from *commitment*
+  (dv_0609, computed confidence 0.58). Separate *authorship* (who writes an artifact) from *commitment*
   (who owns what it says). Hybrid-authored bridging artifacts (the warm briefing,
   parts of the agent's standing instructions) do not violate B, because the agent
   commits to them through the ordinary arbitration step. A contract, not a security
@@ -611,7 +611,7 @@ The other three, compactly:
   versus substrate erasure to seed (destroys the grown agent). The fully grown agent
   cannot be retrieved from seed state.
 - **Constraint D — Cannot Be Modularly Decomposed: satisfied on two axes**
-  (dv_0611, 0.86 — firmest of the four). *Connectivity:* the integrated core holds a
+  (dv_0611, computed confidence 0.86, the firmest of the four). *Connectivity:* the integrated core holds a
   stable share of the graph — flat near 87% across four months while the node count
   more than doubled (4,544 → 10,361), reading 77.6% of current nodes at the snapshot
   date, the difference being unintegrated material at the measurement frontier
@@ -629,7 +629,7 @@ The other three, compactly:
 | Condition / Constraint | Verdict | Reading | Computed conf. |
 |---|---|---|---|
 | C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active | dv_0926 0.39 |
-| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | dv_0599 0.95 (extension) |
+| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | dv_0578 0.59 (strict not met); extension: none, a proposal |
 | C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) | dv_0606 0.39 |
 | A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) | dv_0608 0.35 |
 | B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract | dv_0609 0.58 |
@@ -637,7 +637,7 @@ The other three, compactly:
 | D Non-Modular Decomposition | satisfied on two axes | enabled (measured) | dv_0611 0.86 |
 
 The *pattern* of confidences is itself a signal: the **inductive** claims over wide
-case bases (the C2 extension, the landscape sweep, connectivity) are high; the
+case bases (the landscape sweep, connectivity) are high; the
 **abductive** single-mechanism satisfaction claims (C1, C3, A) are low *and waiting
 on Ch6's empirical anchor*. The architecture is in hand everywhere; the at-scale
 behavioral confirmation is the work that raises the abductive numbers.

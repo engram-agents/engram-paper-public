@@ -312,8 +312,8 @@ def test_form_f_literal_old_string_present_in_real_source():
 FORM_G_ROWS = [
     ("| C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active | dv_0926 0.39 |",
      "| C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active | 0.39 |"),
-    ("| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | dv_0599 0.95 (extension) |",
-     "| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | 0.95 (extension) |"),
+    ("| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | dv_0578 0.59 (strict not met); extension: none, a proposal |",
+     "| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | 0.59 (strict not met); extension: none, a proposal |"),
     # #88 dropped the dv_0605 half of this cell (App B's synthesis node no
     # longer exists as a bare citation) -- was "dv_0606 0.39; dv_0605 0.95".
     ("| C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) | dv_0606 0.39 |",
