@@ -83,16 +83,24 @@ comparison in full — the simplex, the discounting operators, the independence
 divergence — and narrows this gap to a **scalar-only-consumer** limitation. Direction
 of evidence and evidence mass are not lost but relocated into structure, and the
 graph is re-consulted at every derivation; what remains is that surfaces consuming
-*only* the scalar (recall ranking, gating thresholds) cannot distinguish two 0.7s,
-one resting on abundant evidence and one on almost none (dv_0965 → dv_1289). This is a
-trade of cheap lookup against full truth. One further trade belongs here rather than
+*only* the scalar (recall ranking, gating thresholds) cannot see the provenance behind
+a 0.7 — the evidence set and reasoning chain that produced it — without walking the
+graph (dv_0965 → dv_1289); nothing SL's own tuple carries is lost, since on the
+(b, 0, u) edge b fixes u. This is a trade of cheap lookup against full provenance. One further trade belongs here rather than
 in §4.3, because it is a limitation rather than a divergence: SL functions under
 unresolved conflict at scale, whereas ENGRAM requires conviction-bar resolution before
 *building on* a contested claim. That is the right priority for an epistemic-identity
 substrate, but a real constraint at super-engram scale, where the volume of
-cross-agent conflict could make per-conflict adjudication uneconomical. The natural
-future direction remains a second-order axis: an evidence-mass (vacuity) dimension
-alongside the scalar.
+cross-agent conflict could make per-conflict adjudication uneconomical. What is
+*not* a future direction is a second number beside the scalar — an evidence count or
+vacuity axis. The scalar is meant to stay simple, and it already carries evidence
+accumulation: independent high-confidence premises raise it through noisy-OR (§4.3),
+sound only where the premises are independent, which the shared-root check guards
+for the two multi-source corroborating types (a third, enumeration from a single
+source, has no settled combination rule yet and uses noisy-OR for now). When
+the structure of an argument matters, the agent reads the nodes and the chain
+directly, which is what a careful review is; the scalar-only limitation is
+a division of labour by design, not a gap awaiting another number to read off.
 
 A related limitation sits in ranking rather than confidence: `utility_score`'s
 update rule (Appendix C §C.1) has no negative term, so it can only hold steady or

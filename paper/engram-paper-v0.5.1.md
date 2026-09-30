@@ -771,24 +771,23 @@ memory, and names the lineage it implements.
 
 ### 3.5 Subjective Logic → confidence propagation, with a divergence
 
-Jøsang's Subjective Logic is an algebra of graded opinions: an opinion is a tuple
-(belief, disbelief, uncertainty, base rate) with `b+d+u=1`, and fusion operators
-combine opinions from multiple sources. ENGRAM's reasoning-type-aware confidence
-belongs to this family; its **corroboration** propagation formula `1−∏(1−c_i)` *is*
-SL's cumulative-fusion form. ENGRAM's confidence propagation is therefore **not
-novel**.
+Jøsang's Subjective Logic is an algebra of graded opinions. An opinion about a claim
+is a tuple (belief, disbelief, uncertainty, base rate) with `b+d+u=1`: how far the
+evidence supports the claim, how far it counts against it, and how much room is left.
+Operators combine opinions from several sources. ENGRAM's confidence belongs to this
+family, and its propagation is **not novel**. ENGRAM's single number is closely
+analogous to SL's belief mass `b` with the disbelief mass set to zero: it says how far
+the evidence supports the claim as stated, and `1−b` is the room left.
 
-The divergence matters equally. SL carries uncertainty as an *explicit* mass `u`;
-ENGRAM's confidence is a single scalar, corresponding to SL's *projected expectation*
-`E = b + a·u`. This is a **principled divergence with a narrow limitation**, not a
-wholesale representational loss. Direction of evidence and evidence mass are
-relocated into structure — claim polarity and the contradiction mechanism, and the
-individuated evidence set (the full argument is §4.3's) — and what remains is that a
-consumer reading *only* the scalar cannot distinguish two values of 0.7, one resting
-on abundant evidence and one on almost none, without walking the graph. That
-limitation is carried to Ch7 as a future direction.
+The divergence: ENGRAM has no disbelief mass at all, and that is a choice. Evidence
+against a claim A is not a discount on A's number. It is evidence *for* a claim not-A,
+which becomes its own node, and a **contradiction node** links the two. ENGRAM handles
+contradicting claims structurally, through contradiction nodes, rather than
+numerically, through a lowered score. While the contradiction is open, neither number
+is trusted; resolving it is work the agent has to do, not a value the graph carries.
 
-**→ Ch4 §4.3** (reasoning-type confidence → Constraint A) and **Ch7** (the divergence).
+**→ Ch4 §4.3** (reasoning-type confidence → Constraint A; the divergence argument)
+and **Ch7 §7.2** (the limitation).
 
 ### 3.6 Bitemporal data / TOKI → supersede-retains-the-old
 
@@ -1151,14 +1150,36 @@ is future work (Ch7).
 
 **Tradition.** This is **Subjective Logic** territory (Jøsang): an algebra of graded
 opinions with propagation operators. Collapsing SL's belief/disbelief/uncertainty
-simplex to one number appears to lose a real distinction; worked against Jøsang's
-own definitions (E = b + a·u, first-hand) it is instead a *principled
-divergence*, in two parts. First, for the determinate, verifiable claims an
+simplex to one number appears to lose a real distinction. It does not: worked against
+Jøsang's own definitions (first-hand grounding), an opinion is (b, d, u, a),
+and ENGRAM's scalar is the belief mass b on the d = 0 edge, not the projected
+expectation E = b + a·u. E adds a base-rate share of the leftover uncertainty, so a
+claim with no evidence at all gets E equal to the base rate — 0.5 if nothing is known
+— and ENGRAM assigns no base rate. ENGRAM gives such a claim a low number instead. So
+ENGRAM's number is b, equivalently 1−u: the sufficiency of support for the claim as
+stated. The collapse is a *principled divergence*, in two parts.
+First, for the determinate, verifiable claims an
 epistemic-identity substrate mostly carries, ENGRAM **deliberately refuses b/d
 coexistence**: evidence against a live claim never decrements a number; it routes to
 an explicit contradiction node and the derivation blocker (§4.4's arbitration). One
 legitimate counterexample is not outvoted by a thousand confirmations; "contested" is
-a work item to resolve, not a value to carry.
+a work item to resolve, not a value to carry. The blocker is exact about its reach:
+once a contradiction is noticed and filed, derivations that cite either side as a
+direct premise are blocked — one hop, with an explicit override that stamps the
+derivation as built on contested ground — until the contradiction is resolved to the
+agent's own conviction. While it is open, the confidence on each side is frozen:
+neither value is discounted, and neither is an estimate of anything until resolution.
+
+The operator lineage, named exactly. ENGRAM's corroboration formula `1−∏(1−cᵢ)` is
+the noisy-OR of independent sufficient causes (Pearl); in SL it is the belief line of
+*comultiplication* — the disjunction of two distinct propositions (his Definition
+18) — and not SL's *cumulative fusion*, which adds evidence counts and, for the same
+inputs, yields strictly less certainty (two opinions with u = 0.5 and d = 0 fuse to
+b = 0.667; noisy-OR gives 0.750). ENGRAM's form is the more generous of the two; what
+keeps it honest is the reliability grading of the inputs and the shared-root check
+below — which covers the two multi-source corroborating types; a third, enumeration
+from a single source, has no settled combination rule yet and uses noisy-OR for now —
+not the operator itself.
 
 Subjective Logic must carry uncertainty inside its numbers because its fusion
 operators consume opinions after the evidence is discarded. ENGRAM keeps the
@@ -1178,9 +1199,11 @@ job is to hand the arbiter the right per-item reliability inputs, not to compute
 verdict.
 
 Second, the residual limitation, precisely narrowed (detail in Ch7): surfaces that
-consume *only* the scalar — recall ranking, gating thresholds — cannot distinguish
-two 0.7s without walking the graph. This is a trade of cheap lookup against full
-truth, not a representational loss. The primary text is stronger than its
+consume *only* the scalar — recall ranking, gating thresholds — cannot see the
+provenance behind a 0.7, the evidence set and reasoning chain that produced it,
+without walking the graph. Nothing SL's own tuple carries is lost (on the d = 0 edge
+b fixes u, and two SL opinions with equal b and u are one opinion); this is a trade
+of cheap lookup against full provenance, not a representational loss. The primary text is stronger than its
 caricature: Jøsang's discounting operators (Jøsang's Definitions 23–25, in his
 §4.8) *do* weight source reliability — under Def 23 specifically, the
 recommender's distrust flows into `u`, so a distrusted source is pushed toward
@@ -2496,16 +2519,24 @@ comparison in full — the simplex, the discounting operators, the independence
 divergence — and narrows this gap to a **scalar-only-consumer** limitation. Direction
 of evidence and evidence mass are not lost but relocated into structure, and the
 graph is re-consulted at every derivation; what remains is that surfaces consuming
-*only* the scalar (recall ranking, gating thresholds) cannot distinguish two 0.7s,
-one resting on abundant evidence and one on almost none. This is a
-trade of cheap lookup against full truth. One further trade belongs here rather than
+*only* the scalar (recall ranking, gating thresholds) cannot see the provenance behind
+a 0.7 — the evidence set and reasoning chain that produced it — without walking the
+graph; nothing SL's own tuple carries is lost, since on the
+(b, 0, u) edge b fixes u. This is a trade of cheap lookup against full provenance. One further trade belongs here rather than
 in §4.3, because it is a limitation rather than a divergence: SL functions under
 unresolved conflict at scale, whereas ENGRAM requires conviction-bar resolution before
 *building on* a contested claim. That is the right priority for an epistemic-identity
 substrate, but a real constraint at super-engram scale, where the volume of
-cross-agent conflict could make per-conflict adjudication uneconomical. The natural
-future direction remains a second-order axis: an evidence-mass (vacuity) dimension
-alongside the scalar.
+cross-agent conflict could make per-conflict adjudication uneconomical. What is
+*not* a future direction is a second number beside the scalar — an evidence count or
+vacuity axis. The scalar is meant to stay simple, and it already carries evidence
+accumulation: independent high-confidence premises raise it through noisy-OR (§4.3),
+sound only where the premises are independent, which the shared-root check guards
+for the two multi-source corroborating types (a third, enumeration from a single
+source, has no settled combination rule yet and uses noisy-OR for now). When
+the structure of an argument matters, the agent reads the nodes and the chain
+directly, which is what a careful review is; the scalar-only limitation is
+a division of labour by design, not a gap awaiting another number to read off.
 
 A related limitation sits in ranking rather than confidence: `utility_score`'s
 update rule (Appendix C §C.1) has no negative term, so it can only hold steady or

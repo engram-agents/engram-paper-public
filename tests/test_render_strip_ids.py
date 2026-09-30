@@ -239,9 +239,9 @@ def test_form_d_id_context_paren_removed():
 
 def test_form_e_word_before_id():
     # ch4.md:110
-    text_in = "own definitions (E = b + a·u, first-hand ob_2551) it is instead"
+    text_in = "own definitions (first-hand grounding, ob_2551) — an opinion is"
     text, n = strip_provenance_ids("ch4.md", text_in)
-    assert text == "own definitions (E = b + a·u, first-hand) it is instead"
+    assert text == "own definitions (first-hand grounding) — an opinion is"
     assert n == 1
 
 
@@ -273,7 +273,7 @@ def test_form_e_id_followed_by_more_words():
 @pytest.mark.parametrize(
     "name,old_snippet",
     [
-        ("ch4.md", "(E = b + a·u, first-hand ob_2551)"),
+        ("ch4.md", "(first-hand grounding, ob_2551)"),
         ("ch4.md", "not ground truth — gl_0025)"),
         ("appendix_D_relational_identity.md", "`is_self` node — pn_0004 in this graph)"),
     ],

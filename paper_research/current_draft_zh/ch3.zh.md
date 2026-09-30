@@ -25,8 +25,9 @@
   心迹 or ENGRAM is an OPEN question for Lei, not a settled rule. Flagged for the reviewer.
 
   QUOTED ENGLISH IS TRANSLATED, following ch1.zh.md's practice (it renders Pink et al.'s
-  "understudied" quote and Wray et al.'s "not yet adopted" quote in Chinese). The three
-  exceptions kept verbatim are the formulas `b+d+u=1`, `1−∏(1−c_i)` and `E = b + a·u`.
+  "understudied" quote and Wray et al.'s "not yet adopted" quote in Chinese). The two
+  exceptions kept verbatim are the formulas `b+d+u=1` and `1−b` (the `1−∏(1−cᵢ)` and
+  `E = b + a·u` discussion moved to ch4 §4.3 on 2026-09-29).
   A reviewer who wants the quotations verbatim-checkable against the cited sources should
   read them in the English source.
 
@@ -40,6 +41,8 @@
       (both already ship in ch1.zh.md, §1.4)
     - "justification" (Doyle) -> 辩护;  "graded opinions" (SL) -> 分档意见
     - "corroboration" (the propagation formula) -> 佐证
+    - §3.5 (2026-09-29 rewrite): "belief mass" -> 信任量 · "contradiction node" -> 矛盾节点
+      (共乘 / 噪声或 now live in ch4.zh.md §4.3, where that discussion moved)
     - "autonoetic" -> 自我觉知, "noetic" -> 知晓, each with the Latin on first use in §3.2,
       because §3.8 turns on the word carrying two senses
     - "ambient" (hook / surface / recall) -> 常驻, kept distinct from 自动浮现 (auto-surface,
@@ -108,11 +111,11 @@ ENGRAM 按设计遗忘：回忆重要性衰减，维持一个有界的**可查�
 
 ### 3.5 主观逻辑 → 置信度传播，以及一处分歧
 
-Jøsang 的主观逻辑（Subjective Logic）是一套分档意见的代数：一个意见是一个四元组（信任 belief、不信任 disbelief、不确定性 uncertainty、基率 base rate），满足 `b+d+u=1`；融合算子把来自多个来源的意见合并起来。ENGRAM 那种顾及推理类型的置信度属于这一族；它的**佐证**传播公式 `1−∏(1−c_i)` *就是* SL 的累积融合形式。因此 ENGRAM 的置信度传播**并不新颖**。
+Jøsang 的主观逻辑（Subjective Logic）是一套分档意见的代数。关于一项主张的一个意见是一个四元组（信任 belief、不信任 disbelief、不确定性 uncertainty、基率 base rate），满足 `b+d+u=1`：证据在多大程度上支持这项主张，在多大程度上反对它，还留下多少余地。算子把来自多个来源的意见合并起来。ENGRAM 的置信度属于这一族，它的传播也**并不新颖**。ENGRAM 的那个单一数字，与 SL 中不信任量取零时的信任量 `b` 非常接近：它说的是证据在多大程度上支持如其所陈述的这项主张，而 `1−b` 是余下的余地。
 
-分歧同样要紧。SL 把不确定性作为一个*显式*的量 `u` 携带；ENGRAM 的置信度是一个单一标量，对应 SL 的*投影期望* `E = b + a·u`。这是一处**有原则的分歧，带一个狭窄的局限**，而不是全盘的表示力损失。证据的方向与证据的量被迁移进结构——主张的极性、矛盾机制，以及那个个体化的证据集（完整论证见 §4.3）——而剩下的是：只读那个标量的消费者无法区分两个 0.7，一个立于充足的证据之上，一个几乎无所凭依，除非它去走一遍图谱。这一局限被带到第 7 章，作为一个未来方向。
+分歧在于：ENGRAM 根本没有不信任量，而这是一个选择。针对主张 A 的反面证据，不是对 A 的数字打的一个折扣。它是*支持*主张"非 A"的证据，"非 A"成为它自己的一个节点，而一个**矛盾节点**把两者连起来。ENGRAM 在结构上、通过矛盾节点来处理相互矛盾的主张，而不是在数值上、通过一个被压低的分数。矛盾未决期间，哪一方的数字都不被信任；解决它是智能体必须去做的一件事，而不是图谱携带的一个取值。
 
-**→ 第 4 章 §4.3**（顾及推理类型的置信度 → 约束 A）与**第 7 章**（那处分歧）。[GROUNDED this session]
+**→ 第 4 章 §4.3**（顾及推理类型的置信度 → 约束 A；那处分歧的论证）与**第 7 章 §7.2**（那一局限）。[GROUNDED this session]
 
 ### 3.6 双时态数据／TOKI → 取代而保留旧值
 

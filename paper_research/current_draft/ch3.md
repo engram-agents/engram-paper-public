@@ -120,24 +120,23 @@ SOLID ob_1571; mechanism first-hand from Doyle 1979 via the Ginsberg reprint —
 
 ### 3.5 Subjective Logic → confidence propagation, with a divergence
 
-Jøsang's Subjective Logic is an algebra of graded opinions: an opinion is a tuple
-(belief, disbelief, uncertainty, base rate) with `b+d+u=1`, and fusion operators
-combine opinions from multiple sources. ENGRAM's reasoning-type-aware confidence
-belongs to this family; its **corroboration** propagation formula `1−∏(1−c_i)` *is*
-SL's cumulative-fusion form. ENGRAM's confidence propagation is therefore **not
-novel** (ob_2551).
+Jøsang's Subjective Logic is an algebra of graded opinions. An opinion about a claim
+is a tuple (belief, disbelief, uncertainty, base rate) with `b+d+u=1`: how far the
+evidence supports the claim, how far it counts against it, and how much room is left.
+Operators combine opinions from several sources. ENGRAM's confidence belongs to this
+family, and its propagation is **not novel**. ENGRAM's single number is closely
+analogous to SL's belief mass `b` with the disbelief mass set to zero: it says how far
+the evidence supports the claim as stated, and `1−b` is the room left.
 
-The divergence matters equally. SL carries uncertainty as an *explicit* mass `u`;
-ENGRAM's confidence is a single scalar, corresponding to SL's *projected expectation*
-`E = b + a·u`. This is a **principled divergence with a narrow limitation**, not a
-wholesale representational loss. Direction of evidence and evidence mass are
-relocated into structure — claim polarity and the contradiction mechanism, and the
-individuated evidence set (the full argument is §4.3's) — and what remains is that a
-consumer reading *only* the scalar cannot distinguish two values of 0.7, one resting
-on abundant evidence and one on almost none, without walking the graph. That
-limitation is carried to Ch7 as a future direction.
+The divergence: ENGRAM has no disbelief mass at all, and that is a choice. Evidence
+against a claim A is not a discount on A's number. It is evidence *for* a claim not-A,
+which becomes its own node, and a **contradiction node** links the two. ENGRAM handles
+contradicting claims structurally, through contradiction nodes, rather than
+numerically, through a lowered score. While the contradiction is open, neither number
+is trusted; resolving it is work the agent has to do, not a value the graph carries.
 
-**→ Ch4 §4.3** (reasoning-type confidence → Constraint A) and **Ch7** (the divergence).
+**→ Ch4 §4.3** (reasoning-type confidence → Constraint A; the divergence argument)
+and **Ch7 §7.2** (the limitation).
 [GROUNDED this session]
 
 ### 3.6 Bitemporal data / TOKI → supersede-retains-the-old

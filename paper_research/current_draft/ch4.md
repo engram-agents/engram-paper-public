@@ -115,14 +115,36 @@ is future work (Ch7).
 
 **Tradition.** This is **Subjective Logic** territory (Jøsang): an algebra of graded
 opinions with propagation operators. Collapsing SL's belief/disbelief/uncertainty
-simplex to one number appears to lose a real distinction; worked against Jøsang's
-own definitions (E = b + a·u, first-hand ob_2551) it is instead a *principled
-divergence*, in two parts. First, for the determinate, verifiable claims an
+simplex to one number appears to lose a real distinction. It does not: worked against
+Jøsang's own definitions (first-hand grounding, ob_2551), an opinion is (b, d, u, a),
+and ENGRAM's scalar is the belief mass b on the d = 0 edge, not the projected
+expectation E = b + a·u. E adds a base-rate share of the leftover uncertainty, so a
+claim with no evidence at all gets E equal to the base rate — 0.5 if nothing is known
+— and ENGRAM assigns no base rate. ENGRAM gives such a claim a low number instead. So
+ENGRAM's number is b, equivalently 1−u: the sufficiency of support for the claim as
+stated. The collapse is a *principled divergence*, in two parts.
+First, for the determinate, verifiable claims an
 epistemic-identity substrate mostly carries, ENGRAM **deliberately refuses b/d
 coexistence**: evidence against a live claim never decrements a number; it routes to
 an explicit contradiction node and the derivation blocker (§4.4's arbitration). One
 legitimate counterexample is not outvoted by a thousand confirmations; "contested" is
-a work item to resolve, not a value to carry.
+a work item to resolve, not a value to carry. The blocker is exact about its reach:
+once a contradiction is noticed and filed, derivations that cite either side as a
+direct premise are blocked — one hop, with an explicit override that stamps the
+derivation as built on contested ground — until the contradiction is resolved to the
+agent's own conviction. While it is open, the confidence on each side is frozen:
+neither value is discounted, and neither is an estimate of anything until resolution.
+
+The operator lineage, named exactly. ENGRAM's corroboration formula `1−∏(1−cᵢ)` is
+the noisy-OR of independent sufficient causes (Pearl); in SL it is the belief line of
+*comultiplication* — the disjunction of two distinct propositions (his Definition
+18) — and not SL's *cumulative fusion*, which adds evidence counts and, for the same
+inputs, yields strictly less certainty (two opinions with u = 0.5 and d = 0 fuse to
+b = 0.667; noisy-OR gives 0.750). ENGRAM's form is the more generous of the two; what
+keeps it honest is the reliability grading of the inputs and the shared-root check
+below — which covers the two multi-source corroborating types; a third, enumeration
+from a single source, has no settled combination rule yet and uses noisy-OR for now —
+not the operator itself.
 
 Subjective Logic must carry uncertainty inside its numbers because its fusion
 operators consume opinions after the evidence is discarded. ENGRAM keeps the
@@ -142,9 +164,11 @@ job is to hand the arbiter the right per-item reliability inputs, not to compute
 verdict.
 
 Second, the residual limitation, precisely narrowed (detail in Ch7): surfaces that
-consume *only* the scalar — recall ranking, gating thresholds — cannot distinguish
-two 0.7s without walking the graph. This is a trade of cheap lookup against full
-truth, not a representational loss. The primary text is stronger than its
+consume *only* the scalar — recall ranking, gating thresholds — cannot see the
+provenance behind a 0.7, the evidence set and reasoning chain that produced it,
+without walking the graph. Nothing SL's own tuple carries is lost (on the d = 0 edge
+b fixes u, and two SL opinions with equal b and u are one opinion); this is a trade
+of cheap lookup against full provenance, not a representational loss. The primary text is stronger than its
 caricature: Jøsang's discounting operators (Jøsang's Definitions 23–25, in his
 §4.8) *do* weight source reliability — under Def 23 specifically, the
 recommender's distrust flows into `u`, so a distrusted source is pushed toward

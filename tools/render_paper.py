@@ -532,7 +532,7 @@ _LITERAL_STRIPS: dict[str, list[tuple[str, str]]] = {
          " the paper's reading of that\nsource is filed)", ""),
     ],
     "ch4.md": [
-        ("(E = b + a·u, first-hand ob_2551)", "(E = b + a·u, first-hand)"),
+        ("(first-hand grounding, ob_2551)", "(first-hand grounding)"),
         ("not ground truth — gl_0025)", "not ground truth)"),
         ("The 0.39 on\ndv_0606 is the *abductive* confidence",
          "The 0.39 is the *abductive* confidence"),
