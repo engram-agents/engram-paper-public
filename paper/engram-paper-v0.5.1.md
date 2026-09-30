@@ -1252,6 +1252,11 @@ identity-forming nodes, which accumulate votes over many exemplars rather than
 depending on a single premise as an ordinary derivation does. The agent does not
 invoke the cascade; it fires as a property of the substrate.
 
+This marking is the first of **two separate processes**, and the paper keeps them
+apart. **Propagation** is automatic: it runs after every retraction and supersede,
+reaches every dependent however far downstream, and decides nothing. **Resolution**
+is the agent's: it settles the marked claims one at a time, and is described below.
+
 **One marker, not two severities.** It is tempting to grade the mark by its cause,
 treating a retraction's consequences as harder-blocking than a supersede's. A diamond
 shows why that fails: if `D` rests on both `B` and `C`, and both rest on retracted
@@ -1280,10 +1285,10 @@ made, and meanwhile refuses to let the graph compound on the disputed claim: it
 cannot**, a sharper reading of Condition 3's self-maintaining arbitration than
 pre-marking both sides would be.
 
-Resolving the dispute does not, by itself, start a cascade either. Recording a
-resolution wires a `resolves` edge and recomputes the disputed node's status; it
+Settling the dispute does not, by itself, start a cascade either. Recording the
+settlement wires a `resolves` edge and recomputes the disputed node's status; it
 issues no retraction and no supersede. If the losing side is then withdrawn, that is
-a **separate** act by the agent, and it is *that* act, not the resolution, which
+a **separate** act by the agent, and it is *that* act, not the settlement, which
 propagates. The distinction matters for the paper's central claim: the substrate
 automates the *consequences* of a withdrawal completely, and automates the
 *decision* to withdraw not at all.
@@ -1317,10 +1322,24 @@ without an intentional reach.
 But surfacing is relevance-gated: it shows a marked node when that node is topically
 relevant to what the agent is doing, which is the right behaviour for attention and
 the wrong behaviour for a backlog. A mark on a node the agent never touches again
-would sit indefinitely. A third mechanism closes the loop: the **cascade machine**,
-which during each consolidation cycle computes the *frontier* (every node carrying a
-pending marker, none of whose cascade-ancestors is still pending) and walks it,
-repeatedly, until no pending marker remains. Working the frontier rather than a
+would sit indefinitely. A third mechanism closes the loop. It is **resolution**, the second
+process, and the agent drives it through the **cascade machine**. The machine computes
+the *frontier*: every pending claim that no longer rests on anything still pending.
+The agent settles frontier claims one at a time, as *retracted* (the argument is
+broken), *superseded* (the claim survives in a named successor) or *acknowledged* (the
+premise moved and the claim still holds; not available if a direct premise was
+retracted). One case needs no judgement: if every premise the change reached was
+acknowledged, nothing actually changed, so the machine acknowledges the claim itself. Resolution comes in two scopes. A **full** resolution,
+run in each consolidation cycle, walks the whole frontier repeatedly until no pending
+marker remains. A **partial** resolution targets one claim: it settles only the
+pending claims that claim rests on, which is the smallest set blocking it, and then
+the claim itself. An agent that needs one premise now does not have to clear the whole
+backlog first. Either way, settling a claim never starts a new derivation cascade: its
+dependents were already marked when the original retraction or supersede fired, and
+they simply reach the frontier in turn. There is one narrow exception. If the settled
+claim is retracted or superseded and has contradictions filed against it, those
+contradictions are marked for review, so the frontier can grow during a walk. That is
+why the full walk repeats until nothing is pending. Working the frontier rather than a
 queue is what makes the order safe: a node is never adjudicated while something it
 depends on is still unsettled, and because the frontier is recomputed from marker
 state on every call rather than stored, the walk resumes identically after a crash,
@@ -1328,7 +1347,7 @@ a compaction, or a week's gap. There is no queue that can disagree with the grap
 because there is only the graph.
 
 *Auto-cascade* produces the state; *auto-surfacing* shows it when it is relevant;
-*sleep-time adjudication* guarantees it is eventually faced. We call the conjunction
+*full resolution at consolidation time* guarantees it is eventually faced. We call the conjunction
 **operational binding**.
 
 The machine deliberately stops short of deciding what is true. It determines what
@@ -1377,32 +1396,47 @@ Ch6. We claim the architecture; we do not yet claim the benchmark.
 
 ```mermaid
 flowchart TD
-    A["A claim is withdrawn<br/><b>retract</b> (never valid) or<br/><b>supersede</b> (was valid, now updated)"]
-    A --> B{"Walk the two<br/>cascade-bearing relations"}
-    B -->|derives_from| C["Every live dependent claim<br/>is marked <b>pending</b>"]
+    A["The agent <b>retracts</b> a claim (never valid)<br/>or <b>supersedes</b> it (was valid, now updated)"]
+    A --> B{"One walk downstream along the<br/>cascade-bearing relations,<br/>as far as they reach"}
+    B -->|derives_from| C["Every live claim-bearing dependent<br/>gets one <b>pending</b> marker:<br/>no severity, only which operation fired"]
     B -->|acknowledged_derives_from| C
-    B -.->|supported_by is NOT walked| X["Cornerstones and lessons<br/>are never marked:<br/>non-claim-bearing, and their<br/>exemplar edges are not traversed"]
-    C --> D["Pending markers carry<br/>no severity — the substrate<br/>does not pre-judge the damage"]
-    D --> E["<b>Auto-surfacing:</b> a marked claim<br/>is put back in front of the agent<br/>when it next becomes relevant"]
-    D --> F["<b>Consolidation sweep:</b> every marked claim<br/>is driven to a decision even if it<br/>never becomes relevant"]
-    E --> G{"Agent adjudicates<br/>at the frontier"}
-    F --> G
-    G -->|acknowledged| H["Premise moved,<br/>conclusion still holds"]
-    G -->|superseded| I["Replaced by a<br/>named successor"]
-    G -->|retracted| J["Withdrawn in turn —<br/>cascade continues downstream"]
-    J --> B
+    B -.->|supported_by is NOT walked| X["Cornerstones and lessons<br/>are never marked"]
+    C --> D["A pending claim cannot be cited<br/>as a premise until it is resolved"]
+    D -.-> S["<b>Auto-surfacing</b> shows a marked claim<br/>when it next becomes relevant.<br/>A reminder: it resolves nothing"]
 
     style A fill:#f6ece8,stroke:#b3593f
     style X fill:#f3f3f3,stroke:#8a8a8a,color:#555
+    style S fill:#f3f3f3,stroke:#8a8a8a,color:#555
+```
+
+**Diagram 1.** Cascade propagation in ENGRAM v0.5.1. It runs automatically, once, at the
+moment of a retraction or supersede: a single walk marks every dependent downstream,
+however far, and decides nothing. Marking is an automatic state change, not an advisory
+note the agent may consult.
+
+```mermaid
+flowchart TD
+    F["<b>Full resolution</b>: each consolidation (sleep)<br/>cycle walks the whole frontier<br/>until no marker is left"]
+    T["<b>Partial resolution</b>: to unblock one claim now,<br/>settle only the pending claims it rests on,<br/>then the claim itself"]
+    F --> G{"The agent settles a <b>frontier</b> claim:<br/>pending, with nothing pending<br/>above it"}
+    T --> G
+    G -->|retracted| R["The argument<br/>is broken"]
+    G -->|superseded| U["The claim survives in<br/>a named successor"]
+    G -->|acknowledged| K["Premise moved, claim still holds<br/>(not available if a direct<br/>premise was retracted; automatic<br/>if every premise the change reached<br/>was acknowledged)"]
+    R --> N["Confidence is recomputed.<br/>No new derivation cascade"]
+    U --> N
+    K --> N
+    N -.->|next frontier claim| G
+
     style G fill:#e9f1f4,stroke:#1f6f8b
 ```
 
-**Diagram 1.** The retraction cascade in ENGRAM v0.5.1. Two things distinguish it
-from detection-only conflict reporting. First, marking is *automatic state change*
-rather than an advisory note the agent may consult. Second, the pairing of
-auto-surfacing with a consolidation-time sweep means a marked claim is resolved
-whether or not anyone remembers to look for it — detection without that binding
-leaves the correction optional.
+**Diagram 2.** Cascade resolution, a separate process that runs later: in full during the
+consolidation (sleep) cycle, or partially whenever the agent needs one claim settled now.
+It settles the marked claims from the top down. Settling a claim never starts a new
+derivation cascade, because its dependents were already marked by the walk in Diagram 1;
+they simply reach the frontier in turn. The consolidation walk means every mark is
+eventually faced, whether or not anyone remembers to look for it.
 
 ## 4.5 Forgetting → it defines what arbitration ranges over
 

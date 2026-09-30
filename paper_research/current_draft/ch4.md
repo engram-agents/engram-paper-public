@@ -217,6 +217,11 @@ identity-forming nodes, which accumulate votes over many exemplars rather than
 depending on a single premise as an ordinary derivation does. The agent does not
 invoke the cascade; it fires as a property of the substrate.
 
+This marking is the first of **two separate processes**, and the paper keeps them
+apart. **Propagation** is automatic: it runs after every retraction and supersede,
+reaches every dependent however far downstream, and decides nothing. **Resolution**
+is the agent's: it settles the marked claims one at a time, and is described below.
+
 **One marker, not two severities.** It is tempting to grade the mark by its cause,
 treating a retraction's consequences as harder-blocking than a supersede's. A diamond
 shows why that fails: if `D` rests on both `B` and `C`, and both rest on retracted
@@ -246,10 +251,10 @@ made, and meanwhile refuses to let the graph compound on the disputed claim: it
 cannot**, a sharper reading of Condition 3's self-maintaining arbitration than
 pre-marking both sides would be.
 
-Resolving the dispute does not, by itself, start a cascade either. Recording a
-resolution wires a `resolves` edge and recomputes the disputed node's status; it
+Settling the dispute does not, by itself, start a cascade either. Recording the
+settlement wires a `resolves` edge and recomputes the disputed node's status; it
 issues no retraction and no supersede. If the losing side is then withdrawn, that is
-a **separate** act by the agent, and it is *that* act, not the resolution, which
+a **separate** act by the agent, and it is *that* act, not the settlement, which
 propagates. The distinction matters for the paper's central claim: the substrate
 automates the *consequences* of a withdrawal completely, and automates the
 *decision* to withdraw not at all.
@@ -285,10 +290,24 @@ without an intentional reach.
 But surfacing is relevance-gated: it shows a marked node when that node is topically
 relevant to what the agent is doing, which is the right behaviour for attention and
 the wrong behaviour for a backlog. A mark on a node the agent never touches again
-would sit indefinitely. A third mechanism closes the loop: the **cascade machine**,
-which during each consolidation cycle computes the *frontier* (every node carrying a
-pending marker, none of whose cascade-ancestors is still pending) and walks it,
-repeatedly, until no pending marker remains. Working the frontier rather than a
+would sit indefinitely. A third mechanism closes the loop. It is **resolution**, the second
+process, and the agent drives it through the **cascade machine**. The machine computes
+the *frontier*: every pending claim that no longer rests on anything still pending.
+The agent settles frontier claims one at a time, as *retracted* (the argument is
+broken), *superseded* (the claim survives in a named successor) or *acknowledged* (the
+premise moved and the claim still holds; not available if a direct premise was
+retracted). One case needs no judgement: if every premise the change reached was
+acknowledged, nothing actually changed, so the machine acknowledges the claim itself. Resolution comes in two scopes. A **full** resolution,
+run in each consolidation cycle, walks the whole frontier repeatedly until no pending
+marker remains. A **partial** resolution targets one claim: it settles only the
+pending claims that claim rests on, which is the smallest set blocking it, and then
+the claim itself. An agent that needs one premise now does not have to clear the whole
+backlog first. Either way, settling a claim never starts a new derivation cascade: its
+dependents were already marked when the original retraction or supersede fired, and
+they simply reach the frontier in turn. There is one narrow exception. If the settled
+claim is retracted or superseded and has contradictions filed against it, those
+contradictions are marked for review, so the frontier can grow during a walk. That is
+why the full walk repeats until nothing is pending. Working the frontier rather than a
 queue is what makes the order safe: a node is never adjudicated while something it
 depends on is still unsettled, and because the frontier is recomputed from marker
 state on every call rather than stored, the walk resumes identically after a crash,
@@ -296,7 +315,7 @@ a compaction, or a week's gap. There is no queue that can disagree with the grap
 because there is only the graph.
 
 *Auto-cascade* produces the state; *auto-surfacing* shows it when it is relevant;
-*sleep-time adjudication* guarantees it is eventually faced. We call the conjunction
+*full resolution at consolidation time* guarantees it is eventually faced. We call the conjunction
 **operational binding** (dv_0612).
 
 The machine deliberately stops short of deciding what is true. It determines what
