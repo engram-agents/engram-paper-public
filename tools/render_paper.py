@@ -315,7 +315,7 @@ INSERTS: list[tuple[str, str, str]] = [
              "layer (705 derivations) to about 0.4 at twelve to fourteen layers (17 "
              "derivations); the deepest layers hold one node each, too few to read a trend. "
              "The spread at every depth is wide: at depth 1 alone it runs from about 0.2 to "
-             "0.98. The annotated point is the six-layer chain worked through in §6.4 (0.10). "
+             "0.98. The annotated point is the six-layer chain worked through in §6.4, at 0.10. "
              "Depth costs something on average; the kind of argument sets an individual "
              "claim's number (Figure 2)."),
     ),
@@ -372,7 +372,7 @@ INSERTS_ZH: list[tuple[str, str, str]] = [
              "平均置信度随深度下降，从一层的 0.72（705 条推导）降到十二至十四层的约 0.4"
              "（17 条推导）；最深的几层每条只含一个节点，少到读不出趋势。每一深度上的"
              "跨度都很宽：仅在第 1 层，就从约 0.2 延伸到 0.98。被标注的那一点是 §6.4 中"
-             "走通的六层链条（0.10）。深度平均而言有代价；而一条主张的具体数字由论证的"
+             "走通的六层链条，置信度为 0.10。深度平均而言有代价；而一条主张的具体数字由论证的"
              "种类决定（图 2）。",
              label="图"),
     ),
