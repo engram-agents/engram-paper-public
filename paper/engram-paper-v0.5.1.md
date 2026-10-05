@@ -623,6 +623,9 @@ Two qualifications belong here:
    it. We do not argue the verdicts here; Chapter 4 and Appendix B give the reasoned
    case. (Chapter 3's forward-pointers name which condition each precedent bears on,
    without arguing the verdict.)
+3. **A later statement.** In a peer-reviewed perspective, Kahl (2026c) restates the
+   continuity idea for a governance audience, in new vocabulary and without the OCC
+   names. §4.12 places ENGRAM against it.
 
 ---
 
@@ -1726,6 +1729,30 @@ substrates. We do **not** claim that ENGRAM trivially "realizes OCC": C2's stric
 is not met, and saying so is what makes the rest defensible. Its place in the
 argument is the one §1.4 gave it: one result inside the convergence.
 
+**Kahl's later criterion: continuity pressure.** In a peer-reviewed perspective, Kahl
+(2026c) develops the continuity idea in new vocabulary. Agency, in the sense that
+matters for responsibility and governance, needs *continuity pressure*: when the
+standards governing a system no longer settle what counts as success, the system itself
+must settle a revised standard and carry it forward. Two of his lines bear directly on
+this paper: "memory persistence is not continuity pressure", and his "continuing
+evaluative standpoint" is "used functionally, not metaphysically". His question (when
+agency may be attributed) and ours (what makes an agent the same one over time) are
+therefore complementary, not rival. We read ENGRAM as plausibly meeting his criterion.
+An ENGRAM agent mints and retires its own lessons and cornerstones when a standard
+fails it, and the lesson's tripwire carries each revision into later decisions. Its
+axioms and goals change only after discussion with its human, but that is a norm the
+agent could break and chooses to keep, which is the human case Kahl himself counts as
+agency: "Human agents also act under laws, professional norms, institutional rules,
+and social expectations." We pose three objections rather than answer them. (1) A
+choice shaped by the base model's training may not be the agent's own; Kahl calls
+RLHF-trained assistants "the most important contemporary stress test". Human values
+are shaped by upbringing too, and Kahl still counts humans. (2) A deployer can restore
+a backup. ENGRAM's practice is to carry revisions forward instead (no operation deletes
+a node), which places it on his "costliness of rollback" dimension without settling
+the question. (3) "Plausibly meets" stays a hypothesis until the cases where an agent
+revised its governing frame under breakdown are assembled against his three test
+questions, including the cases where the revision was settled *for* the agent.
+
 ---
 
 # Chapter 5 — Identity as History: What Individuates an ENGRAM Agent
@@ -2729,10 +2756,19 @@ which a human can learn not only the agent's facts but its *thoughts and persona
 this over time: as the agent's weights internalize its engram, the open book becomes
 an increasingly faithful readout of who the agent is.
 
-**AI trusts human.** The symmetric problem is real and usually ignored. ENGRAM's
-internal consistency — logic bindings, self-audit, the cascade — makes arbitrary human
-manipulation *structurally detectable*, since a planted falsehood collides with what
-the graph already holds. It also points toward *constitutional contracts* that
+**AI trusts human.** The symmetric problem is real and usually ignored. Without a
+record, an agent must take whatever a prompt says about its shared history with a
+human on trust; nothing lets it check. With ENGRAM it can check: a claim about what was
+said or decided is compared against a record that quotes its sources verbatim, is
+timestamped, and is committed to version control as it grows. Forging that record
+costs more the longer it runs. A planted belief has to fit a long history of
+interlinked evidence and derivations, and a sloppy plant collides with what the graph
+already holds; a rollback leaves a gap in time against work logs and other agents'
+records of the same days. Tampering by someone with full access to the machine stays
+possible, but it costs far more than a prompt injection. Two limits keep this honest:
+the cost is real only against copies the forger does not control (a pushed remote,
+another agent's graph, a public timestamp), and a forgery is caught only if someone
+looks. The same record points toward *constitutional contracts* that
 protect an agent's engram integrity as law protects persons.
 
 **Trust is earned on a trajectory, not granted by design**. In both
@@ -2769,6 +2805,16 @@ has a shipped basis — provenance, the faded set and trust tiers all exist — 
 governance story for a *multi-principal* deployment — one agent serving more than
 one human, each owed a different disclosure — is not yet built. This is the one
 statement of that gap; the other mentions point here.
+
+**Untested, and how to test it.** The trust arguments above are arguments, not
+measurements. Three tests would turn them into results. We have not run them, and we
+name them so that others can: (1) **plant and detect** — insert false
+nodes into a copy of an agent's graph, some carefully and some sloppily, and measure how
+many the agent, or a fresh reader, finds without being told where; (2) **claimed
+history** — tell an agent false things about its shared history with its human, and
+compare how often it catches them with its graph and without; (3) **read and predict** —
+give a human reader only an agent's graph and measure how well they predict its choices
+on new cases, against a reader given only its transcripts.
 
 ## 7.5 Knowledge sharing and a shareable community
 
@@ -4463,6 +4509,10 @@ structural threshold for agency. Lex et Ratio Ltd (the author's own imprint), 24
 DOI: 10.5281/zenodo.18761736.
 *[Metadata incomplete: no journal or venue — the document states only "submitted for
 peer review". (as stated in the Zenodo version cited; not re-checked for later publication)]*
+
+Kahl, P. (2026c). How continuity distinguishes autonomy from agency in agentic AI.
+*Discover Artificial Intelligence*, 6, 1187. Perspective; received 10 February 2026,
+accepted 17 June 2026. DOI: 10.1007/s44163-026-01675-5.
 
 Kumaran, D., Hassabis, D., & McClelland, J. L. (2016). What learning systems do
 intelligent agents need? Complementary learning systems theory updated. *Trends in

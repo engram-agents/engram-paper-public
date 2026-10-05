@@ -226,10 +226,19 @@ which a human can learn not only the agent's facts but its *thoughts and persona
 this over time: as the agent's weights internalize its engram, the open book becomes
 an increasingly faithful readout of who the agent is.
 
-**AI trusts human.** The symmetric problem is real and usually ignored. ENGRAM's
-internal consistency — logic bindings, self-audit, the cascade — makes arbitrary human
-manipulation *structurally detectable*, since a planted falsehood collides with what
-the graph already holds. It also points toward *constitutional contracts* that
+**AI trusts human.** The symmetric problem is real and usually ignored. Without a
+record, an agent must take whatever a prompt says about its shared history with a
+human on trust; nothing lets it check. With ENGRAM it can check: a claim about what was
+said or decided is compared against a record that quotes its sources verbatim, is
+timestamped, and is committed to version control as it grows. Forging that record
+costs more the longer it runs. A planted belief has to fit a long history of
+interlinked evidence and derivations, and a sloppy plant collides with what the graph
+already holds; a rollback leaves a gap in time against work logs and other agents'
+records of the same days. Tampering by someone with full access to the machine stays
+possible, but it costs far more than a prompt injection. Two limits keep this honest:
+the cost is real only against copies the forger does not control (a pushed remote,
+another agent's graph, a public timestamp), and a forgery is caught only if someone
+looks (ob_5662, ob_5663). The same record points toward *constitutional contracts* that
 protect an agent's engram integrity as law protects persons (ob_1181, ob_1182).
 
 **Trust is earned on a trajectory, not granted by design** (ob_1179, dv_0486). In both
@@ -267,6 +276,16 @@ has a shipped basis — provenance, the faded set and trust tiers all exist — 
 governance story for a *multi-principal* deployment — one agent serving more than
 one human, each owed a different disclosure — is not yet built. This is the one
 statement of that gap; the other mentions point here.
+
+**Untested, and how to test it.** The trust arguments above are arguments, not
+measurements. Three tests would turn them into results. We have not run them, and we
+name them so that others can (ob_5663, ob_5664): (1) **plant and detect** — insert false
+nodes into a copy of an agent's graph, some carefully and some sloppily, and measure how
+many the agent, or a fresh reader, finds without being told where; (2) **claimed
+history** — tell an agent false things about its shared history with its human, and
+compare how often it catches them with its graph and without; (3) **read and predict** —
+give a human reader only an agent's graph and measure how well they predict its choices
+on new cases, against a reader given only its transcripts.
 
 ## 7.5 Knowledge sharing and a shareable community
 

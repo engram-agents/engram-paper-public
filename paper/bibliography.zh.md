@@ -75,6 +75,10 @@ structural threshold for agency. Lex et Ratio Ltd (the author's own imprint), 24
 DOI: 10.5281/zenodo.18761736.
 *[元数据不全：无期刊或发表场合 —— 该文档只声明 "submitted for peer review"。（系据所引的 Zenodo 版本所述；未就此后是否发表再作核查）]*
 
+Kahl, P. (2026c). How continuity distinguishes autonomy from agency in agentic AI.
+*Discover Artificial Intelligence*, 6, 1187. Perspective（观点文章）；2026 年 2 月 10 日收稿，
+2026 年 6 月 17 日接受。DOI: 10.1007/s44163-026-01675-5.
+
 Kumaran, D., Hassabis, D., & McClelland, J. L. (2016). What learning systems do
 intelligent agents need? Complementary learning systems theory updated. *Trends in
 Cognitive Sciences*, 20(7), 512–534. DOI: 10.1016/j.tics.2016.05.004.

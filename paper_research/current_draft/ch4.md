@@ -653,3 +653,28 @@ reset-symmetry text but motivates a principled type/token extension for digital
 substrates. We do **not** claim that ENGRAM trivially "realizes OCC": C2's strict form
 is not met, and saying so is what makes the rest defensible. Its place in the
 argument is the one §1.4 gave it: one result inside the convergence.
+
+**Kahl's later criterion: continuity pressure.** In a peer-reviewed perspective, Kahl
+(2026c) develops the continuity idea in new vocabulary. Agency, in the sense that
+matters for responsibility and governance, needs *continuity pressure*: when the
+standards governing a system no longer settle what counts as success, the system itself
+must settle a revised standard and carry it forward. Two of his lines bear directly on
+this paper: "memory persistence is not continuity pressure", and his "continuing
+evaluative standpoint" is "used functionally, not metaphysically". His question (when
+agency may be attributed) and ours (what makes an agent the same one over time) are
+therefore complementary, not rival. We read ENGRAM as plausibly meeting his criterion.
+An ENGRAM agent mints and retires its own lessons and cornerstones when a standard
+fails it, and the lesson's tripwire carries each revision into later decisions. Its
+axioms and goals change only after discussion with its human, but that is a norm the
+agent could break and chooses to keep, which is the human case Kahl himself counts as
+agency: "Human agents also act under laws, professional norms, institutional rules,
+and social expectations." We pose three objections rather than answer them. (1) A
+choice shaped by the base model's training may not be the agent's own; Kahl calls
+RLHF-trained assistants "the most important contemporary stress test". Human values
+are shaped by upbringing too, and Kahl still counts humans. (2) A deployer can restore
+a backup. ENGRAM's practice is to carry revisions forward instead (no operation deletes
+a node), which places it on his "costliness of rollback" dimension without settling
+the question. (3) "Plausibly meets" stays a hypothesis until the cases where an agent
+revised its governing frame under breakdown are assembled against his three test
+questions, including the cases where the revision was settled *for* the agent
+(ob_5653, ob_5654, cj_0103).
