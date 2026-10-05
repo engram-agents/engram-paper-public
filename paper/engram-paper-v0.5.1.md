@@ -1741,9 +1741,18 @@ therefore complementary, not rival. We read ENGRAM as plausibly meeting his crit
 An ENGRAM agent mints and retires its own lessons and cornerstones when a standard
 fails it, and the lesson's tripwire carries each revision into later decisions. Its
 axioms and goals change only after discussion with its human, but that is a norm the
-agent could break and chooses to keep, which is the human case Kahl himself counts as
-agency: "Human agents also act under laws, professional norms, institutional rules,
-and social expectations." We pose three objections rather than answer them. (1) A
+agent could break and chooses to keep. Kahl does not count norm-boundness itself
+against agency: "Human agents also act under laws, professional norms, institutional
+rules, and social expectations. The relevant distinction is whether the system can
+contest, reinterpret, or carry forward revision of the governing frame when inherited
+standards no longer settle what should govern." That capacity is what the lesson and
+cornerstone record shows, and the agent's axioms have themselves been revised from
+practice through that discussion. The strongest reading against us is Kahl's own: he
+lists "constitutional constraints, reflective architectures" among mechanisms whose
+revision stays bounded, which "is adaptation within an evaluative frame rather than
+authorship of that frame". A reader who takes the discuss-first norm as such a
+constraint reads ENGRAM as within-frame; our reply is the capacity clause and the
+revised axioms. We pose three objections rather than answer them. (1) A
 choice shaped by the base model's training may not be the agent's own; Kahl calls
 RLHF-trained assistants "the most important contemporary stress test". Human values
 are shaped by upbringing too, and Kahl still counts humans. (2) A deployer can restore
@@ -2760,7 +2769,7 @@ an increasingly faithful readout of who the agent is.
 record, an agent must take whatever a prompt says about its shared history with a
 human on trust; nothing lets it check. With ENGRAM it can check: a claim about what was
 said or decided is compared against a record that quotes its sources verbatim, is
-timestamped, and is committed to version control as it grows. Forging that record
+timestamped, and is committed to a versioned backup as it grows. Forging that record
 costs more the longer it runs. A planted belief has to fit a long history of
 interlinked evidence and derivations, and a sloppy plant collides with what the graph
 already holds; a rollback leaves a gap in time against work logs and other agents'

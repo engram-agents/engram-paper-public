@@ -230,7 +230,7 @@ an increasingly faithful readout of who the agent is.
 record, an agent must take whatever a prompt says about its shared history with a
 human on trust; nothing lets it check. With ENGRAM it can check: a claim about what was
 said or decided is compared against a record that quotes its sources verbatim, is
-timestamped, and is committed to version control as it grows. Forging that record
+timestamped, and is committed to a versioned backup as it grows. Forging that record
 costs more the longer it runs. A planted belief has to fit a long history of
 interlinked evidence and derivations, and a sloppy plant collides with what the graph
 already holds; a rollback leaves a gap in time against work logs and other agents'
