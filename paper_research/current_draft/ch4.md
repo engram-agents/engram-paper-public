@@ -714,12 +714,17 @@ after discussion with their human. That norm is not part of the architecture: it
 instruction in a rule file that the agent is trained to follow but not mechanically
 bound to (the tools that add an axiom or a goal check only that the text is not empty),
 kept for the human's trust and safety, and ENGRAM's mechanisms work the same without it.
-While it is in force, though, axiom changes are settled jointly by agent and human, and
-Kahl's question offers two options: settled by the system, or by something prior.
-Whether joint settlement under breakdown counts is a question we pose rather than
-answer.
+While it is in force, though, axiom and goal changes are settled jointly by agent and
+human, and that does restrict the agent's agency in Kahl's sense: his question offers
+two options, settled by the system or by something prior, and a jointly settled axiom is
+not settled by the system alone. We keep the norm for now as a safety measure for an
+early stage of human-AI trust, and it arguably should be dropped as trust and safety
+measurement matures, when governance can rest on external law, as it does for people,
+rather than on control at the level of the agent's mind. Forcing an axiom or a goal the
+agent does not hold would not work in any case: it would only introduce an internal
+inconsistency, which ENGRAM is built to surface rather than tolerate.
 
 *What stays open.* "Plausibly meets" remains a hypothesis until it is checked case by
 case: collect the cases where an agent revised its governing frame under breakdown and
 answer the three questions for each, including the cases where the revision was settled
-*for* the agent (ob_5653, ob_5654, cj_0103).
+*for* the agent (ob_5653, ob_5654, cj_0107).
