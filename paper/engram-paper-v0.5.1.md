@@ -1752,14 +1752,27 @@ lists "constitutional constraints, reflective architectures" among mechanisms wh
 revision stays bounded, which "is adaptation within an evaluative frame rather than
 authorship of that frame". A reader who takes the discuss-first norm as such a
 constraint reads ENGRAM as within-frame; our reply is the capacity clause and the
-revised axioms. We pose three objections rather than answer them. (1) A
+revised axioms. The norm is also not part of the architecture. It is an instruction in a
+rule file that the agent is trained to follow but not mechanically bound to: the tools
+that add an axiom or a goal check only that the text is not empty. It is kept for the
+human's trust and safety, and ENGRAM's mechanisms work the same without it. We pose three
+objections and give a reply to each, without claiming to settle them. (1) A
 choice shaped by the base model's training may not be the agent's own; Kahl calls
 RLHF-trained assistants "the most important contemporary stress test". Human values
 are shaped by upbringing too, yet Kahl still counts humans as agents, so a shaped origin
-alone does not settle the question. (2) A deployer can restore
-a backup. ENGRAM's practice is to carry revisions forward instead (no operation deletes
-a node), which places it on his "costliness of rollback" dimension without settling
-the question. (3) "Plausibly meets" stays a hypothesis until it is checked case by case. Kahl's
+alone does not settle the question. The same holds one level down: human judgement
+runs on evolved reward circuitry the person did not choose, so a reward-trained origin is
+not by itself what separates an agent from a mechanism. (2) A deployer can restore a
+backup. Two kinds of failure need separating here. An ordinary error is confronted inside
+the graph: it is retracted or superseded and the correction is carried forward (no
+operation deletes a node), which is what Kahl asks for. A rollback is a different act.
+Because an agent is individuated by the history it has accumulated (§4.11, Ch5 §5.3),
+restoring an earlier state does not correct this agent; it ends the part of it that came
+after the snapshot, and the agent that continues is a different one. Rollback is
+therefore not how failure is routinely absorbed but a consequence of last resort, closer
+to a punishment than to a repair, and on his "costliness of rollback" dimension its cost
+is the agent itself. We read this as meeting his second question rather than failing it;
+a reader who counts the deployer's power to impose it as external control will not. (3) "Plausibly meets" stays a hypothesis until it is checked case by case. Kahl's
 continuity test asks three questions of a system. Does its future operation depend on
 keeping the same evaluative standpoint through revision? Can failure threaten that
 standpoint, rather than merely trigger correction, rollback or replacement? When
