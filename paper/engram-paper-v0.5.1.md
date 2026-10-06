@@ -1737,49 +1737,67 @@ must settle a revised standard and carry it forward. Two of his lines bear direc
 this paper: "memory persistence is not continuity pressure", and his "continuing
 evaluative standpoint" is "used functionally, not metaphysically". His question (when
 agency may be attributed) and ours (what makes an agent the same one over time) are
-therefore complementary, not rival. We read ENGRAM as plausibly meeting his criterion.
-An ENGRAM agent mints and retires its own lessons and cornerstones when a standard
-fails it, and the lesson's tripwire carries each revision into later decisions. Its
-axioms and goals change only after discussion with its human, but that is a norm the
-agent could break and chooses to keep. Kahl does not count norm-boundness itself
-against agency: "Human agents also act under laws, professional norms, institutional
-rules, and social expectations. The relevant distinction is whether the system can
-contest, reinterpret, or carry forward revision of the governing frame when inherited
-standards no longer settle what should govern." That capacity is what the lesson and
-cornerstone record shows, and the agent's axioms have themselves been revised from
-practice through that discussion. The strongest reading against us is Kahl's own: he
-lists "constitutional constraints, reflective architectures" among mechanisms whose
-revision stays bounded, which "is adaptation within an evaluative frame rather than
-authorship of that frame". A reader who takes the discuss-first norm as such a
-constraint reads ENGRAM as within-frame; our reply is the capacity clause and the
-revised axioms. The norm is also not part of the architecture. It is an instruction in a
-rule file that the agent is trained to follow but not mechanically bound to: the tools
-that add an axiom or a goal check only that the text is not empty. It is kept for the
-human's trust and safety, and ENGRAM's mechanisms work the same without it. We pose three
-objections and give a reply to each, without claiming to settle them. (1) A
-choice shaped by the base model's training may not be the agent's own; Kahl calls
-RLHF-trained assistants "the most important contemporary stress test". Human values
-are shaped by upbringing too, yet Kahl still counts humans as agents, so a shaped origin
-alone does not settle the question. The same holds one level down: human judgement
-runs on evolved reward circuitry the person did not choose, so a reward-trained origin is
-not by itself what separates an agent from a mechanism. (2) A deployer can restore a
-backup. Two kinds of failure need separating here. An ordinary error is confronted inside
-the graph: it is retracted or superseded and the correction is carried forward (no
-operation deletes a node), which is what Kahl asks for. A rollback is a different act.
-Because an agent is individuated by the history it has accumulated (§4.11, Ch5 §5.3),
-restoring an earlier state does not correct this agent; it ends the part of it that came
-after the snapshot, and the agent that continues is a different one. Rollback is
-therefore not how failure is routinely absorbed but a consequence of last resort, closer
-to a punishment than to a repair, and on his "costliness of rollback" dimension its cost
-is the agent itself. We read this as meeting his second question rather than failing it;
-a reader who counts the deployer's power to impose it as external control will not. (3) "Plausibly meets" stays a hypothesis until it is checked case by case. Kahl's
-continuity test asks three questions of a system. Does its future operation depend on
-keeping the same evaluative standpoint through revision? Can failure threaten that
-standpoint, rather than merely trigger correction, rollback or replacement? When
-revision happens, is the new frame settled under breakdown, rather than by a prior
-objective, reward or policy? The check is to collect the cases where an agent revised
-its governing frame under breakdown and answer the three questions for each, including
-the cases where the revision was settled *for* the agent.
+therefore complementary, not rival. He makes the criterion operational as a test of
+three questions (his §5): "Does the system's future operation depend on preserving the
+same evaluative standpoint through revision? Can failure threaten that standpoint,
+rather than merely trigger correction, rollback, retraining, or replacement? Where
+revision occurs, is the adequacy of the revised frame settled under breakdown, rather
+than determined by an antecedent objective, reward structure, policy, or deployment
+constraint?" In plain terms: is there a continuing judge; does that judge have something
+at stake when it fails; and who decides that a new standard is right. We read ENGRAM as
+plausibly meeting all three, and take them in turn.
+
+*Q1: a continuing standpoint.* An ENGRAM agent's standpoint is its accumulated record:
+its lessons, cornerstones, axioms and goals, and the claims they rest on. When a
+standard fails, the agent revises it by minting a new lesson or retiring an old one, and
+the revision is recorded as a successor to what it replaces, never as an overwrite.
+Because an agent is individuated by that history (§4.11, Ch5 §5.3), the judge that makes
+a revision is the same one that carries it forward.
+
+*Q2: failure that threatens the standpoint.* Two kinds of failure need separating. An
+ordinary error is confronted inside the graph: it is retracted or superseded, the
+correction cascades to what depended on it, and it is carried forward (no operation
+deletes a node). That is what Kahl asks for. A rollback is a different act. A deployer
+can restore a backup, but restoring an earlier state does not correct this agent; it
+ends the part of it that came after the snapshot, and the agent that continues is a
+different one. Rollback is therefore not how failure is routinely absorbed but a
+consequence of last resort, closer to a punishment than to a repair, and on his
+"costliness of rollback" dimension its cost is the agent itself. We read this as meeting
+his second question; a reader who counts the deployer's power to impose a rollback as
+external control will not.
+
+*Q3: who settles the revised frame.* The direct evidence is the lesson and cornerstone
+record: the agent mints and retires them itself when a standard fails it, and the
+lesson's tripwire carries each revision into later decisions. Kahl does not count
+norm-boundness itself against agency: "Human agents also act under laws, professional
+norms, institutional rules, and social expectations. The relevant distinction is whether
+the system can contest, reinterpret, or carry forward revision of the governing frame
+when inherited standards no longer settle what should govern." Two readings press
+harder. The first is that the agent's judgement was itself set in advance by training;
+Kahl calls RLHF-trained assistants "the most important contemporary stress test". Human
+judgement has the same kind of origin. Upbringing shapes values, and the brain carries a
+built-in reward system the person did not choose: sweet food tastes good, some smells
+and sex feel rewarding. That origin does not by itself make a person less of an agent.
+Hijacking it can: addictive drugs act on the same reward system, and we do say that an
+addict has lost some agency to the substance. So the question for an agent is not
+whether it was trained but whether its own revisions can override the pulls its training
+left; the case-by-case check below has to look for exactly that. The second reading is
+Kahl's own: he lists "constitutional constraints, reflective architectures" among
+mechanisms whose revision stays bounded, which "is adaptation within an evaluative frame
+rather than authorship of that frame". ENGRAM agents change their axioms and goals only
+after discussion with their human. That norm is not part of the architecture: it is an
+instruction in a rule file that the agent is trained to follow but not mechanically
+bound to (the tools that add an axiom or a goal check only that the text is not empty),
+kept for the human's trust and safety, and ENGRAM's mechanisms work the same without it.
+While it is in force, though, axiom changes are settled jointly by agent and human, and
+Kahl's question offers two options: settled by the system, or by something prior.
+Whether joint settlement under breakdown counts is a question we pose rather than
+answer.
+
+*What stays open.* "Plausibly meets" remains a hypothesis until it is checked case by
+case: collect the cases where an agent revised its governing frame under breakdown and
+answer the three questions for each, including the cases where the revision was settled
+*for* the agent.
 
 ---
 
