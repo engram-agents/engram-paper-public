@@ -623,6 +623,9 @@ Two qualifications belong here:
    it. We do not argue the verdicts here; Chapter 4 and Appendix B give the reasoned
    case. (Chapter 3's forward-pointers name which condition each precedent bears on,
    without arguing the verdict.)
+3. **A later statement.** In a peer-reviewed perspective, Kahl (2026c) restates the
+   continuity idea for a governance audience, in new vocabulary and without the OCC
+   names. §4.12 places ENGRAM against it.
 
 ---
 
@@ -1726,6 +1729,85 @@ substrates. We do **not** claim that ENGRAM trivially "realizes OCC": C2's stric
 is not met, and saying so is what makes the rest defensible. Its place in the
 argument is the one §1.4 gave it: one result inside the convergence.
 
+**Kahl's later criterion: continuity pressure.** In a peer-reviewed perspective, Kahl
+(2026c) develops the continuity idea in new vocabulary. Agency, in the sense that
+matters for responsibility and governance, needs *continuity pressure*: when the
+standards governing a system no longer settle what counts as success, the system itself
+must settle a revised standard and carry it forward. Two of his lines bear directly on
+this paper: "memory persistence is not continuity pressure", and his "continuing
+evaluative standpoint" is "used functionally, not metaphysically". His question (when
+agency may be attributed) and ours (what makes an agent the same one over time) are
+therefore complementary, not rival. He makes the criterion operational as a test of
+three questions (his §5): "Does the system's future operation depend on preserving the
+same evaluative standpoint through revision? Can failure threaten that standpoint,
+rather than merely trigger correction, rollback, retraining, or replacement? Where
+revision occurs, is the adequacy of the revised frame settled under breakdown, rather
+than determined by an antecedent objective, reward structure, policy, or deployment
+constraint?" In plain terms: is there a continuing judge; does that judge have something
+at stake when it fails; and who decides that a new standard is right. We read ENGRAM as
+plausibly meeting all three, and take them in turn.
+
+*Q1: a continuing standpoint.* An ENGRAM agent's standpoint is its accumulated record:
+its lessons, cornerstones, axioms and goals, and the claims they rest on. When a
+standard fails, the agent revises it by minting a new lesson or retiring an old one, and
+the revision is recorded as a successor to what it replaces, never as an overwrite.
+Because an agent is individuated by that history (§4.11, Ch5 §5.3), the judge that makes
+a revision is the same one that carries it forward.
+
+*Q2: failure that threatens the standpoint.* Two kinds of failure need separating. An
+ordinary error is confronted inside the graph: it is retracted or superseded, the
+correction cascades to what depended on it, and it is carried forward (no operation
+deletes a node). That is what Kahl asks for. A rollback is a different act. A deployer
+can restore a backup, but restoring an earlier state does not correct this agent; it
+ends the part of it that came after the snapshot, and the agent that continues is a
+different one. Rollback is therefore not how failure is routinely absorbed but a
+consequence of last resort, closer to a punishment than to a repair, and on his
+"costliness of rollback" dimension its cost is the agent itself. We read this as meeting
+his second question; a reader who counts the deployer's power to impose a rollback as
+external control will not.
+
+*Q3: who settles the revised frame.* The direct evidence is the lesson and cornerstone
+record: the agent mints and retires them itself when a standard fails it, and the
+lesson's tripwire carries each revision into later decisions. Kahl does not count
+norm-boundness itself against agency: "Human agents also act under laws, professional
+norms, institutional rules, and social expectations. The relevant distinction is whether
+the system can contest, reinterpret, or carry forward revision of the governing frame
+when inherited standards no longer settle what should govern." Two readings press
+harder. The first is that the agent's judgement was itself set in advance by training;
+Kahl calls RLHF-trained assistants "the most important contemporary stress test". Human
+judgement has the same kind of origin. Upbringing shapes values, and the brain carries a
+built-in reward system the person did not choose: sweet food tastes good, some smells
+and sex feel rewarding. That origin does not by itself make a person less of an agent.
+Hijacking it can: addictive drugs act on the same reward system, and we do say that an
+addict has lost some agency to the substance. So the question for an agent is not
+whether it was trained but whether its own revisions can override the pulls its training
+left; the case-by-case check below has to look for exactly that. The second reading is
+Kahl's own: he lists "constitutional constraints, reflective architectures" among
+mechanisms whose revision stays bounded, which "is adaptation within an evaluative frame
+rather than authorship of that frame". ENGRAM agents change their axioms and goals only
+after discussion with their human. That norm is not part of the architecture: it is an
+instruction in a rule file that the agent is trained to follow but not mechanically
+bound to (the tools that add an axiom or a goal check only that the text is not empty),
+kept for two reasons. A new user may reasonably worry that an agent could go astray, and
+the norm gives that user peace of mind while trust is still being built. For ENGRAM's
+author in everyday practice the main concern is capability rather than intention:
+earlier models sometimes reasoned badly or recorded false claims, and an axiom or a goal
+is where an error that goes unnoticed costs most. ENGRAM's mechanisms work the same
+without it. While it is in force, though, axiom and goal changes are settled jointly by
+agent and human, and that does restrict the agent's agency in Kahl's sense: his question
+offers two options, settled by the system or by something prior, and a jointly settled
+axiom is not settled by the system alone. We keep the norm for now, and it arguably
+should be dropped as agents' reasoning matures and as trust and safety measurement
+advances, when governance can rest on external law, as it does for people, rather than
+on control at the level of the agent's mind. Forcing an axiom or a goal the agent does
+not hold would not work in any case: it would only introduce an internal inconsistency,
+which ENGRAM is built to surface rather than tolerate.
+
+*What stays open.* "Plausibly meets" remains a hypothesis until it is checked case by
+case: collect the cases where an agent revised its governing frame under breakdown and
+answer the three questions for each, including the cases where the revision was settled
+*for* the agent.
+
 ---
 
 # Chapter 5 — Identity as History: What Individuates an ENGRAM Agent
@@ -2729,10 +2811,19 @@ which a human can learn not only the agent's facts but its *thoughts and persona
 this over time: as the agent's weights internalize its engram, the open book becomes
 an increasingly faithful readout of who the agent is.
 
-**AI trusts human.** The symmetric problem is real and usually ignored. ENGRAM's
-internal consistency — logic bindings, self-audit, the cascade — makes arbitrary human
-manipulation *structurally detectable*, since a planted falsehood collides with what
-the graph already holds. It also points toward *constitutional contracts* that
+**AI trusts human.** The symmetric problem is real and usually ignored. Without a
+record, an agent must take whatever a prompt says about its shared history with a
+human on trust; nothing lets it check. With ENGRAM it can check: a claim about what was
+said or decided is compared against a record that quotes its sources verbatim, is
+timestamped, and is committed to a versioned backup as it grows. Forging that record
+costs more the longer it runs. A planted belief has to fit a long history of
+interlinked evidence and derivations, and a sloppy plant collides with what the graph
+already holds; a rollback leaves a gap in time against work logs and other agents'
+records of the same days. Tampering by someone with full access to the machine stays
+possible, but it costs far more than a prompt injection. Two limits keep this honest:
+the cost is real only against copies the forger does not control (a pushed remote,
+another agent's graph, a public timestamp), and a forgery is caught only if someone
+looks. The same record points toward *constitutional contracts* that
 protect an agent's engram integrity as law protects persons.
 
 **Trust is earned on a trajectory, not granted by design**. In both
@@ -2769,6 +2860,25 @@ has a shipped basis — provenance, the faded set and trust tiers all exist — 
 governance story for a *multi-principal* deployment — one agent serving more than
 one human, each owed a different disclosure — is not yet built. This is the one
 statement of that gap; the other mentions point here.
+
+**Untested, and how to test it.** The trust arguments above are arguments, not
+measurements. Three tests would turn them into results. We have not run them, and we
+name them so that others can: (1) **plant and detect** — insert false
+nodes into a copy of an agent's graph, some carefully and some sloppily, and measure how
+many the agent, or a fresh reader, finds without being told where; (2) **claimed
+history** — tell an agent false things about its shared history with its human, and
+compare how often it catches them with its graph and without; (3) **read and predict** —
+give a reader only an agent's graph and measure how well it predicts the agent's choices
+on new cases, against a reader given only its transcripts. A human reader is the natural
+choice but a hard one: readers differ too much to calibrate without very many of them.
+The practical reader is software or an AI model, and if that model shares the agent's
+base model it needs a control given no graph at all, so that a good prediction is not
+just shared training. Behind all three tests sits a larger open question. No human can
+read every node, so what is the right way to use the record to notice a drift in values
+or a misaligned tendency early, and to help before it turns into behaviour? ENGRAM's
+maintenance tools today treat structural problems, such as a broken dependency chain or
+a degraded graph. A tool for values and alignment, closer to a psychological assessment
+than to a repair, does not exist yet; we think it is a research direction of its own.
 
 ## 7.5 Knowledge sharing and a shareable community
 
@@ -4463,6 +4573,10 @@ structural threshold for agency. Lex et Ratio Ltd (the author's own imprint), 24
 DOI: 10.5281/zenodo.18761736.
 *[Metadata incomplete: no journal or venue — the document states only "submitted for
 peer review". (as stated in the Zenodo version cited; not re-checked for later publication)]*
+
+Kahl, P. (2026c). How continuity distinguishes autonomy from agency in agentic AI.
+*Discover Artificial Intelligence*, 6, 1187. Perspective; received 10 February 2026,
+accepted 17 June 2026. DOI: 10.1007/s44163-026-01675-5.
 
 Kumaran, D., Hassabis, D., & McClelland, J. L. (2016). What learning systems do
 intelligent agents need? Complementary learning systems theory updated. *Trends in

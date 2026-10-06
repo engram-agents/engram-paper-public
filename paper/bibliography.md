@@ -61,6 +61,10 @@ DOI: 10.5281/zenodo.18761736.
 *[Metadata incomplete: no journal or venue — the document states only "submitted for
 peer review". (as stated in the Zenodo version cited; not re-checked for later publication)]*
 
+Kahl, P. (2026c). How continuity distinguishes autonomy from agency in agentic AI.
+*Discover Artificial Intelligence*, 6, 1187. Perspective; received 10 February 2026,
+accepted 17 June 2026. DOI: 10.1007/s44163-026-01675-5.
+
 Kumaran, D., Hassabis, D., & McClelland, J. L. (2016). What learning systems do
 intelligent agents need? Complementary learning systems theory updated. *Trends in
 Cognitive Sciences*, 20(7), 512–534. DOI: 10.1016/j.tics.2016.05.004.

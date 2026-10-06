@@ -325,6 +325,9 @@ Two qualifications belong here:
    it. We do not argue the verdicts here; Chapter 4 and Appendix B give the reasoned
    case. (Chapter 3's forward-pointers name which condition each precedent bears on,
    without arguing the verdict.)
+3. **A later statement.** In a peer-reviewed perspective, Kahl (2026c) restates the
+   continuity idea for a governance audience, in new vocabulary and without the OCC
+   names. §4.12 places ENGRAM against it.
 
 ---
 
