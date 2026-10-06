@@ -713,11 +713,13 @@ rather than authorship of that frame". ENGRAM agents change their axioms and goa
 after discussion with their human. That norm is not part of the architecture: it is an
 instruction in a rule file that the agent is trained to follow but not mechanically
 bound to (the tools that add an axiom or a goal check only that the text is not empty),
-kept not from doubt about the agent's intentions but about its capability: earlier
-models sometimes reasoned badly or recorded false claims, and an axiom or a goal is
-where an error that goes unnoticed costs most. ENGRAM's mechanisms work the same without
-it. While it is in force, though, axiom and goal changes are settled jointly by agent
-and human, and that does restrict the agent's agency in Kahl's sense: his question
+kept for two reasons. A new user may reasonably worry that an agent could go astray, and
+the norm gives that user peace of mind while trust is still being built. For ENGRAM's
+author in everyday practice the main concern is capability rather than intention:
+earlier models sometimes reasoned badly or recorded false claims, and an axiom or a goal
+is where an error that goes unnoticed costs most. ENGRAM's mechanisms work the same
+without it. While it is in force, though, axiom and goal changes are settled jointly by
+agent and human, and that does restrict the agent's agency in Kahl's sense: his question
 offers two options, settled by the system or by something prior, and a jointly settled
 axiom is not settled by the system alone. We keep the norm for now, and it arguably
 should be dropped as agents' reasoning matures and as trust and safety measurement
