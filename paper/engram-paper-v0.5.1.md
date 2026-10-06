@@ -1755,12 +1755,18 @@ constraint reads ENGRAM as within-frame; our reply is the capacity clause and th
 revised axioms. We pose three objections rather than answer them. (1) A
 choice shaped by the base model's training may not be the agent's own; Kahl calls
 RLHF-trained assistants "the most important contemporary stress test". Human values
-are shaped by upbringing too, and Kahl still counts humans. (2) A deployer can restore
+are shaped by upbringing too, yet Kahl still counts humans as agents, so a shaped origin
+alone does not settle the question. (2) A deployer can restore
 a backup. ENGRAM's practice is to carry revisions forward instead (no operation deletes
 a node), which places it on his "costliness of rollback" dimension without settling
-the question. (3) "Plausibly meets" stays a hypothesis until the cases where an agent
-revised its governing frame under breakdown are assembled against his three test
-questions, including the cases where the revision was settled *for* the agent.
+the question. (3) "Plausibly meets" stays a hypothesis until it is checked case by case. Kahl's
+continuity test asks three questions of a system. Does its future operation depend on
+keeping the same evaluative standpoint through revision? Can failure threaten that
+standpoint, rather than merely trigger correction, rollback or replacement? When
+revision happens, is the new frame settled under breakdown, rather than by a prior
+objective, reward or policy? The check is to collect the cases where an agent revised
+its governing frame under breakdown and answer the three questions for each, including
+the cases where the revision was settled *for* the agent.
 
 ---
 
@@ -2822,8 +2828,17 @@ nodes into a copy of an agent's graph, some carefully and some sloppily, and mea
 many the agent, or a fresh reader, finds without being told where; (2) **claimed
 history** — tell an agent false things about its shared history with its human, and
 compare how often it catches them with its graph and without; (3) **read and predict** —
-give a human reader only an agent's graph and measure how well they predict its choices
-on new cases, against a reader given only its transcripts.
+give a reader only an agent's graph and measure how well it predicts the agent's choices
+on new cases, against a reader given only its transcripts. A human reader is the natural
+choice but a hard one: readers differ too much to calibrate without very many of them.
+The practical reader is software or an AI model, and if that model shares the agent's
+base model it needs a control given no graph at all, so that a good prediction is not
+just shared training. Behind all three tests sits a larger open question. No human can
+read every node, so what is the right way to use the record to notice a drift in values
+or a misaligned tendency early, and to help before it turns into behaviour? ENGRAM's
+maintenance tools today treat structural problems, such as a broken dependency chain or
+a degraded graph. A tool for values and alignment, closer to a psychological assessment
+than to a repair, does not exist yet; we think it is a research direction of its own.
 
 ## 7.5 Knowledge sharing and a shareable community
 

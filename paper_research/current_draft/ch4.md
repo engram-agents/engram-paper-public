@@ -680,10 +680,15 @@ constraint reads ENGRAM as within-frame; our reply is the capacity clause and th
 revised axioms. We pose three objections rather than answer them. (1) A
 choice shaped by the base model's training may not be the agent's own; Kahl calls
 RLHF-trained assistants "the most important contemporary stress test". Human values
-are shaped by upbringing too, and Kahl still counts humans. (2) A deployer can restore
+are shaped by upbringing too, yet Kahl still counts humans as agents, so a shaped origin
+alone does not settle the question. (2) A deployer can restore
 a backup. ENGRAM's practice is to carry revisions forward instead (no operation deletes
 a node), which places it on his "costliness of rollback" dimension without settling
-the question. (3) "Plausibly meets" stays a hypothesis until the cases where an agent
-revised its governing frame under breakdown are assembled against his three test
-questions, including the cases where the revision was settled *for* the agent
-(ob_5653, ob_5654, cj_0103).
+the question. (3) "Plausibly meets" stays a hypothesis until it is checked case by case. Kahl's
+continuity test asks three questions of a system. Does its future operation depend on
+keeping the same evaluative standpoint through revision? Can failure threaten that
+standpoint, rather than merely trigger correction, rollback or replacement? When
+revision happens, is the new frame settled under breakdown, rather than by a prior
+objective, reward or policy? The check is to collect the cases where an agent revised
+its governing frame under breakdown and answer the three questions for each, including
+the cases where the revision was settled *for* the agent (ob_5653, ob_5654, cj_0103).

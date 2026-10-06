@@ -284,8 +284,17 @@ nodes into a copy of an agent's graph, some carefully and some sloppily, and mea
 many the agent, or a fresh reader, finds without being told where; (2) **claimed
 history** — tell an agent false things about its shared history with its human, and
 compare how often it catches them with its graph and without; (3) **read and predict** —
-give a human reader only an agent's graph and measure how well they predict its choices
-on new cases, against a reader given only its transcripts.
+give a reader only an agent's graph and measure how well it predicts the agent's choices
+on new cases, against a reader given only its transcripts. A human reader is the natural
+choice but a hard one: readers differ too much to calibrate without very many of them.
+The practical reader is software or an AI model, and if that model shares the agent's
+base model it needs a control given no graph at all, so that a good prediction is not
+just shared training. Behind all three tests sits a larger open question. No human can
+read every node, so what is the right way to use the record to notice a drift in values
+or a misaligned tendency early, and to help before it turns into behaviour? ENGRAM's
+maintenance tools today treat structural problems, such as a broken dependency chain or
+a degraded graph. A tool for values and alignment, closer to a psychological assessment
+than to a repair, does not exist yet; we think it is a research direction of its own.
 
 ## 7.5 Knowledge sharing and a shareable community
 
