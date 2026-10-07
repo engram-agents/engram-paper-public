@@ -4523,16 +4523,7 @@ database. Where a source does not print a field, the field is **omitted** rather
 reconstructed, and the entry carries a bracketed note naming exactly what is missing.
 A thin entry is therefore never mistaken for a checked one.
 
-Alchourrón, C. E., Gärdenfors, P., & Makinson, D. (1985). On the logic of theory
-change: Partial meet contraction and revision functions. *The Journal of Symbolic
-Logic*, 50(2), 510–530. Association for Symbolic Logic. CCC fee code
-0022-4812/85/5002-0025/$03.10 printed on the title page — its leading segment is the
-journal's ISSN, decoded rather than printed as such; the string "ISSN" appears nowhere
-in the document. Universidad de Buenos Aires, Buenos Aires, Argentina; Lunds Universitet, Lund, Sweden; American
-University of Beirut, Beirut, Lebanon. Received 18 October 1983; revised 1 May 1984.
-
-Alchourrón, C. E., & Makinson, D. (1982). On the logic of theory change: Contraction
-functions and their associated revision functions. *Theoria*, issue 1, 1982, 14–37.
+<a id="ref-alchourron1982"></a>Alchourrón, C. E., & Makinson, D. (1982). On the logic of theory change: Contraction functions and their associated revision functions. *Theoria*, (1), 14–37.
 Universidad de Buenos Aires and Unesco. Received 18 January 1982; revised version
 received 24 March 1982.
 *[Metadata incomplete: this offprint scan prints no volume number. Its footer signature
@@ -4541,11 +4532,19 @@ give vol. 48, a field not read off this document and therefore omitted. Folios 1
 are printed on the pages themselves; only the opening page 14 carries none, and it
 follows from that sequence rather than being read.]*
 
-Anderson, J. R., & Schooler, L. J. (1991). Reflections of the environment in memory.
-*Psychological Science*, 2(6), 396–408. Department of Psychology, Carnegie Mellon
+<a id="ref-alchourron1985"></a>Alchourrón, C. E., Gärdenfors, P., & Makinson, D. (1985). On the logic of theory change: Partial meet contraction and revision functions. *The Journal of Symbolic Logic*, *50*(2), 510–530.
+Association for Symbolic Logic. CCC fee code
+0022-4812/85/5002-0025/$03.10 printed on the title page — its leading segment is the
+journal's ISSN, decoded rather than printed as such; the string "ISSN" appears nowhere
+in the document. Universidad de Buenos Aires, Buenos Aires, Argentina; Lunds Universitet, Lund, Sweden; American
+University of Beirut, Beirut, Lebanon. Received 18 October 1983; revised 1 May 1984.
+
+<a id="ref-anderson1991"></a>Anderson, J. R., & Schooler, L. J. (1991). Reflections of the environment in memory. *Psychological Science*, *2*(6), 396–408.
+Department of Psychology, Carnegie Mellon
 University.
 
-Doyle, J. A truth maintenance system. Massachusetts Institute of Technology,
+<a id="ref-doyle1979"></a>Doyle, J. (n.d.). A truth maintenance system. In M. L. Ginsberg (ed.), *Readings in nonmonotonic reasoning* (pp. 259–279). Morgan Kaufmann. (Original work published 1979)
+Massachusetts Institute of Technology,
 Artificial Intelligence Laboratory, Cambridge, MA. Read here as reprinted in M. L.
 Ginsberg (Ed.), *Readings in nonmonotonic reasoning*, ch. 4, "Truth maintenance",
 pp. 259–279. Los Altos, CA: Morgan Kaufmann.
@@ -4556,54 +4555,50 @@ record, 2026-09-24).
 only as a previous reader's handwritten annotation on the title page and is not yet
 confirmed against a printed source.]*
 
-Jøsang, A. (2013). *Subjective logic*. Draft manuscript, 18 February 2013. University
+<a id="ref-josang2013"></a>Jøsang, A. (2013). *Subjective logic* [Draft manuscript].
+Draft manuscript, 18 February 2013. University
 of Oslo.
 *[Metadata incomplete: no publisher, venue, DOI or ISBN — the source is a
 self-described draft. A formally published version, if cited instead, must be sourced
 separately.]*
 
-Kahl, P. (2026a). Epistemic agency and the ontological continuity condition: A
-constraint on when knowledge must be owned. 31 January 2026.
+<a id="ref-kahl2026a"></a>Kahl, P. (2026a). *Epistemic agency and the ontological continuity condition: A constraint on when knowledge must be owned*. https://doi.org/10.5281/zenodo.18441395
+31 January 2026.
 DOI: 10.5281/zenodo.18441395.
 *[Metadata incomplete: no journal or venue — the document states only "submitted for
 peer review"; no author affiliation is printed. (as stated in the Zenodo version cited; not re-checked for later publication)]*
 
-Kahl, P. (2026b). Artificial general intelligence and ontological continuity: A
-structural threshold for agency. Lex et Ratio Ltd (the author's own imprint), 24 February 2026.
+<a id="ref-kahl2026b"></a>Kahl, P. (2026b). *Artificial general intelligence and ontological continuity: A structural threshold for agency*. https://doi.org/10.5281/zenodo.18761736
+Lex et Ratio Ltd (the author's own imprint), 24 February 2026.
 DOI: 10.5281/zenodo.18761736.
 *[Metadata incomplete: no journal or venue — the document states only "submitted for
 peer review". (as stated in the Zenodo version cited; not re-checked for later publication)]*
 
-Kahl, P. (2026c). How continuity distinguishes autonomy from agency in agentic AI.
-*Discover Artificial Intelligence*, 6, 1187. Perspective; received 10 February 2026,
+<a id="ref-kahl2026c"></a>Kahl, P. (2026c). How continuity distinguishes autonomy from agency in agentic AI. *Discover Artificial Intelligence*, *6*, Article 1187. https://doi.org/10.1007/s44163-026-01675-5
+Perspective; received 10 February 2026,
 accepted 17 June 2026. DOI: 10.1007/s44163-026-01675-5.
 
-Kumaran, D., Hassabis, D., & McClelland, J. L. (2016). What learning systems do
-intelligent agents need? Complementary learning systems theory updated. *Trends in
-Cognitive Sciences*, 20(7), 512–534. DOI: 10.1016/j.tics.2016.05.004.
+<a id="ref-kumaran2016"></a>Kumaran, D., Hassabis, D., & McClelland, J. L. (2016). What learning systems do intelligent agents need? Complementary learning systems theory updated. *Trends in Cognitive Sciences*, *20*(7), 512–534. https://doi.org/10.1016/j.tics.2016.05.004
 
-McClelland, J. L., McNaughton, B. L., & O'Reilly, R. C. (1995). Why there are
-complementary learning systems in the hippocampus and neocortex: Insights from the
-successes and failures of connectionist models of learning and memory.
-*Psychological Review*, 102(3), 419–457.
+<a id="ref-mcclelland1995"></a>McClelland, J. L., McNaughton, B. L., & O'Reilly, R. C. (1995). Why there are complementary learning systems in the hippocampus and neocortex: Insights from the successes and failures of connectionist models of learning and memory. *Psychological Review*, *102*(3), 419–457.
 *[Author order read from a layout-preserved extraction of the title page; the
 plain-text extraction lists the columns out of order.]*
 
-Nozick, R. (1981). *Philosophical explanations*. Cambridge, MA: The Belknap Press of
-Harvard University Press. ISBN 0-674-66448-5 (cloth); 0-674-66479-5 (paper).
+<a id="ref-nozick1981"></a>Nozick, R. (1981). *Philosophical explanations*. The Belknap Press of Harvard University Press.
+ISBN 0-674-66448-5 (cloth); 0-674-66479-5 (paper).
 *[Title and copyright pages read as page images; the source PDF has no text layer.]*
 
-Parfit, D. (1984). *Reasons and persons*. Oxford: Clarendon Press. First published
+<a id="ref-parfit1984"></a>Parfit, D. (1984). *Reasons and persons*. Clarendon Press.
+First published
 1984; first issued in paperback with corrections 1986; reprinted with further
 corrections 1987. ISBN 0-19-824908-X.
 
-Park, Y. B. (2026). Graph-native cognitive memory for AI agents: Formal belief
-revision semantics for versioned memory architectures. arXiv:2603.17244v1 [cs.AI],
+<a id="ref-park2026"></a>Park, Y. B. (2026). *Graph-native cognitive memory for AI agents: Formal belief revision semantics for versioned memory architectures*.
+arXiv:2603.17244v1 [cs.AI],
 18 March 2026. © 2026 Kumiho Inc.
 *[The system this paper describes is referred to in the text as* Kumiho.*]*
 
-Pink, M., Wu, Q., Vo, V. A., Turek, J., Mu, J., Huth, A., & Toneva, M. (2025).
-Position: Episodic memory is the missing piece for long-term LLM agents.
+<a id="ref-pink2025"></a>Pink, M., Wu, Q., Vo, V. A., Turek, J., Mu, J., Huth, A., & Toneva, M. (2025). *Position: Episodic memory is the missing piece for long-term LLM agents*.
 arXiv:2502.06975v1 [cs.AI], 10 February 2025. Affiliations as printed: Max Planck
 Institute for Software Systems; EarthDynamics.ai; University of Texas at Austin.
 *[Metadata incomplete: the affiliation footnote's superscript-to-author mapping did
@@ -4611,56 +4606,54 @@ not survive two-column text extraction — three institutions are legible, their
 assignment to individual authors is not. No venue beyond the arXiv identifier is
 printed.]*
 
-Ricoeur, P. (1992). *Oneself as another* (K. Blamey, Trans.). Chicago and London:
-University of Chicago Press. Originally published as *Soi-même comme un autre*,
+<a id="ref-ricoeur1992"></a>Ricoeur, P. (1992). *Oneself as another* (K. Blamey, trans.). University of Chicago Press. (Original work published 1990)
+Originally published as *Soi-même comme un autre*,
 Éditions du Seuil, 1990. ISBN 0-226-71328-8 (cloth); 0-226-71329-6 (paper).
 *[Metadata incomplete: the source spells the translator's name two ways on the same
 page — "Blarney" on the scanned title page, "Blamey" in the Library of Congress
 block, from which the form above is taken. Requires confirmation against a clean
 copy.]*
 
-Semon, R. (1904). *Die Mneme*.
+<a id="ref-semon1904"></a>Semon, R. (1904). *Die Mneme*.
 *[Metadata incomplete: no source file held. Cited in Ch1 §1.3 only to distinguish
 ENGRAM's name from systems that borrow the neuroscience term. Publisher, place and
 pagination are unverified and are deliberately not reconstructed here.]*
 
-Shinde, S. (2026). SCM: Sleep-consolidated memory with algorithmic forgetting for
-large language models. Clyrai IP Studio (the author's own imprint), April 2026. arXiv:2604.20943v1 [cs.LG],
+<a id="ref-shinde2026"></a>Shinde, S. (2026). *SCM: Sleep-consolidated memory with algorithmic forgetting for large language models*.
+Clyrai IP Studio (the author's own imprint), April 2026. arXiv:2604.20943v1 [cs.LG],
 22 April 2026.
 
-Stiegler, B. (1998). *Technics and time, 1: The fault of Epimetheus* (R. Beardsworth
-& G. Collins, Trans.). Stanford, CA: Stanford University Press. Originally published
+<a id="ref-stiegler1998"></a>Stiegler, B. (1998). *Technics and time, 1: The fault of Epimetheus* (R. Beardsworth & G. Collins, trans.). Stanford University Press. (Original work published 1994)
+Originally published
 as *La technique et le temps, 1: La faute d'Épiméthée*, Galilée / Cité des Sciences
 et de l'Industrie, 1994.
 *[Metadata incomplete: no ISBN is printed in the extracted front matter — "CIP data
 are at the end of the book".]*
 
-Sun, M., Hong, F., & Zhang, W. (2025). Sophia: A persistent agent framework of
-artificial life. arXiv:2512.18202v1 [cs.AI], 20 December 2025.
+<a id="ref-sumers2024"></a>Sumers, T. R., Yao, S., Narasimhan, K., & Griffiths, T. L. (2024). Cognitive architectures for language agents. *Transactions on Machine Learning Research*, (02/2024).
+Princeton University. arXiv:2309.02427v3 [cs.AI], 15 March 2024.
+*[Metadata incomplete: page numbers are not printed in the document.]*
+
+<a id="ref-sun2025"></a>Sun, M., Hong, F., & Zhang, W. (2025). *Sophia: A persistent agent framework of artificial life*.
+arXiv:2512.18202v1 [cs.AI], 20 December 2025.
 *[Metadata incomplete: no venue beyond the arXiv identifier. The document prints two
 forms of its own title: "…Framework of Artificial Life" on the title page and "…Framework
 for Artificial Life" in the running header; the title-page form is used here.]*
 
-Sumers, T. R., Yao, S., Narasimhan, K., & Griffiths, T. L. (2024). Cognitive
-architectures for language agents. *Transactions on Machine Learning Research*,
-issue 02/2024. Princeton University. arXiv:2309.02427v3 [cs.AI], 15 March 2024.
-*[Metadata incomplete: page numbers are not printed in the document.]*
-
-Tulving, E. (1985). Memory and consciousness. *Canadian Psychology / Psychologie
-Canadienne*, 26(1). University of Toronto.
+<a id="ref-tulving1985"></a>Tulving, E. (1985). Memory and consciousness. *Canadian Psychology / Psychologie Canadienne*, *26*(1).
+University of Toronto.
 *[Metadata incomplete: start page. The running folios read 2–12 directly, but the
 article's own first printed page number is not visible in the scan. Read from a
 per-page OCR set; the source PDF is a scan with no text layer.]*
 
-Wray, R. E., Kirk, J. R., & Laird, J. E. (2025). Applying cognitive design patterns
-to general LLM agents. arXiv:2505.07087v2 [cs.AI], 13 June 2025. Center for
+<a id="ref-wray2025"></a>Wray, R. E., Kirk, J. R., & Laird, J. E. (2025). *Applying cognitive design patterns to general LLM agents*.
+arXiv:2505.07087v2 [cs.AI], 13 June 2025. Center for
 Integrated Cognition, IQMRI, Ann Arbor, MI.
 *[Metadata incomplete: the document does not print its venue; the version read is v2,
 so the v1 date is not established from this file.]*
 
-Wu, Z., Zhang, H., Lin, F., Xu, W., Xu, X., Chen, Y., Zou, H. P., Chen, S., Zhang,
-W., Liu, X., Yu, P. S., & Wang, H. (2026). GAM: Hierarchical graph-based agentic
-memory for LLM agents. arXiv:2604.12285v1 [cs.AI], 14 April 2026. Zhejiang
+<a id="ref-wu2026"></a>Wu, Z., Zhang, H., Lin, F., Xu, W., Xu, X., Chen, Y., Zou, H. P., Chen, S., Zhang, W., Liu, X., Yu, P. S., & Wang, H. (2026). *GAM: Hierarchical graph-based agentic memory for LLM agents*.
+arXiv:2604.12285v1 [cs.AI], 14 April 2026. Zhejiang
 University; University of Illinois Chicago; Rutgers University; MBZUAI; McGill
 University.
 

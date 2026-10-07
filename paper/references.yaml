@@ -1,0 +1,503 @@
+# paper/references.yaml -- the single source of truth for the paper's bibliography.
+#
+# How this bibliography was built (copied verbatim from the former hand-written
+# paper/bibliography.md; the extraction rule is unchanged):
+#
+# **How this bibliography was built.** Every field in every entry below was read
+# directly off the document itself — a title page, copyright page, journal running
+# head, or arXiv identifier line — in a file held under `paper_research/source_pdfs/`.
+# No field was supplied from memory, from inference, or from an external bibliographic
+# database. Where a source does not print a field, the field is **omitted** rather than
+# reconstructed, and the entry carries a bracketed note naming exactly what is missing.
+# A thin entry is therefore never mistaken for a checked one.
+#
+# SCHEMA. One entry per work, CSL-JSON field names (id, type, author, editor,
+# translator, issued, original-date, title, container-title, volume, issue, page,
+# number, publisher, publisher-place, DOI, URL, edition, genre). `id` is the
+# citation key: lowercase <firstauthorfamily><year>[a-z], ASCII-folded; a trailing
+# letter is the year suffix and is what prints as 2026a/2026b/2026c.
+# Project fields, carried through to the printed bibliography unchanged:
+#   provenance              verbatim residue of the entry that is not a CSL field
+#                           (affiliations, dates received, ISBNs, identifiers, notes)
+#   metadata_incomplete     verbatim text of the entry's "Metadata incomplete" note
+#                           (rendered as *[...]*); it is also what permits an entry that
+#                           lacks author / title / issued to render at all
+#   provenance_zh, metadata_incomplete_zh
+#                           the Chinese render's counterparts of the two above
+# A field the source document does not print is OMITTED, never reconstructed.
+
+references:
+- id: alchourron1985
+  type: article-journal
+  author:
+  - family: Alchourrón
+    given: C. E.
+  - family: Gärdenfors
+    given: P.
+  - family: Makinson
+    given: D.
+  issued:
+    date-parts:
+    - - 1985
+  title: 'On the logic of theory change: Partial meet contraction and revision functions'
+  container-title: The Journal of Symbolic Logic
+  volume: '50'
+  issue: '2'
+  page: 510–530
+  provenance: |-
+    Association for Symbolic Logic. CCC fee code
+    0022-4812/85/5002-0025/$03.10 printed on the title page — its leading segment is the
+    journal's ISSN, decoded rather than printed as such; the string "ISSN" appears nowhere
+    in the document. Universidad de Buenos Aires, Buenos Aires, Argentina; Lunds Universitet, Lund, Sweden; American
+    University of Beirut, Beirut, Lebanon. Received 18 October 1983; revised 1 May 1984.
+- id: alchourron1982
+  type: article-journal
+  author:
+  - family: Alchourrón
+    given: C. E.
+  - family: Makinson
+    given: D.
+  issued:
+    date-parts:
+    - - 1982
+  title: 'On the logic of theory change: Contraction functions and their associated revision functions'
+  container-title: Theoria
+  issue: '1'
+  page: 14–37
+  provenance: |-
+    Universidad de Buenos Aires and Unesco. Received 18 January 1982; revised version
+    received 24 March 1982.
+  metadata_incomplete: |-
+    Metadata incomplete: this offprint scan prints no volume number. Its footer signature
+    reads "2 – Theoria 1:1982", which gives issue and year only; secondary reference lists
+    give vol. 48, a field not read off this document and therefore omitted. Folios 15–37
+    are printed on the pages themselves; only the opening page 14 carries none, and it
+    follows from that sequence rather than being read.
+  metadata_incomplete_zh: 元数据不全：这份抽印本扫描件没有印出卷号。其页脚签名读作 "2 – Theoria 1:1982"，只给出期号与年份；二手参考文献列出 vol. 48，而该字段并非从本文件读出，因此省略。页码 15–37 印在页面本身上；只有开篇的第 14 页没有印，它是由该序列推出的，而不是读出的。
+- id: anderson1991
+  type: article-journal
+  author:
+  - family: Anderson
+    given: J. R.
+  - family: Schooler
+    given: L. J.
+  issued:
+    date-parts:
+    - - 1991
+  title: Reflections of the environment in memory
+  container-title: Psychological Science
+  volume: '2'
+  issue: '6'
+  page: 396–408
+  provenance: |-
+    Department of Psychology, Carnegie Mellon
+    University.
+- id: doyle1979
+  type: chapter
+  author:
+  - family: Doyle
+    given: J.
+  editor:
+  - family: Ginsberg
+    given: M. L.
+  original-date:
+    date-parts:
+    - - 1979
+  title: A truth maintenance system
+  container-title: Readings in nonmonotonic reasoning
+  page: 259–279
+  publisher: Morgan Kaufmann
+  publisher-place: Los Altos, CA
+  provenance: |-
+    Massachusetts Institute of Technology,
+    Artificial Intelligence Laboratory, Cambridge, MA. Read here as reprinted in M. L.
+    Ginsberg (Ed.), *Readings in nonmonotonic reasoning*, ch. 4, "Truth maintenance",
+    pp. 259–279. Los Altos, CA: Morgan Kaufmann.
+    Originally published in *Artificial Intelligence* 12(3), 231–272, November 1979;
+    DOI: 10.1016/0004-3702(79)90008-0 (confirmed against the DOI registry's Crossref
+    record, 2026-09-24).
+  metadata_incomplete: |-
+    Metadata incomplete: the reprint volume's year (given as 1987) appears in this scan
+    only as a previous reader's handwritten annotation on the title page and is not yet
+    confirmed against a printed source.
+  metadata_incomplete_zh: 元数据不全：重印卷的年份（记为 1987）在这份扫描件中，只以一位前读者写在书名页上的手写批注的形式出现，尚未与任何印本核对确认。
+- id: josang2013
+  type: manuscript
+  author:
+  - family: Jøsang
+    given: A.
+  issued:
+    date-parts:
+    - - 2013
+  title: Subjective logic
+  genre: Draft manuscript
+  provenance: |-
+    Draft manuscript, 18 February 2013. University
+    of Oslo.
+  metadata_incomplete: |-
+    Metadata incomplete: no publisher, venue, DOI or ISBN — the source is a
+    self-described draft. A formally published version, if cited instead, must be sourced
+    separately.
+  metadata_incomplete_zh: 元数据不全：没有出版者、发表场合、DOI 或 ISBN —— 该来源自称是一份草稿。若改引其正式出版的版本，须另行溯源。
+- id: kahl2026a
+  type: article
+  author:
+  - family: Kahl
+    given: P.
+  issued:
+    date-parts:
+    - - 2026
+  title: 'Epistemic agency and the ontological continuity condition: A constraint on when knowledge must be owned'
+  DOI: 10.5281/zenodo.18441395
+  provenance: |-
+    31 January 2026.
+    DOI: 10.5281/zenodo.18441395.
+  metadata_incomplete: |-
+    Metadata incomplete: no journal or venue — the document states only "submitted for
+    peer review"; no author affiliation is printed. (as stated in the Zenodo version cited; not re-checked for later publication)
+  metadata_incomplete_zh: 元数据不全：无期刊或发表场合 —— 该文档只声明 "submitted for peer review"；未印出作者所属机构。（系据所引的 Zenodo 版本所述；未就此后是否发表再作核查）
+- id: kahl2026b
+  type: article
+  author:
+  - family: Kahl
+    given: P.
+  issued:
+    date-parts:
+    - - 2026
+  title: 'Artificial general intelligence and ontological continuity: A structural threshold for agency'
+  DOI: 10.5281/zenodo.18761736
+  provenance: |-
+    Lex et Ratio Ltd (the author's own imprint), 24 February 2026.
+    DOI: 10.5281/zenodo.18761736.
+  metadata_incomplete: |-
+    Metadata incomplete: no journal or venue — the document states only "submitted for
+    peer review". (as stated in the Zenodo version cited; not re-checked for later publication)
+  metadata_incomplete_zh: 元数据不全：无期刊或发表场合 —— 该文档只声明 "submitted for peer review"。（系据所引的 Zenodo 版本所述；未就此后是否发表再作核查）
+- id: kahl2026c
+  type: article-journal
+  author:
+  - family: Kahl
+    given: P.
+  issued:
+    date-parts:
+    - - 2026
+  title: How continuity distinguishes autonomy from agency in agentic AI
+  container-title: Discover Artificial Intelligence
+  volume: '6'
+  number: '1187'
+  DOI: 10.1007/s44163-026-01675-5
+  provenance: |-
+    Perspective; received 10 February 2026,
+    accepted 17 June 2026. DOI: 10.1007/s44163-026-01675-5.
+  provenance_zh: |-
+    Perspective（观点文章）；2026 年 2 月 10 日收稿，
+    2026 年 6 月 17 日接受。DOI: 10.1007/s44163-026-01675-5.
+- id: kumaran2016
+  type: article-journal
+  author:
+  - family: Kumaran
+    given: D.
+  - family: Hassabis
+    given: D.
+  - family: McClelland
+    given: J. L.
+  issued:
+    date-parts:
+    - - 2016
+  title: What learning systems do intelligent agents need? Complementary learning systems theory updated
+  container-title: Trends in Cognitive Sciences
+  volume: '20'
+  issue: '7'
+  page: 512–534
+  DOI: 10.1016/j.tics.2016.05.004
+- id: mcclelland1995
+  type: article-journal
+  author:
+  - family: McClelland
+    given: J. L.
+  - family: McNaughton
+    given: B. L.
+  - family: O'Reilly
+    given: R. C.
+  issued:
+    date-parts:
+    - - 1995
+  title: 'Why there are complementary learning systems in the hippocampus and neocortex: Insights from the successes and failures of connectionist models of learning and memory'
+  container-title: Psychological Review
+  volume: '102'
+  issue: '3'
+  page: 419–457
+  provenance: |-
+    *[Author order read from a layout-preserved extraction of the title page; the
+    plain-text extraction lists the columns out of order.]*
+  provenance_zh: '*[作者顺序读自一份保留版式的书名页抽取文本；纯文本抽取把各栏的顺序打乱了。]*'
+- id: nozick1981
+  type: book
+  author:
+  - family: Nozick
+    given: R.
+  issued:
+    date-parts:
+    - - 1981
+  title: Philosophical explanations
+  publisher: The Belknap Press of Harvard University Press
+  publisher-place: Cambridge, MA
+  provenance: |-
+    ISBN 0-674-66448-5 (cloth); 0-674-66479-5 (paper).
+    *[Title and copyright pages read as page images; the source PDF has no text layer.]*
+  provenance_zh: |-
+    ISBN 0-674-66448-5 (cloth); 0-674-66479-5 (paper).
+    *[书名页与版权页系作为页面图像读取；该来源 PDF 没有文本层。]*
+- id: parfit1984
+  type: book
+  author:
+  - family: Parfit
+    given: D.
+  issued:
+    date-parts:
+    - - 1984
+  title: Reasons and persons
+  publisher: Clarendon Press
+  publisher-place: Oxford
+  provenance: |-
+    First published
+    1984; first issued in paperback with corrections 1986; reprinted with further
+    corrections 1987. ISBN 0-19-824908-X.
+- id: park2026
+  type: article
+  author:
+  - family: Park
+    given: Y. B.
+  issued:
+    date-parts:
+    - - 2026
+  title: 'Graph-native cognitive memory for AI agents: Formal belief revision semantics for versioned memory architectures'
+  provenance: |-
+    arXiv:2603.17244v1 [cs.AI],
+    18 March 2026. © 2026 Kumiho Inc.
+    *[The system this paper describes is referred to in the text as* Kumiho.*]*
+  provenance_zh: |-
+    arXiv:2603.17244v1 [cs.AI],
+    18 March 2026. © 2026 Kumiho Inc.
+    *[本文所描述的系统在正文中称作* Kumiho。*]*
+- id: pink2025
+  type: article
+  author:
+  - family: Pink
+    given: M.
+  - family: Wu
+    given: Q.
+  - family: Vo
+    given: V. A.
+  - family: Turek
+    given: J.
+  - family: Mu
+    given: J.
+  - family: Huth
+    given: A.
+  - family: Toneva
+    given: M.
+  issued:
+    date-parts:
+    - - 2025
+  title: 'Position: Episodic memory is the missing piece for long-term LLM agents'
+  provenance: |-
+    arXiv:2502.06975v1 [cs.AI], 10 February 2025. Affiliations as printed: Max Planck
+    Institute for Software Systems; EarthDynamics.ai; University of Texas at Austin.
+  metadata_incomplete: |-
+    Metadata incomplete: the affiliation footnote's superscript-to-author mapping did
+    not survive two-column text extraction — three institutions are legible, their
+    assignment to individual authors is not. No venue beyond the arXiv identifier is
+    printed.
+  metadata_incomplete_zh: 元数据不全：所属机构脚注中的上标与作者的对应关系，未能在双栏文本抽取中存留下来 —— 三所机构清晰可辨，它们与各位作者之间的对应关系则不可辨。除 arXiv 标识之外，没有印出任何发表场合。
+- id: ricoeur1992
+  type: book
+  author:
+  - family: Ricoeur
+    given: P.
+  translator:
+  - family: Blamey
+    given: K.
+  issued:
+    date-parts:
+    - - 1992
+  original-date:
+    date-parts:
+    - - 1990
+  title: Oneself as another
+  publisher: University of Chicago Press
+  publisher-place: Chicago and London
+  provenance: |-
+    Originally published as *Soi-même comme un autre*,
+    Éditions du Seuil, 1990. ISBN 0-226-71328-8 (cloth); 0-226-71329-6 (paper).
+  metadata_incomplete: |-
+    Metadata incomplete: the source spells the translator's name two ways on the same
+    page — "Blarney" on the scanned title page, "Blamey" in the Library of Congress
+    block, from which the form above is taken. Requires confirmation against a clean
+    copy.
+  metadata_incomplete_zh: 元数据不全：该来源在同一页上把译者的名字拼作两种 —— 扫描书名页上是 "Blarney"，美国国会图书馆著录块中是 "Blamey"，上面采用的是后一种。须以一份干净的副本加以确认。
+- id: semon1904
+  type: book
+  author:
+  - family: Semon
+    given: R.
+  issued:
+    date-parts:
+    - - 1904
+  title: Die Mneme
+  metadata_incomplete: |-
+    Metadata incomplete: no source file held. Cited in Ch1 §1.3 only to distinguish
+    ENGRAM's name from systems that borrow the neuroscience term. Publisher, place and
+    pagination are unverified and are deliberately not reconstructed here.
+  metadata_incomplete_zh: 元数据不全：未持有来源文件。仅在第 1 章 §1.3 引用，用以把 ENGRAM 的名字与那些借用神经科学术语的系统区分开来。出版者、地点与页码均未经核实，此处刻意不予重建。
+- id: shinde2026
+  type: article
+  author:
+  - family: Shinde
+    given: S.
+  issued:
+    date-parts:
+    - - 2026
+  title: 'SCM: Sleep-consolidated memory with algorithmic forgetting for large language models'
+  provenance: |-
+    Clyrai IP Studio (the author's own imprint), April 2026. arXiv:2604.20943v1 [cs.LG],
+    22 April 2026.
+- id: stiegler1998
+  type: book
+  author:
+  - family: Stiegler
+    given: B.
+  translator:
+  - family: Beardsworth
+    given: R.
+  - family: Collins
+    given: G.
+  issued:
+    date-parts:
+    - - 1998
+  original-date:
+    date-parts:
+    - - 1994
+  title: 'Technics and time, 1: The fault of Epimetheus'
+  publisher: Stanford University Press
+  publisher-place: Stanford, CA
+  provenance: |-
+    Originally published
+    as *La technique et le temps, 1: La faute d'Épiméthée*, Galilée / Cité des Sciences
+    et de l'Industrie, 1994.
+  metadata_incomplete: |-
+    Metadata incomplete: no ISBN is printed in the extracted front matter — "CIP data
+    are at the end of the book".
+  metadata_incomplete_zh: 元数据不全：抽取出的前置部分中没有印出 ISBN —— "CIP data are at the end of the book"。
+- id: sun2025
+  type: article
+  author:
+  - family: Sun
+    given: M.
+  - family: Hong
+    given: F.
+  - family: Zhang
+    given: W.
+  issued:
+    date-parts:
+    - - 2025
+  title: 'Sophia: A persistent agent framework of artificial life'
+  provenance: arXiv:2512.18202v1 [cs.AI], 20 December 2025.
+  metadata_incomplete: |-
+    Metadata incomplete: no venue beyond the arXiv identifier. The document prints two
+    forms of its own title: "…Framework of Artificial Life" on the title page and "…Framework
+    for Artificial Life" in the running header; the title-page form is used here.
+  metadata_incomplete_zh: 元数据不全：除 arXiv 标识之外没有发表场合。该文档为自己的标题印出了两种形态：书名页上是 "…Framework of Artificial Life"，书眉上是 "…Framework for Artificial Life"；此处采用书名页的那一种。
+- id: sumers2024
+  type: article-journal
+  author:
+  - family: Sumers
+    given: T. R.
+  - family: Yao
+    given: S.
+  - family: Narasimhan
+    given: K.
+  - family: Griffiths
+    given: T. L.
+  issued:
+    date-parts:
+    - - 2024
+  title: Cognitive architectures for language agents
+  container-title: Transactions on Machine Learning Research
+  issue: 02/2024
+  provenance: Princeton University. arXiv:2309.02427v3 [cs.AI], 15 March 2024.
+  metadata_incomplete: 'Metadata incomplete: page numbers are not printed in the document.'
+  metadata_incomplete_zh: 元数据不全：文档中没有印出页码。
+- id: tulving1985
+  type: article-journal
+  author:
+  - family: Tulving
+    given: E.
+  issued:
+    date-parts:
+    - - 1985
+  title: Memory and consciousness
+  container-title: Canadian Psychology / Psychologie Canadienne
+  volume: '26'
+  issue: '1'
+  provenance: University of Toronto.
+  metadata_incomplete: |-
+    Metadata incomplete: start page. The running folios read 2–12 directly, but the
+    article's own first printed page number is not visible in the scan. Read from a
+    per-page OCR set; the source PDF is a scan with no text layer.
+  metadata_incomplete_zh: 元数据不全：起始页码。书眉页码直接读到 2–12，但文章自己印出的第一个页码在扫描件中不可见。读自一套逐页 OCR；该来源 PDF 是一份没有文本层的扫描件。
+- id: wray2025
+  type: article
+  author:
+  - family: Wray
+    given: R. E.
+  - family: Kirk
+    given: J. R.
+  - family: Laird
+    given: J. E.
+  issued:
+    date-parts:
+    - - 2025
+  title: Applying cognitive design patterns to general LLM agents
+  provenance: |-
+    arXiv:2505.07087v2 [cs.AI], 13 June 2025. Center for
+    Integrated Cognition, IQMRI, Ann Arbor, MI.
+  metadata_incomplete: |-
+    Metadata incomplete: the document does not print its venue; the version read is v2,
+    so the v1 date is not established from this file.
+  metadata_incomplete_zh: 元数据不全：该文档没有印出发表场合；所读版本是 v2，因此 v1 的日期无法从本文件确定。
+- id: wu2026
+  type: article
+  author:
+  - family: Wu
+    given: Z.
+  - family: Zhang
+    given: H.
+  - family: Lin
+    given: F.
+  - family: Xu
+    given: W.
+  - family: Xu
+    given: X.
+  - family: Chen
+    given: Y.
+  - family: Zou
+    given: H. P.
+  - family: Chen
+    given: S.
+  - family: Zhang
+    given: W.
+  - family: Liu
+    given: X.
+  - family: Yu
+    given: P. S.
+  - family: Wang
+    given: H.
+  issued:
+    date-parts:
+    - - 2026
+  title: 'GAM: Hierarchical graph-based agentic memory for LLM agents'
+  provenance: |-
+    arXiv:2604.12285v1 [cs.AI], 14 April 2026. Zhejiang
+    University; University of Illinois Chicago; Rutgers University; MBZUAI; McGill
+    University.

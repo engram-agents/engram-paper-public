@@ -1,0 +1,531 @@
+"""Contract tests for the keyed-citation pipeline in `tools/render_paper.py`
+(`paper/references.yaml` + vendored CSL style + citeproc-py), written BEFORE the
+implementation.
+
+The contract (C1-C10) is stated by the PR1 spec, not inferred:
+
+  C1  an unknown key anywhere in a chapter is a HARD error naming file and line
+  C2  `[@a; @b]` renders both works in one parenthetical, APA order, two links
+  C3  narrative `@key`, year-only `[-@key]` and a locator `[@key, p. 12]` render
+  C4  every `#ref-<key>` link has a matching `id="ref-<key>"` anchor (whole render)
+  C5  the generated bibliography is deterministic (byte-identical across renders)
+  C6  every entry's `provenance` text appears verbatim in the generated bibliography
+  C7  an entry missing author/title/issued AND lacking `metadata_incomplete` is a
+      hard error; with `metadata_incomplete` it renders
+  C8  an entry never cited is a WARNING line listing the key, not an error
+  C9  text inside inline code or fenced code blocks is not parsed as a citation
+  C10 three or more authors render with "et al." in-text (APA 7)
+
+C1-C3 and C7-C10 use small fixtures; C4-C6 run against the real repo references.
+"""
+
+from __future__ import annotations
+
+import re
+import shutil
+import sys
+from pathlib import Path
+
+import pytest
+
+from tools import render_paper as rp  # noqa: E402  (imports without the renderer deps)
+
+try:
+    import citeproc  # noqa: F401
+    import yaml  # noqa: F401
+
+    _MISSING_DEPS = None
+except ImportError as _e:  # pragma: no cover - only without requirements.txt installed
+    _MISSING_DEPS = str(_e)
+
+
+@pytest.fixture(autouse=True)
+def _renderer_dependencies_installed():
+    """Fail LOUDLY, never skip: a skipped citation suite would read as green while
+    testing nothing. The renderer deps are pinned in requirements.txt."""
+    if _MISSING_DEPS is not None:
+        pytest.fail(
+            f"citation tests need citeproc-py and PyYAML ({_MISSING_DEPS}); "
+            f"run `pip install -r requirements.txt`"
+        )
+
+
+REPO = Path(__file__).resolve().parents[1]
+
+# --- fixtures ---------------------------------------------------------------------
+
+FIXTURE_YAML = """\
+references:
+- id: aaron1999
+  type: book
+  author:
+  - {family: Aaron, given: A. B.}
+  issued: {date-parts: [[1999]]}
+  title: Alpha book
+  publisher: Alpha Press
+- id: baker2001
+  type: article-journal
+  author:
+  - {family: Baker, given: C. D.}
+  issued: {date-parts: [[2001]]}
+  title: Beta article
+  container-title: Journal of Beta
+  volume: '3'
+  issue: '2'
+  page: 10-20
+- id: carter2005
+  type: article-journal
+  author:
+  - {family: Carter, given: E.}
+  - {family: Dunn, given: F.}
+  - {family: Evans, given: G.}
+  issued: {date-parts: [[2005]]}
+  title: Gamma article
+  container-title: Journal of Gamma
+  volume: '1'
+  page: 1-9
+  provenance: |-
+    Gamma provenance line one
+    gamma provenance line two.
+  metadata_incomplete: no issue number printed
+- id: kahl2026a
+  type: article
+  author:
+  - {family: Kahl, given: P.}
+  issued: {date-parts: [[2026]]}
+  title: First Kahl paper
+- id: kahl2026b
+  type: article
+  author:
+  - {family: Kahl, given: P.}
+  issued: {date-parts: [[2026]]}
+  title: Second Kahl paper
+"""
+
+
+def _ctx(yaml_text: str = FIXTURE_YAML, tmp_path: Path | None = None, lang: str = "en"):
+    assert tmp_path is not None
+    p = tmp_path / "references.yaml"
+    p.write_text(yaml_text, encoding="utf-8")
+    entries = rp.load_references(p)
+    return rp.CitationContext(entries, rp.DEFAULT_CSL, lang=lang)
+
+
+def _links(text: str) -> list[str]:
+    return re.findall(r"\]\(#ref-([a-z0-9]+)\)", text)
+
+
+def _make_tree(tmp_path: Path, chapter: str, refs: str = FIXTURE_YAML) -> None:
+    """A minimal render tree under tmp_path (the renderer resolves paths relative
+    to the working directory)."""
+    (tmp_path / "paper").mkdir()
+    (tmp_path / "paper" / "front-matter.md").write_text("# Title\n", encoding="utf-8")
+    (tmp_path / "paper" / "acknowledgements.md").write_text("Thanks.\n", encoding="utf-8")
+    (tmp_path / "paper" / "bibliography.md").write_text(
+        "# Bibliography\n\nIntro paragraph.\n\n{{REFERENCES}}\n\n---\n\n## Data availability\n\nNone.\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "paper" / "references.yaml").write_text(refs, encoding="utf-8")
+    d = tmp_path / "paper_research" / "current_draft"
+    d.mkdir(parents=True)
+    (d / "ch1.md").write_text(chapter, encoding="utf-8")
+
+
+@pytest.fixture
+def tree(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(rp, "BODY", ["ch1.md"])
+    monkeypatch.setattr(rp, "INSERTS_BY_LANG", {"en": [], "zh": []})
+    return tmp_path
+
+
+def _render(tree: Path, chapter: str, refs: str = FIXTURE_YAML, extra=()):
+    _make_tree(tree, chapter, refs)
+    out = tree / "out.md"
+    rc = rp.main(["--out", str(out), *extra])
+    return rc, out.read_text(encoding="utf-8")
+
+
+# --- C1 ---------------------------------------------------------------------------
+
+def test_c1_unknown_key_is_hard_error_naming_file_and_line(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    with pytest.raises(SystemExit) as e:
+        ctx.resolve("line one\nline two [@nosuchkey] here\n", "paper_research/current_draft/ch1.md")
+    msg = str(e.value)
+    assert "paper_research/current_draft/ch1.md:2" in msg
+    assert "nosuchkey" in msg
+
+
+def test_c1_unknown_narrative_key_is_hard_error(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    with pytest.raises(SystemExit) as e:
+        ctx.resolve("a\nb\nAs @ghost2000 argues.\n", "ch2.md")
+    assert "ch2.md:3" in str(e.value) and "ghost2000" in str(e.value)
+
+
+def test_c1_unknown_key_in_one_group_member_fails_whole_group(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    with pytest.raises(SystemExit) as e:
+        ctx.resolve("see [@aaron1999; @ghost2000]\n", "ch1.md")
+    assert "ch1.md:1" in str(e.value)
+
+
+def test_c1_end_to_end_exit_is_nonzero(tree):
+    _make_tree(tree, "ok\n\nbad [@nope1999]\n")
+    with pytest.raises(SystemExit) as e:
+        rp.main(["--out", str(tree / "out.md")])
+    assert e.value.code not in (0, None)
+    assert "ch1.md:3" in str(e.value)
+    assert not (tree / "out.md").exists(), "a failed render must not leave an output file"
+
+
+def test_c1_malformed_group_is_hard_error_not_silent_skip(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    with pytest.raises(SystemExit) as e:
+        ctx.resolve("x [@aaron1999 p. 3 and more] y\n", "ch1.md")
+    assert "ch1.md:1" in str(e.value)
+
+
+# --- C2 ---------------------------------------------------------------------------
+
+def test_c2_group_renders_both_works_in_one_parenthetical_apa_order(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    expected = "([Aaron, 1999](#ref-aaron1999); [Baker, 2001](#ref-baker2001))"
+    assert ctx.resolve("x [@aaron1999; @baker2001] y\n", "ch1.md") == f"x {expected} y\n"
+    # source order reversed: APA order (alphabetical), not citation order
+    assert ctx.resolve("x [@baker2001; @aaron1999] y\n", "ch1.md") == f"x {expected} y\n"
+
+
+def test_c2_same_author_same_year_group_keeps_suffixes_and_two_links(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    out = ctx.resolve("[@kahl2026b; @kahl2026a]\n", "ch1.md")
+    assert out == "([Kahl, 2026a](#ref-kahl2026a), [2026b](#ref-kahl2026b))\n"
+
+
+def test_c2_year_suffix_comes_from_the_key_in_text_and_bibliography(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    assert ctx.resolve("[@kahl2026a]", "ch1.md") == "([Kahl, 2026a](#ref-kahl2026a))"
+    bib = ctx.bibliography_markdown("en")
+    assert re.search(r'ref-kahl2026b"></a>Kahl, P\. \(2026b\)\.', bib)
+
+
+def test_c2_ambiguous_in_text_citations_are_a_hard_error(tmp_path):
+    """Two works with the same author and year and no distinguishing suffix would
+    print identical in-text citations; that must fail loudly, not link wrongly."""
+    both_plain = FIXTURE_YAML.replace("id: kahl2026a", "id: kahl2026").replace(
+        "id: kahl2026b", "id: kahl2026x"
+    )
+    # kahl2026 vs kahl2026x: suffix "x" disambiguates -> fine
+    _ctx(both_plain, tmp_path)
+    clash = FIXTURE_YAML.replace("id: kahl2026a", "id: kahl2026").replace("id: kahl2026b", "id: kahl2026")
+    with pytest.raises(SystemExit) as e:
+        _ctx(clash, tmp_path)
+    assert "kahl2026" in str(e.value)
+
+
+# --- C3 ---------------------------------------------------------------------------
+
+def test_c3_narrative_year_only_and_locator(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    assert ctx.resolve("@aaron1999 argues.\n", "ch1.md") == "[Aaron (1999)](#ref-aaron1999) argues.\n"
+    assert ctx.resolve("Aaron [-@aaron1999] argues.\n", "ch1.md") == "Aaron ([1999](#ref-aaron1999)) argues.\n"
+    assert ctx.resolve("[@aaron1999, p. 12]\n", "ch1.md") == "([Aaron, 1999, p. 12](#ref-aaron1999))\n"
+
+
+def test_c3_locator_forms_survive_verbatim(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    for loc in ("p. 12", "pp. 12–18", "ch. 4", "§ 2.3"):
+        out = ctx.resolve(f"[@baker2001, {loc}]\n", "ch1.md")
+        assert f"Baker, 2001, {loc}](#ref-baker2001)" in out, out
+
+
+def test_c3_narrative_sentence_end_punctuation_is_not_part_of_the_key(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    assert ctx.resolve("so says @aaron1999.\n", "ch1.md") == "so says [Aaron (1999)](#ref-aaron1999).\n"
+
+
+def test_c3_two_author_narrative_uses_and(tmp_path):
+    y = FIXTURE_YAML.replace(
+        "  - {family: Baker, given: C. D.}\n",
+        "  - {family: Baker, given: C. D.}\n  - {family: Young, given: Z.}\n",
+    )
+    ctx = _ctx(y, tmp_path)
+    assert ctx.resolve("@baker2001 said\n", "ch1.md") == "[Baker and Young (2001)](#ref-baker2001) said\n"
+    assert ctx.resolve("[@baker2001]\n", "ch1.md") == "([Baker & Young, 2001](#ref-baker2001))\n"
+
+
+# --- C4 / C5 / C6 (real repo references) -----------------------------------------
+
+@pytest.fixture(scope="module")
+def real_entries():
+    return rp.load_references(REPO / "paper" / "references.yaml")
+
+
+def _all_keys_text(entries) -> str:
+    lines = []
+    for e in entries:
+        k = e["id"]
+        lines += [f"[@{k}]", f"@{k} said", f"[-@{k}]", f"[@{k}, p. 3]"]
+    lines.append("[" + "; ".join("@" + e["id"] for e in entries) + "]")
+    return "\n\n".join(lines) + "\n"
+
+
+def test_c4_every_link_has_an_anchor_in_the_generated_bibliography(real_entries):
+    ctx = rp.CitationContext(real_entries, rp.DEFAULT_CSL, lang="en")
+    body = ctx.resolve(_all_keys_text(real_entries), "synthetic.md")
+    bib = ctx.bibliography_markdown("en")
+    links = set(_links(body))
+    anchors = set(re.findall(r'<a id="ref-([a-z0-9]+)"></a>', bib))
+    assert links, "vacuous: synthetic text produced no links"
+    assert links == {e["id"] for e in real_entries}, "every key must be linkable"
+    assert links <= anchors
+    assert anchors == {e["id"] for e in real_entries}
+
+
+def test_c4_whole_real_render_links_all_anchored_en_and_zh(tmp_path, monkeypatch):
+    monkeypatch.chdir(REPO)
+    for lang in ("en", "zh"):
+        out = tmp_path / f"{lang}.md"
+        assert rp.main(["--lang", lang, "--out", str(out)]) == 0
+        text = out.read_text(encoding="utf-8")
+        anchors = set(re.findall(r'<a id="ref-([a-z0-9]+)"></a>', text))
+        assert anchors, f"{lang} render carries no bibliography anchors"
+        assert set(_links(text)) <= anchors
+
+
+def test_c5_generated_bibliography_is_deterministic(real_entries):
+    a = rp.CitationContext(real_entries, rp.DEFAULT_CSL, lang="en").bibliography_markdown("en")
+    b = rp.CitationContext(real_entries, rp.DEFAULT_CSL, lang="en").bibliography_markdown("en")
+    assert a == b and len(a) > 1000
+    za = rp.CitationContext(real_entries, rp.DEFAULT_CSL, lang="zh").bibliography_markdown("zh")
+    zb = rp.CitationContext(real_entries, rp.DEFAULT_CSL, lang="zh").bibliography_markdown("zh")
+    assert za == zb
+
+
+def test_c5_two_full_renders_are_byte_identical(tmp_path, monkeypatch):
+    monkeypatch.chdir(REPO)
+    one, two = tmp_path / "1.md", tmp_path / "2.md"
+    rp.main(["--out", str(one)])
+    rp.main(["--out", str(two)])
+    assert one.read_bytes() == two.read_bytes() and one.stat().st_size > 1000
+
+
+def test_c5_render_is_identical_across_processes_with_different_hash_seeds(tmp_path):
+    """Two renders in ONE process share a hash seed, so they cannot expose an order that
+    depends on str hashing (set/dict iteration). Separate processes with different
+    PYTHONHASHSEED values can."""
+    import os
+    import subprocess
+
+    outs = []
+    for seed in ("1", "2"):
+        out = tmp_path / f"seed{seed}.md"
+        r = subprocess.run(
+            [sys.executable, "tools/render_paper.py", "--out", str(out)],
+            cwd=REPO, env={**os.environ, "PYTHONHASHSEED": seed}, capture_output=True, text=True,
+        )
+        assert r.returncode == 0, r.stderr
+        outs.append(out.read_bytes())
+        # the WARNING line lists keys: it must be stable too
+        outs.append(next(l for l in r.stderr.splitlines() if l.startswith("WARNING")).encode())
+    assert outs[0] == outs[2] and len(outs[0]) > 1000
+    assert outs[1] == outs[3] and len(outs[1]) > 20
+
+
+def test_c6_every_provenance_text_appears_verbatim(real_entries):
+    en = rp.CitationContext(real_entries, rp.DEFAULT_CSL, lang="en").bibliography_markdown("en")
+    zh = rp.CitationContext(real_entries, rp.DEFAULT_CSL, lang="zh").bibliography_markdown("zh")
+    with_prov = [e for e in real_entries if e.get("provenance")]
+    assert len(with_prov) >= 15, "the real references must carry their provenance notes"
+    for e in real_entries:
+        if e.get("provenance"):
+            assert e["provenance"] in en, e["id"]
+            assert (e.get("provenance_zh") or e["provenance"]) in zh, e["id"]
+        if e.get("metadata_incomplete"):
+            assert "*[" + e["metadata_incomplete"] + "]*" in en, e["id"]
+            assert "*[" + (e.get("metadata_incomplete_zh") or e["metadata_incomplete"]) + "]*" in zh, e["id"]
+
+
+def test_c6_provenance_is_verbatim_for_fixture_and_precedes_the_note(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    bib = ctx.bibliography_markdown("en")
+    assert "Gamma provenance line one\ngamma provenance line two." in bib
+    assert bib.index("Gamma provenance line one") < bib.index("*[no issue number printed]*")
+
+
+def test_same_author_same_year_entries_list_in_suffix_order_not_title_order(tmp_path):
+    """citeproc-py breaks author+year ties by title; the suffix is the key's, so the
+    printed order must follow it (2026a before 2026b) even when the titles say otherwise."""
+    y = FIXTURE_YAML.replace("title: First Kahl paper", "title: Zeta paper").replace(
+        "title: Second Kahl paper", "title: Alpha paper"
+    )
+    bib = _ctx(y, tmp_path).bibliography_markdown("en")
+    assert bib.index("ref-kahl2026a") < bib.index("ref-kahl2026b")
+    assert bib.index("Zeta paper") < bib.index("Alpha paper")
+
+
+def test_bibliography_is_sorted_apa_order_and_anchored_per_entry(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    bib = ctx.bibliography_markdown("en")
+    keys = re.findall(r'<a id="ref-([a-z0-9]+)"></a>', bib)
+    assert keys == ["aaron1999", "baker2001", "carter2005", "kahl2026a", "kahl2026b"]
+
+
+# --- C7 ---------------------------------------------------------------------------
+
+@pytest.mark.parametrize("missing", ["author", "title", "issued"])
+def test_c7_missing_core_field_without_metadata_incomplete_is_hard_error(tmp_path, missing):
+    entry = {
+        "author": "  author:\n  - {family: Zed, given: Z.}\n",
+        "title": "  title: Zed work\n",
+        "issued": "  issued: {date-parts: [[2000]]}\n",
+    }
+    body = "".join(v for k, v in entry.items() if k != missing)
+    y = "references:\n- id: zed2000\n  type: book\n" + body
+    p = tmp_path / "r.yaml"
+    p.write_text(y, encoding="utf-8")
+    with pytest.raises(SystemExit) as e:
+        rp.load_references(p)
+    assert "zed2000" in str(e.value) and missing in str(e.value)
+
+
+@pytest.mark.parametrize("missing", ["author", "title", "issued"])
+def test_c7_with_metadata_incomplete_the_entry_renders(tmp_path, missing):
+    entry = {
+        "author": "  author:\n  - {family: Zed, given: Z.}\n",
+        "title": "  title: Zed work\n",
+        "issued": "  issued: {date-parts: [[2000]]}\n",
+    }
+    body = "".join(v for k, v in entry.items() if k != missing)
+    y = "references:\n- id: zed2000\n  type: book\n" + body + "  metadata_incomplete: the source prints no " + missing + "\n"
+    ctx = _ctx(y, tmp_path)
+    bib = ctx.bibliography_markdown("en")
+    assert 'id="ref-zed2000"' in bib
+    assert f"*[the source prints no {missing}]*" in bib
+
+
+def test_c7_unknown_field_and_duplicate_id_are_hard_errors(tmp_path):
+    p = tmp_path / "r.yaml"
+    p.write_text(FIXTURE_YAML.replace("title: Alpha book", "title: Alpha book\n  colour: red"), encoding="utf-8")
+    with pytest.raises(SystemExit) as e:
+        rp.load_references(p)
+    assert "colour" in str(e.value)
+    p.write_text(FIXTURE_YAML.replace("id: baker2001", "id: aaron1999"), encoding="utf-8")
+    with pytest.raises(SystemExit) as e:
+        rp.load_references(p)
+    assert "aaron1999" in str(e.value)
+
+
+# --- C8 ---------------------------------------------------------------------------
+
+def test_c8_uncited_entry_is_a_warning_line_not_an_error(tree, capsys):
+    rc, out = _render(tree, "Only [@aaron1999] is cited here.\n")
+    assert rc == 0
+    err = capsys.readouterr().err
+    warn = [l for l in err.splitlines() if l.startswith("WARNING")]
+    assert len(warn) == 1, err
+    for k in ("baker2001", "carter2005", "kahl2026a", "kahl2026b"):
+        assert k in warn[0]
+    assert "aaron1999" not in warn[0]
+    # the uncited entries are still printed in the bibliography
+    assert 'id="ref-baker2001"' in out
+
+
+def test_c8_no_warning_when_everything_is_cited(tree, capsys):
+    rc, _ = _render(tree, "[@aaron1999; @baker2001; @carter2005; @kahl2026a; @kahl2026b]\n")
+    assert rc == 0
+    assert "WARNING" not in capsys.readouterr().err
+
+
+# --- C9 ---------------------------------------------------------------------------
+
+def test_c9_inline_code_and_fenced_blocks_are_not_citations(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    text = (
+        "Write `[@ghost1999]` or ``@ghost2000 and [@x]`` to cite.\n\n"
+        "```python\n@decorator\nx = [@ghost1999]\n```\n\n"
+        "~~~\n[@ghost2001]\n~~~\n\n"
+        "````md\n```\n[@ghost2002]\n```\n````\n"
+    )
+    assert ctx.resolve(text, "ch1.md") == text
+    assert ctx.cited == set()
+
+
+def test_c9_code_is_skipped_but_real_citations_around_it_still_resolve(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    out = ctx.resolve("`[@ghost1999]` then [@aaron1999] and\n\n```\n[@ghost1999]\n```\n", "ch1.md")
+    assert "`[@ghost1999]`" in out and "([Aaron, 1999](#ref-aaron1999))" in out
+    assert ctx.cited == {"aaron1999"}
+
+
+def test_c9_escaped_and_email_at_signs_are_not_citations(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    text = r"literal \@ghost1999 and \[@ghost1999] and mail me@example.com and https://x.org/@ghost1999" + "\n"
+    assert ctx.resolve(text, "ch1.md") == text
+
+
+def test_c9_html_comments_are_not_citations(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    text = "<!-- translator note: [@ghost1999]\nand @ghost2000 -->\nbody\n"
+    assert ctx.resolve(text, "ch1.md") == text
+
+
+def test_c9_line_numbers_count_lines_inside_comments_and_code(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    text = "<!-- a\nb\nc -->\n```\nx\n```\n[@ghost1999]\n"
+    with pytest.raises(SystemExit) as e:
+        ctx.resolve(text, "ch1.md")
+    assert "ch1.md:7" in str(e.value)
+
+
+# --- C10 --------------------------------------------------------------------------
+
+def test_c10_three_or_more_authors_render_et_al(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    assert ctx.resolve("[@carter2005]\n", "ch1.md") == "([Carter et al., 2005](#ref-carter2005))\n"
+    assert ctx.resolve("@carter2005 found\n", "ch1.md") == "[Carter et al. (2005)](#ref-carter2005) found\n"
+
+
+def test_c10_twelve_authors_in_the_real_references_render_et_al(real_entries):
+    ctx = rp.CitationContext(real_entries, rp.DEFAULT_CSL, lang="en")
+    assert ctx.resolve("[@wu2026]", "x.md") == "([Wu et al., 2026](#ref-wu2026))"
+    assert ctx.resolve("[@alchourron1985]", "x.md") == "([Alchourrón et al., 1985](#ref-alchourron1985))"
+
+
+# --- dependency / options / template ------------------------------------------------
+
+def test_missing_citeproc_prints_a_clear_error_naming_the_package(tmp_path, monkeypatch):
+    monkeypatch.setitem(sys.modules, "citeproc", None)  # makes `import citeproc` raise ImportError
+    p = tmp_path / "r.yaml"
+    p.write_text(FIXTURE_YAML, encoding="utf-8")
+    entries = rp.load_references(p)
+    with pytest.raises(SystemExit) as e:
+        rp.CitationContext(entries, rp.DEFAULT_CSL)
+    assert "citeproc-py" in str(e.value)
+
+
+def test_csl_option_selects_the_style_file_and_a_missing_one_is_an_error(tree, tmp_path):
+    custom = tree / "mystyle.csl"
+    shutil.copy(rp.DEFAULT_CSL, custom)
+    rc, out = _render(tree, "[@aaron1999]\n", extra=("--csl", str(custom)))
+    assert rc == 0 and "([Aaron, 1999](#ref-aaron1999))" in out
+    with pytest.raises(SystemExit) as e:
+        rp.main(["--out", str(tree / "o2.md"), "--csl", str(tree / "nope.csl")])
+    assert "nope.csl" in str(e.value)
+
+
+def test_template_without_the_references_token_is_a_hard_error(tree):
+    _make_tree(tree, "text\n")
+    (tree / "paper" / "bibliography.md").write_text("# Bibliography\n\nno token here\n", encoding="utf-8")
+    with pytest.raises(SystemExit) as e:
+        rp.main(["--out", str(tree / "out.md")])
+    assert "{{REFERENCES}}" in str(e.value)
+
+
+def test_render_places_generated_entries_where_the_token_was(tree):
+    rc, out = _render(tree, "text\n")
+    assert rc == 0
+    assert "{{REFERENCES}}" not in out
+    i_intro, i_entry, i_tail = out.index("Intro paragraph."), out.index('<a id="ref-aaron1999">'), out.index("## Data availability")
+    assert i_intro < i_entry < i_tail
