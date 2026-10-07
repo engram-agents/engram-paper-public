@@ -78,7 +78,11 @@ e.g. `kahl2026c`):
 | `[-@key]` | (2026a), year only, for use after the author is named in the sentence |
 
 Each in-text citation is a link to its entry in the bibliography. Write `\@` for a literal `@`;
-text in code spans, code fences and HTML comments is never read as a citation.
+text in code spans, code fences and HTML comments is never read as a citation. Next to Chinese,
+Japanese or Korean text a narrative `@key` needs no spaces (`如@key所述`); a Latin letter or digit
+touching the `@` (`foo@key`), several keys in one item (`[@a @b]`, `[@a, @b]`; use `;`) and
+Pandoc's braced `@{key}` are build errors, as is any other key-shaped `@` token that is not
+one of the forms above. Plain `@` text such as `engram_stats @ turn 82` is untouched.
 
 **Adding an entry.** Add it to `paper/references.yaml`, with every field **read off the
 document itself, never from memory, from inference, or from a bibliographic database**. A field

@@ -857,3 +857,140 @@ def test_a_citation_followed_by_a_colon_mid_line_or_in_code_is_not_a_definition(
     ctx = _ctx(tmp_path=tmp_path)
     out = ctx.resolve("as shown [@aaron1999]: and so on\n\n    x\n\n`[@ghost1999]: y`\n", "ch1.md")
     assert "([Aaron, 1999](#ref-aaron1999)): and so on" in out
+
+
+# --- malformed-shape class guard (review of #124: a key-shaped `@` never renders as text) ---
+
+FIXTURE_YAML_TV = FIXTURE_YAML + """\
+- id: tulving1985
+  type: article-journal
+  author:
+  - {family: Tulving, given: E.}
+  issued: {date-parts: [[1985]]}
+  title: Memory and consciousness
+  container-title: Canadian Psychology
+- id: semon1904
+  type: book
+  author:
+  - {family: Semon, given: R.}
+  issued: {date-parts: [[1904]]}
+  title: Die Mneme
+  publisher: Engelmann
+"""
+
+
+def _ctx_tv(tmp_path, lang="en"):
+    return _ctx(FIXTURE_YAML_TV, tmp_path, lang=lang)
+
+
+@pytest.mark.parametrize("src", [
+    "[@tulving1985 @semon1904]",
+    "[@tulving1985, @semon1904]",
+    "[see @tulving1985 @semon1904]",
+    "[see @tulving1985, also @semon1904]",
+])
+def test_r2_two_keys_in_one_item_is_a_hard_error_with_hint(tmp_path, src):
+    ctx = _ctx_tv(tmp_path)
+    with pytest.raises(SystemExit) as e:
+        ctx.resolve(f"first line\n\nA claim {src} here.\n", "ch1.md")
+    msg = str(e.value)
+    assert msg.startswith("ch1.md:3:") and "separate citations with ';'" in msg
+
+
+def test_r2_the_semicolon_form_still_renders(tmp_path):
+    ctx = _ctx_tv(tmp_path)
+    out = ctx.resolve("[@tulving1985; @semon1904]", "ch1.md")
+    assert _links(out) == ["semon1904", "tulving1985"] and "@" not in out
+
+
+@pytest.mark.parametrize("src,expected", [
+    ("如@tulving1985所述。", "如{N}所述。"),
+    ("见@tulving1985，", "见{N}，"),
+    ("（@tulving1985）", "（{N}）"),
+    ("あ@tulving1985い", "あ{N}い"),
+    ("한@tulving1985글", "한{N}글"),
+    ("如@tulving1985。", "如{N}。"),
+])
+def test_r3_cjk_adjacent_narrative_citation_renders_without_inserting_spaces(tmp_path, src, expected):
+    ctx = _ctx_tv(tmp_path)
+    narrative = ctx.resolve("@tulving1985", "ch1.md")
+    assert narrative.startswith("[Tulving (1985)]")
+    assert ctx.resolve(src, "ch1.md") == expected.replace("{N}", narrative)
+
+
+def test_r3_cjk_adjacent_equals_the_spaced_form_minus_the_spaces(tmp_path):
+    ctx = _ctx_tv(tmp_path)
+    spaced = ctx.resolve("如 @tulving1985 所述", "ch1.md")
+    assert ctx.resolve("如@tulving1985所述", "ch1.md") == spaced.replace("如 ", "如").replace(" 所述", "所述")
+
+
+def test_r3_cjk_adjacent_unknown_key_is_still_an_unknown_key_error(tmp_path):
+    ctx = _ctx_tv(tmp_path)
+    with pytest.raises(SystemExit) as e:
+        ctx.resolve("如@ghost1999所述", "ch1.md")
+    assert "unknown citation key '@ghost1999'" in str(e.value)
+
+
+@pytest.mark.parametrize("src", ["foo@tulving1985", "see foo@tulving1985 here", "é@tulving1985", "x1@tulving1985"])
+def test_r3_latin_word_char_before_at_is_an_error_not_a_citation(tmp_path, src):
+    ctx = _ctx_tv(tmp_path)
+    with pytest.raises(SystemExit) as e:
+        ctx.resolve(src + "\n", "ch1.md")
+    assert "@tulving1985" in str(e.value) and "ch1.md:1:" in str(e.value)
+
+
+@pytest.mark.parametrize("src", ["@{tulving1985}", "[@{tulving1985}]", "as in @{tulving1985}.", "-@{tulving1985}"])
+def test_r4_braced_pandoc_form_is_a_hard_error_naming_the_unbraced_form(tmp_path, src):
+    ctx = _ctx_tv(tmp_path)
+    with pytest.raises(SystemExit) as e:
+        ctx.resolve(f"line one\n{src}\n", "ch1.md")
+    msg = str(e.value)
+    assert msg.startswith("ch1.md:2:") and "tulving1985" in msg and "braced" in msg
+
+
+@pytest.mark.parametrize("src", ["[@tulving1985 @semon1904]", "@{tulving1985}", "foo@tulving1985", "-@tulving1985x1",
+                                  "word -@tulving1985 tail", "x[@a1999 junk @tulving1985]"])
+def test_r1_sweep_no_key_shaped_token_survives_into_the_output(tmp_path, src):
+    """Whatever the shape, resolve() either raises or leaves no unprotected key-shaped
+    `@` token behind."""
+    ctx = _ctx_tv(tmp_path)
+    try:
+        out = ctx.resolve(src + "\n", "ch1.md")
+    except SystemExit:
+        return
+    assert not re.search(r"@\{?[a-z]+\d{4}[a-z]?", out), out
+
+
+def test_r1_sweep_catches_a_shape_nobody_enumerated(tmp_path):
+    ctx = _ctx_tv(tmp_path)
+    for src in ("a-@tulving1985", "k=@tulving1985", "x:@tulving1985", "a.@tulving1985"):
+        with pytest.raises(SystemExit) as e:
+            ctx.resolve(f"p\n\n{src}\n", "ch1.md")
+        assert "ch1.md:3:" in str(e.value) and "@tulving1985" in str(e.value), src
+
+
+@pytest.mark.parametrize("text", [
+    "mail me@example.com or me@smith2020.com now\n",
+    "see https://x.org/@tulving1985 and http://medium.com/@user2020\n",
+    "`engram_stats @ turn 82` and engram_stats @ turn 82 again\n",
+    "escaped \\@tulving1985 and \\[@tulving1985] text\n",
+    "```\n@tulving1985 {@x} @{tulving1985}\n```\n`@{tulving1985} foo@tulving1985`\n",
+    "<!-- @tulving1985 @{tulving1985} -->\n",
+    "an @ sign, a lone @, and @ turn 82 stay text\n",
+])
+def test_r1_sweep_does_not_fire_on_non_citation_at_signs(tmp_path, text):
+    ctx = _ctx_tv(tmp_path)
+    assert ctx.resolve(text, "ch1.md") == text
+
+
+def test_r1_error_message_names_file_line_and_token(tmp_path):
+    ctx = _ctx_tv(tmp_path)
+    with pytest.raises(SystemExit) as e:
+        ctx.resolve("a\nb\nfoo@semon1904 bar\n", "chX.md")
+    assert str(e.value).startswith("chX.md:3:") and "'@semon1904'" in str(e.value)
+
+
+def test_r1_end_to_end_malformed_shape_exits_nonzero(tree):
+    with pytest.raises(SystemExit) as e:
+        _render(tree, "Text [@aaron1999 @baker2001].\n")
+    assert e.value.code not in (0, None)

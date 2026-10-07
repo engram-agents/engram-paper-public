@@ -874,7 +874,24 @@ _REQUIRED_UNLESS_INCOMPLETE = ("author", "title", "issued")
 _KEY_RE = re.compile(r"^[a-z]+\d{4}[a-z]?$")
 # Pandoc's citation-key grammar: starts alphanumeric/underscore, may contain internal
 # punctuation, never ends on it (so "@key." at a sentence end is the key plus a full stop).
-_KEY = r"[A-Za-z0-9_](?:[\w:.#$%&+?<>~/-]*\w)?"
+# CJK ideographs, kana, hangul, and CJK punctuation / fullwidth forms. `\w` counts them as
+# word characters, which would glue `如@key所述` into one token: for a citation they are
+# boundaries instead (a Latin letter or digit before the `@` still is not).
+_CJK = (
+    "ᄀ-ᇿ⺀-⿟　-ヿ㄀-㆏ㇰ-ㇿ㐀-䶿"
+    "一-鿿가-힯豈-﫿＀-￯"
+)
+_NOT_CJK = r"(?![" + _CJK + r"])"
+_KEY = r"[A-Za-z0-9_](?:(?:" + _NOT_CJK + r"[\w:.#$%&+?<>~/-])*" + _NOT_CJK + r"\w)?"
+# Class guard: a key-shaped `@` token (the references.yaml id grammar, with a leading `-`, or
+# opening a brace) still in the source after every supported form has been resolved. Not
+# preceded by `\` (escaped), `\[` (escaped group) or `/` (URL path); not followed by a
+# `.word` (an e-mail domain). `resolve` turns any survivor into a hard error.
+_STRAY_KEY = re.compile(
+    r"(?<!\\)(?<!\\\[)(?<!/)-?@\{?[a-z]+\d{4}[a-z]?(?![A-Za-z0-9_]*\.[A-Za-z0-9])"
+)
+# Pandoc's braced form `@{key}`: not supported, reported with its own message.
+_BRACED_KEY = re.compile(r"(?<!\\)(?<!\\\[)(?<!/)-?@\{[a-z]+\d{4}[a-z]?\}?")
 # One `;`-separated item of a group: optional prefix text ("see "), `-?@key`, optional
 # `, locator`. Anything else in an item (a suffix with no comma, a part with no key) does
 # not match, and the caller turns that into a hard error.
@@ -887,7 +904,7 @@ _ITEM_RE = re.compile(
 _NOT_PARA_BREAK = r"(?:(?!\n[ \t]*\n)[^\[\]])*"
 _CITE_RE = re.compile(
     r"(?<!\\)\[(?=" + _NOT_PARA_BREAK + r"(?<![^\s\[])-?@[A-Za-z0-9_])(?P<grp>" + _NOT_PARA_BREAK + r")\]"
-    r"|(?<![^\W_])(?<![@\\/.:=~#-])(?<!\\\[)@(?P<nkey>" + _KEY + r")"
+    r"|(?<!" + _NOT_CJK + r"[^\W_])(?<![@\\/.:=~#-])(?<!\\\[)@(?P<nkey>" + _KEY + r")"
 )
 _YEAR_TOKEN = r"(?:\d{4}|n\.d\.)"
 _CORE_RE = re.compile(r"^(?P<a>.+), (?P<y>" + _YEAR_TOKEN + r"[^,;]*)$")
@@ -1238,7 +1255,15 @@ class CitationContext:
             self.cited.add(key)
             return key
 
+        for bm in _BRACED_KEY.finditer(text):
+            if not protected(bm.start()):
+                raise SystemExit(
+                    f"{source}:{line_of(bm.start())}: braced citation {bm.group(0)!r} is not "
+                    f"supported; write the key unbraced (@key, [@key]), or escape the @ as \\@"
+                )
+
         out: list[str] = []
+        consumed: list[tuple[int, int]] = []
         last = 0
         for m in _CITE_RE.finditer(text):
             if protected(m.start()):
@@ -1253,6 +1278,7 @@ class CitationContext:
                     continue
             out.append(text[last:m.start()])
             last = m.end()
+            consumed.append((m.start(), m.end()))
             if m.group("nkey") is not None:
                 nkey = m.group("nkey")
                 before = text[m.start() - 1] if m.start() else ""
@@ -1297,6 +1323,13 @@ class CitationContext:
                     )
                 loc = im.group("loc")
                 prefix = " ".join(im.group("prefix").split())
+                stray = _STRAY_KEY.search(prefix) or (_STRAY_KEY.search(loc) if loc else None)
+                if stray:
+                    raise SystemExit(
+                        f"{source}:{line_of(m.start())}: citation {m.group(0)!r} has a second "
+                        f"key {stray.group(0)!r} inside one item (as prefix or locator); "
+                        f"separate citations with ';', e.g. [@a; @b]"
+                    )
                 items.append((
                     known(im.group("key"), m.start()),
                     im.group("neg") is not None,
@@ -1305,6 +1338,23 @@ class CitationContext:
                 ))
             out.append(self._parenthetical(items))
         out.append(text[last:])
+        # Class guard (fail closed): whatever shape got here, a key-shaped `@` token that no
+        # rule above turned into a citation must not print as plain text.
+        for sm in _STRAY_KEY.finditer(text):
+            if protected(sm.start()) or any(a <= sm.start() < b for a, b in consumed):
+                continue
+            j = sm.start()
+            while j and text[j - 1] == "_":
+                j -= 1
+            if j < sm.start() and j and text[j - 1].isalnum():
+                continue  # `snake_@key`: an identifier, as in the narrative scan above
+            raise SystemExit(
+                f"{source}:{line_of(sm.start())}: {sm.group(0)!r} looks like a citation but is "
+                f"not in a supported form, so it would print as literal text (supported: "
+                f"@key, [@key], [@key, p. 12], [@a; @b], [-@key]; separate citations with "
+                f"';'; a Latin letter or digit may not touch the @); fix it, or escape the "
+                f"@ as \\@"
+            )
         return "".join(out)
 
     # -- bibliography -----------------------------------------------------------------
