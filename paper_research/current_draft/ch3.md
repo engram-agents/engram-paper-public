@@ -213,8 +213,8 @@ along it.
 of episodic memory adapted from Nuxoll and Laird, against which they score Generative
 Agents. Two of their rows have no counterpart in Pink et al.'s five, and both are rows
 ENGRAM was designed for. Their *autonoetic* row reads "unclear how agents distinguish
-current understanding from memory of past experience" [@wray2025, p. 7]; their *deliberate* row reads
-"agents cannot deliberately attempt to construct cues or retrieve memories" [@wray2025, p. 7]. ENGRAM's
+current understanding from memory of past experience" [@wray2025, § 3.1]; their *deliberate* row reads
+"agents cannot deliberately attempt to construct cues or retrieve memories" [@wray2025, § 3.1]. ENGRAM's
 two recall surfaces — an ambient hook that signals familiarity without content, and
 explicit query tools the agent invokes when it wants to know — are that distinction,
 built.
@@ -234,9 +234,9 @@ both hold because the word does two jobs.
 agreement, because it exposes a conflation.** Wray et al. list *automatic* encoding as
 a characteristic an implementation should satisfy, marking Generative Agents down for
 using a periodic process. Sumers et al. argue the opposite: learning should be "a
-result action of a decision-making cycle just like grounding" [@sumers2024, p. 18], the agent deliberately
+result action of a decision-making cycle just like grounding" [@sumers2024, § 7], the agent deliberately
 choosing to commit information to memory, "in contrast to most agents, which simply
-fix a learning schedule…" [@sumers2024, p. 18]. ENGRAM's writes are deliberate tool calls, so on the same
+fix a learning schedule…" [@sumers2024, § 7]. ENGRAM's writes are deliberate tool calls, so on the same
 fact it is penalized by the first rubric and exemplary under the second.
 
 The right response is not to pick a side: the two rubrics address different halves of
@@ -308,9 +308,9 @@ paper concerns.
 **CoALA, and a convergence with a checkable date.** Sumers et al.'s framework
 supplies the vocabulary rather than a rubric, and it names three areas as
 understudied or open, each of which ENGRAM occupies. The first is *unlearning*:
-"modifying and deleting" [@sumers2024, p. 12] memory, as against the literature's focus on adding to it.
+"modifying and deleting" [@sumers2024, § 4.5] memory, as against the literature's focus on adding to it.
 ENGRAM answers this in a way their gloss does not anticipate: where they describe
-unlearning as "deleting unneeded memory items" [@sumers2024, p. 16], supersede and retraction *retain* the
+unlearning as "deleting unneeded memory items" [@sumers2024, § 6], supersede and retraction *retain* the
 superseded node with its provenance and mark its dependents rather than removing
 them, so the record of having been wrong survives the correction. The second is
 *learning as a deliberate action*, which they contrast with agents that "simply fix a

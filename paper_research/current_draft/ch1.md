@@ -42,11 +42,11 @@ its graph variant, are marked only partial on single-shot learning and on
 instance-specificity; on contextual relations RAG is marked as not satisfying the
 property at all, and its graph variant only partially. @wray2025,
 reading the field through pre-transformer cognitive architectures, identify two
-design patterns "that have not yet been taken up in the Agentic LLM mainstream" [@wray2025, p. 7]:
+design patterns "that have not yet been taken up in the Agentic LLM mainstream" [@wray2025, § 3.2]:
 *reconsideration* (revisiting a prior commitment) and *knowledge compilation*. @sumers2024, whose CoALA framework is the field's common organizing vocabulary
 rather than a third diagnosis, note in passing that while the literature has
 concentrated on *adding* to memory, "modifying and deleting (a case of 'unlearning')
-are understudied" [@sumers2024, p. 12].
+are understudied" [@sumers2024, § 4.5].
 
 None of this work names what the missing mechanisms would be *for*. Pink et al.
 argue that episodic memory is missing; they do not ask what an agent becomes once it

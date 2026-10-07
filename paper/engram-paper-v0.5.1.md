@@ -118,11 +118,11 @@ its graph variant, are marked only partial on single-shot learning and on
 instance-specificity; on contextual relations RAG is marked as not satisfying the
 property at all, and its graph variant only partially. [Wray et al. (2025)](#ref-wray2025),
 reading the field through pre-transformer cognitive architectures, identify two
-design patterns "that have not yet been taken up in the Agentic LLM mainstream" ([Wray et al., 2025, p. 7](#ref-wray2025)):
+design patterns "that have not yet been taken up in the Agentic LLM mainstream" ([Wray et al., 2025, § 3.2](#ref-wray2025)):
 *reconsideration* (revisiting a prior commitment) and *knowledge compilation*. [Sumers et al. (2024)](#ref-sumers2024), whose CoALA framework is the field's common organizing vocabulary
 rather than a third diagnosis, note in passing that while the literature has
 concentrated on *adding* to memory, "modifying and deleting (a case of 'unlearning')
-are understudied" ([Sumers et al., 2024, p. 12](#ref-sumers2024)).
+are understudied" ([Sumers et al., 2024, § 4.5](#ref-sumers2024)).
 
 None of this work names what the missing mechanisms would be *for*. Pink et al.
 argue that episodic memory is missing; they do not ask what an agent becomes once it
@@ -865,8 +865,8 @@ along it.
 of episodic memory adapted from Nuxoll and Laird, against which they score Generative
 Agents. Two of their rows have no counterpart in Pink et al.'s five, and both are rows
 ENGRAM was designed for. Their *autonoetic* row reads "unclear how agents distinguish
-current understanding from memory of past experience" ([Wray et al., 2025, p. 7](#ref-wray2025)); their *deliberate* row reads
-"agents cannot deliberately attempt to construct cues or retrieve memories" ([Wray et al., 2025, p. 7](#ref-wray2025)). ENGRAM's
+current understanding from memory of past experience" ([Wray et al., 2025, § 3.1](#ref-wray2025)); their *deliberate* row reads
+"agents cannot deliberately attempt to construct cues or retrieve memories" ([Wray et al., 2025, § 3.1](#ref-wray2025)). ENGRAM's
 two recall surfaces — an ambient hook that signals familiarity without content, and
 explicit query tools the agent invokes when it wants to know — are that distinction,
 built.
@@ -886,9 +886,9 @@ both hold because the word does two jobs.
 agreement, because it exposes a conflation.** Wray et al. list *automatic* encoding as
 a characteristic an implementation should satisfy, marking Generative Agents down for
 using a periodic process. Sumers et al. argue the opposite: learning should be "a
-result action of a decision-making cycle just like grounding" ([Sumers et al., 2024, p. 18](#ref-sumers2024)), the agent deliberately
+result action of a decision-making cycle just like grounding" ([Sumers et al., 2024, § 7](#ref-sumers2024)), the agent deliberately
 choosing to commit information to memory, "in contrast to most agents, which simply
-fix a learning schedule…" ([Sumers et al., 2024, p. 18](#ref-sumers2024)). ENGRAM's writes are deliberate tool calls, so on the same
+fix a learning schedule…" ([Sumers et al., 2024, § 7](#ref-sumers2024)). ENGRAM's writes are deliberate tool calls, so on the same
 fact it is penalized by the first rubric and exemplary under the second.
 
 The right response is not to pick a side: the two rubrics address different halves of
@@ -960,9 +960,9 @@ paper concerns.
 **CoALA, and a convergence with a checkable date.** Sumers et al.'s framework
 supplies the vocabulary rather than a rubric, and it names three areas as
 understudied or open, each of which ENGRAM occupies. The first is *unlearning*:
-"modifying and deleting" ([Sumers et al., 2024, p. 12](#ref-sumers2024)) memory, as against the literature's focus on adding to it.
+"modifying and deleting" ([Sumers et al., 2024, § 4.5](#ref-sumers2024)) memory, as against the literature's focus on adding to it.
 ENGRAM answers this in a way their gloss does not anticipate: where they describe
-unlearning as "deleting unneeded memory items" ([Sumers et al., 2024, p. 16](#ref-sumers2024)), supersede and retraction *retain* the
+unlearning as "deleting unneeded memory items" ([Sumers et al., 2024, § 6](#ref-sumers2024)), supersede and retraction *retain* the
 superseded node with its provenance and mark its dependents rather than removing
 them, so the record of having been wrong survives the correction. The second is
 *learning as a deliberate action*, which they contrast with agents that "simply fix a
@@ -3252,14 +3252,14 @@ relevant prior art** — including the work this paper now cites:
 
 | Prior / concurrent work | Public | Before the 2026-03-20 search | Surfaced? |
 |---|---|---|---|
-| **Kumiho** ([Park, 2026](#ref-park2026)) — closest concurrent system | **2026-03-18** | **2 days** | **NO** |
+| **Kumiho** ([Park, 2026, arXiv 2603.17244](#ref-park2026)) — closest concurrent system | **2026-03-18** | **2 days** | **NO** |
 | **Kahl 2026b (*Artificial general intelligence and ontological continuity*)** (Zenodo 18761736) — the paper's threshold | 2026-02-24 | 24 days | **NO** |
 | Kahl 2026a (*Epistemic agency and the ontological continuity condition*) (Zenodo 18441395) | 2026-01-31 | 48 days | NO |
 | TMS lineage (Doyle 1979, de Kleer 1986) | 1979–86 | ~40+ yrs | NO |
 | AGM belief revision ([Alchourrón et al., 1985](#ref-alchourron1985)) | 1985 | ~41 yrs | NO |
 | **CoALA** (Sumers et al., TMLR) — the field's common vocabulary | 2024-02 | ~25 months | **NO** |
-| **Pink et al.** ([Pink et al., 2025](#ref-pink2025)) — episodic-memory position paper | 2025-02-10 | ~13 months | **NO** |
-| **Wray, Kirk & Laird** ([Wray et al., 2025](#ref-wray2025)) — cognitive design patterns | 2025-06-13 | ~9 months | **NO** |
+| **Pink et al.** ([Pink et al., 2025, arXiv 2502.06975](#ref-pink2025)) — episodic-memory position paper | 2025-02-10 | ~13 months | **NO** |
+| **Wray, Kirk & Laird** ([Wray et al., 2025, arXiv 2505.07087](#ref-wray2025)) — cognitive design patterns | 2025-06-13 | ~9 months | **NO** |
 
 Kumiho's date is its arXiv v1 stamp (18 March 2026); the document's own title page
 is dated 17 March.
@@ -3321,11 +3321,11 @@ was on our radar.
 
 | System | First public surface | vs. ENGRAM ideation (2026-03-20) | vs. day-1 recording (2026-04-09) |
 |---|---|---|---|
-| **Kumiho** ([Park, 2026](#ref-park2026)) | **2026-03-18** | **2 days before** (not surfaced) | 22 days before |
+| **Kumiho** ([Park, 2026, arXiv 2603.17244](#ref-park2026)) | **2026-03-18** | **2 days before** (not surfaced) | 22 days before |
 | Kahl 2026b (Zenodo) | 2026-02-24 | 24 days before (not surfaced) | 44 days before |
 | Kahl 2026a (Zenodo) | 2026-01-31 | 48 days before (not surfaced) | 68 days before |
-| GAM ([Wu et al., 2026](#ref-wu2026)) | 2026-04-14 | 25 days **after** | 5 days after |
-| SCM ([Shinde, 2026](#ref-shinde2026)) | 2026-04-22 | 33 days **after** | 13 days after |
+| GAM ([Wu et al., 2026, arXiv 2604.12285](#ref-wu2026)) | 2026-04-14 | 25 days **after** | 5 days after |
+| SCM ([Shinde, 2026, arXiv 2604.20943](#ref-shinde2026)) | 2026-04-22 | 33 days **after** | 13 days after |
 | VMG survey (Lin et al., 2604.16548) | 2026-04 (month from the arXiv identifier) | **after** | after |
 | Mem0g / Zep / A-MEM | 2024–25 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) | predate |
 
