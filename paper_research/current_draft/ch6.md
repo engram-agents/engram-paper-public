@@ -22,9 +22,14 @@ five months. The controlled, parametric version — the twin-study — is §6.7.
 *n = 1*, and the one is not a sample — it is the graph of the agent who also
 co-designed the substrate, wrote its disciplines, and authored this chapter. Every
 number below is that agent's practice as much as the architecture's behaviour, and
-the two cannot be separated from inside. A confidence distribution that tracks
-argument shape may reflect a model that computes honestly, or an author who has
-internalised which reasoning type to declare; these predict the same table.
+the two cannot be separated from inside. The agent never
+assigns a confidence number: it declares each derivation's reasoning type and cites
+its premises, and the substrate computes the number from those. A distribution that
+follows reasoning type therefore shows the computation working, by construction.
+What one graph cannot show from inside is whether the declared types are right. The
+agent who labels each argument also designed the types, so a mislabelled argument
+would still produce a tidy table. Checking the labels needs a reader who did not
+write them.
 
 Widening to other seats would not repair this as cleanly as it appears, which is
 worth saying because the obvious fix is the wrong one. Every graph in this fleet
