@@ -654,6 +654,30 @@ def test_s1_a_real_code_span_may_still_wrap_one_line_break(tmp_path):
     assert ctx.resolve(text, "ch1.md") == text
 
 
+# S1 (round 3): the boundary set is exactly what interrupts a paragraph in CommonMark, so a
+# multi-line code span that crosses a line CommonMark does NOT treat as a block start is a
+# real code span, and a citation-shaped string inside it stays literal.
+
+@pytest.mark.parametrize("middle", ["2. see [@aaron1999]", "| see [@aaron1999]", "10) see [@aaron1999]"])
+def test_s1_code_span_crosses_lines_that_do_not_interrupt_a_paragraph(tmp_path, middle):
+    ctx = _ctx(tmp_path=tmp_path)
+    text = f"syntax `[@ghost1999]\n{middle}\nand more` done\n"
+    assert ctx.resolve(text, "ch1.md") == text
+    assert ctx.cited == set()
+
+
+@pytest.mark.parametrize(
+    "middle",
+    ["- see [@aaron1999] x", "+ see [@aaron1999] x", "* see [@aaron1999] x", "1. see [@aaron1999] x",
+     "1) see [@aaron1999] x", "> see [@aaron1999] x", "## see [@aaron1999] x", "---", "", ],
+)
+def test_s1_lines_that_do_interrupt_a_paragraph_still_end_a_code_span(tmp_path, middle):
+    ctx = _ctx(tmp_path=tmp_path)
+    text = f"stray ` tick\n{middle}\nand [@baker2001] more ` end\n"
+    out = ctx.resolve(text, "ch1.md")
+    assert "([Baker, 2001](#ref-baker2001))" in out
+
+
 # --- S2 ---------------------------------------------------------------------------
 
 def test_s2_prefix_and_suffix_render_inside_the_parentheses(tmp_path):
@@ -815,3 +839,21 @@ def test_n1_provenance_text_is_not_touched_by_the_label_fix(tmp_path):
     y = ROLES_YAML.replace("  publisher: P\n", "  publisher: P\n  provenance: kept as written (ed.) and (trans.) here\n")
     ctx = _ctx(y, tmp_path)
     assert "kept as written (ed.) and (trans.) here" in ctx.bibliography_markdown("en")
+
+
+# --- reference-definition label (round 3) ---------------------------------------------
+
+@pytest.mark.parametrize("line", ["[@aaron1999]: http://example.com", "   [@aaron1999]: http://example.com",
+                                   "[-@aaron1999]: http://example.com", "[see @aaron1999]: http://example.com"])
+def test_a_citation_as_a_reference_definition_label_is_a_hard_error(tmp_path, line):
+    ctx = _ctx(tmp_path=tmp_path)
+    with pytest.raises(SystemExit) as e:
+        ctx.resolve(f"text\n\n{line}\n", "ch1.md")
+    msg = str(e.value)
+    assert msg.startswith("ch1.md:3:") and "reference-definition label" in msg
+
+
+def test_a_citation_followed_by_a_colon_mid_line_or_in_code_is_not_a_definition(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    out = ctx.resolve("as shown [@aaron1999]: and so on\n\n    x\n\n`[@ghost1999]: y`\n", "ch1.md")
+    assert "([Aaron, 1999](#ref-aaron1999)): and so on" in out

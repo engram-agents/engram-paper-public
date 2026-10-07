@@ -896,13 +896,18 @@ _SEG_RE = re.compile(r"^(?P<a>.+?), (?P<ys>" + _YEAR_TOKEN + r"[^;]*)$")
 
 _ATX_HEADING = re.compile(r"^ {0,3}#{1,6}(?:[ \t]|$)")
 _THEMATIC_BREAK = re.compile(r"^ {0,3}([-*_])(?:[ \t]*\1){2,}[ \t]*$")
-_BLOCK_START = re.compile(r"^ {0,3}(?:[-*+][ \t]|\d{1,9}[.)][ \t]|\|)")
+# What interrupts a paragraph in CommonMark, besides a blank line, an ATX heading and a
+# thematic break (above): a block quote, a bullet item WITH content, and an ordered item
+# only when it starts at 1 (and has content). `2. x` and a `|` line do not interrupt, so a
+# code span may cross them.
+_BLOCK_START = re.compile(r"^ {0,3}(?:>|[-*+][ \t]+\S|0{0,8}1[.)][ \t]+\S)")
 
 
 def _inline_blocks(seg: str) -> list[tuple[int, int]]:
     """(start, end) offsets of the inline blocks of a markdown segment that holds no
     fenced code. A blank line closes a block; an ATX heading and a thematic break are
-    blocks of their own; a list item or a table row opens a new one."""
+    blocks of their own; a block quote or a list item that can interrupt a paragraph opens
+    a new one (see `_BLOCK_START`)."""
     blocks: list[tuple[int, int]] = []
     start = pos = 0
     open_ = False
@@ -1265,6 +1270,14 @@ class CitationContext:
                     tail, nkey = nkey[len(stripped):], stripped
                 out.append(self._narrative(known(nkey, m.start())) + tail)
                 continue
+            # nor a reference-definition label: `[@key]: url` at the start of a line
+            ls = text.rfind("\n", 0, m.start()) + 1
+            if text[m.end():m.end() + 1] == ":" and re.fullmatch(r" {0,3}", text[ls:m.start()]):
+                raise SystemExit(
+                    f"{source}:{line_of(m.start())}: a citation cannot be a reference-definition "
+                    f"label ({m.group(0)!r} is followed by ':'); put the URL in the bibliography "
+                    f"entry, or escape the @ as \\@"
+                )
             # a citation is never a link label: `[@key](url)` / `[@key][ref]`
             nxt = text[m.end():m.end() + 2]
             if nxt[:1] == "(" or (nxt[:1] == "[" and not re.match(r"\[-?@", nxt + text[m.end() + 2:m.end() + 3])):
