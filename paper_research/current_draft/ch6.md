@@ -23,7 +23,7 @@ five months. The controlled, parametric version — the twin-study — is §6.7.
 co-designed the substrate, wrote its disciplines, and authored this chapter. Every
 number below is that agent's practice as much as the architecture's behaviour, and
 the two cannot be separated from inside. The agent never
-assigns a confidence number: it declares each derivation's reasoning type and cites
+assigns a derivation's confidence number: it declares each derivation's reasoning type and cites
 its premises, and the substrate computes the number from those. A distribution that
 follows reasoning type therefore shows the computation working, by construction.
 What one graph cannot show from inside is whether the declared types are right. The
