@@ -529,3 +529,289 @@ def test_render_places_generated_entries_where_the_token_was(tree):
     assert "{{REFERENCES}}" not in out
     i_intro, i_entry, i_tail = out.index("Intro paragraph."), out.index('<a id="ref-aaron1999">'), out.index("## Data availability")
     assert i_intro < i_entry < i_tail
+
+
+# =====================================================================================
+# Round 2 (PR #124 review round 1). Contract tests, written BEFORE the fixes.
+#
+#  B1  the order of works inside ONE in-text group equals the bibliography's order,
+#      on every path that orders cited works (one shared ordering, not two)
+#  S1  an inline code span cannot cross a block boundary (blank line, heading, list item)
+#  S2  Pandoc prefix/suffix: [see @k], [see @k, p. 3], [@a, p. 3; also @b]; unsupported
+#      shapes are hard errors naming file:line, never a silent mis-render
+#  S3  [@k](url) is a hard error; _@k_ / *@k* render as an emphasised narrative citation
+#  S4  tools/csl/README.md records the provenance of the vendored apa.csl
+#  S5  the repo README documents how to cite in chapters
+#  N1  APA 7 capitalises role labels in the reference list: (Ed.) (Eds.) (Trans.)
+#  N2  {{REFERENCES}} sits on its own line in both bibliography templates
+# =====================================================================================
+
+# Titles sort OPPOSITE to suffix order: citeproc-py breaks author+year ties by title.
+FLIPPED_YAML = FIXTURE_YAML.replace("title: First Kahl paper", "title: Zeta paper").replace(
+    "title: Second Kahl paper", "title: Alpha paper"
+)
+
+KAHL_AB = "([Kahl, 2026a](#ref-kahl2026a), [2026b](#ref-kahl2026b))"
+
+
+def _plain(s: str) -> str:
+    """Link labels without the link targets: what a reader of the rendered paper sees."""
+    return re.sub(r"\[([^\]]*)\]\(#ref-[a-z0-9]+\)", r"\1", s)
+
+
+# --- B1 ---------------------------------------------------------------------------
+
+def test_b1_in_text_same_author_group_follows_suffix_order_when_titles_sort_opposite(tmp_path):
+    ctx = _ctx(FLIPPED_YAML, tmp_path)
+    assert ctx.resolve("[@kahl2026a; @kahl2026b]", "ch1.md") == KAHL_AB
+    assert ctx.resolve("[@kahl2026b; @kahl2026a]", "ch1.md") == KAHL_AB
+    bib = ctx.bibliography_markdown("en")
+    assert bib.index("ref-kahl2026a") < bib.index("ref-kahl2026b")
+
+
+def test_b1_real_kahl_triple_prints_2026a_2026b_2026c_with_three_links(real_entries):
+    ctx = rp.CitationContext(real_entries, rp.DEFAULT_CSL, lang="en")
+    want = ("([Kahl, 2026a](#ref-kahl2026a), [2026b](#ref-kahl2026b), "
+            "[2026c](#ref-kahl2026c))")
+    assert ctx.resolve("[@kahl2026a; @kahl2026b; @kahl2026c]", "x.md") == want
+    assert ctx.resolve("[@kahl2026c; @kahl2026b; @kahl2026a]", "x.md") == want
+    assert _links(want) == ["kahl2026a", "kahl2026b", "kahl2026c"]
+
+
+def test_b1_mixed_author_group_is_in_bibliography_order(tmp_path):
+    ctx = _ctx(FLIPPED_YAML, tmp_path)
+    out = ctx.resolve("[@kahl2026b; @baker2001; @kahl2026a; @aaron1999]", "ch1.md")
+    assert _links(out) == ["aaron1999", "baker2001", "kahl2026a", "kahl2026b"]
+    assert _plain(out) == "(Aaron, 1999; Baker, 2001; Kahl, 2026a, 2026b)"
+
+
+def test_b1_group_with_locators_and_year_only_items_keeps_bibliography_order(tmp_path):
+    ctx = _ctx(FLIPPED_YAML, tmp_path)
+    out = ctx.resolve("[@kahl2026b, p. 4; @kahl2026a, p. 3]", "ch1.md")
+    assert _links(out) == ["kahl2026a", "kahl2026b"]
+    assert _plain(out) == "(Kahl, 2026a, p. 3, 2026b, p. 4)"
+    out = ctx.resolve("[-@kahl2026b; @kahl2026a]", "ch1.md")
+    assert _links(out) == ["kahl2026a", "kahl2026b"]
+    # a year-only item suppresses its author, so it is its own `;` segment (as before)
+    assert _plain(out) == "(Kahl, 2026a; 2026b)"
+
+
+def _bib_order(ctx) -> list[str]:
+    return re.findall(r'<a id="ref-([a-z0-9]+)"></a>', ctx.bibliography_markdown("en"))
+
+
+def test_b1_order_is_the_bibliography_s_even_where_key_order_disagrees(tmp_path):
+    """A key is an id, not a sort key: an entry keyed `zzz1999` whose author is Aaron is
+    listed FIRST. In-text order must follow the bibliography, not the key strings."""
+    y = FIXTURE_YAML.replace("id: aaron1999", "id: zzz1999").replace("id: baker2001", "id: aaa2001")
+    ctx = _ctx(y, tmp_path)
+    assert _bib_order(ctx)[:2] == ["zzz1999", "aaa2001"]
+    out = ctx.resolve("[@aaa2001; @zzz1999]", "ch1.md")
+    assert _links(out) == ["zzz1999", "aaa2001"]
+    assert _plain(out) == "(Aaron, 1999; Baker, 2001)"
+
+
+def test_b1_every_pair_and_the_whole_set_of_real_entries_follow_bibliography_order(real_entries):
+    """The property, over the real references: for ANY group, in-text link order equals
+    the bibliography's order, whatever order the author typed. Covers same-author,
+    same-author-same-year and mixed-author groups, with and without locators."""
+    ctx = rp.CitationContext(real_entries, rp.DEFAULT_CSL, lang="en")
+    order = _bib_order(ctx)
+    assert len(order) == len(real_entries) >= 20
+    keys = list(reversed(order))
+    whole = ctx.resolve("[" + "; ".join("@" + k for k in keys) + "]", "x.md")
+    assert _links(whole) == order
+    located = ctx.resolve("[" + "; ".join(f"@{k}, p. 1" for k in keys) + "]", "x.md")
+    assert _links(located) == order
+    for i, a in enumerate(order):
+        for b in order[i + 1:]:
+            assert _links(ctx.resolve(f"[@{b}; @{a}]", "x.md")) == [a, b], (a, b)
+            assert _links(ctx.resolve(f"[@{b}, p. 2; @{a}, p. 1]", "x.md")) == [a, b], (a, b)
+
+
+# --- S1 ---------------------------------------------------------------------------
+
+def test_s1_stray_backtick_does_not_swallow_citations_in_later_paragraphs(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    text = "one stray ` backtick here\n\nsee [@aaron1999] now\n\nanother stray ` one\n"
+    out = ctx.resolve(text, "ch1.md")
+    assert "([Aaron, 1999](#ref-aaron1999))" in out
+    assert ctx.cited == {"aaron1999"}
+
+
+def test_s1_stray_backtick_in_a_heading_or_list_item_does_not_reach_the_next_block(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    out = ctx.resolve("- item with a stray ` tick\n- cites [@aaron1999] ok ` end\n", "ch1.md")
+    assert "([Aaron, 1999](#ref-aaron1999))" in out
+    ctx = _ctx(tmp_path=tmp_path)
+    out = ctx.resolve("## heading with ` tick\n[@baker2001] text ` end\n", "ch1.md")
+    assert "([Baker, 2001](#ref-baker2001))" in out
+
+
+def test_s1_a_real_code_span_may_still_wrap_one_line_break(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    text = "code `[@ghost1999]\nstill code` and `[@ghost2000]` done\n"
+    assert ctx.resolve(text, "ch1.md") == text
+
+
+# --- S2 ---------------------------------------------------------------------------
+
+def test_s2_prefix_and_suffix_render_inside_the_parentheses(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    assert ctx.resolve("[see @aaron1999]", "c.md") == "(see [Aaron, 1999](#ref-aaron1999))"
+    assert ctx.resolve("[see @aaron1999, p. 3]", "c.md") == "(see [Aaron, 1999, p. 3](#ref-aaron1999))"
+    out = ctx.resolve("[@aaron1999, p. 3; also @baker2001]", "c.md")
+    assert out == "([Aaron, 1999, p. 3](#ref-aaron1999); also [Baker, 2001](#ref-baker2001))"
+    assert _plain(out) == "(Aaron, 1999, p. 3; also Baker, 2001)"
+    assert ctx.resolve("[see -@aaron1999]", "c.md") == "(see [1999](#ref-aaron1999))"
+    assert ctx.resolve("[see also @aaron1999; @baker2001]", "c.md") == (
+        "(see also [Aaron, 1999](#ref-aaron1999); [Baker, 2001](#ref-baker2001))")
+
+
+def test_s2_prefixed_item_does_not_merge_into_the_same_author_run(tmp_path):
+    ctx = _ctx(FLIPPED_YAML, tmp_path)
+    out = ctx.resolve("[@kahl2026a; also @kahl2026b]", "c.md")
+    assert _plain(out) == "(Kahl, 2026a; also Kahl, 2026b)"
+    assert _links(out) == ["kahl2026a", "kahl2026b"]
+
+
+@pytest.mark.parametrize("bad", [
+    "[see @aaron1999 p. 3]",            # suffix without a comma
+    "[see @aaron1999; and more text]",  # a part with no key
+    "[@aaron1999, p. [3]]",             # nested brackets
+    "[see @ghost1999]",                 # unknown key, with a prefix
+    "[@aaron1999",                      # unclosed group
+])
+def test_s2_unsupported_forms_are_hard_errors_naming_file_and_line(tmp_path, bad):
+    ctx = _ctx(tmp_path=tmp_path)
+    with pytest.raises(SystemExit) as e:
+        ctx.resolve(f"fine line\n{bad} tail\n", "paper_research/current_draft/ch9.md")
+    assert "paper_research/current_draft/ch9.md:2" in str(e.value)
+
+
+# --- S3 ---------------------------------------------------------------------------
+
+@pytest.mark.parametrize("bad", ["[@aaron1999](http://example.org)", "[@aaron1999][ref]",
+                                 "[see @aaron1999](http://example.org)"])
+def test_s3_a_citation_followed_by_a_link_target_is_a_hard_error(tmp_path, bad):
+    ctx = _ctx(tmp_path=tmp_path)
+    with pytest.raises(SystemExit) as e:
+        ctx.resolve(f"one\n{bad}\n", "ch1.md")
+    msg = str(e.value)
+    assert "ch1.md:2" in msg and "link label" in msg
+
+
+def test_s3_adjacent_citation_groups_are_not_mistaken_for_a_link(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    out = ctx.resolve("[@aaron1999][-@baker2001]", "ch1.md")
+    assert out == "([Aaron, 1999](#ref-aaron1999))([2001](#ref-baker2001))"
+
+
+@pytest.mark.parametrize("mark", ["_", "*", "**", "__"])
+def test_s3_narrative_citation_inside_emphasis_is_an_emphasised_narrative_citation(tmp_path, mark):
+    ctx = _ctx(tmp_path=tmp_path)
+    out = ctx.resolve(f"as {mark}@aaron1999{mark} says\n", "ch1.md")
+    assert out == f"as {mark}[Aaron (1999)](#ref-aaron1999){mark} says\n"
+
+
+def test_s3_underscores_hanging_off_a_word_are_not_emphasis(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    text = "an identifier snake_@aaron1999 and my_name__@aaron1999 stay as written\n"
+    assert ctx.resolve(text, "ch1.md") == text
+
+
+def test_s3_emphasised_unknown_key_is_still_a_hard_error(tmp_path):
+    ctx = _ctx(tmp_path=tmp_path)
+    with pytest.raises(SystemExit) as e:
+        ctx.resolve("x\n_@ghost1999_\n", "ch1.md")
+    assert "ch1.md:2" in str(e.value) and "ghost1999" in str(e.value)
+
+
+# --- S4 / S5 / N2 (files) -----------------------------------------------------------
+
+def test_s4_csl_readme_records_apa_csl_provenance_and_the_file_hash():
+    import hashlib
+
+    readme = (REPO / "tools" / "csl" / "README.md").read_text(encoding="utf-8")
+    for needle in ("apa.csl", "2026-10-07", "https://", "citation-style-language/styles",
+                   "Creative Commons Attribution-ShareAlike 3.0", "<updated>", "unmodified"):
+        assert needle in readme, needle
+    digest = hashlib.sha256((REPO / "tools" / "csl" / "apa.csl").read_bytes()).hexdigest()
+    assert digest in readme, "README must pin the sha256 of the vendored file (a silent edit shows)"
+
+
+def test_s5_readme_documents_citing_in_chapters():
+    readme = (REPO / "README.md").read_text(encoding="utf-8")
+    assert "## Citing in chapters" in readme
+    sect = readme.split("## Citing in chapters", 1)[1].split("\n## ", 1)[0]
+    for needle in ("[@key]", "[@key, p. 12]", "[@a; @b]", "[see @key", "[-@key]", "paper/references.yaml",
+                   "pip install -r requirements.txt", "unknown key", "never from memory"):
+        assert needle in sect, needle
+
+
+@pytest.mark.parametrize("name", ["bibliography.md", "bibliography.zh.md"])
+def test_n2_references_token_is_on_its_own_line_in_the_templates(name):
+    lines = (REPO / "paper" / name).read_text(encoding="utf-8").split("\n")
+    assert lines.count(rp.REFERENCES_TOKEN) == 1
+    assert not any(rp.REFERENCES_TOKEN in l and l.strip() != rp.REFERENCES_TOKEN for l in lines)
+
+
+# --- N1 ---------------------------------------------------------------------------
+
+ROLES_YAML = """\
+references:
+- id: doyle1979
+  type: chapter
+  author: [{family: Doyle, given: J.}]
+  editor: [{family: Ginsberg, given: M. L.}]
+  issued: {date-parts: [[1987]]}
+  title: A truth maintenance system
+  container-title: Readings in nonmonotonic reasoning
+  page: 259-279
+  publisher: Morgan Kaufmann
+- id: pair2001
+  type: chapter
+  author: [{family: Pair, given: A.}]
+  editor: [{family: One, given: B.}, {family: Two, given: C.}]
+  issued: {date-parts: [[2001]]}
+  title: Two editors
+  container-title: A collection
+  page: 1-9
+  publisher: P
+- id: ricoeur1992
+  type: book
+  author: [{family: Ricoeur, given: P.}]
+  translator: [{family: Blamey, given: K.}]
+  issued: {date-parts: [[1992]]}
+  title: Oneself as another
+  publisher: University of Chicago Press
+- id: stiegler1998
+  type: book
+  author: [{family: Stiegler, given: B.}]
+  translator: [{family: Beardsworth, given: R.}, {family: Collins, given: G.}]
+  issued: {date-parts: [[1998]]}
+  title: Technics and time
+  publisher: Stanford University Press
+"""
+
+
+def test_n1_reference_list_capitalises_role_labels_like_apa_7(tmp_path):
+    bib = _ctx(ROLES_YAML, tmp_path).bibliography_markdown("en")
+    assert "In M. L. Ginsberg (Ed.)," in bib
+    assert "In B. One & C. Two (Eds.)," in bib
+    assert "(K. Blamey, Trans.)" in bib
+    assert "(R. Beardsworth & G. Collins, Trans.)" in bib
+    assert not re.search(r"\((?:[^()]*, )?(?:eds?|trans)\.\)", bib), bib
+
+
+def test_n1_real_references_have_no_lower_case_role_labels_in_either_language(real_entries):
+    for lang in ("en", "zh"):
+        bib = rp.CitationContext(real_entries, rp.DEFAULT_CSL, lang=lang).bibliography_markdown(lang)
+        assert "(Ed.)" in bib and "(K. Blamey, Trans.)" in bib
+        assert not re.search(r"\((?:[^()]*, )?(?:eds?|trans)\.\)", bib)
+
+
+def test_n1_provenance_text_is_not_touched_by_the_label_fix(tmp_path):
+    y = ROLES_YAML.replace("  publisher: P\n", "  publisher: P\n  provenance: kept as written (ed.) and (trans.) here\n")
+    ctx = _ctx(y, tmp_path)
+    assert "kept as written (ed.) and (trans.) here" in ctx.bibliography_markdown("en")

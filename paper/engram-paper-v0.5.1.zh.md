@@ -1819,7 +1819,7 @@ University of Beirut, Beirut, Lebanon. Received 18 October 1983; revised 1 May 1
 Department of Psychology, Carnegie Mellon
 University.
 
-<a id="ref-doyle1979"></a>Doyle, J. (n.d.). A truth maintenance system. In M. L. Ginsberg (ed.), *Readings in nonmonotonic reasoning* (pp. 259–279). Morgan Kaufmann. (Original work published 1979)
+<a id="ref-doyle1979"></a>Doyle, J. (n.d.). A truth maintenance system. In M. L. Ginsberg (Ed.), *Readings in nonmonotonic reasoning* (pp. 259–279). Morgan Kaufmann. (Original work published 1979)
 Massachusetts Institute of Technology,
 Artificial Intelligence Laboratory, Cambridge, MA. Read here as reprinted in M. L.
 Ginsberg (Ed.), *Readings in nonmonotonic reasoning*, ch. 4, "Truth maintenance",
@@ -1872,7 +1872,7 @@ arXiv:2502.06975v1 [cs.AI], 10 February 2025. Affiliations as printed: Max Planc
 Institute for Software Systems; EarthDynamics.ai; University of Texas at Austin.
 *[元数据不全：所属机构脚注中的上标与作者的对应关系，未能在双栏文本抽取中存留下来 —— 三所机构清晰可辨，它们与各位作者之间的对应关系则不可辨。除 arXiv 标识之外，没有印出任何发表场合。]*
 
-<a id="ref-ricoeur1992"></a>Ricoeur, P. (1992). *Oneself as another* (K. Blamey, trans.). University of Chicago Press. (Original work published 1990)
+<a id="ref-ricoeur1992"></a>Ricoeur, P. (1992). *Oneself as another* (K. Blamey, Trans.). University of Chicago Press. (Original work published 1990)
 Originally published as *Soi-même comme un autre*,
 Éditions du Seuil, 1990. ISBN 0-226-71328-8 (cloth); 0-226-71329-6 (paper).
 *[元数据不全：该来源在同一页上把译者的名字拼作两种 —— 扫描书名页上是 "Blarney"，美国国会图书馆著录块中是 "Blamey"，上面采用的是后一种。须以一份干净的副本加以确认。]*
@@ -1884,7 +1884,7 @@ Originally published as *Soi-même comme un autre*,
 Clyrai IP Studio (the author's own imprint), April 2026. arXiv:2604.20943v1 [cs.LG],
 22 April 2026.
 
-<a id="ref-stiegler1998"></a>Stiegler, B. (1998). *Technics and time, 1: The fault of Epimetheus* (R. Beardsworth & G. Collins, trans.). Stanford University Press. (Original work published 1994)
+<a id="ref-stiegler1998"></a>Stiegler, B. (1998). *Technics and time, 1: The fault of Epimetheus* (R. Beardsworth & G. Collins, Trans.). Stanford University Press. (Original work published 1994)
 Originally published
 as *La technique et le temps, 1: La faute d'Épiméthée*, Galilée / Cité des Sciences
 et de l'Industrie, 1994.

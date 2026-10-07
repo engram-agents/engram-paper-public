@@ -875,14 +875,73 @@ _KEY_RE = re.compile(r"^[a-z]+\d{4}[a-z]?$")
 # Pandoc's citation-key grammar: starts alphanumeric/underscore, may contain internal
 # punctuation, never ends on it (so "@key." at a sentence end is the key plus a full stop).
 _KEY = r"[A-Za-z0-9_](?:[\w:.#$%&+?<>~/-]*\w)?"
-_ITEM_RE = re.compile(r"^(?P<neg>-)?@(?P<key>" + _KEY + r")(?:\s*,\s*(?P<loc>.+))?$", re.DOTALL)
+# One `;`-separated item of a group: optional prefix text ("see "), `-?@key`, optional
+# `, locator`. Anything else in an item (a suffix with no comma, a part with no key) does
+# not match, and the caller turns that into a hard error.
+_ITEM_RE = re.compile(
+    r"^(?P<prefix>(?:.*?\s)?)(?P<neg>-)?@(?P<key>" + _KEY + r")(?:\s*,\s*(?P<loc>.+))?$", re.DOTALL
+)
+# A group never crosses a paragraph break: `[` ... `]` with no nested bracket, containing at
+# least one `@key` token that starts a word (after whitespace, `[` or the start), which is
+# what keeps `me@example.com` and `https://x/@y` out.
+_NOT_PARA_BREAK = r"(?:(?!\n[ \t]*\n)[^\[\]])*"
 _CITE_RE = re.compile(
-    r"(?<!\\)\[(?P<grp>-?@[^\[\]]*)\](?!\()"
-    r"|(?<![\w@\\/.:=~#-])(?<!\\\[)@(?P<nkey>" + _KEY + r")"
+    r"(?<!\\)\[(?=" + _NOT_PARA_BREAK + r"(?<![^\s\[])-?@[A-Za-z0-9_])(?P<grp>" + _NOT_PARA_BREAK + r")\]"
+    r"|(?<![^\W_])(?<![@\\/.:=~#-])(?<!\\\[)@(?P<nkey>" + _KEY + r")"
 )
 _YEAR_TOKEN = r"(?:\d{4}|n\.d\.)"
 _CORE_RE = re.compile(r"^(?P<a>.+), (?P<y>" + _YEAR_TOKEN + r"[^,;]*)$")
 _SEG_RE = re.compile(r"^(?P<a>.+?), (?P<ys>" + _YEAR_TOKEN + r"[^;]*)$")
+
+
+_ATX_HEADING = re.compile(r"^ {0,3}#{1,6}(?:[ \t]|$)")
+_THEMATIC_BREAK = re.compile(r"^ {0,3}([-*_])(?:[ \t]*\1){2,}[ \t]*$")
+_BLOCK_START = re.compile(r"^ {0,3}(?:[-*+][ \t]|\d{1,9}[.)][ \t]|\|)")
+
+
+def _inline_blocks(seg: str) -> list[tuple[int, int]]:
+    """(start, end) offsets of the inline blocks of a markdown segment that holds no
+    fenced code. A blank line closes a block; an ATX heading and a thematic break are
+    blocks of their own; a list item or a table row opens a new one."""
+    blocks: list[tuple[int, int]] = []
+    start = pos = 0
+    open_ = False
+    for line in seg.splitlines(keepends=True):
+        bare = line.rstrip("\r\n")
+        if not bare.strip():
+            if open_:
+                blocks.append((start, pos))
+                open_ = False
+        elif _ATX_HEADING.match(bare) or _THEMATIC_BREAK.match(bare):
+            if open_:
+                blocks.append((start, pos))
+            blocks.append((pos, pos + len(line)))
+            open_ = False
+        elif _BLOCK_START.match(bare):
+            if open_:
+                blocks.append((start, pos))
+            start, open_ = pos, True
+        elif not open_:
+            start, open_ = pos, True
+        pos += len(line)
+    if open_:
+        blocks.append((start, pos))
+    return blocks
+
+
+_ROLE_LABEL_RE = re.compile(r"(?<=\()((?:[^()]*?, )?)(eds?\.(?: & trans\.)?|trans\.)(?=\))")
+
+
+def _capitalise_role_labels(reference: str) -> str:
+    """APA 7 prints role labels capitalised: (Ed.), (Eds.), (K. Blamey, Trans.).
+    citeproc-py skips the style's `text-case="title"` on a label unless the item's
+    language is declared English, so it prints them lower case. The style file is
+    vendored unmodified, so the label is capitalised here, on the formatted reference
+    only (never on provenance text) and only inside a parenthesised role label."""
+    return _ROLE_LABEL_RE.sub(
+        lambda m: m.group(1) + re.sub(r"\b[a-z]", lambda c: c.group(0).upper(), m.group(2)),
+        reference,
+    )
 
 
 def _need(module: str, pip_name: str, purpose: str):
@@ -995,7 +1054,12 @@ class CitationContext:
             self.bib.register(c)
             self._cites[e["id"]] = c
         self.bib.sort()
+        # THE ordering of works. The printed bibliography and every in-text citation that
+        # lists several works (merges, suffix runs, mixed authors, year-only and locator
+        # forms) are both put in this order, via `in_bibliography_order`; nothing else
+        # decides the order of cited works (citeproc's own sort is never trusted for it).
         self._order = self._suffix_order(list(self.bib.keys))
+        self._rank = {k: i for i, k in enumerate(self._order)}
         self.cited: set[str] = set()
         self._core: dict[str, tuple[str, str]] = {}
         by_core: dict[tuple[str, str], str] = {}
@@ -1039,6 +1103,10 @@ class CitationContext:
                 result[i] = k
         return result
 
+    def in_bibliography_order(self, keys):
+        """`keys` sorted exactly as the bibliography lists them (the one ordering)."""
+        return sorted(keys, key=self._rank.__getitem__)
+
     # -- rendering helpers ------------------------------------------------------------
 
     def _render_cites(self, keys: list[str]) -> str:
@@ -1056,14 +1124,18 @@ class CitationContext:
         label = label.replace("[", "\\[").replace("]", "\\]")
         return f"[{label}](#ref-{key})"
 
-    def _parenthetical(self, items: list[tuple[str, bool, str | None]]) -> str:
-        """items: (key, suppress_author, locator). One parenthetical, APA order."""
-        keys = [k for k, _, _ in items]
+    def _parenthetical(self, items: list[tuple[str, bool, str | None, str | None]]) -> str:
+        """items: (key, suppress_author, locator, prefix). One parenthetical, in
+        bibliography order. A prefix ("see") travels with its own work and is written
+        outside the link; a prefixed work never merges into the previous author's run."""
+        keys = [k for k, _, _, _ in items]
         if len(set(keys)) != len(keys):
             raise SystemExit(f"the same work is cited twice in one group: {keys}")
-        by_key = {k: (neg, loc) for k, neg, loc in items}
-        # citeproc-py gives one "Author, Year" segment per work, in APA order. APA 7
-        # then writes consecutive works by the same author once: (Kahl, 2026a, 2026b).
+        by_key = {k: (neg, loc, prefix) for k, neg, loc, prefix in items}
+        # citeproc-py gives one "Author, Year" segment per work. We take the author and
+        # year labels from it, but NOT its order: the works are re-ordered below by the
+        # bibliography's order. APA 7 then writes consecutive works by the same author
+        # once: (Kahl, 2026a, 2026b).
         flat: list[tuple[str, str, str]] = []
         for seg in self._render_cites(keys).split("; "):
             m = _SEG_RE.match(seg)
@@ -1077,15 +1149,19 @@ class CitationContext:
                 flat.append((author, year, k))
         if sorted(k for _, _, k in flat) != sorted(keys):
             raise SystemExit(f"the style dropped or invented works in a group: {sorted(keys)} -> {flat}")
+        by_flat = {k: (author, year) for author, year, k in flat}
+        flat = [(*by_flat[k], k) for k in self.in_bibliography_order(by_flat)]
         segments: list[str] = []
         prev_author = None
         for author, year, k in flat:
-            neg, loc = by_key[k]
-            same_author = author == prev_author and not neg
+            neg, loc, prefix = by_key[k]
+            same_author = author == prev_author and not neg and not prefix
             label = year if (neg or same_author) else f"{author}, {year}"
             if loc:
                 label += f", {loc}"
             link = self._link(label, k)
+            if prefix:
+                link = f"{prefix} {link}"
             if same_author:
                 segments[-1] += f", {link}"
             else:
@@ -1129,8 +1205,12 @@ class CitationContext:
                 spans.append((a + m.start(), a + m.end()))
         for a, b in free:
             seg = text[a:b]
-            for m in re.finditer(r"(?<!`)(`+)(?!`)(.+?)(?<!`)\1(?!`)", seg, re.DOTALL):
-                spans.append((a + m.start(), a + m.end()))
+            # CommonMark: a code span lives inside ONE inline block, so it cannot cross a
+            # blank line, a heading, a list item or a table row. A stray backtick must
+            # therefore not pair with one in a later block and hide the citations between.
+            for c, d in _inline_blocks(seg):
+                for m in re.finditer(r"(?<!`)(`+)(?!`)(.+?)(?<!`)\1(?!`)", seg[c:d], re.DOTALL):
+                    spans.append((a + c + m.start(), a + c + m.end()))
         return sorted(spans)
 
     def resolve(self, text: str, source: str) -> str:
@@ -1158,24 +1238,57 @@ class CitationContext:
         for m in _CITE_RE.finditer(text):
             if protected(m.start()):
                 continue
+            if m.group("nkey") is not None:
+                # `snake_@x` is an identifier, not emphasis: underscores right before the
+                # `@` open emphasis only when they do not hang off a word.
+                j = m.start()
+                while j and text[j - 1] == "_":
+                    j -= 1
+                if j < m.start() and j and text[j - 1].isalnum():
+                    continue
             out.append(text[last:m.start()])
             last = m.end()
             if m.group("nkey") is not None:
-                out.append(self._narrative(known(m.group("nkey"), m.start())))
+                nkey = m.group("nkey")
+                before = text[m.start() - 1] if m.start() else ""
+                if before in ("[", "\\") or (before == "-" and text[m.start() - 2:m.start() - 1] == "["):
+                    # `[@key` that did not form a group: unclosed, or brackets nested inside
+                    raise SystemExit(
+                        f"{source}:{line_of(m.start())}: malformed citation group at "
+                        f"{text[m.start() - 1:m.start() + 40]!r} (unclosed `[`, or brackets "
+                        f"nested inside the group; write [@key], [@key, p. 12], [see @a; @b])"
+                    )
+                tail = ""
+                if before == "_" and nkey.endswith("_"):
+                    # `_@key_`: the closing emphasis marks are not part of the key
+                    stripped = nkey.rstrip("_")
+                    tail, nkey = nkey[len(stripped):], stripped
+                out.append(self._narrative(known(nkey, m.start())) + tail)
                 continue
+            # a citation is never a link label: `[@key](url)` / `[@key][ref]`
+            nxt = text[m.end():m.end() + 2]
+            if nxt[:1] == "(" or (nxt[:1] == "[" and not re.match(r"\[-?@", nxt + text[m.end() + 2:m.end() + 3])):
+                raise SystemExit(
+                    f"{source}:{line_of(m.start())}: a citation cannot be a link label "
+                    f"({m.group(0)!r} is followed by a link target); cite with [@key] on its "
+                    f"own and link the surrounding words separately"
+                )
             items = []
             for part in m.group("grp").split(";"):
                 im = _ITEM_RE.match(part.strip())
                 if not im:
                     raise SystemExit(
                         f"{source}:{line_of(m.start())}: malformed citation {m.group(0)!r} "
-                        f"(expected [@key], [@key, p. 12], [@a; @b] or [-@key])"
+                        f"(supported: [@key], [@key, p. 12], [@a; @b], [-@key], and a prefix "
+                        f"before a key such as [see @key, p. 3; also @other])"
                     )
                 loc = im.group("loc")
+                prefix = " ".join(im.group("prefix").split())
                 items.append((
                     known(im.group("key"), m.start()),
                     im.group("neg") is not None,
                     " ".join(loc.split()) if loc else None,
+                    prefix or None,
                 ))
             out.append(self._parenthetical(items))
         out.append(text[last:])
@@ -1196,7 +1309,7 @@ class CitationContext:
         for key in self._order:
             rendered = rendered_by_key[key]
             e = self.entries[key]
-            parts = [f'<a id="ref-{key}"></a>{str(rendered).strip()}']
+            parts = [f'<a id="ref-{key}"></a>{_capitalise_role_labels(str(rendered).strip())}']
             prov = (e.get("provenance_zh") if lang == "zh" else None) or e.get("provenance")
             if prov:
                 parts.append(prov)

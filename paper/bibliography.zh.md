@@ -33,10 +33,10 @@
 # 参考文献
 
 **本参考文献的编制方式。** 以下每一条目中的每一个字段，都是直接从文档本身读出的 —— 书名页、版权页、期刊书眉，或 arXiv 标识行 —— 文档存于 `paper_research/source_pdfs/` 之下。没有任何字段来自记忆、来自推断，或来自外部文献数据库。若某份来源没有印出某个字段，该字段即予**省略**，而不作重建；条目则会带上一条方括号注释，指明所缺的究竟是什么。因此，一条单薄的条目绝不会被误当作一条已核对的条目。
-
 <!-- TEMPLATE（模板）。本文件只手工维护文字部分（标题、编制方式段落，以及条目之后的各节）。
      参考文献条目由 tools/render_paper.py 依据 paper/references.yaml 生成（CSL 样式：
-     tools/csl/apa.csl），并替换下方的占位符。条目请改 references.yaml，不要改这里。 -->{{REFERENCES}}
+     tools/csl/apa.csl），并替换下方的占位符。条目请改 references.yaml，不要改这里。 -->
+{{REFERENCES}}
 
 ---
 
