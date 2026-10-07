@@ -21,7 +21,7 @@ layers, and that the current landscape essentially does not address the deepest.
   have no concept of identity; memory is a key-value or vector store the agent reads.
 - **Layer 2 — Narrative Identity.** Maintaining a coherent self-story — a
   creed-anchored autobiography that answers *"who am I?"*. The closest published
-  system, Sophia (Sun, Hong & Zhang, 2025), reaches this layer.
+  system, Sophia [@sun2025], reaches this layer.
 - **Layer 3 — Epistemic Identity.** Maintaining calibrated self-*knowledge* with
   provenance, confidence, contradiction correction, and metacognitive self-audit:
   identity as the answer to *"what do I know, how confidently, and on what basis?"*.
@@ -34,20 +34,19 @@ That the *mechanisms* are missing is not our diagnosis alone, and none of the
 following work was surfaced by our own prior-art search (Appendix A). Two items are
 contemporary diagnoses of LLM agents; the third is the field's organizing framework
 remarking on its own gaps, a weaker kind of statement, so we keep the three distinct
-rather than count them together. Pink et al. (2025) operationalize episodic memory as
+rather than count them together. @pink2025 operationalize episodic memory as
 five properties — long-term storage, explicit reasoning, single-shot learning,
 instance-specificity, and contextual binding — and find that *no* current approach to
 LLM memory satisfies all five. The closest, retrieval-augmented generation (RAG) and
 its graph variant, are marked only partial on single-shot learning and on
 instance-specificity; on contextual relations RAG is marked as not satisfying the
-property at all, and its graph variant only partially. Wray, Kirk and Laird (2025),
+property at all, and its graph variant only partially. @wray2025,
 reading the field through pre-transformer cognitive architectures, identify two
-design patterns "that have not yet been taken up in the Agentic LLM mainstream":
-*reconsideration* (revisiting a prior commitment) and *knowledge compilation*. Sumers
-et al. (2024), whose CoALA framework is the field's common organizing vocabulary
+design patterns "that have not yet been taken up in the Agentic LLM mainstream" [@wray2025, p. 7]:
+*reconsideration* (revisiting a prior commitment) and *knowledge compilation*. @sumers2024, whose CoALA framework is the field's common organizing vocabulary
 rather than a third diagnosis, note in passing that while the literature has
 concentrated on *adding* to memory, "modifying and deleting (a case of 'unlearning')
-are understudied."
+are understudied" [@sumers2024, p. 12].
 
 None of this work names what the missing mechanisms would be *for*. Pink et al.
 argue that episodic memory is missing; they do not ask what an agent becomes once it
@@ -110,7 +109,7 @@ Arbitration, and Memory.** The acronym names its three differentiating mechanism
   derivations.
 
 The expansion distinguishes ENGRAM from systems that borrow the neuroscience term
-*engram* (Semon, 1904) without a structurally meaningful expansion.
+*engram* [@semon1904] without a structurally meaningful expansion.
 
 ## 1.4 The central claim, and how we earn it
 
@@ -146,7 +145,7 @@ agent *is* its lineage of recorded claims, and that lineage fixes its behavior
 through what it retrieves (the claim is stated in full at §5.0). The traditions
 converge on the *structure*; Chapter 5 builds a new theory on it.
 
-**Where OCC sits.** Kahl's (2026b) **Ontological Continuity Condition** (OCC) —
+**Where OCC sits.** Kahl's [-@kahl2026b] **Ontological Continuity Condition** (OCC) —
 three conditions and four constraints for when an agent-like system genuinely
 persists — is the most *operational* point on the philosophical trail, and ENGRAM
 meets it to a degree no surveyed system does. We treat this as **one strong result

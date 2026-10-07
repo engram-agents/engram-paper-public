@@ -221,11 +221,11 @@
 
 ## E.6 OCC 阈值（Kahl 2026b），以及本文如何使用它
 
-第 4 章的映射立足于 Kahl 的**本体论连续性条件**（Ontological Continuity Condition，OCC）；这里把各条条件完整给出，以便本附录脱离该章也能读。Kahl 自己的形式化陈述：*"A system S satisfies OCC if and only if the following three jointly necessary conditions obtain."*（中文解说：一个系统 S 满足 OCC，当且仅当下列三项共同必要的条件成立。）
+第 4 章的映射立足于 Kahl 的**本体论连续性条件**（Ontological Continuity Condition，OCC）；这里把各条条件完整给出，以便本附录脱离该章也能读。Kahl 自己的形式化陈述：*"A system S satisfies OCC if and only if the following three jointly necessary conditions obtain."*（中文解说：一个系统 S 满足 OCC，当且仅当下列三项共同必要的条件成立。）[@kahl2026b, p. 10]
 
 **条件 1 —— 历时性约束（Diachronic Constraint）。**
 > "Present deliberation within S is non-trivially constrained by S's past commitments,
-> such that earlier commitments function as reasons structuring subsequent arbitration."
+> such that earlier commitments function as reasons structuring subsequent arbitration." [@kahl2026b, p. 10]
 
 （中文解说：S 之内的当下审议，被 S 过去的承诺非平凡地约束着，以致较早的承诺作为理由，结构着后续的仲裁。）
 
@@ -234,7 +234,7 @@
 **条件 2 —— 重置下的不可互换性（Non-Interchangeability Under Reset）。**
 > "Replacement of S by a functionally equivalent instance — including identical code and
 > complete state snapshot — would constitute loss of the agent rather than substitution
-> of an instance."
+> of an instance." [@kahl2026b, p. 10]
 
 （中文解说：以一个个例功能等价的实例来替换 S——包括相同的代码与完整的状态快照——将构成该智能体的丧失，而不是一个实例的替换。）
 
@@ -242,7 +242,7 @@
 
 **条件 3 —— 自我维持的仲裁（Self-Maintaining Arbitration）。**
 > "Conflicts among commitments are resolved within a unified deliberative architecture
-> in a manner that preserves S's continued status as that subject."
+> in a manner that preserves S's continued status as that subject." [@kahl2026b, p. 10]
 
 （中文解说：诸承诺之间的冲突，在一个统一的审议架构之内得到解决，其方式保全 S 作为那个主体的持续身份。）
 

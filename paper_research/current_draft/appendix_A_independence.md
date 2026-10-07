@@ -89,14 +89,14 @@ relevant prior art** — including the work this paper now cites:
 
 | Prior / concurrent work | Public | Before the 2026-03-20 search | Surfaced? |
 |---|---|---|---|
-| **Kumiho** (arXiv 2603.17244) — closest concurrent system | **2026-03-18** | **2 days** | **NO** |
+| **Kumiho** [@park2026] — closest concurrent system | **2026-03-18** | **2 days** | **NO** |
 | **Kahl 2026b (*Artificial general intelligence and ontological continuity*)** (Zenodo 18761736) — the paper's threshold | 2026-02-24 | 24 days | **NO** |
 | Kahl 2026a (*Epistemic agency and the ontological continuity condition*) (Zenodo 18441395) | 2026-01-31 | 48 days | NO |
 | TMS lineage (Doyle 1979, de Kleer 1986) | 1979–86 | ~40+ yrs | NO |
-| AGM belief revision (Alchourrón-Gärdenfors-Makinson 1985) | 1985 | ~41 yrs | NO |
+| AGM belief revision [@alchourron1985] | 1985 | ~41 yrs | NO |
 | **CoALA** (Sumers et al., TMLR) — the field's common vocabulary | 2024-02 | ~25 months | **NO** |
-| **Pink et al.** (arXiv 2502.06975) — episodic-memory position paper | 2025-02-10 | ~13 months | **NO** |
-| **Wray, Kirk & Laird** (arXiv 2505.07087) — cognitive design patterns | 2025-06-13 | ~9 months | **NO** |
+| **Pink et al.** [@pink2025] — episodic-memory position paper | 2025-02-10 | ~13 months | **NO** |
+| **Wray, Kirk & Laird** [@wray2025] — cognitive design patterns | 2025-06-13 | ~9 months | **NO** |
 
 Kumiho's date is its arXiv v1 stamp (18 March 2026); the document's own title page
 is dated 17 March.
@@ -158,11 +158,11 @@ was on our radar.
 
 | System | First public surface | vs. ENGRAM ideation (2026-03-20) | vs. day-1 recording (2026-04-09) |
 |---|---|---|---|
-| **Kumiho** (2603.17244) | **2026-03-18** | **2 days before** (not surfaced) | 22 days before |
+| **Kumiho** [@park2026] | **2026-03-18** | **2 days before** (not surfaced) | 22 days before |
 | Kahl 2026b (Zenodo) | 2026-02-24 | 24 days before (not surfaced) | 44 days before |
 | Kahl 2026a (Zenodo) | 2026-01-31 | 48 days before (not surfaced) | 68 days before |
-| GAM (2604.12285) | 2026-04-14 | 25 days **after** | 5 days after |
-| SCM (2604.20943) | 2026-04-22 | 33 days **after** | 13 days after |
+| GAM [@wu2026] | 2026-04-14 | 25 days **after** | 5 days after |
+| SCM [@shinde2026] | 2026-04-22 | 33 days **after** | 13 days after |
 | VMG survey (Lin et al., 2604.16548) | 2026-04 (month from the arXiv identifier) | **after** | after |
 | Mem0g / Zep / A-MEM | 2024–25 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) | predate |
 

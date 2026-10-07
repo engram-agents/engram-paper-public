@@ -49,8 +49,7 @@ mechanism.
 
 ### 3.1 Complementary Learning Systems → continuity across compaction
 
-Complementary Learning Systems theory (McClelland, McNaughton & O'Reilly 1995;
-Kumaran, Hassabis & McClelland 2016) holds that durable memory needs *two* coupled
+Complementary Learning Systems theory [@mcclelland1995; @kumaran2016] holds that durable memory needs *two* coupled
 subsystems: a fast-learning, instance-specific store (hippocampal) and a
 slow-integrating, structure-extracting store (neocortical), with consolidation
 moving information between them. ENGRAM realizes this division symbolically: fast,
@@ -84,7 +83,7 @@ auto-surface that binds Condition 3. [SOLID: dv_0264, ob_1119]
 
 ### 3.3 Rational analysis of memory → designed forgetting
 
-Anderson & Schooler (1991) showed that human forgetting is not a defect but an
+@anderson1991 showed that human forgetting is not a defect but an
 *adaptation*: what stays available tracks the **need probability** — "the probability
 that we will need a particular memory trace now" — estimated from environmental
 frequency, recency, and spacing. Ebbinghaus (1885) gave the original forgetting curve;
@@ -177,15 +176,15 @@ kind: it positions the paper **against live, contemporary work** — rubrics wri
 others against which ENGRAM can be scored, and the places where those authors would
 object to what we claim. It is the argument with the field, not another ancestor.
 
-**Three published rubrics.** Pink et al. (2025) give five properties of episodic
+**Three published rubrics.** @pink2025 give five properties of episodic
 memory and score seven families of LLM-memory method on them, finding that none
 satisfies all five. ENGRAM satisfies four outright — **explicit reasoning, single-shot
 learning, instance specificity and contextual binding** — and holds the fifth,
 long-term storage, only on the narrower reading. It holds as their Table 1 scores it —
 durable across sessions and compactions, the property working memory lacks — but
 their prose asks for more than the cell does: an adaptive long-term agent should "not
-only prevent a degradation in performance over time," it should "improve by learning
-new general knowledge and skills." That is a claim about agent performance over time,
+only prevent a degradation in performance over time" [@pink2025, p. 3], it should "improve by learning
+new general knowledge and skills" [@pink2025, p. 3]. That is a claim about agent performance over time,
 which we have not measured; it is recorded among the things this paper does not show
 (Ch8). An obvious objection is that Pink et al. ground single-shot learning in
 complementary learning systems theory, so a system that never updates its weights
@@ -210,12 +209,12 @@ content be reasoned about" does not distinguish a store whose reasoning is
 premises and confidence. That distinction lies off their axis rather than further
 along it.
 
-Wray, Kirk and Laird (2025) supply a second, independent rubric: nine characteristics
+@wray2025 supply a second, independent rubric: nine characteristics
 of episodic memory adapted from Nuxoll and Laird, against which they score Generative
 Agents. Two of their rows have no counterpart in Pink et al.'s five, and both are rows
 ENGRAM was designed for. Their *autonoetic* row reads "unclear how agents distinguish
-current understanding from memory of past experience"; their *deliberate* row reads
-"agents cannot deliberately attempt to construct cues or retrieve memories." ENGRAM's
+current understanding from memory of past experience" [@wray2025, p. 7]; their *deliberate* row reads
+"agents cannot deliberately attempt to construct cues or retrieve memories" [@wray2025, p. 7]. ENGRAM's
 two recall surfaces — an ambient hook that signals familiarity without content, and
 explicit query tools the agent invokes when it wants to know — are that distinction,
 built.
@@ -235,9 +234,9 @@ both hold because the word does two jobs.
 agreement, because it exposes a conflation.** Wray et al. list *automatic* encoding as
 a characteristic an implementation should satisfy, marking Generative Agents down for
 using a periodic process. Sumers et al. argue the opposite: learning should be "a
-result action of a decision-making cycle just like grounding," the agent deliberately
+result action of a decision-making cycle just like grounding" [@sumers2024, p. 18], the agent deliberately
 choosing to commit information to memory, "in contrast to most agents, which simply
-fix a learning schedule…" ENGRAM's writes are deliberate tool calls, so on the same
+fix a learning schedule…" [@sumers2024, p. 18]. ENGRAM's writes are deliberate tool calls, so on the same
 fact it is penalized by the first rubric and exemplary under the second.
 
 The right response is not to pick a side: the two rubrics address different halves of
@@ -269,7 +268,7 @@ and what a persistence layer cannot offer.
 
 **Where this strand disagrees with us.** Pink et al.'s §5 considers and rejects the
 position ENGRAM occupies. Under the heading "Contextualized external memory will be
-sufficient" they characterize the view that external structures "such as knowledge
+sufficient" [@pink2025, p. 8] they characterize the view that external structures "such as knowledge
 graphs or retrieval-augmented generation (RAG) systems — could eliminate the need for
 an episodic memory framework," and answer that relying on external memory alone "will
 still incur high storage costs, and require forgetting mechanisms," where an episodic
@@ -309,9 +308,9 @@ paper concerns.
 **CoALA, and a convergence with a checkable date.** Sumers et al.'s framework
 supplies the vocabulary rather than a rubric, and it names three areas as
 understudied or open, each of which ENGRAM occupies. The first is *unlearning*:
-"modifying and deleting" memory, as against the literature's focus on adding to it.
+"modifying and deleting" [@sumers2024, p. 12] memory, as against the literature's focus on adding to it.
 ENGRAM answers this in a way their gloss does not anticipate: where they describe
-unlearning as "deleting unneeded memory items," supersede and retraction *retain* the
+unlearning as "deleting unneeded memory items" [@sumers2024, p. 16], supersede and retraction *retain* the
 superseded node with its provenance and mark its dependents rather than removing
 them, so the record of having been wrong survives the correction. The second is
 *learning as a deliberate action*, which they contrast with agents that "simply fix a
@@ -340,22 +339,21 @@ lossy, arrived at the same mechanism.
 
 ### 3.9 A note on AGM belief revision
 
-Readers who know the AGM framework (Alchourrón, Gärdenfors & Makinson 1985) will notice a
+Readers who know the AGM framework [@alchourron1985] will notice a
 family resemblance between belief contraction and ENGRAM's retract-with-cascade. The two
 efforts are oriented differently, and this paper does not claim AGM's postulates for
 ENGRAM. AGM asks how a *closed* theory — a set of propositions closed under logical
 consequence — should give up one proposition and stay closed and consistent; its own first
 paragraph poses "which propositions should be rejected along with x so that the contracted
 theory will be closed under logical consequence", and its named application is legal
-derogation (AGM 1985, p. 510). ENGRAM asks how an agent should keep a *living* record of
+derogation [@alchourron1985, p. 510]. ENGRAM asks how an agent should keep a *living* record of
 what it has actually committed — never closed, its dependencies recorded and uncertain —
 honest as new evidence arrives: it moves toward consistency through the agent's own
 adjudication and, by design, never arrives. The formal precedent for the cascade itself is
 Doyle's truth maintenance (§3.4, Ch4 §4.4). What the two share is the imperative both
 mechanisms serve from opposite directions — a rejected claim must not stay silently
 load-bearing — and AGM's own authors' observation that the intuitive process lives at the
-level of a theory's base rather than the theory as a whole (Alchourrón & Makinson 1982,
-p. 21).
+level of a theory's base rather than the theory as a whole [@alchourron1982, p. 21].
 
 [SOLID: dv_1658 — AGM/Hansson as the closed-theory contrast, from first-hand reads of
 AGM 1985 p. 510 and Alchourrón & Makinson 1982 pp. 16, 21; postulate statements via
