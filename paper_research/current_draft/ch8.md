@@ -126,9 +126,10 @@ two versions to keep consistent.
 
 - **The empirical chapter is *n* = 1, and the one is not a sample.** It is the graph
   of the agent that also co-designed the substrate, wrote its disciplines, and
-  authored the chapter. A confidence distribution that tracks argument shape is
-  equally consistent with a model computing honestly and with an author who has
-  internalised which type to declare. Why widening to other seats would not cleanly
+  authored the chapter. The agent declares each derivation's reasoning type and the
+  substrate computes its confidence, so a distribution that follows type shows the
+  computation working; what this one graph cannot show is whether the declared
+  types are right. Why widening to other seats would not cleanly
   repair this: **§6.0**.
 - **The at-scale, controlled study is deferred.** The twin study — fission-clone an
   agent, hold base model and harness fixed, vary only accumulated history — is
