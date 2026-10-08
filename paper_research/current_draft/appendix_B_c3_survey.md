@@ -36,8 +36,7 @@ we quote it verbatim. Where the source documents detection but is silent on reso
 documented absence, not an invented quote.
 
 **Synthesis.** Across the eleven sources, none satisfies Condition 3 strictly; one of
-them, TierMem, meets it only in part, with a write-time conflict merge and no cascade
-(§B.5). The
+them, TierMem, has no contradiction construct to arbitrate (§B.5). The
 conclusion is the conjunction of the verdicts above, so it holds exactly as far as each of
 them does. The field has converged on the structural *primitives* C3 needs (typed
 edges, provenance, cascade-traversable graphs, supersede semantics — Kumiho most
@@ -151,7 +150,7 @@ entity-edges cannot reference other edges, so there is nothing to cascade throug
 ## B.3 Resolve-by-overwrite or by-someone-else (external delegation)
 
 ### Mem0 v3 (docs.mem0.ai migration guide) [@memzero2026a] — **(X) external delegation**
-The single cleanest external-delegation statement in the survey. v3 is add-only;
+The clearest external-delegation evidence in the survey. v3 is add-only;
 contradictions coexist and are sorted out at read time.
 
 - *paper-verbatim:* "Retrieval handles ranking — the most relevant, current
@@ -161,7 +160,7 @@ contradictions coexist and are sorted out at read time.
   out: external prescription rather than self-maintaining arbitration."
 
 ### MemMachine [@wang2026a] — **(X) most-recent-state update**
-Profile contradictions are resolved by last-write-wins; no contradiction record, no
+The system updates contradicted profile data to the most recent state; no contradiction record, no
 cascade to episodic records built on the old fact.
 
 - *paper-verbatim:* "When new information contradicts existing profile data, the
@@ -178,7 +177,7 @@ commitment graph at all.
 
 - *paper-verbatim* (feature enumeration): "...Typed fields. Per-field citations with
   confidence levels. **Deterministic conflict resolution.** Output shaped exactly as
-  the agent specified..." [@ashutosh2026, sec. Introducing Pinecone Nexus] — first-hand-read note: this is "the only location in the
+  the agent specified..." [@ashutosh2026, sec. Introducing Pinecone Nexus] (emphasis added) — first-hand-read note: this is "the only location in the
   primary sources where 'deterministic conflict resolution' appears... a list item
   in a feature enumeration, with no further elaboration. The mechanism is not defined
   anywhere in the primary sources."
@@ -215,7 +214,7 @@ session.
 
 ---
 
-## B.5 The aspiration, and a write-time merge
+## B.5 The aspiration, and the genuine absence
 
 ### 2026 Memory survey — Du [@du2026] — **(N) named, not solved**
 A survey, not a system: it names contradiction-handling as something robust systems
@@ -224,21 +223,22 @@ A survey, not a system: it names contradiction-handling as something robust syst
 - *paper-verbatim* (§7.3): "Robust systems need temporal versioning (prefer the
   newest record), source attribution (user statement > agent inference),
   **contradiction detection (flag conflicts for resolution)**, and periodic
-  consolidation..." — *normative* ("need"), not descriptive ("do").
+  consolidation..." (emphasis added) — *normative* ("need"), not descriptive ("do").
 - *paper-verbatim* (their §9.3): "Future systems need external validation... uncertainty
   quantification... adversarial probing... and expiration policies" — the proposed
   fixes are all **external** interventions, not structural primitives. The survey
   names the C3 problem and cites zero solutions.
 
-### TierMem [@zhu2026] — **(X) write-time merge, no cascade**
-TierMem's write-back has a named Conflict Retrieval step: an LLM memory manager
-compares a new fact with the most similar summary units and chooses SKIP, UPDATE or
-ADD; UPDATE writes merged text that inherits the original unit's provenance. This is
-consolidation, not retraction: nothing marks or revisits downstream claims
-[@zhu2026, App. A.6, p. 12]. First-hand-read finding: "No
+### TierMem [@zhu2026] — **(N) contradiction not a construct, no cascade**
+TierMem's write-back has a step named Conflict Retrieval, but it only retrieves the
+most similar existing summary units; an LLM memory manager then SKIPs a fact already
+entailed, UPDATEs a vague entry with added detail (merged text that inherits
+provenance), or ADDs a distinct event. No step detects or resolves a contradiction,
+and nothing marks or revisits downstream claims [@zhu2026, App. A.6, p. 12].
+First-hand-read finding: "No
 foundational-retraction-flagging mechanism exists. When a Tier-1 summary [TierMem's own tiering, unrelated to Ch4 §4.5's tiers] is UPDATEd,
 there is no cascade to dependent summaries or downstream uses of the old content."
-Verdict: C3 is **partial** — a write-time conflict merge, no cascade.
+Verdict: C3 not satisfied — contradiction is absent as a construct; the word 'conflict' names a retrieval step.
 
 ---
 
@@ -250,13 +250,13 @@ Verdict: C3 is **partial** — a write-time conflict merge, no cascade.
 | SCM | No resolution (aspirational flag, trigger-only) | yes (§3.2 vs §3.5) |
 | GAM | Detect-only (no resolution prose) | partial — `contradict` edge yes; resolution-gap = analysis |
 | Zep/Graphiti | Invalidates directly contradicted edge(s); no cascade | yes (§2.2.3) |
-| Mem0 v3 | External delegation (retrieval ranking) | yes — cleanest in survey |
+| Mem0 v3 | External delegation (retrieval ranking) | yes — clearest in survey |
 | MemMachine | External delegation (most-recent-state update) | yes ("most recent state") |
 | Pinecone Nexus | External/undocumented; read-only consumer | yes (list-item) + analysis |
 | Letta | No claim structure (strings) | yes ("just strings") |
 | Anthropic memory tool | No claim structure (manual coherence) | yes ("keep... coherent") |
 | Memory survey 2026 | Named as aspiration, no implementation | yes (their §7.3, §9.3) |
-| TierMem | Write-time conflict merge, no cascade (C3 partial) | none quoted |
+| TierMem | Contradiction not a construct; no cascade | none quoted |
 
 Across the surveyed set, the pattern is uniform: the field has the *primitives*
 (detection, typed edges, even Kumiho's self-claimed formal AGM compliance) but stops

@@ -164,7 +164,7 @@ was on our radar.
 | GAM [@wu2026, arXiv 2604.12285] | 2026-04-14 | 25 days **after** | 5 days after |
 | SCM [@shinde2026, arXiv 2604.20943] | 2026-04-22 | 33 days **after** | 13 days after |
 | VMG survey [@lin2026, arXiv 2604.16548, v2 of 2026-06-11] | 2026-06 (VMG first appears in v2; v1, April 2026, is a differently titled draft) | **after** | after |
-| Mem0g / Zep / A-MEM [@chhikara2025; @rasmussen2025; @xu2025] | 2025 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) (each handles conflicts at write time; none cascades) | predate |
+| Mem0g / Zep / A-MEM [@chhikara2025; @rasmussen2025; @xu2025] | 2025 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) (Zep and Mem0g handle conflicts at write time; A-MEM's memory evolution updates the context and tags of existing notes [@xu2025, sec. 3.3, p. 4]; none cascades) | predate |
 
 The two structurally-closest systems (Kumiho, SCM) both surface in March–April 2026 —
 concurrent with, not predating-by-much, ENGRAM's ideation. The older systems lack the

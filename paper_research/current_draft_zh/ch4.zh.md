@@ -206,7 +206,7 @@ ENGRAM 由一小组原语建成，它们复合成其上的全部——共八个�
 | Letta | 否——无主张结构（字符串）[@letta2025; @packer2023, p. 2; @lettaai2026] |
 | Anthropic memory tool | 否——无主张结构（手工维护一致性）[@claudedocs2026] |
 | Memory survey 2026 | 否——被指名为愿望，无实现 |
-| TierMem | 部分——写入时的冲突合并，无级联[@zhu2026, App. A.6, p. 12] |
+| TierMem | 否——矛盾不是其中的一个构造（其名为 'Conflict Retrieval' 的步骤只是为合并决定而检索相似的摘要单元）[@zhu2026, App. A.6, p. 12] |
 | **ENGRAM** | **是**——严格满足，唯一的满足者 |
 
 附录 B 给出每项判定的证据与引文。

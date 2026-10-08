@@ -112,7 +112,7 @@
 
 **诚实定界的注解。** 当某个系统的 C3 失败是由一项*正面*的设计选择所显示时（委托给检索、按近因覆盖、只建议不撤回），我们逐字引用它。当来源记录了检出、却对解决保持沉默（GAM）时，没有句子可引——我们如实说明这一点，并把判定建立在有记录可查的缺位之上，而不是一句编造出来的引文上。
 
-**综合。** 在全部十一项来源中，没有一个严格满足条件 3；其中一项，TierMem，只部分满足它，即写入时的冲突合并而无级联（§B.5）。这个结论是以上诸判定的合取，因此它的成立范围，恰好与其中每一项的成立范围一样远。本领域已经在 C3 所需要的那些结构性*原语*上趋同（带类型的边、出处、可级联遍历的图谱、取代语义——以 Kumiho 最为完整）；各处所缺的，是那个使仲裁成为自动状态变更的**操作性绑定**。ENGRAM 的贡献是那个绑定（第 4 章 §4.4），而不是那些原语。
+**综合。** 在全部十一项来源中，没有一个严格满足条件 3；其中一项，TierMem，没有可供仲裁的矛盾构造（§B.5）。这个结论是以上诸判定的合取，因此它的成立范围，恰好与其中每一项的成立范围一样远。本领域已经在 C3 所需要的那些结构性*原语*上趋同（带类型的边、出处、可级联遍历的图谱、取代语义——以 Kumiho 最为完整）；各处所缺的，是那个使仲裁成为自动状态变更的**操作性绑定**。ENGRAM 的贡献是那个绑定（第 4 章 §4.4），而不是那些原语。
 
 *paper-verbatim* 与 *paper-claimed* 标记之内的章节号，指的是被引论文自己的章节，而不是本文的章节。
 
@@ -159,13 +159,13 @@
 ## B.3 靠覆盖、或靠别人来解决（外部委托）
 
 ### Mem0 v3（docs.mem0.ai migration guide）[@memzero2026a] —— **（X）外部委托**
-本次调查中最干净的一句外部委托陈述。v3 是只增的；矛盾共存，并在读取时被理清。
+本次调查中最清楚的外部委托证据。v3 是只增的；矛盾共存，并在读取时被理清。
 
 - *paper-verbatim*："Retrieval handles ranking — the most relevant, current information surfaces first."（中文解说：检索负责排序——最相关、最新的信息最先浮现。）[@memzero2026a, step 4 Tip, Internet Archive snapshot of 2026-05-14]
 - *first-hand-read finding:* 冲突解决被委托给检索时的排序，并最终委托给应用代码——这"恰恰是 Kahl 的条件 3 所排除的：外部规定，而不是自我维持的仲裁。"
 
 ### MemMachine[@wang2026a] —— **（X）最新状态更新**
-画像中的矛盾以"最后写入者胜"来解决；没有矛盾记录，也没有从旧事实级联到建立在它之上的那些情节记录。
+系统把被矛盾的画像数据更新为最新状态；没有矛盾记录，也没有从旧事实级联到建立在它之上的那些情节记录。
 
 - *paper-verbatim*："When new information contradicts existing profile data, the system can **update the profile to reflect the most recent state**—supporting the knowledge update capability evaluated in benchmarks such as LongMemEval [7]."（中文解说：当新信息与既有画像数据相矛盾时，系统可以**更新画像以反映最新状态**——这支撑了诸如 LongMemEval [7] 之类的基准中所评估的知识更新能力。）[@wang2026a, sec. 4.7, p. 6]（强调为引者所加）
 - *first-hand-read finding:* 检出一处矛盾，用覆盖解决它，继续往前走——没有一等矛盾节点，也没有从一处被更正的画像事实，级联到使用旧事实生成的那些情节记录。
@@ -173,7 +173,7 @@
 ### Pinecone Nexus（Pinecone 架构博客）[@ashutosh2026] —— **（X）／（N），且是只读消费者**
 "Deterministic conflict resolution"（确定性冲突解决）只出现一次，是知识编译一侧的一个无文档的功能清单条目；而消费端的智能体根本没有承诺图谱。
 
-- *paper-verbatim*（功能枚举）："...Typed fields. Per-field citations with confidence levels. **Deterministic conflict resolution.** Output shaped exactly as the agent specified..."（中文解说：……带类型的字段。按字段的引用并附置信度。**确定性冲突解决。** 输出完全按智能体所指定的形态……）[@ashutosh2026, sec. Introducing Pinecone Nexus] —— 第一手阅读注记：这是"the only location in the primary sources where 'deterministic conflict resolution' appears... a list item in a feature enumeration, with no further elaboration. The mechanism is not defined anywhere in the primary sources."（中文解说：一线来源中唯一出现"确定性冲突解决"的地方……一个功能枚举里的清单条目，再无进一步展开。该机制在一线来源中任何地方都没有被定义。）
+- *paper-verbatim*（功能枚举）："...Typed fields. Per-field citations with confidence levels. **Deterministic conflict resolution.** Output shaped exactly as the agent specified..."（中文解说：……带类型的字段。按字段的引用并附置信度。**确定性冲突解决。** 输出完全按智能体所指定的形态……）[@ashutosh2026, sec. Introducing Pinecone Nexus]（强调为引者所加）—— 第一手阅读注记：这是"the only location in the primary sources where 'deterministic conflict resolution' appears... a list item in a feature enumeration, with no further elaboration. The mechanism is not defined anywhere in the primary sources."（中文解说：一线来源中唯一出现"确定性冲突解决"的地方……一个功能枚举里的清单条目，再无进一步展开。该机制在一线来源中任何地方都没有被定义。）
 - *first-hand-read finding:* 从消费端智能体的视角看，Nexus 里根本没有任何仲裁架构。智能体查询并接收结果；它不维护承诺图谱，也不检测所接收的内容何时与此前的承诺相矛盾。
 
 ---
@@ -194,16 +194,16 @@
 
 ---
 
-## B.5 那份愿望，与一次写入时的合并
+## B.5 那份愿望，与真正的缺位
 
 ### Memory survey 2026 —— Du[@du2026] —— **（N）被指认，未被解决**
 它是一篇综述，而不是一个系统：它把矛盾处理指名为稳健系统*需要*的东西，却没有引用任何一个做到了这一点的系统，并且只提出*外部的*修补。
 
-- *paper-verbatim*（§7.3）："Robust systems need temporal versioning (prefer the newest record), source attribution (user statement > agent inference), **contradiction detection (flag conflicts for resolution)**, and periodic consolidation..."（中文解说：稳健系统需要时间版本管理（偏好最新记录）、来源归属（用户陈述 > 智能体推断）、**矛盾检出（把冲突标记出来以待解决）**，以及周期性巩固……）—— 这是*规范性的*（"need"／需要），而不是描述性的（"do"／做到了）。
+- *paper-verbatim*（§7.3）："Robust systems need temporal versioning (prefer the newest record), source attribution (user statement > agent inference), **contradiction detection (flag conflicts for resolution)**, and periodic consolidation..."（中文解说：稳健系统需要时间版本管理（偏好最新记录）、来源归属（用户陈述 > 智能体推断）、**矛盾检出（把冲突标记出来以待解决）**，以及周期性巩固……）（强调为引者所加）—— 这是*规范性的*（"need"／需要），而不是描述性的（"do"／做到了）。
 - *paper-verbatim*（他们的 §9.3）："Future systems need external validation... uncertainty quantification... adversarial probing... and expiration policies"（中文解说：未来的系统需要外部验证……不确定性量化……对抗性探测……以及过期策略）—— 所提出的修补全是**外部**干预，而不是结构性原语。这篇综述指出了 C3 问题，却引用了零个解决方案。
 
-### TierMem[@zhu2026] —— **（X）写入时合并，无级联**
-TierMem 的写回有一个名为 Conflict Retrieval 的步骤：一个 LLM 记忆管理器把新事实与最相似的摘要单元作比较，并在 SKIP、UPDATE 与 ADD 之中选择；UPDATE 写入合并后的文本，该文本继承原单元的出处。这是巩固，而不是撤回：没有任何东西标记或回访下游的主张[@zhu2026, App. A.6, p. 12]。第一手阅读发现：没有任何根基性撤回的标记机制存在。当一份第 1 层摘要被 UPDATE 时（此处所说的分层是 TierMem 自己的分层，与第 4 章 §4.5 的分层无关），没有级联通往依赖它的摘要，也没有级联通往旧内容的下游用途。判定：C3 **部分**——写入时的冲突合并，无级联。
+### TierMem[@zhu2026] —— **（N）矛盾不是构造，无级联**
+TierMem 的写回有一个名为 Conflict Retrieval 的步骤，但它只检索与新事实最相似的既有摘要单元；随后一个 LLM 记忆管理器在 SKIP（该事实已被蕴含）、UPDATE（为一条含糊的条目补充细节；合并后的文本继承出处）与 ADD（一个不同的事件）之中选择。没有任何一步检出或解决矛盾，也没有任何东西标记或回访下游的主张[@zhu2026, App. A.6, p. 12]。第一手阅读发现：没有任何根基性撤回的标记机制存在。当一份第 1 层摘要被 UPDATE 时（此处所说的分层是 TierMem 自己的分层，与第 4 章 §4.5 的分层无关），没有级联通往依赖它的摘要，也没有级联通往旧内容的下游用途。判定：C3 未被满足——矛盾作为构造是缺位的；"conflict"一词所指称的是一个检索步骤。
 
 ---
 
@@ -215,13 +215,13 @@ TierMem 的写回有一个名为 Conflict Retrieval 的步骤：一个 LLM 记�
 | SCM | 无解决（愿望性的标志，仅触发） | 有（§3.2 对 §3.5） |
 | GAM | 仅检出（无解决性文字） | 部分——`contradict` 边有；解决缺口＝分析 |
 | Zep/Graphiti | 使被直接矛盾的边作废；无级联 | 有（§2.2.3） |
-| Mem0 v3 | 外部委托（检索排序） | 有——本次调查中最干净的 |
+| Mem0 v3 | 外部委托（检索排序） | 有——本次调查中最清楚的 |
 | MemMachine | 外部委托（最新状态更新） | 有（"most recent state"） |
 | Pinecone Nexus | 外部／无文档；只读消费者 | 有（清单条目）+ 分析 |
 | Letta | 无主张结构（字符串） | 有（"just strings"） |
 | Anthropic memory tool | 无主张结构（手工维持一致性） | 有（"keep... coherent"） |
 | Memory survey 2026 | 被指名为愿望，无实现 | 有（他们的 §7.3、§9.3） |
-| TierMem | 写入时的冲突合并，无级联（C3 部分满足） | 无引文 |
+| TierMem | 矛盾不是构造；无级联 | 无引文 |
 
 在受调查的整个集合上，模式是一致的：本领域拥有那些*原语*（检出、带类型的边，甚至 Kumiho 自称的形式化 AGM 符合性），却止步于**作为内部状态变更的自动仲裁**之前。把 ENGRAM 区分开来的，是操作性绑定（第 4 章 §4.4），而它由**三**部分组成，不是两部分：级联不经请求就标记每一个受影响的节点；自动浮现把这些标记放回智能体面前，不依赖任何有意的触及；而**级联机在睡眠期间把被标记的那片区域推向裁定**——按依赖顺序走那条前沿，直到不剩任何待决标记，作为每一个整理周期的强制阶段。
 
