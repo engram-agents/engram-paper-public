@@ -4543,7 +4543,7 @@ University of Beirut, Beirut, Lebanon. Received 18 October 1983; revised 1 May 1
 Department of Psychology, Carnegie Mellon
 University.
 
-<a id="ref-doyle1979"></a>Doyle, J. (n.d.). A truth maintenance system. In M. L. Ginsberg (Ed.), *Readings in nonmonotonic reasoning* (pp. 259–279). Morgan Kaufmann. (Original work published 1979)
+<a id="ref-doyle1979"></a>Doyle, J. (1987). A truth maintenance system. In M. L. Ginsberg (Ed.), *Readings in nonmonotonic reasoning* (pp. 259–279). Morgan Kaufmann. (Original work published 1979)
 Massachusetts Institute of Technology,
 Artificial Intelligence Laboratory, Cambridge, MA. Read here as reprinted in M. L.
 Ginsberg (Ed.), *Readings in nonmonotonic reasoning*, ch. 4, "Truth maintenance",
@@ -4551,9 +4551,10 @@ pp. 259–279. Los Altos, CA: Morgan Kaufmann.
 Originally published in *Artificial Intelligence* 12(3), 231–272, November 1979;
 DOI: 10.1016/0004-3702(79)90008-0 (confirmed against the DOI registry's Crossref
 record, 2026-09-24).
-*[Metadata incomplete: the reprint volume's year (given as 1987) appears in this scan
-only as a previous reader's handwritten annotation on the title page and is not yet
-confirmed against a printed source.]*
+Reprint year 1987 from the publisher's record (Elsevier, ISBN 978-0-934613-45-3,
+"Published: October 1, 1987"), 2026-10-08; Crossref holds no record for this volume.
+Original year 1979 re-confirmed from Crossref's BibTeX for the DOI above, 2026-10-08.
+The scan read here prints neither year (both are handwritten), so both come from these records.
 
 <a id="ref-josang2013"></a>Jøsang, A. (2013). *Subjective logic* [Draft manuscript].
 Draft manuscript, 18 February 2013. University
