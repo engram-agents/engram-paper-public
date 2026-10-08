@@ -85,7 +85,7 @@ boost). The importance amplifier is **homeostatic** — `normalized_importance` 
 anchored to the current minimum-queryable importance, so the formula adapts as the
 graph grows rather than using a fixed scale.
 
-## C.4 Importance, forgetting, and spaced repetition
+## C.4 Importance, forgetting, and the testing effect
 
 Two further signals interact with the ranking. **Importance** gates *tier
 eligibility* — it is a pre-filter deciding what is even in the queryable set (tier 2)

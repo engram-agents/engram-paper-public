@@ -122,7 +122,7 @@ surveyed (Appendix B) propagates retraction along dependencies. ENGRAM implement
 memory, and names the lineage it implements.
 
 **→ Ch4 §4.2 + §4.4** (provenance primitives; retraction cascade → Condition 3). [gap
-SOLID ob_1571; mechanism first-hand from Doyle 1979 via the Ginsberg reprint — ob_2555 closed]
+SOLID ob_5423; mechanism first-hand from Doyle 1979 via the Ginsberg reprint — ob_2555 closed]
 
 ### 3.5 Subjective Logic → confidence propagation, with a divergence
 

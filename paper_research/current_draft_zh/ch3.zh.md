@@ -32,7 +32,7 @@
   read them in the English source.
 
   STATUS TAGS KEPT IN ENGLISH. The bracketed tags ([SOLID], [GROUNDED this session],
-  [gap SOLID ob_1571; …]) are drafting-process traceability labels tied to the English
+  [gap SOLID ob_5423; …]) are drafting-process traceability labels tied to the English
   draft's own state; kept verbatim so the two files stay diffable. Translated, they would
   read as claims rather than as the editorial markers they are.
 
@@ -107,7 +107,7 @@ ENGRAM 按设计遗忘：回忆重要性衰减，维持一个有界的**可查�
 
 真值维护系统（Truth Maintenance Systems）把*辩护*附加到信念之上。在 Doyle 的基于辩护的真值维护系统中，信念状态沿依赖链传播：当一条辩护被撤销时，依赖它的信念经由依赖导向回溯得到修正[@doyle1979]。de Kleer 的基于假设的真值维护系统（ATMS）则给每个数据项标注使其成立的假设集，因此避免了大部分回溯和全部撤回[@dekleer1986, p. 127]。Doyle 的机制正是 ENGRAM 的 `derives_from` 出处与撤回级联——早了几十年，且在另一个领域。在我们所检视的 2023–2026 年 LLM 智能体论文中，只有 Wray、Kirk 与 Laird 引用了 Doyle，而且只是用来描述 Soar 的真值维护[@wray2025, sec. 2]；我们所调查的记忆系统（附录 B）中，没有一个沿依赖链传播撤回。ENGRAM 在带类型的 LLM 智能体记忆中实现了 TMS 式的依赖传播，并指名它所实现的那条传承。
 
-**→ 第 4 章 §4.2 + §4.4**（出处原语；撤回级联 → 条件 3）。[gap SOLID ob_1571；机制为第一手，来自 Doyle 1979，经 Ginsberg 重印本 —— ob_2555 closed]
+**→ 第 4 章 §4.2 + §4.4**（出处原语；撤回级联 → 条件 3）。[gap SOLID ob_5423；机制为第一手，来自 Doyle 1979，经 Ginsberg 重印本 —— ob_2555 closed]
 
 ### 3.5 主观逻辑 → 置信度传播，以及一处分歧
 

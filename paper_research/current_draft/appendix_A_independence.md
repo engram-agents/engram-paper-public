@@ -27,8 +27,8 @@ A-MEM) [@chhikara2025, p. 1; @rasmussen2025; @xu2025] predate our
 ideation. The two exemplars named here are the two we hold and have read first-hand:
 Doyle's truth maintenance system (via the Ginsberg reprint, Ch4 §4.2) and AGM 1985.
 Both traditions are wider than those two works, and the others this paper names — de
-Kleer's ATMS [@dekleer1986] (Ch3 §3.4; it avoids retraction rather than cascading it), Hansson's belief-base postulates (named only in Appendix B,
-as Kumiho's self-claimed compliance) — the bibliography lists among the works cited
+Kleer's ATMS [@dekleer1986] (Ch3 §3.4; it avoids retraction rather than cascading it) is a bibliography entry, while Hansson's belief-base postulates (named only in Appendix B,
+as Kumiho's self-claimed compliance) are among the works the bibliography lists as cited
 without a held source document.
 Nothing here rests on them: the claim is only that the shape predates us by decades,
 and the two dated primaries we have read carry it. Our claim is narrower and

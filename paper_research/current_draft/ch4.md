@@ -39,11 +39,11 @@ The chapter in one table; each row is a section below.
 
 | Mechanism | What it does | Tradition it answers | OCC verdict |
 |---|---|---|---|
-| Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle **[gap SOLID ob_1571; primary first-hand 2026-07-02]** | — (structural prerequisite) |
+| Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle **[gap SOLID ob_5423; primary first-hand 2026-07-02]** | — (structural prerequisite) |
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang [-@josang2013] **[GROUNDED ob_2551/dv_0965 → dv_1289]**, with a stated divergence | **Constraint A** (unified policy-selection) |
 | Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
 | Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus [SOLID] + Anderson-Schooler **[GROUNDED ob_2552/dv_0966]** | — (scopes what Cond-3 arbitration ranges over) |
-| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving [SOLID] + ACT-R spreading activation **[secondary — not first-hand; Tulving carries it]** | — (binds Cond 3: a correction cannot be suppressed by not looking) |
+| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction [@tulving1985, p. 3] [SOLID] + ACT-R spreading activation **[secondary — not first-hand]**; the cue-dependence is ENGRAM's own design | — (binds Cond 3: a correction cannot be suppressed by not looking) |
 | Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL **[ob_0647/ob_0651, prior read]** + spaced-repetition [SOLID] | — |
 | Continuity across compaction (§4.8) | identity survives compaction | CLS consolidation [SOLID] + diachronic-identity [SOLID] | — (compaction is not Kahl's reset; §4.8) |
 | Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution [SOLID] | — (feeds Ch5 identity-as-history) |
@@ -268,7 +268,7 @@ have to remember to run. That is the difference between a memory that *can be*
 audited and one that audits *itself*.
 
 **Tradition.** **TMS dependency-directed backtracking** (Doyle)
-**[gap SOLID ob_1571; mechanism first-hand from Doyle via the Ginsberg reprint, read visually — ob_2555 closed, as §4.2]**: a retracted justification propagates to
+**[gap SOLID ob_5423; mechanism first-hand from Doyle via the Ginsberg reprint, read visually — ob_2555 closed, as §4.2]**: a retracted justification propagates to
 everything that rested on it. That is the precedent; this paper claims no
 belief-revision postulate for the cascade, and AGM's different orientation is noted at
 the end of Chapter 3 (§3.9). What the cascade *does* claim is where the marking
@@ -386,23 +386,23 @@ audit (the disclosure-versus-erasure point Ch7 develops).
 The decay is **exponential**, a principled choice rather than a default:
 exponential is the unique **time-translation-invariant** kernel — forgetting should
 depend on elapsed time, not on the absolute clock, so a claim's decay from now looks
-the same whichever "now" one starts from (dv_0962). The well-known *power-law*
-forgetting curve is consistent with this, not a rival: a population of exponential
-decayers with mixed rates aggregates to a power law (ob_0521/dv_0243), and over short
-times the two are indistinguishable (Taylor expansion).
+the same whichever "now" one starts from (dv_0962). Items decaying at
+different exponential rates can average to a power-law-looking curve, but that argument
+is contested [@anderson1999, p. 1136]; ENGRAM's per-node exponential is a design choice
+for stationary recency ordering, not a model of human forgetting.
 
 *Plain terms:* the agent's working memory is a desk, not a warehouse. What has not
 been touched in a long time slides off the desk into the drawers — still there if
 you go looking, just not in front of you. Forgetting is *what keeps the desk usable*.
 
 **Tradition.** The **rational analysis of memory** — Anderson & Schooler's
-need-probability account (you retain what you are likely to need), Ebbinghaus's
+need-probability account [@anderson1991] (you retain what you are likely to need), Ebbinghaus's
 original forgetting curve [@ebbinghaus1885, sec. 29, p. 76]. Wixted's work on retention
 [@wixted2004, p. 243; @wixted1991] is the empirical literature ENGRAM's forgetting
 design must be reconciled with: it favours power functions over exponentials. **[GROUNDED 2026-06-18 —
 Anderson & Schooler read first-hand (ob_2552, need-probability verbatim); the
-ENGRAM mapping is dv_0966; the exponential-vs-power-law reconciliation is dv_0962 +
-ob_0521. Wixted is cited via A&S's discussion; a dedicated Wixted read is optional.]**
+ENGRAM mapping is dv_0966; the exponential-vs-power-law question is dv_0962 +
+ob_0521. Wixted is cited directly (wixted2004).]**
 
 **OCC:** none directly, but forgetting **scopes** Condition 3: arbitration ranges
 over the *queryable* set, so "the agent cannot suppress a correction by not looking"
@@ -422,7 +422,7 @@ what prompts the agent to invoke deliberate recall.
 **Tradition.** **Tulving** [SOLID]: the autonoetic/noetic
 distinction [@tulving1985, p. 3] — the two registers map onto Tulving's two ways of having the past
 present. **ACT-R spreading activation** **[secondary — not first-hand-read;
-Tulving carries this section's load, ACT-R is a supplementary precedent]** is the
+Tulving carries the autonoetic/noetic register distinction only; ACT-R is a supplementary precedent for cue-dependent retrieval]** is the
 computer-science precedent for cue-dependent automatic retrieval.
 
 **OCC:** none of its own, but auto-surfacing is the **binding half of Condition 3**

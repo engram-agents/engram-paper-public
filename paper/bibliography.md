@@ -19,21 +19,13 @@ A thin entry is therefore never mistaken for a checked one.
 
 ## Works cited in the text without a verified entry
 
-Seventeen further works are cited in the chapters for which no source document is
+Two further works are cited in the chapters for which no source document is
 currently held. They are listed here rather than given reconstructed entries, because
 a bibliographic entry built from memory is indistinguishable from a checked one once
 it is on the page — which is the failure mode the extraction rule above exists to
 prevent. **Each requires sourcing before this paper is submitted.**
 
-Locke · Reid · Butler · Schechtman · Clark · Chalmers · Hansson · de Kleer ·
-Ebbinghaus · Wixted · Peirce · Semon (see the partial entry above) · Shoemaker ·
-Johnston · Goldman · Nuxoll (with Laird) · **A-MEM**
-
-A further set of systems and surveys is discussed in the text — mostly in Appendix B's
-survey and in Chapters 1, 3 and 4 — without a bibliography entry yet — twelve: Mem0, MemMachine,
-Letta (MemGPT), Anthropic's memory tool, Pinecone Nexus, TierMem, Zep / Graphiti,
-MemRL, TOKI, soul.py, Du et al. (2026) and Lin et al. (2026). **Each also requires a
-sourced entry before submission.**
+Schechtman · Hansson
 
 Hansson is listed for the belief-base postulates that Appendix B records as Kumiho's
 self-claimed compliance; the paper claims no postulate for ENGRAM and notes AGM only

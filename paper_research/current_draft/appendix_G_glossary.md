@@ -89,8 +89,10 @@ rendered verbatim at every session start, fresh or post-compaction. (Defined §4
 Appendix E §E.7.)
 
 **forgetting curve** — the decay function governing recall importance over time;
-exponential, the time-translation-invariant kernel, consistent with the power-law
-curve as an aggregate over mixed decay rates. (Defined §4.5.)
+exponential, the time-translation-invariant kernel — a design choice for stationary
+recency ordering, not a claim about human forgetting; whether individual memories decay
+exponentially, with the power law an artifact of averaging, is contested [@anderson1999,
+p. 1136]. (Defined §4.5.)
 
 **goal** — a terminal/identity-direction aim; non-claim-bearing. (Defined Appendix E
 §E.2.)

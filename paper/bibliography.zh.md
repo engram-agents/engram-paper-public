@@ -23,9 +23,8 @@
   entry-verbatim rule governs them; the brief's tiebreak ("when in doubt, leave it
   English") decides it that way.
   Entry count: 22 in the English source; unchanged, since the bodies are verbatim.
-  Numeric parity: every digit token matches. Two English number WORDS become Chinese
-  words without losing a digit — "Seventeen" -> 十七, "twelve:" -> 十二; Ch1 / Ch3 /
-  Ch4 -> 第 1 章 / 第 3 章 / 第 4 章.
+  Numeric parity: every digit token matches. One English number WORD becomes a Chinese
+  word without losing a digit — "Two" -> 两.
 -->
 
 ---
@@ -42,13 +41,9 @@
 
 ## 正文已引用、但尚无经核实条目的作品
 
-还有十七项作品在正文各章中被引用，而目前未持有其来源文件。它们列在这里，而不是被给予重建的条目，因为一条凭记忆搭起的文献条目，一旦落到纸面上，就与一条核对过的条目无从分辨 —— 这正是上文那条抽取规则所要防止的失效形态。**每一项都须在本文付印之前完成溯源。**
+还有两项作品在正文各章中被引用，而目前未持有其来源文件。它们列在这里，而不是被给予重建的条目，因为一条凭记忆搭起的文献条目，一旦落到纸面上，就与一条核对过的条目无从分辨 —— 这正是上文那条抽取规则所要防止的失效形态。**每一项都须在本文付印之前完成溯源。**
 
-Locke · Reid · Butler · Schechtman · Clark · Chalmers · Hansson · de Kleer ·
-Ebbinghaus · Wixted · Peirce · Semon（见上文的残缺条目） · Shoemaker ·
-Johnston · Goldman · Nuxoll（与 Laird 合作） · **A-MEM**
-
-还有另一组系统与综述在正文中被讨论 —— 大多见于附录 B 的普查以及第 1、3、4 章 —— 却尚无文献条目 —— 共十二项：Mem0、MemMachine、Letta（MemGPT）、Anthropic 的记忆工具、Pinecone Nexus、TierMem、Zep / Graphiti、MemRL、TOKI、soul.py、Du 等（2026）与 Lin 等（2026）。**每一项同样须在付印之前取得一条有来源的条目。**
+Schechtman · Hansson
 
 列上 Hansson，是为了附录 B 记为 Kumiho 自称符合的那些信念基础公设；本文不为 ENGRAM 主张任何公设，提到 AGM 只是为了对照（第 3 章 §3.9）；那些公设的表述，是对照 Hansson 的《斯坦福哲学百科全书》条目 "Logic of Belief Revision"（<https://plato.stanford.edu/entries/logic-belief-revision/>）与 Rocha & Wassermann 的 "Postulates Here, Postulates Everywhere"（CEUR-WS Vol-4239，<https://ceur-ws.org/Vol-4239/paper-Rocha-11.pdf>）核对过的，而这两者都不被主张为一条文献条目。AGM 1985 与 Alchourrón & Makinson 1982 是上文中的条目，系据所持副本第一手建成。ACT-R 的扩散激活在第 4 章中作为一处次要先例被引用，它没有来源文件，也没有任何重量落在其上；基于这一点，它被排除在本清单之外。
 

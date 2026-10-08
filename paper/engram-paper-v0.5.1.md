@@ -1093,7 +1093,7 @@ The chapter in one table; each row is a section below.
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang ([2013](#ref-josang2013)), with a stated divergence | **Constraint A** (unified policy-selection) |
 | Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
 | Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus + Anderson-Schooler | — (scopes what Cond-3 arbitration ranges over) |
-| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving + ACT-R spreading activation | — (binds Cond 3: a correction cannot be suppressed by not looking) |
+| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) + ACT-R spreading activation; the cue-dependence is ENGRAM's own design | — (binds Cond 3: a correction cannot be suppressed by not looking) |
 | Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL + spaced-repetition | — |
 | Continuity across compaction (§4.8) | identity survives compaction | CLS consolidation + diachronic-identity | — (compaction is not Kahl's reset; §4.8) |
 | Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution | — (feeds Ch5 identity-as-history) |
@@ -1478,17 +1478,17 @@ audit (the disclosure-versus-erasure point Ch7 develops).
 The decay is **exponential**, a principled choice rather than a default:
 exponential is the unique **time-translation-invariant** kernel — forgetting should
 depend on elapsed time, not on the absolute clock, so a claim's decay from now looks
-the same whichever "now" one starts from. The well-known *power-law*
-forgetting curve is consistent with this, not a rival: a population of exponential
-decayers with mixed rates aggregates to a power law, and over short
-times the two are indistinguishable (Taylor expansion).
+the same whichever "now" one starts from. Items decaying at
+different exponential rates can average to a power-law-looking curve, but that argument
+is contested ([Anderson et al., 1999, p. 1136](#ref-anderson1999)); ENGRAM's per-node exponential is a design choice
+for stationary recency ordering, not a model of human forgetting.
 
 *Plain terms:* the agent's working memory is a desk, not a warehouse. What has not
 been touched in a long time slides off the desk into the drawers — still there if
 you go looking, just not in front of you. Forgetting is *what keeps the desk usable*.
 
 **Tradition.** The **rational analysis of memory** — Anderson & Schooler's
-need-probability account (you retain what you are likely to need), Ebbinghaus's
+need-probability account ([Anderson & Schooler, 1991](#ref-anderson1991)) (you retain what you are likely to need), Ebbinghaus's
 original forgetting curve ([Ebbinghaus, 1885/1913, sec. 29, p. 76](#ref-ebbinghaus1885)). Wixted's work on retention
 ([Wixted, 2004, p. 243](#ref-wixted2004); [Wixted & Ebbesen, 1991](#ref-wixted1991)) is the empirical literature ENGRAM's forgetting
 design must be reconciled with: it favours power functions over exponentials.
@@ -3215,8 +3215,8 @@ A-MEM) ([Chhikara et al., 2025, p. 1](#ref-chhikara2025); [Rasmussen et al., 202
 ideation. The two exemplars named here are the two we hold and have read first-hand:
 Doyle's truth maintenance system (via the Ginsberg reprint, Ch4 §4.2) and AGM 1985.
 Both traditions are wider than those two works, and the others this paper names — de
-Kleer's ATMS ([de Kleer, 1986](#ref-dekleer1986)) (Ch3 §3.4; it avoids retraction rather than cascading it), Hansson's belief-base postulates (named only in Appendix B,
-as Kumiho's self-claimed compliance) — the bibliography lists among the works cited
+Kleer's ATMS ([de Kleer, 1986](#ref-dekleer1986)) (Ch3 §3.4; it avoids retraction rather than cascading it) is a bibliography entry, while Hansson's belief-base postulates (named only in Appendix B,
+as Kumiho's self-claimed compliance) are among the works the bibliography lists as cited
 without a held source document.
 Nothing here rests on them: the claim is only that the shape predates us by decades,
 and the two dated primaries we have read carry it. Our claim is narrower and
@@ -3775,7 +3775,7 @@ boost). The importance amplifier is **homeostatic** — `normalized_importance` 
 anchored to the current minimum-queryable importance, so the formula adapts as the
 graph grows rather than using a fixed scale.
 
-## C.4 Importance, forgetting, and spaced repetition
+## C.4 Importance, forgetting, and the testing effect
 
 Two further signals interact with the ranking. **Importance** gates *tier
 eligibility* — it is a pre-filter deciding what is even in the queryable set (tier 2)
@@ -4359,8 +4359,9 @@ rendered verbatim at every session start, fresh or post-compaction. (Defined §4
 Appendix E §E.7.)
 
 **forgetting curve** — the decay function governing recall importance over time;
-exponential, the time-translation-invariant kernel, consistent with the power-law
-curve as an aggregate over mixed decay rates. (Defined §4.5.)
+exponential, the time-translation-invariant kernel — a design choice for stationary
+recency ordering, not a claim about human forgetting; whether individual memories decay
+exponentially, with the power law an artifact of averaging, is contested ([Anderson et al., 1999, p. 1136](#ref-anderson1999)). (Defined §4.5.)
 
 **goal** — a terminal/identity-direction aim; non-claim-bearing. (Defined Appendix E
 §E.2.)
@@ -4901,21 +4902,13 @@ https://github.com/FreedomIntelligence/Tiermem.
 
 ## Works cited in the text without a verified entry
 
-Seventeen further works are cited in the chapters for which no source document is
+Two further works are cited in the chapters for which no source document is
 currently held. They are listed here rather than given reconstructed entries, because
 a bibliographic entry built from memory is indistinguishable from a checked one once
 it is on the page — which is the failure mode the extraction rule above exists to
 prevent. **Each requires sourcing before this paper is submitted.**
 
-Locke · Reid · Butler · Schechtman · Clark · Chalmers · Hansson · de Kleer ·
-Ebbinghaus · Wixted · Peirce · Semon (see the partial entry above) · Shoemaker ·
-Johnston · Goldman · Nuxoll (with Laird) · **A-MEM**
-
-A further set of systems and surveys is discussed in the text — mostly in Appendix B's
-survey and in Chapters 1, 3 and 4 — without a bibliography entry yet — twelve: Mem0, MemMachine,
-Letta (MemGPT), Anthropic's memory tool, Pinecone Nexus, TierMem, Zep / Graphiti,
-MemRL, TOKI, soul.py, Du et al. (2026) and Lin et al. (2026). **Each also requires a
-sourced entry before submission.**
+Schechtman · Hansson
 
 Hansson is listed for the belief-base postulates that Appendix B records as Kumiho's
 self-claimed compliance; the paper claims no postulate for ENGRAM and notes AGM only
