@@ -1273,11 +1273,11 @@ A.1–A.3 中的每一条引文都可以验证。对话引文可从 Claude.ai �
 - *paper-verbatim*（源论文的附录 E.1，关系评分提示词）："**contradict**: one memory contradicts the other (asymmetric)"（中文解说：contradict：一条记忆与另一条相矛盾（非对称））——检出作为一种带类型的关系而存在。
 - *honest scope:* **没有一句论文原话陈述 GAM 不解决**——C3 的失败是由一条仅检出的边的*存在*，加上任何解决性文字的*缺位*共同显示的。第一手阅读发现：两个节点都留在记忆里；检索排序隐含地偏袒置信度更高的信息，但没有任何冲突解决机制被记录。没有仲裁，没有自动撤回，没有级联。我们把它作为分析引用，而不是作为引文。
 
-### Zep / Graphiti([Rasmussen et al., 2025](#ref-rasmussen2025)) —— **（N）短命，无级联**
-矛盾是摄取期间一次短命的 LLM 分类，它使那唯一一条被直接矛盾的边作废；没有任何矛盾节点持续存在，而实体边不能引用其他边，因此没有任何可供级联穿行的东西。
+### Zep / Graphiti([Rasmussen et al., 2025](#ref-rasmussen2025)) —— **（N）矛盾不持久保存，无级联**
+矛盾是摄取期间做出的一次 LLM 分类，它使被直接矛盾的那些边作废；没有任何矛盾节点持续存在，而实体边不能引用其他边，因此没有任何可供级联穿行的东西。
 
 - *paper-verbatim*（§2.2.3）："The system employs an LLM to compare new edges against semantically related existing edges to identify potential contradictions. When the system identifies temporally overlapping contradictions, it invalidates the affected edges by setting their t_invalid to the t_valid of the invalidating edge."（中文解说：系统用一个 LLM 把新边与此前语义相关的既有边作比较，以找出潜在矛盾。当系统识别出时间上重叠的矛盾时，它把受影响边的 t_invalid 设为那条作废边的 t_valid，从而使其作废。）
-- *first-hand-read finding:* 作废只作用于单条边，且只由*新到达的*情节触发；一个智能体无法检视自己的信念、找到一处矛盾，并传播一次撤回。这次矛盾"not persisted as a node, not persisted as an edge type, and not queryable after ingestion"（中文解说：不作为节点持续存在，不作为边类型持续存在，且摄取之后不可查询）。
+- *first-hand-read finding:* 作废只作用于被直接矛盾的那些边，且只由*新到达的*情节触发；一个智能体无法检视自己的信念、找到一处矛盾，并传播一次撤回。这次矛盾"not persisted as a node, not persisted as an edge type, and not queryable after ingestion"（中文解说：不作为节点持续存在，不作为边类型持续存在，且摄取之后不可查询）。
 
 ---
 
@@ -1289,10 +1289,10 @@ A.1–A.3 中的每一条引文都可以验证。对话引文可从 Claude.ai �
 - *paper-verbatim*："Retrieval handles ranking — the most relevant, current information surfaces first."（中文解说：检索负责排序——最相关、最新的信息最先浮现。）([Mem0, n.d.-a, step 4 Tip, Internet Archive snapshot of 2026-05-14](#ref-memzero2026a))
 - *first-hand-read finding:* 冲突解决被委托给检索时的排序，并最终委托给应用代码——这"恰恰是 Kahl 的条件 3 所排除的：外部规定，而不是自我维持的仲裁。"
 
-### MemMachine([Wang et al., 2026a](#ref-wang2026a)) —— **（X）近因覆盖**
+### MemMachine([Wang et al., 2026a](#ref-wang2026a)) —— **（X）最新状态更新**
 画像中的矛盾以"最后写入者胜"来解决；没有矛盾记录，也没有从旧事实级联到建立在它之上的那些情节记录。
 
-- *paper-verbatim*："When new information contradicts existing profile data, the system can **update the profile to reflect the most recent state**—supporting the knowledge update capability evaluated in benchmarks such as LongMemEval [7]."（中文解说：当新信息与既有画像数据相矛盾时，系统可以**更新画像以反映最新状态**——这支撑了诸如 LongMemEval [7] 之类的基准中所评估的知识更新能力。）([Wang et al., 2026a, sec. 4.7, p. 6](#ref-wang2026a))
+- *paper-verbatim*："When new information contradicts existing profile data, the system can **update the profile to reflect the most recent state**—supporting the knowledge update capability evaluated in benchmarks such as LongMemEval [7]."（中文解说：当新信息与既有画像数据相矛盾时，系统可以**更新画像以反映最新状态**——这支撑了诸如 LongMemEval [7] 之类的基准中所评估的知识更新能力。）([Wang et al., 2026a, sec. 4.7, p. 6](#ref-wang2026a))（强调为引者所加）
 - *first-hand-read finding:* 检出一处矛盾，用覆盖解决它，继续往前走——没有一等矛盾节点，也没有从一处被更正的画像事实，级联到使用旧事实生成的那些情节记录。
 
 ### Pinecone Nexus（Pinecone 架构博客）([Ashutosh & Liberty, 2026](#ref-ashutosh2026)) —— **（X）／（N），且是只读消费者**
@@ -1314,20 +1314,20 @@ A.1–A.3 中的每一条引文都可以验证。对话引文可从 Claude.ai �
 ### Anthropic Claude memory tool（platform.claude.com 文档）([*Memory Tool*, n.d.](#ref-claudedocs2026)) —— **（S）手工维持一致性**
 扁平的、自由形态的文本文件；一致性被委托给智能体每个会话的人工努力。
 
-- *paper-verbatim*："Note: when editing your memory folder, always try to keep its content up-to-date, **coherent** and organized. You can rename or delete files that are no longer relevant. Do not create new files unless necessary."（中文解说：注意：编辑你的 memory 文件夹时，始终尽量让内容保持最新、**连贯**且有组织。你可以重命名或删除不再相关的文件。除非必要，不要创建新文件。）([*Memory Tool*, n.d., sec. Prompting guidance](#ref-claudedocs2026))—— 这是开发者注入的一条*指令*，要求手工维持一致性，而不是一个结构性机制。
+- *paper-verbatim*："Note: when editing your memory folder, always try to keep its content up-to-date, **coherent** and organized. You can rename or delete files that are no longer relevant. Do not create new files unless necessary."（中文解说：注意：编辑你的 memory 文件夹时，始终尽量让内容保持最新、**连贯**且有组织。你可以重命名或删除不再相关的文件。除非必要，不要创建新文件。）([*Memory Tool*, n.d., sec. Prompting guidance](#ref-claudedocs2026))（强调为引者所加）—— 这是开发者注入的一条*指令*，要求手工维持一致性，而不是一个结构性机制。
 - *first-hand-read finding:* 没有任何机制用来检测一个记忆文件何时与另一个记忆文件相矛盾。也没有任何机制用来找出哪些结论依赖于一项被撤回的前提。
 
 ---
 
-## B.5 那份愿望，与那种真正的缺位
+## B.5 那份愿望，与一次写入时的合并
 
-### Memory survey 2026 —— Du et al.（arXiv 2603.07670）—— **（N）被指认，未被解决**
+### Memory survey 2026 —— Du([Du, 2026](#ref-du2026)) —— **（N）被指认，未被解决**
 它是一篇综述，而不是一个系统：它把矛盾处理指名为稳健系统*需要*的东西，却没有引用任何一个做到了这一点的系统，并且只提出*外部的*修补。
 
 - *paper-verbatim*（§7.3）："Robust systems need temporal versioning (prefer the newest record), source attribution (user statement > agent inference), **contradiction detection (flag conflicts for resolution)**, and periodic consolidation..."（中文解说：稳健系统需要时间版本管理（偏好最新记录）、来源归属（用户陈述 > 智能体推断）、**矛盾检出（把冲突标记出来以待解决）**，以及周期性巩固……）—— 这是*规范性的*（"need"／需要），而不是描述性的（"do"／做到了）。
 - *paper-verbatim*（他们的 §9.3）："Future systems need external validation... uncertainty quantification... adversarial probing... and expiration policies"（中文解说：未来的系统需要外部验证……不确定性量化……对抗性探测……以及过期策略）—— 所提出的修补全是**外部**干预，而不是结构性原语。这篇综述指出了 C3 问题，却引用了零个解决方案。
 
-### TierMem([Zhu et al., 2026](#ref-zhu2026)) —— **（N）写入时合并，无级联**
+### TierMem([Zhu et al., 2026](#ref-zhu2026)) —— **（X）写入时合并，无级联**
 TierMem 的写回有一个名为 Conflict Retrieval 的步骤：一个 LLM 记忆管理器把新事实与最相似的摘要单元作比较，并在 SKIP、UPDATE 与 ADD 之中选择；UPDATE 写入合并后的文本，该文本继承原单元的出处。这是巩固，而不是撤回：没有任何东西标记或回访下游的主张([Zhu et al., 2026, App. A.6, p. 12](#ref-zhu2026))。第一手阅读发现：没有任何根基性撤回的标记机制存在。当一份第 1 层摘要被 UPDATE 时（此处所说的分层是 TierMem 自己的分层，与第 4 章 §4.5 的分层无关），没有级联通往依赖它的摘要，也没有级联通往旧内容的下游用途。判定：C3 **部分**——写入时的冲突合并，无级联。
 
 ---
@@ -1339,9 +1339,9 @@ TierMem 的写回有一个名为 Conflict Retrieval 的步骤：一个 LLM 记�
 | Kumiho | **咨询性／选择加入**（修订存在，但不自动） | 有（AnalyzeImpact、Depends_On 的 "may be"） |
 | SCM | 无解决（愿望性的标志，仅触发） | 有（§3.2 对 §3.5） |
 | GAM | 仅检出（无解决性文字） | 部分——`contradict` 边有；解决缺口＝分析 |
-| Zep/Graphiti | 短命、单边、无级联 | 有（§2.2.3） |
+| Zep/Graphiti | 使被直接矛盾的边作废；无级联 | 有（§2.2.3） |
 | Mem0 v3 | 外部委托（检索排序） | 有——本次调查中最干净的 |
-| MemMachine | 外部委托（近因覆盖） | 有（"most recent state"） |
+| MemMachine | 外部委托（最新状态更新） | 有（"most recent state"） |
 | Pinecone Nexus | 外部／无文档；只读消费者 | 有（清单条目）+ 分析 |
 | Letta | 无主张结构（字符串） | 有（"just strings"） |
 | Anthropic memory tool | 无主张结构（手工维持一致性） | 有（"keep... coherent"） |

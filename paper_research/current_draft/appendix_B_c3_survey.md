@@ -132,16 +132,16 @@ and nothing arbitrates; conflict is managed by *timing*, not resolution.
   resolution mechanism is documented. There is no arbitration, no automatic
   retraction, no cascade." We cite this as analysis, not as a quote.
 
-### Zep / Graphiti [@rasmussen2025] — **(N) ephemeral, no cascade**
-Contradiction is an ephemeral LLM classification during ingestion that invalidates
-the single directly-contradicted edge; no contradiction node persists, and
+### Zep / Graphiti [@rasmussen2025] — **(N) contradiction not persisted, no cascade**
+Contradiction is an LLM classification made during ingestion that invalidates
+the directly contradicted edge(s); no contradiction node persists, and
 entity-edges cannot reference other edges, so there is nothing to cascade through.
 
 - *paper-verbatim* (§2.2.3): "The system employs an LLM to compare new edges against
   semantically related existing edges to identify potential contradictions. When the
   system identifies temporally overlapping contradictions, it invalidates the
   affected edges by setting their t_invalid to the t_valid of the invalidating edge."
-- *first-hand-read finding:* invalidation is single-edge-only and triggered only by
+- *first-hand-read finding:* invalidation touches only the directly contradicted edge(s) and is triggered only by
   *new arriving* episodes; an agent cannot inspect its own beliefs, find a
   contradiction, and propagate a retraction. The contradiction is "not persisted as
   a node, not persisted as an edge type, and not queryable after ingestion."
@@ -160,13 +160,13 @@ contradictions coexist and are sorted out at read time.
   ranking and ultimately to application code — "exactly what Kahl's Cond 3 rules
   out: external prescription rather than self-maintaining arbitration."
 
-### MemMachine [@wang2026a] — **(X) recency overwrite**
+### MemMachine [@wang2026a] — **(X) most-recent-state update**
 Profile contradictions are resolved by last-write-wins; no contradiction record, no
 cascade to episodic records built on the old fact.
 
 - *paper-verbatim:* "When new information contradicts existing profile data, the
   system can **update the profile to reflect the most recent state**—supporting the
-  knowledge update capability evaluated in benchmarks such as LongMemEval [7]." [@wang2026a, sec. 4.7, p. 6]
+  knowledge update capability evaluated in benchmarks such as LongMemEval [7]." [@wang2026a, sec. 4.7, p. 6] (emphasis added)
 - *first-hand-read finding:* "detect a contradiction, resolve it by overwriting, move
   on" — no first-class contradiction node, no cascade from a corrected profile fact
   to the episodic records generated using the old one.
@@ -207,7 +207,7 @@ session.
 
 - *paper-verbatim:* "Note: when editing your memory folder, always try to keep its
   content up-to-date, **coherent** and organized. You can rename or delete files that
-  are no longer relevant. Do not create new files unless necessary." [@claudedocs2026, sec. Prompting guidance] — developer-injected *instruction* to maintain coherence by
+  are no longer relevant. Do not create new files unless necessary." [@claudedocs2026, sec. Prompting guidance] (emphasis added) — developer-injected *instruction* to maintain coherence by
   hand, not a structural mechanism.
 - *first-hand-read finding:* "There is no mechanism for detecting when a memory file
   contradicts another memory file. There is no mechanism for identifying which
@@ -215,9 +215,9 @@ session.
 
 ---
 
-## B.5 The aspiration, and the genuine absence
+## B.5 The aspiration, and a write-time merge
 
-### 2026 Memory survey — Du et al. (arXiv 2603.07670) — **(N) named, not solved**
+### 2026 Memory survey — Du [@du2026] — **(N) named, not solved**
 A survey, not a system: it names contradiction-handling as something robust systems
 *need*, citing no system that does it, and proposes only *external* fixes.
 
@@ -230,7 +230,7 @@ A survey, not a system: it names contradiction-handling as something robust syst
   fixes are all **external** interventions, not structural primitives. The survey
   names the C3 problem and cites zero solutions.
 
-### TierMem [@zhu2026] — **(N) write-time merge, no cascade**
+### TierMem [@zhu2026] — **(X) write-time merge, no cascade**
 TierMem's write-back has a named Conflict Retrieval step: an LLM memory manager
 compares a new fact with the most similar summary units and chooses SKIP, UPDATE or
 ADD; UPDATE writes merged text that inherits the original unit's provenance. This is
@@ -249,9 +249,9 @@ Verdict: C3 is **partial** — a write-time conflict merge, no cascade.
 | Kumiho | **Advisory / opt-in** (revision exists, not automatic) | yes (AnalyzeImpact, Depends_On "may be") |
 | SCM | No resolution (aspirational flag, trigger-only) | yes (§3.2 vs §3.5) |
 | GAM | Detect-only (no resolution prose) | partial — `contradict` edge yes; resolution-gap = analysis |
-| Zep/Graphiti | Ephemeral, single-edge, no cascade | yes (§2.2.3) |
+| Zep/Graphiti | Invalidates directly contradicted edge(s); no cascade | yes (§2.2.3) |
 | Mem0 v3 | External delegation (retrieval ranking) | yes — cleanest in survey |
-| MemMachine | External delegation (recency overwrite) | yes ("most recent state") |
+| MemMachine | External delegation (most-recent-state update) | yes ("most recent state") |
 | Pinecone Nexus | External/undocumented; read-only consumer | yes (list-item) + analysis |
 | Letta | No claim structure (strings) | yes ("just strings") |
 | Anthropic memory tool | No claim structure (manual coherence) | yes ("keep... coherent") |
