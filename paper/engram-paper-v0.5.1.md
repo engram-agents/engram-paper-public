@@ -555,8 +555,8 @@ and relies on a notebook: when the notebook plays the functional role that
 biological memory plays for others, it is *part of his cognitive system*, not an
 external aid he consults. Clark and Chalmers take the step to the self themselves: the extended mind "seems" to
 imply an extended self, and the notebook is "a central part of his identity as a
-cognitive agent" ([Clark & Chalmers, 1998, sec. 5](#ref-clark1998)). What ENGRAM adds is that the agent writes,
-revises and retracts the external record itself, over time.
+cognitive agent" ([Clark & Chalmers, 1998, sec. 5](#ref-clark1998)). What ENGRAM adds is that the agent revises and retracts that record itself, over
+time, rather than only writing to it.
 
 ENGRAM is an extended-mind case, and a **stronger** one than Otto's notebook on the
 fourth of their features, past conscious endorsement, which Clark and Chalmers
@@ -1322,7 +1322,7 @@ up red, on its own, where you will see it next time you look — not in a report
 have to remember to run. That is the difference between a memory that *can be*
 audited and one that audits *itself*.
 
-**Tradition.** **TMS dependency-directed backtracking** (Doyle): a retracted justification propagates to
+**Tradition.** **TMS justification-based status propagation** (Doyle): a retracted justification propagates to
 everything that rested on it. That is the precedent; this paper claims no
 belief-revision postulate for the cascade, and AGM's different orientation is noted at
 the end of Chapter 3 (§3.9). What the cascade *does* claim is where the marking

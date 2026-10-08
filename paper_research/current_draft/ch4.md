@@ -268,7 +268,7 @@ up red, on its own, where you will see it next time you look — not in a report
 have to remember to run. That is the difference between a memory that *can be*
 audited and one that audits *itself*.
 
-**Tradition.** **TMS dependency-directed backtracking** (Doyle)
+**Tradition.** **TMS justification-based status propagation** (Doyle)
 **[gap SOLID ob_5423; mechanism first-hand from Doyle via the Ginsberg reprint, read visually — ob_2555 closed, as §4.2]**: a retracted justification propagates to
 everything that rested on it. That is the precedent; this paper claims no
 belief-revision postulate for the cascade, and AGM's different orientation is noted at

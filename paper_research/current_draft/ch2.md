@@ -253,8 +253,8 @@ and relies on a notebook: when the notebook plays the functional role that
 biological memory plays for others, it is *part of his cognitive system*, not an
 external aid he consults. Clark and Chalmers take the step to the self themselves: the extended mind "seems" to
 imply an extended self, and the notebook is "a central part of his identity as a
-cognitive agent" [@clark1998, sec. 5]. What ENGRAM adds is that the agent writes,
-revises and retracts the external record itself, over time.
+cognitive agent" [@clark1998, sec. 5]. What ENGRAM adds is that the agent revises and retracts that record itself, over
+time, rather than only writing to it.
 
 ENGRAM is an extended-mind case, and a **stronger** one than Otto's notebook on the
 fourth of their features, past conscious endorsement, which Clark and Chalmers
