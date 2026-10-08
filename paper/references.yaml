@@ -92,6 +92,69 @@ references:
   provenance: |-
     Department of Psychology, Carnegie Mellon
     University.
+- id: ashutosh2026
+  type: webpage
+  author:
+  - family: Ashutosh
+    given: Ash
+  - family: Liberty
+    given: Edo
+  issued:
+    date-parts:
+    - - 2026
+      - 5
+      - 4
+  title: 'Pinecone Nexus: The Knowledge Engine for Agents'
+  container-title: Pinecone blog
+  publisher: Pinecone
+  URL: https://www.pinecone.io/blog/knowledge-infrastructure-for-agents/
+  accessed:
+    date-parts:
+    - - 2026
+      - 10
+      - 8
+  provenance: |-
+    Byline and date "May 4, 2026" as printed on the page; the page's own metadata shows
+    dateModified 2026-10-02. Archived copy is the citation evidence for the sentence
+    "Deterministic conflict resolution."
+- id: chhikara2025
+  type: article
+  author:
+  - family: Chhikara
+    given: Prateek
+  - family: Khant
+    given: Dev
+  - family: Aryan
+    given: Saket
+  - family: Singh
+    given: Taranjeet
+  - family: Yadav
+    given: Deshraj
+  issued:
+    date-parts:
+    - - 2025
+  title: 'Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory'
+  URL: https://arxiv.org/abs/2504.19413
+  provenance: |-
+    arXiv:2504.19413v1 [cs.CL], 28 Apr 2025. Contact address printed: research@mem0.ai.
+  metadata_incomplete: |-
+    Metadata incomplete: no affiliations and no venue beyond the arXiv identifier are printed.
+- id: claudedocs2026
+  type: webpage
+  title: Memory tool
+  container-title: Claude Platform Docs
+  URL: https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool
+  accessed:
+    date-parts:
+    - - 2026
+      - 10
+      - 8
+  provenance: |-
+    No author and no date printed on the page; site name as printed: "Claude Platform
+    Docs". Tool type string on the page: memory_20250818. Archived copy (and the
+    Internet Archive snapshot of 2026-05-08) is the citation evidence.
+  metadata_incomplete: |-
+    Metadata incomplete: no author and no date are printed on the page.
 - id: doyle1979
   type: chapter
   author:
@@ -123,6 +186,21 @@ references:
     "Published: October 1, 1987"), 2026-10-08; Crossref holds no record for this volume.
     Original year 1979 re-confirmed from Crossref's BibTeX for the DOI above, 2026-10-08.
     The scan read here prints neither year (both are handwritten), so both come from these records.
+- id: du2026
+  type: article
+  author:
+  - family: Du
+    given: Pengfei
+  issued:
+    date-parts:
+    - - 2026
+  title: 'Memory for autonomous LLM agents: Mechanisms, evaluation, and emerging frontiers'
+  URL: https://arxiv.org/abs/2603.07670
+  provenance: |-
+    arXiv:2603.07670v1 [cs.AI], 8 Mar 2026. Hong Kong Research Institute of Technology,
+    Hong Kong, China.
+  metadata_incomplete: |-
+    Metadata incomplete: no venue beyond the arXiv identifier is printed.
 - id: josang2013
   type: manuscript
   author:
@@ -212,6 +290,77 @@ references:
   issue: '7'
   page: 512–534
   DOI: 10.1016/j.tics.2016.05.004
+- id: letta2025
+  type: webpage
+  author:
+  - literal: Letta
+  issued:
+    date-parts:
+    - - 2025
+      - 5
+      - 14
+  title: 'Memory Blocks: The Key to Agentic Context Management'
+  container-title: Letta blog
+  publisher: Letta
+  URL: https://www.letta.com/blog/memory-blocks
+  accessed:
+    date-parts:
+    - - 2026
+      - 10
+      - 8
+  provenance: |-
+    Date "MAY 14, 2025" and section label "CONCEPTS" as printed; author given in the
+    page metadata as the organisation "Letta" (no personal byline printed).
+- id: lettaai2026
+  type: software
+  author:
+  - literal: letta-ai
+  title: Letta (formerly MemGPT)
+  URL: https://github.com/letta-ai/letta/blob/56ba9c25552605eec89de8ed3dc6394b625c1993/letta/functions/function_sets/base.py
+  accessed:
+    date-parts:
+    - - 2026
+      - 10
+      - 8
+  provenance: |-
+    Cite by commit: 56ba9c25552605eec89de8ed3dc6394b625c1993, path
+    letta/functions/function_sets/base.py. Title is README line 1 at that commit. The
+    commit date (2026-08-14) is from the GitHub API record, not printed in the file. The
+    repository's main branch no longer contains the source (archived 2026-08-16).
+  metadata_incomplete: |-
+    Metadata incomplete: no date is printed in the cited file (the commit date, 2026-08-14,
+    comes from the GitHub API record).
+- id: lin2026
+  type: article
+  author:
+  - family: Lin
+    given: Zehao
+  - family: Hao
+    given: Xixuan
+  - family: Fu
+    given: Renyu
+  - family: Cui
+    given: Shaobo
+  - family: Chen
+    given: Kai
+  - family: Li
+    given: Chunyu
+  - family: Li
+    given: Zhiyu
+  - family: Xiong
+    given: Feiyu
+  issued:
+    date-parts:
+    - - 2026
+  title: 'A survey on long-term memory security in LLM agents: Attacks, defenses, and governance across the memory lifecycle'
+  URL: https://arxiv.org/abs/2604.16548
+  provenance: |-
+    arXiv:2604.16548v3 [cs.CR], 22 Sep 2026 (version read; v2 of 11 Jun 2026 has the same
+    quoted abstract sentence; v1 of 17 Apr 2026 is a differently titled earlier draft without
+    VMG). Affiliations as printed on v3: MemTensor (Shanghai) Technology Co., Ltd.; The Hong
+    Kong University of Science and Technology (Guangzhou); Shanghai Jiao Tong University.
+  metadata_incomplete: |-
+    Metadata incomplete: no venue beyond the arXiv identifier is printed.
 - id: mcclelland1995
   type: article-journal
   author:
@@ -233,6 +382,60 @@ references:
     *[Author order read from a layout-preserved extraction of the title page; the
     plain-text extraction lists the columns out of order.]*
   provenance_zh: '*[作者顺序读自一份保留版式的书名页抽取文本；纯文本抽取把各栏的顺序打乱了。]*'
+- id: memzero2026a
+  type: webpage
+  title: 'Open Source: Migrating to the New Memory Algorithm'
+  container-title: Mem0 documentation
+  publisher: Mem0
+  URL: https://docs.mem0.ai/migration/oss-v2-to-v3
+  accessed:
+    date-parts:
+    - - 2026
+      - 10
+      - 8
+  provenance: |-
+    The Mem0 "v3" OSS migration guide (the key's year is the access year). No author and no
+    visible date printed on the page; page metadata (not visible text) gives lastModified
+    2026-08-05. Archived copy is the citation evidence. The Internet Archive snapshot of
+    2026-05-14 (https://web.archive.org/web/20260514101049/https://docs.mem0.ai/migration/oss-v2-to-v3),
+    the one nearest the 2026-05-12 survey date, is also held: the quoted tip "Retrieval
+    handles ranking — the most relevant, current information surfaces first." is verbatim in
+    it, with an em dash where the live page now has a colon.
+  metadata_incomplete: |-
+    Metadata incomplete: no author and no visible date are printed on the page.
+- id: memzero2026b
+  type: webpage
+  title: 'Platform: Migrating to the New Memory Algorithm'
+  container-title: Mem0 documentation
+  publisher: Mem0
+  URL: https://docs.mem0.ai/migration/platform-v2-to-v3
+  accessed:
+    date-parts:
+    - - 2026
+      - 10
+      - 8
+  provenance: |-
+    The Mem0 "v3" Platform migration guide (the key's year is the access year). No author
+    and no visible date printed. Archived copy is the citation evidence.
+  metadata_incomplete: |-
+    Metadata incomplete: no author and no visible date are printed on the page.
+- id: menon2026
+  type: article
+  author:
+  - family: Menon
+    given: Prahlad G.
+  issued:
+    date-parts:
+    - - 2026
+  title: 'Persistent identity in AI agents: A multi-anchor architecture for resilient memory and continuity'
+  URL: https://arxiv.org/abs/2604.09588
+  provenance: |-
+    arXiv:2604.09588v1 [cs.AI], stamp date 2 Mar 2026; document date line "April 14, 2026".
+    ThinkCreate.AI. The architecture is named soul.py in the text (code URL printed:
+    https://github.com/menonpg/soul.py).
+  metadata_incomplete: |-
+    Metadata incomplete: the two printed dates disagree (see provenance); no venue beyond
+    the arXiv identifier is printed.
 - id: nozick1981
   type: book
   author:
@@ -250,6 +453,35 @@ references:
   provenance_zh: |-
     ISBN 0-674-66448-5 (cloth); 0-674-66479-5 (paper).
     *[书名页与版权页系作为页面图像读取；该来源 PDF 没有文本层。]*
+- id: packer2023
+  type: article
+  author:
+  - family: Packer
+    given: Charles
+  - family: Wooders
+    given: Sarah
+  - family: Lin
+    given: Kevin
+  - family: Fang
+    given: Vivian
+  - family: Patil
+    given: Shishir G.
+  - family: Stoica
+    given: Ion
+  - family: Gonzalez
+    given: Joseph E.
+  issued:
+    date-parts:
+    - - 2023
+  title: 'MemGPT: Towards LLMs as operating systems'
+  URL: https://arxiv.org/abs/2310.08560
+  provenance: |-
+    arXiv:2310.08560v2 [cs.AI], 12 Feb 2024 (version read); first submitted 12 Oct 2023
+    per the arXiv abstract page. University of California, Berkeley (footnote on page 1,
+    one superscript for all seven authors). Letta's own CITATION.cff names this paper as
+    the preferred citation for the repository.
+  metadata_incomplete: |-
+    Metadata incomplete: no venue beyond the arXiv identifier is printed.
 - id: parfit1984
   type: book
   author:
@@ -312,6 +544,28 @@ references:
     assignment to individual authors is not. No venue beyond the arXiv identifier is
     printed.
   metadata_incomplete_zh: 元数据不全：所属机构脚注中的上标与作者的对应关系，未能在双栏文本抽取中存留下来 —— 三所机构清晰可辨，它们与各位作者之间的对应关系则不可辨。除 arXiv 标识之外，没有印出任何发表场合。
+- id: rasmussen2025
+  type: article
+  author:
+  - family: Rasmussen
+    given: Preston
+  - family: Paliychuk
+    given: Pavlo
+  - family: Beauvais
+    given: Travis
+  - family: Ryan
+    given: Jack
+  - family: Chalef
+    given: Daniel
+  issued:
+    date-parts:
+    - - 2025
+  title: 'Zep: A temporal knowledge graph architecture for agent memory'
+  URL: https://arxiv.org/abs/2501.13956
+  provenance: |-
+    arXiv:2501.13956v1 [cs.CL], 20 Jan 2025. All five authors: Zep AI.
+  metadata_incomplete: |-
+    Metadata incomplete: no venue beyond the arXiv identifier is printed.
 - id: ricoeur1992
   type: book
   author:
@@ -352,6 +606,25 @@ references:
     ENGRAM's name from systems that borrow the neuroscience term. Publisher, place and
     pagination are unverified and are deliberately not reconstructed here.
   metadata_incomplete_zh: 元数据不全：未持有来源文件。仅在第 1 章 §1.3 引用，用以把 ENGRAM 的名字与那些借用神经科学术语的系统区分开来。出版者、地点与页码均未经核实，此处刻意不予重建。
+- id: settles2016
+  type: paper-conference
+  author:
+  - family: Settles
+    given: Burr
+  - family: Meeder
+    given: Brendan
+  issued:
+    date-parts:
+    - - 2016
+  title: A trainable spaced repetition model for language learning
+  container-title: Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics
+  page: 1848–1858
+  publisher-place: Berlin, Germany
+  URL: https://aclanthology.org/P16-1174/
+  provenance: |-
+    Venue, pages, place and "August 7-12, 2016" as printed in the page footer. Duolingo,
+    Pittsburgh, PA USA (Settles); Uber Advanced Technologies Center (Meeder; "Research
+    conducted at Duolingo").
 - id: shinde2026
   type: article
   author:
@@ -448,6 +721,70 @@ references:
     article's own first printed page number is not visible in the scan. Read from a
     per-page OCR set; the source PDF is a scan with no text layer.
   metadata_incomplete_zh: 元数据不全：起始页码。书眉页码直接读到 2–12，但文章自己印出的第一个页码在扫描件中不可见。读自一套逐页 OCR；该来源 PDF 是一份没有文本层的扫描件。
+- id: wang2026a
+  type: article
+  author:
+  - family: Wang
+    given: Shu
+  - family: Yu
+    given: Edwin
+  - family: Love
+    given: Oscar
+  - family: Zhang
+    given: Tom
+  - family: Wong
+    given: Tom
+  - family: Scargall
+    given: Steve
+  - family: Fan
+    given: Charles
+  issued:
+    date-parts:
+    - - 2026
+  title: 'MemMachine: A ground-truth-preserving memory system for personalized AI agents'
+  URL: https://arxiv.org/abs/2604.04853
+  provenance: |-
+    arXiv:2604.04853v1 [cs.AI], 6 Apr 2026 (the document's own date line reads "March 2026").
+    All authors: MemVerge, Inc.
+  metadata_incomplete: |-
+    Metadata incomplete: no venue beyond the arXiv identifier is printed.
+- id: wang2026b
+  type: article
+  author:
+  - family: Wang
+    given: Ziming
+  issued:
+    date-parts:
+    - - 2026
+  title: 'TOKI: A bitemporal operator algebra for contradiction resolution in LLM-agent persistent memory'
+  URL: https://arxiv.org/abs/2606.06240
+  provenance: |-
+    arXiv:2606.06240v1 [cs.DB], 4 Jun 2026. The Hong Kong University of Science and
+    Technology, Hong Kong SAR. The system is written "Toki" in running text.
+  metadata_incomplete: |-
+    Metadata incomplete: no venue beyond the arXiv identifier is printed.
+- id: wozniak1990
+  type: webpage
+  author:
+  - family: Wozniak
+    given: Piotr
+  issued:
+    date-parts:
+    - - 1990
+  title: Application of a computer to improve the results obtained in working with the SuperMemo method
+  URL: https://super-memory.com/english/ol/sm2.htm
+  accessed:
+    date-parts:
+    - - 2026
+      - 10
+      - 8
+  provenance: |-
+    Title is the page's heading (printed there as "3.2. Application of a computer to improve
+    the results obtained in working with the SuperMemo method", byline "Piotr Wozniak, 1990");
+    the browser title reads "SuperMemo 2: Algorithm" and the algorithm is named "Algorithm
+    SM-2" in the text. The page states the text was taken from P.A. Wozniak, Optimization of
+    learning, Master's Thesis, University of Technology in Poznan, 1990, and adapted for the
+    web on May 10, 1998.
 - id: wray2025
   type: article
   author:
@@ -503,3 +840,100 @@ references:
     arXiv:2604.12285v1 [cs.AI], 14 April 2026. Zhejiang
     University; University of Illinois Chicago; Rutgers University; MBZUAI; McGill
     University.
+- id: xu2025
+  type: article
+  author:
+  - family: Xu
+    given: Wujiang
+  - family: Liang
+    given: Zujie
+  - family: Mei
+    given: Kai
+  - family: Gao
+    given: Hang
+  - family: Tan
+    given: Juntao
+  - family: Zhang
+    given: Yongfeng
+  issued:
+    date-parts:
+    - - 2025
+  title: 'A-Mem: Agentic Memory for LLM Agents'
+  URL: https://arxiv.org/abs/2502.12110
+  provenance: |-
+    arXiv:2502.12110v11 [cs.AI], 8 Oct 2025 (version read); first submitted 17 Feb 2025
+    per the arXiv abstract page. Rutgers University; Independent Researcher; AIOS Foundation
+    (affiliations as printed, by numbered superscript).
+  metadata_incomplete: |-
+    Metadata incomplete: no venue beyond the arXiv identifier is printed.
+- id: zhang2026
+  type: article
+  author:
+  - family: Zhang
+    given: Shengtao
+  - family: Wang
+    given: Jiaqian
+  - family: Zhou
+    given: Ruiwen
+  - family: Liao
+    given: Junwei
+  - family: Feng
+    given: Yuchen
+  - family: Li
+    given: Zhuo
+  - family: Zheng
+    given: Yujie
+  - family: Zhang
+    given: Weinan
+  - family: Wen
+    given: Ying
+  - family: Li
+    given: Zhiyu
+  - family: Xiong
+    given: Feiyu
+  - family: Qi
+    given: Yutao
+  - family: Tang
+    given: Bo
+  - family: Wen
+    given: Muning
+  issued:
+    date-parts:
+    - - 2026
+  title: 'MemRL: Self-evolving agents via runtime reinforcement learning on episodic memory'
+  URL: https://arxiv.org/abs/2601.03192
+  provenance: |-
+    arXiv:2601.03192v2 [cs.CL], 12 Feb 2026 (version read; footer reads "Preprint. February
+    13, 2026."); first submitted 6 Jan 2026 per the arXiv abstract page. Affiliations as
+    printed by numbered superscript: Shanghai Jiao Tong University; Xidian University; National
+    University of Singapore; Shanghai Innovation Institute; MemTensor (Shanghai) Technology
+    Co., Ltd.; University of Science and Technology of China. Code URL printed:
+    https://github.com/MemTensor/MemRL.
+  metadata_incomplete: |-
+    Metadata incomplete: the author-to-affiliation superscript mapping was not resolved in
+    this check; no venue beyond the arXiv identifier is printed.
+- id: zhu2026
+  type: article
+  author:
+  - family: Zhu
+    given: Qiming
+  - family: Chen
+    given: Shunian
+  - family: Yu
+    given: Rui
+  - family: Wu
+    given: Zhehao
+  - family: Wang
+    given: Benyou
+  issued:
+    date-parts:
+    - - 2026
+  title: 'From lossy to verified: A provenance-aware tiered memory for agents'
+  URL: https://arxiv.org/abs/2602.17913
+  provenance: |-
+    arXiv:2602.17913v1 [cs.DB], 20 Feb 2026; first-page footer reads "Preprint." School of
+    Data Science, The Chinese University of Hong Kong, Shenzhen (one superscript for all five
+    authors). The text names the proposed system TierMem; code URL printed:
+    https://github.com/FreedomIntelligence/Tiermem.
+  metadata_incomplete: |-
+    Metadata incomplete: no venue beyond the arXiv identifier is printed.

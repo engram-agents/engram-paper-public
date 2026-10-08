@@ -143,8 +143,7 @@ and **Ch7 §7.2** (the limitation).
 
 Bitemporal databases distinguish *valid time* (when a fact was true in the world) from
 *transaction time* (when the system recorded it), so an update never destroys the
-prior row, which is retained as an audit record. The TOKI system (arXiv 2606.06240,
-2026) applies this to agent memory. That is ENGRAM's supersede semantics exactly: a
+prior row, which is retained as an audit record. The TOKI system [@wang2026b, p. 1] applies this to agent memory. That is ENGRAM's supersede semantics exactly: a
 superseded node is not deleted but kept, with the supersede edge preserving the
 history (the "I changed my mind" versus "I was wrong" distinction).
 
@@ -153,16 +152,15 @@ history (the "I changed my mind" versus "I was wrong" distinction).
 ### 3.7 The 2025–26 agent-identity strand → provenance-native, ahead on the named axis
 
 The most recent convergence is in the agent-memory literature itself. The **VMG
-survey** (Lin et al. 2026, *A Survey on Long-Term Memory Security in LLM Agents*, arXiv
-2604.16548) — the field's own security diagnostic — concludes that robust long-term-
+survey** of @lin2026 (version 3, *A Survey on Long-Term Memory Security in LLM Agents: Attacks, Defenses, and Governance Across the Memory Lifecycle*) — the field's own security diagnostic — concludes that robust long-term-
 memory security "cannot be retrofitted at retrieval or execution time alone, but must be
 anchored in **storage-time provenance**, versioning, and policy-aware retention from the
-outset," and proposes Verifiable Memory Governance: five primitives — write authorization, provenance visibility, principal-scoped retrieval,
+outset," [@lin2026, p. 1] (emphasis added) and proposes Verifiable Memory Governance: five primitives — write authorization, provenance visibility, principal-scoped retrieval,
 rollbackability and verified forgetting — for auditable,
-recoverable memory-state control (ob_2550). ENGRAM is *provenance-native by
+recoverable memory-state control [@lin2026, p. 2] (ob_2550). ENGRAM is *provenance-native by
 construction*: the field, reasoning from security, has named the axis ENGRAM was
-already built on. **soul.py** (arXiv 2604.09588) reaches multi-anchor persistent agent
-identity from another direction.
+already built on. **soul.py** proposes a multi-anchor architecture for persistent agent
+identity, from another direction, and implements two of its anchors [@menon2026, p. 12].
 
 **→ Ch4 §4.10 + Ch7** (relational / disclosure-vs-erasure): provenance-native; the
 field's named bottleneck is ENGRAM's foundation. [GROUNDED — VMG ob_2550, soul.py ob_2553]

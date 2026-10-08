@@ -333,8 +333,8 @@ supersede semantics), but those are necessary, not sufficient; what is missing
 everywhere else is operational binding. Kumiho has the primitives *and* claims
 formal AGM compliance (their claim, not our verification — Appendix B), but its
 impact analysis is *advisory* (opt-in, no automatic state change); SCM records
-contradiction edges its sleep cycle never resolves; Mem0 delegates conflict to
-retrieval ranking; others operate below claim structure entirely. **The per-system
+contradiction edges its sleep cycle never resolves; Mem0 v3 (its 2026 migration guides) delegates conflict to
+retrieval ranking [@memzero2026a; @memzero2026b]; others operate below claim structure entirely. **The per-system
 detail is in Appendix B** (the C3 survey of record); this chapter makes the
 synthesizing claim and points there.
 
@@ -343,14 +343,14 @@ synthesizing claim and points there.
 | Kumiho | No — advisory / opt-in (revision exists, not automatic) |
 | SCM | No — no resolution (aspirational flag, trigger-only) |
 | GAM | No — detect-only (no resolution prose) |
-| Zep/Graphiti | No — ephemeral, single-edge, no cascade |
-| Mem0 v3 | No — external delegation (retrieval ranking) |
-| MemMachine | No — external delegation (recency overwrite) |
-| Pinecone Nexus | No — external/undocumented; read-only consumer |
-| Letta | No — no claim structure (strings) |
-| Anthropic memory tool | No — no claim structure (manual coherence) |
+| Zep/Graphiti | No — invalidates the directly contradicted edge(s); no downstream propagation described [@rasmussen2025, sec. 2.2.3, p. 3] |
+| Mem0 v3 | No — external delegation (retrieval ranking) (as of the 2026-05-12 migration guides) [@memzero2026a; @memzero2026b] |
+| MemMachine | No — external delegation (updates contradicted profile data to the most recent state; no propagation described) [@wang2026a, sec. 4.7, p. 6] |
+| Pinecone Nexus | No — external/undocumented; read-only consumer [@ashutosh2026, sec. Introducing Pinecone Nexus] |
+| Letta | No — no claim structure (strings) [@letta2025; @packer2023, p. 2; @lettaai2026] |
+| Anthropic memory tool | No — no claim structure (manual coherence) [@claudedocs2026] |
 | Memory survey 2026 | No — named as aspiration, no implementation |
-| TierMem | Not applicable — construct absent |
+| TierMem | Partial — write-time conflict merge, no cascade [@zhu2026, App. A.6, p. 12] |
 | **ENGRAM** | **Yes** — strict satisfaction, sole satisfier |
 
 Appendix B gives each verdict's evidence and quotes.
@@ -461,8 +461,8 @@ Appendix C**, with its lineage; here we note only that it exists and that it is 
 mechanism by which forgetting (§4.5) and surfacing (§4.6) produce an *ordered* draw,
 not just a filtered one.
 
-**Tradition.** **MemRL / memory-utility** approaches (utility as a learned value)
-**[via ob_0647/ob_0651 — prior first-hand read; current ranking formula + detail in Appx C]** and the **spaced-repetition** tradition [SOLID]. Detail → Appx C.
+**Tradition.** **MemRL / memory-utility** approaches (utility as a learned value) [@zhang2026, pp. 4–5]
+**[via ob_0647/ob_0651 — prior first-hand read; current ranking formula + detail in Appx C]** and the **spaced-repetition** tradition [@settles2016, p. 1848; @wozniak1990] [SOLID]. Detail → Appx C.
 
 ## 4.8 Continuity across compaction
 

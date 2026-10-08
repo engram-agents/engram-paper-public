@@ -101,7 +101,7 @@
 
 ## B.0 范围、日期与方法
 
-**这份调查。** 十一项来源——十个系统，外加一篇对本领域的综述——于 **2026-05-12** 第一手读完：Pinecone Nexus、Anthropic 的 memory tool、Letta（MemGPT）、Mem0 v3、Zep/Graphiti、TierMem、MemMachine、SCM、GAM、Kumiho，以及 2026 年的 *Memory for Autonomous LLM Agents* 调查（Du et al.）。这是一条**关于该受调查集合、以该日期为界的受限主张。** 智能体记忆是一个快速变动的领域；我们对调查之外的、或调查之后发布的系统不作主张。较新的或遗漏的系统，恰恰是这条主张被限定范围、标注日期并逐一列出、而非普遍化的原因。
+**这份调查。** 十一项来源——十个系统，外加一篇对本领域的综述——于 **2026-05-12** 第一手读完：Pinecone Nexus[@ashutosh2026]、Anthropic 的 memory tool[@claudedocs2026]、Letta（MemGPT）[@lettaai2026; @packer2023]、Mem0 v3[@memzero2026a; @memzero2026b]、Zep/Graphiti[@rasmussen2025]、TierMem[@zhu2026]、MemMachine[@wang2026a]、SCM、GAM、Kumiho，以及 2026 年的 *Memory for Autonomous LLM Agents* 调查[@du2026]。这是一条**关于该受调查集合、以该日期为界的受限主张。** 智能体记忆是一个快速变动的领域；我们对调查之外的、或调查之后发布的系统不作主张。较新的或遗漏的系统，恰恰是这条主张被限定范围、标注日期并逐一列出、而非普遍化的原因。
 
 **那条标尺。** Kahl 的**条件 3——自我维持的仲裁**，逐字："Conflicts among commitments are resolved within a unified deliberative architecture in a manner that preserves S's continued status as that subject."（中文解说：诸承诺之间的冲突，在一个统一的审议架构之内得到解决，其方式保全 S 作为那个主体的持续身份。）[@kahl2026b, p. 10]就操作性而言，一个系统只有在它**把自身所存储诸主张之间的矛盾作为一次内部状态变更来自动解决**时，才算满足 C3（下文"一处精确化"那条注解说明了"解决"意味着什么、不意味着什么）——级联依构造而传播，而受影响的主张不依赖任何有意的触及就浮现到智能体面前。四种不合格的方式：
 
@@ -110,9 +110,9 @@
 - **（X）外部委托** —— 解决被交给检索排序、近因规则或应用代码，处在审议架构之外。
 - **（S）无主张结构** —— 系统在文本块上运作，没有任何可供级联穿行的东西。
 
-**诚实定界的注解。** 当某个系统的 C3 失败是由一项*正面*的设计选择所显示时（委托给检索、按近因覆盖、只建议不撤回），我们逐字引用它。当失败是整个构造的*缺位*（TierMem），或当来源记录了检出、却对解决保持沉默（GAM）时，没有句子可引——我们如实说明这一点，并把判定建立在有记录可查的缺位之上，而不是一句编造出来的引文上。
+**诚实定界的注解。** 当某个系统的 C3 失败是由一项*正面*的设计选择所显示时（委托给检索、按近因覆盖、只建议不撤回），我们逐字引用它。当来源记录了检出、却对解决保持沉默（GAM）时，没有句子可引——我们如实说明这一点，并把判定建立在有记录可查的缺位之上，而不是一句编造出来的引文上。
 
-**综合。** 在全部十一项来源中，没有一个严格满足条件 3；其中一项，TierMem，该条件并不适用，因为它没有可供仲裁的冲突构造（§B.5）。这个结论是以上诸判定的合取，因此它的成立范围，恰好与其中每一项的成立范围一样远。本领域已经在 C3 所需要的那些结构性*原语*上趋同（带类型的边、出处、可级联遍历的图谱、取代语义——以 Kumiho 最为完整）；各处所缺的，是那个使仲裁成为自动状态变更的**操作性绑定**。ENGRAM 的贡献是那个绑定（第 4 章 §4.4），而不是那些原语。
+**综合。** 在全部十一项来源中，没有一个严格满足条件 3；其中一项，TierMem，只部分满足它，即写入时的冲突合并而无级联（§B.5）。这个结论是以上诸判定的合取，因此它的成立范围，恰好与其中每一项的成立范围一样远。本领域已经在 C3 所需要的那些结构性*原语*上趋同（带类型的边、出处、可级联遍历的图谱、取代语义——以 Kumiho 最为完整）；各处所缺的，是那个使仲裁成为自动状态变更的**操作性绑定**。ENGRAM 的贡献是那个绑定（第 4 章 §4.4），而不是那些原语。
 
 *paper-verbatim* 与 *paper-claimed* 标记之内的章节号，指的是被引论文自己的章节，而不是本文的章节。
 
@@ -148,7 +148,7 @@
 - *paper-verbatim*（源论文的附录 E.1，关系评分提示词）："**contradict**: one memory contradicts the other (asymmetric)"（中文解说：contradict：一条记忆与另一条相矛盾（非对称））——检出作为一种带类型的关系而存在。
 - *honest scope:* **没有一句论文原话陈述 GAM 不解决**——C3 的失败是由一条仅检出的边的*存在*，加上任何解决性文字的*缺位*共同显示的。第一手阅读发现：两个节点都留在记忆里；检索排序隐含地偏袒置信度更高的信息，但没有任何冲突解决机制被记录。没有仲裁，没有自动撤回，没有级联。我们把它作为分析引用，而不是作为引文。
 
-### Zep / Graphiti（arXiv 2501.13956）—— **（N）短命，无级联**
+### Zep / Graphiti[@rasmussen2025] —— **（N）短命，无级联**
 矛盾是摄取期间一次短命的 LLM 分类，它使那唯一一条被直接矛盾的边作废；没有任何矛盾节点持续存在，而实体边不能引用其他边，因此没有任何可供级联穿行的东西。
 
 - *paper-verbatim*（§2.2.3）："The system employs an LLM to compare new edges against semantically related existing edges to identify potential contradictions. When the system identifies temporally overlapping contradictions, it invalidates the affected edges by setting their t_invalid to the t_valid of the invalidating edge."（中文解说：系统用一个 LLM 把新边与此前语义相关的既有边作比较，以找出潜在矛盾。当系统识别出时间上重叠的矛盾时，它把受影响边的 t_invalid 设为那条作废边的 t_valid，从而使其作废。）
@@ -158,39 +158,38 @@
 
 ## B.3 靠覆盖、或靠别人来解决（外部委托）
 
-### Mem0 v3（docs.mem0.ai migration guide）—— **（X）外部委托**
+### Mem0 v3（docs.mem0.ai migration guide）[@memzero2026a] —— **（X）外部委托**
 本次调查中最干净的一句外部委托陈述。v3 是只增的；矛盾共存，并在读取时被理清。
 
-- *paper-verbatim*："**Contradictions are resolved at retrieval time through ranking rather than at write time.**"（中文解说：**矛盾在检索时通过排序解决，而不是在写入时解决。**）
-- *paper-verbatim*："Retrieval handles ranking — the most relevant, current information surfaces first."（中文解说：检索负责排序——最相关、最新的信息最先浮现。）
+- *paper-verbatim*："Retrieval handles ranking — the most relevant, current information surfaces first."（中文解说：检索负责排序——最相关、最新的信息最先浮现。）[@memzero2026a, step 4 Tip, Internet Archive snapshot of 2026-05-14]
 - *first-hand-read finding:* 冲突解决被委托给检索时的排序，并最终委托给应用代码——这"恰恰是 Kahl 的条件 3 所排除的：外部规定，而不是自我维持的仲裁。"
 
-### MemMachine（arXiv 2604.04853）—— **（X）近因覆盖**
+### MemMachine[@wang2026a] —— **（X）近因覆盖**
 画像中的矛盾以"最后写入者胜"来解决；没有矛盾记录，也没有从旧事实级联到建立在它之上的那些情节记录。
 
-- *paper-verbatim*："When new information contradicts existing profile data, the system can **update the profile to reflect the most recent state**—supporting the knowledge update capability evaluated in benchmarks."（中文解说：当新信息与既有画像数据相矛盾时，系统可以**更新画像以反映最新状态**——这支撑了基准中所评估的知识更新能力。）
+- *paper-verbatim*："When new information contradicts existing profile data, the system can **update the profile to reflect the most recent state**—supporting the knowledge update capability evaluated in benchmarks such as LongMemEval [7]."（中文解说：当新信息与既有画像数据相矛盾时，系统可以**更新画像以反映最新状态**——这支撑了诸如 LongMemEval [7] 之类的基准中所评估的知识更新能力。）[@wang2026a, sec. 4.7, p. 6]
 - *first-hand-read finding:* 检出一处矛盾，用覆盖解决它，继续往前走——没有一等矛盾节点，也没有从一处被更正的画像事实，级联到使用旧事实生成的那些情节记录。
 
-### Pinecone Nexus（Pinecone 架构博客）—— **（X）／（N），且是只读消费者**
+### Pinecone Nexus（Pinecone 架构博客）[@ashutosh2026] —— **（X）／（N），且是只读消费者**
 "Deterministic conflict resolution"（确定性冲突解决）只出现一次，是知识编译一侧的一个无文档的功能清单条目；而消费端的智能体根本没有承诺图谱。
 
-- *paper-verbatim*（功能枚举）："...Typed fields. Per-field citations with confidence levels. **Deterministic conflict resolution.** Output shaped exactly as the agent specified..."（中文解说：……带类型的字段。按字段的引用并附置信度。**确定性冲突解决。** 输出完全按智能体所指定的形态……）—— 第一手阅读注记：这是"the only location in the primary sources where 'deterministic conflict resolution' appears... a list item in a feature enumeration, with no further elaboration. The mechanism is not defined anywhere in the primary sources."（中文解说：一线来源中唯一出现"确定性冲突解决"的地方……一个功能枚举里的清单条目，再无进一步展开。该机制在一线来源中任何地方都没有被定义。）
+- *paper-verbatim*（功能枚举）："...Typed fields. Per-field citations with confidence levels. **Deterministic conflict resolution.** Output shaped exactly as the agent specified..."（中文解说：……带类型的字段。按字段的引用并附置信度。**确定性冲突解决。** 输出完全按智能体所指定的形态……）[@ashutosh2026, sec. Introducing Pinecone Nexus] —— 第一手阅读注记：这是"the only location in the primary sources where 'deterministic conflict resolution' appears... a list item in a feature enumeration, with no further elaboration. The mechanism is not defined anywhere in the primary sources."（中文解说：一线来源中唯一出现"确定性冲突解决"的地方……一个功能枚举里的清单条目，再无进一步展开。该机制在一线来源中任何地方都没有被定义。）
 - *first-hand-read finding:* 从消费端智能体的视角看，Nexus 里根本没有任何仲裁架构。智能体查询并接收结果；它不维护承诺图谱，也不检测所接收的内容何时与此前的承诺相矛盾。
 
 ---
 
 ## B.4 没有可供级联穿行的主张结构
 
-### Letta / MemGPT（GitHub + letta.com 文档）—— **（S）文本块**
+### Letta / MemGPT（GitHub + letta.com 文档）[@lettaai2026; @letta2025] —— **（S）文本块**
 记忆块就是字符串；编辑在原位覆盖；没有推导图谱。
 
-- *paper-verbatim*（letta.com/blog/memory-blocks）："memory block values are just strings."（中文解说：记忆块的值就是字符串。）*paper-verbatim*（GitHub `base.py`）："The `memory_rethink` command allows you to completely rewrite the contents of a memory block."（中文解说：`memory_rethink` 命令允许你完全重写一个记忆块的内容。）
+- *paper-verbatim*（letta.com/blog/memory-blocks）："memory block values are just strings."（中文解说：记忆块的值就是字符串。）[@letta2025] *paper-verbatim*（GitHub `base.py`）："The `memory_rethink` command allows you to completely rewrite the contents of a memory block."（中文解说：`memory_rethink` 命令允许你完全重写一个记忆块的内容。）[@lettaai2026]
 - *first-hand-read finding:* Letta 没有推导图谱，没有下游承诺的概念，也没有撤回原语。当 `core_memory_replace` 覆盖一项根基性的主张时，下游没有任何东西被标记。
 
-### Anthropic Claude memory tool（platform.claude.com 文档）—— **（S）手工维持一致性**
+### Anthropic Claude memory tool（platform.claude.com 文档）[@claudedocs2026] —— **（S）手工维持一致性**
 扁平的、自由形态的文本文件；一致性被委托给智能体每个会话的人工努力。
 
-- *paper-verbatim*："Note: when editing your memory folder, always try to keep its content up-to-date, **coherent** and organized. You can rename or delete files that are no longer relevant."（中文解说：注意：编辑你的 memory 文件夹时，始终尽量让内容保持最新、**连贯**且有组织。你可以重命名或删除不再相关的文件。）—— 这是开发者注入的一条*指令*，要求手工维持一致性，而不是一个结构性机制。
+- *paper-verbatim*："Note: when editing your memory folder, always try to keep its content up-to-date, **coherent** and organized. You can rename or delete files that are no longer relevant. Do not create new files unless necessary."（中文解说：注意：编辑你的 memory 文件夹时，始终尽量让内容保持最新、**连贯**且有组织。你可以重命名或删除不再相关的文件。除非必要，不要创建新文件。）[@claudedocs2026, sec. Prompting guidance]—— 这是开发者注入的一条*指令*，要求手工维持一致性，而不是一个结构性机制。
 - *first-hand-read finding:* 没有任何机制用来检测一个记忆文件何时与另一个记忆文件相矛盾。也没有任何机制用来找出哪些结论依赖于一项被撤回的前提。
 
 ---
@@ -203,8 +202,8 @@
 - *paper-verbatim*（§7.3）："Robust systems need temporal versioning (prefer the newest record), source attribution (user statement > agent inference), **contradiction detection (flag conflicts for resolution)**, and periodic consolidation..."（中文解说：稳健系统需要时间版本管理（偏好最新记录）、来源归属（用户陈述 > 智能体推断）、**矛盾检出（把冲突标记出来以待解决）**，以及周期性巩固……）—— 这是*规范性的*（"need"／需要），而不是描述性的（"do"／做到了）。
 - *paper-verbatim*（他们的 §9.3）："Future systems need external validation... uncertainty quantification... adversarial probing... and expiration policies"（中文解说：未来的系统需要外部验证……不确定性量化……对抗性探测……以及过期策略）—— 所提出的修补全是**外部**干预，而不是结构性原语。这篇综述指出了 C3 问题，却引用了零个解决方案。
 
-### TierMem —— **（N）构造缺位** *（无引文——出于诚实的设计）*
-这里的 C3 失败是真正的**缺位**：该论文从未把 *conflict*、*contradiction* 或 *inconsistency* 用作架构原语。**没有句子可引**，我们也不编造一句。第一手阅读发现：没有任何根基性撤回的标记机制存在。当一份第 1 层摘要被 UPDATE 时（此处所说的分层是 TierMem 自己的分层，与第 4 章 §4.5 的分层无关），没有级联通往依赖它的摘要，也没有级联通往旧内容的下游用途。该论文没有说明 UPDATE 是保留还是覆盖此前条目——我们把这一点记为*未被记录*，而不是断言它覆盖。判定：C3 **不适用**——这套架构没有可供仲裁的冲突构造。
+### TierMem[@zhu2026] —— **（N）写入时合并，无级联**
+TierMem 的写回有一个名为 Conflict Retrieval 的步骤：一个 LLM 记忆管理器把新事实与最相似的摘要单元作比较，并在 SKIP、UPDATE 与 ADD 之中选择；UPDATE 写入合并后的文本，该文本继承原单元的出处。这是巩固，而不是撤回：没有任何东西标记或回访下游的主张[@zhu2026, App. A.6, p. 12]。第一手阅读发现：没有任何根基性撤回的标记机制存在。当一份第 1 层摘要被 UPDATE 时（此处所说的分层是 TierMem 自己的分层，与第 4 章 §4.5 的分层无关），没有级联通往依赖它的摘要，也没有级联通往旧内容的下游用途。判定：C3 **部分**——写入时的冲突合并，无级联。
 
 ---
 
@@ -222,7 +221,7 @@
 | Letta | 无主张结构（字符串） | 有（"just strings"） |
 | Anthropic memory tool | 无主张结构（手工维持一致性） | 有（"keep... coherent"） |
 | Memory survey 2026 | 被指名为愿望，无实现 | 有（他们的 §7.3、§9.3） |
-| TierMem | 构造缺位（C3 不适用） | **无——出于诚实的设计** |
+| TierMem | 写入时的冲突合并，无级联（C3 部分满足） | 无引文 |
 
 在受调查的整个集合上，模式是一致的：本领域拥有那些*原语*（检出、带类型的边，甚至 Kumiho 自称的形式化 AGM 符合性），却止步于**作为内部状态变更的自动仲裁**之前。把 ENGRAM 区分开来的，是操作性绑定（第 4 章 §4.4），而它由**三**部分组成，不是两部分：级联不经请求就标记每一个受影响的节点；自动浮现把这些标记放回智能体面前，不依赖任何有意的触及；而**级联机在睡眠期间把被标记的那片区域推向裁定**——按依赖顺序走那条前沿，直到不剩任何待决标记，作为每一个整理周期的强制阶段。
 

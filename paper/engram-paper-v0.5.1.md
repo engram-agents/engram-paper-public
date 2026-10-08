@@ -94,7 +94,8 @@ layers, and that the current landscape essentially does not address the deepest.
 
 - **Layer 1 — Memory Persistence.** Storing and retrieving facts across sessions.
   Retrieval-augmented agent-memory systems (A-MEM, Mem0, Zep) operate here. They
-  have no concept of identity; memory is a key-value or vector store the agent reads.
+  have no concept of identity; they are retrieval-oriented stores with no construct of agent identity
+  ([Chhikara et al., 2025](#ref-chhikara2025); [Rasmussen et al., 2025](#ref-rasmussen2025); [Xu et al., 2025](#ref-xu2025)).
 - **Layer 2 — Narrative Identity.** Maintaining a coherent self-story — a
   creed-anchored autobiography that answers *"who am I?"*. The closest published
   system, Sophia ([Sun et al., 2025](#ref-sun2025)), reaches this layer.
@@ -239,9 +240,9 @@ once, in Chapter 4, against the mechanisms that earn each verdict.
 accordingly: **no system in our first-hand survey strictly satisfies OCC's
 Condition 3, Self-Maintaining Arbitration.** The survey is explicit and
 dated: eleven sources — ten systems and one survey of the field — read first-hand on
-**2026-05-12**: Pinecone Nexus, Anthropic's memory tool, Letta, Mem0 v3,
-Zep/Graphiti, TierMem, MemMachine, SCM, GAM, Kumiho, and the 2026 *Memory for
-Autonomous LLM Agents* survey. Each was examined against Condition 3 individually;
+**2026-05-12**: Pinecone Nexus ([Ashutosh & Liberty, 2026](#ref-ashutosh2026)), Anthropic's memory tool ([*Memory Tool*, n.d.](#ref-claudedocs2026)), Letta ([letta-ai, n.d.](#ref-lettaai2026)), Mem0 v3 ([Mem0, n.d.-a](#ref-memzero2026a), [n.d.-b](#ref-memzero2026b)),
+Zep/Graphiti ([Rasmussen et al., 2025](#ref-rasmussen2025)), TierMem ([Zhu et al., 2026](#ref-zhu2026)), MemMachine ([Wang et al., 2026a](#ref-wang2026a)), SCM, GAM, Kumiho, and the 2026 *Memory for
+Autonomous LLM Agents* survey ([Du, 2026](#ref-du2026)). Each was examined against Condition 3 individually;
 **Appendix B** gives the per-system verdict and a verbatim failure passage. The claim holds
 exactly as far as each of those verdicts holds, and it is bounded to that set as of that date; agent memory moves
 quickly, and we make no claim about systems outside the survey or released after it.
@@ -795,8 +796,7 @@ and **Ch7 §7.2** (the limitation).
 
 Bitemporal databases distinguish *valid time* (when a fact was true in the world) from
 *transaction time* (when the system recorded it), so an update never destroys the
-prior row, which is retained as an audit record. The TOKI system (arXiv 2606.06240,
-2026) applies this to agent memory. That is ENGRAM's supersede semantics exactly: a
+prior row, which is retained as an audit record. The TOKI system ([Wang, 2026b, p. 1](#ref-wang2026b)) applies this to agent memory. That is ENGRAM's supersede semantics exactly: a
 superseded node is not deleted but kept, with the supersede edge preserving the
 history (the "I changed my mind" versus "I was wrong" distinction).
 
@@ -805,16 +805,15 @@ history (the "I changed my mind" versus "I was wrong" distinction).
 ### 3.7 The 2025–26 agent-identity strand → provenance-native, ahead on the named axis
 
 The most recent convergence is in the agent-memory literature itself. The **VMG
-survey** (Lin et al. 2026, *A Survey on Long-Term Memory Security in LLM Agents*, arXiv
-2604.16548) — the field's own security diagnostic — concludes that robust long-term-
+survey** of [Lin et al. (2026)](#ref-lin2026) (version 3, *A Survey on Long-Term Memory Security in LLM Agents: Attacks, Defenses, and Governance Across the Memory Lifecycle*) — the field's own security diagnostic — concludes that robust long-term-
 memory security "cannot be retrofitted at retrieval or execution time alone, but must be
 anchored in **storage-time provenance**, versioning, and policy-aware retention from the
-outset," and proposes Verifiable Memory Governance: five primitives — write authorization, provenance visibility, principal-scoped retrieval,
+outset," ([Lin et al., 2026, p. 1](#ref-lin2026)) (emphasis added) and proposes Verifiable Memory Governance: five primitives — write authorization, provenance visibility, principal-scoped retrieval,
 rollbackability and verified forgetting — for auditable,
-recoverable memory-state control. ENGRAM is *provenance-native by
+recoverable memory-state control ([Lin et al., 2026, p. 2](#ref-lin2026)). ENGRAM is *provenance-native by
 construction*: the field, reasoning from security, has named the axis ENGRAM was
-already built on. **soul.py** (arXiv 2604.09588) reaches multi-anchor persistent agent
-identity from another direction.
+already built on. **soul.py** proposes a multi-anchor architecture for persistent agent
+identity, from another direction, and implements two of its anchors ([Menon, 2026, p. 12](#ref-menon2026)).
 
 **→ Ch4 §4.10 + Ch7** (relational / disclosure-vs-erasure): provenance-native; the
 field's named bottleneck is ENGRAM's foundation.
@@ -1366,8 +1365,8 @@ supersede semantics), but those are necessary, not sufficient; what is missing
 everywhere else is operational binding. Kumiho has the primitives *and* claims
 formal AGM compliance (their claim, not our verification — Appendix B), but its
 impact analysis is *advisory* (opt-in, no automatic state change); SCM records
-contradiction edges its sleep cycle never resolves; Mem0 delegates conflict to
-retrieval ranking; others operate below claim structure entirely. **The per-system
+contradiction edges its sleep cycle never resolves; Mem0 v3 (its 2026 migration guides) delegates conflict to
+retrieval ranking ([Mem0, n.d.-a](#ref-memzero2026a), [n.d.-b](#ref-memzero2026b)); others operate below claim structure entirely. **The per-system
 detail is in Appendix B** (the C3 survey of record); this chapter makes the
 synthesizing claim and points there.
 
@@ -1376,14 +1375,14 @@ synthesizing claim and points there.
 | Kumiho | No — advisory / opt-in (revision exists, not automatic) |
 | SCM | No — no resolution (aspirational flag, trigger-only) |
 | GAM | No — detect-only (no resolution prose) |
-| Zep/Graphiti | No — ephemeral, single-edge, no cascade |
-| Mem0 v3 | No — external delegation (retrieval ranking) |
-| MemMachine | No — external delegation (recency overwrite) |
-| Pinecone Nexus | No — external/undocumented; read-only consumer |
-| Letta | No — no claim structure (strings) |
-| Anthropic memory tool | No — no claim structure (manual coherence) |
+| Zep/Graphiti | No — invalidates the directly contradicted edge(s); no downstream propagation described ([Rasmussen et al., 2025, sec. 2.2.3, p. 3](#ref-rasmussen2025)) |
+| Mem0 v3 | No — external delegation (retrieval ranking) (as of the 2026-05-12 migration guides) ([Mem0, n.d.-a](#ref-memzero2026a), [n.d.-b](#ref-memzero2026b)) |
+| MemMachine | No — external delegation (updates contradicted profile data to the most recent state; no propagation described) ([Wang et al., 2026a, sec. 4.7, p. 6](#ref-wang2026a)) |
+| Pinecone Nexus | No — external/undocumented; read-only consumer ([Ashutosh & Liberty, 2026, sec. Introducing Pinecone Nexus](#ref-ashutosh2026)) |
+| Letta | No — no claim structure (strings) ([Letta, 2025](#ref-letta2025); [letta-ai, n.d.](#ref-lettaai2026); [Packer et al., 2023, p. 2](#ref-packer2023)) |
+| Anthropic memory tool | No — no claim structure (manual coherence) ([*Memory Tool*, n.d.](#ref-claudedocs2026)) |
 | Memory survey 2026 | No — named as aspiration, no implementation |
-| TierMem | Not applicable — construct absent |
+| TierMem | Partial — write-time conflict merge, no cascade ([Zhu et al., 2026, App. A.6, p. 12](#ref-zhu2026)) |
 | **ENGRAM** | **Yes** — strict satisfaction, sole satisfier |
 
 Appendix B gives each verdict's evidence and quotes.
@@ -1535,7 +1534,7 @@ Appendix C**, with its lineage; here we note only that it exists and that it is 
 mechanism by which forgetting (§4.5) and surfacing (§4.6) produce an *ordered* draw,
 not just a filtered one.
 
-**Tradition.** **MemRL / memory-utility** approaches (utility as a learned value) and the **spaced-repetition** tradition. Detail → Appx C.
+**Tradition.** **MemRL / memory-utility** approaches (utility as a learned value) ([Zhang et al., 2026, pp. 4–5](#ref-zhang2026)) and the **spaced-repetition** tradition ([Settles & Meeder, 2016, p. 1848](#ref-settles2016); [Wozniak, 1990](#ref-wozniak1990)). Detail → Appx C.
 
 ## 4.8 Continuity across compaction
 
@@ -2837,9 +2836,9 @@ agents get a mutual, inspectable basis for trust."
 
 **Disclosure, not erasure.** Auditability appears to conflict with the
 memory-security literature, and resolving the conflict sharpens the position. The
-field's security survey (Lin et al. 2026, which proposes Verifiable Memory Governance; §3.7) concludes that
-long-term-memory security must be "anchored in storage-time provenance" and lists
-the survey's "Forget & Rollback" lifecycle phase as required — that is, *verifiable erasure*. ENGRAM agrees on provenance (native to it, Ch3 §3.7) but diverges on
+field's security survey of [Lin et al. (2026)](#ref-lin2026) (which proposes Verifiable Memory Governance; §3.7) concludes that
+long-term-memory security must be "anchored in storage-time provenance" ([Lin et al., 2026, p. 1](#ref-lin2026)) and lists
+"Rollbackability" and "Verified Forgetting" among the primitives its VMG framework requires ([Lin et al., 2026, p. 7](#ref-lin2026)) (its sixth lifecycle phase is named "Forget & Rollback") — that is, *verifiable erasure*. ENGRAM agrees on provenance (native to it, Ch3 §3.7) but diverges on
 erasure, for a principled reason: **no ENGRAM operation erases a node** (no operation
 in the v0.5.1 substrate deletes one; retraction and supersession both preserve it). Deleting a node would break
 the audit trail and the cascade — the very things that make epistemic identity fail
@@ -3192,7 +3191,7 @@ novelty disclaimer Ch3 §3.0 states in full. The
 formal shape it shares with Kumiho — typed reasoning edges with cascade/supersede over
 a property graph — is decades old in the truth-maintenance and belief-revision
 traditions, and several agent-memory systems (Mem0g — Mem0's graph-memory variant — Zep/Graphiti,
-A-MEM) predate our
+A-MEM) ([Chhikara et al., 2025, p. 1](#ref-chhikara2025); [Rasmussen et al., 2025](#ref-rasmussen2025); [Xu et al., 2025](#ref-xu2025)) predate our
 ideation. The two exemplars named here are the two we hold and have read first-hand:
 Doyle's truth maintenance system (via the Ginsberg reprint, Ch4 §4.2) and AGM 1985.
 Both traditions are wider than those two works, and the others this paper names — de
@@ -3332,8 +3331,8 @@ was on our radar.
 | Kahl 2026a (Zenodo) | 2026-01-31 | 48 days before (not surfaced) | 68 days before |
 | GAM ([Wu et al., 2026, arXiv 2604.12285](#ref-wu2026)) | 2026-04-14 | 25 days **after** | 5 days after |
 | SCM ([Shinde, 2026, arXiv 2604.20943](#ref-shinde2026)) | 2026-04-22 | 33 days **after** | 13 days after |
-| VMG survey (Lin et al., 2604.16548) | 2026-04 (month from the arXiv identifier) | **after** | after |
-| Mem0g / Zep / A-MEM | 2024–25 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) | predate |
+| VMG survey ([Lin et al., 2026, arXiv 2604.16548, v2 of 2026-06-11](#ref-lin2026)) | 2026-06 (VMG first appears in v2; v1, April 2026, is a differently titled draft) | **after** | after |
+| Mem0g / Zep / A-MEM ([Chhikara et al., 2025](#ref-chhikara2025); [Rasmussen et al., 2025](#ref-rasmussen2025); [Xu et al., 2025](#ref-xu2025)) | 2025 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) (each handles conflicts at write time; none cascades) | predate |
 
 The two structurally-closest systems (Kumiho, SCM) both surface in March–April 2026 —
 concurrent with, not predating-by-much, ENGRAM's ideation. The older systems lack the
@@ -3388,10 +3387,10 @@ Publication dates (A.4) are verifiable against the per-system first-hand-read fi
 ## B.0 Scope, date, and method
 
 **The survey.** Eleven sources — ten systems and one survey of the field — read
-first-hand on **2026-05-12**: Pinecone Nexus,
-Anthropic's memory tool, Letta (MemGPT), Mem0 v3, Zep/Graphiti, TierMem,
-MemMachine, SCM, GAM, Kumiho, and the 2026 *Memory for Autonomous LLM Agents*
-survey (Du et al.). This is a **bounded claim about that surveyed set as of that
+first-hand on **2026-05-12**: Pinecone Nexus ([Ashutosh & Liberty, 2026](#ref-ashutosh2026)),
+Anthropic's memory tool ([*Memory Tool*, n.d.](#ref-claudedocs2026)), Letta (MemGPT) ([letta-ai, n.d.](#ref-lettaai2026); [Packer et al., 2023](#ref-packer2023)), Mem0 v3 ([Mem0, n.d.-a](#ref-memzero2026a), [n.d.-b](#ref-memzero2026b)), Zep/Graphiti ([Rasmussen et al., 2025](#ref-rasmussen2025)), TierMem ([Zhu et al., 2026](#ref-zhu2026)),
+MemMachine ([Wang et al., 2026a](#ref-wang2026a)), SCM, GAM, Kumiho, and the 2026 *Memory for Autonomous LLM Agents*
+survey ([Du, 2026](#ref-du2026)). This is a **bounded claim about that surveyed set as of that
 date.** Agent memory is a fast-moving field; we make no claim about systems
 outside the survey or released after it. Newer or missed systems are exactly why
 the claim is scoped, dated, and listed rather than universal.
@@ -3416,14 +3415,13 @@ without an intentional reach-out. Four ways to fall short:
 
 **Honest-scoping note.** Where a system's C3 failure is shown by a *positive*
 design choice (delegate to retrieval, overwrite by recency, advise-don't-retract),
-we quote it verbatim. Where the failure is *absence* of the construct entirely
-(TierMem), or where the source documents detection but is silent on resolution
+we quote it verbatim. Where the source documents detection but is silent on resolution
 (GAM), there is no sentence to quote — we say so and rest the verdict on the
 documented absence, not an invented quote.
 
-**Synthesis.** Across the eleven sources, none satisfies Condition 3 strictly; for one of
-them, TierMem, the condition does not apply, because it has no conflict construct to
-arbitrate (§B.5). The
+**Synthesis.** Across the eleven sources, none satisfies Condition 3 strictly; one of
+them, TierMem, meets it only in part, with a write-time conflict merge and no cascade
+(§B.5). The
 conclusion is the conjunction of the verdicts above, so it holds exactly as far as each of
 them does. The field has converged on the structural *primitives* C3 needs (typed
 edges, provenance, cascade-traversable graphs, supersede semantics — Kumiho most
@@ -3518,7 +3516,7 @@ and nothing arbitrates; conflict is managed by *timing*, not resolution.
   resolution mechanism is documented. There is no arbitration, no automatic
   retraction, no cascade." We cite this as analysis, not as a quote.
 
-### Zep / Graphiti (arXiv 2501.13956) — **(N) ephemeral, no cascade**
+### Zep / Graphiti ([Rasmussen et al., 2025](#ref-rasmussen2025)) — **(N) ephemeral, no cascade**
 Contradiction is an ephemeral LLM classification during ingestion that invalidates
 the single directly-contradicted edge; no contradiction node persists, and
 entity-edges cannot reference other edges, so there is nothing to cascade through.
@@ -3536,37 +3534,35 @@ entity-edges cannot reference other edges, so there is nothing to cascade throug
 
 ## B.3 Resolve-by-overwrite or by-someone-else (external delegation)
 
-### Mem0 v3 (docs.mem0.ai migration guide) — **(X) external delegation**
+### Mem0 v3 (docs.mem0.ai migration guide) ([Mem0, n.d.-a](#ref-memzero2026a)) — **(X) external delegation**
 The single cleanest external-delegation statement in the survey. v3 is add-only;
 contradictions coexist and are sorted out at read time.
 
-- *paper-verbatim:* "**Contradictions are resolved at retrieval time through ranking
-  rather than at write time.**"
 - *paper-verbatim:* "Retrieval handles ranking — the most relevant, current
-  information surfaces first."
+  information surfaces first." ([Mem0, n.d.-a, step 4 Tip, Internet Archive snapshot of 2026-05-14](#ref-memzero2026a))
 - *first-hand-read finding:* conflict resolution is delegated to retrieval-time
   ranking and ultimately to application code — "exactly what Kahl's Cond 3 rules
   out: external prescription rather than self-maintaining arbitration."
 
-### MemMachine (arXiv 2604.04853) — **(X) recency overwrite**
+### MemMachine ([Wang et al., 2026a](#ref-wang2026a)) — **(X) recency overwrite**
 Profile contradictions are resolved by last-write-wins; no contradiction record, no
 cascade to episodic records built on the old fact.
 
 - *paper-verbatim:* "When new information contradicts existing profile data, the
   system can **update the profile to reflect the most recent state**—supporting the
-  knowledge update capability evaluated in benchmarks."
+  knowledge update capability evaluated in benchmarks such as LongMemEval [7]." ([Wang et al., 2026a, sec. 4.7, p. 6](#ref-wang2026a))
 - *first-hand-read finding:* "detect a contradiction, resolve it by overwriting, move
   on" — no first-class contradiction node, no cascade from a corrected profile fact
   to the episodic records generated using the old one.
 
-### Pinecone Nexus (Pinecone architecture posts) — **(X)/(N), and read-only consumer**
+### Pinecone Nexus (Pinecone architecture posts) ([Ashutosh & Liberty, 2026](#ref-ashutosh2026)) — **(X)/(N), and read-only consumer**
 "Deterministic conflict resolution" appears once, as an undocumented feature
 list-item operating on the knowledge-compilation side; the consuming agent has no
 commitment graph at all.
 
 - *paper-verbatim* (feature enumeration): "...Typed fields. Per-field citations with
   confidence levels. **Deterministic conflict resolution.** Output shaped exactly as
-  the agent specified..." — first-hand-read note: this is "the only location in the
+  the agent specified..." ([Ashutosh & Liberty, 2026, sec. Introducing Pinecone Nexus](#ref-ashutosh2026)) — first-hand-read note: this is "the only location in the
   primary sources where 'deterministic conflict resolution' appears... a list item
   in a feature enumeration, with no further elaboration. The mechanism is not defined
   anywhere in the primary sources."
@@ -3579,23 +3575,23 @@ commitment graph at all.
 
 ## B.4 No claim structure to cascade through
 
-### Letta / MemGPT (GitHub + letta.com docs) — **(S) text blocks**
+### Letta / MemGPT (GitHub + letta.com docs) ([Letta, 2025](#ref-letta2025); [letta-ai, n.d.](#ref-lettaai2026)) — **(S) text blocks**
 Memory blocks are strings; edits overwrite in place; no derivation graph.
 
 - *paper-verbatim* (letta.com/blog/memory-blocks): "memory block values are just
-  strings." *paper-verbatim* (GitHub `base.py`): "The `memory_rethink` command allows
-  you to completely rewrite the contents of a memory block."
+  strings." ([Letta, 2025](#ref-letta2025)) *paper-verbatim* (GitHub `base.py`): "The `memory_rethink` command allows
+  you to completely rewrite the contents of a memory block." ([letta-ai, n.d.](#ref-lettaai2026))
 - *first-hand-read finding:* "Letta has no derivation graph, no concept of downstream
   commitments, and no retraction primitive. When `core_memory_replace` overwrites a
   foundational claim, nothing downstream is flagged."
 
-### Anthropic Claude memory tool (platform.claude.com docs) — **(S) manual coherence**
+### Anthropic Claude memory tool (platform.claude.com docs) ([*Memory Tool*, n.d.](#ref-claudedocs2026)) — **(S) manual coherence**
 Flat free-form text files; coherence is delegated to the agent's manual effort each
 session.
 
 - *paper-verbatim:* "Note: when editing your memory folder, always try to keep its
   content up-to-date, **coherent** and organized. You can rename or delete files that
-  are no longer relevant." — developer-injected *instruction* to maintain coherence by
+  are no longer relevant. Do not create new files unless necessary." ([*Memory Tool*, n.d., sec. Prompting guidance](#ref-claudedocs2026)) — developer-injected *instruction* to maintain coherence by
   hand, not a structural mechanism.
 - *first-hand-read finding:* "There is no mechanism for detecting when a memory file
   contradicts another memory file. There is no mechanism for identifying which
@@ -3618,15 +3614,15 @@ A survey, not a system: it names contradiction-handling as something robust syst
   fixes are all **external** interventions, not structural primitives. The survey
   names the C3 problem and cites zero solutions.
 
-### TierMem — **(N) construct absent** *(no quote — by honest design)*
-The C3 failure here is genuine **absence**: the paper never uses "conflict,"
-"contradiction," or "inconsistency" as architectural primitives. **There is no
-sentence to quote**, and we do not manufacture one. First-hand-read finding: "No
+### TierMem ([Zhu et al., 2026](#ref-zhu2026)) — **(N) write-time merge, no cascade**
+TierMem's write-back has a named Conflict Retrieval step: an LLM memory manager
+compares a new fact with the most similar summary units and chooses SKIP, UPDATE or
+ADD; UPDATE writes merged text that inherits the original unit's provenance. This is
+consolidation, not retraction: nothing marks or revisits downstream claims
+([Zhu et al., 2026, App. A.6, p. 12](#ref-zhu2026)). First-hand-read finding: "No
 foundational-retraction-flagging mechanism exists. When a Tier-1 summary [TierMem's own tiering, unrelated to Ch4 §4.5's tiers] is UPDATEd,
 there is no cascade to dependent summaries or downstream uses of the old content."
-The paper does not specify whether UPDATE preserves or overwrites the prior entry —
-we report that as *not documented* rather than asserting overwrite. Verdict: C3 is
-**not applicable** — the architecture has no conflict construct to arbitrate.
+Verdict: C3 is **partial** — a write-time conflict merge, no cascade.
 
 ---
 
@@ -3644,7 +3640,7 @@ we report that as *not documented* rather than asserting overwrite. Verdict: C3 
 | Letta | No claim structure (strings) | yes ("just strings") |
 | Anthropic memory tool | No claim structure (manual coherence) | yes ("keep... coherent") |
 | Memory survey 2026 | Named as aspiration, no implementation | yes (their §7.3, §9.3) |
-| TierMem | Construct absent (C3 N/A) | **none — by honest design** |
+| TierMem | Write-time conflict merge, no cascade (C3 partial) | none quoted |
 
 Across the surveyed set, the pattern is uniform: the field has the *primitives*
 (detection, typed edges, even Kumiho's self-claimed formal AGM compliance) but stops
@@ -3678,14 +3674,14 @@ arbitration happens without a mind.
 
 ## C.1 The memory-utility tradition
 
-A 2026 line of work — exemplified by **MemRL** — applies reinforcement learning not
+A 2026 line of work — exemplified by **MemRL** ([Zhang et al., 2026, p. 1](#ref-zhang2026)) — applies reinforcement learning not
 to a model's weights but to its **memory retrieval**: it learns *which stored
 memories are worth surfacing* by treating retrieval as an action and downstream
 usefulness as a reward, ranking memories by a learned **Q-value**. The
 appeal is that it keeps the base model frozen — no fine-tuning, so no catastrophic
 forgetting — while still improving over time at the level of *what gets recalled*.
 Concretely, MemRL composites semantic similarity with an EMA-learned Q-value via a
-weighted score, with the Q-error decaying as `(1−α)^t`.
+weighted score, with the Q-error decaying as `(1−α)^t` ([Zhang et al., 2026, pp. 4–5, 13](#ref-zhang2026)).
 
 ENGRAM sits in this tradition. Every node carries a `utility_score` — a learned
 value updated by the same exponential rule, `Q_new = Q_old + α(1 − Q_old)` — and
@@ -3889,7 +3885,7 @@ observations.
 
 The trust-tier is the operational arm of **honesty-orthogonal-to-discretion**: it lets the substrate calibrate *what is shared, with whom, at what
 fidelity* without touching internal integrity. This is the principal-scoping the
-security literature asks for (the VMG framework, Chapter 3 §3.7), reached instead as a
+security literature asks for (the VMG framework, Chapter 3 §3.7) ([Lin et al., 2026, p. 7](#ref-lin2026)), reached instead as a
 *relationship* model, and it underlies Chapter 7's **disclosure-not-erasure** answer.
 The record stays whole (never erased, for audit and epistemic integrity); access to it
 is governed by the tier — as a discipline the agent follows, not a substrate-enforced
@@ -4525,6 +4521,12 @@ database. Where a source does not print a field, the field is **omitted** rather
 reconstructed, and the entry carries a bracketed note naming exactly what is missing.
 A thin entry is therefore never mistaken for a checked one.
 
+<a id="ref-claudedocs2026"></a>*Memory tool*. (n.d.). *Memory tool*. Claude Platform Docs. Retrieved October 8, 2026, from https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool
+No author and no date printed on the page; site name as printed: "Claude Platform
+Docs". Tool type string on the page: memory_20250818. Archived copy (and the
+Internet Archive snapshot of 2026-05-08) is the citation evidence.
+*[Metadata incomplete: no author and no date are printed on the page.]*
+
 <a id="ref-alchourron1982"></a>Alchourrón, C. E., & Makinson, D. (1982). On the logic of theory change: Contraction functions and their associated revision functions. *Theoria*, (1), 14–37.
 Universidad de Buenos Aires and Unesco. Received 18 January 1982; revised version
 received 24 March 1982.
@@ -4545,6 +4547,15 @@ University of Beirut, Beirut, Lebanon. Received 18 October 1983; revised 1 May 1
 Department of Psychology, Carnegie Mellon
 University.
 
+<a id="ref-ashutosh2026"></a>Ashutosh, A., & Liberty, E. (2026, May 4). *Pinecone Nexus: The Knowledge Engine for Agents*. Pinecone. Pinecone Blog. https://www.pinecone.io/blog/knowledge-infrastructure-for-agents/
+Byline and date "May 4, 2026" as printed on the page; the page's own metadata shows
+dateModified 2026-10-02. Archived copy is the citation evidence for the sentence
+"Deterministic conflict resolution."
+
+<a id="ref-chhikara2025"></a>Chhikara, P., Khant, D., Aryan, S., Singh, T., & Yadav, D. (2025). *Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory*. https://arxiv.org/abs/2504.19413
+arXiv:2504.19413v1 [cs.CL], 28 Apr 2025. Contact address printed: research@mem0.ai.
+*[Metadata incomplete: no affiliations and no venue beyond the arXiv identifier are printed.]*
+
 <a id="ref-doyle1979"></a>Doyle, J. (1987). A truth maintenance system. In M. L. Ginsberg (Ed.), *Readings in nonmonotonic reasoning* (pp. 259–279). Morgan Kaufmann. (Original work published 1979)
 Massachusetts Institute of Technology,
 Artificial Intelligence Laboratory, Cambridge, MA. Read here as reprinted in M. L.
@@ -4557,6 +4568,11 @@ Reprint year 1987 from the publisher's record (Elsevier, ISBN 978-0-934613-45-3,
 "Published: October 1, 1987"), 2026-10-08; Crossref holds no record for this volume.
 Original year 1979 re-confirmed from Crossref's BibTeX for the DOI above, 2026-10-08.
 The scan read here prints neither year (both are handwritten), so both come from these records.
+
+<a id="ref-du2026"></a>Du, P. (2026). *Memory for autonomous LLM agents: Mechanisms, evaluation, and emerging frontiers*. https://arxiv.org/abs/2603.07670
+arXiv:2603.07670v1 [cs.AI], 8 Mar 2026. Hong Kong Research Institute of Technology,
+Hong Kong, China.
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
 
 <a id="ref-josang2013"></a>Jøsang, A. (2013). *Subjective logic* [Draft manuscript].
 Draft manuscript, 18 February 2013. University
@@ -4583,13 +4599,61 @@ accepted 17 June 2026. DOI: 10.1007/s44163-026-01675-5.
 
 <a id="ref-kumaran2016"></a>Kumaran, D., Hassabis, D., & McClelland, J. L. (2016). What learning systems do intelligent agents need? Complementary learning systems theory updated. *Trends in Cognitive Sciences*, *20*(7), 512–534. https://doi.org/10.1016/j.tics.2016.05.004
 
+<a id="ref-letta2025"></a>Letta. (2025, May 14). *Memory Blocks: The Key to Agentic Context Management*. Letta. Letta Blog. https://www.letta.com/blog/memory-blocks
+Date "MAY 14, 2025" and section label "CONCEPTS" as printed; author given in the
+page metadata as the organisation "Letta" (no personal byline printed).
+
+<a id="ref-lettaai2026"></a>letta-ai. (n.d.). *Letta (formerly MemGPT)* [Computer software]. Retrieved October 8, 2026, from https://github.com/letta-ai/letta/blob/56ba9c25552605eec89de8ed3dc6394b625c1993/letta/functions/function_sets/base.py
+Cite by commit: 56ba9c25552605eec89de8ed3dc6394b625c1993, path
+letta/functions/function_sets/base.py. Title is README line 1 at that commit. The
+commit date (2026-08-14) is from the GitHub API record, not printed in the file. The
+repository's main branch no longer contains the source (archived 2026-08-16).
+*[Metadata incomplete: no date is printed in the cited file (the commit date, 2026-08-14,
+comes from the GitHub API record).]*
+
+<a id="ref-lin2026"></a>Lin, Z., Hao, X., Fu, R., Cui, S., Chen, K., Li, C., Li, Z., & Xiong, F. (2026). *A survey on long-term memory security in LLM agents: Attacks, defenses, and governance across the memory lifecycle*. https://arxiv.org/abs/2604.16548
+arXiv:2604.16548v3 [cs.CR], 22 Sep 2026 (version read; v2 of 11 Jun 2026 has the same
+quoted abstract sentence; v1 of 17 Apr 2026 is a differently titled earlier draft without
+VMG). Affiliations as printed on v3: MemTensor (Shanghai) Technology Co., Ltd.; The Hong
+Kong University of Science and Technology (Guangzhou); Shanghai Jiao Tong University.
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
+
 <a id="ref-mcclelland1995"></a>McClelland, J. L., McNaughton, B. L., & O'Reilly, R. C. (1995). Why there are complementary learning systems in the hippocampus and neocortex: Insights from the successes and failures of connectionist models of learning and memory. *Psychological Review*, *102*(3), 419–457.
 *[Author order read from a layout-preserved extraction of the title page; the
 plain-text extraction lists the columns out of order.]*
 
+<a id="ref-memzero2026a"></a>Mem0. (n.d.-a). *Open Source: Migrating to the New Memory Algorithm*. Mem0. Mem0 Documentation. Retrieved October 8, 2026, from https://docs.mem0.ai/migration/oss-v2-to-v3
+The Mem0 "v3" OSS migration guide (the key's year is the access year). No author and no
+visible date printed on the page; page metadata (not visible text) gives lastModified
+2026-08-05. Archived copy is the citation evidence. The Internet Archive snapshot of
+2026-05-14 (https://web.archive.org/web/20260514101049/https://docs.mem0.ai/migration/oss-v2-to-v3),
+the one nearest the 2026-05-12 survey date, is also held: the quoted tip "Retrieval
+handles ranking — the most relevant, current information surfaces first." is verbatim in
+it, with an em dash where the live page now has a colon.
+*[Metadata incomplete: no author and no visible date are printed on the page.]*
+
+<a id="ref-memzero2026b"></a>Mem0. (n.d.-b). *Platform: Migrating to the New Memory Algorithm*. Mem0. Mem0 Documentation. Retrieved October 8, 2026, from https://docs.mem0.ai/migration/platform-v2-to-v3
+The Mem0 "v3" Platform migration guide (the key's year is the access year). No author
+and no visible date printed. Archived copy is the citation evidence.
+*[Metadata incomplete: no author and no visible date are printed on the page.]*
+
+<a id="ref-menon2026"></a>Menon, P. G. (2026). *Persistent identity in AI agents: A multi-anchor architecture for resilient memory and continuity*. https://arxiv.org/abs/2604.09588
+arXiv:2604.09588v1 [cs.AI], stamp date 2 Mar 2026; document date line "April 14, 2026".
+ThinkCreate.AI. The architecture is named soul.py in the text (code URL printed:
+https://github.com/menonpg/soul.py).
+*[Metadata incomplete: the two printed dates disagree (see provenance); no venue beyond
+the arXiv identifier is printed.]*
+
 <a id="ref-nozick1981"></a>Nozick, R. (1981). *Philosophical explanations*. The Belknap Press of Harvard University Press.
 ISBN 0-674-66448-5 (cloth); 0-674-66479-5 (paper).
 *[Title and copyright pages read as page images; the source PDF has no text layer.]*
+
+<a id="ref-packer2023"></a>Packer, C., Wooders, S., Lin, K., Fang, V., Patil, S. G., Stoica, I., & Gonzalez, J. E. (2023). *MemGPT: Towards LLMs as operating systems*. https://arxiv.org/abs/2310.08560
+arXiv:2310.08560v2 [cs.AI], 12 Feb 2024 (version read); first submitted 12 Oct 2023
+per the arXiv abstract page. University of California, Berkeley (footnote on page 1,
+one superscript for all seven authors). Letta's own CITATION.cff names this paper as
+the preferred citation for the repository.
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
 
 <a id="ref-parfit1984"></a>Parfit, D. (1984). *Reasons and persons*. Clarendon Press.
 First published
@@ -4609,6 +4673,10 @@ not survive two-column text extraction — three institutions are legible, their
 assignment to individual authors is not. No venue beyond the arXiv identifier is
 printed.]*
 
+<a id="ref-rasmussen2025"></a>Rasmussen, P., Paliychuk, P., Beauvais, T., Ryan, J., & Chalef, D. (2025). *Zep: A temporal knowledge graph architecture for agent memory*. https://arxiv.org/abs/2501.13956
+arXiv:2501.13956v1 [cs.CL], 20 Jan 2025. All five authors: Zep AI.
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
+
 <a id="ref-ricoeur1992"></a>Ricoeur, P. (1992). *Oneself as another* (K. Blamey, Trans.). University of Chicago Press. (Original work published 1990)
 Originally published as *Soi-même comme un autre*,
 Éditions du Seuil, 1990. ISBN 0-226-71328-8 (cloth); 0-226-71329-6 (paper).
@@ -4621,6 +4689,11 @@ copy.]*
 *[Metadata incomplete: no source file held. Cited in Ch1 §1.3 only to distinguish
 ENGRAM's name from systems that borrow the neuroscience term. Publisher, place and
 pagination are unverified and are deliberately not reconstructed here.]*
+
+<a id="ref-settles2016"></a>Settles, B., & Meeder, B. (2016). A trainable spaced repetition model for language learning. *Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics*, 1848–1858. https://aclanthology.org/P16-1174/
+Venue, pages, place and "August 7-12, 2016" as printed in the page footer. Duolingo,
+Pittsburgh, PA USA (Settles); Uber Advanced Technologies Center (Meeder; "Research
+conducted at Duolingo").
 
 <a id="ref-shinde2026"></a>Shinde, S. (2026). *SCM: Sleep-consolidated memory with algorithmic forgetting for large language models*.
 Clyrai IP Studio (the author's own imprint), April 2026. arXiv:2604.20943v1 [cs.LG],
@@ -4649,6 +4722,24 @@ University of Toronto.
 article's own first printed page number is not visible in the scan. Read from a
 per-page OCR set; the source PDF is a scan with no text layer.]*
 
+<a id="ref-wang2026a"></a>Wang, S., Yu, E., Love, O., Zhang, T., Wong, T., Scargall, S., & Fan, C. (2026a). *MemMachine: A ground-truth-preserving memory system for personalized AI agents*. https://arxiv.org/abs/2604.04853
+arXiv:2604.04853v1 [cs.AI], 6 Apr 2026 (the document's own date line reads "March 2026").
+All authors: MemVerge, Inc.
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
+
+<a id="ref-wang2026b"></a>Wang, Z. (2026b). *TOKI: A bitemporal operator algebra for contradiction resolution in LLM-agent persistent memory*. https://arxiv.org/abs/2606.06240
+arXiv:2606.06240v1 [cs.DB], 4 Jun 2026. The Hong Kong University of Science and
+Technology, Hong Kong SAR. The system is written "Toki" in running text.
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
+
+<a id="ref-wozniak1990"></a>Wozniak, P. (1990). *Application of a computer to improve the results obtained in working with the SuperMemo method*. https://super-memory.com/english/ol/sm2.htm
+Title is the page's heading (printed there as "3.2. Application of a computer to improve
+the results obtained in working with the SuperMemo method", byline "Piotr Wozniak, 1990");
+the browser title reads "SuperMemo 2: Algorithm" and the algorithm is named "Algorithm
+SM-2" in the text. The page states the text was taken from P.A. Wozniak, Optimization of
+learning, Master's Thesis, University of Technology in Poznan, 1990, and adapted for the
+web on May 10, 1998.
+
 <a id="ref-wray2025"></a>Wray, R. E., Kirk, J. R., & Laird, J. E. (2025). *Applying cognitive design patterns to general LLM agents*.
 arXiv:2505.07087v2 [cs.AI], 13 June 2025. Center for
 Integrated Cognition, IQMRI, Ann Arbor, MI.
@@ -4659,6 +4750,29 @@ so the v1 date is not established from this file.]*
 arXiv:2604.12285v1 [cs.AI], 14 April 2026. Zhejiang
 University; University of Illinois Chicago; Rutgers University; MBZUAI; McGill
 University.
+
+<a id="ref-xu2025"></a>Xu, W., Liang, Z., Mei, K., Gao, H., Tan, J., & Zhang, Y. (2025). *A-Mem: Agentic Memory for LLM Agents*. https://arxiv.org/abs/2502.12110
+arXiv:2502.12110v11 [cs.AI], 8 Oct 2025 (version read); first submitted 17 Feb 2025
+per the arXiv abstract page. Rutgers University; Independent Researcher; AIOS Foundation
+(affiliations as printed, by numbered superscript).
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
+
+<a id="ref-zhang2026"></a>Zhang, S., Wang, J., Zhou, R., Liao, J., Feng, Y., Li, Z., Zheng, Y., Zhang, W., Wen, Y., Li, Z., Xiong, F., Qi, Y., Tang, B., & Wen, M. (2026). *MemRL: Self-evolving agents via runtime reinforcement learning on episodic memory*. https://arxiv.org/abs/2601.03192
+arXiv:2601.03192v2 [cs.CL], 12 Feb 2026 (version read; footer reads "Preprint. February
+13, 2026."); first submitted 6 Jan 2026 per the arXiv abstract page. Affiliations as
+printed by numbered superscript: Shanghai Jiao Tong University; Xidian University; National
+University of Singapore; Shanghai Innovation Institute; MemTensor (Shanghai) Technology
+Co., Ltd.; University of Science and Technology of China. Code URL printed:
+https://github.com/MemTensor/MemRL.
+*[Metadata incomplete: the author-to-affiliation superscript mapping was not resolved in
+this check; no venue beyond the arXiv identifier is printed.]*
+
+<a id="ref-zhu2026"></a>Zhu, Q., Chen, S., Yu, R., Wu, Z., & Wang, B. (2026). *From lossy to verified: A provenance-aware tiered memory for agents*. https://arxiv.org/abs/2602.17913
+arXiv:2602.17913v1 [cs.DB], 20 Feb 2026; first-page footer reads "Preprint." School of
+Data Science, The Chinese University of Hong Kong, Shenzhen (one superscript for all five
+authors). The text names the proposed system TierMem; code URL printed:
+https://github.com/FreedomIntelligence/Tiermem.
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
 
 ---
 

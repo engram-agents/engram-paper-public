@@ -23,7 +23,7 @@ novelty disclaimer Ch3 §3.0 states in full. The
 formal shape it shares with Kumiho — typed reasoning edges with cascade/supersede over
 a property graph — is decades old in the truth-maintenance and belief-revision
 traditions, and several agent-memory systems (Mem0g — Mem0's graph-memory variant — Zep/Graphiti,
-A-MEM) predate our
+A-MEM) [@chhikara2025, p. 1; @rasmussen2025; @xu2025] predate our
 ideation. The two exemplars named here are the two we hold and have read first-hand:
 Doyle's truth maintenance system (via the Ginsberg reprint, Ch4 §4.2) and AGM 1985.
 Both traditions are wider than those two works, and the others this paper names — de
@@ -163,8 +163,8 @@ was on our radar.
 | Kahl 2026a (Zenodo) | 2026-01-31 | 48 days before (not surfaced) | 68 days before |
 | GAM [@wu2026, arXiv 2604.12285] | 2026-04-14 | 25 days **after** | 5 days after |
 | SCM [@shinde2026, arXiv 2604.20943] | 2026-04-22 | 33 days **after** | 13 days after |
-| VMG survey (Lin et al., 2604.16548) | 2026-04 (month from the arXiv identifier) | **after** | after |
-| Mem0g / Zep / A-MEM | 2024–25 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) | predate |
+| VMG survey [@lin2026, arXiv 2604.16548, v2 of 2026-06-11] | 2026-06 (VMG first appears in v2; v1, April 2026, is a differently titled draft) | **after** | after |
+| Mem0g / Zep / A-MEM [@chhikara2025; @rasmussen2025; @xu2025] | 2025 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) (each handles conflicts at write time; none cascades) | predate |
 
 The two structurally-closest systems (Kumiho, SCM) both surface in March–April 2026 —
 concurrent with, not predating-by-much, ENGRAM's ideation. The older systems lack the

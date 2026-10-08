@@ -4,14 +4,14 @@
 
 ## C.1 The memory-utility tradition
 
-A 2026 line of work — exemplified by **MemRL** — applies reinforcement learning not
+A 2026 line of work — exemplified by **MemRL** [@zhang2026, p. 1] — applies reinforcement learning not
 to a model's weights but to its **memory retrieval**: it learns *which stored
 memories are worth surfacing* by treating retrieval as an action and downstream
 usefulness as a reward, ranking memories by a learned **Q-value** (ob_0647). The
 appeal is that it keeps the base model frozen — no fine-tuning, so no catastrophic
 forgetting — while still improving over time at the level of *what gets recalled*.
 Concretely, MemRL composites semantic similarity with an EMA-learned Q-value via a
-weighted score, with the Q-error decaying as `(1−α)^t` (ob_0651).
+weighted score, with the Q-error decaying as `(1−α)^t` [@zhang2026, pp. 4–5, 13] (ob_0651).
 
 ENGRAM sits in this tradition. Every node carries a `utility_score` — a learned
 value updated by the same exponential rule, `Q_new = Q_old + α(1 − Q_old)` — and
