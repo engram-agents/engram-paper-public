@@ -31,7 +31,7 @@ asserting something truth-evaluable (observations, derivations, theories, axioms
 conjectures) and those that do not (everything else); it governs confidence and
 whether the retraction cascade touches a node. (Defined Appendix E §E.2.)
 
-**closest continuer** — Nozick's theory: a later thing is the earlier thing only if
+**closest continuer** — Nozick's [-@nozick1981] theory: a later thing is the earlier thing only if
 it grows causally out of it, is the *closest* candidate among rivals, and clears an
 absolute threshold. (Defined §5.1.)
 

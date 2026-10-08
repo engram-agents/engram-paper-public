@@ -69,7 +69,7 @@ compaction. [SOLID]
 
 ### 3.2 Tulving → the two registers of recall
 
-Tulving distinguished *autonoetic* remembering (the re-living of "I was there") from
+Tulving [-@tulving1985] distinguished *autonoetic* remembering (the re-living of "I was there") from
 *noetic* knowing ("I know that this happened"), and established encoding
 specificity: retrieval is cue-dependent. ENGRAM's recall has exactly two registers,
 by design (dv_0264): a lossy **auto-surface** (noetic, hint-level: "this sounds
@@ -120,7 +120,7 @@ SOLID ob_1571; mechanism first-hand from Doyle 1979 via the Ginsberg reprint —
 
 ### 3.5 Subjective Logic → confidence propagation, with a divergence
 
-Jøsang's Subjective Logic is an algebra of graded opinions. An opinion about a claim
+Jøsang's [-@josang2013] Subjective Logic is an algebra of graded opinions. An opinion about a claim
 is a tuple (belief, disbelief, uncertainty, base rate) with `b+d+u=1`: how far the
 evidence supports the claim, how far it counts against it, and how much room is left.
 Operators combine opinions from several sources. ENGRAM's confidence belongs to this

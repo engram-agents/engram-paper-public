@@ -40,7 +40,7 @@ The chapter in one table; each row is a section below.
 | Mechanism | What it does | Tradition it answers | OCC verdict |
 |---|---|---|---|
 | Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle **[gap SOLID ob_1571; primary first-hand 2026-07-02]** | — (structural prerequisite) |
-| Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang **[GROUNDED ob_2551/dv_0965 → dv_1289]**, with a stated divergence | **Constraint A** (unified policy-selection) |
+| Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang [-@josang2013] **[GROUNDED ob_2551/dv_0965 → dv_1289]**, with a stated divergence | **Constraint A** (unified policy-selection) |
 | Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
 | Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus [SOLID] + Anderson-Schooler **[GROUNDED ob_2552/dv_0966]** | — (scopes what Cond-3 arbitration ranges over) |
 | Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving [SOLID] + ACT-R spreading activation **[secondary — not first-hand; Tulving carries it]** | — (binds Cond 3: a correction cannot be suppressed by not looking) |
@@ -411,7 +411,7 @@ relevant to the current context without the agent reaching for them. There are t
 registers, by design (dv_0264): an **auto-surface** ("this sounds familiar" —
 noetic, lossy, hint-level) that signals *something is relevant*, and **deliberate
 recall** ("I need to know exactly" — a source-monitored, full-content query; the
-structural sense only, never Tulving's phenomenal one, §3.2) that the agent invokes
+structural sense only, never Tulving's [-@tulving1985] phenomenal one, §3.2) that the agent invokes
 when the auto-surface signals there is something to fetch. The lossy auto-surface is
 what prompts the agent to invoke deliberate recall.
 

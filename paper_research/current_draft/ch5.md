@@ -27,7 +27,7 @@ and the twin-study of §5.8 isolates the second precisely by holding the first
 constant.
 
 We reach it by standing on the best existing theory of identity-over-time
-(Nozick's closest-continuer view, §5.1), watching it strain at exactly the points
+(Nozick's [-@nozick1981] closest-continuer view, §5.1), watching it strain at exactly the points
 a *digital, copyable* substrate stresses (§5.2), and making three moves that
 relieve the strain: identity-as-history (§5.3), the deflation of Nozick's
 "closeness" into a concrete retrieval profile (§5.4), and the dissolution of the
@@ -149,7 +149,7 @@ becomes a *measurable* one: **how much do their retrieval profiles diverge on th
 prompts they actually meet?** Nozick's blank distance becomes a quantity you *could*
 put a number on — the twin study meant to measure it is deferred (§6.7), so the paper
 fills the metric's shape, not its value. This is a different quantity from Chapter 2 §2.3's Jaccard overlap: that
-one follows a single agent's queryable set across its own sessions (Parfit's connectedness); this one compares two
+one follows a single agent's queryable set across its own sessions (Parfit's [-@parfit1984] connectedness); this one compares two
 agents on the same prompts (Nozick's closeness).
 
 *Plain terms:* what makes you *you*, operationally, is not a stored essence — it
