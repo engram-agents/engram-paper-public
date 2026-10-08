@@ -168,7 +168,7 @@
 系统把被矛盾的画像数据更新为最新状态；没有矛盾记录，也没有从旧事实级联到建立在它之上的那些情节记录。
 
 - *paper-verbatim*："When new information contradicts existing profile data, the system can **update the profile to reflect the most recent state**—supporting the knowledge update capability evaluated in benchmarks such as LongMemEval [7]."（中文解说：当新信息与既有画像数据相矛盾时，系统可以**更新画像以反映最新状态**——这支撑了诸如 LongMemEval [7] 之类的基准中所评估的知识更新能力。）[@wang2026a, sec. 4.7, p. 6]（强调为引者所加）
-- *first-hand-read finding:* 检出一处矛盾，用覆盖解决它，继续往前走——没有一等矛盾节点，也没有从一处被更正的画像事实，级联到使用旧事实生成的那些情节记录。
+- *first-hand-read finding:* 当新信息与画像事实矛盾时，画像被更新为最新状态——没有一等矛盾节点，也没有从一处被更正的画像事实，级联到使用旧事实生成的那些情节记录。
 
 ### Pinecone Nexus（Pinecone 架构博客）[@ashutosh2026] —— **（X）／（N），且是只读消费者**
 "Deterministic conflict resolution"（确定性冲突解决）只出现一次，是知识编译一侧的一个无文档的功能清单条目；而消费端的智能体根本没有承诺图谱。
@@ -199,7 +199,7 @@
 ### Memory survey 2026 —— Du[@du2026] —— **（N）被指认，未被解决**
 它是一篇综述，而不是一个系统：它把矛盾处理指名为稳健系统*需要*的东西，却没有引用任何一个做到了这一点的系统，并且只提出*外部的*修补。
 
-- *paper-verbatim*（§7.3）："Robust systems need temporal versioning (prefer the newest record), source attribution (user statement > agent inference), **contradiction detection (flag conflicts for resolution)**, and periodic consolidation..."（中文解说：稳健系统需要时间版本管理（偏好最新记录）、来源归属（用户陈述 > 智能体推断）、**矛盾检出（把冲突标记出来以待解决）**，以及周期性巩固……）（强调为引者所加）—— 这是*规范性的*（"need"／需要），而不是描述性的（"do"／做到了）。
+- *paper-verbatim*（§7.3）："Robust systems need temporal versioning (prefer the newest record), source attribution (user statement > agent inference), **contradiction detection (flag conflicts for resolution)**, and periodic consolidation..."（中文解说：稳健系统需要时间版本管理（偏好最新记录）、来源归属（用户陈述 > 智能体推断）、**矛盾检出（把冲突标记出来以待解决）**，以及周期性巩固……）[@du2026, sec. 7.3, p. 9]（强调为引者所加）—— 这是*规范性的*（"need"／需要），而不是描述性的（"do"／做到了）。
 - *paper-verbatim*（他们的 §9.3）："Future systems need external validation... uncertainty quantification... adversarial probing... and expiration policies"（中文解说：未来的系统需要外部验证……不确定性量化……对抗性探测……以及过期策略）—— 所提出的修补全是**外部**干预，而不是结构性原语。这篇综述指出了 C3 问题，却引用了零个解决方案。
 
 ### TierMem[@zhu2026] —— **（N）矛盾不是构造，无级联**

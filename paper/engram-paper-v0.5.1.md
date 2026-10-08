@@ -3550,8 +3550,8 @@ cascade to episodic records built on the old fact.
 - *paper-verbatim:* "When new information contradicts existing profile data, the
   system can **update the profile to reflect the most recent state**—supporting the
   knowledge update capability evaluated in benchmarks such as LongMemEval [7]." ([Wang et al., 2026a, sec. 4.7, p. 6](#ref-wang2026a)) (emphasis added)
-- *first-hand-read finding:* "detect a contradiction, resolve it by overwriting, move
-  on" — no first-class contradiction node, no cascade from a corrected profile fact
+- *first-hand-read finding:* when new information contradicts a profile fact, the
+  profile is updated to the most recent state — no first-class contradiction node, no cascade from a corrected profile fact
   to the episodic records generated using the old one.
 
 ### Pinecone Nexus (Pinecone architecture posts) ([Ashutosh & Liberty, 2026](#ref-ashutosh2026)) — **(X)/(N), and read-only consumer**
@@ -3607,7 +3607,7 @@ A survey, not a system: it names contradiction-handling as something robust syst
 - *paper-verbatim* (§7.3): "Robust systems need temporal versioning (prefer the
   newest record), source attribution (user statement > agent inference),
   **contradiction detection (flag conflicts for resolution)**, and periodic
-  consolidation..." (emphasis added) — *normative* ("need"), not descriptive ("do").
+  consolidation..." ([Du, 2026, sec. 7.3, p. 9](#ref-du2026)) (emphasis added) — *normative* ("need"), not descriptive ("do").
 - *paper-verbatim* (their §9.3): "Future systems need external validation... uncertainty
   quantification... adversarial probing... and expiration policies" — the proposed
   fixes are all **external** interventions, not structural primitives. The survey
