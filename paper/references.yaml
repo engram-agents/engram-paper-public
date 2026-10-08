@@ -916,6 +916,29 @@ references:
   provenance: |-
     Running head "Volume 17 - Number 3 ... Copyright 2006 Association for Psychological Science 249";
     Washington University in St. Louis. The end page 255 was read from the text layer.
+- id: schechtman1996
+  type: book
+  author:
+  - family: Schechtman
+    given: M.
+  issued:
+    date-parts:
+    - - 1996
+  title: The constitution of selves
+  publisher: Cornell University Press
+  publisher-place: Ithaca and London
+  provenance: |-
+    Copy read: the Cornell Paperbacks printing of 2007 (copyright page: "First published 1996 by
+    Cornell University Press. First printing, Cornell Paperbacks, 2007"; printed ISBN
+    978-0-8014-7417-0, which belongs to that printing). The title page prints "Marya Schechtman",
+    "Cornell University Press" and "Ithaca and London"; the copyright page prints "Copyright 1996".
+    Page numbers are the printed pages of this printing (Introduction begins at p. 1; chapter 5
+    begins at p. 93). No ISBN is given for the 1996 hardcover, which the copy read does not print.
+  provenance_zh: |-
+    所读版本：Cornell Paperbacks 2007 年印本（版权页："First published 1996 by Cornell University
+    Press. First printing, Cornell Paperbacks, 2007"；所印 ISBN 978-0-8014-7417-0 属于该印本）。书名页印有
+    "Marya Schechtman"、"Cornell University Press" 与 "Ithaca and London"；版权页印有 "Copyright 1996"。
+    页码为该印本的印刷页码（导论始于第 1 页；第 5 章始于第 93 页）。所读版本未印 1996 年精装本的 ISBN，故不给出。
 - id: semon1904
   type: book
   author:

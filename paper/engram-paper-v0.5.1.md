@@ -529,11 +529,11 @@ ipse effect is real, and it is why the objective record is not inert: the same
 structure, recalled, shapes the "who am I" that it records.
 
 **Schechtman** is the hinge of the chapter. She separates two questions that the
-philosophy of identity usually runs together: the **reidentification** question
-(*is the person now the same as the person then?*) and the **characterization**
-question (*what makes a given trait genuinely belong to this person — what kind of
-person are they?*). Narrative identity answers characterization: *what story do I
-tell about myself?*
+philosophy of identity usually runs together: the **reidentification** question,
+"what makes a person at time t2 the same person as a person at time t1", and the
+**characterization** question, "which beliefs, values, desires, and other
+psychological features make someone the person she is" ([Schechtman, 1996, pp. 1–2](#ref-schechtman1996)).
+Narrative identity answers characterization ([Schechtman, 1996, p. 93](#ref-schechtman1996)).
 
 A **third question is covered by neither**, and it is the one ENGRAM is built for:
 *what do I know, how reliably, and on what basis?* It is neither reidentification nor
@@ -642,8 +642,9 @@ Two qualifications belong here:
 Taken as a whole, the trail has a single shape. It begins with identity as a
 **present mental act** (Locke's recall) and is forced, objection by objection,
 toward identity as a **persistent structure**: Reid and Butler break recall; Parfit
-reduces identity to structural connectedness; Ricoeur and Schechtman locate the
-*epistemic* dimension the tradition had left unnamed; Clark, Chalmers, and Stiegler
+reduces identity to structural connectedness; Ricoeur and Schechtman separate the
+questions identity theory had run together, which leaves room for the *epistemic*
+dimension the tradition had left unnamed; Clark, Chalmers, and Stiegler
 make the external structure *constitutive* rather than merely supportive; Nozick and
 Kahl make it *historical* and give it conditions. ENGRAM is that endpoint as a built
 system, and it arrived at the same shape under engineering pressure, not by reading
@@ -1101,7 +1102,7 @@ The chapter in one table; each row is a section below.
 | Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) + ACT-R spreading activation; the cue-dependence is ENGRAM's own design | — (binds Cond 3: a correction cannot be suppressed by not looking) |
 | Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL + spaced-repetition | — |
 | Continuity across compaction (§4.8) | identity survives compaction | CLS consolidation + diachronic-identity | — (compaction is not Kahl's reset; §4.8) |
-| Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution | — (feeds Ch5 identity-as-history) |
+| Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution ([Schechtman, 1996, p. 93](#ref-schechtman1996)) | — (feeds Ch5 identity-as-history) |
 | Relational: feeling/person/trust-tier (§4.10) | continuity baseline + disclosure control → **Appx D, Ch7** | honesty orthogonal to discretion + VMG principal-scoped | — |
 
 **Where each OCC verdict lives.** The OCC conditions and constraints are addressed
@@ -1611,8 +1612,9 @@ Chapter 5's identity as history. **The full node-type catalog is in Appendix D**
 here we note that the systems exist and that they are the structural home of the
 agent's standing character.
 
-**Tradition.** **Schechtman's narrative self-constitution**: identity as
-authored, durable structure rather than momentary recall. The ax/cs/ls/gl layer is
+**Tradition.** **Schechtman's narrative self-constitution**: "a person
+creates his identity by forming an autobiographical narrative—a story of his life"
+([Schechtman, 1996, p. 93](#ref-schechtman1996)). The ax/cs/ls/gl layer is
 where ENGRAM is *most* narrative-adjacent (Layer 2 of Ch1's taxonomy), even though
 the paper's contribution sits at Layer 3.
 
@@ -3826,7 +3828,7 @@ is what lets the substrate treat a terminal principle differently from a revisab
 inference, or a relationship differently from a fact. This appendix catalogs them.
 
 The connecting thread (Chapter 2 §2.5–2.6): these are the nodes where ENGRAM is most
-*narrative-adjacent* — authored self-constitution in Schechtman's sense — even though
+*narrative-adjacent* — authored self-constitution in Schechtman's sense ([Schechtman, 1996, p. 93](#ref-schechtman1996)) — even though
 the paper's contribution sits at the epistemic (Layer 3) tier. They hold an agent's
 character as inspectable structure rather than as tone.
 
@@ -4807,6 +4809,14 @@ copy.]*
 <a id="ref-roediger2006"></a>Roediger, H. L. , I., & Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. *Psychological Science*, *17*(3), 249–255.
 Running head "Volume 17 - Number 3 ... Copyright 2006 Association for Psychological Science 249";
 Washington University in St. Louis. The end page 255 was read from the text layer.
+
+<a id="ref-schechtman1996"></a>Schechtman, M. (1996). *The constitution of selves*. Cornell University Press.
+Copy read: the Cornell Paperbacks printing of 2007 (copyright page: "First published 1996 by
+Cornell University Press. First printing, Cornell Paperbacks, 2007"; printed ISBN
+978-0-8014-7417-0, which belongs to that printing). The title page prints "Marya Schechtman",
+"Cornell University Press" and "Ithaca and London"; the copyright page prints "Copyright 1996".
+Page numbers are the printed pages of this printing (Introduction begins at p. 1; chapter 5
+begins at p. 93). No ISBN is given for the 1996 hardcover, which the copy read does not print.
 
 <a id="ref-semon1904"></a>Semon, R. (1904). *Die Mneme*.
 *[Metadata incomplete: no source file held. Cited in Ch1 §1.3 only to distinguish

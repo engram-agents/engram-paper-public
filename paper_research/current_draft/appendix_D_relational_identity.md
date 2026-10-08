@@ -12,7 +12,7 @@ is what lets the substrate treat a terminal principle differently from a revisab
 inference, or a relationship differently from a fact. This appendix catalogs them.
 
 The connecting thread (Chapter 2 §2.5–2.6): these are the nodes where ENGRAM is most
-*narrative-adjacent* — authored self-constitution in Schechtman's sense — even though
+*narrative-adjacent* — authored self-constitution in Schechtman's sense [@schechtman1996, p. 93] — even though
 the paper's contribution sits at the epistemic (Layer 3) tier. They hold an agent's
 character as inspectable structure rather than as tone.
 

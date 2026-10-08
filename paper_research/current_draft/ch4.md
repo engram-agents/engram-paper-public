@@ -46,7 +46,7 @@ The chapter in one table; each row is a section below.
 | Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction [@tulving1985, p. 3] [SOLID] + ACT-R spreading activation **[secondary — not first-hand]**; the cue-dependence is ENGRAM's own design | — (binds Cond 3: a correction cannot be suppressed by not looking) |
 | Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL **[ob_0647/ob_0651, prior read]** + spaced-repetition [SOLID] | — |
 | Continuity across compaction (§4.8) | identity survives compaction | CLS consolidation [SOLID] + diachronic-identity [SOLID] | — (compaction is not Kahl's reset; §4.8) |
-| Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution [SOLID] | — (feeds Ch5 identity-as-history) |
+| Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution [@schechtman1996, p. 93] [SOLID] | — (feeds Ch5 identity-as-history) |
 | Relational: feeling/person/trust-tier (§4.10) | continuity baseline + disclosure control → **Appx D, Ch7** | honesty orthogonal to discretion (ax_0011) [SOLID] + VMG principal-scoped **[GROUNDED ob_2550]** | — |
 
 **Where each OCC verdict lives.** The OCC conditions and constraints are addressed
@@ -519,8 +519,9 @@ Chapter 5's identity as history. **The full node-type catalog is in Appendix D**
 here we note that the systems exist and that they are the structural home of the
 agent's standing character.
 
-**Tradition.** **Schechtman's narrative self-constitution** [SOLID]: identity as
-authored, durable structure rather than momentary recall. The ax/cs/ls/gl layer is
+**Tradition.** **Schechtman's narrative self-constitution** [SOLID]: "a person
+creates his identity by forming an autobiographical narrative—a story of his life"
+[@schechtman1996, p. 93]. The ax/cs/ls/gl layer is
 where ENGRAM is *most* narrative-adjacent (Layer 2 of Ch1's taxonomy), even though
 the paper's contribution sits at Layer 3.
 

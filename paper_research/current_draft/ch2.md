@@ -227,11 +227,11 @@ ipse effect is real, and it is why the objective record is not inert: the same
 structure, recalled, shapes the "who am I" that it records.
 
 **Schechtman** is the hinge of the chapter. She separates two questions that the
-philosophy of identity usually runs together: the **reidentification** question
-(*is the person now the same as the person then?*) and the **characterization**
-question (*what makes a given trait genuinely belong to this person — what kind of
-person are they?*). Narrative identity answers characterization: *what story do I
-tell about myself?*
+philosophy of identity usually runs together: the **reidentification** question,
+"what makes a person at time t2 the same person as a person at time t1", and the
+**characterization** question, "which beliefs, values, desires, and other
+psychological features make someone the person she is" [@schechtman1996, pp. 1–2].
+Narrative identity answers characterization [@schechtman1996, p. 93].
 
 A **third question is covered by neither** (ob_0419), and it is the one ENGRAM is built for:
 *what do I know, how reliably, and on what basis?* It is neither reidentification nor
@@ -343,8 +343,9 @@ Two qualifications belong here:
 Taken as a whole, the trail has a single shape. It begins with identity as a
 **present mental act** (Locke's recall) and is forced, objection by objection,
 toward identity as a **persistent structure**: Reid and Butler break recall; Parfit
-reduces identity to structural connectedness; Ricoeur and Schechtman locate the
-*epistemic* dimension the tradition had left unnamed; Clark, Chalmers, and Stiegler
+reduces identity to structural connectedness; Ricoeur and Schechtman separate the
+questions identity theory had run together, which leaves room for the *epistemic*
+dimension the tradition had left unnamed; Clark, Chalmers, and Stiegler
 make the external structure *constitutive* rather than merely supportive; Nozick and
 Kahl make it *historical* and give it conditions. ENGRAM is that endpoint as a built
 system, and it arrived at the same shape under engineering pressure, not by reading
