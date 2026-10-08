@@ -723,8 +723,8 @@ compaction.
 
 ### 3.2 Tulving → the two registers of recall
 
-Tulving ([1985](#ref-tulving1985)) distinguished *autonoetic* remembering (the re-living of "I was there") from
-*noetic* knowing ("I know that this happened"), and established encoding
+Tulving distinguished *autonoetic* remembering (the re-living of "I was there") from
+*noetic* knowing ("I know that this happened") ([Tulving, 1985](#ref-tulving1985)), and established encoding
 specificity: retrieval is cue-dependent. ENGRAM's recall has exactly two registers,
 by design: a lossy **auto-surface** (noetic, hint-level: "this sounds
 familiar") and **deliberate recall** (a full-content query: "I need to know
