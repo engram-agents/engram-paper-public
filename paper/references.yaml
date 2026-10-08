@@ -528,7 +528,7 @@ references:
     Kong University of Science and Technology (Guangzhou); Shanghai Jiao Tong University.
   metadata_incomplete: |-
     Metadata incomplete: no venue beyond the arXiv identifier is printed.
-- id: locke1690
+- id: locke1694
   type: book
   author:
   - family: Locke
@@ -538,7 +538,7 @@ references:
     - - 2004
   original-date:
     date-parts:
-    - - 1690
+    - - 1694
   title: An essay concerning humane understanding, volume 1
   publisher: Project Gutenberg
   number: eBook #10615
@@ -549,6 +549,9 @@ references:
       - 10
       - 8
   provenance: |-
+    Cited for the identity chapter, so the original date is that of the edition that contains it:
+    the Essay first appeared in 1690, and Book II ch. XXVII ("Of Identity and Diversity") was
+    added in the Second Edition of 1694.
     Gutenberg release 1 January 2004, last updated 20 February 2026; credits Steve Harris and
     David Widger. The title page in the file carries the 1690 imprint (Eliz. Holt for Thomas
     Basset, London); the dedication is dated 24 May 1689. Chapter XXVII ("Of Identity and

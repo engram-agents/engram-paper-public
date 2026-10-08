@@ -341,14 +341,14 @@ name the gap.
 Locke moved the question of identity off the body and the soul and onto
 **consciousness**. A person is the same person across time, he argued, as far as
 "this consciousness can be extended backwards" to a past thought or action
-([Locke, 1690/2004, Bk II ch. XXVII, "Personal Identity"](#ref-locke1690)). In his
+([Locke, 1694/2004, Bk II ch. XXVII, "Personal Identity"](#ref-locke1694)). In his
 thought experiment of the prince and the cobbler, the prince's consciousness is
 placed in the cobbler's body, and the *person* — the prince — goes with the
 consciousness, not the body
-([Locke, 1690/2004, Bk II ch. XXVII, "The body, as well as the soul, goes to the making of a Man"](#ref-locke1690)).
+([Locke, 1694/2004, Bk II ch. XXVII, "The body, as well as the soul, goes to the making of a Man"](#ref-locke1694)).
 Identity for Locke is also **forensic**: it makes me
 accountable for a past act, because my consciousness *appropriates* that act as
-mine ([Locke, 1690/2004, Bk II ch. XXVII, "Person a forensic Term"](#ref-locke1690)). In short: *you are whoever you can remember being.*
+mine ([Locke, 1694/2004, Bk II ch. XXVII, "Person a forensic Term"](#ref-locke1694)). In short: *you are whoever you can remember being.*
 
 This is the ancestor of everything ENGRAM does — identity that reaches back to what
 an earlier self thought and did. But Locke's *mechanism*, remembering here and now,
@@ -553,8 +553,10 @@ Clark and Chalmers' **extended mind** thesis ([Clark & Chalmers, 1998, sec. 4](#
 *constitutive*. Their case is Otto, who can no longer form new biological memories
 and relies on a notebook: when the notebook plays the functional role that
 biological memory plays for others, it is *part of his cognitive system*, not an
-external aid he consults. Their thesis is about belief and cognition; applying it to
-personal identity is this paper's own extension.
+external aid he consults. Clark and Chalmers take the step to the self themselves: the extended mind "seems" to
+imply an extended self, and the notebook is "a central part of his identity as a
+cognitive agent" ([Clark & Chalmers, 1998, sec. 5](#ref-clark1998)). What ENGRAM adds is that the agent writes,
+revises and retracts the external record itself, over time.
 
 ENGRAM is an extended-mind case, and a **stronger** one than Otto's notebook on the
 fourth of their features, past conscious endorsement, which Clark and Chalmers
@@ -748,9 +750,10 @@ the auto-surface, which is cue-dependent by ENGRAM's own design and binds Condit
 *adaptation*: what stays available tracks the **need probability** — "the probability
 that we will need a particular memory trace now" — estimated from environmental
 frequency, recency, and spacing. Ebbinghaus (1885) measured the original forgetting
-curve ([Ebbinghaus, 1885/1913, sec. 29, p. 76](#ref-ebbinghaus1885)). Later reanalyses, of his data and of retention
-data generally, find a power function fits better than an exponential
-([Wixted, 2004, p. 243](#ref-wixted2004); [Wixted & Ebbesen, 1991](#ref-wixted1991)). Whether individual memories decay exponentially,
+curve ([Ebbinghaus, 1885/1913, sec. 29, p. 76](#ref-ebbinghaus1885)). Wixted and Ebbesen found a simple power function described forgetting best in their
+experiments, and that a reanalysis of Ebbinghaus's savings data declines as a power
+function too ([Wixted & Ebbesen, 1991](#ref-wixted1991)); Wixted's later review finds the exponential describes
+forgetting poorly ([Wixted, 2004, p. 243](#ref-wixted2004)). Whether individual memories decay exponentially,
 with the power law an artifact of averaging, is contested ([Anderson et al., 1999, p. 1136](#ref-anderson1999)).
 ENGRAM's per-node exponential is a design choice for stationary recency ordering, not a
 claim about human forgetting.
@@ -771,15 +774,17 @@ anchor for ENGRAM's queryable/faded sets; the exponential kernel is ENGRAM's own
 ### 3.4 Truth Maintenance Systems → provenance + retraction cascade
 
 Truth Maintenance Systems attach *justifications* to beliefs. In Doyle's
-justification-based TMS, belief status propagates along dependency links: when a
-justification is withdrawn, dependent beliefs are revised by dependency-directed
-backtracking ([Doyle, 1979/1987](#ref-doyle1979)). de Kleer's assumption-based TMS instead labels each datum
+justification-based TMS, each belief is in or out according to its justifications, and
+when a justification no longer holds, the status of the beliefs that depend on it is
+recomputed along the dependency links ([Doyle, 1979/1987](#ref-doyle1979)); contradictions are removed by
+dependency-directed backtracking, which adds justifications ([de Kleer, 1986, p. 129](#ref-dekleer1986)). de Kleer's assumption-based TMS instead labels each datum
 with the assumption sets under which it holds, and so avoids most backtracking and all
-retraction ([de Kleer, 1986, p. 127](#ref-dekleer1986)). Doyle's mechanism is ENGRAM's `derives_from`
+retraction ([de Kleer, 1986, pp. 127, 129](#ref-dekleer1986)). Doyle's mechanism is ENGRAM's `derives_from`
 provenance and retraction cascade, decades earlier and in a different field. Of the
 2023–2026 LLM-agent papers we examined, only Wray, Kirk and Laird cite Doyle, and only
 to describe Soar's truth maintenance ([Wray et al., 2025, sec. 2](#ref-wray2025)); none of the memory systems we
-surveyed (Appendix B) propagates retraction along dependencies. ENGRAM implements TMS-style dependency propagation in typed LLM-agent
+surveyed (Appendix B) automatically propagates retraction along dependencies (Kumiho's
+impact analysis is advisory). ENGRAM implements TMS-style dependency propagation in typed LLM-agent
 memory, and names the lineage it implements.
 
 **→ Ch4 §4.2 + §4.4** (provenance primitives; retraction cascade → Condition 3).
@@ -1132,8 +1137,9 @@ substrate is what a typed key-value store with foreign keys lacks.
 **Tradition.** This is the **Truth Maintenance System** move ([Doyle, 1979/1987](#ref-doyle1979)):
 justifications attached to beliefs, dependency links the system reasons over — a claim
 that knows what it rests on. The parallel is drawn from Doyle's paper, read first-hand
-in the Ginsberg reprint (Appendix A; bibliography). The gap is a separate finding: none
-of the 2023–2026 LLM-agent-memory papers we examined cites Doyle (§3.4).
+in the Ginsberg reprint (Appendix A; bibliography). The gap is a separate finding: of
+the 2023–2026 LLM-agent papers we examined, only Wray, Kirk and Laird cite Doyle, and
+only for Soar's truth maintenance (§3.4).
 
 These primitives are the precondition for everything below: a correction cannot
 cascade (§4.4) through a graph that does not record what depends on what, and the
@@ -3783,7 +3789,7 @@ versus faded (tier 3), per the forgetting mechanism (Ch4 §4.5) — and then ent
 composite as the second amplifier. And recall itself *strengthens* a node (the
 recall-count / recall-turn signals), so a node that keeps proving useful is both
 retained longer and ranked higher: the **testing-effect** shape, where retrieval
-is not a read-only event but reinforces the trace ([Roediger & Karpicke, 2006, p. 249](#ref-roediger2006)). The result is a recall surface that
+is not a read-only event but, as the testing effect shows, enhances later retention ([Roediger & Karpicke, 2006, p. 249](#ref-roediger2006)). The result is a recall surface that
 is adaptive on three coupled axes — topical relevance, learned usefulness, and
 decaying importance — rather than a static similarity sort.
 
@@ -4684,7 +4690,10 @@ VMG). Affiliations as printed on v3: MemTensor (Shanghai) Technology Co., Ltd.; 
 Kong University of Science and Technology (Guangzhou); Shanghai Jiao Tong University.
 *[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
 
-<a id="ref-locke1690"></a>Locke, J. (2004). *An essay concerning humane understanding, volume 1* (EBook). Project Gutenberg. https://www.gutenberg.org/ebooks/10615 (Original work published 1690)
+<a id="ref-locke1694"></a>Locke, J. (2004). *An essay concerning humane understanding, volume 1* (EBook). Project Gutenberg. https://www.gutenberg.org/ebooks/10615 (Original work published 1694)
+Cited for the identity chapter, so the original date is that of the edition that contains it:
+the Essay first appeared in 1690, and Book II ch. XXVII ("Of Identity and Diversity") was
+added in the Second Edition of 1694.
 Gutenberg release 1 January 2004, last updated 20 February 2026; credits Steve Harris and
 David Widger. The title page in the file carries the 1690 imprint (Eliz. Holt for Thomas
 Basset, London); the dedication is dated 24 May 1689. Chapter XXVII ("Of Identity and

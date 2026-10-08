@@ -93,7 +93,7 @@ versus faded (tier 3), per the forgetting mechanism (Ch4 §4.5) — and then ent
 composite as the second amplifier. And recall itself *strengthens* a node (the
 recall-count / recall-turn signals), so a node that keeps proving useful is both
 retained longer and ranked higher: the **testing-effect** shape, where retrieval
-is not a read-only event but reinforces the trace [@roediger2006, p. 249]. The result is a recall surface that
+is not a read-only event but, as the testing effect shows, enhances later retention [@roediger2006, p. 249]. The result is a recall surface that
 is adaptive on three coupled axes — topical relevance, learned usefulness, and
 decaying importance — rather than a static similarity sort.
 

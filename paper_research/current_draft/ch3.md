@@ -87,9 +87,10 @@ the auto-surface, which is cue-dependent by ENGRAM's own design and binds Condit
 *adaptation*: what stays available tracks the **need probability** — "the probability
 that we will need a particular memory trace now" — estimated from environmental
 frequency, recency, and spacing. Ebbinghaus (1885) measured the original forgetting
-curve [@ebbinghaus1885, sec. 29, p. 76]. Later reanalyses, of his data and of retention
-data generally, find a power function fits better than an exponential
-[@wixted1991; @wixted2004, p. 243]. Whether individual memories decay exponentially,
+curve [@ebbinghaus1885, sec. 29, p. 76]. Wixted and Ebbesen found a simple power function described forgetting best in their
+experiments, and that a reanalysis of Ebbinghaus's savings data declines as a power
+function too [@wixted1991]; Wixted's later review finds the exponential describes
+forgetting poorly [@wixted2004, p. 243]. Whether individual memories decay exponentially,
 with the power law an artifact of averaging, is contested [@anderson1999, p. 1136].
 ENGRAM's per-node exponential is a design choice for stationary recency ordering, not a
 claim about human forgetting.
@@ -110,15 +111,17 @@ anchor for ENGRAM's queryable/faded sets; the exponential kernel is ENGRAM's own
 ### 3.4 Truth Maintenance Systems → provenance + retraction cascade
 
 Truth Maintenance Systems attach *justifications* to beliefs. In Doyle's
-justification-based TMS, belief status propagates along dependency links: when a
-justification is withdrawn, dependent beliefs are revised by dependency-directed
-backtracking [@doyle1979]. de Kleer's assumption-based TMS instead labels each datum
+justification-based TMS, each belief is in or out according to its justifications, and
+when a justification no longer holds, the status of the beliefs that depend on it is
+recomputed along the dependency links [@doyle1979]; contradictions are removed by
+dependency-directed backtracking, which adds justifications [@dekleer1986, p. 129]. de Kleer's assumption-based TMS instead labels each datum
 with the assumption sets under which it holds, and so avoids most backtracking and all
-retraction [@dekleer1986, p. 127]. Doyle's mechanism is ENGRAM's `derives_from`
+retraction [@dekleer1986, pp. 127, 129]. Doyle's mechanism is ENGRAM's `derives_from`
 provenance and retraction cascade, decades earlier and in a different field. Of the
 2023–2026 LLM-agent papers we examined, only Wray, Kirk and Laird cite Doyle, and only
 to describe Soar's truth maintenance [@wray2025, sec. 2]; none of the memory systems we
-surveyed (Appendix B) propagates retraction along dependencies. ENGRAM implements TMS-style dependency propagation in typed LLM-agent
+surveyed (Appendix B) automatically propagates retraction along dependencies (Kumiho's
+impact analysis is advisory). ENGRAM implements TMS-style dependency propagation in typed LLM-agent
 memory, and names the lineage it implements.
 
 **→ Ch4 §4.2 + §4.4** (provenance primitives; retraction cascade → Condition 3). [gap

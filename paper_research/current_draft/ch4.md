@@ -82,8 +82,9 @@ substrate is what a typed key-value store with foreign keys lacks.
 **Tradition.** This is the **Truth Maintenance System** move [@doyle1979]:
 justifications attached to beliefs, dependency links the system reasons over — a claim
 that knows what it rests on. The parallel is drawn from Doyle's paper, read first-hand
-in the Ginsberg reprint (Appendix A; bibliography). The gap is a separate finding: none
-of the 2023–2026 LLM-agent-memory papers we examined cites Doyle (§3.4).
+in the Ginsberg reprint (Appendix A; bibliography). The gap is a separate finding: of
+the 2023–2026 LLM-agent papers we examined, only Wray, Kirk and Laird cite Doyle, and
+only for Soar's truth maintenance (§3.4).
 
 These primitives are the precondition for everything below: a correction cannot
 cascade (§4.4) through a graph that does not record what depends on what, and the

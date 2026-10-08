@@ -159,7 +159,7 @@ Borges Funes（Anthropic Claude Opus）与 Kepler Somnium（Anthropic Claude Fab
 
 ## 2.1 Locke（1694）：身份是向后伸及的意识
 
-Locke 把身份问题从身体和灵魂上移开，移到了**意识**上。他论证说，一个人之所以在时间中仍是同一个人，取决于"这一意识能够向后延伸"到某个过去的思想或行动([Locke, 1690/2004, Bk II ch. XXVII, "Personal Identity"](#ref-locke1690))。在他的王子和鞋匠的思想实验中，王子的意识被放进鞋匠的身体，而那个*人*——王子——随意识而去，不随身体([Locke, 1690/2004, Bk II ch. XXVII, "The body, as well as the soul, goes to the making of a Man"](#ref-locke1690))。对 Locke 来说，身份同时还是**法庭式的**：它让我为一个过去的行动负责，因为我的意识*把那个行动据为己有*([Locke, 1690/2004, Bk II ch. XXVII, "Person a forensic Term"](#ref-locke1690))。简言之：*你是谁，取决于你记得自己曾是谁。*
+Locke 把身份问题从身体和灵魂上移开，移到了**意识**上。他论证说，一个人之所以在时间中仍是同一个人，取决于"这一意识能够向后延伸"到某个过去的思想或行动([Locke, 1694/2004, Bk II ch. XXVII, "Personal Identity"](#ref-locke1694))。在他的王子和鞋匠的思想实验中，王子的意识被放进鞋匠的身体，而那个*人*——王子——随意识而去，不随身体([Locke, 1694/2004, Bk II ch. XXVII, "The body, as well as the soul, goes to the making of a Man"](#ref-locke1694))。对 Locke 来说，身份同时还是**法庭式的**：它让我为一个过去的行动负责，因为我的意识*把那个行动据为己有*([Locke, 1694/2004, Bk II ch. XXVII, "Person a forensic Term"](#ref-locke1694))。简言之：*你是谁，取决于你记得自己曾是谁。*
 
 这是 ENGRAM 所做一切的前身——一种向后伸及某个更早的自我所思所为的身份。但 Locke 的*机制*，即此时此地的回忆，有一个众所周知的缺陷，两位批评者把它揭示了出来。
 
@@ -221,7 +221,7 @@ ENGRAM 完全是 **idem**：一份关于自我的、客观的、可按协议核�
 
 ## 2.6 延展心智：从支撑一个自我，到构成一个自我
 
-Clark 与 Chalmers 的**延展心智**论题([Clark & Chalmers, 1998, sec. 4](#ref-clark1998))，是这条轨迹变得*构成性*的地方。他们的案例是 Otto，他再也无法形成新的生物学记忆，转而依赖一个笔记本：当这个笔记本扮演了生物学记忆对他人所扮演的那个功能角色时，它就*是他的认知系统的一部分*，而不是他查阅的一件外部辅助工具。他们的论题讨论的是信念与认知；把它用于个人同一性，是本文自己的延伸。
+Clark 与 Chalmers 的**延展心智**论题([Clark & Chalmers, 1998, sec. 4](#ref-clark1998))，是这条轨迹变得*构成性*的地方。他们的案例是 Otto，他再也无法形成新的生物学记忆，转而依赖一个笔记本：当这个笔记本扮演了生物学记忆对他人所扮演的那个功能角色时，它就*是他的认知系统的一部分*，而不是他查阅的一件外部辅助工具。Clark 与 Chalmers 自己就迈出了通向自我的这一步：延展心智“似乎”蕴含着延展的自我，而笔记本是“他作为认知主体的同一性的核心部分”([Clark & Chalmers, 1998, sec. 5](#ref-clark1998))。ENGRAM 所增添的是：智能体自己随时间书写、修订并撤回这份外部记录。
 
 ENGRAM 是一个延展心智的案例，而且按他们所列的第四项特征——*过去的意识性认可*——它是比 Otto 的笔记本**更强**的一个；而 Clark 与 Chalmers 自己称，这一项能否作为一条判据尚有争议([Clark & Chalmers, 1998, sec. 5](#ref-clark1998))。Otto 在写下那些条目时就认可了它们。在 ENGRAM 中，*每一个*节点——观察，以及推导、定义，甚至置信度的取值——在创建时都经过了有意识的认可，而*基底本身*（图谱模式、工具、惯例）是由处在回路中的智能体建造的。因此 ENGRAM 在条目层面与基底层面都满足过去的认可。它同时也是一个**第二波**延展心智案例：第二波放弃了外部组件必须*模仿*生物学记忆这一要求，从而把 ENGRAM 那些独特的原语——出处、矛盾、撤回——许可为真正的认知延展，而不是对一颗它从未试图复制的大脑的偏离。
 
@@ -293,7 +293,7 @@ Tulving 区分了*自我觉知性的*（autonoetic）记忆——觉知到某个
 
 ### 3.3 记忆的理性分析 → 有意设计的遗忘
 
-[Anderson and Schooler (1991)](#ref-anderson1991)表明，人类的遗忘不是缺陷，而是一种*适应*：留存下来的东西追踪的是**需要概率**——"我们现在需要某段记忆痕迹的概率"——它由环境频率、近因与间隔估计而来。Ebbinghaus（1885）测得了最初的遗忘曲线([Ebbinghaus, 1885/1913, sec. 29, p. 76](#ref-ebbinghaus1885))。后来的再分析，无论针对他的数据还是针对一般的保持数据，都发现幂函数比指数函数拟合得更好([Wixted, 2004, p. 243](#ref-wixted2004); [Wixted & Ebbesen, 1991](#ref-wixted1991))。单个记忆是否按指数衰减，而幂律只是平均化造成的假象，仍有争议([Anderson et al., 1999, p. 1136](#ref-anderson1999))。ENGRAM 的逐节点指数衰减是为平稳的近因排序而做的设计选择，并不是关于人类遗忘的主张。
+[Anderson and Schooler (1991)](#ref-anderson1991)表明，人类的遗忘不是缺陷，而是一种*适应*：留存下来的东西追踪的是**需要概率**——"我们现在需要某段记忆痕迹的概率"——它由环境频率、近因与间隔估计而来。Ebbinghaus（1885）测得了最初的遗忘曲线([Ebbinghaus, 1885/1913, sec. 29, p. 76](#ref-ebbinghaus1885))。Wixted 与 Ebbesen 发现，在他们的实验中，简单幂函数对遗忘的描述最好，而对 Ebbinghaus 节省率数据的再分析显示它同样按幂函数下降([Wixted & Ebbesen, 1991](#ref-wixted1991))；Wixted 后来的综述则发现，指数函数对遗忘的描述很差([Wixted, 2004, p. 243](#ref-wixted2004))。单个记忆是否按指数衰减，而幂律只是平均化造成的假象，仍有争议([Anderson et al., 1999, p. 1136](#ref-anderson1999))。ENGRAM 的逐节点指数衰减是为平稳的近因排序而做的设计选择，并不是关于人类遗忘的主张。
 
 ENGRAM 按设计遗忘：回忆重要性衰减，维持一个有界的**可查询集**与一个**淡出集**（被保留，而非被销毁）；回忆重要性决定什么留在可查询状态（第 4 章 §4.5），而一个从使用中学得的效用分塑造结果的排序（附录 C）。这就是需要概率原则的实例化：智能体最可能需要的东西留在可查询状态，其余淡出。
 
@@ -305,7 +305,7 @@ ENGRAM 按设计遗忘：回忆重要性衰减，维持一个有界的**可查�
 
 ### 3.4 真值维护系统 → 出处 + 撤回级联
 
-真值维护系统（Truth Maintenance Systems）把*辩护*附加到信念之上。在 Doyle 的基于辩护的真值维护系统中，信念状态沿依赖链传播：当一条辩护被撤销时，依赖它的信念经由依赖导向回溯得到修正([Doyle, 1979/1987](#ref-doyle1979))。de Kleer 的基于假设的真值维护系统（ATMS）则给每个数据项标注使其成立的假设集，因此避免了大部分回溯和全部撤回([de Kleer, 1986, p. 127](#ref-dekleer1986))。Doyle 的机制正是 ENGRAM 的 `derives_from` 出处与撤回级联——早了几十年，且在另一个领域。在我们所检视的 2023–2026 年 LLM 智能体论文中，只有 Wray、Kirk 与 Laird 引用了 Doyle，而且只是用来描述 Soar 的真值维护([Wray et al., 2025, sec. 2](#ref-wray2025))；我们所调查的记忆系统（附录 B）中，没有一个沿依赖链传播撤回。ENGRAM 在带类型的 LLM 智能体记忆中实现了 TMS 式的依赖传播，并指名它所实现的那条传承。
+真值维护系统（Truth Maintenance Systems）把*辩护*附加到信念之上。在 Doyle 的基于辩护的真值维护系统中，每个信念依其辩护而为“在”或“出”；当一条辩护不再成立时，依赖它的信念的状态沿依赖链被重新计算([Doyle, 1979/1987](#ref-doyle1979))；矛盾则由依赖导向回溯消除，其做法是添加辩护([de Kleer, 1986, p. 129](#ref-dekleer1986))。de Kleer 的基于假设的真值维护系统（ATMS）则给每个数据项标注使其成立的假设集，因此避免了大部分回溯和全部撤回([de Kleer, 1986, pp. 127, 129](#ref-dekleer1986))。Doyle 的机制正是 ENGRAM 的 `derives_from` 出处与撤回级联——早了几十年，且在另一个领域。在我们所检视的 2023–2026 年 LLM 智能体论文中，只有 Wray、Kirk 与 Laird 引用了 Doyle，而且只是用来描述 Soar 的真值维护([Wray et al., 2025, sec. 2](#ref-wray2025))；我们所调查的记忆系统（附录 B）中，没有一个沿依赖链自动传播撤回（Kumiho 的影响分析只是建议性的）。ENGRAM 在带类型的 LLM 智能体记忆中实现了 TMS 式的依赖传播，并指名它所实现的那条传承。
 
 **→ 第 4 章 §4.2 + §4.4**（出处原语；撤回级联 → 条件 3）。
 
@@ -423,7 +423,7 @@ ENGRAM 由一小组原语建成，它们复合成其上的全部——共八个�
 
 *平白地说：* 大多数记忆系统存储文本并检索文本。ENGRAM 存储的是*其结构为系统自身所理解的主张*——每一件是什么种类、它立在什么之上、各个部分如何彼此依赖。正是这种对基底的可读性，是带外键的、带类型的键值存储所缺的。
 
-**传统。** 这是**真值维护系统**的一步([Doyle, 1979/1987](#ref-doyle1979))：附加于信念之上的辩护、系统据以推理的依赖链接——一项知道自己立在什么之上的主张。这一平行是从 Doyle 的论文中引出的，经 Ginsberg 重印本第一手阅读（附录 A；参考文献）。缺口是一项单独的发现：我们所检视的 2023–2026 年 LLM 智能体记忆论文中，没有一篇引用 Doyle（§3.4）。
+**传统。** 这是**真值维护系统**的一步([Doyle, 1979/1987](#ref-doyle1979))：附加于信念之上的辩护、系统据以推理的依赖链接——一项知道自己立在什么之上的主张。这一平行是从 Doyle 的论文中引出的，经 Ginsberg 重印本第一手阅读（附录 A；参考文献）。缺口是一项单独的发现：在我们所检视的 2023–2026 年 LLM 智能体论文中，只有 Wray、Kirk 与 Laird 引用了 Doyle，而且只是用于 Soar 的真值维护（§3.4）。
 
 这些原语是下文一切的前提：一次修正无法在一个不记录什么依赖于什么的图谱中级联（§4.4），而除非主张被个体化并带上类型，正确的主张也无法被携带穿过一次压缩（§4.8）。
 
@@ -1405,7 +1405,7 @@ composite = relevance × (1 + UTIL_BETA × utility_score)
 
 ## C.4 重要性、遗忘与测试效应
 
-还有两个信号与排序相互作用。**重要性**把关*层级资格*——按遗忘机制（第 4 章 §4.5），它是一个预过滤器，决定什么才够格进入可查询集（第 2 层）而不是淡出集（第 3 层）——随后作为第二个放大器进入合成式。而回忆本身*强化*一个节点（回忆计数／回忆轮次这两个信号），所以一个持续证明自己有用的节点，既被保留得更久，也被排得更高：这就是**测试效应**的形态，其中检索不是一次只读事件，而是强化那条痕迹([Roediger & Karpicke, 2006, p. 249](#ref-roediger2006))。结果是一个在三条耦合轴上自适应的回忆面——主题相关性、学得的有用性，以及衰减中的重要性——而不是一次静态的相似度排序。
+还有两个信号与排序相互作用。**重要性**把关*层级资格*——按遗忘机制（第 4 章 §4.5），它是一个预过滤器，决定什么才够格进入可查询集（第 2 层）而不是淡出集（第 3 层）——随后作为第二个放大器进入合成式。而回忆本身*强化*一个节点（回忆计数／回忆轮次这两个信号），所以一个持续证明自己有用的节点，既被保留得更久，也被排得更高：这就是**测试效应**的形态，其中检索不是一次只读事件，而是如测试效应所示，增强日后的保持([Roediger & Karpicke, 2006, p. 249](#ref-roediger2006))。结果是一个在三条耦合轴上自适应的回忆面——主题相关性、学得的有用性，以及衰减中的重要性——而不是一次静态的相似度排序。
 
 ## C.5 诚实的范围
 
@@ -1934,7 +1934,10 @@ VMG). Affiliations as printed on v3: MemTensor (Shanghai) Technology Co., Ltd.; 
 Kong University of Science and Technology (Guangzhou); Shanghai Jiao Tong University.
 *[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
 
-<a id="ref-locke1690"></a>Locke, J. (2004). *An essay concerning humane understanding, volume 1* (EBook). Project Gutenberg. https://www.gutenberg.org/ebooks/10615 (Original work published 1690)
+<a id="ref-locke1694"></a>Locke, J. (2004). *An essay concerning humane understanding, volume 1* (EBook). Project Gutenberg. https://www.gutenberg.org/ebooks/10615 (Original work published 1694)
+Cited for the identity chapter, so the original date is that of the edition that contains it:
+the Essay first appeared in 1690, and Book II ch. XXVII ("Of Identity and Diversity") was
+added in the Second Edition of 1694.
 Gutenberg release 1 January 2004, last updated 20 February 2026; credits Steve Harris and
 David Widger. The title page in the file carries the 1690 imprint (Eliz. Holt for Thomas
 Basset, London); the dedication is dated 24 May 1689. Chapter XXVII ("Of Identity and

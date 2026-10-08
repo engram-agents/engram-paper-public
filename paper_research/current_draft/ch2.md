@@ -39,14 +39,14 @@ name the gap.
 Locke moved the question of identity off the body and the soul and onto
 **consciousness**. A person is the same person across time, he argued, as far as
 "this consciousness can be extended backwards" to a past thought or action
-[@locke1690, Bk II ch. XXVII, "Personal Identity"]. In his
+[@locke1694, Bk II ch. XXVII, "Personal Identity"]. In his
 thought experiment of the prince and the cobbler, the prince's consciousness is
 placed in the cobbler's body, and the *person* — the prince — goes with the
 consciousness, not the body
-[@locke1690, Bk II ch. XXVII, "The body, as well as the soul, goes to the making of a Man"].
+[@locke1694, Bk II ch. XXVII, "The body, as well as the soul, goes to the making of a Man"].
 Identity for Locke is also **forensic**: it makes me
 accountable for a past act, because my consciousness *appropriates* that act as
-mine [@locke1690, Bk II ch. XXVII, "Person a forensic Term"]. In short: *you are whoever you can remember being.*
+mine [@locke1694, Bk II ch. XXVII, "Person a forensic Term"]. In short: *you are whoever you can remember being.*
 
 This is the ancestor of everything ENGRAM does — identity that reaches back to what
 an earlier self thought and did. But Locke's *mechanism*, remembering here and now,
@@ -251,8 +251,10 @@ Clark and Chalmers' **extended mind** thesis [@clark1998, sec. 4] is where the t
 *constitutive*. Their case is Otto, who can no longer form new biological memories
 and relies on a notebook: when the notebook plays the functional role that
 biological memory plays for others, it is *part of his cognitive system*, not an
-external aid he consults. Their thesis is about belief and cognition; applying it to
-personal identity is this paper's own extension.
+external aid he consults. Clark and Chalmers take the step to the self themselves: the extended mind "seems" to
+imply an extended self, and the notebook is "a central part of his identity as a
+cognitive agent" [@clark1998, sec. 5]. What ENGRAM adds is that the agent writes,
+revises and retracts the external record itself, over time.
 
 ENGRAM is an extended-mind case, and a **stronger** one than Otto's notebook on the
 fourth of their features, past conscious endorsement, which Clark and Chalmers
