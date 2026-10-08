@@ -149,7 +149,7 @@ entity-edges cannot reference other edges, so there is nothing to cascade throug
 
 ## B.3 Resolve-by-overwrite or by-someone-else (external delegation)
 
-### Mem0 v3 (docs.mem0.ai migration guide) [@memzero2026a] — **(X) external delegation**
+### Mem0 v3 (docs.mem0.ai migration guide, as of 2026-05-12) [@memzero2026a] — **(X) external delegation**
 The clearest external-delegation evidence in the survey. v3 is add-only;
 contradictions coexist and are sorted out at read time.
 
@@ -233,12 +233,13 @@ A survey, not a system: it names contradiction-handling as something robust syst
 TierMem's write-back has a step named Conflict Retrieval, but it only retrieves the
 most similar existing summary units; an LLM memory manager then SKIPs a fact already
 entailed, UPDATEs a vague entry with added detail (merged text that inherits
-provenance), or ADDs a distinct event. No step detects or resolves a contradiction,
+provenance), or ADDs a distinct event (the page says the manager outputs "one of four
+actions" but names only these three). None of the named steps detects or resolves a contradiction,
 and nothing marks or revisits downstream claims [@zhu2026, App. A.6, p. 12].
 First-hand-read finding: "No
 foundational-retraction-flagging mechanism exists. When a Tier-1 summary [TierMem's own tiering, unrelated to Ch4 §4.5's tiers] is UPDATEd,
 there is no cascade to dependent summaries or downstream uses of the old content."
-Verdict: C3 not satisfied — contradiction is absent as a construct; the word 'conflict' names a retrieval step.
+Verdict: C3 not satisfied — in the steps described, contradiction is absent as a construct; the word 'conflict' names a retrieval step.
 
 ---
 

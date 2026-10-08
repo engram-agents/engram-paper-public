@@ -350,7 +350,7 @@ synthesizing claim and points there.
 | Letta | No — no claim structure (strings) [@letta2025; @packer2023, p. 2; @lettaai2026] |
 | Anthropic memory tool | No — no claim structure (manual coherence) [@claudedocs2026] |
 | Memory survey 2026 | No — named as aspiration, no implementation |
-| TierMem | No — contradiction not a construct (its step named 'Conflict Retrieval' only retrieves similar summary units for a merge decision) [@zhu2026, App. A.6, p. 12] |
+| TierMem | No — no contradiction construct described (its step named 'Conflict Retrieval' only retrieves similar summary units for a merge decision) [@zhu2026, App. A.6, p. 12] |
 | **ENGRAM** | **Yes** — strict satisfaction, sole satisfier |
 
 Appendix B gives each verdict's evidence and quotes.

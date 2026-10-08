@@ -1382,7 +1382,7 @@ synthesizing claim and points there.
 | Letta | No — no claim structure (strings) ([Letta, 2025](#ref-letta2025); [letta-ai, n.d.](#ref-lettaai2026); [Packer et al., 2023, p. 2](#ref-packer2023)) |
 | Anthropic memory tool | No — no claim structure (manual coherence) ([*Memory Tool*, n.d.](#ref-claudedocs2026)) |
 | Memory survey 2026 | No — named as aspiration, no implementation |
-| TierMem | No — contradiction not a construct (its step named 'Conflict Retrieval' only retrieves similar summary units for a merge decision) ([Zhu et al., 2026, App. A.6, p. 12](#ref-zhu2026)) |
+| TierMem | No — no contradiction construct described (its step named 'Conflict Retrieval' only retrieves similar summary units for a merge decision) ([Zhu et al., 2026, App. A.6, p. 12](#ref-zhu2026)) |
 | **ENGRAM** | **Yes** — strict satisfaction, sole satisfier |
 
 Appendix B gives each verdict's evidence and quotes.
@@ -3332,7 +3332,7 @@ was on our radar.
 | GAM ([Wu et al., 2026, arXiv 2604.12285](#ref-wu2026)) | 2026-04-14 | 25 days **after** | 5 days after |
 | SCM ([Shinde, 2026, arXiv 2604.20943](#ref-shinde2026)) | 2026-04-22 | 33 days **after** | 13 days after |
 | VMG survey ([Lin et al., 2026, arXiv 2604.16548, v2 of 2026-06-11](#ref-lin2026)) | 2026-06 (VMG first appears in v2; v1, April 2026, is a differently titled draft) | **after** | after |
-| Mem0g / Zep / A-MEM ([Chhikara et al., 2025](#ref-chhikara2025); [Rasmussen et al., 2025](#ref-rasmussen2025); [Xu et al., 2025](#ref-xu2025)) | 2025 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) (Zep and Mem0g handle conflicts at write time; A-MEM's memory evolution updates the context and tags of existing notes ([Xu et al., 2025, sec. 3.3, p. 4](#ref-xu2025)); none cascades) | predate |
+| Mem0g / Zep / A-MEM ([Chhikara et al., 2025](#ref-chhikara2025); [Rasmussen et al., 2025](#ref-rasmussen2025); [Xu et al., 2025](#ref-xu2025)) | 2025 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) (Zep and Mem0g handle conflicts at write time; A-MEM's memory evolution updates the context and tags of existing notes ([Xu et al., 2025, sec. 3.3, pp. 4–5](#ref-xu2025)); none cascades) | predate |
 
 The two structurally-closest systems (Kumiho, SCM) both surface in March–April 2026 —
 concurrent with, not predating-by-much, ENGRAM's ideation. The older systems lack the
@@ -3533,7 +3533,7 @@ entity-edges cannot reference other edges, so there is nothing to cascade throug
 
 ## B.3 Resolve-by-overwrite or by-someone-else (external delegation)
 
-### Mem0 v3 (docs.mem0.ai migration guide) ([Mem0, n.d.-a](#ref-memzero2026a)) — **(X) external delegation**
+### Mem0 v3 (docs.mem0.ai migration guide, as of 2026-05-12) ([Mem0, n.d.-a](#ref-memzero2026a)) — **(X) external delegation**
 The clearest external-delegation evidence in the survey. v3 is add-only;
 contradictions coexist and are sorted out at read time.
 
@@ -3617,12 +3617,13 @@ A survey, not a system: it names contradiction-handling as something robust syst
 TierMem's write-back has a step named Conflict Retrieval, but it only retrieves the
 most similar existing summary units; an LLM memory manager then SKIPs a fact already
 entailed, UPDATEs a vague entry with added detail (merged text that inherits
-provenance), or ADDs a distinct event. No step detects or resolves a contradiction,
+provenance), or ADDs a distinct event (the page says the manager outputs "one of four
+actions" but names only these three). None of the named steps detects or resolves a contradiction,
 and nothing marks or revisits downstream claims ([Zhu et al., 2026, App. A.6, p. 12](#ref-zhu2026)).
 First-hand-read finding: "No
 foundational-retraction-flagging mechanism exists. When a Tier-1 summary [TierMem's own tiering, unrelated to Ch4 §4.5's tiers] is UPDATEd,
 there is no cascade to dependent summaries or downstream uses of the old content."
-Verdict: C3 not satisfied — contradiction is absent as a construct; the word 'conflict' names a retrieval step.
+Verdict: C3 not satisfied — in the steps described, contradiction is absent as a construct; the word 'conflict' names a retrieval step.
 
 ---
 

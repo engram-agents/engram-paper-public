@@ -158,7 +158,7 @@
 
 ## B.3 靠覆盖、或靠别人来解决（外部委托）
 
-### Mem0 v3（docs.mem0.ai migration guide）[@memzero2026a] —— **（X）外部委托**
+### Mem0 v3（docs.mem0.ai migration guide，截至 2026-05-12）[@memzero2026a] —— **（X）外部委托**
 本次调查中最清楚的外部委托证据。v3 是只增的；矛盾共存，并在读取时被理清。
 
 - *paper-verbatim*："Retrieval handles ranking — the most relevant, current information surfaces first."（中文解说：检索负责排序——最相关、最新的信息最先浮现。）[@memzero2026a, step 4 Tip, Internet Archive snapshot of 2026-05-14]
@@ -203,7 +203,7 @@
 - *paper-verbatim*（他们的 §9.3）："Future systems need external validation... uncertainty quantification... adversarial probing... and expiration policies"（中文解说：未来的系统需要外部验证……不确定性量化……对抗性探测……以及过期策略）—— 所提出的修补全是**外部**干预，而不是结构性原语。这篇综述指出了 C3 问题，却引用了零个解决方案。
 
 ### TierMem[@zhu2026] —— **（N）矛盾不是构造，无级联**
-TierMem 的写回有一个名为 Conflict Retrieval 的步骤，但它只检索与新事实最相似的既有摘要单元；随后一个 LLM 记忆管理器在 SKIP（该事实已被蕴含）、UPDATE（为一条含糊的条目补充细节；合并后的文本继承出处）与 ADD（一个不同的事件）之中选择。没有任何一步检出或解决矛盾，也没有任何东西标记或回访下游的主张[@zhu2026, App. A.6, p. 12]。第一手阅读发现：没有任何根基性撤回的标记机制存在。当一份第 1 层摘要被 UPDATE 时（此处所说的分层是 TierMem 自己的分层，与第 4 章 §4.5 的分层无关），没有级联通往依赖它的摘要，也没有级联通往旧内容的下游用途。判定：C3 未被满足——矛盾作为构造是缺位的；"conflict"一词所指称的是一个检索步骤。
+TierMem 的写回有一个名为 Conflict Retrieval 的步骤，但它只检索与新事实最相似的既有摘要单元；随后一个 LLM 记忆管理器在 SKIP（该事实已被蕴含）、UPDATE（为一条含糊的条目补充细节；合并后的文本继承出处）与 ADD（一个不同的事件）之中选择（该页称管理器输出“四种动作之一”，但只列出这三种）。所列步骤中没有任何一步检出或解决矛盾，也没有任何东西标记或回访下游的主张[@zhu2026, App. A.6, p. 12]。第一手阅读发现：没有任何根基性撤回的标记机制存在。当一份第 1 层摘要被 UPDATE 时（此处所说的分层是 TierMem 自己的分层，与第 4 章 §4.5 的分层无关），没有级联通往依赖它的摘要，也没有级联通往旧内容的下游用途。判定：C3 未被满足——在所描述的步骤中，矛盾作为构造是缺位的；"conflict"一词所指称的是一个检索步骤。
 
 ---
 

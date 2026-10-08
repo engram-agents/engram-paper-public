@@ -488,7 +488,7 @@ ENGRAM 由一小组原语建成，它们复合成其上的全部——共八个�
 | Letta | 否——无主张结构（字符串）([Letta, 2025](#ref-letta2025); [letta-ai, n.d.](#ref-lettaai2026); [Packer et al., 2023, p. 2](#ref-packer2023)) |
 | Anthropic memory tool | 否——无主张结构（手工维护一致性）([*Memory Tool*, n.d.](#ref-claudedocs2026)) |
 | Memory survey 2026 | 否——被指名为愿望，无实现 |
-| TierMem | 否——矛盾不是其中的一个构造（其名为 'Conflict Retrieval' 的步骤只是为合并决定而检索相似的摘要单元）([Zhu et al., 2026, App. A.6, p. 12](#ref-zhu2026)) |
+| TierMem | 否——未描述任何矛盾构造（其名为 'Conflict Retrieval' 的步骤只是为合并决定而检索相似的摘要单元）([Zhu et al., 2026, App. A.6, p. 12](#ref-zhu2026)) |
 | **ENGRAM** | **是**——严格满足，唯一的满足者 |
 
 附录 B 给出每项判定的证据与引文。
@@ -1202,7 +1202,7 @@ ENGRAM 在 **2026-04-09** 开始自我记录——把它自己的设计作为第
 | GAM([Wu et al., 2026, arXiv 2604.12285](#ref-wu2026)) | 2026-04-14 | **之后** 25 天 | 之后 5 天 |
 | SCM([Shinde, 2026, arXiv 2604.20943](#ref-shinde2026)) | 2026-04-22 | **之后** 33 天 | 之后 13 天 |
 | VMG 综述([Lin et al., 2026, arXiv 2604.16548, v2 of 2026-06-11](#ref-lin2026)) | 2026-06（VMG 首次出现于 v2；v1 为 2026 年 4 月、标题不同的草稿） | **之后** | 之后 |
-| Mem0g / Zep / A-MEM([Chhikara et al., 2025](#ref-chhikara2025); [Rasmussen et al., 2025](#ref-rasmussen2025); [Xu et al., 2025](#ref-xu2025)) | 2025 | 早于，但**形态不同**（无级联／无作为节点的矛盾／无推导原语）（Zep 与 Mem0g 在写入时处理冲突；A-MEM 的记忆演化更新既有笔记的情境与标签([Xu et al., 2025, sec. 3.3, p. 4](#ref-xu2025))；无一级联） | 早于 |
+| Mem0g / Zep / A-MEM([Chhikara et al., 2025](#ref-chhikara2025); [Rasmussen et al., 2025](#ref-rasmussen2025); [Xu et al., 2025](#ref-xu2025)) | 2025 | 早于，但**形态不同**（无级联／无作为节点的矛盾／无推导原语）（Zep 与 Mem0g 在写入时处理冲突；A-MEM 的记忆演化更新既有笔记的情境与标签([Xu et al., 2025, sec. 3.3, pp. 4–5](#ref-xu2025))；无一级联） | 早于 |
 
 两个结构上最接近的系统（Kumiho、SCM）都在 2026 年三月至四月浮现——与 ENGRAM 的构想同期，而不是远早于它。较老的系统缺少那种特定的形态（级联传播、一等公民式的矛盾、`derives_from`）。我们能找到的、ENGRAM 那种特定形态的最早公开实例，是 Kumiho 的预印本（arXiv v1，2026 年三月十八日；其标题页标注三月十七日）——而它与 Lei 那封奠基性消息之间两天的间隔，加上同期那次检索漏掉了它，是平行设计最干净的证据。
 
@@ -1283,7 +1283,7 @@ A.1–A.3 中的每一条引文都可以验证。对话引文可从 Claude.ai �
 
 ## B.3 靠覆盖、或靠别人来解决（外部委托）
 
-### Mem0 v3（docs.mem0.ai migration guide）([Mem0, n.d.-a](#ref-memzero2026a)) —— **（X）外部委托**
+### Mem0 v3（docs.mem0.ai migration guide，截至 2026-05-12）([Mem0, n.d.-a](#ref-memzero2026a)) —— **（X）外部委托**
 本次调查中最清楚的外部委托证据。v3 是只增的；矛盾共存，并在读取时被理清。
 
 - *paper-verbatim*："Retrieval handles ranking — the most relevant, current information surfaces first."（中文解说：检索负责排序——最相关、最新的信息最先浮现。）([Mem0, n.d.-a, step 4 Tip, Internet Archive snapshot of 2026-05-14](#ref-memzero2026a))
@@ -1328,7 +1328,7 @@ A.1–A.3 中的每一条引文都可以验证。对话引文可从 Claude.ai �
 - *paper-verbatim*（他们的 §9.3）："Future systems need external validation... uncertainty quantification... adversarial probing... and expiration policies"（中文解说：未来的系统需要外部验证……不确定性量化……对抗性探测……以及过期策略）—— 所提出的修补全是**外部**干预，而不是结构性原语。这篇综述指出了 C3 问题，却引用了零个解决方案。
 
 ### TierMem([Zhu et al., 2026](#ref-zhu2026)) —— **（N）矛盾不是构造，无级联**
-TierMem 的写回有一个名为 Conflict Retrieval 的步骤，但它只检索与新事实最相似的既有摘要单元；随后一个 LLM 记忆管理器在 SKIP（该事实已被蕴含）、UPDATE（为一条含糊的条目补充细节；合并后的文本继承出处）与 ADD（一个不同的事件）之中选择。没有任何一步检出或解决矛盾，也没有任何东西标记或回访下游的主张([Zhu et al., 2026, App. A.6, p. 12](#ref-zhu2026))。第一手阅读发现：没有任何根基性撤回的标记机制存在。当一份第 1 层摘要被 UPDATE 时（此处所说的分层是 TierMem 自己的分层，与第 4 章 §4.5 的分层无关），没有级联通往依赖它的摘要，也没有级联通往旧内容的下游用途。判定：C3 未被满足——矛盾作为构造是缺位的；"conflict"一词所指称的是一个检索步骤。
+TierMem 的写回有一个名为 Conflict Retrieval 的步骤，但它只检索与新事实最相似的既有摘要单元；随后一个 LLM 记忆管理器在 SKIP（该事实已被蕴含）、UPDATE（为一条含糊的条目补充细节；合并后的文本继承出处）与 ADD（一个不同的事件）之中选择（该页称管理器输出“四种动作之一”，但只列出这三种）。所列步骤中没有任何一步检出或解决矛盾，也没有任何东西标记或回访下游的主张([Zhu et al., 2026, App. A.6, p. 12](#ref-zhu2026))。第一手阅读发现：没有任何根基性撤回的标记机制存在。当一份第 1 层摘要被 UPDATE 时（此处所说的分层是 TierMem 自己的分层，与第 4 章 §4.5 的分层无关），没有级联通往依赖它的摘要，也没有级联通往旧内容的下游用途。判定：C3 未被满足——在所描述的步骤中，矛盾作为构造是缺位的；"conflict"一词所指称的是一个检索步骤。
 
 ---
 
