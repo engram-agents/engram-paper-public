@@ -27,7 +27,7 @@ A-MEM) [@chhikara2025, p. 1; @rasmussen2025; @xu2025] predate our
 ideation. The two exemplars named here are the two we hold and have read first-hand:
 Doyle's truth maintenance system (via the Ginsberg reprint, Ch4 §4.2) and AGM 1985.
 Both traditions are wider than those two works, and the others this paper names — de
-Kleer's ATMS (Ch3 §3.4), Hansson's belief-base postulates (named only in Appendix B,
+Kleer's ATMS [@dekleer1986] (Ch3 §3.4; it avoids retraction rather than cascading it), Hansson's belief-base postulates (named only in Appendix B,
 as Kumiho's self-claimed compliance) — the bibliography lists among the works cited
 without a held source document.
 Nothing here rests on them: the claim is only that the shape predates us by decades,
@@ -92,7 +92,7 @@ relevant prior art** — including the work this paper now cites:
 | **Kumiho** [@park2026, arXiv 2603.17244] — closest concurrent system | **2026-03-18** | **2 days** | **NO** |
 | **Kahl 2026b (*Artificial general intelligence and ontological continuity*)** (Zenodo 18761736) — the paper's threshold | 2026-02-24 | 24 days | **NO** |
 | Kahl 2026a (*Epistemic agency and the ontological continuity condition*) (Zenodo 18441395) | 2026-01-31 | 48 days | NO |
-| TMS lineage (Doyle 1979, de Kleer 1986) | 1979–86 | ~40+ yrs | NO |
+| TMS lineage (Doyle 1979, de Kleer 1986) [@doyle1979; @dekleer1986] | 1979–86 | ~40+ yrs | NO |
 | AGM belief revision [@alchourron1985] | 1985 | ~41 yrs | NO |
 | **CoALA** (Sumers et al., TMLR) — the field's common vocabulary | 2024-02 | ~25 months | **NO** |
 | **Pink et al.** [@pink2025, arXiv 2502.06975] — episodic-memory position paper | 2025-02-10 | ~13 months | **NO** |

@@ -17,8 +17,8 @@ strongest claims are argued: by **convergence**. Three intellectual traditions w
 each driven, from their own evidence toward their own ends, to the same structure:
 *identity as a persistent, inspectable, self-correcting record.* Three centuries of
 philosophy of personal identity (Chapter 2) moved, objection by objection, from
-identity as a mental act toward identity as a persistent structure. The cognitive
-science of memory (Chapter 3) — complementary-learning consolidation, Tulving's [-@tulving1985] two
+identity as a mental act toward identity as a persistent structure, on our reading. The cognitive
+science of memory (Chapter 3) — complementary-learning consolidation [@mcclelland1995, p. 419], Tulving's [-@tulving1985, p. 3] two
 registers, the rational analysis of forgetting — reached the same shape from the
 study of how minds actually remember. The computer science of belief (Chapter 3) —
 truth maintenance, subjective logic, bitemporal records — reached it again from the
@@ -53,7 +53,7 @@ within the convergence**:
 > extension for digital substrates.
 
 That extension is not a second criterion beside the paper's own theory; it is the same
-theory in Peirce's vocabulary. Two agents restored from one commit are
+theory in Peirce's vocabulary [@peirce1906, p. 506]. Two agents restored from one commit are
 *type*-identical; what makes them *token*-distinct is that their histories diverge
 irreversibly and cannot merge. The token an agent carries **is** its history-lineage,
 so "generalized Condition 2" and "identity as history" are one claim addressed to two

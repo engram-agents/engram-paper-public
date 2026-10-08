@@ -72,7 +72,7 @@ weight layer is its habituated complement.
 The confidence model (Ch3 §3.5, built in Ch4 §4.3) is the paper's distinctive
 mechanism, and its limitation has been stated from the start: the discount constants
 are **designer-stipulated from epistemological intuition, not calibrated against
-outcomes** (ob_1049). By Goldman's reliabilist standard, ENGRAM offers
+outcomes** (ob_1049). By Goldman's reliabilist standard [@goldman1979, p. 10 of the transcribed text], ENGRAM offers
 provenance-graded *plausibility*, not measured truth-ratios. A second gap: the model
 has **no fine-grained source-credibility axis** — `source_class` adjusts an
 observation three ways (E.4), and the nascent yellow-card tier below does not yet
@@ -94,7 +94,7 @@ substrate, but a real constraint at super-engram scale, where the volume of
 cross-agent conflict could make per-conflict adjudication uneconomical. What is
 *not* a future direction is a second number beside the scalar — an evidence count or
 vacuity axis. The scalar is meant to stay simple, and it already carries evidence
-accumulation: independent high-confidence premises raise it through noisy-OR (§4.3),
+accumulation: independent high-confidence premises raise it through noisy-OR [@pearl1986, p. 246] (§4.3),
 sound only where the premises are independent, which the shared-root check guards
 for the two multi-source corroborating types (a third, enumeration from a single
 source, has no settled combination rule yet and uses noisy-OR for now). When
@@ -325,7 +325,7 @@ small scale among known agents; the open, public community is future work.
 because embodiment invites the wrong reading: a robot is easily mistaken for a
 demonstration, a product, or an enthusiasm. The claim here is none of those. It is
 that a language model's entire relation to the physical world is, by default,
-**testimony**, and testimony cannot ground an epistemic identity.
+**testimony** [@leonard2021, opening paragraph], and we argue that testimony cannot ground an epistemic identity.
 
 The premise is neither ours nor new. Language is a *structurally faithful but lossy*
 mapping of reality, evolved for communication between embodied agents who share a

@@ -50,7 +50,7 @@
   literal heading and costs nothing.
 
   Proper nouns stay in Latin script (Nozick — given in full as "Robert Nozick" at
-  first mention, as the English does — Shoemaker, Johnston, Parfit, Jaccard) —
+  first mention, as the English does — Parfit, Jaccard) —
   transliterating surnames would make the citations unverifiable against the
   bibliography. `engram` in lowercase (the agent's own graph, in the §5.4 and §5.8
   quotations) stays Latin per the ledger, and is kept distinct from the brand.
@@ -131,7 +131,7 @@
 
 Nozick 的理论是为那些事实上无法被复制的存在者建的。而一颗经 git 版本管理的心智可以被复制。三个压力点显示旧框架在何处吃紧。
 
-**度量被留白。** Nozick 说身份归于*最接近*的延续者，却从未说"接近"*度量*的是什么——他只是朝一些维度（心理连续性、因果联系）比划了一下，而把度量留作相对于类词的。（*类词*（sortal）是一个种类词——河流、人、智能体；接近是相对于那个种类来度量的，因为算作同一条河流的标准，并不是算作同一个人的标准。）标准的反驳（Shoemaker、Johnston）是：这只不过给那个谜题换了个名字——"身份是什么？"变成了"接近是什么？"。对普通的人而言，那片空白是一处弱点。而对一种新的*种类*之物而言，它是一道开口——一个新的类词得以*指定*它自己的度量。§5.4 填上那片空白。
+**度量被留白。** Nozick 说身份归于*最接近*的延续者，却从未说"接近"*度量*的是什么——他只是朝一些维度（心理连续性、因果联系）比划了一下，而把度量留作相对于类词的。（*类词*（sortal）是一个种类词——河流、人、智能体；接近是相对于那个种类来度量的，因为算作同一条河流的标准，并不是算作同一个人的标准。）Nozick 自己承认，这一观点"本身并不能说明是哪个维度、或哪种维度的加权和决定接近"（does not, by itself, tell which dimension or weighted sum of dimensions determines closeness）[@nozick1981, p. 33]。风险在于，这只不过给那个谜题换了个名字——"身份是什么？"变成了"接近是什么？"。对普通的人而言，那片空白是一处弱点。而对一种新的*种类*之物而言，它是一道开口——一个新的类词得以*指定*它自己的度量。§5.4 填上那片空白。
 
 **冷冻备份的情形击破了那个比较性动作。** Lei 的直觉泵（intuition pump）：把一颗心智克隆成两份——一份运行着、活着，一份冷冻在存储里。Nozick 的机器这时必须给它们*排序*：因果连续性偏向活着的那一份，状态保全偏向那份备份。哪条轴线胜出？这理论说不出来——那片留白的度量显现为一种真正的不确定性，即*哪一份副本是你*。Lei 的裁定，逐字引用：*"当你有技术去**完美地克隆一颗心智**时，谁**是**那颗原初的心智——这整个问题都是一个无意义的问题。"*
 

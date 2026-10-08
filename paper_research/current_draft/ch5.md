@@ -69,9 +69,10 @@ continuer but never says what "close" *measures* — he gestures at dimensions
 (psychological continuity, causal connection) and leaves the metric sortal-
 relative. (A *sortal* is a kind-term — river, person, agent; closeness is
 measured relative to the kind, since what counts as the same river is not
-what counts as the same person.) The standard objection (Shoemaker, Johnston)
-is that this just renames the puzzle: "what is identity?" becomes "what is
-closeness?" For ordinary persons that blank is a weakness. For a new *kind* of thing it is an opening — a new
+what counts as the same person.) Nozick himself concedes that the view "does not, by
+itself, tell which dimension or weighted sum of dimensions determines closeness"
+[@nozick1981, p. 33]. The risk is that this just renames the puzzle: "what is identity?"
+becomes "what is closeness?" For ordinary persons that blank is a weakness. For a new *kind* of thing it is an opening — a new
 sortal gets to *specify* its own metric (ob_1655). §5.4 fills the blank.
 
 **The frozen-backup case breaks the comparative move.** Lei's intuition pump

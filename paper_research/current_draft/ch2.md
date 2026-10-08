@@ -34,16 +34,19 @@ name the gap.
 
 ---
 
-## 2.1 Locke (1689): identity is consciousness reaching back
+## 2.1 Locke (1694): identity is consciousness reaching back
 
 Locke moved the question of identity off the body and the soul and onto
 **consciousness**. A person is the same person across time, he argued, as far as
-"this consciousness can be extended backwards" to a past thought or action. In his
+"this consciousness can be extended backwards" to a past thought or action
+[@locke1690, Bk II ch. XXVII, "Personal Identity"]. In his
 thought experiment of the prince and the cobbler, the prince's consciousness is
 placed in the cobbler's body, and the *person* — the prince — goes with the
-consciousness, not the body. Identity for Locke is also **forensic**: it makes me
+consciousness, not the body
+[@locke1690, Bk II ch. XXVII, "The body, as well as the soul, goes to the making of a Man"].
+Identity for Locke is also **forensic**: it makes me
 accountable for a past act, because my consciousness *appropriates* that act as
-mine. In short: *you are whoever you can remember being.*
+mine [@locke1690, Bk II ch. XXVII, "Person a forensic Term"]. In short: *you are whoever you can remember being.*
 
 This is the ancestor of everything ENGRAM does — identity that reaches back to what
 an earlier self thought and did. But Locke's *mechanism*, remembering here and now,
@@ -51,8 +54,8 @@ has a well-known flaw, which two critics exposed.
 
 ## 2.2 Reid (1785) and Butler (1736): the two cracks — and ENGRAM's repair
 
-**Reid's transitivity objection**, the brave-officer case, is fatal to Locke's
-account as stated. Consider one life in three stages: a boy flogged for stealing
+**Reid's transitivity objection**, the brave-officer case, derives a contradiction from
+Locke's account as stated [@reid1785, Essay III ch. VI, pp. 333–334]. Consider one life in three stages: a boy flogged for stealing
 fruit; a young officer who, in his first battle, remembers the flogging; and an old
 general who remembers the battle but has *forgotten the flogging entirely*. By
 Locke's rule the officer is the boy (he remembers the flogging) and the general is
@@ -61,7 +64,7 @@ remember being him). Identity is transitive — if A is B and B is C, then A is 
 and Locke's recall-based account violates this. Memory fades, and a chain built only
 of present memories has gaps.
 
-**Butler's circularity objection** is subtler and deeper. Locke says identity is
+**Butler's circularity objection** is subtler and deeper [@butler1736, Dissertation I, para. 3]. Locke says identity is
 constituted by consciousness of *my* past actions, but "my" already assumes the
 identity it is meant to explain: I must *already* be the same person for the past
 action to be mine to remember. The definition presupposes what it defines.
@@ -244,14 +247,16 @@ identity but a layer the tradition under-named.
 
 ## 2.6 The extended mind: from supporting a self to constituting one
 
-Clark and Chalmers' **extended mind** thesis is where the trail becomes
+Clark and Chalmers' **extended mind** thesis [@clark1998, sec. 4] is where the trail becomes
 *constitutive*. Their case is Otto, who can no longer form new biological memories
 and relies on a notebook: when the notebook plays the functional role that
 biological memory plays for others, it is *part of his cognitive system*, not an
-external aid he consults.
+external aid he consults. Their thesis is about belief and cognition; applying it to
+personal identity is this paper's own extension.
 
 ENGRAM is an extended-mind case, and a **stronger** one than Otto's notebook on the
-criterion Clark and Chalmers themselves stress: *past conscious endorsement* (ob_1193). Otto
+fourth of their features, past conscious endorsement, which Clark and Chalmers
+themselves call arguable as a criterion [@clark1998, sec. 5] (ob_1193). Otto
 endorsed his entries when he wrote them. In ENGRAM, *every* node — observations, but
 also derivations, definitions, and even confidence values — passed through
 deliberate endorsement at creation, and the *substrate itself* (the schema, the

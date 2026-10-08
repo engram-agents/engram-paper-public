@@ -92,6 +92,24 @@ references:
   provenance: |-
     Department of Psychology, Carnegie Mellon
     University.
+- id: anderson1999
+  type: article-journal
+  author:
+  - family: Anderson
+    given: J. R.
+  - family: Fincham
+    given: J. M.
+  - family: Douglass
+    given: S.
+  issued:
+    date-parts:
+    - - 1999
+  title: 'Practice and retention: A unifying analysis'
+  container-title: 'Journal of Experimental Psychology: Learning, Memory, and Cognition'
+  volume: '25'
+  issue: '5'
+  page: 1120–1136
+  provenance: Header prints "1999, Vol. 25, No. 5, 1120-1136"; Carnegie Mellon University.
 - id: ashutosh2026
   type: webpage
   author:
@@ -117,6 +135,32 @@ references:
     Byline and date "May 4, 2026" as printed on the page; the page's own metadata shows
     dateModified 2026-10-02. Archived copy is the citation evidence for the sentence
     "Deterministic conflict resolution."
+- id: butler1736
+  type: chapter
+  author:
+  - family: Butler
+    given: J.
+  issued:
+    date-parts:
+    - - 1736
+  title: Of personal identity
+  container-title: The analogy of religion, natural and revealed
+  publisher-place: London
+  page: 301–308
+  URL: https://anglicanhistory.org/butler/analogy/dissertation1.html
+  accessed:
+    date-parts:
+    - - 2026
+      - 10
+      - 8
+  provenance: |-
+    Dissertation I appended to the Analogy. The Project Canterbury page prints "London: 1736, pp
+    301-308" and the heading "DISSERT. I. Of personal Identity". It is a web transcription of that
+    printing, not a facsimile; no page breaks appear inside the text, so passages can only be
+    located by paragraph.
+  metadata_incomplete: |-
+    Metadata incomplete: publisher, and the full title-page wording of the 1736 volume, are not
+    printed on this page. Read against a facsimile before citing page numbers inside 301–308.
 - id: chhikara2025
   type: article
   author:
@@ -139,6 +183,36 @@ references:
     arXiv:2504.19413v1 [cs.CL], 28 Apr 2025. Contact address printed: research@mem0.ai.
   metadata_incomplete: |-
     Metadata incomplete: no affiliations and no venue beyond the arXiv identifier are printed.
+- id: clark1998
+  type: article-journal
+  author:
+  - family: Clark
+    given: A.
+  - family: Chalmers
+    given: D. J.
+  issued:
+    date-parts:
+    - - 1998
+  title: The extended mind
+  container-title: Analysis
+  volume: '58'
+  issue: '1'
+  page: 7–19
+  DOI: 10.1093/analys/58.1.7
+  URL: https://consc.net/papers/extended.html
+  accessed:
+    date-parts:
+    - - 2026
+      - 10
+      - 8
+  provenance: |-
+    Text read: the authors' posted copy at consc.net, which states "Published in Analysis 58:10-23,
+    1998. Reprinted in (P. Grim, ed) The Philosopher's Annual, vol XXI, 1998." Volume 58, issue 1,
+    pages 7-19 and the DOI are from the Crossref record, not from the copy read.
+  metadata_incomplete: |-
+    Metadata incomplete: the copy read prints pages 10-23 while Crossref gives 7-19; neither could be
+    checked against the printed journal page. The copy is unpaginated, so passages are located by
+    section.
 - id: claudedocs2026
   type: webpage
   title: Memory tool
@@ -155,6 +229,25 @@ references:
     Internet Archive snapshot of 2026-05-08) is the citation evidence.
   metadata_incomplete: |-
     Metadata incomplete: no author and no date are printed on the page.
+- id: dekleer1986
+  type: article-journal
+  author:
+  - family: de Kleer
+    given: J.
+  issued:
+    date-parts:
+    - - 1986
+  title: An assumption-based TMS
+  container-title: Artificial Intelligence
+  volume: '28'
+  issue: '2'
+  page: 127–162
+  DOI: 10.1016/0004-3702(86)90080-9
+  URL: https://www.dekleer.org/Publications/An%20Assumption-Based%20TMS.pdf
+  provenance: |-
+    Intelligent Systems Laboratory, Xerox Palo Alto Research Center. Pages print "Artificial
+    Intelligence 28 (1986) 127-162" and "(c) 1986, Elsevier Science Publishers B.V. (North-Holland)".
+    Issue (2) and the DOI are from the Crossref record, not from the pages read.
 - id: doyle1979
   type: chapter
   author:
@@ -201,6 +294,63 @@ references:
     Hong Kong, China.
   metadata_incomplete: |-
     Metadata incomplete: no venue beyond the arXiv identifier is printed.
+- id: ebbinghaus1885
+  type: book
+  author:
+  - family: Ebbinghaus
+    given: H.
+  translator:
+  - family: Ruger
+    given: H. A.
+  - family: Bussenius
+    given: C. E.
+  issued:
+    date-parts:
+    - - 1913
+  original-date:
+    date-parts:
+    - - 1885
+  title: 'Memory: A contribution to experimental psychology'
+  publisher: Teachers College, Columbia University
+  publisher-place: New York
+  collection-title: Columbia University Teachers College Educational Reprints, No. 3
+  provenance: |-
+    Title page: "Memory. A contribution to experimental psychology, by Hermann Ebbinghaus, Privat
+    Docent in Philosophy at the University of Berlin (1885) ... Translated by Henry A. Ruger, Ph.D.
+    ... and Clara E. Bussenius. Published by Teachers College, Columbia University, New York City,
+    1913." The forgetting-curve results are in section 29, pp. 76–79.
+  metadata_incomplete: |-
+    Metadata incomplete: the German original's title and publisher are not printed on the pages
+    read.
+- id: goldman1979
+  type: chapter
+  author:
+  - family: Goldman
+    given: A. I.
+  editor:
+  - family: Pappas
+    given: G.
+  issued:
+    date-parts:
+    - - 1979
+  title: What is justified belief?
+  container-title: Justification and knowledge
+  publisher: Reidel Publishing
+  publisher-place: Boston, MA
+  URL: https://home.csulb.edu/~cwallis/382/readings/382/whatisjustifiedbelief.html
+  accessed:
+    date-parts:
+    - - 2026
+      - 10
+      - 8
+  provenance: |-
+    Read in a web transcription (Cal State Long Beach course readings) whose header reads "In Justification
+    and Knowledge, Pappas, G." as editor, then "Reidel Publishing, Boston, MA, 1979". Place and publisher
+    are as printed there.
+  metadata_incomplete: |-
+    Metadata incomplete: the chapter's page range is not printed in the transcription (internal
+    markers p.3 to p.20 only), and the transcription is not a facsimile. Confirm place and
+    pagination against the printed volume.
 - id: josang2013
   type: manuscript
   author:
@@ -290,6 +440,23 @@ references:
   issue: '7'
   page: 512–534
   DOI: 10.1016/j.tics.2016.05.004
+- id: leonard2021
+  type: entry-encyclopedia
+  author:
+  - family: Leonard
+    given: N.
+  issued:
+    date-parts:
+    - - 2021
+  title: Epistemological problems of testimony
+  container-title: The Stanford encyclopedia of philosophy
+  URL: https://plato.stanford.edu/entries/testimony-episprob/
+  accessed:
+    date-parts:
+    - - 2026
+      - 10
+      - 8
+  provenance: Page header "First published Thu Apr 1, 2021"; author field from the page's citation metadata.
 - id: letta2025
   type: webpage
   author:
@@ -361,6 +528,39 @@ references:
     Kong University of Science and Technology (Guangzhou); Shanghai Jiao Tong University.
   metadata_incomplete: |-
     Metadata incomplete: no venue beyond the arXiv identifier is printed.
+- id: locke1690
+  type: book
+  author:
+  - family: Locke
+    given: J.
+  issued:
+    date-parts:
+    - - 2004
+  original-date:
+    date-parts:
+    - - 1690
+  title: An essay concerning humane understanding, volume 1
+  publisher: Project Gutenberg
+  number: eBook #10615
+  URL: https://www.gutenberg.org/ebooks/10615
+  accessed:
+    date-parts:
+    - - 2026
+      - 10
+      - 8
+  provenance: |-
+    Gutenberg release 1 January 2004, last updated 20 February 2026; credits Steve Harris and
+    David Widger. The title page in the file carries the 1690 imprint (Eliz. Holt for Thomas
+    Basset, London); the dedication is dated 24 May 1689. Chapter XXVII ("Of Identity and
+    Diversity") is, by Locke's own note in this file, "one whole new chapter" added in the Second
+    Edition, so it is not in the 1689/1690 first edition; the SEP "Personal Identity" bibliography
+    gives "2nd ed., first published 1694". The paper therefore dates the chapter 1694, not the
+    book. Section numbers cited are this file's own (for example "Personal Identity" is section 11
+    here, usually II.xxvii.9).
+  metadata_incomplete: |-
+    Metadata incomplete: the file does not say which edition's text it reproduces, and its section
+    numbering differs from the usual II.xxvii.9 / .15 / .26. Cite by chapter and section heading
+    ("Personal Identity", "Person a forensic Term") or re-check against a numbered scholarly edition.
 - id: mcclelland1995
   type: article-journal
   author:
@@ -453,6 +653,25 @@ references:
   provenance_zh: |-
     ISBN 0-674-66448-5 (cloth); 0-674-66479-5 (paper).
     *[书名页与版权页系作为页面图像读取；该来源 PDF 没有文本层。]*
+- id: nuxoll2012
+  type: article-journal
+  author:
+  - family: Nuxoll
+    given: A. M.
+  - family: Laird
+    given: J. E.
+  issued:
+    date-parts:
+    - - 2012
+  title: Enhancing intelligent agents with episodic memory
+  container-title: Cognitive Systems Research
+  volume: 17-18
+  page: 34–48
+  DOI: 10.1016/j.cogsys.2011.10.002
+  provenance: |-
+    University of Michigan, Ann Arbor. Running head "Cognitive Systems Research 17-18 (2012) 34-48";
+    "Available online 31 October 2011"; Action editor: Vasant Honavar. The file was fetched with TLS
+    certificate verification disabled (the host's chain would not verify).
 - id: packer2023
   type: article
   author:
@@ -497,6 +716,34 @@ references:
     First published
     1984; first issued in paperback with corrections 1986; reprinted with further
     corrections 1987. ISBN 0-19-824908-X.
+- id: park2023
+  type: paper-conference
+  author:
+  - family: Park
+    given: J. S.
+  - family: O'Brien
+    given: J. C.
+  - family: Cai
+    given: C. J.
+  - family: Morris
+    given: M. R.
+  - family: Liang
+    given: P.
+  - family: Bernstein
+    given: M. S.
+  issued:
+    date-parts:
+    - - 2023
+  title: 'Generative agents: Interactive simulacra of human behavior'
+  container-title: The 36th Annual ACM Symposium on User Interface Software and Technology (UIST '23)
+  publisher: ACM
+  publisher-place: New York, NY, USA
+  number-of-pages: '22'
+  DOI: 10.1145/3586183.3606763
+  provenance: |-
+    arXiv:2304.03442v2 [cs.HC], 6 Aug 2023. ACM reference format printed on page 1: "UIST '23,
+    October 29-November 1, 2023, San Francisco, CA, USA. ACM, New York, NY, USA, 22 pages."
+    ISBN 979-8-4007-0132-0/23/10. The id park2023 avoids the existing park2026 (Kumiho).
 - id: park2026
   type: article
   author:
@@ -514,6 +761,45 @@ references:
     arXiv:2603.17244v1 [cs.AI],
     18 March 2026. © 2026 Kumiho Inc.
     *[本文所描述的系统在正文中称作* Kumiho。*]*
+- id: pearl1986
+  type: article-journal
+  author:
+  - family: Pearl
+    given: J.
+  issued:
+    date-parts:
+    - - 1986
+  title: Fusion, propagation, and structuring in belief networks
+  container-title: Artificial Intelligence
+  volume: '29'
+  page: 241–288
+  URL: https://ftp.cs.ucla.edu/pub/stat_ser/r42-reprint.pdf
+  provenance: |-
+    Cognitive Systems Laboratory, UCLA. Page 1 prints "Artificial Intelligence 29 (1986) 241-288"
+    and "Recommended by Patrick Hayes"; the file is the UCLA technical report R-42 (September 1986)
+    reprint. The issue number is not printed on the pages read.
+  metadata_incomplete: |-
+    Metadata incomplete: the issue number is not printed on the pages read.
+- id: peirce1906
+  type: article-journal
+  author:
+  - family: Peirce
+    given: C. S.
+  issued:
+    date-parts:
+    - - 1906
+  title: Prolegomena to an apology for pragmaticism
+  container-title: The Monist
+  page: 492–546
+  DOI: 10.5840/monist190616436
+  provenance: |-
+    Zenodo record 2035681 (open access). Running head "THE MONIST."; folios 493-546 are printed, the
+    opening page carries none (492 is inferred as the page before 493). The type/token passage is
+    pp. 505-506.
+  metadata_incomplete: |-
+    Metadata incomplete: volume and issue are not printed in the pages read. Volume 16, no. 4
+    (October 1906) is what the DOI string "monist190616436" and a secondary record suggest; check
+    before printing.
 - id: pink2025
   type: article
   author:
@@ -566,6 +852,23 @@ references:
     arXiv:2501.13956v1 [cs.CL], 20 Jan 2025. All five authors: Zep AI.
   metadata_incomplete: |-
     Metadata incomplete: no venue beyond the arXiv identifier is printed.
+- id: reid1785
+  type: book
+  author:
+  - family: Reid
+    given: T.
+  issued:
+    date-parts:
+    - - 1785
+  title: Essays on the intellectual powers of man
+  publisher: John Bell; G. G. J. & J. Robinson
+  publisher-place: Edinburgh and London
+  provenance: |-
+    Title page: "Essays on the intellectual powers of man. By Thomas Reid, D.D. F.R.S.E., Professor
+    of Moral Philosophy in the University of Glasgow. Edinburgh: Printed for John Bell, Parliament
+    Square, and G. G. J. & J. Robinson, London. M DCC LXXXV." Read from an Internet Archive scan
+    (identifier essaysonintellec00reiduoft) through its OCR text layer. The Locke chapter is
+    Essay III, ch. VI; the brave-officer passage is on pp. 333–334.
 - id: ricoeur1992
   type: book
   author:
@@ -592,6 +895,24 @@ references:
     block, from which the form above is taken. Requires confirmation against a clean
     copy.
   metadata_incomplete_zh: 元数据不全：该来源在同一页上把译者的名字拼作两种 —— 扫描书名页上是 "Blarney"，美国国会图书馆著录块中是 "Blamey"，上面采用的是后一种。须以一份干净的副本加以确认。
+- id: roediger2006
+  type: article-journal
+  author:
+  - family: Roediger
+    given: H. L., III
+  - family: Karpicke
+    given: J. D.
+  issued:
+    date-parts:
+    - - 2006
+  title: 'Test-enhanced learning: Taking memory tests improves long-term retention'
+  container-title: Psychological Science
+  volume: '17'
+  issue: '3'
+  page: 249–255
+  provenance: |-
+    Running head "Volume 17 - Number 3 ... Copyright 2006 Association for Psychological Science 249";
+    Washington University in St. Louis. The end page 255 was read from the text layer.
 - id: semon1904
   type: book
   author:
@@ -715,12 +1036,16 @@ references:
   container-title: Canadian Psychology / Psychologie Canadienne
   volume: '26'
   issue: '1'
-  provenance: University of Toronto.
-  metadata_incomplete: |-
-    Metadata incomplete: start page. The running folios read 2–12 directly, but the
-    article's own first printed page number is not visible in the scan. Read from a
-    per-page OCR set; the source PDF is a scan with no text layer.
-  metadata_incomplete_zh: 元数据不全：起始页码。书眉页码直接读到 2–12，但文章自己印出的第一个页码在扫描件中不可见。读自一套逐页 OCR；该来源 PDF 是一份没有文本层的扫描件。
+  page: 1–12
+  provenance: |-
+    University of Toronto. Page 1 prints the running head "Canadian Psychology / Psychologie
+    Canadienne. 1985. 26: 1" and the folio 1; page 12 prints folio 12 (the last page, mostly
+    references). Pages 1 and 3 were read from rendered page images; pages 2–12 were searched
+    through a per-page OCR set (the source PDF is a scan with no text layer).
+  provenance_zh: |-
+    University of Toronto。第 1 页印有书眉 "Canadian Psychology / Psychologie Canadienne.
+    1985. 26: 1" 与页码 1；第 12 页印有页码 12（最后一页，大半为参考文献）。第 1 页与第 3 页读自渲染出的页面图像；
+    第 2–12 页经由逐页 OCR 检索（该来源 PDF 是一份没有文本层的扫描件）。
 - id: wang2026a
   type: article
   author:
@@ -763,6 +1088,43 @@ references:
     Technology, Hong Kong SAR. The system is written "Toki" in running text.
   metadata_incomplete: |-
     Metadata incomplete: no venue beyond the arXiv identifier is printed.
+- id: wixted1991
+  type: article-journal
+  author:
+  - family: Wixted
+    given: J. T.
+  - family: Ebbesen
+    given: E. B.
+  issued:
+    date-parts:
+    - - 1991
+  title: On the form of forgetting
+  container-title: Psychological Science
+  volume: '2'
+  issue: '6'
+  page: 409–415
+  DOI: 10.1111/j.1467-9280.1991.tb00175.x
+  metadata_incomplete: |-
+    Metadata incomplete: full text NOT read. Every field is from the Crossref record; only the
+    Crossref-deposited abstract was read.
+- id: wixted2004
+  type: article-journal
+  author:
+  - family: Wixted
+    given: J. T.
+  issued:
+    date-parts:
+    - - 2004
+  title: The psychology and neuroscience of forgetting
+  container-title: Annual Review of Psychology
+  volume: '55'
+  page: 235–269
+  DOI: 10.1146/annurev.psych.55.090902.141555
+  provenance: |-
+    First page prints "Annu. Rev. Psychol. 2004. 55:235-69 / doi: 10.1146/annurev.psych.55.090902.141555 /
+    Copyright 2004 by Annual Reviews", "First published online as a Review in Advance on November 3,
+    2003"; Department of Psychology, University of California, San Diego. The archived copy is a
+    personal-use download re-hosted on a lab site.
 - id: wozniak1990
   type: webpage
   author:

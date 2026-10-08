@@ -156,8 +156,9 @@ deductive, inductive, abductive, authority), selecting the propagation formula a
 per-type discount. (Defined Appendix E §E.4.)
 
 **retention** — how long a memory persists before
-it is no longer recalled; cited via Wixted's work in the tradition ENGRAM's
-forgetting curve draws on. (§4.5.)
+it is no longer recalled; cited via Wixted's work [@wixted2004, p. 243; @wixted1991], the
+empirical literature ENGRAM's forgetting design must be reconciled with (it favours
+power functions over exponentials). (§4.5.)
 
 **retract** — to withdraw a claim as an error: "I was wrong." The cascade fires on
 retract and supersede alike; the marker records which occurred as provenance, not

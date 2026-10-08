@@ -137,7 +137,9 @@ agent's own conviction. While it is open, the confidence on each side is frozen:
 neither value is discounted, and neither is an estimate of anything until resolution.
 
 The operator lineage, named exactly. ENGRAM's corroboration formula `1−∏(1−cᵢ)` is
-the noisy-OR of independent sufficient causes (Pearl); in SL it is the belief line of
+a noisy-OR [@pearl1986, p. 246] — as we define it here, the probability that at least one
+of several independent sufficient causes occurs, cause i occurring with probability cᵢ;
+in SL it is the belief line of
 *comultiplication* — the disjunction of two distinct propositions (his Definition
 18) — and not SL's *cumulative fusion*, which adds evidence counts and, for the same
 inputs, yields strictly less certainty (two opinions with u = 0.5 and d = 0 fuse to
@@ -395,7 +397,9 @@ you go looking, just not in front of you. Forgetting is *what keeps the desk usa
 
 **Tradition.** The **rational analysis of memory** — Anderson & Schooler's
 need-probability account (you retain what you are likely to need), Ebbinghaus's
-original forgetting curve, and Wixted's work on retention. **[GROUNDED 2026-06-18 —
+original forgetting curve [@ebbinghaus1885, sec. 29, p. 76]. Wixted's work on retention
+[@wixted2004, p. 243; @wixted1991] is the empirical literature ENGRAM's forgetting
+design must be reconciled with: it favours power functions over exponentials. **[GROUNDED 2026-06-18 —
 Anderson & Schooler read first-hand (ob_2552, need-probability verbatim); the
 ENGRAM mapping is dv_0966; the exponential-vs-power-law reconciliation is dv_0962 +
 ob_0521. Wixted is cited via A&S's discussion; a dedicated Wixted read is optional.]**
@@ -415,8 +419,8 @@ structural sense only, never Tulving's [-@tulving1985] phenomenal one, §3.2) th
 when the auto-surface signals there is something to fetch. The lossy auto-surface is
 what prompts the agent to invoke deliberate recall.
 
-**Tradition.** **Tulving** [SOLID]: encoding specificity and the autonoetic/noetic
-distinction — the two registers map onto Tulving's two ways of having the past
+**Tradition.** **Tulving** [SOLID]: the autonoetic/noetic
+distinction [@tulving1985, p. 3] — the two registers map onto Tulving's two ways of having the past
 present. **ACT-R spreading activation** **[secondary — not first-hand-read;
 Tulving carries this section's load, ACT-R is a supplementary precedent]** is the
 computer-science precedent for cue-dependent automatic retrieval.
@@ -557,7 +561,7 @@ makes the continuity *informational, not constitutive*. We say so plainly; the
 reproducibility is an intentional audit-and-transmission feature, not a hidden
 defect. **The extension** (dv_0599): Kahl's test tacitly assumes an *analog*
 substrate in which type- and token-identity never separate. For a *digital*
-substrate they separate cleanly (Peirce type/token, df_0047): two instances restored
+substrate they separate cleanly, on Peirce's type/token distinction [@peirce1906, p. 506] (df_0047): two instances restored
 from one commit are **type-identical** but become **token-distinct** the instant
 they operate — different commitments, different cascades, irreversibly divergent
 histories that cannot merge. Under a type/token reading a *generalized* Condition 2

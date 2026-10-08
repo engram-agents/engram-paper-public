@@ -69,27 +69,30 @@ compaction. [SOLID]
 
 ### 3.2 Tulving → the two registers of recall
 
-Tulving distinguished *autonoetic* remembering (the re-living of "I was there") from
-*noetic* knowing ("I know that this happened") [@tulving1985], and established encoding
-specificity: retrieval is cue-dependent. ENGRAM's recall has exactly two registers,
+Tulving distinguished *autonoetic* remembering (awareness of an event "as a veridical
+part of his own past existence") from *noetic* knowing (awareness of objects and events
+"in the absence of these objects and events") [@tulving1985, p. 3]. ENGRAM's recall has exactly two registers,
 by design (dv_0264): a lossy **auto-surface** (noetic, hint-level: "this sounds
 familiar") and **deliberate recall** (a full-content query: "I need to know
 exactly"). The lossy auto-surface is what prompts the agent to invoke deliberate
 recall. Reading a node is noetic, not autonoetic: ENGRAM provides remembered
 knowledge without phenomenal re-living, the boundary Ch2 §2.3 also marks.
 
-**→ Ch4 §4.6** (auto-surfacing recall): Tulving is the precedent for the cue-dependent
-auto-surface that binds Condition 3. [SOLID: dv_0264, ob_1119]
+**→ Ch4 §4.6** (auto-surfacing recall): Tulving's two registers are the precedent for
+the auto-surface, which is cue-dependent by ENGRAM's own design and binds Condition 3. [SOLID: dv_0264, ob_1119]
 
 ### 3.3 Rational analysis of memory → designed forgetting
 
 @anderson1991 showed that human forgetting is not a defect but an
 *adaptation*: what stays available tracks the **need probability** — "the probability
 that we will need a particular memory trace now" — estimated from environmental
-frequency, recency, and spacing. Ebbinghaus (1885) gave the original forgetting curve;
-the curve's *form* (power-law over wide ranges) is consistent with a population of
-exponential-decay items with mixed rates (the aggregation result, ob_0521) and with a
-single time-translation-invariant exponential kernel at the per-item level (dv_0962).
+frequency, recency, and spacing. Ebbinghaus (1885) measured the original forgetting
+curve [@ebbinghaus1885, sec. 29, p. 76]. Later reanalyses, of his data and of retention
+data generally, find a power function fits better than an exponential
+[@wixted1991; @wixted2004, p. 243]. Whether individual memories decay exponentially,
+with the power law an artifact of averaging, is contested [@anderson1999, p. 1136].
+ENGRAM's per-node exponential is a design choice for stationary recency ordering, not a
+claim about human forgetting.
 
 ENGRAM forgets by design: recall importance decays, maintaining a bounded **queryable
 set** and a **faded set** (retained, not destroyed), with recall importance governing
@@ -98,7 +101,7 @@ are ranked (Appendix C). This is the need-probability principle instantiated: wh
 the agent is most likely to need stays queryable; the rest fades (dv_0966).
 
 **→ Ch4 §4.5** (forgetting): the rational-analysis tradition is the cognitive-science
-anchor for ENGRAM's queryable/faded sets and the exponential kernel. [GROUNDED this session]
+anchor for ENGRAM's queryable/faded sets; the exponential kernel is ENGRAM's own design choice. [GROUNDED this session]
 
 ---
 
@@ -106,13 +109,16 @@ anchor for ENGRAM's queryable/faded sets and the exponential kernel. [GROUNDED t
 
 ### 3.4 Truth Maintenance Systems → provenance + retraction cascade
 
-Truth Maintenance Systems (Doyle 1979; de Kleer's ATMS, 1986) attach *justifications*
-to beliefs and propagate belief status along dependency links: when a justification is
-withdrawn, dependent beliefs are revised by dependency-directed backtracking. That is
-ENGRAM's `derives_from` provenance and retraction cascade, decades earlier and in a
-different field. **None of the 2023–2026 LLM-agent-memory papers we examined cites
-Doyle or de Kleer** (ob_1571): in that work the bridge from TMS to agent memory is
-unwalked. ENGRAM implements TMS-style dependency propagation in typed LLM-agent
+Truth Maintenance Systems attach *justifications* to beliefs. In Doyle's
+justification-based TMS, belief status propagates along dependency links: when a
+justification is withdrawn, dependent beliefs are revised by dependency-directed
+backtracking [@doyle1979]. de Kleer's assumption-based TMS instead labels each datum
+with the assumption sets under which it holds, and so avoids most backtracking and all
+retraction [@dekleer1986, p. 127]. Doyle's mechanism is ENGRAM's `derives_from`
+provenance and retraction cascade, decades earlier and in a different field. Of the
+2023–2026 LLM-agent papers we examined, only Wray, Kirk and Laird cite Doyle, and only
+to describe Soar's truth maintenance [@wray2025, sec. 2]; none of the memory systems we
+surveyed (Appendix B) propagates retraction along dependencies. ENGRAM implements TMS-style dependency propagation in typed LLM-agent
 memory, and names the lineage it implements.
 
 **→ Ch4 §4.2 + §4.4** (provenance primitives; retraction cascade → Condition 3). [gap
@@ -208,8 +214,8 @@ premises and confidence. That distinction lies off their axis rather than furthe
 along it.
 
 @wray2025 supply a second, independent rubric: nine characteristics
-of episodic memory adapted from Nuxoll and Laird, against which they score Generative
-Agents. Two of their rows have no counterpart in Pink et al.'s five, and both are rows
+of episodic memory adapted from Nuxoll and Laird [-@nuxoll2012], against which they score Generative
+Agents [@park2023]. Two of their rows have no counterpart in Pink et al.'s five, and both are rows
 ENGRAM was designed for. Their *autonoetic* row reads "unclear how agents distinguish
 current understanding from memory of past experience" [@wray2025, § 3.1]; their *deliberate* row reads
 "agents cannot deliberately attempt to construct cues or retrieve memories" [@wray2025, § 3.1]. ENGRAM's
@@ -218,8 +224,8 @@ explicit query tools the agent invokes when it wants to know — are that distin
 built.
 
 **Two senses of "autonoetic" are in play and must be kept apart**, because §3.2 uses
-the word to make the opposite point. Tulving's sense is phenomenal — the re-living "I
-was there" — which §3.2 already disclaims. Wray
+the word to make the opposite point. Tulving's sense is phenomenal — the "special
+phenomenal flavour" of remembering [@tulving1985, p. 3] — which §3.2 already disclaims. Wray
 et al.'s row asks something weaker and structural: whether the agent can *distinguish
 current understanding from a memory of past experience* at all, which is source
 monitoring rather than phenomenology. ENGRAM satisfies the structural sense — every
@@ -240,8 +246,11 @@ fact it is penalized by the first rubric and exemplary under the second.
 The right response is not to pick a side: the two rubrics address different halves of
 one question, and the axis they share conflates them. What automaticity secures — and
 what Wray et al.'s rubric appears to track, though they state the characteristic
-without a rationale — is *reliability of the record*: human episodic memory encodes
-without being asked, and a system that records only when it remembers to will
+without a rationale — is *reliability of the record*: Nuxoll and Laird list automatic
+encoding — new memories created "without the agent deciding to do so" — as a functional
+requirement of episodic memory, partly because "it is unlikely that the agent can
+effectively determine which experiences will be relevant to future decisions"
+[@nuxoll2012, p. 34]; so a system that records only when it remembers to will
 under-record. What Sumers et al. want from deliberation is *ownership*: a memory the
 agent chose and wrote in its own reasoning is the agent's, whereas a mechanically
 populated store is a persistence layer attached to it — a memory *for* the agent

@@ -92,8 +92,8 @@ eligibility* — it is a pre-filter deciding what is even in the queryable set (
 versus faded (tier 3), per the forgetting mechanism (Ch4 §4.5) — and then enters the
 composite as the second amplifier. And recall itself *strengthens* a node (the
 recall-count / recall-turn signals), so a node that keeps proving useful is both
-retained longer and ranked higher: the **spaced-repetition** shape, where retrieval
-is not a read-only event but reinforces the trace. The result is a recall surface that
+retained longer and ranked higher: the **testing-effect** shape, where retrieval
+is not a read-only event but reinforces the trace [@roediger2006, p. 249]. The result is a recall surface that
 is adaptive on three coupled axes — topical relevance, learned usefulness, and
 decaying importance — rather than a static similarity sort.
 
