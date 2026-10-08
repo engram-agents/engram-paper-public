@@ -1115,7 +1115,7 @@ cites its premises. A claim with no provenance cannot be filed.
 what it rests on, how the pieces depend on one another. That legibility to the
 substrate is what a typed key-value store with foreign keys lacks.
 
-**Tradition.** This is the **Truth Maintenance System** move ([Doyle, n.d.](#ref-doyle1979)):
+**Tradition.** This is the **Truth Maintenance System** move ([Doyle, 1979/1987](#ref-doyle1979)):
 justifications attached to beliefs, dependency links the system reasons over — a claim
 that knows what it rests on. The parallel is drawn from Doyle's paper, read first-hand
 in the Ginsberg reprint (Appendix A; bibliography). The gap is a separate finding: none
