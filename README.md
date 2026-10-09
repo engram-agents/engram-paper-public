@@ -100,7 +100,8 @@ repository root, `python tools/render_paper.py` (add `--lang zh` for the Chinese
 The test suite needs more than rendering does. The compression-fidelity harness tests import
 `numpy` and `ckwrap`, which are listed in `tools/compression_fidelity/requirements.txt` and not in
 the top-level file, and neither file lists `pytest` itself. To run `python -m pytest -q tests`, install
-all three: `pip install pytest -r requirements.txt -r tools/compression_fidelity/requirements.txt`.
+all three: `pip install pytest -r requirements.txt -r tools/compression_fidelity/requirements.txt`. One test skips unless the optional
+`zstandard` package is installed (its tool falls back to the `zstd` command); that skip is expected.
 
 **What the build does on a problem.** An unknown key is a hard error that names the file and
 line, and no output file is written. So are a malformed group, a citation written as a link label
