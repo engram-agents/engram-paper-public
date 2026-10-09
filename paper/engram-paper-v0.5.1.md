@@ -1196,8 +1196,8 @@ neither value is discounted, and neither is an estimate of anything until resolu
 The operator lineage, named exactly. ENGRAM's corroboration formula `1−∏(1−cᵢ)` is
 a noisy-OR ([Pearl, 1986, p. 246](#ref-pearl1986), [1988, pp. 184–187, Eq. 4.54](#ref-pearl1988)) — the probability that at
 least one of several causes produces the effect, cause i doing so on its own with probability
-cᵢ, under Pearl's assumption that the causes' failures are independent, which he calls
-exception independence ([Pearl, 1988, p. 185](#ref-pearl1988));
+cᵢ, under Pearl's two assumptions, accountability and exception independence (the causes'
+failures are independent) ([Pearl, 1988, p. 185](#ref-pearl1988));
 in SL it is the belief line of
 *comultiplication* — the disjunction of two distinct propositions (his Definition
 18) — and not SL's *cumulative fusion*, which adds evidence counts and, for the same
@@ -4778,7 +4778,7 @@ Exception to the read-off rule, stated plainly. The copy read (a scan, sha256
 fe8ab6c80406fa480477b44bb42705ff6633fa36c1f6c4a1a3920cac85bbb51d) begins at the Preface and has
 no title page or copyright page. It confirms the year (the Preface is signed "J.P. / Los
 Angeles, California / June 1988", p. ix) and the author. The subtitle, publisher and place are
-NOT on the copy; they were taken, on the instruction of 2026-10-09, from library and publisher
+NOT on the copy; they were taken, on Lei's instruction of 2026-10-09, from library and publisher
 records: Open Library (ISBN 0934613737, 1988: "Networks of Plausible Inference", "Morgan
 Kaufmann Publishers", "San Mateo, Calif"), Kyushu University Library catalog record 1000987216
 ("San Mateo, Calif. : Morgan Kaufmann Pub. , c1988, [1991]"), and the Elsevier book page

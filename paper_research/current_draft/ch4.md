@@ -140,8 +140,8 @@ neither value is discounted, and neither is an estimate of anything until resolu
 The operator lineage, named exactly. ENGRAM's corroboration formula `1−∏(1−cᵢ)` is
 a noisy-OR [@pearl1986, p. 246; @pearl1988, pp. 184–187, Eq. 4.54] — the probability that at
 least one of several causes produces the effect, cause i doing so on its own with probability
-cᵢ, under Pearl's assumption that the causes' failures are independent, which he calls
-exception independence [@pearl1988, p. 185];
+cᵢ, under Pearl's two assumptions, accountability and exception independence (the causes'
+failures are independent) [@pearl1988, p. 185];
 in SL it is the belief line of
 *comultiplication* — the disjunction of two distinct propositions (his Definition
 18) — and not SL's *cumulative fusion*, which adds evidence counts and, for the same
