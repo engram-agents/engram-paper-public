@@ -97,6 +97,11 @@ repository root, `python tools/render_paper.py` (add `--lang zh` for the Chinese
 `--csl tools/csl/<style>.csl` for another style; the vendored styles and their provenance are in
 `tools/csl/README.md`).
 
+The test suite needs more than rendering does. The compression-fidelity harness tests import
+`numpy` and `ckwrap`, which are listed in `tools/compression_fidelity/requirements.txt` and not in
+the top-level file, and neither file lists `pytest` itself. To run `python -m pytest -q tests`, install
+all three: `pip install pytest -r requirements.txt -r tools/compression_fidelity/requirements.txt`.
+
 **What the build does on a problem.** An unknown key is a hard error that names the file and
 line, and no output file is written. So are a malformed group, a citation written as a link label
 (`[@key](url)`), and a citation shape the renderer does not support: it stops, it never renders
