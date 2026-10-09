@@ -87,9 +87,9 @@
 
 ### 3.2 Tulving → 回忆的两个档位
 
-Tulving 区分了*自我觉知性的*（autonoetic）记忆——觉知到某个事件是"其自身过去存在的一个真实部分"（as a veridical part of his own past existence）——与*知晓性的*（noetic）知道——觉知到对象与事件，而"这些对象与事件并不在场"（in the absence of these objects and events）[@tulving1985, p. 3]。ENGRAM 的回忆恰有两个档位，这是设计使然：一个有损的**自动浮现**（知晓式、提示级别："这听着耳熟"）与**主动回忆**（一次返回完整内容的查询："我需要确切知道"）。正是那个有损的自动浮现，促使智能体转入主动回忆。读一个节点是知晓式的，不是自我觉知式的：ENGRAM 提供被记住的知识，却不提供现象性的重历——这正是第 2 章 §2.3 也标出的那条边界。
+Tulving 区分了*自我觉知性的*（autonoetic）记忆——觉知到某个事件是"其自身过去存在的一个真实部分"（as a veridical part of his own past existence）——与*知晓性的*（noetic）知道——觉知到对象与事件，而"这些对象与事件并不在场"（in the absence of these objects and events）[@tulving1985, p. 3]。Tulving 与 Thomson 的编码特异性原则（encoding specificity principle）补上了线索这一侧："对所感知之物所施行的特定编码操作，决定了什么被存储；而被存储的东西，又决定了哪些提取线索能有效地通向被存储的东西"（specific encoding operations performed on what is perceived determine what is stored, and what is stored determines what retrieval cues are effective in providing access to what is stored）[@tulving1973, p. 369]。ENGRAM 的回忆恰有两个档位，这是设计使然：一个有损的**自动浮现**（知晓式、提示级别："这听着耳熟"）与**主动回忆**（一次返回完整内容的查询："我需要确切知道"）。正是那个有损的自动浮现，促使智能体转入主动回忆。读一个节点是知晓式的，不是自我觉知式的：ENGRAM 提供被记住的知识，却不提供现象性的重历——这正是第 2 章 §2.3 也标出的那条边界。
 
-**→ 第 4 章 §4.6**（自动浮现式回忆）：Tulving 的两个档位是那个自动浮现的先例；该自动浮现按 ENGRAM 自身的设计依赖线索，并绑定条件 3。[SOLID：dv_0264、ob_1119]
+**→ 第 4 章 §4.6**（自动浮现式回忆）：Tulving 的两个档位是那个自动浮现的先例，编码特异性[@tulving1973, p. 369]是它依赖线索的先例；该自动浮现绑定条件 3。[SOLID：dv_0264、ob_1119]
 
 ### 3.3 记忆的理性分析 → 有意设计的遗忘
 

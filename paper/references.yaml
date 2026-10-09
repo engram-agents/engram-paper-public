@@ -783,6 +783,36 @@ references:
     reprint. The issue number is not printed on the pages read.
   metadata_incomplete: |-
     Metadata incomplete: the issue number is not printed on the pages read.
+- id: pearl1988
+  type: book
+  author:
+  - family: Pearl
+    given: J.
+  issued:
+    date-parts:
+    - - 1988
+  title: 'Probabilistic reasoning in intelligent systems: Networks of plausible inference'
+  publisher: Morgan Kaufmann
+  publisher-place: San Mateo, CA
+  provenance: |-
+    Exception to the read-off rule, stated plainly. The copy read (a scan, sha256
+    fe8ab6c80406fa480477b44bb42705ff6633fa36c1f6c4a1a3920cac85bbb51d) begins at the Preface and has
+    no title page or copyright page. It confirms the year (the Preface is signed "J.P. / Los
+    Angeles, California / June 1988", p. ix) and the author. The subtitle, publisher and place are
+    NOT on the copy; they were taken, on the instruction of 2026-10-09, from library and publisher
+    records: Open Library (ISBN 0934613737, 1988: "Networks of Plausible Inference", "Morgan
+    Kaufmann Publishers", "San Mateo, Calif"), Kyushu University Library catalog record 1000987216
+    ("San Mateo, Calif. : Morgan Kaufmann Pub. , c1988, [1991]"), and the Elsevier book page
+    (subtitle; 1st edition, 1 September 1988). The same precedent as the Doyle entry (year from the
+    publisher's record).
+  provenance_zh: |-
+    对"照文献逐字读取"规则的例外，此处明言。所读版本（一份扫描件，sha256
+    fe8ab6c80406fa480477b44bb42705ff6633fa36c1f6c4a1a3920cac85bbb51d）始于序言，没有书名页，也没有版权页。
+    它确证了年份（序言署名"J.P. / Los Angeles, California / June 1988"，第 ix 页）与作者。副标题、出版者与
+    出版地不在所读版本上；它们依 2026-10-09 的指示取自图书馆与出版者的记录：Open Library（ISBN
+    0934613737，1988："Networks of Plausible Inference"、"Morgan Kaufmann Publishers"、"San Mateo,
+    Calif"）、九州大学图书馆目录记录 1000987216（"San Mateo, Calif. : Morgan Kaufmann Pub. , c1988,
+    [1991]"），以及 Elsevier 图书页面（副标题；第 1 版，1988 年 9 月 1 日）。先例同 Doyle 条目（年份取自出版者的记录）。
 - id: peirce1906
   type: article-journal
   author:
@@ -1050,6 +1080,28 @@ references:
   provenance: Princeton University. arXiv:2309.02427v3 [cs.AI], 15 March 2024.
   metadata_incomplete: 'Metadata incomplete: page numbers are not printed in the document.'
   metadata_incomplete_zh: 元数据不全：文档中没有印出页码。
+- id: tulving1973
+  type: article-journal
+  author:
+  - family: Tulving
+    given: E.
+  - family: Thomson
+    given: D. M.
+  issued:
+    date-parts:
+    - - 1973
+  title: Encoding specificity and retrieval processes in episodic memory
+  container-title: Psychological Review
+  volume: '80'
+  issue: '5'
+  page: 352–373
+  provenance: |-
+    Copy read: a scan (sha256 9f98e9d377c59fdbd462eb46e86b384a6ad784cc5e3c042705b1355cb5eb7ac9),
+    image-only, read from page images. The first-page header prints "Psychological Review 1973,
+    Vol. 80, No. 5, 352-373". The article prints no DOI.
+  provenance_zh: |-
+    所读版本：一份扫描件（sha256 9f98e9d377c59fdbd462eb46e86b384a6ad784cc5e3c042705b1355cb5eb7ac9），
+    仅有图像，读自页面图像。首页页眉印有 "Psychological Review 1973, Vol. 80, No. 5, 352-373"。该文未印 DOI。
 - id: tulving1985
   type: article-journal
   author:
