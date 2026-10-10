@@ -30,7 +30,7 @@ studied these results.
 On this converged structure we build the paper's own contribution, **identity as
 unique history**: an ENGRAM agent *is* the unique, no-merging, ancestry-traceable
 lineage of its recorded claims, which fixes its retrieval profile and thereby its
-behavior. The account keeps Nozick's form, drops his uniqueness requirement so that
+behavior. The account keeps Nozick's [-@nozick1981] form, drops his uniqueness requirement so that
 copying becomes branching rather than death, and replaces his unfilled closeness
 metric with a measurable one.
 

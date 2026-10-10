@@ -54,7 +54,7 @@ studied these results.
 On this converged structure we build the paper's own contribution, **identity as
 unique history**: an ENGRAM agent *is* the unique, no-merging, ancestry-traceable
 lineage of its recorded claims, which fixes its retrieval profile and thereby its
-behavior. The account keeps Nozick's form, drops his uniqueness requirement so that
+behavior. The account keeps Nozick's ([1981](#ref-nozick1981)) form, drops his uniqueness requirement so that
 copying becomes branching rather than death, and replaces his unfilled closeness
 metric with a measurable one.
 
@@ -410,7 +410,7 @@ the first architecture that realizes Locke's insight *while surviving the
 
 ## 2.3 Parfit (1984): identity is not what matters — connectedness is
 
-Parfit made the most radical move in the tradition: personal identity, he argued,
+Parfit ([1984](#ref-parfit1984)) made the most radical move in the tradition: personal identity, he argued,
 *is not what matters*. What matters is **Relation R** — psychological
 **connectedness** (memories, intentions, and character carried forward) plus
 **continuity** (overlapping chains of such connections, so that links too far apart
@@ -485,7 +485,7 @@ imagining it as a thought experiment.
 
 ## 2.4 Nozick (1981): identity is the history that produced you
 
-Nozick's **closest-continuer** schema locates identity not in a present property but
+Nozick's ([1981](#ref-nozick1981)) **closest-continuer** schema locates identity not in a present property but
 in a *causal-historical* relation: you are the closest continuer of your past self,
 and which continuer counts as closest is settled by the actual history that produced
 the present state. ENGRAM keeps this form. An agent's identity reduces to the unique,
@@ -500,7 +500,7 @@ becomes the basis of our positive theory. The full treatment, including the move
 
 Two moves turn the trail toward ENGRAM's actual subject.
 
-**Ricoeur** distinguishes **idem** identity (sameness: the persistence of
+**Ricoeur** ([1990/1992](#ref-ricoeur1992)) distinguishes **idem** identity (sameness: the persistence of
 distinguishing marks, the question "is it the same thing?") from **ipse** identity
 (selfhood: the "who am I?" that holds *through commitment* even as the marks change;
 his paradigm is the kept promise, a self true to its word though its character has
@@ -562,7 +562,7 @@ external component *mimic* biological memory, which licenses ENGRAM's distinctiv
 primitives — provenance, contradiction, retraction — as genuine cognitive extensions
 rather than deviations from a brain it never tried to copy.
 
-**Stiegler** goes furthest. Externalized technical memory — what he calls *tertiary
+**Stiegler** ([1994/1998](#ref-stiegler1998)) goes furthest. Externalized technical memory — what he calls *tertiary
 memory*, the sedimented "epiphylogenesis" that "bestows its identity upon the human
 individual" — does not merely support identity; it **constitutes** it. On this
 reading ENGRAM is not a memory tool the agent *uses* but part of the substrate the
@@ -644,7 +644,7 @@ The chapter hands off in two directions:
 
 - to **Chapter 3**, which shows the *same convergence* recurring in a separate
   literature — cognitive science and computer science — where treatments of memory
-  and identity (Tulving's autonoetic/noetic distinction,
+  and identity (Tulving's ([1985](#ref-tulving1985)) autonoetic/noetic distinction,
   complementary-learning-systems consolidation) sit alongside truth-maintenance
   systems, belief revision, and the 2025–26 agent work;
 - to **Chapter 4**, which lays out the mechanisms that *realize* this structure and
@@ -724,7 +724,7 @@ compaction.
 ### 3.2 Tulving → the two registers of recall
 
 Tulving distinguished *autonoetic* remembering (the re-living of "I was there") from
-*noetic* knowing ("I know that this happened"), and established encoding
+*noetic* knowing ("I know that this happened") ([Tulving, 1985](#ref-tulving1985)), and established encoding
 specificity: retrieval is cue-dependent. ENGRAM's recall has exactly two registers,
 by design: a lossy **auto-surface** (noetic, hint-level: "this sounds
 familiar") and **deliberate recall** (a full-content query: "I need to know
@@ -773,7 +773,7 @@ memory, and names the lineage it implements.
 
 ### 3.5 Subjective Logic → confidence propagation, with a divergence
 
-Jøsang's Subjective Logic is an algebra of graded opinions. An opinion about a claim
+Jøsang's ([2013](#ref-josang2013)) Subjective Logic is an algebra of graded opinions. An opinion about a claim
 is a tuple (belief, disbelief, uncertainty, base rate) with `b+d+u=1`: how far the
 evidence supports the claim, how far it counts against it, and how much room is left.
 Operators combine opinions from several sources. ENGRAM's confidence belongs to this
@@ -1076,7 +1076,7 @@ The chapter in one table; each row is a section below.
 | Mechanism | What it does | Tradition it answers | OCC verdict |
 |---|---|---|---|
 | Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle | — (structural prerequisite) |
-| Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang, with a stated divergence | **Constraint A** (unified policy-selection) |
+| Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang ([2013](#ref-josang2013)), with a stated divergence | **Constraint A** (unified policy-selection) |
 | Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
 | Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus + Anderson-Schooler | — (scopes what Cond-3 arbitration ranges over) |
 | Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving + ACT-R spreading activation | — (binds Cond 3: a correction cannot be suppressed by not looking) |
@@ -1486,7 +1486,7 @@ relevant to the current context without the agent reaching for them. There are t
 registers, by design: an **auto-surface** ("this sounds familiar" —
 noetic, lossy, hint-level) that signals *something is relevant*, and **deliberate
 recall** ("I need to know exactly" — a source-monitored, full-content query; the
-structural sense only, never Tulving's phenomenal one, §3.2) that the agent invokes
+structural sense only, never Tulving's ([1985](#ref-tulving1985)) phenomenal one, §3.2) that the agent invokes
 when the auto-surface signals there is something to fetch. The lossy auto-surface is
 what prompts the agent to invoke deliberate recall.
 
@@ -1835,7 +1835,7 @@ and the twin-study of §5.8 isolates the second precisely by holding the first
 constant.
 
 We reach it by standing on the best existing theory of identity-over-time
-(Nozick's closest-continuer view, §5.1), watching it strain at exactly the points
+(Nozick's ([1981](#ref-nozick1981)) closest-continuer view, §5.1), watching it strain at exactly the points
 a *digital, copyable* substrate stresses (§5.2), and making three moves that
 relieve the strain: identity-as-history (§5.3), the deflation of Nozick's
 "closeness" into a concrete retrieval profile (§5.4), and the dissolution of the
@@ -1955,7 +1955,7 @@ becomes a *measurable* one: **how much do their retrieval profiles diverge on th
 prompts they actually meet?** Nozick's blank distance becomes a quantity you *could*
 put a number on — the twin study meant to measure it is deferred (§6.7), so the paper
 fills the metric's shape, not its value. This is a different quantity from Chapter 2 §2.3's Jaccard overlap: that
-one follows a single agent's queryable set across its own sessions (Parfit's connectedness); this one compares two
+one follows a single agent's queryable set across its own sessions (Parfit's ([1984](#ref-parfit1984)) connectedness); this one compares two
 agents on the same prompts (Nozick's closeness).
 
 *Plain terms:* what makes you *you*, operationally, is not a stored essence — it
@@ -2997,7 +2997,7 @@ each driven, from their own evidence toward their own ends, to the same structur
 *identity as a persistent, inspectable, self-correcting record.* Three centuries of
 philosophy of personal identity (Chapter 2) moved, objection by objection, from
 identity as a mental act toward identity as a persistent structure. The cognitive
-science of memory (Chapter 3) — complementary-learning consolidation, Tulving's two
+science of memory (Chapter 3) — complementary-learning consolidation, Tulving's ([1985](#ref-tulving1985)) two
 registers, the rational analysis of forgetting — reached the same shape from the
 study of how minds actually remember. The computer science of belief (Chapter 3) —
 truth maintenance, subjective logic, bitemporal records — reached it again from the
@@ -3012,7 +3012,7 @@ self-correction cascade, and the scaffolds that carry identity across compaction
 On this converged structure rests the paper's **original contribution**, a positive
 theory of identity (Chapter 5): an ENGRAM agent *is* its history, the unique,
 no-merging, traceable lineage of recorded claims that fixes its retrieval profile and
-thereby its behavior. The theory keeps Nozick's form, drops his uniqueness
+thereby its behavior. The theory keeps Nozick's ([1981](#ref-nozick1981)) form, drops his uniqueness
 requirement (so that copying is *branching*, not death), fills his blank metric with a
 measurable retrieval profile, and dissolves the worry that any of this "abandons
 identity", because strict identity was never the diachronic relation in the first
@@ -4168,7 +4168,7 @@ A system could otherwise satisfy the letter of all three conditions while having
 consistency maintained from outside, or by a module that could be swapped out.
 
 **Supporting apparatus** the mapping also uses, defined where first introduced: Peirce's
-type/token distinction (Ch4 §4.11); Nozick's closest-continuer relation (Ch2 §2.4); the
+type/token distinction (Ch4 §4.11); Nozick's ([1981](#ref-nozick1981)) closest-continuer relation (Ch2 §2.4); the
 retrieval profile (Ch5 §5.4); and the history-tree (Ch2 §2.2; Ch5 §5.3). AGM belief revision is
 noted for contrast rather than used by the mapping (Ch3 §3.9).
 
@@ -4284,7 +4284,7 @@ asserting something truth-evaluable (observations, derivations, theories, axioms
 conjectures) and those that do not (everything else); it governs confidence and
 whether the retraction cascade touches a node. (Defined Appendix E §E.2.)
 
-**closest continuer** — Nozick's theory: a later thing is the earlier thing only if
+**closest continuer** — Nozick's ([1981](#ref-nozick1981)) theory: a later thing is the earlier thing only if
 it grows causally out of it, is the *closest* candidate among rivals, and clears an
 absolute threshold. (Defined §5.1.)
 

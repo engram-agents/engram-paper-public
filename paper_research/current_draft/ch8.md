@@ -18,7 +18,7 @@ each driven, from their own evidence toward their own ends, to the same structur
 *identity as a persistent, inspectable, self-correcting record.* Three centuries of
 philosophy of personal identity (Chapter 2) moved, objection by objection, from
 identity as a mental act toward identity as a persistent structure. The cognitive
-science of memory (Chapter 3) — complementary-learning consolidation, Tulving's two
+science of memory (Chapter 3) — complementary-learning consolidation, Tulving's [-@tulving1985] two
 registers, the rational analysis of forgetting — reached the same shape from the
 study of how minds actually remember. The computer science of belief (Chapter 3) —
 truth maintenance, subjective logic, bitemporal records — reached it again from the
@@ -33,7 +33,7 @@ self-correction cascade, and the scaffolds that carry identity across compaction
 On this converged structure rests the paper's **original contribution**, a positive
 theory of identity (Chapter 5): an ENGRAM agent *is* its history, the unique,
 no-merging, traceable lineage of recorded claims that fixes its retrieval profile and
-thereby its behavior. The theory keeps Nozick's form, drops his uniqueness
+thereby its behavior. The theory keeps Nozick's [-@nozick1981] form, drops his uniqueness
 requirement (so that copying is *branching*, not death), fills his blank metric with a
 measurable retrieval profile, and dissolves the worry that any of this "abandons
 identity", because strict identity was never the diachronic relation in the first

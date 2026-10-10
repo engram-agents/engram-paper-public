@@ -327,10 +327,51 @@ def test_c5_render_is_identical_across_processes_with_different_hash_seeds(tmp_p
         )
         assert r.returncode == 0, r.stderr
         outs.append(out.read_bytes())
-        # the WARNING line lists keys: it must be stable too
-        outs.append(next(l for l in r.stderr.splitlines() if l.startswith("WARNING")).encode())
-    assert outs[0] == outs[2] and len(outs[0]) > 1000
-    assert outs[1] == outs[3] and len(outs[1]) > 20
+    assert outs[0] == outs[1] and len(outs[0]) > 1000
+
+
+UNCITED_ORDER_YAML = "references:\n" + "".join(
+    f"- id: {k}\n  type: book\n  author:\n  - {{family: {f}, given: A.}}\n"
+    f"  issued: {{date-parts: [[{y}]]}}\n  title: Book {f}\n  publisher: P\n"
+    for k, f, y in (
+        ("zeta2001", "Zeta", 2001), ("alpha2002", "Alpha", 2002), ("mu2003", "Mu", 2003),
+        ("omega2004", "Omega", 2004), ("beta2005", "Beta", 2005), ("kappa2006", "Kappa", 2006),
+    )
+)
+
+_UNCITED_SCRIPT = """\
+import sys
+from pathlib import Path
+from tools import render_paper as rp
+entries = rp.load_references(Path(sys.argv[1]))
+ctx = rp.CitationContext(entries, rp.DEFAULT_CSL, lang="en")
+ctx.resolve("Only [@mu2003] is cited.", "x.md")
+print(", ".join(ctx.uncited()))
+"""
+
+
+def test_c5_uncited_key_order_is_stable_across_hash_seeds(tmp_path):
+    """The WARNING line lists uncited keys; their order must not depend on str hashing.
+    Uses a fixture with deliberately uncited entries, NOT the real paper (whose citation
+    state decides whether any key is uncited at all). The warning text itself is built
+    inline in main() from this list with a plain join, so the list is what is covered."""
+    import os
+    import subprocess
+
+    refs = tmp_path / "references.yaml"
+    refs.write_text(UNCITED_ORDER_YAML, encoding="utf-8")
+    results = []
+    for seed in ("0", "1", "2", "3", "4"):
+        r = subprocess.run(
+            [sys.executable, "-c", _UNCITED_SCRIPT, str(refs)],
+            cwd=REPO, env={**os.environ, "PYTHONHASHSEED": seed, "PYTHONPATH": str(REPO)},
+            capture_output=True, text=True,
+        )
+        assert r.returncode == 0, r.stderr
+        results.append(r.stdout.strip())
+    keys = results[0].split(", ")
+    assert len(keys) >= 4 and "mu2003" not in keys, results[0]
+    assert all(r == results[0] for r in results), results
 
 
 def test_c6_every_provenance_text_appears_verbatim(real_entries):

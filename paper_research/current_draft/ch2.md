@@ -110,7 +110,7 @@ the first architecture that realizes Locke's insight *while surviving the
 
 ## 2.3 Parfit (1984): identity is not what matters — connectedness is
 
-Parfit made the most radical move in the tradition: personal identity, he argued,
+Parfit [-@parfit1984] made the most radical move in the tradition: personal identity, he argued,
 *is not what matters*. What matters is **Relation R** — psychological
 **connectedness** (memories, intentions, and character carried forward) plus
 **continuity** (overlapping chains of such connections, so that links too far apart
@@ -185,7 +185,7 @@ imagining it as a thought experiment.
 
 ## 2.4 Nozick (1981): identity is the history that produced you
 
-Nozick's **closest-continuer** schema locates identity not in a present property but
+Nozick's [-@nozick1981] **closest-continuer** schema locates identity not in a present property but
 in a *causal-historical* relation: you are the closest continuer of your past self,
 and which continuer counts as closest is settled by the actual history that produced
 the present state. ENGRAM keeps this form. An agent's identity reduces to the unique,
@@ -200,7 +200,7 @@ becomes the basis of our positive theory. The full treatment, including the move
 
 Two moves turn the trail toward ENGRAM's actual subject.
 
-**Ricoeur** distinguishes **idem** identity (sameness: the persistence of
+**Ricoeur** [-@ricoeur1992] distinguishes **idem** identity (sameness: the persistence of
 distinguishing marks, the question "is it the same thing?") from **ipse** identity
 (selfhood: the "who am I?" that holds *through commitment* even as the marks change;
 his paradigm is the kept promise, a self true to its word though its character has
@@ -262,7 +262,7 @@ external component *mimic* biological memory, which licenses ENGRAM's distinctiv
 primitives — provenance, contradiction, retraction — as genuine cognitive extensions
 rather than deviations from a brain it never tried to copy.
 
-**Stiegler** goes furthest. Externalized technical memory — what he calls *tertiary
+**Stiegler** [-@stiegler1998] goes furthest. Externalized technical memory — what he calls *tertiary
 memory*, the sedimented "epiphylogenesis" that "bestows its identity upon the human
 individual" — does not merely support identity; it **constitutes** it (ob_0430). On this
 reading ENGRAM is not a memory tool the agent *uses* but part of the substrate the
@@ -347,7 +347,7 @@ The chapter hands off in two directions:
 
 - to **Chapter 3**, which shows the *same convergence* recurring in a separate
   literature — cognitive science and computer science — where treatments of memory
-  and identity (Tulving's autonoetic/noetic distinction,
+  and identity (Tulving's [-@tulving1985] autonoetic/noetic distinction,
   complementary-learning-systems consolidation) sit alongside truth-maintenance
   systems, belief revision, and the 2025–26 agent work;
 - to **Chapter 4**, which lays out the mechanisms that *realize* this structure and

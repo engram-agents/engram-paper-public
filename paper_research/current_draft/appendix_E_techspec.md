@@ -229,7 +229,7 @@ A system could otherwise satisfy the letter of all three conditions while having
 consistency maintained from outside, or by a module that could be swapped out.
 
 **Supporting apparatus** the mapping also uses, defined where first introduced: Peirce's
-type/token distinction (Ch4 §4.11); Nozick's closest-continuer relation (Ch2 §2.4); the
+type/token distinction (Ch4 §4.11); Nozick's [-@nozick1981] closest-continuer relation (Ch2 §2.4); the
 retrieval profile (Ch5 §5.4); and the history-tree (Ch2 §2.2; Ch5 §5.3). AGM belief revision is
 noted for contrast rather than used by the mapping (Ch3 §3.9).
 
