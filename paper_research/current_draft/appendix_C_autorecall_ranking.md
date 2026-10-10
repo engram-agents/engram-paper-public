@@ -85,15 +85,15 @@ boost). The importance amplifier is **homeostatic** — `normalized_importance` 
 anchored to the current minimum-queryable importance, so the formula adapts as the
 graph grows rather than using a fixed scale.
 
-## C.4 Importance, forgetting, and spaced repetition
+## C.4 Importance, forgetting, and the testing effect
 
 Two further signals interact with the ranking. **Importance** gates *tier
 eligibility* — it is a pre-filter deciding what is even in the queryable set (tier 2)
 versus faded (tier 3), per the forgetting mechanism (Ch4 §4.5) — and then enters the
 composite as the second amplifier. And recall itself *strengthens* a node (the
 recall-count / recall-turn signals), so a node that keeps proving useful is both
-retained longer and ranked higher: the **spaced-repetition** shape, where retrieval
-is not a read-only event but reinforces the trace. The result is a recall surface that
+retained longer and ranked higher: the **testing-effect** shape, where retrieval
+is not a read-only event but, as the testing effect shows, enhances later retention [@roediger2006, p. 249]. The result is a recall surface that
 is adaptive on three coupled axes — topical relevance, learned usefulness, and
 decaying importance — rather than a static similarity sort.
 

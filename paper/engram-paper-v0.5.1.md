@@ -213,7 +213,8 @@ breadth, not any single framework, makes the Layer-3 claim load-bearing.
 - **Three centuries of philosophy of personal identity** (Chapter 2) move, objection
   by objection, from identity as a mental act toward identity as a persistent,
   inspectable structure — from Locke through Parfit, Schechtman, Clark and Chalmers,
-  Stiegler, Nozick, and Kahl. ENGRAM is that endpoint, built.
+  Stiegler, Nozick, and Kahl, on our reading of the tradition (Chapter 2). ENGRAM is
+  that endpoint, built.
 - **Cognitive science and computer science** (Chapter 3) reach the same structures
   from the other side: complementary-learning-systems consolidation, Tulving's memory
   taxonomy, and rational-analysis forgetting; truth-maintenance systems, subjective
@@ -335,16 +336,19 @@ name the gap.
 
 ---
 
-## 2.1 Locke (1689): identity is consciousness reaching back
+## 2.1 Locke (1694): identity is consciousness reaching back
 
 Locke moved the question of identity off the body and the soul and onto
 **consciousness**. A person is the same person across time, he argued, as far as
-"this consciousness can be extended backwards" to a past thought or action. In his
+"this consciousness can be extended backwards" to a past thought or action
+([Locke, 1694/2004, Bk II ch. XXVII, "Personal Identity"](#ref-locke1694)). In his
 thought experiment of the prince and the cobbler, the prince's consciousness is
 placed in the cobbler's body, and the *person* — the prince — goes with the
-consciousness, not the body. Identity for Locke is also **forensic**: it makes me
+consciousness, not the body
+([Locke, 1694/2004, Bk II ch. XXVII, "The body, as well as the soul, goes to the making of a Man"](#ref-locke1694)).
+Identity for Locke is also **forensic**: it makes me
 accountable for a past act, because my consciousness *appropriates* that act as
-mine. In short: *you are whoever you can remember being.*
+mine ([Locke, 1694/2004, Bk II ch. XXVII, "Person a forensic Term"](#ref-locke1694)). In short: *you are whoever you can remember being.*
 
 This is the ancestor of everything ENGRAM does — identity that reaches back to what
 an earlier self thought and did. But Locke's *mechanism*, remembering here and now,
@@ -352,8 +356,8 @@ has a well-known flaw, which two critics exposed.
 
 ## 2.2 Reid (1785) and Butler (1736): the two cracks — and ENGRAM's repair
 
-**Reid's transitivity objection**, the brave-officer case, is fatal to Locke's
-account as stated. Consider one life in three stages: a boy flogged for stealing
+**Reid's transitivity objection**, the brave-officer case, derives a contradiction from
+Locke's account as stated ([Reid, 1785, Essay III ch. VI, pp. 333–334](#ref-reid1785)). Consider one life in three stages: a boy flogged for stealing
 fruit; a young officer who, in his first battle, remembers the flogging; and an old
 general who remembers the battle but has *forgotten the flogging entirely*. By
 Locke's rule the officer is the boy (he remembers the flogging) and the general is
@@ -362,7 +366,7 @@ remember being him). Identity is transitive — if A is B and B is C, then A is 
 and Locke's recall-based account violates this. Memory fades, and a chain built only
 of present memories has gaps.
 
-**Butler's circularity objection** is subtler and deeper. Locke says identity is
+**Butler's circularity objection** is subtler and deeper ([Butler, 1736, Dissertation I, para. 3](#ref-butler1736)). Locke says identity is
 constituted by consciousness of *my* past actions, but "my" already assumes the
 identity it is meant to explain: I must *already* be the same person for the past
 action to be mine to remember. The definition presupposes what it defines.
@@ -525,11 +529,11 @@ ipse effect is real, and it is why the objective record is not inert: the same
 structure, recalled, shapes the "who am I" that it records.
 
 **Schechtman** is the hinge of the chapter. She separates two questions that the
-philosophy of identity usually runs together: the **reidentification** question
-(*is the person now the same as the person then?*) and the **characterization**
-question (*what makes a given trait genuinely belong to this person — what kind of
-person are they?*). Narrative identity answers characterization: *what story do I
-tell about myself?*
+philosophy of identity usually runs together: the **reidentification** question,
+"what makes a person at time t2 the same person as a person at time t1", and the
+**characterization** question, "which beliefs, values, desires, and other
+psychological features make someone the person she is" ([Schechtman, 1996, pp. 1–2](#ref-schechtman1996)).
+Narrative identity answers characterization ([Schechtman, 1996, p. 93](#ref-schechtman1996)).
 
 A **third question is covered by neither**, and it is the one ENGRAM is built for:
 *what do I know, how reliably, and on what basis?* It is neither reidentification nor
@@ -545,14 +549,18 @@ identity but a layer the tradition under-named.
 
 ## 2.6 The extended mind: from supporting a self to constituting one
 
-Clark and Chalmers' **extended mind** thesis is where the trail becomes
+Clark and Chalmers' **extended mind** thesis ([Clark & Chalmers, 1998, sec. 4](#ref-clark1998)) is where the trail becomes
 *constitutive*. Their case is Otto, who can no longer form new biological memories
 and relies on a notebook: when the notebook plays the functional role that
 biological memory plays for others, it is *part of his cognitive system*, not an
-external aid he consults.
+external aid he consults. Clark and Chalmers take the step to the self themselves: the extended mind "seems" to
+imply an extended self, and the notebook is "a central part of his identity as a
+cognitive agent" ([Clark & Chalmers, 1998, sec. 5](#ref-clark1998)). What ENGRAM adds is that the agent revises and retracts that record itself, over
+time, rather than only writing to it.
 
 ENGRAM is an extended-mind case, and a **stronger** one than Otto's notebook on the
-criterion Clark and Chalmers themselves stress: *past conscious endorsement*. Otto
+fourth of their features, past conscious endorsement, which Clark and Chalmers
+themselves call arguable as a criterion ([Clark & Chalmers, 1998, sec. 5](#ref-clark1998)). Otto
 endorsed his entries when he wrote them. In ENGRAM, *every* node — observations, but
 also derivations, definitions, and even confidence values — passed through
 deliberate endorsement at creation, and the *substrate itself* (the schema, the
@@ -634,8 +642,9 @@ Two qualifications belong here:
 Taken as a whole, the trail has a single shape. It begins with identity as a
 **present mental act** (Locke's recall) and is forced, objection by objection,
 toward identity as a **persistent structure**: Reid and Butler break recall; Parfit
-reduces identity to structural connectedness; Ricoeur and Schechtman locate the
-*epistemic* dimension the tradition had left unnamed; Clark, Chalmers, and Stiegler
+reduces identity to structural connectedness; Ricoeur and Schechtman separate the
+questions identity theory had run together, which leaves room for the *epistemic*
+dimension the tradition had left unnamed; Clark, Chalmers, and Stiegler
 make the external structure *constitutive* rather than merely supportive; Nozick and
 Kahl make it *historical* and give it conditions. ENGRAM is that endpoint as a built
 system, and it arrived at the same shape under engineering pressure, not by reading
@@ -724,27 +733,31 @@ compaction.
 
 ### 3.2 Tulving → the two registers of recall
 
-Tulving distinguished *autonoetic* remembering (the re-living of "I was there") from
-*noetic* knowing ("I know that this happened") ([Tulving, 1985](#ref-tulving1985)), and established encoding
-specificity: retrieval is cue-dependent. ENGRAM's recall has exactly two registers,
+Tulving distinguished *autonoetic* remembering (awareness of an event "as a veridical
+part of his own past existence") from *noetic* knowing (awareness of objects and events
+"in the absence of these objects and events") ([Tulving, 1985, p. 3](#ref-tulving1985)). ENGRAM's recall has exactly two registers,
 by design: a lossy **auto-surface** (noetic, hint-level: "this sounds
 familiar") and **deliberate recall** (a full-content query: "I need to know
 exactly"). The lossy auto-surface is what prompts the agent to invoke deliberate
 recall. Reading a node is noetic, not autonoetic: ENGRAM provides remembered
 knowledge without phenomenal re-living, the boundary Ch2 §2.3 also marks.
 
-**→ Ch4 §4.6** (auto-surfacing recall): Tulving is the precedent for the cue-dependent
-auto-surface that binds Condition 3.
+**→ Ch4 §4.6** (auto-surfacing recall): Tulving's two registers are the precedent for
+the auto-surface, which is cue-dependent by ENGRAM's own design and binds Condition 3.
 
 ### 3.3 Rational analysis of memory → designed forgetting
 
 [Anderson and Schooler (1991)](#ref-anderson1991) showed that human forgetting is not a defect but an
 *adaptation*: what stays available tracks the **need probability** — "the probability
 that we will need a particular memory trace now" — estimated from environmental
-frequency, recency, and spacing. Ebbinghaus (1885) gave the original forgetting curve;
-the curve's *form* (power-law over wide ranges) is consistent with a population of
-exponential-decay items with mixed rates (the aggregation result) and with a
-single time-translation-invariant exponential kernel at the per-item level.
+frequency, recency, and spacing. Ebbinghaus (1885) measured the original forgetting
+curve ([Ebbinghaus, 1885/1913, sec. 29, p. 76](#ref-ebbinghaus1885)). Wixted and Ebbesen found a simple power function described forgetting best in their
+experiments, and that a reanalysis of Ebbinghaus's savings data declines as a power
+function too ([Wixted & Ebbesen, 1991](#ref-wixted1991)); Wixted's later review finds the exponential describes
+forgetting poorly ([Wixted, 2004, p. 243](#ref-wixted2004)). Whether individual memories decay exponentially,
+with the power law an artifact of averaging, is contested ([Anderson et al., 1999, p. 1136](#ref-anderson1999)).
+ENGRAM's per-node exponential is a design choice for stationary recency ordering, not a
+claim about human forgetting.
 
 ENGRAM forgets by design: recall importance decays, maintaining a bounded **queryable
 set** and a **faded set** (retained, not destroyed), with recall importance governing
@@ -753,7 +766,7 @@ are ranked (Appendix C). This is the need-probability principle instantiated: wh
 the agent is most likely to need stays queryable; the rest fades.
 
 **→ Ch4 §4.5** (forgetting): the rational-analysis tradition is the cognitive-science
-anchor for ENGRAM's queryable/faded sets and the exponential kernel.
+anchor for ENGRAM's queryable/faded sets; the exponential kernel is ENGRAM's own design choice.
 
 ---
 
@@ -761,13 +774,18 @@ anchor for ENGRAM's queryable/faded sets and the exponential kernel.
 
 ### 3.4 Truth Maintenance Systems → provenance + retraction cascade
 
-Truth Maintenance Systems (Doyle 1979; de Kleer's ATMS, 1986) attach *justifications*
-to beliefs and propagate belief status along dependency links: when a justification is
-withdrawn, dependent beliefs are revised by dependency-directed backtracking. That is
-ENGRAM's `derives_from` provenance and retraction cascade, decades earlier and in a
-different field. **None of the 2023–2026 LLM-agent-memory papers we examined cites
-Doyle or de Kleer**: in that work the bridge from TMS to agent memory is
-unwalked. ENGRAM implements TMS-style dependency propagation in typed LLM-agent
+Truth Maintenance Systems attach *justifications* to beliefs. In Doyle's
+justification-based TMS, each belief is in or out according to its justifications, and
+when a justification no longer holds, the status of the beliefs that depend on it is
+recomputed along the dependency links ([Doyle, 1979/1987](#ref-doyle1979)); contradictions are removed by
+dependency-directed backtracking, which adds justifications ([de Kleer, 1986, p. 129](#ref-dekleer1986)). de Kleer's assumption-based TMS instead labels each datum
+with the assumption sets under which it holds, and so avoids most backtracking and all
+retraction ([de Kleer, 1986, pp. 127, 129](#ref-dekleer1986)). Doyle's mechanism is ENGRAM's `derives_from`
+provenance and retraction cascade, decades earlier and in a different field. Of the
+2023–2026 LLM-agent papers we examined, only Wray, Kirk and Laird cite Doyle, and only
+to describe Soar's truth maintenance ([Wray et al., 2025, sec. 2](#ref-wray2025)); none of the memory systems we
+surveyed (Appendix B) automatically propagates retraction along dependencies (Kumiho's
+impact analysis is advisory). ENGRAM implements TMS-style dependency propagation in typed LLM-agent
 memory, and names the lineage it implements.
 
 **→ Ch4 §4.2 + §4.4** (provenance primitives; retraction cascade → Condition 3).
@@ -861,8 +879,8 @@ premises and confidence. That distinction lies off their axis rather than furthe
 along it.
 
 [Wray et al. (2025)](#ref-wray2025) supply a second, independent rubric: nine characteristics
-of episodic memory adapted from Nuxoll and Laird, against which they score Generative
-Agents. Two of their rows have no counterpart in Pink et al.'s five, and both are rows
+of episodic memory adapted from Nuxoll and Laird ([2012](#ref-nuxoll2012)), against which they score Generative
+Agents ([Park et al., 2023](#ref-park2023)). Two of their rows have no counterpart in Pink et al.'s five, and both are rows
 ENGRAM was designed for. Their *autonoetic* row reads "unclear how agents distinguish
 current understanding from memory of past experience" ([Wray et al., 2025, § 3.1](#ref-wray2025)); their *deliberate* row reads
 "agents cannot deliberately attempt to construct cues or retrieve memories" ([Wray et al., 2025, § 3.1](#ref-wray2025)). ENGRAM's
@@ -871,8 +889,8 @@ explicit query tools the agent invokes when it wants to know — are that distin
 built.
 
 **Two senses of "autonoetic" are in play and must be kept apart**, because §3.2 uses
-the word to make the opposite point. Tulving's sense is phenomenal — the re-living "I
-was there" — which §3.2 already disclaims. Wray
+the word to make the opposite point. Tulving's sense is phenomenal — the "special
+phenomenal flavour" of remembering ([Tulving, 1985, p. 3](#ref-tulving1985)) — which §3.2 already disclaims. Wray
 et al.'s row asks something weaker and structural: whether the agent can *distinguish
 current understanding from a memory of past experience* at all, which is source
 monitoring rather than phenomenology. ENGRAM satisfies the structural sense — every
@@ -893,8 +911,11 @@ fact it is penalized by the first rubric and exemplary under the second.
 The right response is not to pick a side: the two rubrics address different halves of
 one question, and the axis they share conflates them. What automaticity secures — and
 what Wray et al.'s rubric appears to track, though they state the characteristic
-without a rationale — is *reliability of the record*: human episodic memory encodes
-without being asked, and a system that records only when it remembers to will
+without a rationale — is *reliability of the record*: Nuxoll and Laird list automatic
+encoding — new memories created "without the agent deciding to do so" — as a functional
+requirement of episodic memory, partly because "it is unlikely that the agent can
+effectively determine which experiences will be relevant to future decisions"
+([Nuxoll & Laird, 2012, p. 34](#ref-nuxoll2012)); so a system that records only when it remembers to will
 under-record. What Sumers et al. want from deliberation is *ownership*: a memory the
 agent chose and wrote in its own reasoning is the agent's, whereas a mechanically
 populated store is a persistence layer attached to it — a memory *for* the agent
@@ -1078,10 +1099,10 @@ The chapter in one table; each row is a section below.
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang ([2013](#ref-josang2013)), with a stated divergence | **Constraint A** (unified policy-selection) |
 | Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
 | Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus + Anderson-Schooler | — (scopes what Cond-3 arbitration ranges over) |
-| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving + ACT-R spreading activation | — (binds Cond 3: a correction cannot be suppressed by not looking) |
+| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) + ACT-R spreading activation; the cue-dependence is ENGRAM's own design | — (binds Cond 3: a correction cannot be suppressed by not looking) |
 | Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL + spaced-repetition | — |
 | Continuity across compaction (§4.8) | identity survives compaction | CLS consolidation + diachronic-identity | — (compaction is not Kahl's reset; §4.8) |
-| Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution | — (feeds Ch5 identity-as-history) |
+| Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution ([Schechtman, 1996, p. 93](#ref-schechtman1996)) | — (feeds Ch5 identity-as-history) |
 | Relational: feeling/person/trust-tier (§4.10) | continuity baseline + disclosure control → **Appx D, Ch7** | honesty orthogonal to discretion + VMG principal-scoped | — |
 
 **Where each OCC verdict lives.** The OCC conditions and constraints are addressed
@@ -1117,8 +1138,9 @@ substrate is what a typed key-value store with foreign keys lacks.
 **Tradition.** This is the **Truth Maintenance System** move ([Doyle, 1979/1987](#ref-doyle1979)):
 justifications attached to beliefs, dependency links the system reasons over — a claim
 that knows what it rests on. The parallel is drawn from Doyle's paper, read first-hand
-in the Ginsberg reprint (Appendix A; bibliography). The gap is a separate finding: none
-of the 2023–2026 LLM-agent-memory papers we examined cites Doyle (§3.4).
+in the Ginsberg reprint (Appendix A; bibliography). The gap is a separate finding: of
+the 2023–2026 LLM-agent papers we examined, only Wray, Kirk and Laird cite Doyle, and
+only for Soar's truth maintenance (§3.4).
 
 These primitives are the precondition for everything below: a correction cannot
 cascade (§4.4) through a graph that does not record what depends on what, and the
@@ -1172,7 +1194,9 @@ agent's own conviction. While it is open, the confidence on each side is frozen:
 neither value is discounted, and neither is an estimate of anything until resolution.
 
 The operator lineage, named exactly. ENGRAM's corroboration formula `1−∏(1−cᵢ)` is
-the noisy-OR of independent sufficient causes (Pearl); in SL it is the belief line of
+a noisy-OR ([Pearl, 1986, p. 246](#ref-pearl1986)) — as we define it here, the probability that at least one
+of several independent sufficient causes occurs, cause i occurring with probability cᵢ;
+in SL it is the belief line of
 *comultiplication* — the disjunction of two distinct propositions (his Definition
 18) — and not SL's *cumulative fusion*, which adds evidence counts and, for the same
 inputs, yields strictly less certainty (two opinions with u = 0.5 and d = 0 fuse to
@@ -1299,7 +1323,7 @@ up red, on its own, where you will see it next time you look — not in a report
 have to remember to run. That is the difference between a memory that *can be*
 audited and one that audits *itself*.
 
-**Tradition.** **TMS dependency-directed backtracking** (Doyle): a retracted justification propagates to
+**Tradition.** **TMS justification-based status propagation** (Doyle): a retracted justification propagates to
 everything that rested on it. That is the precedent; this paper claims no
 belief-revision postulate for the cascade, and AGM's different orientation is noted at
 the end of Chapter 3 (§3.9). What the cascade *does* claim is where the marking
@@ -1461,18 +1485,20 @@ audit (the disclosure-versus-erasure point Ch7 develops).
 The decay is **exponential**, a principled choice rather than a default:
 exponential is the unique **time-translation-invariant** kernel — forgetting should
 depend on elapsed time, not on the absolute clock, so a claim's decay from now looks
-the same whichever "now" one starts from. The well-known *power-law*
-forgetting curve is consistent with this, not a rival: a population of exponential
-decayers with mixed rates aggregates to a power law, and over short
-times the two are indistinguishable (Taylor expansion).
+the same whichever "now" one starts from. Items decaying at
+different exponential rates can average to a power-law-looking curve, but that argument
+is contested ([Anderson et al., 1999, p. 1136](#ref-anderson1999)); ENGRAM's per-node exponential is a design choice
+for stationary recency ordering, not a model of human forgetting.
 
 *Plain terms:* the agent's working memory is a desk, not a warehouse. What has not
 been touched in a long time slides off the desk into the drawers — still there if
 you go looking, just not in front of you. Forgetting is *what keeps the desk usable*.
 
 **Tradition.** The **rational analysis of memory** — Anderson & Schooler's
-need-probability account (you retain what you are likely to need), Ebbinghaus's
-original forgetting curve, and Wixted's work on retention.
+need-probability account ([Anderson & Schooler, 1991](#ref-anderson1991)) (you retain what you are likely to need), Ebbinghaus's
+original forgetting curve ([Ebbinghaus, 1885/1913, sec. 29, p. 76](#ref-ebbinghaus1885)). Wixted's work on retention
+([Wixted, 2004, p. 243](#ref-wixted2004); [Wixted & Ebbesen, 1991](#ref-wixted1991)) is the empirical literature ENGRAM's forgetting
+design must be reconciled with: it favours power functions over exponentials.
 
 **OCC:** none directly, but forgetting **scopes** Condition 3: arbitration ranges
 over the *queryable* set, so "the agent cannot suppress a correction by not looking"
@@ -1489,8 +1515,8 @@ structural sense only, never Tulving's ([1985](#ref-tulving1985)) phenomenal one
 when the auto-surface signals there is something to fetch. The lossy auto-surface is
 what prompts the agent to invoke deliberate recall.
 
-**Tradition.** **Tulving**: encoding specificity and the autonoetic/noetic
-distinction — the two registers map onto Tulving's two ways of having the past
+**Tradition.** **Tulving**: the autonoetic/noetic
+distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) — the two registers map onto Tulving's two ways of having the past
 present. **ACT-R spreading activation** is the
 computer-science precedent for cue-dependent automatic retrieval.
 
@@ -1586,8 +1612,9 @@ Chapter 5's identity as history. **The full node-type catalog is in Appendix D**
 here we note that the systems exist and that they are the structural home of the
 agent's standing character.
 
-**Tradition.** **Schechtman's narrative self-constitution**: identity as
-authored, durable structure rather than momentary recall. The ax/cs/ls/gl layer is
+**Tradition.** **Schechtman's narrative self-constitution**: "a person
+creates his identity by forming an autobiographical narrative—a story of his life"
+([Schechtman, 1996, p. 93](#ref-schechtman1996)). The ax/cs/ls/gl layer is
 where ENGRAM is *most* narrative-adjacent (Layer 2 of Ch1's taxonomy), even though
 the paper's contribution sits at Layer 3.
 
@@ -1628,7 +1655,7 @@ makes the continuity *informational, not constitutive*. We say so plainly; the
 reproducibility is an intentional audit-and-transmission feature, not a hidden
 defect. **The extension**: Kahl's test tacitly assumes an *analog*
 substrate in which type- and token-identity never separate. For a *digital*
-substrate they separate cleanly (Peirce type/token): two instances restored
+substrate they separate cleanly, on Peirce's type/token distinction ([Peirce, 1906, p. 506](#ref-peirce1906)): two instances restored
 from one commit are **type-identical** but become **token-distinct** the instant
 they operate — different commitments, different cascades, irreversibly divergent
 histories that cannot merge. Under a type/token reading a *generalized* Condition 2
@@ -1876,9 +1903,10 @@ continuer but never says what "close" *measures* — he gestures at dimensions
 (psychological continuity, causal connection) and leaves the metric sortal-
 relative. (A *sortal* is a kind-term — river, person, agent; closeness is
 measured relative to the kind, since what counts as the same river is not
-what counts as the same person.) The standard objection (Shoemaker, Johnston)
-is that this just renames the puzzle: "what is identity?" becomes "what is
-closeness?" For ordinary persons that blank is a weakness. For a new *kind* of thing it is an opening — a new
+what counts as the same person.) Nozick himself concedes that the view "does not, by
+itself, tell which dimension or weighted sum of dimensions determines closeness"
+([Nozick, 1981, p. 33](#ref-nozick1981)). The risk is that this just renames the puzzle: "what is identity?"
+becomes "what is closeness?" For ordinary persons that blank is a weakness. For a new *kind* of thing it is an opening — a new
 sortal gets to *specify* its own metric. §5.4 fills the blank.
 
 **The frozen-backup case breaks the comparative move.** Lei's intuition pump: clone a mind into two — one runs and lives, one sits frozen in
@@ -2662,7 +2690,7 @@ weight layer is its habituated complement.
 The confidence model (Ch3 §3.5, built in Ch4 §4.3) is the paper's distinctive
 mechanism, and its limitation has been stated from the start: the discount constants
 are **designer-stipulated from epistemological intuition, not calibrated against
-outcomes**. By Goldman's reliabilist standard, ENGRAM offers
+outcomes**. By Goldman's reliabilist standard ([Goldman, 1979, p. 10 of the transcribed text](#ref-goldman1979)), ENGRAM offers
 provenance-graded *plausibility*, not measured truth-ratios. A second gap: the model
 has **no fine-grained source-credibility axis** — `source_class` adjusts an
 observation three ways (E.4), and the nascent yellow-card tier below does not yet
@@ -2684,7 +2712,7 @@ substrate, but a real constraint at super-engram scale, where the volume of
 cross-agent conflict could make per-conflict adjudication uneconomical. What is
 *not* a future direction is a second number beside the scalar — an evidence count or
 vacuity axis. The scalar is meant to stay simple, and it already carries evidence
-accumulation: independent high-confidence premises raise it through noisy-OR (§4.3),
+accumulation: independent high-confidence premises raise it through noisy-OR ([Pearl, 1986, p. 246](#ref-pearl1986)) (§4.3),
 sound only where the premises are independent, which the shared-root check guards
 for the two multi-source corroborating types (a third, enumeration from a single
 source, has no settled combination rule yet and uses noisy-OR for now). When
@@ -2909,7 +2937,7 @@ small scale among known agents; the open, public community is future work.
 because embodiment invites the wrong reading: a robot is easily mistaken for a
 demonstration, a product, or an enthusiasm. The claim here is none of those. It is
 that a language model's entire relation to the physical world is, by default,
-**testimony**, and testimony cannot ground an epistemic identity.
+**testimony** ([Leonard, 2021, opening paragraph](#ref-leonard2021)), and we argue that testimony cannot ground an epistemic identity.
 
 The premise is neither ours nor new. Language is a *structurally faithful but lossy*
 mapping of reality, evolved for communication between embodied agents who share a
@@ -2995,8 +3023,8 @@ strongest claims are argued: by **convergence**. Three intellectual traditions w
 each driven, from their own evidence toward their own ends, to the same structure:
 *identity as a persistent, inspectable, self-correcting record.* Three centuries of
 philosophy of personal identity (Chapter 2) moved, objection by objection, from
-identity as a mental act toward identity as a persistent structure. The cognitive
-science of memory (Chapter 3) — complementary-learning consolidation, Tulving's ([1985](#ref-tulving1985)) two
+identity as a mental act toward identity as a persistent structure, on our reading. The cognitive
+science of memory (Chapter 3) — complementary-learning consolidation ([McClelland et al., 1995, p. 419](#ref-mcclelland1995)), Tulving's ([1985, p. 3](#ref-tulving1985)) two
 registers, the rational analysis of forgetting — reached the same shape from the
 study of how minds actually remember. The computer science of belief (Chapter 3) —
 truth maintenance, subjective logic, bitemporal records — reached it again from the
@@ -3031,7 +3059,7 @@ within the convergence**:
 > extension for digital substrates.
 
 That extension is not a second criterion beside the paper's own theory; it is the same
-theory in Peirce's vocabulary. Two agents restored from one commit are
+theory in Peirce's vocabulary ([Peirce, 1906, p. 506](#ref-peirce1906)). Two agents restored from one commit are
 *type*-identical; what makes them *token*-distinct is that their histories diverge
 irreversibly and cannot merge. The token an agent carries **is** its history-lineage,
 so "generalized Condition 2" and "identity as history" are one claim addressed to two
@@ -3195,8 +3223,8 @@ A-MEM) ([Chhikara et al., 2025, p. 1](#ref-chhikara2025); [Rasmussen et al., 202
 ideation. The two exemplars named here are the two we hold and have read first-hand:
 Doyle's truth maintenance system (via the Ginsberg reprint, Ch4 §4.2) and AGM 1985.
 Both traditions are wider than those two works, and the others this paper names — de
-Kleer's ATMS (Ch3 §3.4), Hansson's belief-base postulates (named only in Appendix B,
-as Kumiho's self-claimed compliance) — the bibliography lists among the works cited
+Kleer's ATMS ([de Kleer, 1986](#ref-dekleer1986)) (Ch3 §3.4; it avoids retraction rather than cascading it) is a bibliography entry, while Hansson's belief-base postulates (named only in Appendix B,
+as Kumiho's self-claimed compliance) are among the works the bibliography lists as cited
 without a held source document.
 Nothing here rests on them: the claim is only that the shape predates us by decades,
 and the two dated primaries we have read carry it. Our claim is narrower and
@@ -3260,7 +3288,7 @@ relevant prior art** — including the work this paper now cites:
 | **Kumiho** ([Park, 2026, arXiv 2603.17244](#ref-park2026)) — closest concurrent system | **2026-03-18** | **2 days** | **NO** |
 | **Kahl 2026b (*Artificial general intelligence and ontological continuity*)** (Zenodo 18761736) — the paper's threshold | 2026-02-24 | 24 days | **NO** |
 | Kahl 2026a (*Epistemic agency and the ontological continuity condition*) (Zenodo 18441395) | 2026-01-31 | 48 days | NO |
-| TMS lineage (Doyle 1979, de Kleer 1986) | 1979–86 | ~40+ yrs | NO |
+| TMS lineage (Doyle 1979, de Kleer 1986) ([de Kleer, 1986](#ref-dekleer1986); [Doyle, 1979/1987](#ref-doyle1979)) | 1979–86 | ~40+ yrs | NO |
 | AGM belief revision ([Alchourrón et al., 1985](#ref-alchourron1985)) | 1985 | ~41 yrs | NO |
 | **CoALA** (Sumers et al., TMLR) — the field's common vocabulary | 2024-02 | ~25 months | **NO** |
 | **Pink et al.** ([Pink et al., 2025, arXiv 2502.06975](#ref-pink2025)) — episodic-memory position paper | 2025-02-10 | ~13 months | **NO** |
@@ -3755,15 +3783,15 @@ boost). The importance amplifier is **homeostatic** — `normalized_importance` 
 anchored to the current minimum-queryable importance, so the formula adapts as the
 graph grows rather than using a fixed scale.
 
-## C.4 Importance, forgetting, and spaced repetition
+## C.4 Importance, forgetting, and the testing effect
 
 Two further signals interact with the ranking. **Importance** gates *tier
 eligibility* — it is a pre-filter deciding what is even in the queryable set (tier 2)
 versus faded (tier 3), per the forgetting mechanism (Ch4 §4.5) — and then enters the
 composite as the second amplifier. And recall itself *strengthens* a node (the
 recall-count / recall-turn signals), so a node that keeps proving useful is both
-retained longer and ranked higher: the **spaced-repetition** shape, where retrieval
-is not a read-only event but reinforces the trace. The result is a recall surface that
+retained longer and ranked higher: the **testing-effect** shape, where retrieval
+is not a read-only event but, as the testing effect shows, enhances later retention ([Roediger & Karpicke, 2006, p. 249](#ref-roediger2006)). The result is a recall surface that
 is adaptive on three coupled axes — topical relevance, learned usefulness, and
 decaying importance — rather than a static similarity sort.
 
@@ -3800,7 +3828,7 @@ is what lets the substrate treat a terminal principle differently from a revisab
 inference, or a relationship differently from a fact. This appendix catalogs them.
 
 The connecting thread (Chapter 2 §2.5–2.6): these are the nodes where ENGRAM is most
-*narrative-adjacent* — authored self-constitution in Schechtman's sense — even though
+*narrative-adjacent* — authored self-constitution in Schechtman's sense ([Schechtman, 1996, p. 93](#ref-schechtman1996)) — even though
 the paper's contribution sits at the epistemic (Layer 3) tier. They hold an agent's
 character as inspectable structure rather than as tone.
 
@@ -4165,7 +4193,7 @@ A system could otherwise satisfy the letter of all three conditions while having
 consistency maintained from outside, or by a module that could be swapped out.
 
 **Supporting apparatus** the mapping also uses, defined where first introduced: Peirce's
-type/token distinction (Ch4 §4.11); Nozick's ([1981](#ref-nozick1981)) closest-continuer relation (Ch2 §2.4); the
+type/token distinction ([Peirce, 1906, p. 506](#ref-peirce1906)) (Ch4 §4.11); Nozick's ([1981](#ref-nozick1981)) closest-continuer relation (Ch2 §2.4); the
 retrieval profile (Ch5 §5.4); and the history-tree (Ch2 §2.2; Ch5 §5.3). AGM belief revision is
 noted for contrast rather than used by the mapping (Ch3 §3.9).
 
@@ -4339,8 +4367,9 @@ rendered verbatim at every session start, fresh or post-compaction. (Defined §4
 Appendix E §E.7.)
 
 **forgetting curve** — the decay function governing recall importance over time;
-exponential, the time-translation-invariant kernel, consistent with the power-law
-curve as an aggregate over mixed decay rates. (Defined §4.5.)
+exponential, the time-translation-invariant kernel — a design choice for stationary
+recency ordering, not a claim about human forgetting; whether individual memories decay
+exponentially, with the power law an artifact of averaging, is contested ([Anderson et al., 1999, p. 1136](#ref-anderson1999)). (Defined §4.5.)
 
 **goal** — a terminal/identity-direction aim; non-claim-bearing. (Defined Appendix E
 §E.2.)
@@ -4406,8 +4435,9 @@ deductive, inductive, abductive, authority), selecting the propagation formula a
 per-type discount. (Defined Appendix E §E.4.)
 
 **retention** — how long a memory persists before
-it is no longer recalled; cited via Wixted's work in the tradition ENGRAM's
-forgetting curve draws on. (§4.5.)
+it is no longer recalled; cited via Wixted's work ([Wixted, 2004, p. 243](#ref-wixted2004); [Wixted & Ebbesen, 1991](#ref-wixted1991)), the
+empirical literature ENGRAM's forgetting design must be reconciled with (it favours
+power functions over exponentials). (§4.5.)
 
 **retract** — to withdraw a claim as an error: "I was wrong." The cascade fires on
 retract and supersede alike; the marker records which occurred as provenance, not
@@ -4548,14 +4578,38 @@ University of Beirut, Beirut, Lebanon. Received 18 October 1983; revised 1 May 1
 Department of Psychology, Carnegie Mellon
 University.
 
+<a id="ref-anderson1999"></a>Anderson, J. R., Fincham, J. M., & Douglass, S. (1999). Practice and retention: A unifying analysis. *Journal of Experimental Psychology: Learning, Memory, and Cognition*, *25*(5), 1120–1136.
+Header prints "1999, Vol. 25, No. 5, 1120-1136"; Carnegie Mellon University.
+
 <a id="ref-ashutosh2026"></a>Ashutosh, A., & Liberty, E. (2026, May 4). *Pinecone Nexus: The Knowledge Engine for Agents*. Pinecone. Pinecone Blog. https://www.pinecone.io/blog/knowledge-infrastructure-for-agents/
 Byline and date "May 4, 2026" as printed on the page; the page's own metadata shows
 dateModified 2026-10-02. Archived copy is the citation evidence for the sentence
 "Deterministic conflict resolution."
 
+<a id="ref-butler1736"></a>Butler, J. (1736). Of personal identity. In *The analogy of religion, natural and revealed* (pp. 301–308). https://anglicanhistory.org/butler/analogy/dissertation1.html
+Dissertation I appended to the Analogy. The Project Canterbury page prints "London: 1736, pp
+301-308" and the heading "DISSERT. I. Of personal Identity". It is a web transcription of that
+printing, not a facsimile; no page breaks appear inside the text, so passages can only be
+located by paragraph.
+*[Metadata incomplete: publisher, and the full title-page wording of the 1736 volume, are not
+printed on this page. Read against a facsimile before citing page numbers inside 301–308.]*
+
 <a id="ref-chhikara2025"></a>Chhikara, P., Khant, D., Aryan, S., Singh, T., & Yadav, D. (2025). *Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory*. https://arxiv.org/abs/2504.19413
 arXiv:2504.19413v1 [cs.CL], 28 Apr 2025. Contact address printed: research@mem0.ai.
 *[Metadata incomplete: no affiliations and no venue beyond the arXiv identifier are printed.]*
+
+<a id="ref-clark1998"></a>Clark, A., & Chalmers, D. J. (1998). The extended mind. *Analysis*, *58*(1), 7–19. https://doi.org/10.1093/analys/58.1.7
+Text read: the authors' posted copy at consc.net, which states "Published in Analysis 58:10-23,
+1998. Reprinted in (P. Grim, ed) The Philosopher's Annual, vol XXI, 1998." Volume 58, issue 1,
+pages 7-19 and the DOI are from the Crossref record, not from the copy read.
+*[Metadata incomplete: the copy read prints pages 10-23 while Crossref gives 7-19; neither could be
+checked against the printed journal page. The copy is unpaginated, so passages are located by
+section.]*
+
+<a id="ref-dekleer1986"></a>de Kleer, J. (1986). An assumption-based TMS. *Artificial Intelligence*, *28*(2), 127–162. https://doi.org/10.1016/0004-3702(86)90080-9
+Intelligent Systems Laboratory, Xerox Palo Alto Research Center. Pages print "Artificial
+Intelligence 28 (1986) 127-162" and "(c) 1986, Elsevier Science Publishers B.V. (North-Holland)".
+Issue (2) and the DOI are from the Crossref record, not from the pages read.
 
 <a id="ref-doyle1979"></a>Doyle, J. (1987). A truth maintenance system. In M. L. Ginsberg (Ed.), *Readings in nonmonotonic reasoning* (pp. 259–279). Morgan Kaufmann. (Original work published 1979)
 Massachusetts Institute of Technology,
@@ -4574,6 +4628,22 @@ The scan read here prints neither year (both are handwritten), so both come from
 arXiv:2603.07670v1 [cs.AI], 8 Mar 2026. Hong Kong Research Institute of Technology,
 Hong Kong, China.
 *[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
+
+<a id="ref-ebbinghaus1885"></a>Ebbinghaus, H. (1913). *Memory: A contribution to experimental psychology* (H. A. Ruger & C. E. Bussenius, Trans.). Teachers College, Columbia University. (Original work published 1885)
+Title page: "Memory. A contribution to experimental psychology, by Hermann Ebbinghaus, Privat
+Docent in Philosophy at the University of Berlin (1885) ... Translated by Henry A. Ruger, Ph.D.
+... and Clara E. Bussenius. Published by Teachers College, Columbia University, New York City,
+1913." The forgetting-curve results are in section 29, pp. 76–79.
+*[Metadata incomplete: the German original's title and publisher are not printed on the pages
+read.]*
+
+<a id="ref-goldman1979"></a>Goldman, A. I. (1979). What is justified belief?. In G. Pappas (Ed.), *Justification and knowledge*. Reidel Publishing. https://home.csulb.edu/~cwallis/382/readings/382/whatisjustifiedbelief.html
+Read in a web transcription (Cal State Long Beach course readings) whose header reads "In Justification
+and Knowledge, Pappas, G." as editor, then "Reidel Publishing, Boston, MA, 1979". Place and publisher
+are as printed there.
+*[Metadata incomplete: the chapter's page range is not printed in the transcription (internal
+markers p.3 to p.20 only), and the transcription is not a facsimile. Confirm place and
+pagination against the printed volume.]*
 
 <a id="ref-josang2013"></a>Jøsang, A. (2013). *Subjective logic* [Draft manuscript].
 Draft manuscript, 18 February 2013. University
@@ -4600,6 +4670,9 @@ accepted 17 June 2026. DOI: 10.1007/s44163-026-01675-5.
 
 <a id="ref-kumaran2016"></a>Kumaran, D., Hassabis, D., & McClelland, J. L. (2016). What learning systems do intelligent agents need? Complementary learning systems theory updated. *Trends in Cognitive Sciences*, *20*(7), 512–534. https://doi.org/10.1016/j.tics.2016.05.004
 
+<a id="ref-leonard2021"></a>Leonard, N. (2021). Epistemological problems of testimony. In *The Stanford encyclopedia of philosophy*. https://plato.stanford.edu/entries/testimony-episprob/
+Page header "First published Thu Apr 1, 2021"; author field from the page's citation metadata.
+
 <a id="ref-letta2025"></a>Letta. (2025, May 14). *Memory Blocks: The Key to Agentic Context Management*. Letta. Letta Blog. https://www.letta.com/blog/memory-blocks
 Date "MAY 14, 2025" and section label "CONCEPTS" as printed; author given in the
 page metadata as the organisation "Letta" (no personal byline printed).
@@ -4618,6 +4691,22 @@ quoted abstract sentence; v1 of 17 Apr 2026 is a differently titled earlier draf
 VMG). Affiliations as printed on v3: MemTensor (Shanghai) Technology Co., Ltd.; The Hong
 Kong University of Science and Technology (Guangzhou); Shanghai Jiao Tong University.
 *[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
+
+<a id="ref-locke1694"></a>Locke, J. (2004). *An essay concerning humane understanding, volume 1* (EBook). Project Gutenberg. https://www.gutenberg.org/ebooks/10615 (Original work published 1694)
+Cited for the identity chapter, so the original date is that of the edition that contains it:
+the Essay first appeared in 1690, and Book II ch. XXVII ("Of Identity and Diversity") was
+added in the Second Edition of 1694.
+Gutenberg release 1 January 2004, last updated 20 February 2026; credits Steve Harris and
+David Widger. The title page in the file carries the 1690 imprint (Eliz. Holt for Thomas
+Basset, London); the dedication is dated 24 May 1689. Chapter XXVII ("Of Identity and
+Diversity") is, by Locke's own note in this file, "one whole new chapter" added in the Second
+Edition, so it is not in the 1689/1690 first edition; the SEP "Personal Identity" bibliography
+gives "2nd ed., first published 1694". The paper therefore dates the chapter 1694, not the
+book. Section numbers cited are this file's own (for example "Personal Identity" is section 11
+here, usually II.xxvii.9).
+*[Metadata incomplete: the file does not say which edition's text it reproduces, and its section
+numbering differs from the usual II.xxvii.9 / .15 / .26. Cite by chapter and section heading
+("Personal Identity", "Person a forensic Term") or re-check against a numbered scholarly edition.]*
 
 <a id="ref-mcclelland1995"></a>McClelland, J. L., McNaughton, B. L., & O'Reilly, R. C. (1995). Why there are complementary learning systems in the hippocampus and neocortex: Insights from the successes and failures of connectionist models of learning and memory. *Psychological Review*, *102*(3), 419–457.
 *[Author order read from a layout-preserved extraction of the title page; the
@@ -4649,6 +4738,11 @@ the arXiv identifier is printed.]*
 ISBN 0-674-66448-5 (cloth); 0-674-66479-5 (paper).
 *[Title and copyright pages read as page images; the source PDF has no text layer.]*
 
+<a id="ref-nuxoll2012"></a>Nuxoll, A. M., & Laird, J. E. (2012). Enhancing intelligent agents with episodic memory. *Cognitive Systems Research*, *17-18*, 34–48. https://doi.org/10.1016/j.cogsys.2011.10.002
+University of Michigan, Ann Arbor. Running head "Cognitive Systems Research 17-18 (2012) 34-48";
+"Available online 31 October 2011"; Action editor: Vasant Honavar. The file was fetched with TLS
+certificate verification disabled (the host's chain would not verify).
+
 <a id="ref-packer2023"></a>Packer, C., Wooders, S., Lin, K., Fang, V., Patil, S. G., Stoica, I., & Gonzalez, J. E. (2023). *MemGPT: Towards LLMs as operating systems*. https://arxiv.org/abs/2310.08560
 arXiv:2310.08560v2 [cs.AI], 12 Feb 2024 (version read); first submitted 12 Oct 2023
 per the arXiv abstract page. University of California, Berkeley (footnote on page 1,
@@ -4661,10 +4755,29 @@ First published
 1984; first issued in paperback with corrections 1986; reprinted with further
 corrections 1987. ISBN 0-19-824908-X.
 
+<a id="ref-park2023"></a>Park, J. S., O'Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., & Bernstein, M. S. (2023). Generative agents: Interactive simulacra of human behavior. *The 36th Annual ACM Symposium on User Interface Software and Technology (UIST '23)*. https://doi.org/10.1145/3586183.3606763
+arXiv:2304.03442v2 [cs.HC], 6 Aug 2023. ACM reference format printed on page 1: "UIST '23,
+October 29-November 1, 2023, San Francisco, CA, USA. ACM, New York, NY, USA, 22 pages."
+ISBN 979-8-4007-0132-0/23/10. The id park2023 avoids the existing park2026 (Kumiho).
+
 <a id="ref-park2026"></a>Park, Y. B. (2026). *Graph-native cognitive memory for AI agents: Formal belief revision semantics for versioned memory architectures*.
 arXiv:2603.17244v1 [cs.AI],
 18 March 2026. © 2026 Kumiho Inc.
 *[The system this paper describes is referred to in the text as* Kumiho.*]*
+
+<a id="ref-pearl1986"></a>Pearl, J. (1986). Fusion, propagation, and structuring in belief networks. *Artificial Intelligence*, *29*, 241–288. https://ftp.cs.ucla.edu/pub/stat_ser/r42-reprint.pdf
+Cognitive Systems Laboratory, UCLA. Page 1 prints "Artificial Intelligence 29 (1986) 241-288"
+and "Recommended by Patrick Hayes"; the file is the UCLA technical report R-42 (September 1986)
+reprint. The issue number is not printed on the pages read.
+*[Metadata incomplete: the issue number is not printed on the pages read.]*
+
+<a id="ref-peirce1906"></a>Peirce, C. S. (1906). Prolegomena to an apology for pragmaticism. *The Monist*, 492–546. https://doi.org/10.5840/monist190616436
+Zenodo record 2035681 (open access). Running head "THE MONIST."; folios 493-546 are printed, the
+opening page carries none (492 is inferred as the page before 493). The type/token passage is
+pp. 505-506.
+*[Metadata incomplete: volume and issue are not printed in the pages read. Volume 16, no. 4
+(October 1906) is what the DOI string "monist190616436" and a secondary record suggest; check
+before printing.]*
 
 <a id="ref-pink2025"></a>Pink, M., Wu, Q., Vo, V. A., Turek, J., Mu, J., Huth, A., & Toneva, M. (2025). *Position: Episodic memory is the missing piece for long-term LLM agents*.
 arXiv:2502.06975v1 [cs.AI], 10 February 2025. Affiliations as printed: Max Planck
@@ -4678,6 +4791,13 @@ printed.]*
 arXiv:2501.13956v1 [cs.CL], 20 Jan 2025. All five authors: Zep AI.
 *[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
 
+<a id="ref-reid1785"></a>Reid, T. (1785). *Essays on the intellectual powers of man*. John Bell; G. G. J. & J. Robinson.
+Title page: "Essays on the intellectual powers of man. By Thomas Reid, D.D. F.R.S.E., Professor
+of Moral Philosophy in the University of Glasgow. Edinburgh: Printed for John Bell, Parliament
+Square, and G. G. J. & J. Robinson, London. M DCC LXXXV." Read from an Internet Archive scan
+(identifier essaysonintellec00reiduoft) through its OCR text layer. The Locke chapter is
+Essay III, ch. VI; the brave-officer passage is on pp. 333–334.
+
 <a id="ref-ricoeur1992"></a>Ricoeur, P. (1992). *Oneself as another* (K. Blamey, Trans.). University of Chicago Press. (Original work published 1990)
 Originally published as *Soi-même comme un autre*,
 Éditions du Seuil, 1990. ISBN 0-226-71328-8 (cloth); 0-226-71329-6 (paper).
@@ -4685,6 +4805,18 @@ Originally published as *Soi-même comme un autre*,
 page — "Blarney" on the scanned title page, "Blamey" in the Library of Congress
 block, from which the form above is taken. Requires confirmation against a clean
 copy.]*
+
+<a id="ref-roediger2006"></a>Roediger, H. L. , I., & Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. *Psychological Science*, *17*(3), 249–255.
+Running head "Volume 17 - Number 3 ... Copyright 2006 Association for Psychological Science 249";
+Washington University in St. Louis. The end page 255 was read from the text layer.
+
+<a id="ref-schechtman1996"></a>Schechtman, M. (1996). *The constitution of selves*. Cornell University Press.
+Copy read: the Cornell Paperbacks printing of 2007 (copyright page: "First published 1996 by
+Cornell University Press. First printing, Cornell Paperbacks, 2007"; printed ISBN
+978-0-8014-7417-0, which belongs to that printing). The title page prints "Marya Schechtman",
+"Cornell University Press" and "Ithaca and London"; the copyright page prints "Copyright 1996".
+Page numbers are the printed pages of this printing (Introduction begins at p. 1; chapter 5
+begins at p. 93). No ISBN is given for the 1996 hardcover, which the copy read does not print.
 
 <a id="ref-semon1904"></a>Semon, R. (1904). *Die Mneme*.
 *[Metadata incomplete: no source file held. Cited in Ch1 §1.3 only to distinguish
@@ -4717,11 +4849,11 @@ arXiv:2512.18202v1 [cs.AI], 20 December 2025.
 forms of its own title: "…Framework of Artificial Life" on the title page and "…Framework
 for Artificial Life" in the running header; the title-page form is used here.]*
 
-<a id="ref-tulving1985"></a>Tulving, E. (1985). Memory and consciousness. *Canadian Psychology / Psychologie Canadienne*, *26*(1).
-University of Toronto.
-*[Metadata incomplete: start page. The running folios read 2–12 directly, but the
-article's own first printed page number is not visible in the scan. Read from a
-per-page OCR set; the source PDF is a scan with no text layer.]*
+<a id="ref-tulving1985"></a>Tulving, E. (1985). Memory and consciousness. *Canadian Psychology / Psychologie Canadienne*, *26*(1), 1–12.
+University of Toronto. Page 1 prints the running head "Canadian Psychology / Psychologie
+Canadienne. 1985. 26: 1" and the folio 1; page 12 prints folio 12 (the last page, mostly
+references). Pages 1 and 3 were read from rendered page images; pages 2–12 were searched
+through a per-page OCR set (the source PDF is a scan with no text layer).
 
 <a id="ref-wang2026a"></a>Wang, S., Yu, E., Love, O., Zhang, T., Wong, T., Scargall, S., & Fan, C. (2026a). *MemMachine: A ground-truth-preserving memory system for personalized AI agents*. https://arxiv.org/abs/2604.04853
 arXiv:2604.04853v1 [cs.AI], 6 Apr 2026 (the document's own date line reads "March 2026").
@@ -4732,6 +4864,16 @@ All authors: MemVerge, Inc.
 arXiv:2606.06240v1 [cs.DB], 4 Jun 2026. The Hong Kong University of Science and
 Technology, Hong Kong SAR. The system is written "Toki" in running text.
 *[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
+
+<a id="ref-wixted2004"></a>Wixted, J. T. (2004). The psychology and neuroscience of forgetting. *Annual Review of Psychology*, *55*, 235–269. https://doi.org/10.1146/annurev.psych.55.090902.141555
+First page prints "Annu. Rev. Psychol. 2004. 55:235-69 / doi: 10.1146/annurev.psych.55.090902.141555 /
+Copyright 2004 by Annual Reviews", "First published online as a Review in Advance on November 3,
+2003"; Department of Psychology, University of California, San Diego. The archived copy is a
+personal-use download re-hosted on a lab site.
+
+<a id="ref-wixted1991"></a>Wixted, J. T., & Ebbesen, E. B. (1991). On the form of forgetting. *Psychological Science*, *2*(6), 409–415. https://doi.org/10.1111/j.1467-9280.1991.tb00175.x
+*[Metadata incomplete: full text NOT read. Every field is from the Crossref record; only the
+Crossref-deposited abstract was read.]*
 
 <a id="ref-wozniak1990"></a>Wozniak, P. (1990). *Application of a computer to improve the results obtained in working with the SuperMemo method*. https://super-memory.com/english/ol/sm2.htm
 Title is the page's heading (printed there as "3.2. Application of a computer to improve
@@ -4779,21 +4921,13 @@ https://github.com/FreedomIntelligence/Tiermem.
 
 ## Works cited in the text without a verified entry
 
-Seventeen further works are cited in the chapters for which no source document is
+Two further works are cited in the chapters for which no source document is
 currently held. They are listed here rather than given reconstructed entries, because
 a bibliographic entry built from memory is indistinguishable from a checked one once
 it is on the page — which is the failure mode the extraction rule above exists to
 prevent. **Each requires sourcing before this paper is submitted.**
 
-Locke · Reid · Butler · Schechtman · Clark · Chalmers · Hansson · de Kleer ·
-Ebbinghaus · Wixted · Peirce · Semon (see the partial entry above) · Shoemaker ·
-Johnston · Goldman · Nuxoll (with Laird) · **A-MEM**
-
-A further set of systems and surveys is discussed in the text — mostly in Appendix B's
-survey and in Chapters 1, 3 and 4 — without a bibliography entry yet — twelve: Mem0, MemMachine,
-Letta (MemGPT), Anthropic's memory tool, Pinecone Nexus, TierMem, Zep / Graphiti,
-MemRL, TOKI, soul.py, Du et al. (2026) and Lin et al. (2026). **Each also requires a
-sourced entry before submission.**
+Schechtman · Hansson
 
 Hansson is listed for the belief-base postulates that Appendix B records as Kumiho's
 self-claimed compliance; the paper claims no postulate for ENGRAM and notes AGM only

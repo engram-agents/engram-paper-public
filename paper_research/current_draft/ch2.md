@@ -34,16 +34,19 @@ name the gap.
 
 ---
 
-## 2.1 Locke (1689): identity is consciousness reaching back
+## 2.1 Locke (1694): identity is consciousness reaching back
 
 Locke moved the question of identity off the body and the soul and onto
 **consciousness**. A person is the same person across time, he argued, as far as
-"this consciousness can be extended backwards" to a past thought or action. In his
+"this consciousness can be extended backwards" to a past thought or action
+[@locke1694, Bk II ch. XXVII, "Personal Identity"]. In his
 thought experiment of the prince and the cobbler, the prince's consciousness is
 placed in the cobbler's body, and the *person* — the prince — goes with the
-consciousness, not the body. Identity for Locke is also **forensic**: it makes me
+consciousness, not the body
+[@locke1694, Bk II ch. XXVII, "The body, as well as the soul, goes to the making of a Man"].
+Identity for Locke is also **forensic**: it makes me
 accountable for a past act, because my consciousness *appropriates* that act as
-mine. In short: *you are whoever you can remember being.*
+mine [@locke1694, Bk II ch. XXVII, "Person a forensic Term"]. In short: *you are whoever you can remember being.*
 
 This is the ancestor of everything ENGRAM does — identity that reaches back to what
 an earlier self thought and did. But Locke's *mechanism*, remembering here and now,
@@ -51,8 +54,8 @@ has a well-known flaw, which two critics exposed.
 
 ## 2.2 Reid (1785) and Butler (1736): the two cracks — and ENGRAM's repair
 
-**Reid's transitivity objection**, the brave-officer case, is fatal to Locke's
-account as stated. Consider one life in three stages: a boy flogged for stealing
+**Reid's transitivity objection**, the brave-officer case, derives a contradiction from
+Locke's account as stated [@reid1785, Essay III ch. VI, pp. 333–334]. Consider one life in three stages: a boy flogged for stealing
 fruit; a young officer who, in his first battle, remembers the flogging; and an old
 general who remembers the battle but has *forgotten the flogging entirely*. By
 Locke's rule the officer is the boy (he remembers the flogging) and the general is
@@ -61,7 +64,7 @@ remember being him). Identity is transitive — if A is B and B is C, then A is 
 and Locke's recall-based account violates this. Memory fades, and a chain built only
 of present memories has gaps.
 
-**Butler's circularity objection** is subtler and deeper. Locke says identity is
+**Butler's circularity objection** is subtler and deeper [@butler1736, Dissertation I, para. 3]. Locke says identity is
 constituted by consciousness of *my* past actions, but "my" already assumes the
 identity it is meant to explain: I must *already* be the same person for the past
 action to be mine to remember. The definition presupposes what it defines.
@@ -224,11 +227,11 @@ ipse effect is real, and it is why the objective record is not inert: the same
 structure, recalled, shapes the "who am I" that it records.
 
 **Schechtman** is the hinge of the chapter. She separates two questions that the
-philosophy of identity usually runs together: the **reidentification** question
-(*is the person now the same as the person then?*) and the **characterization**
-question (*what makes a given trait genuinely belong to this person — what kind of
-person are they?*). Narrative identity answers characterization: *what story do I
-tell about myself?*
+philosophy of identity usually runs together: the **reidentification** question,
+"what makes a person at time t2 the same person as a person at time t1", and the
+**characterization** question, "which beliefs, values, desires, and other
+psychological features make someone the person she is" [@schechtman1996, pp. 1–2].
+Narrative identity answers characterization [@schechtman1996, p. 93].
 
 A **third question is covered by neither** (ob_0419), and it is the one ENGRAM is built for:
 *what do I know, how reliably, and on what basis?* It is neither reidentification nor
@@ -244,14 +247,18 @@ identity but a layer the tradition under-named.
 
 ## 2.6 The extended mind: from supporting a self to constituting one
 
-Clark and Chalmers' **extended mind** thesis is where the trail becomes
+Clark and Chalmers' **extended mind** thesis [@clark1998, sec. 4] is where the trail becomes
 *constitutive*. Their case is Otto, who can no longer form new biological memories
 and relies on a notebook: when the notebook plays the functional role that
 biological memory plays for others, it is *part of his cognitive system*, not an
-external aid he consults.
+external aid he consults. Clark and Chalmers take the step to the self themselves: the extended mind "seems" to
+imply an extended self, and the notebook is "a central part of his identity as a
+cognitive agent" [@clark1998, sec. 5]. What ENGRAM adds is that the agent revises and retracts that record itself, over
+time, rather than only writing to it.
 
 ENGRAM is an extended-mind case, and a **stronger** one than Otto's notebook on the
-criterion Clark and Chalmers themselves stress: *past conscious endorsement* (ob_1193). Otto
+fourth of their features, past conscious endorsement, which Clark and Chalmers
+themselves call arguable as a criterion [@clark1998, sec. 5] (ob_1193). Otto
 endorsed his entries when he wrote them. In ENGRAM, *every* node — observations, but
 also derivations, definitions, and even confidence values — passed through
 deliberate endorsement at creation, and the *substrate itself* (the schema, the
@@ -336,8 +343,9 @@ Two qualifications belong here:
 Taken as a whole, the trail has a single shape. It begins with identity as a
 **present mental act** (Locke's recall) and is forced, objection by objection,
 toward identity as a **persistent structure**: Reid and Butler break recall; Parfit
-reduces identity to structural connectedness; Ricoeur and Schechtman locate the
-*epistemic* dimension the tradition had left unnamed; Clark, Chalmers, and Stiegler
+reduces identity to structural connectedness; Ricoeur and Schechtman separate the
+questions identity theory had run together, which leaves room for the *epistemic*
+dimension the tradition had left unnamed; Clark, Chalmers, and Stiegler
 make the external structure *constitutive* rather than merely supportive; Nozick and
 Kahl make it *historical* and give it conditions. ENGRAM is that endpoint as a built
 system, and it arrived at the same shape under engineering pressure, not by reading

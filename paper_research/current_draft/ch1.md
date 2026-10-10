@@ -131,7 +131,8 @@ breadth, not any single framework, makes the Layer-3 claim load-bearing.
 - **Three centuries of philosophy of personal identity** (Chapter 2) move, objection
   by objection, from identity as a mental act toward identity as a persistent,
   inspectable structure — from Locke through Parfit, Schechtman, Clark and Chalmers,
-  Stiegler, Nozick, and Kahl. ENGRAM is that endpoint, built.
+  Stiegler, Nozick, and Kahl, on our reading of the tradition (Chapter 2). ENGRAM is
+  that endpoint, built.
 - **Cognitive science and computer science** (Chapter 3) reach the same structures
   from the other side: complementary-learning-systems consolidation, Tulving's memory
   taxonomy, and rational-analysis forgetting; truth-maintenance systems, subjective
