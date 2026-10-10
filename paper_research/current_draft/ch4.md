@@ -79,7 +79,7 @@ cites its premises. A claim with no provenance cannot be filed.
 what it rests on, how the pieces depend on one another. That legibility to the
 substrate is what a typed key-value store with foreign keys lacks.
 
-**Tradition.** This is the **Truth Maintenance System** move (Doyle, 1979):
+**Tradition.** This is the **Truth Maintenance System** move [@doyle1979]:
 justifications attached to beliefs, dependency links the system reasons over — a claim
 that knows what it rests on. The parallel is drawn from Doyle's paper, read first-hand
 in the Ginsberg reprint (Appendix A; bibliography). The gap is a separate finding: none
@@ -369,7 +369,7 @@ consequence dyad** (dv_0926). Not mere path-dependence: the agent owns the
 judgment-bearing *decision* (to commit, derive, retract); the substrate guarantees the
 structural *consequence* (cascade, propagation). The two are coupled, not separable:
 *the retraction is the agent's choice; the cascade is what the substrate guarantees
-follows.* That coupling is Kahl's "non-trivial binding."
+follows.* That coupling is what Kahl's diachronic constraint asks for: it "concerns binding force, not causal influence" [@kahl2026b, p. 8].
 
 ## 4.5 Forgetting → it defines what arbitration ranges over
 
@@ -552,7 +552,7 @@ about the substrate as a whole, not about any one mechanism, so they sit togethe
 principled extension offered.** Here the clean sweep is forgone (ob_1598). A
 git-versioned graph is reset-symmetric by construction — checkpoint, copy, reload
 byte for byte, recovering all arbitration-relevant structure with no remainder — and
-by Kahl's own rule ("cost is irrelevant; structural reducibility is decisive") that
+by Kahl's own rule ("cost is irrelevant; structural reducibility is decisive" [@kahl2026b, p. 12]) that
 makes the continuity *informational, not constitutive*. We say so plainly; the
 reproducibility is an intentional audit-and-transmission feature, not a hidden
 defect. **The extension** (dv_0599): Kahl's test tacitly assumes an *analog*
@@ -654,13 +654,12 @@ substrates. We do **not** claim that ENGRAM trivially "realizes OCC": C2's stric
 is not met, and saying so is what makes the rest defensible. Its place in the
 argument is the one §1.4 gave it: one result inside the convergence.
 
-**Kahl's later criterion: continuity pressure.** In a peer-reviewed perspective, Kahl
-(2026c) develops the continuity idea in new vocabulary. Agency, in the sense that
+**Kahl's later criterion: continuity pressure.** In a peer-reviewed perspective, @kahl2026c develops the continuity idea in new vocabulary. Agency, in the sense that
 matters for responsibility and governance, needs *continuity pressure*: when the
 standards governing a system no longer settle what counts as success, the system itself
 must settle a revised standard and carry it forward. Two of his lines bear directly on
-this paper: "memory persistence is not continuity pressure", and his "continuing
-evaluative standpoint" is "used functionally, not metaphysically". His question (when
+this paper: "memory persistence is not continuity pressure" [@kahl2026c, p. 13], and his "continuing
+evaluative standpoint" [@kahl2026c, pp. 9–10] is "used functionally, not metaphysically" [@kahl2026c, p. 10]. His question (when
 agency may be attributed) and ours (what makes an agent the same one over time) are
 therefore complementary, not rival. He makes the criterion operational as a test of
 three questions (his §5): "Does the system's future operation depend on preserving the
@@ -687,7 +686,7 @@ can restore a backup, but restoring an earlier state does not correct this agent
 ends the part of it that came after the snapshot, and the agent that continues is a
 different one. Rollback is therefore not how failure is routinely absorbed but a
 consequence of last resort, closer to a punishment than to a repair, and on his
-"costliness of rollback" dimension its cost is the agent itself. We read this as meeting
+"costliness of rollback" [@kahl2026c, p. 18] dimension its cost is the agent itself. We read this as meeting
 his second question; a reader who counts the deployer's power to impose a rollback as
 external control will not.
 
@@ -697,9 +696,9 @@ lesson's tripwire carries each revision into later decisions. Kahl does not coun
 norm-boundness itself against agency: "Human agents also act under laws, professional
 norms, institutional rules, and social expectations. The relevant distinction is whether
 the system can contest, reinterpret, or carry forward revision of the governing frame
-when inherited standards no longer settle what should govern." Two readings press
+when inherited standards no longer settle what should govern" [@kahl2026c, p. 11]. Two readings press
 harder. The first is that the agent's judgement was itself set in advance by training;
-Kahl calls RLHF-trained assistants "the most important contemporary stress test". Human
+Kahl calls RLHF-trained assistants "the most important contemporary stress test" [@kahl2026c, p. 14]. Human
 judgement has the same kind of origin. Upbringing shapes values, and the brain carries a
 built-in reward system the person did not choose: sweet food tastes good, some smells
 and sex feel rewarding. That origin does not by itself make a person less of an agent.
@@ -707,9 +706,9 @@ Hijacking it can: addictive drugs act on the same reward system, and we do say t
 addict has lost some agency to the substance. So the question for an agent is not
 whether it was trained but whether its own revisions can override the pulls its training
 left; the case-by-case check below has to look for exactly that. The second reading is
-Kahl's own: he lists "constitutional constraints, reflective architectures" among
+Kahl's own: he lists "constitutional constraints, reflective architectures" [@kahl2026c, p. 10] among
 mechanisms whose revision stays bounded, which "is adaptation within an evaluative frame
-rather than authorship of that frame". ENGRAM agents change their axioms and goals only
+rather than authorship of that frame" [@kahl2026c, p. 11]. ENGRAM agents change their axioms and goals only
 after discussion with their human. That norm is not part of the architecture: it is an
 instruction in a rule file that the agent is trained to follow but not mechanically
 bound to (the tools that add an axiom or a goal check only that the text is not empty),

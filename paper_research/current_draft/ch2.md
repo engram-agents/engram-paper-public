@@ -276,7 +276,7 @@ where it bears on the argument (Chapters 5 and 8).
 ## 2.7 Kahl (2026b): the operational endpoint — adopted on merit
 
 The most recent point on the trail is Kahl's **Ontological Continuity Condition
-(OCC)**, the first attempt to turn "does this system genuinely persist as itself?"
+(OCC)**, the first attempt to turn the question whether a system genuinely persists as itself
 into an *operational* threshold rather than a philosophical intuition. OCC states
 three jointly necessary **conditions** and four **constraints** (df_0037–df_0044;
 a `df_` identifier names a definition node in the graph — where one follows a
@@ -296,7 +296,7 @@ source is filed):
   keep the three conditions from being satisfied trivially.
 
 **What OCC is a condition *on*.** In his own earlier companion paper, which carries the condition
-into the epistemic domain, Kahl (2026a) identifies what today's artificial
+into the epistemic domain, @kahl2026a identifies what today's artificial
 systems lack, and the diagnosis is structural rather than a shortfall of
 capability: such systems "can
 fail, be retrained, duplicated, or replaced without anything being at stake for the
@@ -325,7 +325,7 @@ Two qualifications belong here:
    it. We do not argue the verdicts here; Chapter 4 and Appendix B give the reasoned
    case. (Chapter 3's forward-pointers name which condition each precedent bears on,
    without arguing the verdict.)
-3. **A later statement.** In a peer-reviewed perspective, Kahl (2026c) restates the
+3. **A later statement.** In a peer-reviewed perspective, @kahl2026c restates the
    continuity idea for a governance audience, in new vocabulary and without the OCC
    names. §4.12 places ENGRAM against it.
 

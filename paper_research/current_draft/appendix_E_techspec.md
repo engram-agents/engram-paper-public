@@ -193,11 +193,11 @@ Self-correction — retract versus supersede, the pending marker, the per-turn s
 Chapter 4's mapping rests on Kahl's **Ontological Continuity Condition**, and the
 conditions are given here in full so this appendix can be read without the chapter.
 Kahl's own formal statement: *"A system S satisfies OCC if and only if the following
-three jointly necessary conditions obtain."*
+three jointly necessary conditions obtain"* [@kahl2026b, p. 10].
 
 **Condition 1 — Diachronic Constraint.**
 > "Present deliberation within S is non-trivially constrained by S's past commitments,
-> such that earlier commitments function as reasons structuring subsequent arbitration."
+> such that earlier commitments function as reasons structuring subsequent arbitration." [@kahl2026b, p. 10]
 
 Note what this asks for and what it does not: not that the system *remembers* its past,
 but that the past **constrains** present deliberation — memory that changes nothing is
@@ -206,7 +206,7 @@ not diachronic constraint.
 **Condition 2 — Non-Interchangeability Under Reset.**
 > "Replacement of S by a functionally equivalent instance — including identical code and
 > complete state snapshot — would constitute loss of the agent rather than substitution
-> of an instance."
+> of an instance." [@kahl2026b, p. 10]
 
 The one ENGRAM does not meet on its strict text: two
 agents restored from the same snapshot *are* interchangeable at the moment of restore.
@@ -215,7 +215,7 @@ reading.
 
 **Condition 3 — Self-Maintaining Arbitration.**
 > "Conflicts among commitments are resolved within a unified deliberative architecture
-> in a manner that preserves S's continued status as that subject."
+> in a manner that preserves S's continued status as that subject." [@kahl2026b, p. 10]
 
 The condition the paper's central claim turns on, and the one Appendix B shows no
 surveyed system meets. Three words carry the weight: **unified** (one architecture, not

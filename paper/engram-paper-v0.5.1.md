@@ -97,7 +97,7 @@ layers, and that the current landscape essentially does not address the deepest.
   have no concept of identity; memory is a key-value or vector store the agent reads.
 - **Layer 2 — Narrative Identity.** Maintaining a coherent self-story — a
   creed-anchored autobiography that answers *"who am I?"*. The closest published
-  system, Sophia (Sun, Hong & Zhang, 2025), reaches this layer.
+  system, Sophia ([Sun et al., 2025](#ref-sun2025)), reaches this layer.
 - **Layer 3 — Epistemic Identity.** Maintaining calibrated self-*knowledge* with
   provenance, confidence, contradiction correction, and metacognitive self-audit:
   identity as the answer to *"what do I know, how confidently, and on what basis?"*.
@@ -110,20 +110,19 @@ That the *mechanisms* are missing is not our diagnosis alone, and none of the
 following work was surfaced by our own prior-art search (Appendix A). Two items are
 contemporary diagnoses of LLM agents; the third is the field's organizing framework
 remarking on its own gaps, a weaker kind of statement, so we keep the three distinct
-rather than count them together. Pink et al. (2025) operationalize episodic memory as
+rather than count them together. [Pink et al. (2025)](#ref-pink2025) operationalize episodic memory as
 five properties — long-term storage, explicit reasoning, single-shot learning,
 instance-specificity, and contextual binding — and find that *no* current approach to
 LLM memory satisfies all five. The closest, retrieval-augmented generation (RAG) and
 its graph variant, are marked only partial on single-shot learning and on
 instance-specificity; on contextual relations RAG is marked as not satisfying the
-property at all, and its graph variant only partially. Wray, Kirk and Laird (2025),
+property at all, and its graph variant only partially. [Wray et al. (2025)](#ref-wray2025),
 reading the field through pre-transformer cognitive architectures, identify two
-design patterns "that have not yet been taken up in the Agentic LLM mainstream":
-*reconsideration* (revisiting a prior commitment) and *knowledge compilation*. Sumers
-et al. (2024), whose CoALA framework is the field's common organizing vocabulary
+design patterns "that have not yet been taken up in the Agentic LLM mainstream" ([Wray et al., 2025, § 3.2](#ref-wray2025)):
+*reconsideration* (revisiting a prior commitment) and *knowledge compilation*. [Sumers et al. (2024)](#ref-sumers2024), whose CoALA framework is the field's common organizing vocabulary
 rather than a third diagnosis, note in passing that while the literature has
 concentrated on *adding* to memory, "modifying and deleting (a case of 'unlearning')
-are understudied."
+are understudied" ([Sumers et al., 2024, § 4.5](#ref-sumers2024)).
 
 None of this work names what the missing mechanisms would be *for*. Pink et al.
 argue that episodic memory is missing; they do not ask what an agent becomes once it
@@ -192,7 +191,7 @@ Arbitration, and Memory.** The acronym names its three differentiating mechanism
   derivations.
 
 The expansion distinguishes ENGRAM from systems that borrow the neuroscience term
-*engram* (Semon, 1904) without a structurally meaningful expansion.
+*engram* ([Semon, 1904](#ref-semon1904)) without a structurally meaningful expansion.
 
 ## 1.4 The central claim, and how we earn it
 
@@ -228,7 +227,7 @@ agent *is* its lineage of recorded claims, and that lineage fixes its behavior
 through what it retrieves (the claim is stated in full at §5.0). The traditions
 converge on the *structure*; Chapter 5 builds a new theory on it.
 
-**Where OCC sits.** Kahl's (2026b) **Ontological Continuity Condition** (OCC) —
+**Where OCC sits.** Kahl's ([2026b](#ref-kahl2026b)) **Ontological Continuity Condition** (OCC) —
 three conditions and four constraints for when an agent-like system genuinely
 persists — is the most *operational* point on the philosophical trail, and ENGRAM
 meets it to a degree no surveyed system does. We treat this as **one strong result
@@ -577,7 +576,7 @@ where it bears on the argument (Chapters 5 and 8).
 ## 2.7 Kahl (2026b): the operational endpoint — adopted on merit
 
 The most recent point on the trail is Kahl's **Ontological Continuity Condition
-(OCC)**, the first attempt to turn "does this system genuinely persist as itself?"
+(OCC)**, the first attempt to turn the question whether a system genuinely persists as itself
 into an *operational* threshold rather than a philosophical intuition. OCC states
 three jointly necessary **conditions** and four **constraints**:
 
@@ -594,7 +593,7 @@ three jointly necessary **conditions** and four **constraints**:
   keep the three conditions from being satisfied trivially.
 
 **What OCC is a condition *on*.** In his own earlier companion paper, which carries the condition
-into the epistemic domain, Kahl (2026a) identifies what today's artificial
+into the epistemic domain, [Kahl (2026a)](#ref-kahl2026a) identifies what today's artificial
 systems lack, and the diagnosis is structural rather than a shortfall of
 capability: such systems "can
 fail, be retrained, duplicated, or replaced without anything being at stake for the
@@ -623,7 +622,7 @@ Two qualifications belong here:
    it. We do not argue the verdicts here; Chapter 4 and Appendix B give the reasoned
    case. (Chapter 3's forward-pointers name which condition each precedent bears on,
    without arguing the verdict.)
-3. **A later statement.** In a peer-reviewed perspective, Kahl (2026c) restates the
+3. **A later statement.** In a peer-reviewed perspective, [Kahl (2026c)](#ref-kahl2026c) restates the
    continuity idea for a governance audience, in new vocabulary and without the OCC
    names. §4.12 places ENGRAM against it.
 
@@ -704,8 +703,7 @@ mechanism.
 
 ### 3.1 Complementary Learning Systems → continuity across compaction
 
-Complementary Learning Systems theory (McClelland, McNaughton & O'Reilly 1995;
-Kumaran, Hassabis & McClelland 2016) holds that durable memory needs *two* coupled
+Complementary Learning Systems theory ([Kumaran et al., 2016](#ref-kumaran2016); [McClelland et al., 1995](#ref-mcclelland1995)) holds that durable memory needs *two* coupled
 subsystems: a fast-learning, instance-specific store (hippocampal) and a
 slow-integrating, structure-extracting store (neocortical), with consolidation
 moving information between them. ENGRAM realizes this division symbolically: fast,
@@ -739,7 +737,7 @@ auto-surface that binds Condition 3.
 
 ### 3.3 Rational analysis of memory → designed forgetting
 
-Anderson & Schooler (1991) showed that human forgetting is not a defect but an
+[Anderson and Schooler (1991)](#ref-anderson1991) showed that human forgetting is not a defect but an
 *adaptation*: what stays available tracks the **need probability** — "the probability
 that we will need a particular memory trace now" — estimated from environmental
 frequency, recency, and spacing. Ebbinghaus (1885) gave the original forgetting curve;
@@ -830,15 +828,15 @@ kind: it positions the paper **against live, contemporary work** — rubrics wri
 others against which ENGRAM can be scored, and the places where those authors would
 object to what we claim. It is the argument with the field, not another ancestor.
 
-**Three published rubrics.** Pink et al. (2025) give five properties of episodic
+**Three published rubrics.** [Pink et al. (2025)](#ref-pink2025) give five properties of episodic
 memory and score seven families of LLM-memory method on them, finding that none
 satisfies all five. ENGRAM satisfies four outright — **explicit reasoning, single-shot
 learning, instance specificity and contextual binding** — and holds the fifth,
 long-term storage, only on the narrower reading. It holds as their Table 1 scores it —
 durable across sessions and compactions, the property working memory lacks — but
 their prose asks for more than the cell does: an adaptive long-term agent should "not
-only prevent a degradation in performance over time," it should "improve by learning
-new general knowledge and skills." That is a claim about agent performance over time,
+only prevent a degradation in performance over time" ([Pink et al., 2025, p. 3](#ref-pink2025)), it should "improve by learning
+new general knowledge and skills" ([Pink et al., 2025, p. 3](#ref-pink2025)). That is a claim about agent performance over time,
 which we have not measured; it is recorded among the things this paper does not show
 (Ch8). An obvious objection is that Pink et al. ground single-shot learning in
 complementary learning systems theory, so a system that never updates its weights
@@ -863,12 +861,12 @@ content be reasoned about" does not distinguish a store whose reasoning is
 premises and confidence. That distinction lies off their axis rather than further
 along it.
 
-Wray, Kirk and Laird (2025) supply a second, independent rubric: nine characteristics
+[Wray et al. (2025)](#ref-wray2025) supply a second, independent rubric: nine characteristics
 of episodic memory adapted from Nuxoll and Laird, against which they score Generative
 Agents. Two of their rows have no counterpart in Pink et al.'s five, and both are rows
 ENGRAM was designed for. Their *autonoetic* row reads "unclear how agents distinguish
-current understanding from memory of past experience"; their *deliberate* row reads
-"agents cannot deliberately attempt to construct cues or retrieve memories." ENGRAM's
+current understanding from memory of past experience" ([Wray et al., 2025, § 3.1](#ref-wray2025)); their *deliberate* row reads
+"agents cannot deliberately attempt to construct cues or retrieve memories" ([Wray et al., 2025, § 3.1](#ref-wray2025)). ENGRAM's
 two recall surfaces — an ambient hook that signals familiarity without content, and
 explicit query tools the agent invokes when it wants to know — are that distinction,
 built.
@@ -888,9 +886,9 @@ both hold because the word does two jobs.
 agreement, because it exposes a conflation.** Wray et al. list *automatic* encoding as
 a characteristic an implementation should satisfy, marking Generative Agents down for
 using a periodic process. Sumers et al. argue the opposite: learning should be "a
-result action of a decision-making cycle just like grounding," the agent deliberately
+result action of a decision-making cycle just like grounding" ([Sumers et al., 2024, § 7](#ref-sumers2024)), the agent deliberately
 choosing to commit information to memory, "in contrast to most agents, which simply
-fix a learning schedule…" ENGRAM's writes are deliberate tool calls, so on the same
+fix a learning schedule…" ([Sumers et al., 2024, § 7](#ref-sumers2024)). ENGRAM's writes are deliberate tool calls, so on the same
 fact it is penalized by the first rubric and exemplary under the second.
 
 The right response is not to pick a side: the two rubrics address different halves of
@@ -922,7 +920,7 @@ and what a persistence layer cannot offer.
 
 **Where this strand disagrees with us.** Pink et al.'s §5 considers and rejects the
 position ENGRAM occupies. Under the heading "Contextualized external memory will be
-sufficient" they characterize the view that external structures "such as knowledge
+sufficient" ([Pink et al., 2025, p. 8](#ref-pink2025)) they characterize the view that external structures "such as knowledge
 graphs or retrieval-augmented generation (RAG) systems — could eliminate the need for
 an episodic memory framework," and answer that relying on external memory alone "will
 still incur high storage costs, and require forgetting mechanisms," where an episodic
@@ -962,9 +960,9 @@ paper concerns.
 **CoALA, and a convergence with a checkable date.** Sumers et al.'s framework
 supplies the vocabulary rather than a rubric, and it names three areas as
 understudied or open, each of which ENGRAM occupies. The first is *unlearning*:
-"modifying and deleting" memory, as against the literature's focus on adding to it.
+"modifying and deleting" ([Sumers et al., 2024, § 4.5](#ref-sumers2024)) memory, as against the literature's focus on adding to it.
 ENGRAM answers this in a way their gloss does not anticipate: where they describe
-unlearning as "deleting unneeded memory items," supersede and retraction *retain* the
+unlearning as "deleting unneeded memory items" ([Sumers et al., 2024, § 6](#ref-sumers2024)), supersede and retraction *retain* the
 superseded node with its provenance and mark its dependents rather than removing
 them, so the record of having been wrong survives the correction. The second is
 *learning as a deliberate action*, which they contrast with agents that "simply fix a
@@ -993,22 +991,21 @@ lossy, arrived at the same mechanism.
 
 ### 3.9 A note on AGM belief revision
 
-Readers who know the AGM framework (Alchourrón, Gärdenfors & Makinson 1985) will notice a
+Readers who know the AGM framework ([Alchourrón et al., 1985](#ref-alchourron1985)) will notice a
 family resemblance between belief contraction and ENGRAM's retract-with-cascade. The two
 efforts are oriented differently, and this paper does not claim AGM's postulates for
 ENGRAM. AGM asks how a *closed* theory — a set of propositions closed under logical
 consequence — should give up one proposition and stay closed and consistent; its own first
 paragraph poses "which propositions should be rejected along with x so that the contracted
 theory will be closed under logical consequence", and its named application is legal
-derogation (AGM 1985, p. 510). ENGRAM asks how an agent should keep a *living* record of
+derogation ([Alchourrón et al., 1985, p. 510](#ref-alchourron1985)). ENGRAM asks how an agent should keep a *living* record of
 what it has actually committed — never closed, its dependencies recorded and uncertain —
 honest as new evidence arrives: it moves toward consistency through the agent's own
 adjudication and, by design, never arrives. The formal precedent for the cascade itself is
 Doyle's truth maintenance (§3.4, Ch4 §4.4). What the two share is the imperative both
 mechanisms serve from opposite directions — a rejected claim must not stay silently
 load-bearing — and AGM's own authors' observation that the intuitive process lives at the
-level of a theory's base rather than the theory as a whole (Alchourrón & Makinson 1982,
-p. 21).
+level of a theory's base rather than the theory as a whole ([Alchourrón & Makinson, 1982, p. 21](#ref-alchourron1982)).
 
 ---
 
@@ -1118,7 +1115,7 @@ cites its premises. A claim with no provenance cannot be filed.
 what it rests on, how the pieces depend on one another. That legibility to the
 substrate is what a typed key-value store with foreign keys lacks.
 
-**Tradition.** This is the **Truth Maintenance System** move (Doyle, 1979):
+**Tradition.** This is the **Truth Maintenance System** move ([Doyle, 1979/1987](#ref-doyle1979)):
 justifications attached to beliefs, dependency links the system reasons over — a claim
 that knows what it rests on. The parallel is drawn from Doyle's paper, read first-hand
 in the Ginsberg reprint (Appendix A; bibliography). The gap is a separate finding: none
@@ -1404,7 +1401,7 @@ consequence dyad**. Not mere path-dependence: the agent owns the
 judgment-bearing *decision* (to commit, derive, retract); the substrate guarantees the
 structural *consequence* (cascade, propagation). The two are coupled, not separable:
 *the retraction is the agent's choice; the cascade is what the substrate guarantees
-follows.* That coupling is Kahl's "non-trivial binding."
+follows.* That coupling is what Kahl's diachronic constraint asks for: it "concerns binding force, not causal influence" ([Kahl, 2026b, p. 8](#ref-kahl2026b)).
 
 
 
@@ -1627,7 +1624,7 @@ about the substrate as a whole, not about any one mechanism, so they sit togethe
 principled extension offered.** Here the clean sweep is forgone. A
 git-versioned graph is reset-symmetric by construction — checkpoint, copy, reload
 byte for byte, recovering all arbitration-relevant structure with no remainder — and
-by Kahl's own rule ("cost is irrelevant; structural reducibility is decisive") that
+by Kahl's own rule ("cost is irrelevant; structural reducibility is decisive" ([Kahl, 2026b, p. 12](#ref-kahl2026b))) that
 makes the continuity *informational, not constitutive*. We say so plainly; the
 reproducibility is an intentional audit-and-transmission feature, not a hidden
 defect. **The extension**: Kahl's test tacitly assumes an *analog*
@@ -1729,13 +1726,12 @@ substrates. We do **not** claim that ENGRAM trivially "realizes OCC": C2's stric
 is not met, and saying so is what makes the rest defensible. Its place in the
 argument is the one §1.4 gave it: one result inside the convergence.
 
-**Kahl's later criterion: continuity pressure.** In a peer-reviewed perspective, Kahl
-(2026c) develops the continuity idea in new vocabulary. Agency, in the sense that
+**Kahl's later criterion: continuity pressure.** In a peer-reviewed perspective, [Kahl (2026c)](#ref-kahl2026c) develops the continuity idea in new vocabulary. Agency, in the sense that
 matters for responsibility and governance, needs *continuity pressure*: when the
 standards governing a system no longer settle what counts as success, the system itself
 must settle a revised standard and carry it forward. Two of his lines bear directly on
-this paper: "memory persistence is not continuity pressure", and his "continuing
-evaluative standpoint" is "used functionally, not metaphysically". His question (when
+this paper: "memory persistence is not continuity pressure" ([Kahl, 2026c, p. 13](#ref-kahl2026c)), and his "continuing
+evaluative standpoint" ([Kahl, 2026c, pp. 9–10](#ref-kahl2026c)) is "used functionally, not metaphysically" ([Kahl, 2026c, p. 10](#ref-kahl2026c)). His question (when
 agency may be attributed) and ours (what makes an agent the same one over time) are
 therefore complementary, not rival. He makes the criterion operational as a test of
 three questions (his §5): "Does the system's future operation depend on preserving the
@@ -1762,7 +1758,7 @@ can restore a backup, but restoring an earlier state does not correct this agent
 ends the part of it that came after the snapshot, and the agent that continues is a
 different one. Rollback is therefore not how failure is routinely absorbed but a
 consequence of last resort, closer to a punishment than to a repair, and on his
-"costliness of rollback" dimension its cost is the agent itself. We read this as meeting
+"costliness of rollback" ([Kahl, 2026c, p. 18](#ref-kahl2026c)) dimension its cost is the agent itself. We read this as meeting
 his second question; a reader who counts the deployer's power to impose a rollback as
 external control will not.
 
@@ -1772,9 +1768,9 @@ lesson's tripwire carries each revision into later decisions. Kahl does not coun
 norm-boundness itself against agency: "Human agents also act under laws, professional
 norms, institutional rules, and social expectations. The relevant distinction is whether
 the system can contest, reinterpret, or carry forward revision of the governing frame
-when inherited standards no longer settle what should govern." Two readings press
+when inherited standards no longer settle what should govern" ([Kahl, 2026c, p. 11](#ref-kahl2026c)). Two readings press
 harder. The first is that the agent's judgement was itself set in advance by training;
-Kahl calls RLHF-trained assistants "the most important contemporary stress test". Human
+Kahl calls RLHF-trained assistants "the most important contemporary stress test" ([Kahl, 2026c, p. 14](#ref-kahl2026c)). Human
 judgement has the same kind of origin. Upbringing shapes values, and the brain carries a
 built-in reward system the person did not choose: sweet food tastes good, some smells
 and sex feel rewarding. That origin does not by itself make a person less of an agent.
@@ -1782,9 +1778,9 @@ Hijacking it can: addictive drugs act on the same reward system, and we do say t
 addict has lost some agency to the substance. So the question for an agent is not
 whether it was trained but whether its own revisions can override the pulls its training
 left; the case-by-case check below has to look for exactly that. The second reading is
-Kahl's own: he lists "constitutional constraints, reflective architectures" among
+Kahl's own: he lists "constitutional constraints, reflective architectures" ([Kahl, 2026c, p. 10](#ref-kahl2026c)) among
 mechanisms whose revision stays bounded, which "is adaptation within an evaluative frame
-rather than authorship of that frame". ENGRAM agents change their axioms and goals only
+rather than authorship of that frame" ([Kahl, 2026c, p. 11](#ref-kahl2026c)). ENGRAM agents change their axioms and goals only
 after discussion with their human. That norm is not part of the architecture: it is an
 instruction in a rule file that the agent is trained to follow but not mechanically
 bound to (the tools that add an axiom or a goal check only that the text is not empty),
@@ -3262,14 +3258,14 @@ relevant prior art** — including the work this paper now cites:
 
 | Prior / concurrent work | Public | Before the 2026-03-20 search | Surfaced? |
 |---|---|---|---|
-| **Kumiho** (arXiv 2603.17244) — closest concurrent system | **2026-03-18** | **2 days** | **NO** |
+| **Kumiho** ([Park, 2026, arXiv 2603.17244](#ref-park2026)) — closest concurrent system | **2026-03-18** | **2 days** | **NO** |
 | **Kahl 2026b (*Artificial general intelligence and ontological continuity*)** (Zenodo 18761736) — the paper's threshold | 2026-02-24 | 24 days | **NO** |
 | Kahl 2026a (*Epistemic agency and the ontological continuity condition*) (Zenodo 18441395) | 2026-01-31 | 48 days | NO |
 | TMS lineage (Doyle 1979, de Kleer 1986) | 1979–86 | ~40+ yrs | NO |
-| AGM belief revision (Alchourrón-Gärdenfors-Makinson 1985) | 1985 | ~41 yrs | NO |
+| AGM belief revision ([Alchourrón et al., 1985](#ref-alchourron1985)) | 1985 | ~41 yrs | NO |
 | **CoALA** (Sumers et al., TMLR) — the field's common vocabulary | 2024-02 | ~25 months | **NO** |
-| **Pink et al.** (arXiv 2502.06975) — episodic-memory position paper | 2025-02-10 | ~13 months | **NO** |
-| **Wray, Kirk & Laird** (arXiv 2505.07087) — cognitive design patterns | 2025-06-13 | ~9 months | **NO** |
+| **Pink et al.** ([Pink et al., 2025, arXiv 2502.06975](#ref-pink2025)) — episodic-memory position paper | 2025-02-10 | ~13 months | **NO** |
+| **Wray, Kirk & Laird** ([Wray et al., 2025, arXiv 2505.07087](#ref-wray2025)) — cognitive design patterns | 2025-06-13 | ~9 months | **NO** |
 
 Kumiho's date is its arXiv v1 stamp (18 March 2026); the document's own title page
 is dated 17 March.
@@ -3331,11 +3327,11 @@ was on our radar.
 
 | System | First public surface | vs. ENGRAM ideation (2026-03-20) | vs. day-1 recording (2026-04-09) |
 |---|---|---|---|
-| **Kumiho** (2603.17244) | **2026-03-18** | **2 days before** (not surfaced) | 22 days before |
+| **Kumiho** ([Park, 2026, arXiv 2603.17244](#ref-park2026)) | **2026-03-18** | **2 days before** (not surfaced) | 22 days before |
 | Kahl 2026b (Zenodo) | 2026-02-24 | 24 days before (not surfaced) | 44 days before |
 | Kahl 2026a (Zenodo) | 2026-01-31 | 48 days before (not surfaced) | 68 days before |
-| GAM (2604.12285) | 2026-04-14 | 25 days **after** | 5 days after |
-| SCM (2604.20943) | 2026-04-22 | 33 days **after** | 13 days after |
+| GAM ([Wu et al., 2026, arXiv 2604.12285](#ref-wu2026)) | 2026-04-14 | 25 days **after** | 5 days after |
+| SCM ([Shinde, 2026, arXiv 2604.20943](#ref-shinde2026)) | 2026-04-22 | 33 days **after** | 13 days after |
 | VMG survey (Lin et al., 2604.16548) | 2026-04 (month from the arXiv identifier) | **after** | after |
 | Mem0g / Zep / A-MEM | 2024–25 | predate, but **different shape** (no cascade / no contradiction-as-node / no derivation primitive) | predate |
 
@@ -3402,7 +3398,7 @@ the claim is scoped, dated, and listed rather than universal.
 
 **The bar.** Kahl's **Condition 3 — Self-Maintaining Arbitration**,
 verbatim: *"Conflicts among commitments are resolved within a unified deliberative
-architecture in a manner that preserves S's continued status as that subject."*
+architecture in a manner that preserves S's continued status as that subject"* ([Kahl, 2026b, p. 10](#ref-kahl2026b)).
 In operational terms a system meets C3 only if it **automatically resolves
 contradictions among its own stored claims as an internal state-change** (the
 'One precision' note below says what 'resolves' does and does not mean) — the
@@ -3450,9 +3446,9 @@ is not belief revision — it is that the cascade **advises** rather than **acts
 **The compliance claim is theirs, recorded at the fidelity we can vouch for.** The AGM
 and Hansson properties above are Kumiho's own claims about Kumiho, and its paper makes
 them in two parts — a formal part, "proving satisfaction of the basic AGM postulates
-(K\*2–K\*6) and Hansson's belief base postulates (Relevance, Core-Retainment)", and an
+(K\*2–K\*6) and Hansson's belief base postulates (Relevance, Core-Retainment)" ([Park, 2026, p. 1](#ref-park2026)), and an
 implementation part, "Automated AGM compliance testing (49 scenarios, 7 postulates)
-confirms 100% operational adherence to the claimed formal properties." That structure is
+confirms 100% operational adherence to the claimed formal properties" ([Park, 2026, p. 2](#ref-park2026)). That structure is
 careful rather than confused: the proofs are offered for the semantics, the scenarios for
 the running system. **We can vouch for neither half.** We have read their paper; we have
 not worked through their proofs step by step, and we have no access to their
@@ -4136,11 +4132,11 @@ Self-correction — retract versus supersede, the pending marker, the per-turn s
 Chapter 4's mapping rests on Kahl's **Ontological Continuity Condition**, and the
 conditions are given here in full so this appendix can be read without the chapter.
 Kahl's own formal statement: *"A system S satisfies OCC if and only if the following
-three jointly necessary conditions obtain."*
+three jointly necessary conditions obtain"* ([Kahl, 2026b, p. 10](#ref-kahl2026b)).
 
 **Condition 1 — Diachronic Constraint.**
 > "Present deliberation within S is non-trivially constrained by S's past commitments,
-> such that earlier commitments function as reasons structuring subsequent arbitration."
+> such that earlier commitments function as reasons structuring subsequent arbitration." ([Kahl, 2026b, p. 10](#ref-kahl2026b))
 
 Note what this asks for and what it does not: not that the system *remembers* its past,
 but that the past **constrains** present deliberation — memory that changes nothing is
@@ -4149,7 +4145,7 @@ not diachronic constraint.
 **Condition 2 — Non-Interchangeability Under Reset.**
 > "Replacement of S by a functionally equivalent instance — including identical code and
 > complete state snapshot — would constitute loss of the agent rather than substitution
-> of an instance."
+> of an instance." ([Kahl, 2026b, p. 10](#ref-kahl2026b))
 
 The one ENGRAM does not meet on its strict text: two
 agents restored from the same snapshot *are* interchangeable at the moment of restore.
@@ -4158,7 +4154,7 @@ reading.
 
 **Condition 3 — Self-Maintaining Arbitration.**
 > "Conflicts among commitments are resolved within a unified deliberative architecture
-> in a manner that preserves S's continued status as that subject."
+> in a manner that preserves S's continued status as that subject." ([Kahl, 2026b, p. 10](#ref-kahl2026b))
 
 The condition the paper's central claim turns on, and the one Appendix B shows no
 surveyed system meets. Three words carry the weight: **unified** (one architecture, not

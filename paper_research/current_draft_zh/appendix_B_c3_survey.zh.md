@@ -103,7 +103,7 @@
 
 **这份调查。** 十一项来源——十个系统，外加一篇对本领域的综述——于 **2026-05-12** 第一手读完：Pinecone Nexus、Anthropic 的 memory tool、Letta（MemGPT）、Mem0 v3、Zep/Graphiti、TierMem、MemMachine、SCM、GAM、Kumiho，以及 2026 年的 *Memory for Autonomous LLM Agents* 调查（Du et al.）。这是一条**关于该受调查集合、以该日期为界的受限主张。** 智能体记忆是一个快速变动的领域；我们对调查之外的、或调查之后发布的系统不作主张。较新的或遗漏的系统，恰恰是这条主张被限定范围、标注日期并逐一列出、而非普遍化的原因。
 
-**那条标尺。** Kahl 的**条件 3——自我维持的仲裁**，逐字："Conflicts among commitments are resolved within a unified deliberative architecture in a manner that preserves S's continued status as that subject."（中文解说：诸承诺之间的冲突，在一个统一的审议架构之内得到解决，其方式保全 S 作为那个主体的持续身份。）就操作性而言，一个系统只有在它**把自身所存储诸主张之间的矛盾作为一次内部状态变更来自动解决**时，才算满足 C3（下文"一处精确化"那条注解说明了"解决"意味着什么、不意味着什么）——级联依构造而传播，而受影响的主张不依赖任何有意的触及就浮现到智能体面前。四种不合格的方式：
+**那条标尺。** Kahl 的**条件 3——自我维持的仲裁**，逐字："Conflicts among commitments are resolved within a unified deliberative architecture in a manner that preserves S's continued status as that subject."（中文解说：诸承诺之间的冲突，在一个统一的审议架构之内得到解决，其方式保全 S 作为那个主体的持续身份。）[@kahl2026b, p. 10]就操作性而言，一个系统只有在它**把自身所存储诸主张之间的矛盾作为一次内部状态变更来自动解决**时，才算满足 C3（下文"一处精确化"那条注解说明了"解决"意味着什么、不意味着什么）——级联依构造而传播，而受影响的主张不依赖任何有意的触及就浮现到智能体面前。四种不合格的方式：
 
 - **（N）无解决** —— 矛盾作为一个构造缺位，或虽被检出却从不被解决（那些边／标志持续存在）。
 - **（A）咨询性／选择加入** —— 存在一个解决机制，但必须被显式调用，而且它只建议、不撤回。
@@ -123,7 +123,7 @@
 ### Kumiho（arXiv 2603.17244）—— **（A）咨询性／选择加入**
 本次调查中最强的竞争者：带类型的 `Depends_On` 边、一次 `AnalyzeImpact` 遍历，以及*自称的* AGM K\*2–K\*6 与 Hansson 信念库符合性。缺口不在于信念修订——而在于这次级联**建议**，而不是**行动**。
 
-**那项符合性主张是他们的，我们按其能被我们担保的保真度记录。** 上文那些 AGM 与 Hansson 性质，是 Kumiho 关于 Kumiho 自己的主张，而它的论文分两部分提出它们——一个形式化部分，"proving satisfaction of the basic AGM postulates (K\*2–K\*6) and Hansson's belief base postulates (Relevance, Core-Retainment)"（中文解说：证明对基本 AGM 公设与 Hansson 信念库公设（Relevance、Core-Retainment）的满足），以及一个实现部分，"Automated AGM compliance testing (49 scenarios, 7 postulates) confirms 100% operational adherence to the claimed formal properties."（中文解说：自动化 AGM 符合性测试确认对所声称形式化性质的运行符合度。）这个结构是审慎的，而不是混乱的：证明是为语义提供的，场景是为运行中的系统提供的。**这两半我们都担保不了。** 我们读过他们的论文；我们没有逐步演算他们的证明，也无从接触他们的实现来重跑任何东西——而 49 个通过的场景无论如何只能确立"在 49 个案例中没有找到反例"，而不是"不存在反例"。所以我们把这项符合性记为*自称的*，而不是已确立的，并把它搁置不予裁定：本次调查中没有任何东西取决于它，因为这里所画的对照关乎**一处更正从哪里开始约束**，而不关乎谁的诸公设被满足。（关于为什么"满足"是*本文*不应就自身加以主张的那种关系，见第 3 章 §3.9。）
+**那项符合性主张是他们的，我们按其能被我们担保的保真度记录。** 上文那些 AGM 与 Hansson 性质，是 Kumiho 关于 Kumiho 自己的主张，而它的论文分两部分提出它们——一个形式化部分，"proving satisfaction of the basic AGM postulates (K\*2–K\*6) and Hansson's belief base postulates (Relevance, Core-Retainment)"（中文解说：证明对基本 AGM 公设与 Hansson 信念库公设（Relevance、Core-Retainment）的满足）[@park2026, p. 1]，以及一个实现部分，"Automated AGM compliance testing (49 scenarios, 7 postulates) confirms 100% operational adherence to the claimed formal properties."（中文解说：自动化 AGM 符合性测试确认对所声称形式化性质的运行符合度。）[@park2026, p. 2]这个结构是审慎的，而不是混乱的：证明是为语义提供的，场景是为运行中的系统提供的。**这两半我们都担保不了。** 我们读过他们的论文；我们没有逐步演算他们的证明，也无从接触他们的实现来重跑任何东西——而 49 个通过的场景无论如何只能确立"在 49 个案例中没有找到反例"，而不是"不存在反例"。所以我们把这项符合性记为*自称的*，而不是已确立的，并把它搁置不予裁定：本次调查中没有任何东西取决于它，因为这里所画的对照关乎**一处更正从哪里开始约束**，而不关乎谁的诸公设被满足。（关于为什么"满足"是*本文*不应就自身加以主张的那种关系，见第 3 章 §3.9。）
 
 - *paper-verbatim*（§6.5）："AnalyzeImpact traverses typed Depends_On edges to identify all downstream conclusions that **may need re-evaluation**—a capability enabled by the typed edge ontology that flat file systems cannot express."（中文解说：AnalyzeImpact 遍历带类型的 Depends_On 边，找出所有**可能需要重新评估**的下游结论——这是带类型边本体论所支撑的能力，扁平文件系统无法表达。）
 - *paper-verbatim*（边定义）："**Depends_On**: Validity dependency. If the target is invalidated, the source **may be** unreliable."（中文解说：Depends_On：有效性依赖。若目标被作废，源**可能**不可靠。）括号里那个情态词 *may be* 正是咨询性的破绽——它不是 *is invalidated*。

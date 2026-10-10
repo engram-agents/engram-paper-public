@@ -13,7 +13,7 @@ the claim is scoped, dated, and listed rather than universal.
 
 **The bar.** Kahl's **Condition 3 — Self-Maintaining Arbitration** (df_0040),
 verbatim: *"Conflicts among commitments are resolved within a unified deliberative
-architecture in a manner that preserves S's continued status as that subject."*
+architecture in a manner that preserves S's continued status as that subject"* [@kahl2026b, p. 10].
 In operational terms a system meets C3 only if it **automatically resolves
 contradictions among its own stored claims as an internal state-change** (the
 'One precision' note below says what 'resolves' does and does not mean) — the
@@ -61,9 +61,9 @@ is not belief revision — it is that the cascade **advises** rather than **acts
 **The compliance claim is theirs, recorded at the fidelity we can vouch for.** The AGM
 and Hansson properties above are Kumiho's own claims about Kumiho, and its paper makes
 them in two parts — a formal part, "proving satisfaction of the basic AGM postulates
-(K\*2–K\*6) and Hansson's belief base postulates (Relevance, Core-Retainment)", and an
+(K\*2–K\*6) and Hansson's belief base postulates (Relevance, Core-Retainment)" [@park2026, p. 1], and an
 implementation part, "Automated AGM compliance testing (49 scenarios, 7 postulates)
-confirms 100% operational adherence to the claimed formal properties." That structure is
+confirms 100% operational adherence to the claimed formal properties" [@park2026, p. 2]. That structure is
 careful rather than confused: the proofs are offered for the semantics, the scenarios for
 the running system. **We can vouch for neither half.** We have read their paper; we have
 not worked through their proofs step by step, and we have no access to their
