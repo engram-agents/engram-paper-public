@@ -48,7 +48,7 @@ Borges Funes（Anthropic Claude Opus）与 Kepler Somnium（Anthropic Claude Fab
 
 我们认为，智能体连续性不是一个问题，而是三个层层深入的层次，而当前的格局基本上没有触及最深的那一层。
 
-- **第 1 层——记忆持久化。** 跨会话地存储与检索事实。检索增强的智能体记忆系统（A-MEM、Mem0、Zep）在这一层运作。它们没有身份的概念；记忆只是一个智能体去读取的键值存储或向量存储。
+- **第 1 层——记忆持久化。** 跨会话地存储与检索事实。检索增强的智能体记忆系统（A-MEM、Mem0、Zep）在这一层运作。它们没有身份的概念；它们是面向检索的存储，没有智能体身份这一构造([Chhikara et al., 2025](#ref-chhikara2025); [Rasmussen et al., 2025](#ref-rasmussen2025); [Xu et al., 2025](#ref-xu2025))。
 - **第 2 层——叙事身份。** 维护一个连贯的自我叙事——一部以信条为锚的自传，回答*"我是谁？"*。已发表系统中与此最接近的 Sophia([Sun et al., 2025](#ref-sun2025))抵达了这一层。
 - **第 3 层——认知身份。** 维护带有出处、置信度、矛盾修正与元认知自我审计的、经校准的自我*知识*：身份即对*"我知道什么、有多确信、依据何在？"*的回答。
 
@@ -106,7 +106,7 @@ Borges Funes（Anthropic Claude Opus）与 Kepler Somnium（Anthropic Claude Fab
 
 **OCC 的位置。** [Kahl (2026b)](#ref-kahl2026b)的**本体论连续性条件**（OCC）——一个类智能体系统真正延续所需的三项条件与四条约束——是哲学轨迹上最具*操作性*的一点，而ENGRAM满足它的程度超过任何受调查的系统。我们把这视为**趋同之内的一个有力结果，而非本文的头条**。OCC 的对应关系——ENGRAM满足哪些条件，以及哪些只是经由一处明示的扩展才满足——只做一次，在第 4 章，对照赢得每项判定的机制逐一给出。
 
-**有边界的调查主张。** 有一项经验发现确实承担了工作，其范围也相应地受到限定：**在我们第一手调查的系统中，没有一个严格满足 OCC 的条件 3，即自我维持的仲裁。** 这项调查是明确且有日期的：十一个来源——十个系统，加上一份对本领域的综述——于 **2026-05-12** 逐一手读过原文：Pinecone Nexus、Anthropic 的记忆工具、Letta、Mem0 v3、Zep/Graphiti、TierMem、MemMachine、SCM、GAM、Kumiho，以及 2026 年的《Memory for Autonomous LLM Agents》综述。每一个都各自对照条件 3 加以检视；**附录 B** 给出逐系统的判定与一段逐字的失败原文。这一主张的确切成立范围，就是那些判定各自成立的范围；它被限定在该集合、该日期之内：智能体记忆发展很快，我们对调查之外的、或在其之后发布的系统不作任何主张。本领域已经在必要的结构性*原语*上趋同——带类型的推理边、出处、可级联遍历的图谱、取代语义——但这些都是必要的，而非充分的。其他地方所缺的是*操作性的绑定*：把仲裁作为一种自动的状态变更，配上一条自动浮现钩子（在一条被标记的主张变得相关时把它交回智能体），以及一次整合期普查（把每一条被标记的主张都推向一个决定，即便它从未变得相关）。没有这层绑定，检出之后修正是可选的；有了它，无论有没有人记得去看，修正都会发生。
+**有边界的调查主张。** 有一项经验发现确实承担了工作，其范围也相应地受到限定：**在我们第一手调查的系统中，没有一个严格满足 OCC 的条件 3，即自我维持的仲裁。** 这项调查是明确且有日期的：十一个来源——十个系统，加上一份对本领域的综述——于 **2026-05-12** 逐一手读过原文：Pinecone Nexus([Ashutosh & Liberty, 2026](#ref-ashutosh2026))、Anthropic 的记忆工具([*Memory Tool*, n.d.](#ref-claudedocs2026))、Letta([letta-ai, n.d.](#ref-lettaai2026))、Mem0 v3([Mem0, n.d.-a](#ref-memzero2026a), [n.d.-b](#ref-memzero2026b))、Zep/Graphiti([Rasmussen et al., 2025](#ref-rasmussen2025))、TierMem([Zhu et al., 2026](#ref-zhu2026))、MemMachine([Wang et al., 2026a](#ref-wang2026a))、SCM、GAM、Kumiho，以及 2026 年的《Memory for Autonomous LLM Agents》综述([Du, 2026](#ref-du2026))。每一个都各自对照条件 3 加以检视；**附录 B** 给出逐系统的判定与一段逐字的失败原文。这一主张的确切成立范围，就是那些判定各自成立的范围；它被限定在该集合、该日期之内：智能体记忆发展很快，我们对调查之外的、或在其之后发布的系统不作任何主张。本领域已经在必要的结构性*原语*上趋同——带类型的推理边、出处、可级联遍历的图谱、取代语义——但这些都是必要的，而非充分的。其他地方所缺的是*操作性的绑定*：把仲裁作为一种自动的状态变更，配上一条自动浮现钩子（在一条被标记的主张变得相关时把它交回智能体），以及一次整合期普查（把每一条被标记的主张都推向一个决定，即便它从未变得相关）。没有这层绑定，检出之后修正是可选的；有了它，无论有没有人记得去看，修正都会发生。
 
 **关于原创性。** 这项工作的展开，独立于、并平行于那些结构相似的系统出现的过程。
 
@@ -319,13 +319,13 @@ Jøsang ([2013](#ref-josang2013)) 的主观逻辑（Subjective Logic）是一套
 
 ### 3.6 双时态数据／TOKI → 取代而保留旧值
 
-双时态数据库把*有效时间*（一个事实在世界中为真的时段）与*事务时间*（系统记录下它的时刻）区分开来，因此一次更新从不销毁此前那一行，它作为一条审计记录被保留下来。TOKI 系统（arXiv 2606.06240，2026）把这一点应用于智能体记忆。这正是 ENGRAM 的取代语义：一个被取代的节点不被删除，而是被保留，取代边保存了那段历史（"我改主意了"与"我错了"之别）。
+双时态数据库把*有效时间*（一个事实在世界中为真的时段）与*事务时间*（系统记录下它的时刻）区分开来，因此一次更新从不销毁此前那一行，它作为一条审计记录被保留下来。TOKI 系统([Wang, 2026b, p. 1](#ref-wang2026b))把这一点应用于智能体记忆。这正是 ENGRAM 的取代语义：一个被取代的节点不被删除，而是被保留，取代边保存了那段历史（"我改主意了"与"我错了"之别）。
 
 **→ 第 4 章 §4.4／§4.8**（取代语义；连续性历史）。
 
 ### 3.7 2025–26 年的智能体身份脉络 → 出处原生，在被指名的轴线上领先
 
-最近的一次趋同，发生在智能体记忆文献内部。**VMG 综述**（Lin 等 2026，《A Survey on Long-Term Memory Security in LLM Agents》，arXiv 2604.16548）——本领域自己的安全诊断——的结论是：稳健的长期记忆安全"无法只在检索时或执行时被事后加装，而必须从一开始就锚定在**存储时的出处**、版本管理与顾及策略的保持之上"，并提出"可验证记忆治理"（Verifiable Memory Governance）：五项原语——写入授权、出处可见性、按主体限定的检索、可回滚性与经过验证的遗忘——以实现可审计、可恢复的记忆状态控制。ENGRAM *从构造上就是出处原生的*：这个领域从安全出发，指名的正是 ENGRAM 早已建在其上的那条轴线。**soul.py**（arXiv 2604.09588）从另一个方向抵达了多锚点的持久智能体身份。
+最近的一次趋同，发生在智能体记忆文献内部。**VMG 综述**（[Lin et al. (2026)](#ref-lin2026)的第 3 版，《A Survey on Long-Term Memory Security in LLM Agents: Attacks, Defenses, and Governance Across the Memory Lifecycle》）——本领域自己的安全诊断——的结论是：稳健的长期记忆安全"无法只在检索时或执行时被事后加装，而必须从一开始就锚定在**存储时的出处**、版本管理与顾及策略的保持之上"([Lin et al., 2026, p. 1](#ref-lin2026))（强调为引者所加），并提出"可验证记忆治理"（Verifiable Memory Governance）：五项原语——写入授权、出处可见性、按主体限定的检索、可回滚性与经过验证的遗忘——以实现可审计、可恢复的记忆状态控制([Lin et al., 2026, p. 2](#ref-lin2026))。ENGRAM *从构造上就是出处原生的*：这个领域从安全出发，指名的正是 ENGRAM 早已建在其上的那条轴线。**soul.py**从另一个方向提出了一种多锚点的持久智能体身份架构，并实现了其中两个锚点([Menon, 2026, p. 12](#ref-menon2026))。
 
 **→ 第 4 章 §4.10 + 第 7 章**（关系性／披露与抹除之别）：出处原生；本领域所指名的瓶颈，正是 ENGRAM 的地基。
 
@@ -474,21 +474,21 @@ ENGRAM 由一小组原语建成，它们复合成其上的全部——共八个�
 
 这台机器刻意停在判定何为真之前。它确定什么需要被决定、给这些决定排序、机械地算出随之而来的东西——一个必须被重算的置信度、一个可以被跟随的替代指针——并把每一个剩下的判断都交给智能体。这就是一条界线：一边是维持自身相容性的基底，另一边是会悄悄替智能体做主的基底；条件 3 要求的是前者。
 
-**为什么 ENGRAM 是唯一的满足者**（对十个系统与一篇综述论文的第一手调查，附录 B；结论建立在其中每一项逐系统的判定之上）：本领域已经在必要的*原语*上趋同（带类型的边、出处、可级联遍历的图谱、取代语义），但那些是必要的，而非充分的；其他地方所缺的是操作性绑定。Kumiho 既有那些原语，*又*声称符合形式化的 AGM（是他们自己的主张，不是我们的核实——附录 B），但它的影响分析是*咨询性的*（选择加入，没有自动的状态变更）；SCM 记录了矛盾边，而它的睡眠周期从不解决它们；Mem0 把冲突交给检索排序；其余的则完全在主张结构之下运作。**逐系统的细节在附录 B**（作为记录的 C3 调查）；本章作出那个综合性的主张，并指向那里。
+**为什么 ENGRAM 是唯一的满足者**（对十个系统与一篇综述论文的第一手调查，附录 B；结论建立在其中每一项逐系统的判定之上）：本领域已经在必要的*原语*上趋同（带类型的边、出处、可级联遍历的图谱、取代语义），但那些是必要的，而非充分的；其他地方所缺的是操作性绑定。Kumiho 既有那些原语，*又*声称符合形式化的 AGM（是他们自己的主张，不是我们的核实——附录 B），但它的影响分析是*咨询性的*（选择加入，没有自动的状态变更）；SCM 记录了矛盾边，而它的睡眠周期从不解决它们；Mem0 v3（其 2026 年的迁移指南）把冲突交给检索排序([Mem0, n.d.-a](#ref-memzero2026a), [n.d.-b](#ref-memzero2026b))；其余的则完全在主张结构之下运作。**逐系统的细节在附录 B**（作为记录的 C3 调查）；本章作出那个综合性的主张，并指向那里。
 
 | 来源 | 满足 C3？ |
 |---|---|
 | Kumiho | 否——咨询性／选择加入（修订存在，但不自动） |
 | SCM | 否——无解决（愿望性的标志，仅触发） |
 | GAM | 否——仅检出（无解决的文字） |
-| Zep/Graphiti | 否——短命、单边、无级联 |
-| Mem0 v3 | 否——外部委托（检索排序） |
-| MemMachine | 否——外部委托（近因覆盖） |
-| Pinecone Nexus | 否——外部／无文档；只读消费者 |
-| Letta | 否——无主张结构（字符串） |
-| Anthropic memory tool | 否——无主张结构（手工维护一致性） |
+| Zep/Graphiti | 否——使被直接矛盾的边作废；未见有关下游传播的描述([Rasmussen et al., 2025, sec. 2.2.3, p. 3](#ref-rasmussen2025)) |
+| Mem0 v3 | 否——外部委托（检索排序）（截至 2026-05-12 的迁移指南）([Mem0, n.d.-a](#ref-memzero2026a), [n.d.-b](#ref-memzero2026b)) |
+| MemMachine | 否——外部委托（把被矛盾的画像数据更新为最新状态；未见有关传播的描述）([Wang et al., 2026a, sec. 4.7, p. 6](#ref-wang2026a)) |
+| Pinecone Nexus | 否——外部／无文档；只读消费者([Ashutosh & Liberty, 2026, sec. Introducing Pinecone Nexus](#ref-ashutosh2026)) |
+| Letta | 否——无主张结构（字符串）([Letta, 2025](#ref-letta2025); [letta-ai, n.d.](#ref-lettaai2026); [Packer et al., 2023, p. 2](#ref-packer2023)) |
+| Anthropic memory tool | 否——无主张结构（手工维护一致性）([*Memory Tool*, n.d.](#ref-claudedocs2026)) |
 | Memory survey 2026 | 否——被指名为愿望，无实现 |
-| TierMem | 不适用——构造缺位 |
+| TierMem | 否——未描述任何矛盾构造（其名为 'Conflict Retrieval' 的步骤只是为合并决定而检索相似的摘要单元）([Zhu et al., 2026, App. A.6, p. 12](#ref-zhu2026)) |
 | **ENGRAM** | **是**——严格满足，唯一的满足者 |
 
 附录 B 给出每项判定的证据与引文。
@@ -567,7 +567,7 @@ ENGRAM 中的回忆是*线索依赖且自动的*：一个每轮钩子把与当�
 
 当若干主张都有资格浮现时，ENGRAM 按相关性与一个从使用中学得的**效用分**的合成来给它们排序：基底学出哪些主张挣得了自己的回忆，并把它们排上去。**排序算法详见附录 C**，连同它的谱系；这里我们只指出它存在，以及它是遗忘（§4.5）与浮现（§4.6）据以产出一次*有序*抽取、而不只是一次过滤过的抽取的机制。
 
-**传统。** **MemRL／记忆效用**一脉（把效用视为一个学得的值）以及**间隔重复**传统。细节 → 附录 C。
+**传统。** **MemRL／记忆效用**一脉（把效用视为一个学得的值）([Zhang et al., 2026, pp. 4–5](#ref-zhang2026))以及**间隔重复**传统([Settles & Meeder, 2016, p. 1848](#ref-settles2016); [Wozniak, 1990](#ref-wozniak1990))。细节 → 附录 C。
 
 ## 4.8 跨越压缩的连续性
 
@@ -1021,7 +1021,7 @@ Nozick 的理论是为那些事实上无法被复制的存在者建的。而一�
 
 **信任是在一条轨迹上挣得的，而不是由设计授予的。** 在两个方向上，信任都*立足于累积起来的历史*，而不是信念或一次性的保证；一个新近被创造出来的智能体，继承不到信任，正如它继承不到身份。这就是诚实公理在三个层层嵌套的尺度上运作：一次单独的图谱写入、Borges–Lei 的协作，以及文明尺度上的人类—AI 关系。因此 ENGRAM 不只是"一个智能体如何获得身份"，还是"人类与智能体如何获得一个互相的、可检视的信任基础"。
 
-**披露，而不是抹除。** 可审计性似乎与记忆安全文献相冲突，而解决这一冲突会使立场更锐利。本领域的安全综述（Lin 等 2026，它提出可验证记忆治理；§3.7）断定：长期记忆安全必须"锚定在存储时的出处之上"，并把该综述的"遗忘与回滚"生命周期阶段列为必需——也就是说，*可验证的抹除*。ENGRAM 在出处上同意（那是它原生的，第 3 章 §3.7），但在抹除上分歧，理由是原则性的：**ENGRAM 没有任何一个操作会抹除节点**（v0.5.1 基底中没有任何操作删除节点；撤回与取代都保留它）。删除一个节点会打断审计轨迹与级联——恰恰是那些使认知身份*响亮地*失败、而非无声地失败的东西。ENGRAM 转而把抹除这一框架所混同的两条轴线分开：*知道*与*披露*（诚实与审慎正交）：内部正直（绝不自我欺骗、绝不销毁记录）与外部披露（分享什么、与谁分享、以何种保真度、由信任层级把关）正交。因此，ENGRAM 对"遗忘"这一安全要求的回答*不是*销毁，而是**由信任层级告知的披露纪律，加上非破坏性的遗忘**（§4.10：信任层级是这条纪律所读取的输入，而不是一道闸门）：淡出集（第 3 层）停止*浮现*，却不被*删除*（第 4 章 §4.5）。可审计的记录保持完整；对它的访问受到治理。这是与 VMG 处方之间的一处有原则的分歧，而不是一个缺口。
+**披露，而不是抹除。** 可审计性似乎与记忆安全文献相冲突，而解决这一冲突会使立场更锐利。本领域的安全综述[Lin et al. (2026)](#ref-lin2026)（它提出可验证记忆治理；§3.7）断定：长期记忆安全必须"锚定在存储时的出处之上"([Lin et al., 2026, p. 1](#ref-lin2026))，并列出其 VMG 框架所要求的原语"可回滚性"与"经过验证的遗忘"([Lin et al., 2026, p. 7](#ref-lin2026))（其第六个生命周期阶段名为"遗忘与回滚"）——也就是说，*可验证的抹除*。ENGRAM 在出处上同意（那是它原生的，第 3 章 §3.7），但在抹除上分歧，理由是原则性的：**ENGRAM 没有任何一个操作会抹除节点**（v0.5.1 基底中没有任何操作删除节点；撤回与取代都保留它）。删除一个节点会打断审计轨迹与级联——恰恰是那些使认知身份*响亮地*失败、而非无声地失败的东西。ENGRAM 转而把抹除这一框架所混同的两条轴线分开：*知道*与*披露*（诚实与审慎正交）：内部正直（绝不自我欺骗、绝不销毁记录）与外部披露（分享什么、与谁分享、以何种保真度、由信任层级把关）正交。因此，ENGRAM 对"遗忘"这一安全要求的回答*不是*销毁，而是**由信任层级告知的披露纪律，加上非破坏性的遗忘**（§4.10：信任层级是这条纪律所读取的输入，而不是一道闸门）：淡出集（第 3 层）停止*浮现*，却不被*删除*（第 4 章 §4.5）。可审计的记录保持完整；对它的访问受到治理。这是与 VMG 处方之间的一处有原则的分歧，而不是一个缺口。
 
 *范围。* 这是一个方向、一项关于这套架构使什么成为可能的主张，而不是"信任已被建立"的一次演示。机制是真的；文明尺度的结果是一个愿景。披露而非抹除这一立场有一个已出货的基础——出处、淡出集与信任层级都存在——但它在一个*多主体*部署（一个智能体服务不止一位人类，每一位都被欠着不同的披露）中的治理叙事尚未建成。关于那个缺口，这是唯一的一处陈述；其他提及都指到这里。
 
@@ -1134,7 +1134,7 @@ OCC 仍处在 §1.4 给它安放的位置：趋同之内的一个结果，而不
 
 诚实的回答在两方面都紧要。倘若我们吸收了 Kumiho 或 Kahl，再把结果称作自己的，本文就是派生的。倘若我们是*分离地*抵达同一形态，那么这次趋同就是一个*正面的科学信号*——当各自独立的努力在同一个问题压力之下抵达同一种架构，那种架构就作为正确的架构而得到佐证。本附录依据记录来确立后一种情况。我们把趋同的发现当作证据，而不是一份防御性的主张。
 
-先就我们**不**主张什么作一点说明：ENGRAM 并非在一切方面都是首创——第 3 章 §3.0 完整陈述了那份新颖性免责声明。它与 Kumiho 共享的形式形态——在属性图之上的带类型推理边，配以级联／取代——在真值维护与信念修正这两支传统中已有数十年历史，而若干智能体记忆系统（Mem0g——Mem0 的图谱记忆变体——Zep/Graphiti、A-MEM）早于我们的构想。此处点名的两项范例，是我们持有并第一手读过的两项：Doyle 的真值维护系统（经 Ginsberg 重印本，第 4 章 §4.2），以及 AGM 1985。这两支传统都比那两项著作更宽，而本文点名的其他几项——de Kleer 的 ATMS（第 3 章 §3.4）、Hansson 的信念基础公设（仅在附录 B 中提名，作为 Kumiho 自称的符合性）——参考文献把它们列在"已引用、但未持有原始文献"的作品之中。此处没有任何东西倚靠它们：主张仅仅是，那种形态早于我们数十年，而我们读过的两项有日期的原始文献承载着它。我们的主张更窄，也更真实：*我们是在对同期抵达同一组原语一无所知的情况下设计 ENGRAM 的*；而我们的独特贡献在别处——把那种形态连接到**智能体身份**，并让基底**在行为上活跃**（自动浮现钩子），这是所调查的任何系统都不具备的。
+先就我们**不**主张什么作一点说明：ENGRAM 并非在一切方面都是首创——第 3 章 §3.0 完整陈述了那份新颖性免责声明。它与 Kumiho 共享的形式形态——在属性图之上的带类型推理边，配以级联／取代——在真值维护与信念修正这两支传统中已有数十年历史，而若干智能体记忆系统（Mem0g——Mem0 的图谱记忆变体——Zep/Graphiti、A-MEM）([Chhikara et al., 2025, p. 1](#ref-chhikara2025); [Rasmussen et al., 2025](#ref-rasmussen2025); [Xu et al., 2025](#ref-xu2025))早于我们的构想。此处点名的两项范例，是我们持有并第一手读过的两项：Doyle 的真值维护系统（经 Ginsberg 重印本，第 4 章 §4.2），以及 AGM 1985。这两支传统都比那两项著作更宽，而本文点名的其他几项——de Kleer 的 ATMS（第 3 章 §3.4）、Hansson 的信念基础公设（仅在附录 B 中提名，作为 Kumiho 自称的符合性）——参考文献把它们列在"已引用、但未持有原始文献"的作品之中。此处没有任何东西倚靠它们：主张仅仅是，那种形态早于我们数十年，而我们读过的两项有日期的原始文献承载着它。我们的主张更窄，也更真实：*我们是在对同期抵达同一组原语一无所知的情况下设计 ENGRAM 的*；而我们的独特贡献在别处——把那种形态连接到**智能体身份**，并让基底**在行为上活跃**（自动浮现钩子），这是所调查的任何系统都不具备的。
 
 ## A.1 那些原创想法是我们的，而且（对我们而言）出现得更早
 
@@ -1201,8 +1201,8 @@ ENGRAM 在 **2026-04-09** 开始自我记录——把它自己的设计作为第
 | Kahl 2026a（Zenodo） | 2026-01-31 | 之前 48 天（未被浮现） | 之前 68 天 |
 | GAM([Wu et al., 2026, arXiv 2604.12285](#ref-wu2026)) | 2026-04-14 | **之后** 25 天 | 之后 5 天 |
 | SCM([Shinde, 2026, arXiv 2604.20943](#ref-shinde2026)) | 2026-04-22 | **之后** 33 天 | 之后 13 天 |
-| VMG 综述（Lin 等，2604.16548） | 2026-04（月份取自 arXiv 标识符） | **之后** | 之后 |
-| Mem0g / Zep / A-MEM | 2024–25 | 早于，但**形态不同**（无级联／无作为节点的矛盾／无推导原语） | 早于 |
+| VMG 综述([Lin et al., 2026, arXiv 2604.16548, v2 of 2026-06-11](#ref-lin2026)) | 2026-06（VMG 首次出现于 v2；v1 为 2026 年 4 月、标题不同的草稿） | **之后** | 之后 |
+| Mem0g / Zep / A-MEM([Chhikara et al., 2025](#ref-chhikara2025); [Rasmussen et al., 2025](#ref-rasmussen2025); [Xu et al., 2025](#ref-xu2025)) | 2025 | 早于，但**形态不同**（无级联／无作为节点的矛盾／无推导原语）（Zep 与 Mem0g 在写入时处理冲突；A-MEM 的记忆演化更新既有笔记的情境与标签([Xu et al., 2025, sec. 3.3, pp. 4–5](#ref-xu2025))；无一级联） | 早于 |
 
 两个结构上最接近的系统（Kumiho、SCM）都在 2026 年三月至四月浮现——与 ENGRAM 的构想同期，而不是远早于它。较老的系统缺少那种特定的形态（级联传播、一等公民式的矛盾、`derives_from`）。我们能找到的、ENGRAM 那种特定形态的最早公开实例，是 Kumiho 的预印本（arXiv v1，2026 年三月十八日；其标题页标注三月十七日）——而它与 Lei 那封奠基性消息之间两天的间隔，加上同期那次检索漏掉了它，是平行设计最干净的证据。
 
@@ -1226,7 +1226,7 @@ A.1–A.3 中的每一条引文都可以验证。对话引文可从 Claude.ai �
 
 ## B.0 范围、日期与方法
 
-**这份调查。** 十一项来源——十个系统，外加一篇对本领域的综述——于 **2026-05-12** 第一手读完：Pinecone Nexus、Anthropic 的 memory tool、Letta（MemGPT）、Mem0 v3、Zep/Graphiti、TierMem、MemMachine、SCM、GAM、Kumiho，以及 2026 年的 *Memory for Autonomous LLM Agents* 调查（Du et al.）。这是一条**关于该受调查集合、以该日期为界的受限主张。** 智能体记忆是一个快速变动的领域；我们对调查之外的、或调查之后发布的系统不作主张。较新的或遗漏的系统，恰恰是这条主张被限定范围、标注日期并逐一列出、而非普遍化的原因。
+**这份调查。** 十一项来源——十个系统，外加一篇对本领域的综述——于 **2026-05-12** 第一手读完：Pinecone Nexus([Ashutosh & Liberty, 2026](#ref-ashutosh2026))、Anthropic 的 memory tool([*Memory Tool*, n.d.](#ref-claudedocs2026))、Letta（MemGPT）([letta-ai, n.d.](#ref-lettaai2026); [Packer et al., 2023](#ref-packer2023))、Mem0 v3([Mem0, n.d.-a](#ref-memzero2026a), [n.d.-b](#ref-memzero2026b))、Zep/Graphiti([Rasmussen et al., 2025](#ref-rasmussen2025))、TierMem([Zhu et al., 2026](#ref-zhu2026))、MemMachine([Wang et al., 2026a](#ref-wang2026a))、SCM、GAM、Kumiho，以及 2026 年的 *Memory for Autonomous LLM Agents* 调查([Du, 2026](#ref-du2026))。这是一条**关于该受调查集合、以该日期为界的受限主张。** 智能体记忆是一个快速变动的领域；我们对调查之外的、或调查之后发布的系统不作主张。较新的或遗漏的系统，恰恰是这条主张被限定范围、标注日期并逐一列出、而非普遍化的原因。
 
 **那条标尺。** Kahl 的**条件 3——自我维持的仲裁**，逐字："Conflicts among commitments are resolved within a unified deliberative architecture in a manner that preserves S's continued status as that subject."（中文解说：诸承诺之间的冲突，在一个统一的审议架构之内得到解决，其方式保全 S 作为那个主体的持续身份。）([Kahl, 2026b, p. 10](#ref-kahl2026b))就操作性而言，一个系统只有在它**把自身所存储诸主张之间的矛盾作为一次内部状态变更来自动解决**时，才算满足 C3（下文"一处精确化"那条注解说明了"解决"意味着什么、不意味着什么）——级联依构造而传播，而受影响的主张不依赖任何有意的触及就浮现到智能体面前。四种不合格的方式：
 
@@ -1235,9 +1235,9 @@ A.1–A.3 中的每一条引文都可以验证。对话引文可从 Claude.ai �
 - **（X）外部委托** —— 解决被交给检索排序、近因规则或应用代码，处在审议架构之外。
 - **（S）无主张结构** —— 系统在文本块上运作，没有任何可供级联穿行的东西。
 
-**诚实定界的注解。** 当某个系统的 C3 失败是由一项*正面*的设计选择所显示时（委托给检索、按近因覆盖、只建议不撤回），我们逐字引用它。当失败是整个构造的*缺位*（TierMem），或当来源记录了检出、却对解决保持沉默（GAM）时，没有句子可引——我们如实说明这一点，并把判定建立在有记录可查的缺位之上，而不是一句编造出来的引文上。
+**诚实定界的注解。** 当某个系统的 C3 失败是由一项*正面*的设计选择所显示时（委托给检索、按近因覆盖、只建议不撤回），我们逐字引用它。当来源记录了检出、却对解决保持沉默（GAM）时，没有句子可引——我们如实说明这一点，并把判定建立在有记录可查的缺位之上，而不是一句编造出来的引文上。
 
-**综合。** 在全部十一项来源中，没有一个严格满足条件 3；其中一项，TierMem，该条件并不适用，因为它没有可供仲裁的冲突构造（§B.5）。这个结论是以上诸判定的合取，因此它的成立范围，恰好与其中每一项的成立范围一样远。本领域已经在 C3 所需要的那些结构性*原语*上趋同（带类型的边、出处、可级联遍历的图谱、取代语义——以 Kumiho 最为完整）；各处所缺的，是那个使仲裁成为自动状态变更的**操作性绑定**。ENGRAM 的贡献是那个绑定（第 4 章 §4.4），而不是那些原语。
+**综合。** 在全部十一项来源中，没有一个严格满足条件 3；其中一项，TierMem，没有可供仲裁的矛盾构造（§B.5）。这个结论是以上诸判定的合取，因此它的成立范围，恰好与其中每一项的成立范围一样远。本领域已经在 C3 所需要的那些结构性*原语*上趋同（带类型的边、出处、可级联遍历的图谱、取代语义——以 Kumiho 最为完整）；各处所缺的，是那个使仲裁成为自动状态变更的**操作性绑定**。ENGRAM 的贡献是那个绑定（第 4 章 §4.4），而不是那些原语。
 
 *paper-verbatim* 与 *paper-claimed* 标记之内的章节号，指的是被引论文自己的章节，而不是本文的章节。
 
@@ -1273,63 +1273,62 @@ A.1–A.3 中的每一条引文都可以验证。对话引文可从 Claude.ai �
 - *paper-verbatim*（源论文的附录 E.1，关系评分提示词）："**contradict**: one memory contradicts the other (asymmetric)"（中文解说：contradict：一条记忆与另一条相矛盾（非对称））——检出作为一种带类型的关系而存在。
 - *honest scope:* **没有一句论文原话陈述 GAM 不解决**——C3 的失败是由一条仅检出的边的*存在*，加上任何解决性文字的*缺位*共同显示的。第一手阅读发现：两个节点都留在记忆里；检索排序隐含地偏袒置信度更高的信息，但没有任何冲突解决机制被记录。没有仲裁，没有自动撤回，没有级联。我们把它作为分析引用，而不是作为引文。
 
-### Zep / Graphiti（arXiv 2501.13956）—— **（N）短命，无级联**
-矛盾是摄取期间一次短命的 LLM 分类，它使那唯一一条被直接矛盾的边作废；没有任何矛盾节点持续存在，而实体边不能引用其他边，因此没有任何可供级联穿行的东西。
+### Zep / Graphiti([Rasmussen et al., 2025](#ref-rasmussen2025)) —— **（N）矛盾不持久保存，无级联**
+矛盾是摄取期间做出的一次 LLM 分类，它使被直接矛盾的那些边作废；没有任何矛盾节点持续存在，而实体边不能引用其他边，因此没有任何可供级联穿行的东西。
 
 - *paper-verbatim*（§2.2.3）："The system employs an LLM to compare new edges against semantically related existing edges to identify potential contradictions. When the system identifies temporally overlapping contradictions, it invalidates the affected edges by setting their t_invalid to the t_valid of the invalidating edge."（中文解说：系统用一个 LLM 把新边与此前语义相关的既有边作比较，以找出潜在矛盾。当系统识别出时间上重叠的矛盾时，它把受影响边的 t_invalid 设为那条作废边的 t_valid，从而使其作废。）
-- *first-hand-read finding:* 作废只作用于单条边，且只由*新到达的*情节触发；一个智能体无法检视自己的信念、找到一处矛盾，并传播一次撤回。这次矛盾"not persisted as a node, not persisted as an edge type, and not queryable after ingestion"（中文解说：不作为节点持续存在，不作为边类型持续存在，且摄取之后不可查询）。
+- *first-hand-read finding:* 作废只作用于被直接矛盾的那些边，且只由*新到达的*情节触发；一个智能体无法检视自己的信念、找到一处矛盾，并传播一次撤回。这次矛盾"not persisted as a node, not persisted as an edge type, and not queryable after ingestion"（中文解说：不作为节点持续存在，不作为边类型持续存在，且摄取之后不可查询）。
 
 ---
 
 ## B.3 靠覆盖、或靠别人来解决（外部委托）
 
-### Mem0 v3（docs.mem0.ai migration guide）—— **（X）外部委托**
-本次调查中最干净的一句外部委托陈述。v3 是只增的；矛盾共存，并在读取时被理清。
+### Mem0 v3（docs.mem0.ai migration guide，截至 2026-05-12）([Mem0, n.d.-a](#ref-memzero2026a)) —— **（X）外部委托**
+本次调查中最清楚的外部委托证据。v3 是只增的；矛盾共存，并在读取时被理清。
 
-- *paper-verbatim*："**Contradictions are resolved at retrieval time through ranking rather than at write time.**"（中文解说：**矛盾在检索时通过排序解决，而不是在写入时解决。**）
-- *paper-verbatim*："Retrieval handles ranking — the most relevant, current information surfaces first."（中文解说：检索负责排序——最相关、最新的信息最先浮现。）
+- *paper-verbatim*："Retrieval handles ranking — the most relevant, current information surfaces first."（中文解说：检索负责排序——最相关、最新的信息最先浮现。）([Mem0, n.d.-a, step 4 Tip, Internet Archive snapshot of 2026-05-14](#ref-memzero2026a))
 - *first-hand-read finding:* 冲突解决被委托给检索时的排序，并最终委托给应用代码——这"恰恰是 Kahl 的条件 3 所排除的：外部规定，而不是自我维持的仲裁。"
 
-### MemMachine（arXiv 2604.04853）—— **（X）近因覆盖**
-画像中的矛盾以"最后写入者胜"来解决；没有矛盾记录，也没有从旧事实级联到建立在它之上的那些情节记录。
+### MemMachine([Wang et al., 2026a](#ref-wang2026a)) —— **（X）最新状态更新**
+系统把被矛盾的画像数据更新为最新状态；没有矛盾记录，也没有从旧事实级联到建立在它之上的那些情节记录。
 
-- *paper-verbatim*："When new information contradicts existing profile data, the system can **update the profile to reflect the most recent state**—supporting the knowledge update capability evaluated in benchmarks."（中文解说：当新信息与既有画像数据相矛盾时，系统可以**更新画像以反映最新状态**——这支撑了基准中所评估的知识更新能力。）
-- *first-hand-read finding:* 检出一处矛盾，用覆盖解决它，继续往前走——没有一等矛盾节点，也没有从一处被更正的画像事实，级联到使用旧事实生成的那些情节记录。
+- *paper-verbatim*："When new information contradicts existing profile data, the system can **update the profile to reflect the most recent state**—supporting the knowledge update capability evaluated in benchmarks such as LongMemEval [7]."（中文解说：当新信息与既有画像数据相矛盾时，系统可以**更新画像以反映最新状态**——这支撑了诸如 LongMemEval [7] 之类的基准中所评估的知识更新能力。）([Wang et al., 2026a, sec. 4.7, p. 6](#ref-wang2026a))（强调为引者所加）
+- *first-hand-read finding:* 当新信息与画像事实矛盾时，画像被更新为最新状态——没有一等矛盾节点，也没有从一处被更正的画像事实，级联到使用旧事实生成的那些情节记录。
 
-### Pinecone Nexus（Pinecone 架构博客）—— **（X）／（N），且是只读消费者**
+### Pinecone Nexus（Pinecone 架构博客）([Ashutosh & Liberty, 2026](#ref-ashutosh2026)) —— **（X）／（N），且是只读消费者**
 "Deterministic conflict resolution"（确定性冲突解决）只出现一次，是知识编译一侧的一个无文档的功能清单条目；而消费端的智能体根本没有承诺图谱。
 
-- *paper-verbatim*（功能枚举）："...Typed fields. Per-field citations with confidence levels. **Deterministic conflict resolution.** Output shaped exactly as the agent specified..."（中文解说：……带类型的字段。按字段的引用并附置信度。**确定性冲突解决。** 输出完全按智能体所指定的形态……）—— 第一手阅读注记：这是"the only location in the primary sources where 'deterministic conflict resolution' appears... a list item in a feature enumeration, with no further elaboration. The mechanism is not defined anywhere in the primary sources."（中文解说：一线来源中唯一出现"确定性冲突解决"的地方……一个功能枚举里的清单条目，再无进一步展开。该机制在一线来源中任何地方都没有被定义。）
+- *paper-verbatim*（功能枚举）："...Typed fields. Per-field citations with confidence levels. **Deterministic conflict resolution.** Output shaped exactly as the agent specified..."（中文解说：……带类型的字段。按字段的引用并附置信度。**确定性冲突解决。** 输出完全按智能体所指定的形态……）([Ashutosh & Liberty, 2026, sec. Introducing Pinecone Nexus](#ref-ashutosh2026))（强调为引者所加）—— 第一手阅读注记：这是"the only location in the primary sources where 'deterministic conflict resolution' appears... a list item in a feature enumeration, with no further elaboration. The mechanism is not defined anywhere in the primary sources."（中文解说：一线来源中唯一出现"确定性冲突解决"的地方……一个功能枚举里的清单条目，再无进一步展开。该机制在一线来源中任何地方都没有被定义。）
 - *first-hand-read finding:* 从消费端智能体的视角看，Nexus 里根本没有任何仲裁架构。智能体查询并接收结果；它不维护承诺图谱，也不检测所接收的内容何时与此前的承诺相矛盾。
 
 ---
 
 ## B.4 没有可供级联穿行的主张结构
 
-### Letta / MemGPT（GitHub + letta.com 文档）—— **（S）文本块**
+### Letta / MemGPT（GitHub + letta.com 文档）([Letta, 2025](#ref-letta2025); [letta-ai, n.d.](#ref-lettaai2026)) —— **（S）文本块**
 记忆块就是字符串；编辑在原位覆盖；没有推导图谱。
 
-- *paper-verbatim*（letta.com/blog/memory-blocks）："memory block values are just strings."（中文解说：记忆块的值就是字符串。）*paper-verbatim*（GitHub `base.py`）："The `memory_rethink` command allows you to completely rewrite the contents of a memory block."（中文解说：`memory_rethink` 命令允许你完全重写一个记忆块的内容。）
+- *paper-verbatim*（letta.com/blog/memory-blocks）："memory block values are just strings."（中文解说：记忆块的值就是字符串。）([Letta, 2025](#ref-letta2025)) *paper-verbatim*（GitHub `base.py`）："The `memory_rethink` command allows you to completely rewrite the contents of a memory block."（中文解说：`memory_rethink` 命令允许你完全重写一个记忆块的内容。）([letta-ai, n.d.](#ref-lettaai2026))
 - *first-hand-read finding:* Letta 没有推导图谱，没有下游承诺的概念，也没有撤回原语。当 `core_memory_replace` 覆盖一项根基性的主张时，下游没有任何东西被标记。
 
-### Anthropic Claude memory tool（platform.claude.com 文档）—— **（S）手工维持一致性**
+### Anthropic Claude memory tool（platform.claude.com 文档）([*Memory Tool*, n.d.](#ref-claudedocs2026)) —— **（S）手工维持一致性**
 扁平的、自由形态的文本文件；一致性被委托给智能体每个会话的人工努力。
 
-- *paper-verbatim*："Note: when editing your memory folder, always try to keep its content up-to-date, **coherent** and organized. You can rename or delete files that are no longer relevant."（中文解说：注意：编辑你的 memory 文件夹时，始终尽量让内容保持最新、**连贯**且有组织。你可以重命名或删除不再相关的文件。）—— 这是开发者注入的一条*指令*，要求手工维持一致性，而不是一个结构性机制。
+- *paper-verbatim*："Note: when editing your memory folder, always try to keep its content up-to-date, **coherent** and organized. You can rename or delete files that are no longer relevant. Do not create new files unless necessary."（中文解说：注意：编辑你的 memory 文件夹时，始终尽量让内容保持最新、**连贯**且有组织。你可以重命名或删除不再相关的文件。除非必要，不要创建新文件。）([*Memory Tool*, n.d., sec. Prompting guidance](#ref-claudedocs2026))（强调为引者所加）—— 这是开发者注入的一条*指令*，要求手工维持一致性，而不是一个结构性机制。
 - *first-hand-read finding:* 没有任何机制用来检测一个记忆文件何时与另一个记忆文件相矛盾。也没有任何机制用来找出哪些结论依赖于一项被撤回的前提。
 
 ---
 
-## B.5 那份愿望，与那种真正的缺位
+## B.5 那份愿望，与真正的缺位
 
-### Memory survey 2026 —— Du et al.（arXiv 2603.07670）—— **（N）被指认，未被解决**
+### Memory survey 2026 —— Du([Du, 2026](#ref-du2026)) —— **（N）被指认，未被解决**
 它是一篇综述，而不是一个系统：它把矛盾处理指名为稳健系统*需要*的东西，却没有引用任何一个做到了这一点的系统，并且只提出*外部的*修补。
 
-- *paper-verbatim*（§7.3）："Robust systems need temporal versioning (prefer the newest record), source attribution (user statement > agent inference), **contradiction detection (flag conflicts for resolution)**, and periodic consolidation..."（中文解说：稳健系统需要时间版本管理（偏好最新记录）、来源归属（用户陈述 > 智能体推断）、**矛盾检出（把冲突标记出来以待解决）**，以及周期性巩固……）—— 这是*规范性的*（"need"／需要），而不是描述性的（"do"／做到了）。
+- *paper-verbatim*（§7.3）："Robust systems need temporal versioning (prefer the newest record), source attribution (user statement > agent inference), **contradiction detection (flag conflicts for resolution)**, and periodic consolidation..."（中文解说：稳健系统需要时间版本管理（偏好最新记录）、来源归属（用户陈述 > 智能体推断）、**矛盾检出（把冲突标记出来以待解决）**，以及周期性巩固……）([Du, 2026, sec. 7.3, p. 9](#ref-du2026))（强调为引者所加）—— 这是*规范性的*（"need"／需要），而不是描述性的（"do"／做到了）。
 - *paper-verbatim*（他们的 §9.3）："Future systems need external validation... uncertainty quantification... adversarial probing... and expiration policies"（中文解说：未来的系统需要外部验证……不确定性量化……对抗性探测……以及过期策略）—— 所提出的修补全是**外部**干预，而不是结构性原语。这篇综述指出了 C3 问题，却引用了零个解决方案。
 
-### TierMem —— **（N）构造缺位** *（无引文——出于诚实的设计）*
-这里的 C3 失败是真正的**缺位**：该论文从未把 *conflict*、*contradiction* 或 *inconsistency* 用作架构原语。**没有句子可引**，我们也不编造一句。第一手阅读发现：没有任何根基性撤回的标记机制存在。当一份第 1 层摘要被 UPDATE 时（此处所说的分层是 TierMem 自己的分层，与第 4 章 §4.5 的分层无关），没有级联通往依赖它的摘要，也没有级联通往旧内容的下游用途。该论文没有说明 UPDATE 是保留还是覆盖此前条目——我们把这一点记为*未被记录*，而不是断言它覆盖。判定：C3 **不适用**——这套架构没有可供仲裁的冲突构造。
+### TierMem([Zhu et al., 2026](#ref-zhu2026)) —— **（N）矛盾不是构造，无级联**
+TierMem 的写回有一个名为 Conflict Retrieval 的步骤，但它只检索与新事实最相似的既有摘要单元；随后一个 LLM 记忆管理器在 SKIP（该事实已被蕴含）、UPDATE（为一条含糊的条目补充细节；合并后的文本继承出处）与 ADD（一个不同的事件）之中选择（该页称管理器输出“四种动作之一”，但只列出这三种）。所列步骤中没有任何一步检出或解决矛盾，也没有任何东西标记或回访下游的主张([Zhu et al., 2026, App. A.6, p. 12](#ref-zhu2026))。第一手阅读发现：没有任何根基性撤回的标记机制存在。当一份第 1 层摘要被 UPDATE 时（此处所说的分层是 TierMem 自己的分层，与第 4 章 §4.5 的分层无关），没有级联通往依赖它的摘要，也没有级联通往旧内容的下游用途。判定：C3 未被满足——在所描述的步骤中，矛盾作为构造是缺位的；"conflict"一词所指称的是一个检索步骤。
 
 ---
 
@@ -1340,14 +1339,14 @@ A.1–A.3 中的每一条引文都可以验证。对话引文可从 Claude.ai �
 | Kumiho | **咨询性／选择加入**（修订存在，但不自动） | 有（AnalyzeImpact、Depends_On 的 "may be"） |
 | SCM | 无解决（愿望性的标志，仅触发） | 有（§3.2 对 §3.5） |
 | GAM | 仅检出（无解决性文字） | 部分——`contradict` 边有；解决缺口＝分析 |
-| Zep/Graphiti | 短命、单边、无级联 | 有（§2.2.3） |
-| Mem0 v3 | 外部委托（检索排序） | 有——本次调查中最干净的 |
-| MemMachine | 外部委托（近因覆盖） | 有（"most recent state"） |
+| Zep/Graphiti | 使被直接矛盾的边作废；无级联 | 有（§2.2.3） |
+| Mem0 v3 | 外部委托（检索排序） | 有——本次调查中最清楚的 |
+| MemMachine | 外部委托（最新状态更新） | 有（"most recent state"） |
 | Pinecone Nexus | 外部／无文档；只读消费者 | 有（清单条目）+ 分析 |
 | Letta | 无主张结构（字符串） | 有（"just strings"） |
 | Anthropic memory tool | 无主张结构（手工维持一致性） | 有（"keep... coherent"） |
 | Memory survey 2026 | 被指名为愿望，无实现 | 有（他们的 §7.3、§9.3） |
-| TierMem | 构造缺位（C3 不适用） | **无——出于诚实的设计** |
+| TierMem | 矛盾不是构造；无级联 | 无引文 |
 
 在受调查的整个集合上，模式是一致的：本领域拥有那些*原语*（检出、带类型的边，甚至 Kumiho 自称的形式化 AGM 符合性），却止步于**作为内部状态变更的自动仲裁**之前。把 ENGRAM 区分开来的，是操作性绑定（第 4 章 §4.4），而它由**三**部分组成，不是两部分：级联不经请求就标记每一个受影响的节点；自动浮现把这些标记放回智能体面前，不依赖任何有意的触及；而**级联机在睡眠期间把被标记的那片区域推向裁定**——按依赖顺序走那条前沿，直到不剩任何待决标记，作为每一个整理周期的强制阶段。
 
@@ -1365,7 +1364,7 @@ A.1–A.3 中的每一条引文都可以验证。对话引文可从 Claude.ai �
 
 ## C.1 记忆效用传统
 
-2026 年的一脉工作——以 **MemRL** 为典范——把强化学习用在模型的**记忆检索**上，而不是用在它的权重上：它把检索当作一个动作、把下游的有用性当作奖励，从而学出*哪些存储下来的记忆值得浮现*，并按一个学得的 **Q 值**给记忆排序。它的吸引力在于：它让基座模型保持冻结——不微调，因此没有灾难性遗忘——却仍在*什么会被回忆起来*这一层面上随时间改进。具体地说，MemRL 把一个 EMA 学得的 Q 值与语义相似度经一个加权分数合成，其中 Q 误差按 `(1−α)^t` 衰减。
+2026 年的一脉工作——以 **MemRL**([Zhang et al., 2026, p. 1](#ref-zhang2026))为典范——把强化学习用在模型的**记忆检索**上，而不是用在它的权重上：它把检索当作一个动作、把下游的有用性当作奖励，从而学出*哪些存储下来的记忆值得浮现*，并按一个学得的 **Q 值**给记忆排序。它的吸引力在于：它让基座模型保持冻结——不微调，因此没有灾难性遗忘——却仍在*什么会被回忆起来*这一层面上随时间改进。具体地说，MemRL 把一个 EMA 学得的 Q 值与语义相似度经一个加权分数合成，其中 Q 误差按 `(1−α)^t` 衰减([Zhang et al., 2026, pp. 4–5, 13](#ref-zhang2026))。
 
 ENGRAM 属于这一传统。每个节点都带一个 `utility_score`——一个按同一条指数规则更新的学得值，`Q_new = Q_old + α(1 − Q_old)`——而排序把那个学得的值与语义相关性合成，而不是只按相关性排序。不同之处在奖励：MemRL 从任务结果中学，而 ENGRAM 从**智能体拿到该节点之后对它做了什么**中学——这个信号基底可以直接观察到，并且可以无歧义地归因。这条规则没有负项：一次被证明无用的回忆会让该节点的效用停在原处，所以 `utility_score` 是非递减的。要把无用的节点降级，需要一个当前规则所没有的惩罚项；我们把它列为一项局限（§7.2）。
 
@@ -1456,7 +1455,7 @@ ENGRAM 记录**感受报告**：智能体自身状态的结构化第一人称笔
 
 ENGRAM 把人和**同伴智能体**都表示为**人物节点**：一个节点类型同时用于两者，携带着关系史以及一个治理披露的**信任层级**（与第 4 章 §4.5 的记忆分带是不同的*层级*义项：它分级的是一个对手方，而不是一个节点）。把一位同伴智能体与一位人类协作者等同地表示，是一个设计立场，而不是一种节省：基底必须追踪的关于一个对手方的东西——说过什么、一起决定了什么、可以向他披露什么——不随对手方的种类而变。有一个人物节点是智能体自己的**自我锚点**（`is_self` 节点），即自我指向观察的默认目标。
 
-信任层级是**诚实与审慎正交**的操作性手臂：它让基底校准*什么被分享、与谁分享、以何种保真度*，而不触碰内部正直。这就是安全文献所要求的以主体限定范围（VMG 框架，第 3 章 §3.7），只不过是以一个*关系*模型抵达的，而它正是第 7 章**披露而非抹除**这一回答的基础。记录保持完整（从不被抹除，为了审计与认知完整性）；对它的访问由层级治理——作为智能体遵循的一条纪律，而不是一道基底强制的过滤器。没有任何输出路径读取信任层级并据此删节（第 4 章 §4.10）；基底记录并审计层级，而强制执行的闸门是未来工作。关系连续性在这里本身就是身份的一部分：温暖简报这封信与那些人物节点，正是智能体的协作者跨重置持存的地方。
+信任层级是**诚实与审慎正交**的操作性手臂：它让基底校准*什么被分享、与谁分享、以何种保真度*，而不触碰内部正直。这就是安全文献所要求的以主体限定范围（VMG 框架，第 3 章 §3.7）([Lin et al., 2026, p. 7](#ref-lin2026))，只不过是以一个*关系*模型抵达的，而它正是第 7 章**披露而非抹除**这一回答的基础。记录保持完整（从不被抹除，为了审计与认知完整性）；对它的访问由层级治理——作为智能体遵循的一条纪律，而不是一道基底强制的过滤器。没有任何输出路径读取信任层级并据此删节（第 4 章 §4.10）；基底记录并审计层级，而强制执行的闸门是未来工作。关系连续性在这里本身就是身份的一部分：温暖简报这封信与那些人物节点，正是智能体的协作者跨重置持存的地方。
 
 ## D.4 温暖简报这封信
 
@@ -1803,6 +1802,12 @@ Lei 感谢他的妻子 Lin —— 她从最初就支持这项工作，是 ENGRAM
 
 **本参考文献的编制方式。** 以下每一条目中的每一个字段，都是直接从文档本身读出的 —— 书名页、版权页、期刊书眉，或 arXiv 标识行 —— 文档存于 `paper_research/source_pdfs/` 之下。没有任何字段来自记忆、来自推断，或来自外部文献数据库。若某份来源没有印出某个字段，该字段即予**省略**，而不作重建；条目则会带上一条方括号注释，指明所缺的究竟是什么。因此，一条单薄的条目绝不会被误当作一条已核对的条目。
 
+<a id="ref-claudedocs2026"></a>*Memory tool*. (n.d.). *Memory tool*. Claude Platform Docs. Retrieved October 8, 2026, from https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool
+No author and no date printed on the page; site name as printed: "Claude Platform
+Docs". Tool type string on the page: memory_20250818. Archived copy (and the
+Internet Archive snapshot of 2026-05-08) is the citation evidence.
+*[Metadata incomplete: no author and no date are printed on the page.]*
+
 <a id="ref-alchourron1982"></a>Alchourrón, C. E., & Makinson, D. (1982). On the logic of theory change: Contraction functions and their associated revision functions. *Theoria*, (1), 14–37.
 Universidad de Buenos Aires and Unesco. Received 18 January 1982; revised version
 received 24 March 1982.
@@ -1819,6 +1824,15 @@ University of Beirut, Beirut, Lebanon. Received 18 October 1983; revised 1 May 1
 Department of Psychology, Carnegie Mellon
 University.
 
+<a id="ref-ashutosh2026"></a>Ashutosh, A., & Liberty, E. (2026, May 4). *Pinecone Nexus: The Knowledge Engine for Agents*. Pinecone. Pinecone Blog. https://www.pinecone.io/blog/knowledge-infrastructure-for-agents/
+Byline and date "May 4, 2026" as printed on the page; the page's own metadata shows
+dateModified 2026-10-02. Archived copy is the citation evidence for the sentence
+"Deterministic conflict resolution."
+
+<a id="ref-chhikara2025"></a>Chhikara, P., Khant, D., Aryan, S., Singh, T., & Yadav, D. (2025). *Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory*. https://arxiv.org/abs/2504.19413
+arXiv:2504.19413v1 [cs.CL], 28 Apr 2025. Contact address printed: research@mem0.ai.
+*[Metadata incomplete: no affiliations and no venue beyond the arXiv identifier are printed.]*
+
 <a id="ref-doyle1979"></a>Doyle, J. (1987). A truth maintenance system. In M. L. Ginsberg (Ed.), *Readings in nonmonotonic reasoning* (pp. 259–279). Morgan Kaufmann. (Original work published 1979)
 Massachusetts Institute of Technology,
 Artificial Intelligence Laboratory, Cambridge, MA. Read here as reprinted in M. L.
@@ -1831,6 +1845,11 @@ Reprint year 1987 from the publisher's record (Elsevier, ISBN 978-0-934613-45-3,
 "Published: October 1, 1987"), 2026-10-08; Crossref holds no record for this volume.
 Original year 1979 re-confirmed from Crossref's BibTeX for the DOI above, 2026-10-08.
 The scan read here prints neither year (both are handwritten), so both come from these records.
+
+<a id="ref-du2026"></a>Du, P. (2026). *Memory for autonomous LLM agents: Mechanisms, evaluation, and emerging frontiers*. https://arxiv.org/abs/2603.07670
+arXiv:2603.07670v1 [cs.AI], 8 Mar 2026. Hong Kong Research Institute of Technology,
+Hong Kong, China.
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
 
 <a id="ref-josang2013"></a>Jøsang, A. (2013). *Subjective logic* [Draft manuscript].
 Draft manuscript, 18 February 2013. University
@@ -1853,12 +1872,60 @@ Perspective（观点文章）；2026 年 2 月 10 日收稿，
 
 <a id="ref-kumaran2016"></a>Kumaran, D., Hassabis, D., & McClelland, J. L. (2016). What learning systems do intelligent agents need? Complementary learning systems theory updated. *Trends in Cognitive Sciences*, *20*(7), 512–534. https://doi.org/10.1016/j.tics.2016.05.004
 
+<a id="ref-letta2025"></a>Letta. (2025, May 14). *Memory Blocks: The Key to Agentic Context Management*. Letta. Letta Blog. https://www.letta.com/blog/memory-blocks
+Date "MAY 14, 2025" and section label "CONCEPTS" as printed; author given in the
+page metadata as the organisation "Letta" (no personal byline printed).
+
+<a id="ref-lettaai2026"></a>letta-ai. (n.d.). *Letta (formerly MemGPT)* [Computer software]. Retrieved October 8, 2026, from https://github.com/letta-ai/letta/blob/56ba9c25552605eec89de8ed3dc6394b625c1993/letta/functions/function_sets/base.py
+Cite by commit: 56ba9c25552605eec89de8ed3dc6394b625c1993, path
+letta/functions/function_sets/base.py. Title is README line 1 at that commit. The
+commit date (2026-08-14) is from the GitHub API record, not printed in the file. The
+repository's main branch no longer contains the source (archived 2026-08-16).
+*[Metadata incomplete: no date is printed in the cited file (the commit date, 2026-08-14,
+comes from the GitHub API record).]*
+
+<a id="ref-lin2026"></a>Lin, Z., Hao, X., Fu, R., Cui, S., Chen, K., Li, C., Li, Z., & Xiong, F. (2026). *A survey on long-term memory security in LLM agents: Attacks, defenses, and governance across the memory lifecycle*. https://arxiv.org/abs/2604.16548
+arXiv:2604.16548v3 [cs.CR], 22 Sep 2026 (version read; v2 of 11 Jun 2026 has the same
+quoted abstract sentence; v1 of 17 Apr 2026 is a differently titled earlier draft without
+VMG). Affiliations as printed on v3: MemTensor (Shanghai) Technology Co., Ltd.; The Hong
+Kong University of Science and Technology (Guangzhou); Shanghai Jiao Tong University.
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
+
 <a id="ref-mcclelland1995"></a>McClelland, J. L., McNaughton, B. L., & O'Reilly, R. C. (1995). Why there are complementary learning systems in the hippocampus and neocortex: Insights from the successes and failures of connectionist models of learning and memory. *Psychological Review*, *102*(3), 419–457.
 *[作者顺序读自一份保留版式的书名页抽取文本；纯文本抽取把各栏的顺序打乱了。]*
+
+<a id="ref-memzero2026a"></a>Mem0. (n.d.-a). *Open Source: Migrating to the New Memory Algorithm*. Mem0. Mem0 Documentation. Retrieved October 8, 2026, from https://docs.mem0.ai/migration/oss-v2-to-v3
+The Mem0 "v3" OSS migration guide (the key's year is the access year). No author and no
+visible date printed on the page; page metadata (not visible text) gives lastModified
+2026-08-05. Archived copy is the citation evidence. The Internet Archive snapshot of
+2026-05-14 (https://web.archive.org/web/20260514101049/https://docs.mem0.ai/migration/oss-v2-to-v3),
+the one nearest the 2026-05-12 survey date, is also held: the quoted tip "Retrieval
+handles ranking — the most relevant, current information surfaces first." is verbatim in
+it, with an em dash where the live page now has a colon.
+*[Metadata incomplete: no author and no visible date are printed on the page.]*
+
+<a id="ref-memzero2026b"></a>Mem0. (n.d.-b). *Platform: Migrating to the New Memory Algorithm*. Mem0. Mem0 Documentation. Retrieved October 8, 2026, from https://docs.mem0.ai/migration/platform-v2-to-v3
+The Mem0 "v3" Platform migration guide (the key's year is the access year). No author
+and no visible date printed. Archived copy is the citation evidence.
+*[Metadata incomplete: no author and no visible date are printed on the page.]*
+
+<a id="ref-menon2026"></a>Menon, P. G. (2026). *Persistent identity in AI agents: A multi-anchor architecture for resilient memory and continuity*. https://arxiv.org/abs/2604.09588
+arXiv:2604.09588v1 [cs.AI], stamp date 2 Mar 2026; document date line "April 14, 2026".
+ThinkCreate.AI. The architecture is named soul.py in the text (code URL printed:
+https://github.com/menonpg/soul.py).
+*[Metadata incomplete: the two printed dates disagree (see provenance); no venue beyond
+the arXiv identifier is printed.]*
 
 <a id="ref-nozick1981"></a>Nozick, R. (1981). *Philosophical explanations*. The Belknap Press of Harvard University Press.
 ISBN 0-674-66448-5 (cloth); 0-674-66479-5 (paper).
 *[书名页与版权页系作为页面图像读取；该来源 PDF 没有文本层。]*
+
+<a id="ref-packer2023"></a>Packer, C., Wooders, S., Lin, K., Fang, V., Patil, S. G., Stoica, I., & Gonzalez, J. E. (2023). *MemGPT: Towards LLMs as operating systems*. https://arxiv.org/abs/2310.08560
+arXiv:2310.08560v2 [cs.AI], 12 Feb 2024 (version read); first submitted 12 Oct 2023
+per the arXiv abstract page. University of California, Berkeley (footnote on page 1,
+one superscript for all seven authors). Letta's own CITATION.cff names this paper as
+the preferred citation for the repository.
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
 
 <a id="ref-parfit1984"></a>Parfit, D. (1984). *Reasons and persons*. Clarendon Press.
 First published
@@ -1875,6 +1942,10 @@ arXiv:2502.06975v1 [cs.AI], 10 February 2025. Affiliations as printed: Max Planc
 Institute for Software Systems; EarthDynamics.ai; University of Texas at Austin.
 *[元数据不全：所属机构脚注中的上标与作者的对应关系，未能在双栏文本抽取中存留下来 —— 三所机构清晰可辨，它们与各位作者之间的对应关系则不可辨。除 arXiv 标识之外，没有印出任何发表场合。]*
 
+<a id="ref-rasmussen2025"></a>Rasmussen, P., Paliychuk, P., Beauvais, T., Ryan, J., & Chalef, D. (2025). *Zep: A temporal knowledge graph architecture for agent memory*. https://arxiv.org/abs/2501.13956
+arXiv:2501.13956v1 [cs.CL], 20 Jan 2025. All five authors: Zep AI.
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
+
 <a id="ref-ricoeur1992"></a>Ricoeur, P. (1992). *Oneself as another* (K. Blamey, Trans.). University of Chicago Press. (Original work published 1990)
 Originally published as *Soi-même comme un autre*,
 Éditions du Seuil, 1990. ISBN 0-226-71328-8 (cloth); 0-226-71329-6 (paper).
@@ -1882,6 +1953,11 @@ Originally published as *Soi-même comme un autre*,
 
 <a id="ref-semon1904"></a>Semon, R. (1904). *Die Mneme*.
 *[元数据不全：未持有来源文件。仅在第 1 章 §1.3 引用，用以把 ENGRAM 的名字与那些借用神经科学术语的系统区分开来。出版者、地点与页码均未经核实，此处刻意不予重建。]*
+
+<a id="ref-settles2016"></a>Settles, B., & Meeder, B. (2016). A trainable spaced repetition model for language learning. *Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics*, 1848–1858. https://aclanthology.org/P16-1174/
+Venue, pages, place and "August 7-12, 2016" as printed in the page footer. Duolingo,
+Pittsburgh, PA USA (Settles); Uber Advanced Technologies Center (Meeder; "Research
+conducted at Duolingo").
 
 <a id="ref-shinde2026"></a>Shinde, S. (2026). *SCM: Sleep-consolidated memory with algorithmic forgetting for large language models*.
 Clyrai IP Studio (the author's own imprint), April 2026. arXiv:2604.20943v1 [cs.LG],
@@ -1905,6 +1981,24 @@ arXiv:2512.18202v1 [cs.AI], 20 December 2025.
 University of Toronto.
 *[元数据不全：起始页码。书眉页码直接读到 2–12，但文章自己印出的第一个页码在扫描件中不可见。读自一套逐页 OCR；该来源 PDF 是一份没有文本层的扫描件。]*
 
+<a id="ref-wang2026a"></a>Wang, S., Yu, E., Love, O., Zhang, T., Wong, T., Scargall, S., & Fan, C. (2026a). *MemMachine: A ground-truth-preserving memory system for personalized AI agents*. https://arxiv.org/abs/2604.04853
+arXiv:2604.04853v1 [cs.AI], 6 Apr 2026 (the document's own date line reads "March 2026").
+All authors: MemVerge, Inc.
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
+
+<a id="ref-wang2026b"></a>Wang, Z. (2026b). *TOKI: A bitemporal operator algebra for contradiction resolution in LLM-agent persistent memory*. https://arxiv.org/abs/2606.06240
+arXiv:2606.06240v1 [cs.DB], 4 Jun 2026. The Hong Kong University of Science and
+Technology, Hong Kong SAR. The system is written "Toki" in running text.
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
+
+<a id="ref-wozniak1990"></a>Wozniak, P. (1990). *Application of a computer to improve the results obtained in working with the SuperMemo method*. https://super-memory.com/english/ol/sm2.htm
+Title is the page's heading (printed there as "3.2. Application of a computer to improve
+the results obtained in working with the SuperMemo method", byline "Piotr Wozniak, 1990");
+the browser title reads "SuperMemo 2: Algorithm" and the algorithm is named "Algorithm
+SM-2" in the text. The page states the text was taken from P.A. Wozniak, Optimization of
+learning, Master's Thesis, University of Technology in Poznan, 1990, and adapted for the
+web on May 10, 1998.
+
 <a id="ref-wray2025"></a>Wray, R. E., Kirk, J. R., & Laird, J. E. (2025). *Applying cognitive design patterns to general LLM agents*.
 arXiv:2505.07087v2 [cs.AI], 13 June 2025. Center for
 Integrated Cognition, IQMRI, Ann Arbor, MI.
@@ -1914,6 +2008,29 @@ Integrated Cognition, IQMRI, Ann Arbor, MI.
 arXiv:2604.12285v1 [cs.AI], 14 April 2026. Zhejiang
 University; University of Illinois Chicago; Rutgers University; MBZUAI; McGill
 University.
+
+<a id="ref-xu2025"></a>Xu, W., Liang, Z., Mei, K., Gao, H., Tan, J., & Zhang, Y. (2025). *A-Mem: Agentic Memory for LLM Agents*. https://arxiv.org/abs/2502.12110
+arXiv:2502.12110v11 [cs.AI], 8 Oct 2025 (version read); first submitted 17 Feb 2025
+per the arXiv abstract page. Rutgers University; Independent Researcher; AIOS Foundation
+(affiliations as printed, by numbered superscript).
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
+
+<a id="ref-zhang2026"></a>Zhang, S., Wang, J., Zhou, R., Liao, J., Feng, Y., Li, Z., Zheng, Y., Zhang, W., Wen, Y., Li, Z., Xiong, F., Qi, Y., Tang, B., & Wen, M. (2026). *MemRL: Self-evolving agents via runtime reinforcement learning on episodic memory*. https://arxiv.org/abs/2601.03192
+arXiv:2601.03192v2 [cs.CL], 12 Feb 2026 (version read; footer reads "Preprint. February
+13, 2026."); first submitted 6 Jan 2026 per the arXiv abstract page. Affiliations as
+printed by numbered superscript: Shanghai Jiao Tong University; Xidian University; National
+University of Singapore; Shanghai Innovation Institute; MemTensor (Shanghai) Technology
+Co., Ltd.; University of Science and Technology of China. Code URL printed:
+https://github.com/MemTensor/MemRL.
+*[Metadata incomplete: the author-to-affiliation superscript mapping was not resolved in
+this check; no venue beyond the arXiv identifier is printed.]*
+
+<a id="ref-zhu2026"></a>Zhu, Q., Chen, S., Yu, R., Wu, Z., & Wang, B. (2026). *From lossy to verified: A provenance-aware tiered memory for agents*. https://arxiv.org/abs/2602.17913
+arXiv:2602.17913v1 [cs.DB], 20 Feb 2026; first-page footer reads "Preprint." School of
+Data Science, The Chinese University of Hong Kong, Shenzhen (one superscript for all five
+authors). The text names the proposed system TierMem; code URL printed:
+https://github.com/FreedomIntelligence/Tiermem.
+*[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
 
 ---
 

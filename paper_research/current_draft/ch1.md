@@ -18,7 +18,8 @@ layers, and that the current landscape essentially does not address the deepest.
 
 - **Layer 1 — Memory Persistence.** Storing and retrieving facts across sessions.
   Retrieval-augmented agent-memory systems (A-MEM, Mem0, Zep) operate here. They
-  have no concept of identity; memory is a key-value or vector store the agent reads.
+  have no concept of identity; they are retrieval-oriented stores with no construct of agent identity
+  [@xu2025; @chhikara2025; @rasmussen2025].
 - **Layer 2 — Narrative Identity.** Maintaining a coherent self-story — a
   creed-anchored autobiography that answers *"who am I?"*. The closest published
   system, Sophia [@sun2025], reaches this layer.
@@ -157,9 +158,9 @@ once, in Chapter 4, against the mechanisms that earn each verdict.
 accordingly: **no system in our first-hand survey strictly satisfies OCC's
 Condition 3, Self-Maintaining Arbitration.** The survey is explicit and
 dated: eleven sources — ten systems and one survey of the field — read first-hand on
-**2026-05-12**: Pinecone Nexus, Anthropic's memory tool, Letta, Mem0 v3,
-Zep/Graphiti, TierMem, MemMachine, SCM, GAM, Kumiho, and the 2026 *Memory for
-Autonomous LLM Agents* survey. Each was examined against Condition 3 individually;
+**2026-05-12**: Pinecone Nexus [@ashutosh2026], Anthropic's memory tool [@claudedocs2026], Letta [@lettaai2026], Mem0 v3 [@memzero2026a; @memzero2026b],
+Zep/Graphiti [@rasmussen2025], TierMem [@zhu2026], MemMachine [@wang2026a], SCM, GAM, Kumiho, and the 2026 *Memory for
+Autonomous LLM Agents* survey [@du2026]. Each was examined against Condition 3 individually;
 **Appendix B** gives the per-system verdict and a verbatim failure passage. The claim holds
 exactly as far as each of those verdicts holds, and it is bounded to that set as of that date; agent memory moves
 quickly, and we make no claim about systems outside the survey or released after it.

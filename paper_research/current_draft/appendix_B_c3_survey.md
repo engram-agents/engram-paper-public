@@ -3,10 +3,10 @@
 ## B.0 Scope, date, and method
 
 **The survey.** Eleven sources — ten systems and one survey of the field — read
-first-hand on **2026-05-12**: Pinecone Nexus,
-Anthropic's memory tool, Letta (MemGPT), Mem0 v3, Zep/Graphiti, TierMem,
-MemMachine, SCM, GAM, Kumiho, and the 2026 *Memory for Autonomous LLM Agents*
-survey (Du et al.). This is a **bounded claim about that surveyed set as of that
+first-hand on **2026-05-12**: Pinecone Nexus [@ashutosh2026],
+Anthropic's memory tool [@claudedocs2026], Letta (MemGPT) [@lettaai2026; @packer2023], Mem0 v3 [@memzero2026a; @memzero2026b], Zep/Graphiti [@rasmussen2025], TierMem [@zhu2026],
+MemMachine [@wang2026a], SCM, GAM, Kumiho, and the 2026 *Memory for Autonomous LLM Agents*
+survey [@du2026]. This is a **bounded claim about that surveyed set as of that
 date.** Agent memory is a fast-moving field; we make no claim about systems
 outside the survey or released after it. Newer or missed systems are exactly why
 the claim is scoped, dated, and listed rather than universal.
@@ -31,14 +31,12 @@ without an intentional reach-out. Four ways to fall short:
 
 **Honest-scoping note.** Where a system's C3 failure is shown by a *positive*
 design choice (delegate to retrieval, overwrite by recency, advise-don't-retract),
-we quote it verbatim. Where the failure is *absence* of the construct entirely
-(TierMem), or where the source documents detection but is silent on resolution
+we quote it verbatim. Where the source documents detection but is silent on resolution
 (GAM), there is no sentence to quote — we say so and rest the verdict on the
 documented absence, not an invented quote.
 
-**Synthesis.** Across the eleven sources, none satisfies Condition 3 strictly; for one of
-them, TierMem, the condition does not apply, because it has no conflict construct to
-arbitrate (§B.5). The
+**Synthesis.** Across the eleven sources, none satisfies Condition 3 strictly; one of
+them, TierMem, has no contradiction construct to arbitrate (§B.5). The
 conclusion is the conjunction of the verdicts above, so it holds exactly as far as each of
 them does. The field has converged on the structural *primitives* C3 needs (typed
 edges, provenance, cascade-traversable graphs, supersede semantics — Kumiho most
@@ -133,16 +131,16 @@ and nothing arbitrates; conflict is managed by *timing*, not resolution.
   resolution mechanism is documented. There is no arbitration, no automatic
   retraction, no cascade." We cite this as analysis, not as a quote.
 
-### Zep / Graphiti (arXiv 2501.13956) — **(N) ephemeral, no cascade**
-Contradiction is an ephemeral LLM classification during ingestion that invalidates
-the single directly-contradicted edge; no contradiction node persists, and
+### Zep / Graphiti [@rasmussen2025] — **(N) contradiction not persisted, no cascade**
+Contradiction is an LLM classification made during ingestion that invalidates
+the directly contradicted edge(s); no contradiction node persists, and
 entity-edges cannot reference other edges, so there is nothing to cascade through.
 
 - *paper-verbatim* (§2.2.3): "The system employs an LLM to compare new edges against
   semantically related existing edges to identify potential contradictions. When the
   system identifies temporally overlapping contradictions, it invalidates the
   affected edges by setting their t_invalid to the t_valid of the invalidating edge."
-- *first-hand-read finding:* invalidation is single-edge-only and triggered only by
+- *first-hand-read finding:* invalidation touches only the directly contradicted edge(s) and is triggered only by
   *new arriving* episodes; an agent cannot inspect its own beliefs, find a
   contradiction, and propagate a retraction. The contradiction is "not persisted as
   a node, not persisted as an edge type, and not queryable after ingestion."
@@ -151,37 +149,35 @@ entity-edges cannot reference other edges, so there is nothing to cascade throug
 
 ## B.3 Resolve-by-overwrite or by-someone-else (external delegation)
 
-### Mem0 v3 (docs.mem0.ai migration guide) — **(X) external delegation**
-The single cleanest external-delegation statement in the survey. v3 is add-only;
+### Mem0 v3 (docs.mem0.ai migration guide, as of 2026-05-12) [@memzero2026a] — **(X) external delegation**
+The clearest external-delegation evidence in the survey. v3 is add-only;
 contradictions coexist and are sorted out at read time.
 
-- *paper-verbatim:* "**Contradictions are resolved at retrieval time through ranking
-  rather than at write time.**"
 - *paper-verbatim:* "Retrieval handles ranking — the most relevant, current
-  information surfaces first."
+  information surfaces first." [@memzero2026a, step 4 Tip, Internet Archive snapshot of 2026-05-14]
 - *first-hand-read finding:* conflict resolution is delegated to retrieval-time
   ranking and ultimately to application code — "exactly what Kahl's Cond 3 rules
   out: external prescription rather than self-maintaining arbitration."
 
-### MemMachine (arXiv 2604.04853) — **(X) recency overwrite**
-Profile contradictions are resolved by last-write-wins; no contradiction record, no
+### MemMachine [@wang2026a] — **(X) most-recent-state update**
+The system updates contradicted profile data to the most recent state; no contradiction record, no
 cascade to episodic records built on the old fact.
 
 - *paper-verbatim:* "When new information contradicts existing profile data, the
   system can **update the profile to reflect the most recent state**—supporting the
-  knowledge update capability evaluated in benchmarks."
-- *first-hand-read finding:* "detect a contradiction, resolve it by overwriting, move
-  on" — no first-class contradiction node, no cascade from a corrected profile fact
+  knowledge update capability evaluated in benchmarks such as LongMemEval [7]." [@wang2026a, sec. 4.7, p. 6] (emphasis added)
+- *first-hand-read finding:* when new information contradicts a profile fact, the
+  profile is updated to the most recent state — no first-class contradiction node, no cascade from a corrected profile fact
   to the episodic records generated using the old one.
 
-### Pinecone Nexus (Pinecone architecture posts) — **(X)/(N), and read-only consumer**
+### Pinecone Nexus (Pinecone architecture posts) [@ashutosh2026] — **(X)/(N), and read-only consumer**
 "Deterministic conflict resolution" appears once, as an undocumented feature
 list-item operating on the knowledge-compilation side; the consuming agent has no
 commitment graph at all.
 
 - *paper-verbatim* (feature enumeration): "...Typed fields. Per-field citations with
   confidence levels. **Deterministic conflict resolution.** Output shaped exactly as
-  the agent specified..." — first-hand-read note: this is "the only location in the
+  the agent specified..." [@ashutosh2026, sec. Introducing Pinecone Nexus] (emphasis added) — first-hand-read note: this is "the only location in the
   primary sources where 'deterministic conflict resolution' appears... a list item
   in a feature enumeration, with no further elaboration. The mechanism is not defined
   anywhere in the primary sources."
@@ -194,23 +190,23 @@ commitment graph at all.
 
 ## B.4 No claim structure to cascade through
 
-### Letta / MemGPT (GitHub + letta.com docs) — **(S) text blocks**
+### Letta / MemGPT (GitHub + letta.com docs) [@lettaai2026; @letta2025] — **(S) text blocks**
 Memory blocks are strings; edits overwrite in place; no derivation graph.
 
 - *paper-verbatim* (letta.com/blog/memory-blocks): "memory block values are just
-  strings." *paper-verbatim* (GitHub `base.py`): "The `memory_rethink` command allows
-  you to completely rewrite the contents of a memory block."
+  strings." [@letta2025] *paper-verbatim* (GitHub `base.py`): "The `memory_rethink` command allows
+  you to completely rewrite the contents of a memory block." [@lettaai2026]
 - *first-hand-read finding:* "Letta has no derivation graph, no concept of downstream
   commitments, and no retraction primitive. When `core_memory_replace` overwrites a
   foundational claim, nothing downstream is flagged."
 
-### Anthropic Claude memory tool (platform.claude.com docs) — **(S) manual coherence**
+### Anthropic Claude memory tool (platform.claude.com docs) [@claudedocs2026] — **(S) manual coherence**
 Flat free-form text files; coherence is delegated to the agent's manual effort each
 session.
 
 - *paper-verbatim:* "Note: when editing your memory folder, always try to keep its
   content up-to-date, **coherent** and organized. You can rename or delete files that
-  are no longer relevant." — developer-injected *instruction* to maintain coherence by
+  are no longer relevant. Do not create new files unless necessary." [@claudedocs2026, sec. Prompting guidance] (emphasis added) — developer-injected *instruction* to maintain coherence by
   hand, not a structural mechanism.
 - *first-hand-read finding:* "There is no mechanism for detecting when a memory file
   contradicts another memory file. There is no mechanism for identifying which
@@ -220,28 +216,30 @@ session.
 
 ## B.5 The aspiration, and the genuine absence
 
-### 2026 Memory survey — Du et al. (arXiv 2603.07670) — **(N) named, not solved**
+### 2026 Memory survey — Du [@du2026] — **(N) named, not solved**
 A survey, not a system: it names contradiction-handling as something robust systems
 *need*, citing no system that does it, and proposes only *external* fixes.
 
 - *paper-verbatim* (§7.3): "Robust systems need temporal versioning (prefer the
   newest record), source attribution (user statement > agent inference),
   **contradiction detection (flag conflicts for resolution)**, and periodic
-  consolidation..." — *normative* ("need"), not descriptive ("do").
+  consolidation..." [@du2026, sec. 7.3, p. 9] (emphasis added) — *normative* ("need"), not descriptive ("do").
 - *paper-verbatim* (their §9.3): "Future systems need external validation... uncertainty
   quantification... adversarial probing... and expiration policies" — the proposed
   fixes are all **external** interventions, not structural primitives. The survey
   names the C3 problem and cites zero solutions.
 
-### TierMem — **(N) construct absent** *(no quote — by honest design)*
-The C3 failure here is genuine **absence**: the paper never uses "conflict,"
-"contradiction," or "inconsistency" as architectural primitives. **There is no
-sentence to quote**, and we do not manufacture one. First-hand-read finding: "No
+### TierMem [@zhu2026] — **(N) contradiction not a construct, no cascade**
+TierMem's write-back has a step named Conflict Retrieval, but it only retrieves the
+most similar existing summary units; an LLM memory manager then SKIPs a fact already
+entailed, UPDATEs a vague entry with added detail (merged text that inherits
+provenance), or ADDs a distinct event (the page says the manager outputs "one of four
+actions" but names only these three). None of the named steps detects or resolves a contradiction,
+and nothing marks or revisits downstream claims [@zhu2026, App. A.6, p. 12].
+First-hand-read finding: "No
 foundational-retraction-flagging mechanism exists. When a Tier-1 summary [TierMem's own tiering, unrelated to Ch4 §4.5's tiers] is UPDATEd,
 there is no cascade to dependent summaries or downstream uses of the old content."
-The paper does not specify whether UPDATE preserves or overwrites the prior entry —
-we report that as *not documented* rather than asserting overwrite. Verdict: C3 is
-**not applicable** — the architecture has no conflict construct to arbitrate.
+Verdict: C3 not satisfied — in the steps described, contradiction is absent as a construct; the word 'conflict' names a retrieval step.
 
 ---
 
@@ -252,14 +250,14 @@ we report that as *not documented* rather than asserting overwrite. Verdict: C3 
 | Kumiho | **Advisory / opt-in** (revision exists, not automatic) | yes (AnalyzeImpact, Depends_On "may be") |
 | SCM | No resolution (aspirational flag, trigger-only) | yes (§3.2 vs §3.5) |
 | GAM | Detect-only (no resolution prose) | partial — `contradict` edge yes; resolution-gap = analysis |
-| Zep/Graphiti | Ephemeral, single-edge, no cascade | yes (§2.2.3) |
-| Mem0 v3 | External delegation (retrieval ranking) | yes — cleanest in survey |
-| MemMachine | External delegation (recency overwrite) | yes ("most recent state") |
+| Zep/Graphiti | Invalidates directly contradicted edge(s); no cascade | yes (§2.2.3) |
+| Mem0 v3 | External delegation (retrieval ranking) | yes — clearest in survey |
+| MemMachine | External delegation (most-recent-state update) | yes ("most recent state") |
 | Pinecone Nexus | External/undocumented; read-only consumer | yes (list-item) + analysis |
 | Letta | No claim structure (strings) | yes ("just strings") |
 | Anthropic memory tool | No claim structure (manual coherence) | yes ("keep... coherent") |
 | Memory survey 2026 | Named as aspiration, no implementation | yes (their §7.3, §9.3) |
-| TierMem | Construct absent (C3 N/A) | **none — by honest design** |
+| TierMem | Contradiction not a construct; no cascade | none quoted |
 
 Across the surveyed set, the pattern is uniform: the field has the *primitives*
 (detection, typed edges, even Kumiho's self-claimed formal AGM compliance) but stops

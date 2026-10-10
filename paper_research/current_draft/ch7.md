@@ -251,9 +251,9 @@ agents get a mutual, inspectable basis for trust."
 
 **Disclosure, not erasure.** Auditability appears to conflict with the
 memory-security literature, and resolving the conflict sharpens the position. The
-field's security survey (Lin et al. 2026, which proposes Verifiable Memory Governance; §3.7) concludes that
-long-term-memory security must be "anchored in storage-time provenance" and lists
-the survey's "Forget & Rollback" lifecycle phase as required — that is, *verifiable erasure*
+field's security survey of @lin2026 (which proposes Verifiable Memory Governance; §3.7) concludes that
+long-term-memory security must be "anchored in storage-time provenance" [@lin2026, p. 1] and lists
+"Rollbackability" and "Verified Forgetting" among the primitives its VMG framework requires [@lin2026, p. 7] (its sixth lifecycle phase is named "Forget & Rollback") — that is, *verifiable erasure*
 (ob_2550). ENGRAM agrees on provenance (native to it, Ch3 §3.7) but diverges on
 erasure, for a principled reason: **no ENGRAM operation erases a node** (no operation
 in the v0.5.1 substrate deletes one; retraction and supersession both preserve it). Deleting a node would break
