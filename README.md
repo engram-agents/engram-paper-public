@@ -54,6 +54,55 @@ The `.db` itself is `.gitignore`d (96 MB binary + private full-graph content);
     (the 06-14 chapter samples, the OCC-spine appendix, the May spine/proofreads).
 - **`tools/`** — bibliography tooling (`bib_bootstrap.py`, `check_citations_consistency.py`).
 
+## Citing in chapters
+
+*(Put here, in the top-level README, rather than in `paper_research/current_draft/README.md`:
+that file is about regenerating the combined review document, while this is about writing
+any chapter, and the top-level README is the one every author opens first.)*
+
+The bibliography has **one source: `paper/references.yaml`** (CSL field names, plus the
+verbatim `provenance` note and any `metadata_incomplete` note per entry). `paper/bibliography.md`
+and `paper/bibliography.zh.md` are templates: their `{{REFERENCES}}` line is replaced at render
+time by the generated entries. Edit entries in the YAML, never in the templates.
+
+**Forms** (Pandoc-compatible; the key is the entry's `id`, `<lowercase family><year>[a-z]`,
+e.g. `kahl2026c`):
+
+| Write | Renders (APA 7) |
+|---|---|
+| `[@key]` | (Kahl, 2026a) |
+| `[@key, p. 12]` | (Kahl, 2026a, p. 12) |
+| `[@a; @b]` | (Aaron, 1999; Kahl, 2026a), always in bibliography order, whatever order you type |
+| `[see @key, p. 3]`, `[@a, p. 3; also @b]` | (see Kahl, 2026a, p. 3), (Aaron, 1999, p. 3; also Kahl, 2026a): text before a key is a prefix, text after `, ` a locator |
+| `@key` | Kahl (2026a), the narrative form; `_@key_` and `*@key*` give it emphasised |
+| `[-@key]` | (2026a), year only, for use after the author is named in the sentence |
+
+Each in-text citation is a link to its entry in the bibliography. Write `\@` for a literal `@`;
+text in code spans, code fences and HTML comments is never read as a citation. Next to Chinese,
+Japanese or Korean text a narrative `@key` needs no spaces (`如@key所述`); a Latin letter or digit
+touching the `@` (`foo@key`), several keys in one item (`[@a @b]`, `[@a, @b]`; use `;`) and
+Pandoc's braced `@{key}` are build errors, as is any other key-shaped `@` token that is not
+one of the forms above. Plain `@` text such as `engram_stats @ turn 82` is untouched.
+
+**Adding an entry.** Add it to `paper/references.yaml`, with every field **read off the
+document itself, never from memory, from inference, or from a bibliographic database**. A field
+the document does not print is omitted, and the entry then carries a `metadata_incomplete` note
+naming what is missing (an entry lacking author, title or date without that note fails the
+build). Keep the read-off record in `provenance`. Add a `provenance_zh` / `metadata_incomplete_zh`
+variant only if the zh render needs different wording. Give two works by one author in one year
+the suffixes `a`, `b`, `c` in the key (`kahl2026a`); the printed year suffix is the key's letter.
+
+**Setup and render.** `pip install -r requirements.txt` (citeproc-py and PyYAML), then, from the
+repository root, `python tools/render_paper.py` (add `--lang zh` for the Chinese render, and
+`--csl tools/csl/<style>.csl` for another style; the vendored styles and their provenance are in
+`tools/csl/README.md`).
+
+**What the build does on a problem.** An unknown key is a hard error that names the file and
+line, and no output file is written. So are a malformed group, a citation written as a link label
+(`[@key](url)`), and a citation shape the renderer does not support: it stops, it never renders
+something different from what you wrote. A reference that nothing cites is only a warning on
+stderr (it is still printed in the bibliography).
+
 ## Status
 
 Active draft. The full restructure draft (Ch1–8 + appendices A–E) is complete and on

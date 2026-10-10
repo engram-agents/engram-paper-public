@@ -27,6 +27,8 @@ from __future__ import annotations
 
 import argparse
 import re
+import sys
+import types
 from pathlib import Path
 
 DRAFT = Path("paper_research/current_draft")
@@ -827,10 +829,583 @@ def strip_html_comments(text: str) -> str:
     return _HTML_COMMENT.sub("", text)
 
 
-def load(path: Path) -> str:
+# --- keyed citations: references.yaml + CSL style -> linked in-text cites + bibliography --
+#
+# `paper/references.yaml` is the single source of truth for the bibliography. Chapter
+# sources cite with Pandoc-compatible keys:
+#
+#     [@key]   [@key, p. 12]   [@a; @b]   @key (narrative)   [-@key] (year only)
+#
+# and this module renders them with citeproc-py and a vendored CSL style (default
+# `tools/csl/apa.csl`, APA 7th). Each cited work's part of an in-text citation is a
+# markdown link to `#ref-<key>`; the generated bibliography gives each entry an
+# `<a id="ref-<key>"></a>` anchor, so the link and its target cannot drift.
+#
+# FAIL LOUD, never skip: an unknown key, a malformed `[@...]` group, an entry that lacks
+# author/title/issued without a `metadata_incomplete` note, a reference table in which
+# two works would print the same in-text citation -- all are hard errors. An entry
+# nobody cites is only a WARNING (printed to stderr): the bibliography prints every
+# entry in references.yaml, cited or not.
+#
+# Two things citeproc-py does NOT do, handled here on purpose:
+#   * year-suffix disambiguation (2026a/2026b). The suffix is the key's trailing letter
+#     (`kahl2026b`), so the printed label can never disagree with the key an author
+#     typed, and a chapter's existing "Kahl 2026a" keeps meaning the same paper.
+#   * author suppression / narrative form. Both are derived from the style's own
+#     parenthetical rendering of a single work ("Author, Year"), split at the year.
+
+REFERENCES_YAML = PAPER / "references.yaml"
+DEFAULT_CSL = Path(__file__).resolve().parent / "csl" / "apa.csl"
+REFERENCES_TOKEN = "{{REFERENCES}}"
+
+# Fields a references.yaml entry may carry. Everything else is a hard error: a typo'd
+# field name must not be silently ignored by the renderer.
+CSL_FIELDS = {
+    "id", "type", "author", "editor", "translator", "container-author", "issued",
+    "original-date", "accessed", "title", "container-title", "collection-title",
+    "volume", "issue", "page", "number", "publisher", "publisher-place", "edition",
+    "DOI", "URL", "ISBN", "ISSN", "genre", "medium", "language", "note", "abstract",
+    "original-title", "original-publisher", "number-of-pages", "chapter-number",
+    "event-title", "archive", "archive_location", "source",
+}
+PROJECT_FIELDS = {"provenance", "metadata_incomplete", "provenance_zh", "metadata_incomplete_zh"}
+_NAME_FIELDS = ("author", "editor", "translator", "container-author")
+_REQUIRED_UNLESS_INCOMPLETE = ("author", "title", "issued")
+_KEY_RE = re.compile(r"^[a-z]+\d{4}[a-z]?$")
+# Pandoc's citation-key grammar: starts alphanumeric/underscore, may contain internal
+# punctuation, never ends on it (so "@key." at a sentence end is the key plus a full stop).
+# CJK ideographs, kana, hangul, and CJK punctuation / fullwidth forms. `\w` counts them as
+# word characters, which would glue `如@key所述` into one token: for a citation they are
+# boundaries instead (a Latin letter or digit before the `@` still is not).
+_CJK = (
+    "ᄀ-ᇿ⺀-⿟　-ヿ㄀-㆏ㇰ-ㇿ㐀-䶿"
+    "一-鿿가-힯豈-﫿＀-￯"
+)
+_NOT_CJK = r"(?![" + _CJK + r"])"
+_KEY = r"[A-Za-z0-9_](?:(?:" + _NOT_CJK + r"[\w:.#$%&+?<>~/-])*" + _NOT_CJK + r"\w)?"
+# Class guard: a key-shaped `@` token (the references.yaml id grammar, with a leading `-`, or
+# opening a brace) still in the source after every supported form has been resolved. Not
+# preceded by `\` (escaped), `\[` (escaped group) or `/` (URL path); not followed by a
+# `.word` (an e-mail domain). `resolve` turns any survivor into a hard error.
+_STRAY_KEY = re.compile(
+    r"(?<!\\)(?<!\\\[)(?<!/)-?@\{?[a-z]+\d{4}[a-z]?(?![A-Za-z0-9_]*\.[A-Za-z0-9])"
+)
+# Pandoc's braced form `@{key}`: not supported, reported with its own message.
+_BRACED_KEY = re.compile(r"(?<!\\)(?<!\\\[)(?<!/)-?@\{[a-z]+\d{4}[a-z]?\}?")
+# One `;`-separated item of a group: optional prefix text ("see "), `-?@key`, optional
+# `, locator`. Anything else in an item (a suffix with no comma, a part with no key) does
+# not match, and the caller turns that into a hard error.
+_ITEM_RE = re.compile(
+    r"^(?P<prefix>(?:.*?\s)?)(?P<neg>-)?@(?P<key>" + _KEY + r")(?:\s*,\s*(?P<loc>.+))?$", re.DOTALL
+)
+# A group never crosses a paragraph break: `[` ... `]` with no nested bracket, containing at
+# least one `@key` token that starts a word (after whitespace, `[` or the start), which is
+# what keeps `me@example.com` and `https://x/@y` out.
+_NOT_PARA_BREAK = r"(?:(?!\n[ \t]*\n)[^\[\]])*"
+_CITE_RE = re.compile(
+    r"(?<!\\)\[(?=" + _NOT_PARA_BREAK + r"(?<![^\s\[])-?@[A-Za-z0-9_])(?P<grp>" + _NOT_PARA_BREAK + r")\]"
+    r"|(?<!" + _NOT_CJK + r"[^\W_])(?<![@\\/.:=~#-])(?<!\\\[)@(?P<nkey>" + _KEY + r")"
+)
+_YEAR_TOKEN = r"(?:\d{4}|n\.d\.)"
+_CORE_RE = re.compile(r"^(?P<a>.+), (?P<y>" + _YEAR_TOKEN + r"[^,;]*)$")
+_SEG_RE = re.compile(r"^(?P<a>.+?), (?P<ys>" + _YEAR_TOKEN + r"[^;]*)$")
+
+
+_ATX_HEADING = re.compile(r"^ {0,3}#{1,6}(?:[ \t]|$)")
+_THEMATIC_BREAK = re.compile(r"^ {0,3}([-*_])(?:[ \t]*\1){2,}[ \t]*$")
+# What interrupts a paragraph in CommonMark, besides a blank line, an ATX heading and a
+# thematic break (above): a block quote, a bullet item WITH content, and an ordered item
+# only when it starts at 1 (and has content). `2. x` and a `|` line do not interrupt, so a
+# code span may cross them.
+_BLOCK_START = re.compile(r"^ {0,3}(?:>|[-*+][ \t]+\S|0{0,8}1[.)][ \t]+\S)")
+
+
+def _inline_blocks(seg: str) -> list[tuple[int, int]]:
+    """(start, end) offsets of the inline blocks of a markdown segment that holds no
+    fenced code. A blank line closes a block; an ATX heading and a thematic break are
+    blocks of their own; a block quote or a list item that can interrupt a paragraph opens
+    a new one (see `_BLOCK_START`)."""
+    blocks: list[tuple[int, int]] = []
+    start = pos = 0
+    open_ = False
+    for line in seg.splitlines(keepends=True):
+        bare = line.rstrip("\r\n")
+        if not bare.strip():
+            if open_:
+                blocks.append((start, pos))
+                open_ = False
+        elif _ATX_HEADING.match(bare) or _THEMATIC_BREAK.match(bare):
+            if open_:
+                blocks.append((start, pos))
+            blocks.append((pos, pos + len(line)))
+            open_ = False
+        elif _BLOCK_START.match(bare):
+            if open_:
+                blocks.append((start, pos))
+            start, open_ = pos, True
+        elif not open_:
+            start, open_ = pos, True
+        pos += len(line)
+    if open_:
+        blocks.append((start, pos))
+    return blocks
+
+
+_ROLE_LABEL_RE = re.compile(r"(?<=\()((?:[^()]*?, )?)(eds?\.(?: & trans\.)?|trans\.)(?=\))")
+
+
+def _capitalise_role_labels(reference: str) -> str:
+    """APA 7 prints role labels capitalised: (Ed.), (Eds.), (K. Blamey, Trans.).
+    citeproc-py skips the style's `text-case="title"` on a label unless the item's
+    language is declared English, so it prints them lower case. The style file is
+    vendored unmodified, so the label is capitalised here, on the formatted reference
+    only (never on provenance text) and only inside a parenthesised role label."""
+    return _ROLE_LABEL_RE.sub(
+        lambda m: m.group(1) + re.sub(r"\b[a-z]", lambda c: c.group(0).upper(), m.group(2)),
+        reference,
+    )
+
+
+def _need(module: str, pip_name: str, purpose: str):
+    """Import `module`, or stop with an error that names the pip package. A missing
+    renderer dependency must never degrade into 'no citations were rendered'."""
+    try:
+        return __import__(module)
+    except ImportError:
+        raise SystemExit(
+            f"render_paper.py needs the Python package '{pip_name}' ({purpose}); "
+            f"install it with `pip install {pip_name}` (pinned in requirements.txt)."
+        )
+
+
+def _csl_text(s: str) -> str:
+    return s.replace("\\", "\\\\").replace("*", "\\*").replace("`", "\\`")
+
+
+def _md_formatter():
+    """A citeproc-py formatter that emits markdown (the bundled ones emit html/rst)."""
+    class _Wrap(str):
+        mark = ""
+
+        def __new__(cls, text):
+            return super().__new__(cls, f"{cls.mark}{text}{cls.mark}")
+
+    class Italic(_Wrap):
+        mark = "*"
+
+    class Bold(_Wrap):
+        mark = "**"
+
+    return types.SimpleNamespace(
+        preformat=lambda text: _csl_text(str(text)),
+        Italic=Italic, Oblique=Italic, Bold=Bold, Light=str, Underline=str,
+        Superscript=str, Subscript=str, SmallCaps=str,
+    )
+
+
+def load_references(path: Path) -> list[dict]:
+    """Read and validate references.yaml. Hard errors (SystemExit) for: unreadable
+    file, bad shape, bad/duplicate id, unknown field, missing `type`, and an entry
+    lacking author/title/issued with no `metadata_incomplete` note saying why."""
+    yaml = _need("yaml", "PyYAML", "reads paper/references.yaml")
+    if not path.exists():
+        raise SystemExit(f"missing references file: {path}")
+    try:
+        doc = yaml.safe_load(path.read_text(encoding="utf-8"))
+    except yaml.YAMLError as e:
+        raise SystemExit(f"{path}: not valid YAML: {e}")
+    entries = doc.get("references") if isinstance(doc, dict) else doc
+    if not isinstance(entries, list) or not entries:
+        raise SystemExit(f"{path}: expected a non-empty `references:` list")
+    seen: set[str] = set()
+    for i, e in enumerate(entries):
+        if not isinstance(e, dict) or not isinstance(e.get("id"), str):
+            raise SystemExit(f"{path}: entry #{i + 1} has no string `id`")
+        k = e["id"]
+        if not _KEY_RE.match(k):
+            raise SystemExit(f"{path}: id {k!r} is not <lowercase family><year>[a-z]")
+        if k in seen:
+            raise SystemExit(f"{path}: duplicate id {k!r}")
+        seen.add(k)
+        unknown = sorted(set(e) - CSL_FIELDS - PROJECT_FIELDS)
+        if unknown:
+            raise SystemExit(f"{path}: entry {k!r} has unknown field(s): {', '.join(unknown)}")
+        if not e.get("type"):
+            raise SystemExit(f"{path}: entry {k!r} has no `type`")
+        missing = [f for f in _REQUIRED_UNLESS_INCOMPLETE if not e.get(f)]
+        if missing and not e.get("metadata_incomplete"):
+            raise SystemExit(
+                f"{path}: entry {k!r} lacks {', '.join(missing)} and carries no "
+                f"`metadata_incomplete` note saying why; a thin entry must say so"
+            )
+    return entries
+
+
+def _to_csl_json(e: dict) -> dict:
+    """One references.yaml entry -> a citeproc-py CSL-JSON record (project fields
+    dropped; the year suffix taken from the key's trailing letter)."""
+    rec = {k: v for k, v in e.items() if k in CSL_FIELDS}
+    for k, v in list(rec.items()):
+        if k not in _NAME_FIELDS and k not in ("issued", "original-date", "accessed"):
+            rec[k] = str(v)
+    m = re.match(r"^[a-z]+\d{4}([a-z])$", e["id"])
+    if m:
+        rec["year-suffix"] = m.group(1)
+    return rec
+
+
+class CitationContext:
+    """The references table plus a citeproc-py engine. Built once per render."""
+
+    def __init__(self, entries: list[dict], csl_path: Path = DEFAULT_CSL, lang: str = "en"):
+        cp = _need("citeproc", "citeproc-py", "renders citations with the CSL style")
+        from citeproc.source.json import CiteProcJSON
+
+        self._cp = cp
+        self.lang = lang
+        self.entries = {e["id"]: e for e in entries}
+        csl_path = Path(csl_path)
+        if not csl_path.exists():
+            raise SystemExit(f"missing CSL style file: {csl_path}")
+        self.source = CiteProcJSON([_to_csl_json(e) for e in entries])
+        style = cp.CitationStylesStyle(str(csl_path), validate=False)
+        self.bib = cp.CitationStylesBibliography(style, self.source, _md_formatter())
+        self._cites = {}
+        for e in entries:
+            c = cp.Citation([cp.CitationItem(e["id"])])
+            self.bib.register(c)
+            self._cites[e["id"]] = c
+        self.bib.sort()
+        # THE ordering of works. The printed bibliography and every in-text citation that
+        # lists several works (merges, suffix runs, mixed authors, year-only and locator
+        # forms) are both put in this order, via `in_bibliography_order`; nothing else
+        # decides the order of cited works (citeproc's own sort is never trusted for it).
+        self._order = self._suffix_order(list(self.bib.keys))
+        self._rank = {k: i for i, k in enumerate(self._order)}
+        self.cited: set[str] = set()
+        self._core: dict[str, tuple[str, str]] = {}
+        by_core: dict[tuple[str, str], str] = {}
+        for e in entries:
+            k = e["id"]
+            text = self._render_cites([k])
+            m = _CORE_RE.match(text)
+            if not m:
+                raise SystemExit(
+                    f"cannot split the in-text citation {text!r} of {k!r} into author and year "
+                    f"(is the CSL style author-date?)"
+                )
+            core = (m.group("a"), m.group("y"))
+            if core in by_core:
+                raise SystemExit(
+                    f"references {by_core[core]!r} and {k!r} print the same in-text citation "
+                    f"{text!r}; add a year suffix to the keys (e.g. {k}a / {k}b)"
+                )
+            by_core[core] = k
+            self._core[k] = core
+        self._by_core = by_core
+
+    def _suffix_order(self, order: list[str]) -> list[str]:
+        """citeproc-py sorts works that share author and year by TITLE, which would list
+        kahl2026b before kahl2026a. The suffix belongs to the key, so within such a run
+        the keys are put back in suffix order (the run keeps its slots)."""
+        def group(k: str):
+            e = self.entries[k]
+            names = tuple(
+                (n.get("family") or n.get("literal"), n.get("given")) for n in e.get("author", [])
+            )
+            year = (e.get("issued") or {}).get("date-parts", [[None]])[0][0]
+            return (names, year)
+
+        slots: dict[tuple, list[int]] = {}
+        for i, k in enumerate(order):
+            slots.setdefault(group(k), []).append(i)
+        result = list(order)
+        for idxs in slots.values():
+            for i, k in zip(idxs, sorted(order[j] for j in idxs)):
+                result[i] = k
+        return result
+
+    def in_bibliography_order(self, keys):
+        """`keys` sorted exactly as the bibliography lists them (the one ordering)."""
+        return sorted(keys, key=self._rank.__getitem__)
+
+    # -- rendering helpers ------------------------------------------------------------
+
+    def _render_cites(self, keys: list[str]) -> str:
+        """The style's own rendering of one citation of `keys`, outer parentheses removed."""
+        cp = self._cp
+        c = cp.Citation([cp.CitationItem(k) for k in keys])
+        self.bib.register(c)
+        out = str(self.bib.cite(c, lambda item: None))
+        if not (out.startswith("(") and out.endswith(")")):
+            raise SystemExit(f"CSL style rendered an in-text citation without parentheses: {out!r}")
+        return out[1:-1]
+
+    @staticmethod
+    def _link(label: str, key: str) -> str:
+        label = label.replace("[", "\\[").replace("]", "\\]")
+        return f"[{label}](#ref-{key})"
+
+    def _parenthetical(self, items: list[tuple[str, bool, str | None, str | None]]) -> str:
+        """items: (key, suppress_author, locator, prefix). One parenthetical, in
+        bibliography order. A prefix ("see") travels with its own work and is written
+        outside the link; a prefixed work never merges into the previous author's run."""
+        keys = [k for k, _, _, _ in items]
+        if len(set(keys)) != len(keys):
+            raise SystemExit(f"the same work is cited twice in one group: {keys}")
+        by_key = {k: (neg, loc, prefix) for k, neg, loc, prefix in items}
+        # citeproc-py gives one "Author, Year" segment per work. We take the author and
+        # year labels from it, but NOT its order: the works are re-ordered below by the
+        # bibliography's order. APA 7 then writes consecutive works by the same author
+        # once: (Kahl, 2026a, 2026b).
+        flat: list[tuple[str, str, str]] = []
+        for seg in self._render_cites(keys).split("; "):
+            m = _SEG_RE.match(seg)
+            if not m:
+                raise SystemExit(f"cannot parse the style's citation segment {seg!r}")
+            author = m.group("a")
+            for year in m.group("ys").split(", "):
+                k = self._by_core.get((author, year))
+                if k is None or k not in by_key:
+                    raise SystemExit(f"cannot map citation segment {seg!r} back to a key")
+                flat.append((author, year, k))
+        if sorted(k for _, _, k in flat) != sorted(keys):
+            raise SystemExit(f"the style dropped or invented works in a group: {sorted(keys)} -> {flat}")
+        by_flat = {k: (author, year) for author, year, k in flat}
+        flat = [(*by_flat[k], k) for k in self.in_bibliography_order(by_flat)]
+        segments: list[str] = []
+        prev_author = None
+        for author, year, k in flat:
+            neg, loc, prefix = by_key[k]
+            same_author = author == prev_author and not neg and not prefix
+            label = year if (neg or same_author) else f"{author}, {year}"
+            if loc:
+                label += f", {loc}"
+            link = self._link(label, k)
+            if prefix:
+                link = f"{prefix} {link}"
+            if same_author:
+                segments[-1] += f", {link}"
+            else:
+                segments.append(link)
+            prev_author = author
+        return "(" + "; ".join(segments) + ")"
+
+    def _narrative(self, key: str) -> str:
+        author, year = self._core[key]
+        return self._link(f"{author.replace(' & ', ' and ')} ({year})", key)
+
+    # -- scanning ---------------------------------------------------------------------
+
+    @staticmethod
+    def _protected_spans(text: str) -> list[tuple[int, int]]:
+        """Spans in which `@` is not a citation: fenced code blocks, inline code, HTML
+        comments. (Comments are removed later by `load`, but their line numbers still
+        count: errors are reported against the SOURCE file.)"""
+        spans: list[tuple[int, int]] = []
+        pos = 0
+        fence = None  # (char, length, start)
+        free: list[tuple[int, int]] = []
+        free_start = 0
+        for line in text.splitlines(keepends=True):
+            m = re.match(r"^ {0,3}(`{3,}|~{3,})", line)
+            if fence is None:
+                if m:
+                    free.append((free_start, pos))
+                    fence = (m.group(1)[0], len(m.group(1)), pos)
+            elif m and m.group(1)[0] == fence[0] and len(m.group(1)) >= fence[1] and not line.strip(" \t\r\n").strip(fence[0]):
+                spans.append((fence[2], pos + len(line)))
+                fence = None
+                free_start = pos + len(line)
+            pos += len(line)
+        if fence is not None:
+            spans.append((fence[2], len(text)))
+        else:
+            free.append((free_start, len(text)))
+        for a, b in free:
+            for m in re.finditer(r"<!--.*?-->", text[a:b], re.DOTALL):
+                spans.append((a + m.start(), a + m.end()))
+        for a, b in free:
+            seg = text[a:b]
+            # CommonMark: a code span lives inside ONE inline block, so it cannot cross a
+            # blank line, a heading, a list item or a table row. A stray backtick must
+            # therefore not pair with one in a later block and hide the citations between.
+            for c, d in _inline_blocks(seg):
+                for m in re.finditer(r"(?<!`)(`+)(?!`)(.+?)(?<!`)\1(?!`)", seg[c:d], re.DOTALL):
+                    spans.append((a + c + m.start(), a + c + m.end()))
+        return sorted(spans)
+
+    def resolve(self, text: str, source: str) -> str:
+        """Replace every citation in `text` by linked APA author-date text. `source` is
+        the file name used in error messages (with the line number of the RAW source)."""
+        spans = self._protected_spans(text)
+
+        def protected(pos: int) -> bool:
+            return any(a <= pos < b for a, b in spans)
+
+        def line_of(pos: int) -> int:
+            return text.count("\n", 0, pos) + 1
+
+        def known(key: str, pos: int) -> str:
+            if key not in self.entries:
+                raise SystemExit(
+                    f"{source}:{line_of(pos)}: unknown citation key '@{key}' "
+                    f"(not in {REFERENCES_YAML}); add it there, or escape the @ as \\@"
+                )
+            self.cited.add(key)
+            return key
+
+        for bm in _BRACED_KEY.finditer(text):
+            if not protected(bm.start()):
+                raise SystemExit(
+                    f"{source}:{line_of(bm.start())}: braced citation {bm.group(0)!r} is not "
+                    f"supported; write the key unbraced (@key, [@key]), or escape the @ as \\@"
+                )
+
+        out: list[str] = []
+        consumed: list[tuple[int, int]] = []
+        last = 0
+        for m in _CITE_RE.finditer(text):
+            if protected(m.start()):
+                continue
+            if m.group("nkey") is not None:
+                # `snake_@x` is an identifier, not emphasis: underscores right before the
+                # `@` open emphasis only when they do not hang off a word.
+                j = m.start()
+                while j and text[j - 1] == "_":
+                    j -= 1
+                if j < m.start() and j and text[j - 1].isalnum():
+                    continue
+            out.append(text[last:m.start()])
+            last = m.end()
+            consumed.append((m.start(), m.end()))
+            if m.group("nkey") is not None:
+                nkey = m.group("nkey")
+                before = text[m.start() - 1] if m.start() else ""
+                if before in ("[", "\\") or (before == "-" and text[m.start() - 2:m.start() - 1] == "["):
+                    # `[@key` that did not form a group: unclosed, or brackets nested inside
+                    raise SystemExit(
+                        f"{source}:{line_of(m.start())}: malformed citation group at "
+                        f"{text[m.start() - 1:m.start() + 40]!r} (unclosed `[`, or brackets "
+                        f"nested inside the group; write [@key], [@key, p. 12], [see @a; @b])"
+                    )
+                tail = ""
+                if before == "_" and nkey.endswith("_"):
+                    # `_@key_`: the closing emphasis marks are not part of the key
+                    stripped = nkey.rstrip("_")
+                    tail, nkey = nkey[len(stripped):], stripped
+                out.append(self._narrative(known(nkey, m.start())) + tail)
+                continue
+            # nor a reference-definition label: `[@key]: url` at the start of a line
+            ls = text.rfind("\n", 0, m.start()) + 1
+            if text[m.end():m.end() + 1] == ":" and re.fullmatch(r" {0,3}", text[ls:m.start()]):
+                raise SystemExit(
+                    f"{source}:{line_of(m.start())}: a citation cannot be a reference-definition "
+                    f"label ({m.group(0)!r} is followed by ':'); put the URL in the bibliography "
+                    f"entry, or escape the @ as \\@"
+                )
+            # a citation is never a link label: `[@key](url)` / `[@key][ref]`
+            nxt = text[m.end():m.end() + 2]
+            if nxt[:1] == "(" or (nxt[:1] == "[" and not re.match(r"\[-?@", nxt + text[m.end() + 2:m.end() + 3])):
+                raise SystemExit(
+                    f"{source}:{line_of(m.start())}: a citation cannot be a link label "
+                    f"({m.group(0)!r} is followed by a link target); cite with [@key] on its "
+                    f"own and link the surrounding words separately"
+                )
+            items = []
+            for part in m.group("grp").split(";"):
+                im = _ITEM_RE.match(part.strip())
+                if not im:
+                    raise SystemExit(
+                        f"{source}:{line_of(m.start())}: malformed citation {m.group(0)!r} "
+                        f"(supported: [@key], [@key, p. 12], [@a; @b], [-@key], and a prefix "
+                        f"before a key such as [see @key, p. 3; also @other])"
+                    )
+                loc = im.group("loc")
+                prefix = " ".join(im.group("prefix").split())
+                stray = _STRAY_KEY.search(prefix) or (_STRAY_KEY.search(loc) if loc else None)
+                if stray:
+                    raise SystemExit(
+                        f"{source}:{line_of(m.start())}: citation {m.group(0)!r} has a second "
+                        f"key {stray.group(0)!r} inside one item (as prefix or locator); "
+                        f"separate citations with ';', e.g. [@a; @b]"
+                    )
+                items.append((
+                    known(im.group("key"), m.start()),
+                    im.group("neg") is not None,
+                    " ".join(loc.split()) if loc else None,
+                    prefix or None,
+                ))
+            out.append(self._parenthetical(items))
+        out.append(text[last:])
+        # Class guard (fail closed): whatever shape got here, a key-shaped `@` token that no
+        # rule above turned into a citation must not print as plain text.
+        for sm in _STRAY_KEY.finditer(text):
+            if protected(sm.start()) or any(a <= sm.start() < b for a, b in consumed):
+                continue
+            j = sm.start()
+            while j and text[j - 1] == "_":
+                j -= 1
+            if j < sm.start() and j and text[j - 1].isalnum():
+                continue  # `snake_@key`: an identifier, as in the narrative scan above
+            raise SystemExit(
+                f"{source}:{line_of(sm.start())}: {sm.group(0)!r} looks like a citation but is "
+                f"not in a supported form, so it would print as literal text (supported: "
+                f"@key, [@key], [@key, p. 12], [@a; @b], [-@key]; separate citations with "
+                f"';'; a Latin letter or digit may not touch the @); fix it, or escape the "
+                f"@ as \\@"
+            )
+        return "".join(out)
+
+    # -- bibliography -----------------------------------------------------------------
+
+    def uncited(self) -> list[str]:
+        return sorted(set(self.entries) - self.cited)
+
+    def bibliography_markdown(self, lang: str | None = None) -> str:
+        """Every entry of references.yaml, sorted by the style, each prefixed with its
+        `<a id="ref-key">` anchor and followed by its verbatim provenance text and its
+        `metadata_incomplete` note (italic). `lang="zh"` prefers the *_zh variants."""
+        lang = lang or self.lang
+        blocks = []
+        rendered_by_key = dict(zip(self.bib.keys, self.bib.bibliography()))
+        for key in self._order:
+            rendered = rendered_by_key[key]
+            e = self.entries[key]
+            parts = [f'<a id="ref-{key}"></a>{_capitalise_role_labels(str(rendered).strip())}']
+            prov = (e.get("provenance_zh") if lang == "zh" else None) or e.get("provenance")
+            if prov:
+                parts.append(prov)
+            meta = (e.get("metadata_incomplete_zh") if lang == "zh" else None) or e.get("metadata_incomplete")
+            if meta:
+                parts.append(f"*[{meta}]*")
+            blocks.append("\n".join(parts))
+        return "\n\n".join(blocks)
+
+
+def fill_bibliography_template(template: str, entries_md: str) -> str:
+    """Substitute the generated entries for the `{{REFERENCES}}` line of the
+    (hand-maintained prose) bibliography template. A missing/duplicated token is a hard
+    error: a template that silently loses its entries would print an empty bibliography."""
+    lines = template.split("\n")
+    idx = [i for i, l in enumerate(lines) if l.strip() == REFERENCES_TOKEN]
+    if len(idx) != 1:
+        raise SystemExit(
+            f"bibliography template must contain exactly one line {REFERENCES_TOKEN!r}; found {len(idx)}"
+        )
+    lines[idx[0]] = entries_md
+    return "\n".join(lines)
+
+
+def load(path: Path, citations: "CitationContext | None" = None) -> str:
+    """Read a source file. With `citations`, keyed citations are resolved on the RAW
+    text (before HTML comments are dropped) so error line numbers match the file."""
     if not path.exists():
         raise SystemExit(f"missing source: {path}")
-    text = path.read_text(encoding="utf-8").rstrip() + "\n"
+    raw = path.read_text(encoding="utf-8")
+    if citations is not None:
+        raw = citations.resolve(raw, path.as_posix())
+    text = raw.rstrip() + "\n"
     return strip_html_comments(text)
 
 
@@ -868,7 +1443,7 @@ def apply_inserts(
     return "\n".join(lines)
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument(
         "--lang",
@@ -883,11 +1458,19 @@ def main() -> int:
         help="output path (default: paper/engram-paper-v0.5.1.md for en, "
              "paper/engram-paper-v0.5.1.zh.md for zh)",
     )
-    a = ap.parse_args()
+    ap.add_argument(
+        "--csl",
+        default=str(DEFAULT_CSL),
+        help="CSL style file used for in-text citations and the generated bibliography "
+             "(default: tools/csl/apa.csl, APA 7th edition)",
+    )
+    a = ap.parse_args(argv)
     lang = a.lang
     out = Path(a.out) if a.out else Path(DEFAULT_OUT[lang])
 
-    parts = [load(PAPER / FRONT_MATTER[lang])]
+    cites = CitationContext(load_references(REFERENCES_YAML), Path(a.csl), lang=lang)
+
+    parts = [load(PAPER / FRONT_MATTER[lang], cites)]
 
     stripped_total = 0
     apparatus_total = 0
@@ -895,7 +1478,7 @@ def main() -> int:
         # ONE BODY list, resolved per language. A chapter that is missing in this
         # language is a hard SystemExit from `load`, naming the resolved path --
         # never a skip, so a partially translated book cannot render short.
-        body = load(chapter_path(lang, name))
+        body = load(chapter_path(lang, name), cites)
         body = apply_inserts(name, body, INSERTS_BY_LANG[lang])
         body, n = strip_provenance_ids(name, body)
         stripped_total += n
@@ -903,8 +1486,16 @@ def main() -> int:
         apparatus_total += m
         parts.append(body)
 
-    parts.append(load(PAPER / ACKNOWLEDGEMENTS[lang]))
-    parts.append(load(PAPER / BIBLIOGRAPHY[lang]))
+    parts.append(load(PAPER / ACKNOWLEDGEMENTS[lang], cites))
+    # The bibliography file is a TEMPLATE (heading, method paragraph, and the sections
+    # after the entries); the entries themselves are generated from references.yaml.
+    parts.append(fill_bibliography_template(
+        load(PAPER / BIBLIOGRAPHY[lang], cites), cites.bibliography_markdown(lang)))
+
+    uncited = cites.uncited()
+    if uncited:
+        print(f"WARNING: {len(uncited)} reference(s) in {REFERENCES_YAML} never cited in the "
+              f"{lang} render: {', '.join(uncited)}", file=sys.stderr)
 
     out.parent.mkdir(parents=True, exist_ok=True)
     text = "\n\n---\n\n".join(p.rstrip() for p in parts) + "\n"
