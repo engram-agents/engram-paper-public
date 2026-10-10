@@ -71,7 +71,7 @@ compaction. [SOLID]
 
 Tulving distinguished *autonoetic* remembering (awareness of an event "as a veridical
 part of his own past existence") from *noetic* knowing (awareness of objects and events
-"in the absence of these objects and events") [@tulving1985, p. 3]. ENGRAM's recall has exactly two registers,
+"in the absence of these objects and events") [@tulving1985, p. 3]. Tulving and Thomson's encoding specificity principle adds the cue side: "specific encoding operations performed on what is perceived determine what is stored, and what is stored determines what retrieval cues are effective in providing access to what is stored" [@tulving1973, p. 369]. ENGRAM's recall has exactly two registers,
 by design (dv_0264): a lossy **auto-surface** (noetic, hint-level: "this sounds
 familiar") and **deliberate recall** (a full-content query: "I need to know
 exactly"). The lossy auto-surface is what prompts the agent to invoke deliberate
@@ -79,7 +79,7 @@ recall. Reading a node is noetic, not autonoetic: ENGRAM provides remembered
 knowledge without phenomenal re-living, the boundary Ch2 §2.3 also marks.
 
 **→ Ch4 §4.6** (auto-surfacing recall): Tulving's two registers are the precedent for
-the auto-surface, which is cue-dependent by ENGRAM's own design and binds Condition 3. [SOLID: dv_0264, ob_1119]
+the auto-surface, and encoding specificity [@tulving1973, p. 369] for its cue-dependence; the auto-surface binds Condition 3. [SOLID: dv_0264, ob_1119]
 
 ### 3.3 Rational analysis of memory → designed forgetting
 

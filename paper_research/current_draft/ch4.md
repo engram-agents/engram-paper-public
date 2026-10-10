@@ -43,7 +43,7 @@ The chapter in one table; each row is a section below.
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang [-@josang2013] **[GROUNDED ob_2551/dv_0965 → dv_1289]**, with a stated divergence | **Constraint A** (unified policy-selection) |
 | Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
 | Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus [SOLID] + Anderson-Schooler **[GROUNDED ob_2552/dv_0966]** | — (scopes what Cond-3 arbitration ranges over) |
-| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction [@tulving1985, p. 3] [SOLID] + ACT-R spreading activation **[secondary — not first-hand]**; the cue-dependence is ENGRAM's own design | — (binds Cond 3: a correction cannot be suppressed by not looking) |
+| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction [@tulving1985, p. 3] [SOLID] + Tulving & Thomson's encoding specificity [@tulving1973, p. 369] [SOLID] + ACT-R spreading activation **[secondary — not first-hand]** | — (binds Cond 3: a correction cannot be suppressed by not looking) |
 | Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL **[ob_0647/ob_0651, prior read]** + spaced-repetition [SOLID] | — |
 | Continuity across compaction (§4.8) | identity survives compaction | CLS consolidation [SOLID] + diachronic-identity [SOLID] | — (compaction is not Kahl's reset; §4.8) |
 | Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution [@schechtman1996, p. 93] [SOLID] | — (feeds Ch5 identity-as-history) |
@@ -138,8 +138,10 @@ agent's own conviction. While it is open, the confidence on each side is frozen:
 neither value is discounted, and neither is an estimate of anything until resolution.
 
 The operator lineage, named exactly. ENGRAM's corroboration formula `1−∏(1−cᵢ)` is
-a noisy-OR [@pearl1986, p. 246] — as we define it here, the probability that at least one
-of several independent sufficient causes occurs, cause i occurring with probability cᵢ;
+a noisy-OR [@pearl1986, p. 246; @pearl1988, pp. 184–187, Eq. 4.54] — the probability that at
+least one of several causes produces the effect, cause i doing so on its own with probability
+cᵢ, under Pearl's two assumptions, accountability and exception independence (the causes'
+failures are independent) [@pearl1988, p. 185];
 in SL it is the belief line of
 *comultiplication* — the disjunction of two distinct propositions (his Definition
 18) — and not SL's *cumulative fusion*, which adds evidence counts and, for the same
@@ -422,8 +424,8 @@ what prompts the agent to invoke deliberate recall.
 
 **Tradition.** **Tulving** [SOLID]: the autonoetic/noetic
 distinction [@tulving1985, p. 3] — the two registers map onto Tulving's two ways of having the past
-present. **ACT-R spreading activation** **[secondary — not first-hand-read;
-Tulving carries the autonoetic/noetic register distinction only; ACT-R is a supplementary precedent for cue-dependent retrieval]** is the
+present; and, with Thomson, encoding specificity — "what is stored determines what retrieval cues are effective in providing access to what is stored" [@tulving1973, p. 369] — the precedent for cue-dependent retrieval. **ACT-R spreading activation** **[secondary — not first-hand-read;
+Tulving carries the register distinction and, with Thomson, cue-dependent retrieval; ACT-R is a supplementary computer-science precedent]** is the
 computer-science precedent for cue-dependent automatic retrieval.
 
 **OCC:** none of its own, but auto-surfacing is the **binding half of Condition 3**

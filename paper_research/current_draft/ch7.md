@@ -94,7 +94,7 @@ substrate, but a real constraint at super-engram scale, where the volume of
 cross-agent conflict could make per-conflict adjudication uneconomical. What is
 *not* a future direction is a second number beside the scalar — an evidence count or
 vacuity axis. The scalar is meant to stay simple, and it already carries evidence
-accumulation: independent high-confidence premises raise it through noisy-OR [@pearl1986, p. 246] (§4.3),
+accumulation: independent high-confidence premises raise it through noisy-OR [@pearl1986, p. 246; @pearl1988, pp. 184–187] (§4.3),
 sound only where the premises are independent, which the shared-root check guards
 for the two multi-source corroborating types (a third, enumeration from a single
 source, has no settled combination rule yet and uses noisy-OR for now). When

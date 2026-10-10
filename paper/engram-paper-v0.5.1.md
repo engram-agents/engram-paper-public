@@ -735,7 +735,7 @@ compaction.
 
 Tulving distinguished *autonoetic* remembering (awareness of an event "as a veridical
 part of his own past existence") from *noetic* knowing (awareness of objects and events
-"in the absence of these objects and events") ([Tulving, 1985, p. 3](#ref-tulving1985)). ENGRAM's recall has exactly two registers,
+"in the absence of these objects and events") ([Tulving, 1985, p. 3](#ref-tulving1985)). Tulving and Thomson's encoding specificity principle adds the cue side: "specific encoding operations performed on what is perceived determine what is stored, and what is stored determines what retrieval cues are effective in providing access to what is stored" ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)). ENGRAM's recall has exactly two registers,
 by design: a lossy **auto-surface** (noetic, hint-level: "this sounds
 familiar") and **deliberate recall** (a full-content query: "I need to know
 exactly"). The lossy auto-surface is what prompts the agent to invoke deliberate
@@ -743,7 +743,7 @@ recall. Reading a node is noetic, not autonoetic: ENGRAM provides remembered
 knowledge without phenomenal re-living, the boundary Ch2 §2.3 also marks.
 
 **→ Ch4 §4.6** (auto-surfacing recall): Tulving's two registers are the precedent for
-the auto-surface, which is cue-dependent by ENGRAM's own design and binds Condition 3.
+the auto-surface, and encoding specificity ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)) for its cue-dependence; the auto-surface binds Condition 3.
 
 ### 3.3 Rational analysis of memory → designed forgetting
 
@@ -1099,7 +1099,7 @@ The chapter in one table; each row is a section below.
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang ([2013](#ref-josang2013)), with a stated divergence | **Constraint A** (unified policy-selection) |
 | Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
 | Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus + Anderson-Schooler | — (scopes what Cond-3 arbitration ranges over) |
-| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) + ACT-R spreading activation; the cue-dependence is ENGRAM's own design | — (binds Cond 3: a correction cannot be suppressed by not looking) |
+| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) + Tulving & Thomson's encoding specificity ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)) + ACT-R spreading activation | — (binds Cond 3: a correction cannot be suppressed by not looking) |
 | Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL + spaced-repetition | — |
 | Continuity across compaction (§4.8) | identity survives compaction | CLS consolidation + diachronic-identity | — (compaction is not Kahl's reset; §4.8) |
 | Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution ([Schechtman, 1996, p. 93](#ref-schechtman1996)) | — (feeds Ch5 identity-as-history) |
@@ -1194,8 +1194,10 @@ agent's own conviction. While it is open, the confidence on each side is frozen:
 neither value is discounted, and neither is an estimate of anything until resolution.
 
 The operator lineage, named exactly. ENGRAM's corroboration formula `1−∏(1−cᵢ)` is
-a noisy-OR ([Pearl, 1986, p. 246](#ref-pearl1986)) — as we define it here, the probability that at least one
-of several independent sufficient causes occurs, cause i occurring with probability cᵢ;
+a noisy-OR ([Pearl, 1986, p. 246](#ref-pearl1986), [1988, pp. 184–187, Eq. 4.54](#ref-pearl1988)) — the probability that at
+least one of several causes produces the effect, cause i doing so on its own with probability
+cᵢ, under Pearl's two assumptions, accountability and exception independence (the causes'
+failures are independent) ([Pearl, 1988, p. 185](#ref-pearl1988));
 in SL it is the belief line of
 *comultiplication* — the disjunction of two distinct propositions (his Definition
 18) — and not SL's *cumulative fusion*, which adds evidence counts and, for the same
@@ -1517,7 +1519,7 @@ what prompts the agent to invoke deliberate recall.
 
 **Tradition.** **Tulving**: the autonoetic/noetic
 distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) — the two registers map onto Tulving's two ways of having the past
-present. **ACT-R spreading activation** is the
+present; and, with Thomson, encoding specificity — "what is stored determines what retrieval cues are effective in providing access to what is stored" ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)) — the precedent for cue-dependent retrieval. **ACT-R spreading activation** is the
 computer-science precedent for cue-dependent automatic retrieval.
 
 **OCC:** none of its own, but auto-surfacing is the **binding half of Condition 3**
@@ -2712,7 +2714,7 @@ substrate, but a real constraint at super-engram scale, where the volume of
 cross-agent conflict could make per-conflict adjudication uneconomical. What is
 *not* a future direction is a second number beside the scalar — an evidence count or
 vacuity axis. The scalar is meant to stay simple, and it already carries evidence
-accumulation: independent high-confidence premises raise it through noisy-OR ([Pearl, 1986, p. 246](#ref-pearl1986)) (§4.3),
+accumulation: independent high-confidence premises raise it through noisy-OR ([Pearl, 1986, p. 246](#ref-pearl1986), [1988, pp. 184–187](#ref-pearl1988)) (§4.3),
 sound only where the premises are independent, which the shared-root check guards
 for the two multi-source corroborating types (a third, enumeration from a single
 source, has no settled combination rule yet and uses noisy-OR for now). When
@@ -4771,6 +4773,18 @@ and "Recommended by Patrick Hayes"; the file is the UCLA technical report R-42 (
 reprint. The issue number is not printed on the pages read.
 *[Metadata incomplete: the issue number is not printed on the pages read.]*
 
+<a id="ref-pearl1988"></a>Pearl, J. (1988). *Probabilistic reasoning in intelligent systems: Networks of plausible inference*. Morgan Kaufmann.
+Exception to the read-off rule, stated plainly. The copy read (a scan, sha256
+fe8ab6c80406fa480477b44bb42705ff6633fa36c1f6c4a1a3920cac85bbb51d) begins at the Preface and has
+no title page or copyright page. It confirms the year (the Preface is signed "J.P. / Los
+Angeles, California / June 1988", p. ix) and the author. The subtitle, publisher and place are
+NOT on the copy; they were taken, on Lei's instruction of 2026-10-09, from library and publisher
+records: Open Library (ISBN 0934613737, 1988: "Networks of Plausible Inference", "Morgan
+Kaufmann Publishers", "San Mateo, Calif"), Kyushu University Library catalog record 1000987216
+("San Mateo, Calif. : Morgan Kaufmann Pub. , c1988, [1991]"), and the Elsevier book page
+(subtitle; 1st edition, 1 September 1988). The same precedent as the Doyle entry (year from the
+publisher's record).
+
 <a id="ref-peirce1906"></a>Peirce, C. S. (1906). Prolegomena to an apology for pragmaticism. *The Monist*, 492–546. https://doi.org/10.5840/monist190616436
 Zenodo record 2035681 (open access). Running head "THE MONIST."; folios 493-546 are printed, the
 opening page carries none (492 is inferred as the page before 493). The type/token passage is
@@ -4854,6 +4868,11 @@ University of Toronto. Page 1 prints the running head "Canadian Psychology / Psy
 Canadienne. 1985. 26: 1" and the folio 1; page 12 prints folio 12 (the last page, mostly
 references). Pages 1 and 3 were read from rendered page images; pages 2–12 were searched
 through a per-page OCR set (the source PDF is a scan with no text layer).
+
+<a id="ref-tulving1973"></a>Tulving, E., & Thomson, D. M. (1973). Encoding specificity and retrieval processes in episodic memory. *Psychological Review*, *80*(5), 352–373.
+Copy read: a scan (sha256 9f98e9d377c59fdbd462eb46e86b384a6ad784cc5e3c042705b1355cb5eb7ac9),
+image-only, read from page images. The first-page header prints "Psychological Review 1973,
+Vol. 80, No. 5, 352-373". The article prints no DOI.
 
 <a id="ref-wang2026a"></a>Wang, S., Yu, E., Love, O., Zhang, T., Wong, T., Scargall, S., & Fan, C. (2026a). *MemMachine: A ground-truth-preserving memory system for personalized AI agents*. https://arxiv.org/abs/2604.04853
 arXiv:2604.04853v1 [cs.AI], 6 Apr 2026 (the document's own date line reads "March 2026").
