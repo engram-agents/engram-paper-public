@@ -190,7 +190,7 @@ convergence as corroborating the gap's importance, not as a priority dispute.
 
 ## 1.5 Scope and structure
 
-This is a **theory-first arXiv preprint**. Its evidence is one real five-month
+This is a **theory-first preprint**. Its evidence is one real five-month
 ENGRAM graph (Chapter 6); at-scale empirical studies are deferred to follow-up work.
 The contribution is the argument, not a benchmark.
 
