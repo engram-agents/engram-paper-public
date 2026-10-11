@@ -1,6 +1,6 @@
 """Contract tests for Appendix G — Glossary (`spec-glossary.md`), written BEFORE
 the appendix and the render-order change existed. Expected to fail until
-`paper_research/current_draft/appendix_G_glossary.md` exists and
+`paper/chapters/en/appendix_G_glossary.md` exists and
 `tools.render_paper.BODY` includes it.
 
 T1 — every glossary term occurs at least once in the rendered body OUTSIDE
@@ -75,7 +75,7 @@ CH1_POINTER = (
 LANGS = ("en", "zh")
 
 # Appendix G's top-level heading, per language. The zh translation localises it
-# (verified against paper_research/current_draft_zh/appendix_G_glossary.zh.md).
+# (verified against paper/chapters/zh/appendix_G_glossary.zh.md).
 _G_HEADING = {
     "en": r"^# Appendix G — Glossary\s*$",
     "zh": r"^# 附录 G — 术语表\s*$",
@@ -1053,8 +1053,8 @@ def test_language_defaults_and_output_paths():
     `--lang` passed explicitly and a third that omits it, so the renderer's own
     `en` default is exercised end-to-end there as well."""
     assert rp.LANGS == ("en", "zh")
-    assert DEFAULT_OUT["en"] == "paper/engram-paper-v0.5.1.md"
-    assert DEFAULT_OUT["zh"] == "paper/engram-paper-v0.5.1.zh.md"
+    assert DEFAULT_OUT["en"] == "paper/release/engram-paper-v0.5.1.md"
+    assert DEFAULT_OUT["zh"] == "paper/release/engram-paper-v0.5.1.zh.md"
 
 
 def test_body_is_one_shared_list_never_duplicated_per_language():

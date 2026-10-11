@@ -13,11 +13,11 @@ silent omission — a figure that quietly fails to appear is the failure mode th
 whole phase exists to catch.
 
 Usage:
-    python tools/render_paper.py --out paper/engram-paper-v0.5.1.md
-    python tools/render_paper.py --lang zh          # -> engram-paper-v0.5.1.zh.md
+    python tools/render_paper.py --out paper/release/engram-paper-v0.5.1.md
+    python tools/render_paper.py --lang zh          # -> paper/release/engram-paper-v0.5.1.zh.md
 
 `--lang {en,zh}` (default `en`) selects the chapter-source directory: `en` reads
-`paper_research/current_draft/`, `zh` reads `paper_research/current_draft_zh/`.
+`paper/chapters/en/`, `zh` reads `paper/chapters/zh/`.
 ONE `BODY` list drives both; a chapter that is missing in the selected language is
 a hard error naming the resolved file, never a skip -- a half-translated book must
 not render short.
@@ -31,8 +31,8 @@ import sys
 import types
 from pathlib import Path
 
-DRAFT = Path("paper_research/current_draft")
-DRAFT_ZH = Path("paper_research/current_draft_zh")
+DRAFT = Path("paper/chapters/en")
+DRAFT_ZH = Path("paper/chapters/zh")
 PAPER = Path("paper")
 
 LANGS = ("en", "zh")
@@ -45,17 +45,17 @@ LANGS = ("en", "zh")
 #
 # zh chapters carry a `.zh` infix (`ch1.md` -> `ch1.zh.md`). That is the
 # convention the one existing zh source already uses
-# (`current_draft_zh/appendix_G_glossary.zh.md`, commit 7623554), and the same
+# (`chapters/zh/appendix_G_glossary.zh.md`, commit 7623554), and the same
 # one the three zh front/back-matter files need, since `paper/` is shared by
 # both languages and the suffix is the only thing that tells them apart. The
 # directory carries the language marker too; that redundancy is deliberate here
-# -- `current_draft/` and `current_draft_zh/` are otherwise identical, and a
+# -- `chapters/en/` and `chapters/zh/` are otherwise identical, and a
 # file copied between them keeps its name.
 SOURCE_DIRS = {"en": DRAFT, "zh": DRAFT_ZH}
 CHAPTER_SUFFIX = {"en": "", "zh": ".zh"}
 DEFAULT_OUT = {
-    "en": "paper/engram-paper-v0.5.1.md",
-    "zh": "paper/engram-paper-v0.5.1.zh.md",
+    "en": "paper/release/engram-paper-v0.5.1.md",
+    "zh": "paper/release/engram-paper-v0.5.1.zh.md",
 }
 
 # Front/back matter is not per-language-directory (both languages read `paper/`),
@@ -1474,8 +1474,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument(
         "--out",
         default=None,
-        help="output path (default: paper/engram-paper-v0.5.1.md for en, "
-             "paper/engram-paper-v0.5.1.zh.md for zh)",
+        help="output path (default: paper/release/engram-paper-v0.5.1.md for en, "
+             "paper/release/engram-paper-v0.5.1.zh.md for zh)",
     )
     ap.add_argument(
         "--csl",

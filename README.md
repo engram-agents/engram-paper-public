@@ -12,12 +12,13 @@ material can eventually be made public without leaking private workshop history.
 
 ## Start here (the current draft)
 
-- **`paper_research/current_draft/`** — the current review set, on the **2026-06-17
-  restructure** spine.
+- **`paper/chapters/en/`** (zh: **`paper/chapters/zh/`**) — the chapter sources, on the
+  **2026-06-17 restructure** spine. The rendered paper is in **`paper/release/`**. The
+  printable review docs below still sit in `paper_research/current_draft/`.
   - **`PAPER_REVIEW_2026-06-18.md`** — all chapters + appendices in one printable doc
     (read this for a full pen review).
-  - `ch1.md … ch8.md` + `appendix_A..E` — the per-section files (edit these; the combined
-    doc is generated).
+  - `ch1.md … ch8.md` + `appendix_A..E` (in `paper/chapters/en/`) — the per-section files
+    (edit these; the combined doc is generated).
 - **`paper_research/paper_plan_canonical.md`** — the canonical plan (outline + chapter
   substrate + design-iteration history). Read first for paper context, alongside the draft.
 - **`paper_research/restructure_chapter_plan_2026-06-17.md`** — the detailed per-chapter
@@ -45,7 +46,7 @@ The `.db` itself is `.gitignore`d (96 MB binary + private full-graph content);
 ## Layout
 
 - **`paper_research/`** — the working substrate:
-  - `current_draft/` — **the current draft** (see *Start here*).
+  - `current_draft/` — the printable review docs (the chapter sources moved to `paper/chapters/`; see *Start here*).
   - `paper_plan_canonical.md`, `restructure_chapter_plan_2026-06-17.md` — current plans.
   - the research corpus — first-hand source reads, comparative scans, citation database
     (`citations.bib` + `citations.manifest`), working memos. The grounding the draft cites.
@@ -56,7 +57,7 @@ The `.db` itself is `.gitignore`d (96 MB binary + private full-graph content);
 
 ## Citing in chapters
 
-*(Put here, in the top-level README, rather than in `paper_research/current_draft/README.md`:
+*(Put here, in the top-level README, rather than in `paper/chapters/en/README.md`:
 that file is about regenerating the combined review document, while this is about writing
 any chapter, and the top-level README is the one every author opens first.)*
 

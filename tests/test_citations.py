@@ -126,7 +126,7 @@ def _make_tree(tmp_path: Path, chapter: str, refs: str = FIXTURE_YAML) -> None:
         encoding="utf-8",
     )
     (tmp_path / "paper" / "references.yaml").write_text(refs, encoding="utf-8")
-    d = tmp_path / "paper_research" / "current_draft"
+    d = tmp_path / "paper" / "chapters" / "en"
     d.mkdir(parents=True)
     (d / "ch1.md").write_text(chapter, encoding="utf-8")
 
@@ -151,9 +151,9 @@ def _render(tree: Path, chapter: str, refs: str = FIXTURE_YAML, extra=()):
 def test_c1_unknown_key_is_hard_error_naming_file_and_line(tmp_path):
     ctx = _ctx(tmp_path=tmp_path)
     with pytest.raises(SystemExit) as e:
-        ctx.resolve("line one\nline two [@nosuchkey] here\n", "paper_research/current_draft/ch1.md")
+        ctx.resolve("line one\nline two [@nosuchkey] here\n", "paper/chapters/en/ch1.md")
     msg = str(e.value)
-    assert "paper_research/current_draft/ch1.md:2" in msg
+    assert "paper/chapters/en/ch1.md:2" in msg
     assert "nosuchkey" in msg
 
 
@@ -750,8 +750,8 @@ def test_s2_prefixed_item_does_not_merge_into_the_same_author_run(tmp_path):
 def test_s2_unsupported_forms_are_hard_errors_naming_file_and_line(tmp_path, bad):
     ctx = _ctx(tmp_path=tmp_path)
     with pytest.raises(SystemExit) as e:
-        ctx.resolve(f"fine line\n{bad} tail\n", "paper_research/current_draft/ch9.md")
-    assert "paper_research/current_draft/ch9.md:2" in str(e.value)
+        ctx.resolve(f"fine line\n{bad} tail\n", "paper/chapters/en/ch9.md")
+    assert "paper/chapters/en/ch9.md:2" in str(e.value)
 
 
 # --- S3 ---------------------------------------------------------------------------

@@ -78,11 +78,11 @@ This is a real limit on independent verification and the paper states it as one.
 
 ## Standing conventions for this phase
 
-- **Chapter sources under `paper_research/current_draft/` are the SSoT.** Edits go
+- **Chapter sources under `paper/chapters/en/` (zh: `paper/chapters/zh/`) are the SSoT.** Edits go
   there, including to `ch0_abstract.md` — which is a chapter file precisely so that
   editing the abstract is an ordinary chapter edit.
 - **The rendered paper is generated, never hand-edited.** `tools/render_paper.py`
-  assembles it; anything typed directly into `paper/engram-paper-v0.5.1.md` is lost
+  assembles it; anything typed directly into `paper/release/engram-paper-v0.5.1.md` is lost
   on the next render.
 - **Figure placement lives in the renderer's manifest**, not in chapter text, so the
   chapters stay prose. An anchor that fails to resolve raises rather than silently

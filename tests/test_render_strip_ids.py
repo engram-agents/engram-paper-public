@@ -17,7 +17,7 @@ stripped while that text lived in D.4, and it inherits D's strip-set membership
 rather than being independently classified.
 
 Every REAL-string example below was grepped directly from
-`paper_research/current_draft/*.md` at base commit 049d6d0a (see spec §2) — none
+`paper/chapters/en/*.md` at base commit 049d6d0a (see spec §2) — none
 are invented. Line/file citations are given in comments so a source edit that
 removes the phrase is easy to re-locate.
 """
