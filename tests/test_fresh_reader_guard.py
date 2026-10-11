@@ -1,8 +1,8 @@
-"""Contract tests for `paper.review.tools.fresh_reader_guard`, written BEFORE
+"""Contract tests for `tools.fresh_reader.fresh_reader_guard`, written BEFORE
 the implementation per spec-no-tools-guard.md — expected to fail with an
 ImportError until the module exists.
 
-Uses the `tests/__init__.py` package so `paper.review.tools.fresh_reader_guard`
+Uses the `tests/__init__.py` package so `tools.fresh_reader.fresh_reader_guard`
 imports as an absolute package regardless of pytest's invocation directory,
 matching the existing `tests/test_render_apparatus.py` convention.
 """
@@ -16,7 +16,7 @@ from pathlib import Path
 
 import pytest
 
-from paper.review.tools.fresh_reader_guard import (
+from tools.fresh_reader.fresh_reader_guard import (
     GuardError,
     NoToolsViolation,
     assert_no_tools,
@@ -102,7 +102,7 @@ def test_decode_session_via_zstandard_module(tmp_path, monkeypatch):
 
 
 def test_decode_session_no_decoder_available_raises(tmp_path, monkeypatch):
-    import paper.review.tools.fresh_reader_guard as guard_mod
+    import tools.fresh_reader.fresh_reader_guard as guard_mod
 
     monkeypatch.setattr(guard_mod, "_import_zstandard", lambda: None)
     monkeypatch.setattr(shutil, "which", lambda name: None)

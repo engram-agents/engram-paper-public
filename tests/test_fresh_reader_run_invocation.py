@@ -3,10 +3,10 @@ after spec-no-tools-guard.md landed as e034646).
 
 pytest's own collection of `fresh_reader_run.py` (via `tests/__init__.py` +
 the repo root being importable) never exercises the failure this test is
-for: a package-style `from paper.review.tools.fresh_reader_guard import
+for: a package-style `from tools.fresh_reader.fresh_reader_guard import
 ...` only resolves when the repo root happens to be on `sys.path`. The
 script's actual invocation shapes -- `python3
-paper/review/tools/fresh_reader_run.py` from another cwd, or a file-path
+tools/fresh_reader/fresh_reader_run.py` from another cwd, or a file-path
 import with the tools directory on `sys.path` and the repo root NOT on it
 -- raised `ModuleNotFoundError: No module named 'paper'` at that import
 line inside `run_live()`.
@@ -20,7 +20,7 @@ call it without spinning up a full harness run) and asserts it returns a
 module exposing `assert_no_tools`.
 
 Confirmed reddening against the pre-fix package-style import (`from
-paper.review.tools.fresh_reader_guard import assert_no_tools` at the top
+tools.fresh_reader.fresh_reader_guard import assert_no_tools` at the top
 of run_live(), commit e034646) with `ModuleNotFoundError: No module named
 'paper'`; green after switching `run_live()` to call `_load_guard()`.
 """
@@ -32,14 +32,14 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
-RUN_SCRIPT = REPO_ROOT / "paper" / "review" / "tools" / "fresh_reader_run.py"
+RUN_SCRIPT = REPO_ROOT / "tools" / "fresh_reader" / "fresh_reader_run.py"
 
 
 def test_load_guard_works_without_repo_root_or_tools_dir_on_syspath():
     """Loads fresh_reader_run.py by file path (never touching the `paper.*`
     package machinery pytest's own collection relies on), with sys.path
     scrubbed of anything that would let a package-style import of
-    `paper.review.tools.fresh_reader_guard` succeed by accident -- neither
+    `tools.fresh_reader.fresh_reader_guard` succeed by accident -- neither
     the repo root (which makes `paper` importable) nor the tools directory
     itself (which is on sys.path in the coordinator's reported invocation
     shape, but must not be required for THIS helper's own __file__-relative

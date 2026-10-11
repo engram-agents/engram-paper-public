@@ -11,7 +11,7 @@ prints its DENOMINATOR beside its numerator. A wrong corpus then announces
 itself in the same output that carries the answer (`0 / 0`) instead of arriving
 as a bare, plausible number.
 
-Usage:  python3 tools/paper_stats.py [--db dataset/engram-paper-ssot-<stamp>.db]
+Usage:  python3 tools/paper_stats.py [--db data/engram-paper-ssot-<stamp>.db]
         python3 tools/paper_stats.py --trace <node_id> [--trace <node_id> ...]
         python3 tools/paper_stats.py --trace-deepest [--json]
 

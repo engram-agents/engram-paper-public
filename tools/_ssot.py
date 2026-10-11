@@ -19,7 +19,7 @@ Three refusals, each loud:
    outright. `freeze_paper_snapshot.py` is the one legitimate reader of the live
    graph and does not use this module.
 2. **A hash mismatch.** The snapshot's SHA-256 must equal the one recorded in
-   `dataset/DATASET.md`. A snapshot that has been regenerated, truncated or
+   `data/DATASET.md`. A snapshot that has been regenerated, truncated or
    swapped fails here instead of silently producing different numbers.
 3. **A missing pin.** If `DATASET.md` records no hash, we refuse rather than
    proceed unverified — an unpinned run is exactly the state this module exists
@@ -39,7 +39,7 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-DATASET = REPO / "dataset"
+DATASET = REPO / "data"
 MANIFEST = DATASET / "DATASET.md"
 
 _SHA_RE = re.compile(r"\*\*sha256:\*\*\s*`([0-9a-f]{64})`")
@@ -81,7 +81,7 @@ def resolve_db(explicit: str | None = None, *, allow_unpinned: bool = False) -> 
         cands = sorted(DATASET.glob("engram-paper-ssot-*.db"))
         if not cands:
             raise SystemExit(
-                "SSoT: no frozen snapshot in dataset/ — run tools/freeze_paper_snapshot.py first"
+                "SSoT: no frozen snapshot in data/ — run tools/freeze_paper_snapshot.py first"
             )
         if len(cands) > 1:
             print(
@@ -96,7 +96,7 @@ def resolve_db(explicit: str | None = None, *, allow_unpinned: bool = False) -> 
         if root in db.parents or db == root:
             raise SystemExit(
                 f"SSoT: refusing to read a LIVE ENGRAM graph ({db}).\n"
-                "      Paper numbers are computed from the frozen snapshot in dataset/ only.\n"
+                "      Paper numbers are computed from the frozen snapshot in data/ only.\n"
                 "      To make a new snapshot, use tools/freeze_paper_snapshot.py."
             )
 
@@ -117,7 +117,7 @@ def resolve_db(explicit: str | None = None, *, allow_unpinned: bool = False) -> 
             f"      manifest: {want}\n"
             f"      actual:   {got}\n"
             "      The snapshot is not the one the paper's numbers were computed from.\n"
-            "      Either restore it, or re-freeze and update dataset/DATASET.md."
+            "      Either restore it, or re-freeze and update data/DATASET.md."
         )
     return db
 
@@ -125,7 +125,7 @@ def resolve_db(explicit: str | None = None, *, allow_unpinned: bool = False) -> 
 def add_db_arg(ap) -> None:
     """Standard --db / --allow-unpinned pair for every analysis tool."""
     ap.add_argument("--db", default=None,
-                    help="frozen snapshot to read (default: the pinned one in dataset/)")
+                    help="frozen snapshot to read (default: the pinned one in data/)")
     ap.add_argument("--allow-unpinned", action="store_true",
                     help="skip the SHA-256 pin check — deliberate and noisy")
 

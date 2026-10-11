@@ -35,7 +35,7 @@ def sha256(path, buf=1 << 20):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--src", default=os.path.expanduser("~/.engram/knowledge.db"))
-    ap.add_argument("--dest-dir", default=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "dataset"))
+    ap.add_argument("--dest-dir", default=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"))
     a = ap.parse_args()
 
     if not os.path.exists(a.src):

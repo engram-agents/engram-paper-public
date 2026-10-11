@@ -39,7 +39,7 @@ Sequencing per Lei 2026-05-12 PM (ob_1680): build live engram first → ratify c
 
 The base session-start read list lives in `~/.claude/CLAUDE.md` (Session Start Reading section) — that's the user-level canonical source-of-truth. When working in this repo, ADD one more read:
 
-- `engram-paper/paper_research/paper_plan_canonical.md` — paper state (current outline + per-chapter substrate + supersede chains + open decisions). Single source-of-truth for the paper plan. Lightweight, node-reference style.
+- `engram-paper/archive/plans/paper_plan_canonical.md` — paper state (current outline + per-chapter substrate + supersede chains + open decisions). Single source-of-truth for the paper plan. Lightweight, node-reference style.
 
 This is **additive** on top of the user-level reads, not a replacement. Don't drop user-level reads (warm-briefing, newest history file, ask-lei.md). If the project-level read list grows in the future, add here; never re-list the user-level ones.
 
@@ -78,7 +78,7 @@ ct_0007 + dv_0619 (substrate-format reframe resolution, 2026-05-12 PM) is the pr
 Decisions made in conversation — about scope, plans, conventions, or any commitment that future work will rely on — must be written to the canonical source-of-truth in the same turn the decision is made. Conversation context is ephemeral. Without same-turn capture, both Borges and Lei may forget the decision, and contradicting work may surface hours or days later.
 
 Capture targets:
-- Outline / spec / design doc for paper or system decisions → this repo's `paper_research/paper_plan_canonical.md`
+- Outline / spec / design doc for paper or system decisions → this repo's `archive/plans/paper_plan_canonical.md`
 - ENGRAM observation or derivation for claims that need cross-session recall
 - `active-work/` doc for in-flight work threads
 - GitHub issue comment for design iterations
@@ -87,7 +87,7 @@ The canonical paper plan doc (`paper_plan_canonical.md`) was created 2026-05-12 
 
 ### G. Canonical doc maintenance
 
-`paper_research/paper_plan_canonical.md` is the single source-of-truth for paper outline, per-chapter substrate status, design-iteration history, and supersede chains. Lightweight — node-reference style, not duplicated content.
+`archive/plans/paper_plan_canonical.md` is the single source-of-truth for paper outline, per-chapter substrate status, design-iteration history, and supersede chains. Lightweight — node-reference style, not duplicated content.
 
 Update protocol:
 1. **End of every substantive session** — update "Last substantively updated" timestamp + per-chapter status + active-reframes section.
@@ -127,7 +127,7 @@ This is the substrate's STRUCTURAL HONESTY FILTER. The author cannot deceive the
 
 Per Lei 2026-05-12 PM: brief 1-2-sentence mention of surveyed systems in Ch1 with originality+independence emphasis; one Appendix C section for horizontal comparison table, lower priority. Don't spend pages on detailed competitor comparisons, even Kumiho. The paper is about ENGRAM; comparisons serve that, don't dominate it.
 
-The 11-system landscape addendum (`paper_research/agent_memory_landscape_2026-05-12_addendum.md`) and independence appendix (`paper_research/appendix_independent_discovery_2026-05-12.md`) are the substrate; the chapter prose draws sparingly from them.
+The 11-system landscape addendum (`archive/memos/agent_memory_landscape_2026-05-12_addendum.md`) and independence appendix (`archive/drafts/archived_pre_2026_06_17_restructure/appendix_independent_discovery_2026-05-12.md`) are the substrate; the chapter prose draws sparingly from them.
 
 ### L. Cornerstone rule: paper-engram as discipline, not just product
 
@@ -193,25 +193,25 @@ Keep the inline ENGRAM node-id citations (`dv_XXXX`, `ob_XXXX`, …) in chapter 
 
 | Path | What |
 |------|------|
-| `paper_research/paper_plan_canonical.md` | **Read first.** Single source-of-truth for outline + chapter substrate + design iterations. |
-| `paper_research/spine_2026-05-10.md` | Stage-1 logic chains B.1–B.8 (Kahl OCC condition-by-condition + constraint-by-constraint). ~1100 lines. |
-| `paper_research/agent_memory_landscape_2026-05-12_addendum.md` | 11-system first-hand-read sweep synthesis. |
-| `paper_research/appendix_independent_discovery_2026-05-12.md` | Convergent-discovery audit trail (Kumiho timing, lit-search gap). |
-| `paper_research/<system>_first_hand_read_2026-05-12.md` | Per-system primary-source reads (Pinecone Nexus, Anthropic Memory, Letta, Mem0 v3, Zep/Graphiti, TierMem, MemMachine, Memory Survey 2026, SCM, GAM, Kumiho). |
-| `paper_research/kahl_*_first_hand_read_*.md` | Primary-source reads of Kahl's EAA + OCC papers. |
-| `paper_research/source_pdfs/` | PDFs of three most-load-bearing comparators (SCM, GAM, Kumiho). |
-| `paper_research/citations.bib` + `citations.manifest` | Citation infrastructure. |
-| `paper_research/engram_paper_package_design_2026-05-08.md` | v0 generator design (note: SQLite was right from start; the markdown-on-disk drift today was Borges's misinterpretation, corrected via ob_1679). |
+| `archive/plans/paper_plan_canonical.md` | **Read first.** Single source-of-truth for outline + chapter substrate + design iterations. |
+| `archive/drafts/archived_pre_2026_06_17_restructure/spine_2026-05-10.md` | Stage-1 logic chains B.1–B.8 (Kahl OCC condition-by-condition + constraint-by-constraint). ~1100 lines. |
+| `archive/memos/agent_memory_landscape_2026-05-12_addendum.md` | 11-system first-hand-read sweep synthesis. |
+| `archive/drafts/archived_pre_2026_06_17_restructure/appendix_independent_discovery_2026-05-12.md` | Convergent-discovery audit trail (Kumiho timing, lit-search gap). |
+| `bibliography/reading-notes/<system>_first_hand_read_2026-05-12.md` | Per-system primary-source reads (Pinecone Nexus, Anthropic Memory, Letta, Mem0 v3, Zep/Graphiti, TierMem, MemMachine, Memory Survey 2026, SCM, GAM, Kumiho). |
+| `bibliography/reading-notes/kahl_*_first_hand_read_*.md` | Primary-source reads of Kahl's EAA + OCC papers. |
+| `bibliography/sources/` | PDFs of three most-load-bearing comparators (SCM, GAM, Kumiho). |
+| `bibliography/citations.bib` + `bibliography/citations.manifest` | Citation infrastructure. |
+| `archive/memos/engram_paper_package_design_2026-05-08.md` | v0 generator design (note: SQLite was right from start; the markdown-on-disk drift today was Borges's misinterpretation, corrected via ob_1679). |
 
 ### Forward-looking material
 
 | Path | What |
 |------|------|
-| `future-plans/` | **Research backlog for after the paper** (Lei, 2026-08-23). Ideas that surface while discussing the draft, captured so they become the next-step research queue instead of being lost in conversation. Distinct from `paper_research/`, which holds the *backward*-facing inputs the paper rests on and preregistrations for studies run *for* this paper. A document here is not a commitment and does not feed the draft. See `future-plans/README.md` for conventions. |
+| `future-plans/` | **Research backlog for after the paper** (Lei, 2026-08-23). Ideas that surface while discussing the draft, captured so they become the next-step research queue instead of being lost in conversation. Distinct from `bibliography/`, `archive/` and `studies/`, which hold the *backward*-facing inputs the paper rests on and the preregistrations for studies run *for* this paper. A document here is not a commitment and does not feed the draft. See `future-plans/README.md` for conventions. |
 
 ### Archived material (do not treat as draft text)
 
-`paper_research/archived_pre_2026_05_12_outline_restructure/` (engram-paper@b99b094) — 22 files: 11 paper_research/ chapter drafts + entire former paper_draft/ directory (Ch1–Ch9 older structure) + my Ch4 prose draft from 2026-05-12 afternoon (before Lei archived all chapter prose). README inside the archive explains the framing.
+`archive/drafts/archived_pre_2026_05_12_outline_restructure/` (engram-paper@b99b094) — 22 files: 11 former paper_research/ chapter drafts + entire former paper_draft/ directory (Ch1–Ch9 older structure) + my Ch4 prose draft from 2026-05-12 afternoon (before Lei archived all chapter prose). README inside the archive explains the framing.
 
 Reading archived drafts for argument structure is fine; treating them as draft text to revise into the final paper is the wrong move. Author fresh from the dv-chain when the engram-first substrate is ratified.
 

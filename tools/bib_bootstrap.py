@@ -10,8 +10,8 @@ Going forward, new papers should be captured with `tools/bib_add.py <url>`
 which both fetches metadata and writes the bib + ENGRAM evidence atomically.
 
 Output:
-    paper_research/citations.bib       — BibTeX file (paper-ready)
-    paper_research/citations.manifest  — TSV: evidence_id, bibkey, url, title
+    bibliography/citations.bib       — BibTeX file (paper-ready)
+    bibliography/citations.manifest  — TSV: evidence_id, bibkey, url, title
 
 Bibkey scheme:
     arxiv:1234.56789           → arxiv-1234.56789
@@ -33,8 +33,8 @@ from pathlib import Path
 
 DB_PATH = Path.home() / ".engram" / "knowledge.db"
 REPO_ROOT = Path(__file__).resolve().parent.parent
-BIB_OUT = REPO_ROOT / "paper_research" / "citations.bib"
-MANIFEST_OUT = REPO_ROOT / "paper_research" / "citations.manifest"
+BIB_OUT = REPO_ROOT / "bibliography" / "citations.bib"
+MANIFEST_OUT = REPO_ROOT / "bibliography" / "citations.manifest"
 
 
 # Patterns that mark a URL as academic / citation-worthy.

@@ -4,8 +4,8 @@
 Reads three sources of truth and reports drift between them:
 
   1. ENGRAM evidence nodes (~/.engram/knowledge.db, type='evidence')
-  2. paper_research/citations.bib (BibTeX entries)
-  3. paper_research/citations.manifest (TSV: evidence_id  bibkey  url  title)
+  2. bibliography/citations.bib (BibTeX entries)
+  3. bibliography/citations.manifest (TSV: evidence_id  bibkey  url  title)
 
 Hard checks (exit 1 if any fail):
   - Every bibkey in manifest has a matching @xxx{bibkey,...} in bib
@@ -39,8 +39,8 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-BIB_PATH = REPO_ROOT / "paper_research" / "citations.bib"
-MANIFEST_PATH = REPO_ROOT / "paper_research" / "citations.manifest"
+BIB_PATH = REPO_ROOT / "bibliography" / "citations.bib"
+MANIFEST_PATH = REPO_ROOT / "bibliography" / "citations.manifest"
 
 # @xxx{bibkey, ... } — captures bib-entry-type and bibkey
 BIB_ENTRY_RE = re.compile(r"^@(?P<entry_type>\w+)\{(?P<bibkey>[^,\s]+)\s*,", re.M)

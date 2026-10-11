@@ -79,12 +79,12 @@ IMAGE_REF = re.compile(r'^!\[(?P<alt>[^\]]*)\]\((?P<path>[^)]+)\)\s*$', re.M)
 
 def _load_guard() -> ModuleType:
     """Loads the sibling `fresh_reader_guard.py` module by its own file
-    path rather than as a package (`from paper.review.tools.fresh_reader_guard
+    path rather than as a package (`from tools.fresh_reader.fresh_reader_guard
     import ...`) -- the package-style import only resolves when the repo
     root happens to be on `sys.path` (e.g. under pytest, invoked from the
     repo root), and raises `ModuleNotFoundError: No module named 'paper'`
     under the script's actual invocation shapes: `python3
-    paper/review/tools/fresh_reader_run.py` from another cwd, or an import
+    tools/fresh_reader/fresh_reader_run.py` from another cwd, or an import
     by file path with the tools directory on `sys.path` and the repo root
     NOT on it. Measured live (coordinator report, 2026-09-23): the
     package-style import failed exactly this way at the guard-import line
@@ -313,7 +313,7 @@ def split_into_turns(rendered: str) -> list[Turn]:
     return turns
 
 
-# Verbatim from paper/review/fresh-reader-rubric.md (engram-paper#77,
+# Verbatim from reviews/fresh-reader/fresh-reader-rubric.md (engram-paper#77,
 # Lei-approved 2026-09-20, finalized 2026-09-23), not this script's own
 # wording -- an earlier version of both instructions below drifted from
 # the rubric on items 4-6 (per-section) and the end-of-paper Clarity-
@@ -537,7 +537,7 @@ def dry_run_report(ctx: RunContext, model_patch: Path) -> str:
         "else, so this is the only path a figure reaches the reader by -- "
         "each standalone `![alt](path)` markdown line in a turn is "
         "replaced by a text marker plus an inline image block, in "
-        "document order. NOTE: the finalized rubric (paper/review/"
+        "document order. NOTE: the finalized rubric (reviews/fresh-reader/"
         "fresh-reader-rubric.md, engram-paper#77) does not itself score "
         "figures explicitly -- the earlier claim here that 'the rubric "
         "scores figures' was inherited from #55's draft text, not "
@@ -565,7 +565,7 @@ def dry_run_report(ctx: RunContext, model_patch: Path) -> str:
         "assertion Kepler suggested -- decode the actual request/header "
         "after turn 0 and refuse if any tool name is present, turning the "
         "persona instruction into a checked fact -- IS implemented, in "
-        "paper/review/tools/fresh_reader_guard.py (assert_no_tools), "
+        "tools/fresh_reader/fresh_reader_guard.py (assert_no_tools), "
         "wired into run_live() immediately after the turn-0 harness.run() "
         "call returns.",
     ]
@@ -676,7 +676,7 @@ def run_live(
     # executes there, but keeping it out of the module header keeps that
     # invariant visible at the call site rather than relying on control
     # flow elsewhere in the file. Loaded via _load_guard() -- a package-
-    # style `from paper.review.tools.fresh_reader_guard import ...` only
+    # style `from tools.fresh_reader.fresh_reader_guard import ...` only
     # resolves when the repo root happens to be on sys.path (e.g. under
     # pytest); it raises ModuleNotFoundError under this script's actual
     # invocation shapes (see _load_guard's own docstring). The guard
@@ -910,7 +910,7 @@ def main() -> int:
 
     run_dir = args.out_dir / "run"
     date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    out_md = args.paper_repo / "paper" / "review" / f"fresh-reader-{ctx.model}-{date_str}.md"
+    out_md = args.paper_repo / "reviews" / "fresh-reader" / f"fresh-reader-{ctx.model}-{date_str}.md"
     manifest_path = args.out_dir / "manifest.jsonl"
 
     # Both files are written incrementally inside run_live() -- persist

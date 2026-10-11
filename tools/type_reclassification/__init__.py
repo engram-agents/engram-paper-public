@@ -5,7 +5,7 @@ reasoning-arm review + Kepler's countersign on the pre-reg, the
 DERIVATION ARM (pre-reg §2's `reasoning_type` re-classification).
 
 Pre-registration (the contract of record for this package):
-    engram-paper `paper_research/type-reclassification-preregistration-2026-07-08.md`
+    engram-paper `studies/type-reclassification/type-reclassification-preregistration-2026-07-08.md`
     (draft 7 as of the derivation arm's build — draft 1 (Borges) encoded
     dv_1083's normative reframe, ob_2805's multi-graph power requirement,
     Kepler's three riders, and the third blind outcome-labeler pass (DM

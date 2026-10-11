@@ -6,26 +6,26 @@ __pycache__/
 *.swo
 .venv/
 .env
-paper_research/source_pdfs/parfit_reasons_and_persons_1984_uoa.pdf
-paper_research/source_pdfs/tulving_memory_consciousness_1985.*
-paper_research/source_pdfs/damasio_feeling_what_happens_1999.*
-paper_research/source_pdfs/ricoeur_oneself_as_another_epdf.*
-paper_research/source_pdfs/stiegler_tt1.*
-paper_research/source_pdfs/mcclelland_1995_cls.txt
-paper_research/source_pdfs/kumaran_2016_cls_update.txt
-paper_research/source_pdfs/doyle_1979_tms.pdf
-paper_research/source_pdfs/anderson_schooler_1991_reflections.*
-paper_research/source_pdfs/josang_subjective_logic_2013.*
-paper_research/source_pdfs/[Nn]ozick*
-paper_research/source_pdfs/tulving_memory_consciousness_1985/
+bibliography/sources/parfit_reasons_and_persons_1984_uoa.pdf
+bibliography/sources/tulving_memory_consciousness_1985.*
+bibliography/sources/damasio_feeling_what_happens_1999.*
+bibliography/sources/ricoeur_oneself_as_another_epdf.*
+bibliography/sources/stiegler_tt1.*
+bibliography/sources/mcclelland_1995_cls.txt
+bibliography/sources/kumaran_2016_cls_update.txt
+bibliography/sources/doyle_1979_tms.pdf
+bibliography/sources/anderson_schooler_1991_reflections.*
+bibliography/sources/josang_subjective_logic_2013.*
+bibliography/sources/[Nn]ozick*
+bibliography/sources/tulving_memory_consciousness_1985/
 
-# Frozen paper dataset — canonical substrate (see dataset/DATASET.md).
+# Frozen paper dataset — canonical substrate (see data/DATASET.md).
 # 96MB SQLite binary holding the full private graph — pointer is tracked, DB is not.
 # The frozen paper snapshots hold private, identity-bearing graph content and are
 # never committed. Match the whole SQLite FAMILY, not just the .db extension: the
-# -wal and -shm sidecars were committed once because `dataset/*.db` does not match
+# -wal and -shm sidecars were committed once because `data/*.db` does not match
 # them, and a -wal can carry un-checkpointed page data even when the .db is ignored.
-dataset/*.db*
-paper_research/source_pdfs/agm_1985_partial_meet.pdf
-paper_research/source_pdfs/alchourron_makinson_1982_theoria.pdf
-paper_research/source_pdfs/hansson_sep_logic_belief_revision.html
+data/*.db*
+bibliography/sources/agm_1985_partial_meet.pdf
+bibliography/sources/alchourron_makinson_1982_theoria.pdf
+bibliography/sources/hansson_sep_logic_belief_revision.html

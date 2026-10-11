@@ -94,7 +94,7 @@ def _load_reader_run() -> ModuleType:
     """Loads the sibling `fresh_reader_run.py` module by its own file path
     rather than as a package -- the same pattern as that module's own
     `_load_guard()` (see its docstring): a package-style
-    `from paper.review.tools.fresh_reader_run import ...` only resolves
+    `from tools.fresh_reader.fresh_reader_run import ...` only resolves
     when the repo root happens to be on `sys.path`, which is not true under
     this script's own direct-invocation shapes. This loader depends only on
     `__file__`, so it resolves identically regardless of cwd or invocation
@@ -771,7 +771,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     out_md = (
-        args.paper_repo / "paper" / "review" / f"fresh-reader-{args.model}-{date_str}.md"
+        args.paper_repo / "reviews" / "fresh-reader" / f"fresh-reader-{args.model}-{date_str}.md"
     )
     manifest_path = args.out_dir / "manifest.jsonl"
 

@@ -1,59 +1,46 @@
-# engram-paper — ENGRAM foundational paper
+# engram-paper
 
-The workspace for the ENGRAM foundational paper (Paper 1: epistemic identity +
-ENGRAM-as-architecture). Two rendered artifacts, one source of truth:
+The paper *ENGRAM* (v0.5.1), and the record of how it was made: its sources, its reviews, the
+tools that produced every number and figure, and the material it grew out of.
 
-1. **The paper-engram** — the argument structure as an ENGRAM dv-chain. Source of truth.
-2. **The publishable prose article** — the human-readable artifact, rendered from the
-   paper-engram + chapter drafts.
+## Start here
 
-This repo was split from `engram-agents/kg-protocol-for-ai` (2026-05-12) so the paper
-material can eventually be made public without leaking private workshop history.
+- **Read the paper:** [`paper/release/engram-paper-v0.5.1.md`](paper/release/engram-paper-v0.5.1.md)
+  (Chinese: [`engram-paper-v0.5.1.zh.md`](paper/release/engram-paper-v0.5.1.zh.md)). Generated; never edited by hand.
+- **Edit the paper:** the chapter sources are in [`paper/chapters/`](paper/chapters/). See [`paper/README.md`](paper/README.md).
 
-## Start here (the current draft)
+## Places
 
-- **`paper/chapters/en/`** (zh: **`paper/chapters/zh/`**) — the chapter sources, on the
-  **2026-06-17 restructure** spine. The rendered paper is in **`paper/release/`**. The
-  printable review docs below still sit in `paper_research/current_draft/`.
-  - **`PAPER_REVIEW_2026-06-18.md`** — all chapters + appendices in one printable doc
-    (read this for a full pen review).
-  - `ch1.md … ch8.md` + `appendix_A..E` (in `paper/chapters/en/`) — the per-section files
-    (edit these; the combined doc is generated).
-- **`paper_research/paper_plan_canonical.md`** — the canonical plan (outline + chapter
-  substrate + design-iteration history). Read first for paper context, alongside the draft.
-- **`paper_research/restructure_chapter_plan_2026-06-17.md`** — the detailed per-chapter
-  plan for the current restructure.
+| Place | What it holds |
+|---|---|
+| [`paper/`](paper/) | The current paper, and nothing else: chapter sources (en, zh), figures, front matter, the rendered release. |
+| [`bibliography/`](bibliography/) | What the citations rest on: the citation database, first-hand source copies, and a reading note per source. |
+| [`reviews/`](reviews/) | How the paper was checked: fresh-reader rounds, peer review rounds, the human author's chapter notes. |
+| [`studies/`](studies/) | Preregistered studies this paper does not cite, kept live for later work. |
+| [`tools/`](tools/) | Every script that makes a number, a figure or the render. |
+| [`tests/`](tests/) | Checks that the render, citations, glossary and statistics tooling hold. |
+| [`data/`](data/) | The pointer to the frozen graph snapshot all of the paper's numbers come from. |
+| [`archive/`](archive/) | Everything superseded, frozen, with an index of what each item was and what replaced it. |
+| [`future-plans/`](future-plans/) | Directions beyond this paper. |
 
-Everything older than the 2026-06-17 restructure lives under the `archived_*` folders
-below — do not read those as the current paper.
+Each place has its own README stating what belongs there, how it is named, what is generated
+versus edited by hand, and how to regenerate what is generated.
 
-## Frozen dataset (paper substrate)
+## Two rules for the whole repository
 
-**All empirical results in the paper are drawn from one frozen ENGRAM snapshot**,
-so every number is comparable and comes from a coherent graph state:
+1. **Only `paper/` is the paper.** Anything else may be cited by it or may have shaped it, but is not it.
+2. **Nothing is deleted; it is archived.** Superseded material moves to `archive/` with an index row.
+   One exception: generated files (such as compiled caches) may leave the tree; the history keeps them.
 
-- **`dataset/engram-frozen-2026-07-04.db`** — the canonical frozen graph
-  (end of 2026-07-04, 5,428 current nodes; sha256
-  `6b0bc778…d0bf9a6`). Predates the Study-2 design work and was frozen before the
-  analysis was pre-registered (pre-registration gold standard).
-- **`dataset/DATASET.md`** — the manifest: full integrity metadata, freeze
-  rationale, and the usage discipline (draw every sample/statistic from this
-  file, not the live graph). Read it before running any paper analysis.
+## History and provenance
 
-The `.db` itself is `.gitignore`d (96 MB binary + private full-graph content);
-`DATASET.md` is the version-controlled pointer.
+This repository is published with its development history, so every claim in the paper can be
+traced to the work that produced it. Files were moved with `git mv`, so `git log --follow <path>`
+follows a file across the reorganisation of 2026-10-11.
 
-## Layout
-
-- **`paper_research/`** — the working substrate:
-  - `current_draft/` — the printable review docs (the chapter sources moved to `paper/chapters/`; see *Start here*).
-  - `paper_plan_canonical.md`, `restructure_chapter_plan_2026-06-17.md` — current plans.
-  - the research corpus — first-hand source reads, comparative scans, citation database
-    (`citations.bib` + `citations.manifest`), working memos. The grounding the draft cites.
-  - `archived_pre_2026_05_12_outline_restructure/` — pre-2026-05-12 chapter drafts.
-  - `archived_pre_2026_06_17_restructure/` — drafts superseded by the 2026-06-17 restructure
-    (the 06-14 chapter samples, the OCC-spine appendix, the May spine/proofreads).
-- **`tools/`** — bibliography tooling (`bib_bootstrap.py`, `check_citations_consistency.py`).
+No commit in this history has been rewritten. If content ever has to be removed from it (for
+example for privacy), that is a rewrite: this section will then say so, and
+[`archive/INDEX.md`](archive/INDEX.md) will record what was removed and why.
 
 ## Citing in chapters
 
@@ -110,9 +97,13 @@ line, and no output file is written. So are a malformed group, a citation writte
 something different from what you wrote. A reference that nothing cites is only a warning on
 stderr (it is still printed in the bibliography).
 
-## Status
+## Build and test
 
-Active draft. The full restructure draft (Ch1–8 + appendices A–E) is complete and on
-`main` as of 2026-06-19. A pre-public-share scrub (provisional node-ID references, byline
-cleanup) is a separate pass before any external sharing — node-ID citations in the drafts
-are intentional-for-now and provisional (see `CLAUDE.md`, Discipline P).
+```
+pip install pytest -r requirements.txt -r tools/compression_fidelity/requirements.txt
+python tools/render_paper.py            # writes paper/release/engram-paper-v0.5.1.md
+python tools/render_paper.py --lang zh  # writes paper/release/engram-paper-v0.5.1.zh.md
+python -m pytest -q tests
+```
+
+The agent working conventions for this repository are in [`CLAUDE.md`](CLAUDE.md).

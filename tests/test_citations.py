@@ -814,6 +814,26 @@ def test_s5_readme_documents_citing_in_chapters():
         assert needle in sect, needle
 
 
+def test_s5_readme_citing_section_markers_balanced():
+    # test_s5 checks presence, not integrity: an edit that dropped the opening line of the
+    # section's `*( ... )*` parenthetical left a dangling `)*` and test_s5 stayed green.
+    import re
+
+    readme = (REPO / "README.md").read_text(encoding="utf-8")
+    sect = readme.split("## Citing in chapters", 1)[1].split("\n## ", 1)[0]
+    opens = sect.count("*(")
+    closes = sect.count(")*")
+    assert opens == closes, (
+        f"unbalanced parenthetical markers: {opens} '*(' vs {closes} ')*' "
+        f"({'closing )* without a matching *(' if closes > opens else 'opening *( never closed by )*'})"
+    )
+    depth = 0
+    for m in re.finditer(r"\*\(|\)\*", sect):
+        depth += 1 if m.group() == "*(" else -1
+        assert depth >= 0, f"')*' at section offset {m.start()} has no earlier unmatched '*('"
+    assert depth == 0, f"{depth} '*(' left unclosed at end of section"
+
+
 @pytest.mark.parametrize("name", ["bibliography.md", "bibliography.zh.md"])
 def test_n2_references_token_is_on_its_own_line_in_the_templates(name):
     lines = (REPO / "paper" / name).read_text(encoding="utf-8").split("\n")

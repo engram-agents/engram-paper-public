@@ -60,8 +60,8 @@ def lcc_share(nodes, edges):
     return best, comps, iso
 
 def default_db():
-    c = sorted(glob.glob(os.path.join(REPO, "dataset", "engram-paper-ssot-*.db")))
-    if not c: sys.exit("no SSoT snapshot in dataset/ — run tools/freeze_paper_snapshot.py")
+    c = sorted(glob.glob(os.path.join(REPO, "data", "engram-paper-ssot-*.db")))
+    if not c: sys.exit("no SSoT snapshot in data/ — run tools/freeze_paper_snapshot.py")
     return c[-1]
 
 def trend(db, step_days):

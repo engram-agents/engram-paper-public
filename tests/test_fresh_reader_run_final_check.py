@@ -1,4 +1,4 @@
-"""Contract tests for `paper.review.tools.fresh_reader_run._final_no_tools_check`
+"""Contract tests for `tools.fresh_reader.fresh_reader_run._final_no_tools_check`
 -- the end-of-session no-tools re-check added in the colleague-pass fold
 round on spec-no-tools-guard.md (after commit 6e81867).
 
@@ -20,9 +20,9 @@ from pathlib import Path
 
 import pytest
 
-from paper.review.tools.fresh_reader_run import _final_no_tools_check
+from tools.fresh_reader.fresh_reader_run import _final_no_tools_check
 
-# Deliberately NOT `from paper.review.tools.fresh_reader_guard import
+# Deliberately NOT `from tools.fresh_reader.fresh_reader_guard import
 # GuardError`, and NOT even a single shared `_load_guard().GuardError`
 # captured once at module level: `_load_guard()` is not memoized -- every
 # call to it (including internally, once per `_final_no_tools_check` call)

@@ -7,7 +7,7 @@ stdout beside the file it writes, so a reader can check the plot against the pro
 without opening the image.
 
 Usage:
-    python tools/make_figures.py --db dataset/<snapshot>.db --out paper/figures
+    python tools/make_figures.py --db data/<snapshot>.db --out paper/figures
 """
 
 from __future__ import annotations
@@ -310,7 +310,7 @@ def main() -> int:
     a = ap.parse_args()
     db = _ssot.resolve_db(a.db, allow_unpinned=a.allow_unpinned)
     pin_note = ("pin NOT verified (--allow-unpinned)" if a.allow_unpinned
-                else "sha256 pin verified against dataset/DATASET.md")
+                else "sha256 pin verified against data/DATASET.md")
 
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)

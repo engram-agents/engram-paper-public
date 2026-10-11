@@ -1,9 +1,9 @@
-"""Contract tests for `paper.review.tools.fresh_reader_run.turn_content_blocks`
+"""Contract tests for `tools.fresh_reader.fresh_reader_run.turn_content_blocks`
 (+ its wiring into `run_live`/`dry_run_report`/`RunManifestEntry`), written
 BEFORE the implementation per spec-figures.md — expected to fail with an
 ImportError/AttributeError until the function/fields exist.
 
-Uses the `tests/__init__.py` package so `paper.review.tools.fresh_reader_run`
+Uses the `tests/__init__.py` package so `tools.fresh_reader.fresh_reader_run`
 imports as an absolute package regardless of pytest's invocation directory,
 matching the existing `tests/test_fresh_reader_guard.py` /
 `tests/test_render_apparatus.py` convention.
@@ -18,7 +18,7 @@ from pathlib import Path
 
 import pytest
 
-from paper.review.tools.fresh_reader_run import (
+from tools.fresh_reader.fresh_reader_run import (
     IMAGE_REF,
     RunContext,
     RunManifestEntry,
@@ -312,7 +312,7 @@ def test_run_live_sends_content_blocks_not_bare_string(tmp_path, monkeypatch):
     """figures_root is computed INSIDE run_live() as ctx.paper_repo / "paper"
     (spec item 7) -- not passed as a parameter. So the PNG must live under
     <ctx.paper_repo>/paper/figures/, matching the real repo layout."""
-    import paper.review.tools.fresh_reader_run as run_module
+    import tools.fresh_reader.fresh_reader_run as run_module
 
     paper_repo = tmp_path / "paper_repo"
     _write_png(paper_repo, "paper/figures/a.png")
@@ -364,7 +364,7 @@ def test_run_live_sends_content_blocks_not_bare_string(tmp_path, monkeypatch):
 
 
 def test_run_live_header_figure_count_zero_when_no_figures(tmp_path, monkeypatch):
-    import paper.review.tools.fresh_reader_run as run_module
+    import tools.fresh_reader.fresh_reader_run as run_module
 
     paper_repo = tmp_path / "paper_repo"
     (paper_repo / "paper").mkdir(parents=True, exist_ok=True)
@@ -434,7 +434,7 @@ def test_run_live_preflights_all_turns_before_any_paid_call(tmp_path, monkeypatc
     raise FileNotFoundError before harness.start() and before any
     harness.run() -- the whole run refuses up front, not partway through
     a live session with earlier turns already billed."""
-    import paper.review.tools.fresh_reader_run as run_module
+    import tools.fresh_reader.fresh_reader_run as run_module
 
     paper_repo = tmp_path / "paper_repo"
     (paper_repo / "paper").mkdir(parents=True, exist_ok=True)

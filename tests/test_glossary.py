@@ -1513,7 +1513,7 @@ def test_strip_html_comments_is_wider_than_the_leading_only_helper():
 # default is what picks the language there -- and the book it is compared against
 # is `DEFAULT_OUT["en"]`, the book that default is supposed to produce. The
 # default is load-bearing outside the tests: the fresh-reader harness under
-# `paper/review/` renders the paper with `--out` alone, so a default that drifted
+# `tools/fresh_reader/` renders the paper with `--out` alone, so a default that drifted
 # to `zh` would silently render the zh sources there with nothing to catch it.
 _PARITY_CASES = [
     pytest.param("en", ["--lang", "en"], id="en"),

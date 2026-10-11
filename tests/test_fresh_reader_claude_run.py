@@ -1,9 +1,9 @@
-"""Contract tests for `paper.review.tools.fresh_reader_claude_run`, written
+"""Contract tests for `tools.fresh_reader.fresh_reader_claude_run`, written
 BEFORE the implementation per spec-fresh-reader-claude-runner.md §7 —
 expected to fail with an ImportError until the module exists.
 
 Uses the `tests/__init__.py` package so
-`paper.review.tools.fresh_reader_claude_run` imports as an absolute package
+`tools.fresh_reader.fresh_reader_claude_run` imports as an absolute package
 regardless of pytest's invocation directory, matching the existing
 `tests/test_fresh_reader_guard.py` / `tests/test_fresh_reader_figures.py`
 convention. All tests here are unit tests on fixtures: no subprocess is
@@ -20,7 +20,7 @@ from pathlib import Path
 
 import pytest
 
-from paper.review.tools.fresh_reader_claude_run import (
+from tools.fresh_reader.fresh_reader_claude_run import (
     LEAK_STRINGS,
     SYSTEM_PROMPT,
     JailViolation,
@@ -33,10 +33,10 @@ from paper.review.tools.fresh_reader_claude_run import (
     find_transcript,
     to_claude_blocks,
 )
-import paper.review.tools.fresh_reader_claude_run as claude_run
+import tools.fresh_reader.fresh_reader_claude_run as claude_run
 
 PERSONA_FILE = (
-    Path(__file__).parent.parent / "paper" / "review" / "fresh-reader-persona.md"
+    Path(__file__).parent.parent / "reviews" / "fresh-reader" / "fresh-reader-persona.md"
 )
 
 # A real 1x1 PNG so the dry-run test exercises real bytes, not a placeholder
@@ -857,7 +857,7 @@ def test_leak_strings_no_longer_carries_agent_kepler():
 def test_assert_leak_strings_absent_regression_against_real_persona_file():
     """The regression test for the incident (spec §9): the LIVE
     LEAK_STRINGS constant, checked against the REAL
-    paper/review/fresh-reader-persona.md file in this repo -- not a
+    reviews/fresh-reader/fresh-reader-persona.md file in this repo -- not a
     stand-in fixture. This is exactly what aborted the first live smoke
     (the OLD list matched the paper's own text); the corrected list must
     not."""
@@ -900,7 +900,7 @@ def test_check_turn_output_still_works_without_returncode_or_stderr():
 
 
 def test_reuses_render_fresh_and_friends_from_fresh_reader_run():
-    from paper.review.tools import fresh_reader_run as dsh_run
+    from tools.fresh_reader import fresh_reader_run as dsh_run
 
     # Same function objects' behaviour class -- not asserting identity
     # (our module loads fresh_reader_run.py via a SEPARATE file-path import,
