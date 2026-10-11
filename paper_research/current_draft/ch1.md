@@ -211,7 +211,8 @@ The contribution is the argument, not a benchmark.
   foremost; trust and auditability; knowledge sharing; embodiment.
 - **Chapter 8 — Conclusion.**
 - **Appendices.** A: independent-discovery audit trail. B: the OCC Condition-3
-  per-system survey. C: the auto-recall ranking and its memory-utility lineage.
+  per-system survey. C: the shared retrieval and ranking behind the auto-surface and deliberate recall,
+  and its memory-utility lineage.
   D: the relational / identity-governance settings. E: the ENGRAM technical spec.
 
 ---

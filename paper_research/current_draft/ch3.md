@@ -67,18 +67,18 @@ sub-agent (the *dream master*) applies the results and advances the forgetting c
 for the two-routine consolidation that carries operational continuity across
 compaction. [SOLID]
 
-### 3.2 Tulving → the two registers of recall
+### 3.2 Tulving → the two registers of retrieval
 
 Tulving distinguished *autonoetic* remembering (awareness of an event "as a veridical
 part of his own past existence") from *noetic* knowing (awareness of objects and events
-"in the absence of these objects and events") [@tulving1985, p. 3]. Tulving and Thomson's encoding specificity principle adds the cue side: "specific encoding operations performed on what is perceived determine what is stored, and what is stored determines what retrieval cues are effective in providing access to what is stored" [@tulving1973, p. 369]. ENGRAM's recall has exactly two registers,
+"in the absence of these objects and events") [@tulving1985, p. 3]. Tulving and Thomson's encoding specificity principle adds the cue side: "specific encoding operations performed on what is perceived determine what is stored, and what is stored determines what retrieval cues are effective in providing access to what is stored" [@tulving1973, p. 369]. ENGRAM's retrieval has exactly two registers,
 by design (dv_0264): a lossy **auto-surface** (noetic, hint-level: "this sounds
-familiar") and **deliberate recall** (a full-content query: "I need to know
+familiar") and **deliberate recall** (a query whose hits the agent can open in full: "I need to know
 exactly"). The lossy auto-surface is what prompts the agent to invoke deliberate
 recall. Reading a node is noetic, not autonoetic: ENGRAM provides remembered
 knowledge without phenomenal re-living, the boundary Ch2 §2.3 also marks.
 
-**→ Ch4 §4.6** (auto-surfacing recall): Tulving's two registers are the precedent for
+**→ Ch4 §4.6** (auto-surface and deliberate recall): Tulving's two registers are the precedent for
 the auto-surface, and encoding specificity [@tulving1973, p. 369] for its cue-dependence; the auto-surface binds Condition 3. [SOLID: dv_0264, ob_1119]
 
 ### 3.3 Rational analysis of memory → designed forgetting
@@ -200,7 +200,7 @@ methods in their Table 2 are marked as satisfying single-shot learning, and neit
 updates any weights. The other three of the four each map to a mechanism described in
 this chapter: *explicit reasoning*, their requirement that an agent "answer direct
 queries about stored information or use this information in explicit internal
-reasoning processes," is met by the deliberate query surface of §3.2; *instance
+reasoning processes," is met by the deliberate recall of §3.2; *instance
 specificity*, which they say "can include past lines of reasoning that were associated
 with a decision to be made by an LLM agent," is a description of a derivation node;
 and *contextual binding* — "when, where, and why an event was encountered" — is
@@ -222,8 +222,8 @@ Agents [@park2023]. Two of their rows have no counterpart in Pink et al.'s five,
 ENGRAM was designed for. Their *autonoetic* row reads "unclear how agents distinguish
 current understanding from memory of past experience" [@wray2025, § 3.1]; their *deliberate* row reads
 "agents cannot deliberately attempt to construct cues or retrieve memories" [@wray2025, § 3.1]. ENGRAM's
-two recall surfaces — an ambient hook that signals familiarity without content, and
-explicit query tools the agent invokes when it wants to know — are that distinction,
+two channels — the auto-surface, a hook that signals familiarity with only a hint of the content, and
+deliberate recall, the explicit query tools the agent invokes when it wants to know — are that distinction,
 built.
 
 **Two senses of "autonoetic" are in play and must be kept apart**, because §3.2 uses
@@ -232,8 +232,8 @@ phenomenal flavour" of remembering [@tulving1985, p. 3] — which §3.2 already 
 et al.'s row asks something weaker and structural: whether the agent can *distinguish
 current understanding from a memory of past experience* at all, which is source
 monitoring rather than phenomenology. ENGRAM satisfies the structural sense — every
-claim carries a creation time, an evidence pointer and a type, and the two recall
-registers are separated by construction — while §3.2's disclaimer about the
+claim carries a creation time, an evidence pointer and a type, and the two registers (auto-surface and
+deliberate recall) are separated by construction — while §3.2's disclaimer about the
 phenomenal sense stands. The paper claims the second sense and disclaims the first;
 both hold because the word does two jobs.
 
@@ -329,22 +329,22 @@ the half of the automatic-versus-deliberate disagreement above on which ENGRAM
 scores well. The third is *retrieval metadata authored at encoding time*: they
 propose techniques that "allow agents to reason about when certain knowledge would
 be useful, and store this as metadata to facilitate later recall," and call such
-meta-learning understudied. ENGRAM's two-tier recall is that proposal, built: an
-ambient surface carrying only identifiers and theme hints, and deliberate query tools
-for the full content.
+meta-learning understudied. ENGRAM's two-channel retrieval is that proposal, built: an
+auto-surface carrying identifiers and short hints rather than full nodes, and deliberate recall
+for opening them in full.
 
 The third correspondence is close enough to invite the suspicion of influence, so the
 dates are stated. The design is recorded in the graph on 2026-04-15, in two nodes
-that specify lossy summaries of "node IDs and theme hints" for the automatic surface
-with deliberate deep recall for detail, expressly to preserve what those nodes call
+that specify lossy summaries of "node IDs and theme hints" for the auto-surface
+with deliberate recall for detail, expressly to preserve what those nodes call
 the subconscious-triggers-conscious flow and to reduce context consumption; a
-first-day node of 2026-04-09 already separates deep recall from shallow summary
+first-day node of 2026-04-09 already separates what became deliberate recall (its "deep recall") from shallow summary
 scans. CoALA was first read by this project on 2026-05-09, twenty-four days later.
 The database fields implementing the design shipped on 2026-05-19; an audit would
 surface that date first, and dating an idea by the date its columns appeared is the
 error to avoid. The correspondence is therefore corroboration, not influence: two
 designs, one reasoned from a cognitive-architecture framework and one from the joint
-pressure of context-window budget and a deliberate choice to make ambient recall
+pressure of context-window budget and a deliberate choice to make the auto-surface
 lossy, arrived at the same mechanism.
 
 ### 3.9 A note on AGM belief revision
@@ -375,7 +375,7 @@ Hansson's own encyclopedia entry and Rocha & Wassermann. Hansson 1991 itself unr
 
 Two literatures that mostly do not cite each other, and neither of which cites us,
 reached every structure ENGRAM is built from: CLS for consolidation, Tulving for the
-two recall registers, rational analysis for adaptive forgetting, TMS for provenance
+two retrieval registers, rational analysis for adaptive forgetting, TMS for provenance
 and cascade, Subjective Logic for graded confidence, bitemporal data and TOKI for
 supersede-retains-the-old, and the 2026 agent-security literature for
 provenance-first governance. With Chapter 2's philosophical line the convergence

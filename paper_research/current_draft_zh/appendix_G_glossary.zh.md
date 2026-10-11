@@ -78,6 +78,20 @@
                               The pair is load-bearing (ch3 grounds the two recall
                               tiers on it), so a split rendering is a real defect,
                               not a style difference.
+    auto-surface / deliberate recall  ->  自动浮现 / 主动回忆   (Lei, 2026-10-10; ch3 §3.2,
+                              ch4 §4.6-§4.7, appendix C, this glossary). auto-surface = the AUTOMATIC
+                              per-turn channel (lossy, hint-level digest, refreshes no recall);
+                              deliberate recall = the AGENT-INVOKED ranked query (summaries for its top hits; the
+                              agent opens nodes in full; refreshes recall on all returned or opened). 检索 = the machinery both share (`_search_nodes`), and the word
+                              for both channels together. RETIRED renderings, replaced everywhere:
+                              自动回忆 · 自动浮现式回忆 · 常驻回忆（面）· 常驻浮现面 · 浮现面 · 回忆面 ·
+                              两档回忆／双层回忆（now 两通道检索）· 主动查询面（now 主动回忆）. Recorded
+                              as the failure it was: THIS LEDGER HAD NO ENTRY, so the paper drifted
+                              between several renderings of two terms — the same shape as the noetic /
+                              autonoetic entry above. COLLISION GUARD: Locke's "active recall" (ch2
+                              §2.2) is 活跃回忆, never 主动回忆, now that 主动回忆 is a term of art.
+                              Human / cognitive-science "recall" (Tulving, retention, Locke) stays 回忆;
+                              the compounds 回忆重要性 · 回忆轮次 · 回忆刷新 stay.
     type / token         ->  类型／个例（type/token）  (ch4 §4.11; Peirce).
 
   OPEN — consolidation, NOT yet resolved paper-wide. Two renderings are live and
@@ -177,7 +191,7 @@
 
 **仲裁（arbitration）** — *义项：*（1）在一个统一的审议架构内，撤回／取代级联的结构性传播（§1.3；附录 E §E.1）；（2）智能体对一个待决节点的自行裁定，交由智能体、而非基底来决定（§4.4）；（3）Kahl 条件 3 所要求的那种能力，在附录 B 中按竞争者逐一评分（§B.0）。除另有说明，取义项（1）。
 
-**自动浮现（auto-surface）** — 回忆中"这听着耳熟"的那一档：每轮自动浮现相关的主张，有损，且只到提示级别；当确有东西可取时，它促使智能体转入*主动回忆*（一次受来源监控、返回完整内容的查询）。（界定于 §4.6。）
+**自动浮现（auto-surface）** — 检索中自动的、每轮的通道：钩子把与当前语境相关的主张以有损的提示级摘要浮现出来，不刷新任何回忆。它与*主动回忆*共用同一条检索与排序流水线（§4.7；附录 C）。（界定于 §4.6。）
 
 **公理（axiom）** — 一个终端的、被声明为根基的承诺，按类型置信度为 1.0；承载主张。（界定于附录 E §E.2。）
 
@@ -204,6 +218,8 @@
 **现行（节点）（current (node)）** — 未被撤回或取代的节点：仍然有效，且可作为前提（与"此后被取代"的前提相对，§6.4）。
 
 **定义（definition）** — 一个术语锚点（`df_*`），被使用该术语的主张所引用，而非据以推导；不承载主张。（界定于附录 E §E.2。）
+
+**主动回忆（deliberate recall）** — 由智能体发起的通道：一次有排序的查询，为排名靠前的命中返回摘要，之后智能体把所需节点完整打开。它返回或打开的每个节点都刷新回忆。它与*自动浮现*共用同一条检索与排序流水线（§4.7；附录 C）。（界定于 §4.6。）
 
 **推导（derivation）** — 一次通过 `derives_from` 引用其前提、并声明某种推理类型的推断；置信度是算出来的，不是断言的；承载主张。（界定于附录 E §E.2。）
 
@@ -269,7 +285,7 @@
 
 **陈旧（stale）** — 就节点而言：被睡眠阶段的做梦扫描器标记待查，与矛盾、教训候选并列。（§3.1。）
 
-**基底（substrate）** — *义项：*（1）整个 ENGRAM 系统（标题；§1.2）；（2）历史树那不可折断的结构，与从中提取的可查询回忆相区别（§2.3）；（3）智能体所运行的、经语言训练的模型（§3.0）；（4）数据库，可在物理上与工作上下文分离（§5.7）。除另有说明，取义项（1）。
+**基底（substrate）** — *义项：*（1）整个 ENGRAM 系统（标题；§1.2）；（2）历史树那不可折断的结构，与从中提取的可查询集相区别（§2.3）；（3）智能体所运行的、经语言训练的模型（§3.0）；（4）数据库，可在物理上与工作上下文分离（§5.7）。除另有说明，取义项（1）。
 
 **取代（supersede）** — 把一项主张作为一次认知演化收回："我改主意了。"级联在撤回与取代上一同触发。（界定于 §4.4。）
 
@@ -281,7 +297,7 @@
 
 **信任层级（trust tier）** — 对某个对手方信任程度的分级度量，携带于人物节点之上；是"诚实与审慎正交"的操作性手臂。（界定于附录 D §D.3。）
 
-**轮次（turn）** — 一次提示／回应交换；自动浮现赖以触发的粒度（"每轮"），回忆的使用也在这上面计分（"回忆轮次"）。（§4.6；附录 C §C.2。）
+**轮次（turn）** — 一次提示／回应交换；自动浮现赖以触发的粒度（"每轮"），主动回忆也在这上面计分（"回忆轮次"）。（§4.6；附录 C §C.2。）
 
 **孪生研究（twin study）** — 那项被推迟的对照实验：对一个智能体做裂变克隆，让两者跑同一组固定提示，测量随克隆分化而变化的回应相似度。（界定于 §5.8。）
 

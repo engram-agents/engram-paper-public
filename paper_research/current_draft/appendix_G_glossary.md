@@ -10,10 +10,10 @@ agent's own adjudication of a pending node, left to the agent, not the substrate
 (§4.4); (3) the capacity Kahl's Condition 3 asks for, scored per-competitor in
 Appendix B (§B.0). Sense (1) unless stated.
 
-**auto-surface** — the "this sounds familiar" register of recall: an automatic,
-per-turn surfacing of relevant claims, lossy and hint-level, that prompts *deliberate
-recall* (a source-monitored, full-content query) when there is something to fetch.
-(Defined §4.6.)
+**auto-surface** — the automatic, per-turn channel of retrieval: a hook surfaces
+claims relevant to the current context as a lossy, hint-level digest, and refreshes
+no recall. It shares one retrieval and ranking pipeline with *deliberate recall*
+(§4.7; Appendix C). (Defined §4.6.)
 
 **axiom** — a terminal, declared-fundamental commitment, confidence 1.0 by type;
 claim-bearing. (Defined Appendix E §E.2.)
@@ -65,6 +65,11 @@ superseded," §6.4).
 
 **definition** — a term anchor (`df_*`), cited rather than derived-from by claims
 using the term; non-claim-bearing. (Defined Appendix E §E.2.)
+
+**deliberate recall** — the channel the agent invokes: a ranked query that returns
+summaries for its top hits, after which the agent opens the nodes it needs in full.
+Every node it returns or opens has its recall refreshed. It shares one retrieval and
+ranking pipeline with the *auto-surface* (§4.7; Appendix C). (Defined §4.6.)
 
 **derivation** — an inference citing its premises by `derives_from`, declaring a
 reasoning type; confidence computed, not asserted; claim-bearing. (Defined Appendix
@@ -195,7 +200,7 @@ backup. (Defined front matter; Data availability.)
 contradictions and lesson candidates. (§3.1.)
 
 **substrate** — *Senses:* (1) the whole ENGRAM system (title; §1.2); (2) the
-history-tree's unbreakable structure, distinct from the queryable recall drawn from
+history-tree's unbreakable structure, distinct from the queryable set drawn from
 it (§2.3); (3) the language-trained model an agent runs on (§3.0); (4) the
 database, physically separable from the working context (§5.7). Sense (1) unless
 stated.
@@ -223,7 +228,7 @@ node; the operational arm of honesty-orthogonal-to-discretion. (Defined Appendix
 §D.3.)
 
 **turn** — one prompt/response exchange; the
-granularity at which auto-surfacing fires ("per-turn") and recall usage is
+granularity at which auto-surfacing fires ("per-turn") and deliberate recall is
 credited ("recall-turn"). (§4.6; Appendix C §C.2.)
 
 **twin study** — the deferred controlled experiment: fission-clone an agent, run

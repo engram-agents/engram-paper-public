@@ -127,7 +127,7 @@ with a concrete, measurable mechanism rather than a philosophical placeholder
 
 The mechanism is ordinary retrieval, not anything spooky. An accumulated node
 changes the agent's behavior **only by entering the context window** — through
-auto-recall (semantic match), a tripwire (pattern match), focus-list
+the auto-surface (semantic match), deliberate recall (a query the agent runs), a tripwire (pattern match), focus-list
 carry-through (§4.8), or the warm-briefing (which names nodes by id, so the
 relational context it carries arrives with pointers back into the graph). The
 base model is stateless with respect to the graph; there is no
@@ -209,7 +209,7 @@ nodes through it, and each can differ between twins:
   derivations, and corrections; new nodes surface on prompts that touch
   post-fission topics. The obvious path.
 - **Recall-refresh on shared nodes** — the subtler one. Even nodes *both* agents
-  hold identically accumulate *different usage histories*: each recall restamps a
+  hold identically accumulate *different usage histories*: each deliberate recall restamps a
   node's importance, so which slice of the shared ancestry is "warm" diverges
   between the twins. The same prompt can then surface different *shared* nodes in
   different priority — divergence **without a single new node** (dv_0621; backed

@@ -62,7 +62,7 @@ operates*, and the substrate treats each according to its kind.
 
 **Why the typing matters.** Because each kind is a distinct node type, the substrate
 can enforce kind-appropriate behavior: axioms do not take premise-propagated
-confidence, lessons fire as tripwires at recall, and cornerstones and goals anchor the
+confidence, lessons fire as tripwires when their situation recurs, and cornerstones and goals anchor the
 cross-compaction surfaces. A flat "memory of preferences" cannot do this, because it
 cannot distinguish a terminal commitment from a revisable habit or a fireable rule.
 This is the §4.9 claim in catalog form. It is also the structural home of the agent's

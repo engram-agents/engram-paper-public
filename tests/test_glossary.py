@@ -7,9 +7,11 @@ T1 — every glossary term occurs at least once in the rendered body OUTSIDE
      Appendix G (case-insensitive, word-boundary).
 T2 — every section pointer in G resolves to a heading that exists in the render.
 T3 — G carries zero node IDs (reuses tests/test_render_strip_ids.py's _ID_SCAN).
-T4 — G is <= 1800 words in English, <= 1800 x `ZH_HAN_PER_EN_WORD` Han
-     characters in Chinese (zh is not space-delimited, so a whitespace-token
-     budget measures nothing there), and every required term has an entry (or is
+T4 — G's entries average <= `GLOSSARY_AVG_WORDS_PER_ENTRY` words and none exceeds
+     `GLOSSARY_MAX_WORDS_PER_ENTRY` (zh: Han characters, both x `ZH_HAN_PER_EN_WORD`;
+     zh is not space-delimited, so a whitespace-token count measures nothing
+     there); the total therefore scales with the number of terms (Lei,
+     2026-10-10). And every required term has an entry (or is
      in the documented-absent set, for the two required terms that do not occur
      anywhere in the current draft body at all).
 T5 — the Ch1 pointer sentence is present exactly once in the render.
@@ -837,57 +839,154 @@ def test_glossary_body_is_a_noop_without_a_leading_comment():
     assert _glossary_body(text) == text
 
 
-def test_t4_word_budget_and_required_terms_present(lang: str):
+# ── T4 (length): per-entry limits that scale with the number of terms ─────────
+#
+# Lei, 2026-10-10: the glossary's total length limit "should naturally scale with
+# the actual number of terms in it. The real meaningful cap should be a per-term
+# average or something, so we avoid over complex and verbal definitions." The
+# fixed 1800-word total is therefore gone; the limits are
+# `rp.GLOSSARY_AVG_WORDS_PER_ENTRY` (mean per entry) and
+# `rp.GLOSSARY_MAX_WORDS_PER_ENTRY` (worst single entry), zh scaled by
+# `rp.ZH_HAN_PER_EN_WORD`. An ENTRY is what `_ENTRY_RE` finds (a line starting
+# with a bold headword) through to the next one; text before the first entry
+# (the intro) is not counted, and neither is the zh translator header
+# (`_glossary_body`).
+
+
+def _entry_size(text: str, lang: str) -> int:
+    return _han_char_count(text) if lang == "zh" else len(text.split())
+
+
+def _entry_stats(
+    text: str, lang: str
+) -> tuple[int, float, int, list[tuple[str, int]]]:
+    """(n_entries, mean size, max size, [(headword, size) for every entry]) over
+    the glossary ENTRIES of `text`: intro and zh translator header excluded."""
+    body = _glossary_body(text) if lang == "zh" else text
+    ms = list(_ENTRY_RE.finditer(body))
+    sizes = []
+    for i, m in enumerate(ms):
+        end = ms[i + 1].start() if i + 1 < len(ms) else len(body)
+        sizes.append((m.group(1), _entry_size(body[m.start():end], lang)))
+    if not sizes:
+        return 0, 0.0, 0, []
+    vals = [n for _, n in sizes]
+    return len(vals), sum(vals) / len(vals), max(vals), sizes
+
+
+def _entry_limit_violations(text: str, lang: str) -> list[str]:
+    """Human-readable failures of the AVG and MAX limits; empty = within both."""
+    scale = rp.ZH_HAN_PER_EN_WORD if lang == "zh" else 1.0
+    unit = "Han characters" if lang == "zh" else "words"
+    avg_cap = rp.GLOSSARY_AVG_WORDS_PER_ENTRY * scale
+    max_cap = rp.GLOSSARY_MAX_WORDS_PER_ENTRY * scale
+    n, mean, _mx, sizes = _entry_stats(text, lang)
+    assert n, "no glossary entries found"
+    out = []
+    if mean > avg_cap:
+        out.append(
+            f"AVG: mean {mean:.1f} {unit} per entry over {n} entries exceeds the "
+            f"cap {avg_cap:.1f}"
+        )
+    for head, size in sizes:
+        if size > max_cap:
+            out.append(
+                f"MAX: entry {head!r} is {size} {unit}, over the per-entry cap "
+                f"{max_cap:.1f}"
+            )
+    return out
+
+
+def _synthetic(sizes: list[int], lang: str, intro: str = "") -> str:
+    """A glossary whose entry k has exactly sizes[k] counted units. en: whitespace
+    tokens (`**tK** —` is 2 of them); zh: Han characters (Latin headword adds 0)."""
+    parts = [intro] if intro else []
+    for k, n in enumerate(sizes):
+        if lang == "zh":
+            parts.append(f"**t{k}** — " + "字" * n)
+        else:
+            parts.append(f"**t{k}** — " + " ".join(["w"] * (n - 2)))
+    return "\n\n".join(parts) + "\n"
+
+
+def _scaled(n_en: int, lang: str) -> int:
+    """An en word count expressed in the language's own unit, rounded down."""
+    return int(n_en * (rp.ZH_HAN_PER_EN_WORD if lang == "zh" else 1.0))
+
+
+def test_t4_avg_limit_fails_and_names_mean_cap_and_count(lang: str):
+    size = _scaled(rp.GLOSSARY_AVG_WORDS_PER_ENTRY, lang) + 2  # over the mean cap
+    text = _synthetic([size] * 10, lang)
+    assert size <= _scaled(rp.GLOSSARY_MAX_WORDS_PER_ENTRY, lang)  # only AVG can fire
+    msgs = _entry_limit_violations(text, lang)
+    assert len(msgs) == 1 and msgs[0].startswith("AVG"), msgs
+    cap = rp.GLOSSARY_AVG_WORDS_PER_ENTRY * (rp.ZH_HAN_PER_EN_WORD if lang == "zh" else 1.0)
+    assert f"{size:.1f}" in msgs[0] and f"{cap:.1f}" in msgs[0] and "10 entries" in msgs[0]
+
+
+def test_t4_max_limit_fails_and_names_the_headword(lang: str):
+    cap = _scaled(rp.GLOSSARY_MAX_WORDS_PER_ENTRY, lang)
+    sizes = [10] * 9 + [cap + 2]  # mean stays far under AVG
+    text = _synthetic(sizes, lang)
+    msgs = _entry_limit_violations(text, lang)
+    assert len(msgs) == 1 and msgs[0].startswith("MAX") and "'t9'" in msgs[0], msgs
+    # exactly at the cap is fine
+    assert _entry_limit_violations(_synthetic([10] * 9 + [cap], lang), lang) == []
+
+
+def test_t4_allowance_grows_with_the_number_of_terms(lang: str):
+    """The property Lei asked for: adding one more within-limit entry to a
+    glossary already at the cap never fails. The old fixed 1800 total fails it."""
+    size = _scaled(rp.GLOSSARY_AVG_WORDS_PER_ENTRY, lang)  # at the mean cap
+    at_cap = _synthetic([size] * 60, lang)
+    assert _entry_limit_violations(at_cap, lang) == []
+    # the cap is not vacuous: this glossary is past the old 1800-en-word total
+    assert size * 60 > _scaled(1800, lang)
+    bigger = _synthetic([size] * 61, lang)
+    assert _entry_limit_violations(bigger, lang) == []
+    assert _entry_stats(bigger, lang)[0] == 61
+
+
+def test_t4_intro_is_not_counted(lang: str):
+    intro = "# Appendix G\n\n" + ("intro " if lang == "en" else "引言") * 800
+    text = _synthetic([10] * 5, lang, intro=intro)
+    assert _entry_stats(text, lang)[0] == 5
+    assert _entry_stats(text, lang)[1] == 10
+    assert _entry_limit_violations(text, lang) == []
+
+
+def test_t4_zh_translator_header_is_not_counted():
+    header = "<!--\n" + "译者注" * 800 + "\n-->\n"
+    text = header + _synthetic([10] * 5, "zh", intro="# 附录 G")
+    assert _entry_stats(text, "zh")[:3] == (5, 10.0, 10)
+    assert _entry_limit_violations(text, "zh") == []
+
+
+def test_t4_real_glossary_within_entry_limits(lang: str):
     g_path = _g_path(lang)
     assert g_path.exists(), f"missing: {g_path}"
     text = g_path.read_text(encoding="utf-8")
-    words = len(text.split())
-    if lang == "zh":
-        # zh is not space-delimited, so `words` above measures nothing useful: a
-        # whitespace-token count over Han text is coarsely quantized and hides
-        # most length change, so the same budget check that constrains the
-        # English draft was near-vacuous here. Measure Han characters instead,
-        # against the English budget scaled by `ZH_HAN_PER_EN_WORD` -- see that
-        # constant for the ratio's provenance and its bound (ONE en/zh pair, a
-        # calibration rather than a law, and the measured inputs it came from).
-        #
-        # The count is taken on the GLOSSARY BODY, with the ledger's leading
-        # translator header comment excluded (`_glossary_body`): that block is
-        # translator metadata rather than prose, and the English glossary has no
-        # counterpart to it. Counting it would compare two different things, and
-        # would drift on every header edit -- a documentation change, not a
-        # translation change.
-        #
-        # Whether zh should carry a length budget AT ALL is a policy call
-        # belonging to Lei; this assertion is only the measurable half, and is
-        # not to be read as settling that question.
-        body = _glossary_body(text)
-        han = _han_char_count(body)
-        budget = 1800 * rp.ZH_HAN_PER_EN_WORD
-        assert han <= budget, (
-            f"Appendix G (zh) is {han} Han characters, over the {budget:.0f} "
-            f"budget (1800 x ZH_HAN_PER_EN_WORD={rp.ZH_HAN_PER_EN_WORD}). Method: "
-            f"Han = the U+4E00-U+9FFF block, counted on the glossary body with "
-            f"the ledger's leading translator header comment excluded "
-            f"({len(body.split())} whitespace tokens in that body). The constant "
-            f"is a calibration from ONE en/zh pair, NOT a law -- its provenance "
-            f"comment in tools/render_paper.py names the pair and the method. If "
-            f"the zh text genuinely exceeds the budget, RE-DERIVE the ratio from "
-            f"the CURRENT pair, measuring the English file and this one the same "
-            f"way (header excluded on both sides), and update that constant; do "
-            f"not pad the text to fit the old one."
-        )
-    else:
-        assert words <= 1800, f"Appendix G is {words} words, over the 1800 budget"
+    msgs = _entry_limit_violations(text, lang)
+    assert not msgs, (
+        "Appendix G is over its per-entry limits (limits and ruling: see "
+        "GLOSSARY_AVG_WORDS_PER_ENTRY in tools/render_paper.py): "
+        + "; ".join(msgs)
+        + ". Shorten the over-long definitions; do not raise the constants to fit."
+    )
+
+
+def test_t4_required_terms_present(lang: str):
+    g_path = _g_path(lang)
+    assert g_path.exists(), f"missing: {g_path}"
 
     # The required-term coverage below is keyed to the English REQUIRED_TERMS
     # list and needs the assembled book. Neither holds for zh, so it skips
     # explicitly -- naming both facts -- rather than reporting a pass it did not
-    # earn. The budget assertion above has already run for both languages.
+    # earn. The per-entry length limits are separate tests and run for both.
     if lang != "en":
         _skip_zh(
             lang,
-            "T4 required-term coverage (the word-budget check above ran and passed)",
+            "T4 required-term coverage",
             "REQUIRED_TERMS is the English spec list of English headwords, while the "
             "zh glossary's headwords are Chinese (`自动浮现（auto-surface）`) and no "
             "zh term-to-headword map exists yet; the headword normaliser also strips "

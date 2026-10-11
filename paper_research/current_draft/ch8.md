@@ -79,7 +79,7 @@ low numbers. It shows a six-layer chain whose ambitious capstone the substrate h
 0.10, beside a claim resting on ten measured observations at 0.95, and neither number
 moves with how much the author wants the claim to be true. It shows a real
 hallucinated attribution that propagated for six days, was caught, cascaded, and drove
-a fix to the surfacing mechanism that had let it hide — *and a second such
+a fix to the retrieval path that had let it hide — *and a second such
 self-correction that occurred during the drafting of this paper.* A paper arguing that
 an honest substrate fails *loudly* can do no better than to be written on one, and to
 show its failures.

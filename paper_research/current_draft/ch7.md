@@ -83,7 +83,7 @@ comparison in full — the simplex, the discounting operators, the independence
 divergence — and narrows this gap to a **scalar-only-consumer** limitation. Direction
 of evidence and evidence mass are not lost but relocated into structure, and the
 graph is re-consulted at every derivation; what remains is that surfaces consuming
-*only* the scalar (recall ranking, gating thresholds) cannot see the provenance behind
+*only* the scalar (retrieval ranking, gating thresholds) cannot see the provenance behind
 a 0.7 — the evidence set and reasoning chain that produced it — without walking the
 graph (dv_0965 → dv_1289); nothing SL's own tuple carries is lost, since on the
 (b, 0, u) edge b fixes u. This is a trade of cheap lookup against full provenance. One further trade belongs here rather than
@@ -104,7 +104,7 @@ a division of labour by design, not a gap awaiting another number to read off.
 
 A related limitation sits in ranking rather than confidence: `utility_score`'s
 update rule (Appendix C §C.1) has no negative term, so it can only hold steady or
-rise — a recall that proves useless is never demoted, only left where it was.
+rise — a retrieval that proves useless is never demoted, only left where it was.
 Demoting unhelpful nodes would need a penalty the current rule does not have.
 
 A fourth limit sits upstream of the arithmetic: **the author chooses the reasoning type,

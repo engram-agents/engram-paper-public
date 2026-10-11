@@ -142,8 +142,10 @@ DIAGRAM_LABEL = {"en": "Diagram", "zh": "示意图"}
 # and nothing more. If a later chapter disagrees, RE-DERIVE the ratio from that
 # chapter's own en/zh pair; do not pad the text to fit this one.
 #
-# At 1.71 the zh budget is 1800 x 1.71 = 3078 Han characters, against the current
-# 2,999 -- 79 characters (2.6%) of headroom.
+# (When this ratio was derived the zh budget was 1800 x 1.71 = 3078 Han
+# characters, against 2,999 -- 79 characters of headroom. The fixed total was
+# replaced 2026-10-10 by per-entry limits that scale with the number of terms;
+# the ratio now scales those. See GLOSSARY_AVG_WORDS_PER_ENTRY below.)
 #
 # CORRECTION (2026-09-28). This constant previously read 1.75, derived as
 # 3069/1753. That pair was measured on the WHOLE zh file as it stood at bff5d39,
@@ -160,6 +162,23 @@ DIAGRAM_LABEL = {"en": "Diagram", "zh": "示意图"}
 # Lei. This constant and the check that consumes it are the measurable half only,
 # and must not be read as settling that question.
 ZH_HAN_PER_EN_WORD = 1.71
+
+# Appendix G length limits (tests/test_glossary.py, T4). They replace the fixed
+# 1800-word total of the earlier design (which the 1800 x 1.71 = 3078 Han figure
+# in the comments above was derived from; that total no longer exists).
+# Lei, 2026-10-10: the glossary's total length limit "should naturally scale with
+# the actual number of terms in it. The real meaningful cap should be a per-term
+# average or something, so we avoid over complex and verbal definitions."
+#
+#   GLOSSARY_AVG_WORDS_PER_ENTRY  mean words per ENTRY (intro excluded)
+#   GLOSSARY_MAX_WORDS_PER_ENTRY  no single entry longer than this
+#
+# zh applies the same limits in Han characters x ZH_HAN_PER_EN_WORD, zh translator
+# header excluded. Measured on d641631 with the test file's own entry parser:
+# en 59 entries, mean 29.8, max 86 ("node ID prefixes"); zh 59 entries, mean 51.1
+# Han (limit 59.85), max 99 Han (limit 153.9).
+GLOSSARY_AVG_WORDS_PER_ENTRY = 35
+GLOSSARY_MAX_WORDS_PER_ENTRY = 90
 
 
 def _fig(path: str, number: int, caption: str, label: str = "Figure") -> str:

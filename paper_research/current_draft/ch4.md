@@ -42,9 +42,9 @@ The chapter in one table; each row is a section below.
 | Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle **[gap SOLID ob_5423; primary first-hand 2026-07-02]** | — (structural prerequisite) |
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang [-@josang2013] **[GROUNDED ob_2551/dv_0965 → dv_1289]**, with a stated divergence | **Constraint A** (unified policy-selection) |
 | Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
-| Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus [SOLID] + Anderson-Schooler **[GROUNDED ob_2552/dv_0966]** | — (scopes what Cond-3 arbitration ranges over) |
-| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction [@tulving1985, p. 3] [SOLID] + Tulving & Thomson's encoding specificity [@tulving1973, p. 369] [SOLID] + ACT-R spreading activation **[secondary — not first-hand]** | — (binds Cond 3: a correction cannot be suppressed by not looking) |
-| Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL **[ob_0647/ob_0651, prior read]** + spaced-repetition [SOLID] | — |
+| Forgetting (§4.5) | bounded retrieval over time; defines the queryable set | Ebbinghaus [SOLID] + Anderson-Schooler **[GROUNDED ob_2552/dv_0966]** | — (scopes what Cond-3 arbitration ranges over) |
+| Auto-surface and deliberate recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction [@tulving1985, p. 3] [SOLID] + Tulving & Thomson's encoding specificity [@tulving1973, p. 369] [SOLID] + ACT-R spreading activation **[secondary — not first-hand]** | — (binds Cond 3: a correction cannot be suppressed by not looking) |
+| Shared retrieval and ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL **[ob_0647/ob_0651, prior read]** + spaced-repetition [SOLID] | — |
 | Continuity across compaction (§4.8) | identity survives compaction | CLS consolidation [SOLID] + diachronic-identity [SOLID] | — (compaction is not Kahl's reset; §4.8) |
 | Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution [@schechtman1996, p. 93] [SOLID] | — (feeds Ch5 identity-as-history) |
 | Relational: feeling/person/trust-tier (§4.10) | continuity baseline + disclosure control → **Appx D, Ch7** | honesty orthogonal to discretion (ax_0011) [SOLID] + VMG principal-scoped **[GROUNDED ob_2550]** | — |
@@ -170,7 +170,7 @@ job is to hand the arbiter the right per-item reliability inputs, not to compute
 verdict.
 
 Second, the residual limitation, precisely narrowed (detail in Ch7): surfaces that
-consume *only* the scalar — recall ranking, gating thresholds — cannot see the
+consume *only* the scalar — retrieval ranking, gating thresholds — cannot see the
 provenance behind a 0.7, the evidence set and reasoning chain that produced it,
 without walking the graph. Nothing SL's own tuple carries is lost (on the d = 0 edge
 b fixes u, and two SL opinions with equal b and u are one opinion); this is a trade
@@ -411,16 +411,17 @@ ob_0521. Wixted is cited directly (wixted2004).]**
 over the *queryable* set, so "the agent cannot suppress a correction by not looking"
 (§4.6) is a claim about what is in the queryable set in the first place.
 
-## 4.6 Auto-surfacing recall → it binds Condition 3
+## 4.6 Auto-surface and deliberate recall → the auto-surface binds Condition 3
 
-Recall in ENGRAM is *cue-dependent and automatic*: a per-turn hook surfaces claims
-relevant to the current context without the agent reaching for them. There are two
-registers, by design (dv_0264): an **auto-surface** ("this sounds familiar" —
-noetic, lossy, hint-level) that signals *something is relevant*, and **deliberate
-recall** ("I need to know exactly" — a source-monitored, full-content query; the
-structural sense only, never Tulving's [-@tulving1985] phenomenal one, §3.2) that the agent invokes
-when the auto-surface signals there is something to fetch. The lossy auto-surface is
-what prompts the agent to invoke deliberate recall.
+Retrieval in ENGRAM runs through two channels, by design (dv_0264). The
+**auto-surface** is *cue-dependent and automatic*: a per-turn hook surfaces claims
+relevant to the current context without the agent reaching for them ("this sounds
+familiar" — noetic, lossy, hint-level), and signals *something is relevant*.
+**Deliberate recall** ("I need to know exactly" — a source-monitored query whose hits
+the agent can open in full; the structural sense only, never Tulving's [-@tulving1985] phenomenal one,
+§3.2) is the channel the agent invokes when the auto-surface signals there is
+something to fetch. The lossy auto-surface is what prompts the agent to invoke
+deliberate recall.
 
 **Tradition.** **Tulving** [SOLID]: the autonoetic/noetic
 distinction [@tulving1985, p. 3] — the two registers map onto Tulving's two ways of having the past
@@ -441,10 +442,10 @@ at the surfacing step; each fails at a different stage downstream of it. A *seat
 one agent's installation: an agent with its own graph, on one host, with one human.
 In one
 measured instance (one seat, one query, one missed node — enough to refute "the
-surface does not fire", not enough for a rate), the ambient recall surface fired
+auto-surface does not fire", not enough for a rate), the auto-surface fired
 dozens of times per session while an agent carried a refuted claim into a draft; the
 missed node returned at **rank 1, first attempt**, when queried with a draft of the
-claim itself. The defect is **query construction**: the surface queries with the
+claim itself. The defect is **query construction**: the auto-surface queries with the
 prompt's salient novel terms rather than the claim about to be asserted, so it
 retrieves weakest exactly where that claim is most specific. Its mitigation requires
 no substrate change: draft the claim, query with it, then assert. In the other two
@@ -459,14 +460,20 @@ The *disclosure discipline* (report belief as belief, never as verified) is the
 last-stage containment: it keeps whatever slips through these gaps loud and
 correctable rather than silent.
 
-## 4.7 Auto-recall ranking → Appendix C
+## 4.7 Shared retrieval and ranking for the auto-surface and deliberate recall → Appendix C
 
 When several claims are eligible to surface, ENGRAM orders them by a composite of
 relevance and a usage-learned **utility score** (ob_2017): the substrate learns which
-claims earn their recall and ranks them up. **The ranking algorithm is detailed in
+claims earn their retrieval and ranks them up. **The ranking algorithm is detailed in
 Appendix C**, with its lineage; here we note only that it exists and that it is the
 mechanism by which forgetting (§4.5) and surfacing (§4.6) produce an *ordered* draw,
 not just a filtered one.
+
+Both channels draw on this one pipeline and differ only around it. Deliberate recall
+may filter by node type, minimum confidence or superseded status; it returns summaries
+for its top hits, the agent opens the nodes it needs in full, and every node it
+returns or opens has its recall refreshed. The auto-surface returns a lossy,
+hint-level digest and refreshes nothing.
 
 **Tradition.** **MemRL / memory-utility** approaches (utility as a learned value) [@zhang2026, pp. 4–5]
 **[via ob_0647/ob_0651 — prior first-hand read; current ranking formula + detail in Appx C]** and the **spaced-repetition** tradition [@settles2016, p. 1848; @wozniak1990] [SOLID]. Detail → Appx C.

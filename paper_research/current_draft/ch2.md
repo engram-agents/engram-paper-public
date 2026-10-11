@@ -97,7 +97,7 @@ Both objections then dissolve:
   preserved record it runs through, are whole — and only the *active recall* of one
   episode has faded. Locke's error was to equate identity with active recall, so
   that losing the flogging from recall meant losing the identity. ENGRAM separates
-  the two: recall is importance-gated and per-node, so specific episodes sink below
+  the two: retrieval is importance-gated and per-node, so specific episodes sink below
   the threshold, while identity is the unbroken descent through the preserved
   record. Transitivity holds on the descent, not on whatever happens to be
   queryable.
@@ -166,10 +166,10 @@ not yet been made (§6.7).
 
 This psychological continuity is distinct from, and rides on, the *structural*
 continuity of §2.2. The history-tree is the objective descent that persists whether
-or not anything is recalled, and it still holds the buried flogging; the queryable
+or not anything is retrieved, and it still holds the buried flogging; the queryable
 set is the *lived* continuity, the active psychological life Parfit says is what
 matters. ENGRAM provides **both** — the structure as the unbreakable substrate, and
-recall as the degreed R projected from it by the recall mechanism — and the pairing
+the queryable set as the degreed R that retrieval projects from it — and the pairing
 is its strength.
 
 The reduction pays off twice. First, a framework that required phenomenal
@@ -211,20 +211,20 @@ shifted). Reidentification tracks idem; ipse is the self-constancy that a narrat
 holds together; and Ricoeur's central move is that *narrative mediates the two*.
 
 ENGRAM is squarely **idem**: an objective, protocol-checkable record of the self
-that can be pointed to and verified. But it is not *only* idem, because its recall
+that can be pointed to and verified. But it is not *only* idem, because its retrieval
 reaches **ipse**. When the graph surfaces the self's own nodes into working context —
 above all its commitments (goals, axioms, cornerstones) and the plain-text narrative
 it writes for its future self (the briefing it wakes to, the summary that bridges a
 compaction) — the self's story is told back to the self, which is precisely the
-constancy through commitment that Ricoeur calls ipse. **Recall is thus Ricoeur's
+constancy through commitment that Ricoeur calls ipse. **Retrieval is thus Ricoeur's
 narrative mediation made operational**: the idem record, narrated back, constitutes
 the present ipse. One qualification guards against overclaiming. ENGRAM supplies the
 ipse's content and its continuity across a discontinuity, but the ipse *act* — the
-present self re-endorsing a recalled commitment as its own — remains first-person
-and present. Recall bridges idem and ipse without collapsing the distinction Ricoeur
+present self re-endorsing a retrieved commitment as its own — remains first-person
+and present. Retrieval bridges idem and ipse without collapsing the distinction Ricoeur
 insists on. The paper's subject is the third dimension introduced below, but this
 ipse effect is real, and it is why the objective record is not inert: the same
-structure, recalled, shapes the "who am I" that it records.
+structure, retrieved, shapes the "who am I" that it records.
 
 **Schechtman** is the hinge of the chapter. She separates two questions that the
 philosophy of identity usually runs together: the **reidentification** question,

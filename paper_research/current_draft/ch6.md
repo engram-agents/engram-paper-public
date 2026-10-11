@@ -293,7 +293,7 @@ days** before being caught (dv_0436). When it was caught, the machinery did its 
 the claim was **retracted**, and the cascade fired through `derives_from` edges,
 **tainting every dependent**. And then the honest part: the cascade *worked*, but
 the `tainted_by` flag was buried in metadata where the agent did not see it loudly
-enough — so the incident drove a fix that made the taint *surface* at recall
+enough — so the incident drove a fix that made the taint *surface* at retrieval
 time (dv_0477, ob_1781).
 
 *Scoping this evidence to the mechanism it evidences.* The incident ran on the

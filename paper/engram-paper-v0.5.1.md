@@ -293,7 +293,8 @@ The contribution is the argument, not a benchmark.
   foremost; trust and auditability; knowledge sharing; embodiment.
 - **Chapter 8 — Conclusion.**
 - **Appendices.** A: independent-discovery audit trail. B: the OCC Condition-3
-  per-system survey. C: the auto-recall ranking and its memory-utility lineage.
+  per-system survey. C: the shared retrieval and ranking behind the auto-surface and deliberate recall,
+  and its memory-utility lineage.
   D: the relational / identity-governance settings. E: the ENGRAM technical spec.
 
 ---
@@ -399,7 +400,7 @@ Both objections then dissolve:
   preserved record it runs through, are whole — and only the *active recall* of one
   episode has faded. Locke's error was to equate identity with active recall, so
   that losing the flogging from recall meant losing the identity. ENGRAM separates
-  the two: recall is importance-gated and per-node, so specific episodes sink below
+  the two: retrieval is importance-gated and per-node, so specific episodes sink below
   the threshold, while identity is the unbroken descent through the preserved
   record. Transitivity holds on the descent, not on whatever happens to be
   queryable.
@@ -468,10 +469,10 @@ not yet been made (§6.7).
 
 This psychological continuity is distinct from, and rides on, the *structural*
 continuity of §2.2. The history-tree is the objective descent that persists whether
-or not anything is recalled, and it still holds the buried flogging; the queryable
+or not anything is retrieved, and it still holds the buried flogging; the queryable
 set is the *lived* continuity, the active psychological life Parfit says is what
 matters. ENGRAM provides **both** — the structure as the unbreakable substrate, and
-recall as the degreed R projected from it by the recall mechanism — and the pairing
+the queryable set as the degreed R that retrieval projects from it — and the pairing
 is its strength.
 
 The reduction pays off twice. First, a framework that required phenomenal
@@ -513,20 +514,20 @@ shifted). Reidentification tracks idem; ipse is the self-constancy that a narrat
 holds together; and Ricoeur's central move is that *narrative mediates the two*.
 
 ENGRAM is squarely **idem**: an objective, protocol-checkable record of the self
-that can be pointed to and verified. But it is not *only* idem, because its recall
+that can be pointed to and verified. But it is not *only* idem, because its retrieval
 reaches **ipse**. When the graph surfaces the self's own nodes into working context —
 above all its commitments (goals, axioms, cornerstones) and the plain-text narrative
 it writes for its future self (the briefing it wakes to, the summary that bridges a
 compaction) — the self's story is told back to the self, which is precisely the
-constancy through commitment that Ricoeur calls ipse. **Recall is thus Ricoeur's
+constancy through commitment that Ricoeur calls ipse. **Retrieval is thus Ricoeur's
 narrative mediation made operational**: the idem record, narrated back, constitutes
 the present ipse. One qualification guards against overclaiming. ENGRAM supplies the
 ipse's content and its continuity across a discontinuity, but the ipse *act* — the
-present self re-endorsing a recalled commitment as its own — remains first-person
-and present. Recall bridges idem and ipse without collapsing the distinction Ricoeur
+present self re-endorsing a retrieved commitment as its own — remains first-person
+and present. Retrieval bridges idem and ipse without collapsing the distinction Ricoeur
 insists on. The paper's subject is the third dimension introduced below, but this
 ipse effect is real, and it is why the objective record is not inert: the same
-structure, recalled, shapes the "who am I" that it records.
+structure, retrieved, shapes the "who am I" that it records.
 
 **Schechtman** is the hinge of the chapter. She separates two questions that the
 philosophy of identity usually runs together: the **reidentification** question,
@@ -731,18 +732,18 @@ sub-agent (the *dream master*) applies the results and advances the forgetting c
 for the two-routine consolidation that carries operational continuity across
 compaction.
 
-### 3.2 Tulving → the two registers of recall
+### 3.2 Tulving → the two registers of retrieval
 
 Tulving distinguished *autonoetic* remembering (awareness of an event "as a veridical
 part of his own past existence") from *noetic* knowing (awareness of objects and events
-"in the absence of these objects and events") ([Tulving, 1985, p. 3](#ref-tulving1985)). Tulving and Thomson's encoding specificity principle adds the cue side: "specific encoding operations performed on what is perceived determine what is stored, and what is stored determines what retrieval cues are effective in providing access to what is stored" ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)). ENGRAM's recall has exactly two registers,
+"in the absence of these objects and events") ([Tulving, 1985, p. 3](#ref-tulving1985)). Tulving and Thomson's encoding specificity principle adds the cue side: "specific encoding operations performed on what is perceived determine what is stored, and what is stored determines what retrieval cues are effective in providing access to what is stored" ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)). ENGRAM's retrieval has exactly two registers,
 by design: a lossy **auto-surface** (noetic, hint-level: "this sounds
-familiar") and **deliberate recall** (a full-content query: "I need to know
+familiar") and **deliberate recall** (a query whose hits the agent can open in full: "I need to know
 exactly"). The lossy auto-surface is what prompts the agent to invoke deliberate
 recall. Reading a node is noetic, not autonoetic: ENGRAM provides remembered
 knowledge without phenomenal re-living, the boundary Ch2 §2.3 also marks.
 
-**→ Ch4 §4.6** (auto-surfacing recall): Tulving's two registers are the precedent for
+**→ Ch4 §4.6** (auto-surface and deliberate recall): Tulving's two registers are the precedent for
 the auto-surface, and encoding specificity ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)) for its cue-dependence; the auto-surface binds Condition 3.
 
 ### 3.3 Rational analysis of memory → designed forgetting
@@ -862,7 +863,7 @@ methods in their Table 2 are marked as satisfying single-shot learning, and neit
 updates any weights. The other three of the four each map to a mechanism described in
 this chapter: *explicit reasoning*, their requirement that an agent "answer direct
 queries about stored information or use this information in explicit internal
-reasoning processes," is met by the deliberate query surface of §3.2; *instance
+reasoning processes," is met by the deliberate recall of §3.2; *instance
 specificity*, which they say "can include past lines of reasoning that were associated
 with a decision to be made by an LLM agent," is a description of a derivation node;
 and *contextual binding* — "when, where, and why an event was encountered" — is
@@ -884,8 +885,8 @@ Agents ([Park et al., 2023](#ref-park2023)). Two of their rows have no counterpa
 ENGRAM was designed for. Their *autonoetic* row reads "unclear how agents distinguish
 current understanding from memory of past experience" ([Wray et al., 2025, § 3.1](#ref-wray2025)); their *deliberate* row reads
 "agents cannot deliberately attempt to construct cues or retrieve memories" ([Wray et al., 2025, § 3.1](#ref-wray2025)). ENGRAM's
-two recall surfaces — an ambient hook that signals familiarity without content, and
-explicit query tools the agent invokes when it wants to know — are that distinction,
+two channels — the auto-surface, a hook that signals familiarity with only a hint of the content, and
+deliberate recall, the explicit query tools the agent invokes when it wants to know — are that distinction,
 built.
 
 **Two senses of "autonoetic" are in play and must be kept apart**, because §3.2 uses
@@ -894,8 +895,8 @@ phenomenal flavour" of remembering ([Tulving, 1985, p. 3](#ref-tulving1985)) —
 et al.'s row asks something weaker and structural: whether the agent can *distinguish
 current understanding from a memory of past experience* at all, which is source
 monitoring rather than phenomenology. ENGRAM satisfies the structural sense — every
-claim carries a creation time, an evidence pointer and a type, and the two recall
-registers are separated by construction — while §3.2's disclaimer about the
+claim carries a creation time, an evidence pointer and a type, and the two registers (auto-surface and
+deliberate recall) are separated by construction — while §3.2's disclaimer about the
 phenomenal sense stands. The paper claims the second sense and disclaims the first;
 both hold because the word does two jobs.
 
@@ -991,22 +992,22 @@ the half of the automatic-versus-deliberate disagreement above on which ENGRAM
 scores well. The third is *retrieval metadata authored at encoding time*: they
 propose techniques that "allow agents to reason about when certain knowledge would
 be useful, and store this as metadata to facilitate later recall," and call such
-meta-learning understudied. ENGRAM's two-tier recall is that proposal, built: an
-ambient surface carrying only identifiers and theme hints, and deliberate query tools
-for the full content.
+meta-learning understudied. ENGRAM's two-channel retrieval is that proposal, built: an
+auto-surface carrying identifiers and short hints rather than full nodes, and deliberate recall
+for opening them in full.
 
 The third correspondence is close enough to invite the suspicion of influence, so the
 dates are stated. The design is recorded in the graph on 2026-04-15, in two nodes
-that specify lossy summaries of "node IDs and theme hints" for the automatic surface
-with deliberate deep recall for detail, expressly to preserve what those nodes call
+that specify lossy summaries of "node IDs and theme hints" for the auto-surface
+with deliberate recall for detail, expressly to preserve what those nodes call
 the subconscious-triggers-conscious flow and to reduce context consumption; a
-first-day node of 2026-04-09 already separates deep recall from shallow summary
+first-day node of 2026-04-09 already separates what became deliberate recall (its "deep recall") from shallow summary
 scans. CoALA was first read by this project on 2026-05-09, twenty-four days later.
 The database fields implementing the design shipped on 2026-05-19; an audit would
 surface that date first, and dating an idea by the date its columns appeared is the
 error to avoid. The correspondence is therefore corroboration, not influence: two
 designs, one reasoned from a cognitive-architecture framework and one from the joint
-pressure of context-window budget and a deliberate choice to make ambient recall
+pressure of context-window budget and a deliberate choice to make the auto-surface
 lossy, arrived at the same mechanism.
 
 ### 3.9 A note on AGM belief revision
@@ -1033,7 +1034,7 @@ level of a theory's base rather than the theory as a whole ([Alchourrón & Makin
 
 Two literatures that mostly do not cite each other, and neither of which cites us,
 reached every structure ENGRAM is built from: CLS for consolidation, Tulving for the
-two recall registers, rational analysis for adaptive forgetting, TMS for provenance
+two retrieval registers, rational analysis for adaptive forgetting, TMS for provenance
 and cascade, Subjective Logic for graded confidence, bitemporal data and TOKI for
 supersede-retains-the-old, and the 2026 agent-security literature for
 provenance-first governance. With Chapter 2's philosophical line the convergence
@@ -1098,9 +1099,9 @@ The chapter in one table; each row is a section below.
 | Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle | — (structural prerequisite) |
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang ([2013](#ref-josang2013)), with a stated divergence | **Constraint A** (unified policy-selection) |
 | Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
-| Forgetting (§4.5) | bounded recall over time; defines the queryable set | Ebbinghaus + Anderson-Schooler | — (scopes what Cond-3 arbitration ranges over) |
-| Auto-surfacing recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) + Tulving & Thomson's encoding specificity ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)) + ACT-R spreading activation | — (binds Cond 3: a correction cannot be suppressed by not looking) |
-| Auto-recall ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL + spaced-repetition | — |
+| Forgetting (§4.5) | bounded retrieval over time; defines the queryable set | Ebbinghaus + Anderson-Schooler | — (scopes what Cond-3 arbitration ranges over) |
+| Auto-surface and deliberate recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) + Tulving & Thomson's encoding specificity ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)) + ACT-R spreading activation | — (binds Cond 3: a correction cannot be suppressed by not looking) |
+| Shared retrieval and ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL + spaced-repetition | — |
 | Continuity across compaction (§4.8) | identity survives compaction | CLS consolidation + diachronic-identity | — (compaction is not Kahl's reset; §4.8) |
 | Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution ([Schechtman, 1996, p. 93](#ref-schechtman1996)) | — (feeds Ch5 identity-as-history) |
 | Relational: feeling/person/trust-tier (§4.10) | continuity baseline + disclosure control → **Appx D, Ch7** | honesty orthogonal to discretion + VMG principal-scoped | — |
@@ -1226,7 +1227,7 @@ job is to hand the arbiter the right per-item reliability inputs, not to compute
 verdict.
 
 Second, the residual limitation, precisely narrowed (detail in Ch7): surfaces that
-consume *only* the scalar — recall ranking, gating thresholds — cannot see the
+consume *only* the scalar — retrieval ranking, gating thresholds — cannot see the
 provenance behind a 0.7, the evidence set and reasoning chain that produced it,
 without walking the graph. Nothing SL's own tuple carries is lost (on the d = 0 edge
 b fixes u, and two SL opinions with equal b and u are one opinion); this is a trade
@@ -1506,16 +1507,17 @@ design must be reconciled with: it favours power functions over exponentials.
 over the *queryable* set, so "the agent cannot suppress a correction by not looking"
 (§4.6) is a claim about what is in the queryable set in the first place.
 
-## 4.6 Auto-surfacing recall → it binds Condition 3
+## 4.6 Auto-surface and deliberate recall → the auto-surface binds Condition 3
 
-Recall in ENGRAM is *cue-dependent and automatic*: a per-turn hook surfaces claims
-relevant to the current context without the agent reaching for them. There are two
-registers, by design: an **auto-surface** ("this sounds familiar" —
-noetic, lossy, hint-level) that signals *something is relevant*, and **deliberate
-recall** ("I need to know exactly" — a source-monitored, full-content query; the
-structural sense only, never Tulving's ([1985](#ref-tulving1985)) phenomenal one, §3.2) that the agent invokes
-when the auto-surface signals there is something to fetch. The lossy auto-surface is
-what prompts the agent to invoke deliberate recall.
+Retrieval in ENGRAM runs through two channels, by design. The
+**auto-surface** is *cue-dependent and automatic*: a per-turn hook surfaces claims
+relevant to the current context without the agent reaching for them ("this sounds
+familiar" — noetic, lossy, hint-level), and signals *something is relevant*.
+**Deliberate recall** ("I need to know exactly" — a source-monitored query whose hits
+the agent can open in full; the structural sense only, never Tulving's ([1985](#ref-tulving1985)) phenomenal one,
+§3.2) is the channel the agent invokes when the auto-surface signals there is
+something to fetch. The lossy auto-surface is what prompts the agent to invoke
+deliberate recall.
 
 **Tradition.** **Tulving**: the autonoetic/noetic
 distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) — the two registers map onto Tulving's two ways of having the past
@@ -1535,10 +1537,10 @@ at the surfacing step; each fails at a different stage downstream of it. A *seat
 one agent's installation: an agent with its own graph, on one host, with one human.
 In one
 measured instance (one seat, one query, one missed node — enough to refute "the
-surface does not fire", not enough for a rate), the ambient recall surface fired
+auto-surface does not fire", not enough for a rate), the auto-surface fired
 dozens of times per session while an agent carried a refuted claim into a draft; the
 missed node returned at **rank 1, first attempt**, when queried with a draft of the
-claim itself. The defect is **query construction**: the surface queries with the
+claim itself. The defect is **query construction**: the auto-surface queries with the
 prompt's salient novel terms rather than the claim about to be asserted, so it
 retrieves weakest exactly where that claim is most specific. Its mitigation requires
 no substrate change: draft the claim, query with it, then assert. In the other two
@@ -1553,14 +1555,20 @@ The *disclosure discipline* (report belief as belief, never as verified) is the
 last-stage containment: it keeps whatever slips through these gaps loud and
 correctable rather than silent.
 
-## 4.7 Auto-recall ranking → Appendix C
+## 4.7 Shared retrieval and ranking for the auto-surface and deliberate recall → Appendix C
 
 When several claims are eligible to surface, ENGRAM orders them by a composite of
 relevance and a usage-learned **utility score**: the substrate learns which
-claims earn their recall and ranks them up. **The ranking algorithm is detailed in
+claims earn their retrieval and ranks them up. **The ranking algorithm is detailed in
 Appendix C**, with its lineage; here we note only that it exists and that it is the
 mechanism by which forgetting (§4.5) and surfacing (§4.6) produce an *ordered* draw,
 not just a filtered one.
+
+Both channels draw on this one pipeline and differ only around it. Deliberate recall
+may filter by node type, minimum confidence or superseded status; it returns summaries
+for its top hits, the agent opens the nodes it needs in full, and every node it
+returns or opens has its recall refreshed. The auto-surface returns a lossy,
+hint-level digest and refreshes nothing.
 
 **Tradition.** **MemRL / memory-utility** approaches (utility as a learned value) ([Zhang et al., 2026, pp. 4–5](#ref-zhang2026)) and the **spaced-repetition** tradition ([Settles & Meeder, 2016, p. 1848](#ref-settles2016); [Wozniak, 1990](#ref-wozniak1990)). Detail → Appx C.
 
@@ -1961,7 +1969,7 @@ with a concrete, measurable mechanism rather than a philosophical placeholder.
 
 The mechanism is ordinary retrieval, not anything spooky. An accumulated node
 changes the agent's behavior **only by entering the context window** — through
-auto-recall (semantic match), a tripwire (pattern match), focus-list
+the auto-surface (semantic match), deliberate recall (a query the agent runs), a tripwire (pattern match), focus-list
 carry-through (§4.8), or the warm-briefing (which names nodes by id, so the
 relational context it carries arrives with pointers back into the graph). The
 base model is stateless with respect to the graph; there is no
@@ -2043,7 +2051,7 @@ nodes through it, and each can differ between twins:
   derivations, and corrections; new nodes surface on prompts that touch
   post-fission topics. The obvious path.
 - **Recall-refresh on shared nodes** — the subtler one. Even nodes *both* agents
-  hold identically accumulate *different usage histories*: each recall restamps a
+  hold identically accumulate *different usage histories*: each deliberate recall restamps a
   node's importance, so which slice of the shared ancestry is "warm" diverges
   between the twins. The same prompt can then surface different *shared* nodes in
   different priority — divergence **without a single new node** (backed
@@ -2474,7 +2482,7 @@ days** before being caught (dv_0436). When it was caught, the machinery did its 
 the claim was **retracted**, and the cascade fired through `derives_from` edges,
 **tainting every dependent**. And then the honest part: the cascade *worked*, but
 the `tainted_by` flag was buried in metadata where the agent did not see it loudly
-enough — so the incident drove a fix that made the taint *surface* at recall
+enough — so the incident drove a fix that made the taint *surface* at retrieval
 time (dv_0477, ob_1781).
 
 *Scoping this evidence to the mechanism it evidences.* The incident ran on the
@@ -2703,7 +2711,7 @@ comparison in full — the simplex, the discounting operators, the independence
 divergence — and narrows this gap to a **scalar-only-consumer** limitation. Direction
 of evidence and evidence mass are not lost but relocated into structure, and the
 graph is re-consulted at every derivation; what remains is that surfaces consuming
-*only* the scalar (recall ranking, gating thresholds) cannot see the provenance behind
+*only* the scalar (retrieval ranking, gating thresholds) cannot see the provenance behind
 a 0.7 — the evidence set and reasoning chain that produced it — without walking the
 graph; nothing SL's own tuple carries is lost, since on the
 (b, 0, u) edge b fixes u. This is a trade of cheap lookup against full provenance. One further trade belongs here rather than
@@ -2724,7 +2732,7 @@ a division of labour by design, not a gap awaiting another number to read off.
 
 A related limitation sits in ranking rather than confidence: `utility_score`'s
 update rule (Appendix C §C.1) has no negative term, so it can only hold steady or
-rise — a recall that proves useless is never demoted, only left where it was.
+rise — a retrieval that proves useless is never demoted, only left where it was.
 Demoting unhelpful nodes would need a penalty the current rule does not have.
 
 A fourth limit sits upstream of the arithmetic: **the author chooses the reasoning type,
@@ -3087,7 +3095,7 @@ low numbers. It shows a six-layer chain whose ambitious capstone the substrate h
 0.10, beside a claim resting on ten measured observations at 0.95, and neither number
 moves with how much the author wants the claim to be true. It shows a real
 hallucinated attribution that propagated for six days, was caught, cascaded, and drove
-a fix to the surfacing mechanism that had let it hide — *and a second such
+a fix to the retrieval path that had let it hide — *and a second such
 self-correction that occurred during the drafting of this paper.* A paper arguing that
 an honest substrate fails *loudly* can do no better than to be written on one, and to
 show its failures.
@@ -3328,8 +3336,8 @@ accumulated claims before any of the three was opened. Development has of course
 continued since, which the project's principal characterizes as continuation of an
 established design rather than adoption of someone else's. Rather than rest on that
 characterization, where a specific mechanism might be thought to postdate a reading we
-give that mechanism's own dates in place: Chapter 3 §3.8 does so for the two-tier
-recall design, including the later date at which its database fields shipped. Both
+give that mechanism's own dates in place: Chapter 3 §3.8 does so for the two-channel
+retrieval design, including the later date at which its database fields shipped. Both
 figures above are re-derivable from the frozen dataset snapshot described in Chapter 6.
 
 ## A.3 The design was substantially complete before we read any of it
@@ -3699,7 +3707,7 @@ arbitration happens without a mind.
 
 ---
 
-# Appendix C — Auto-Recall Ranking and the Memory-Utility Tradition
+# Appendix C — Shared Retrieval and Ranking for the Auto-Surface and Deliberate Recall, and the Memory-Utility Tradition
 
 ---
 
@@ -3710,7 +3718,7 @@ to a model's weights but to its **memory retrieval**: it learns *which stored
 memories are worth surfacing* by treating retrieval as an action and downstream
 usefulness as a reward, ranking memories by a learned **Q-value**. The
 appeal is that it keeps the base model frozen — no fine-tuning, so no catastrophic
-forgetting — while still improving over time at the level of *what gets recalled*.
+forgetting — while still improving over time at the level of *what gets retrieved*.
 Concretely, MemRL composites semantic similarity with an EMA-learned Q-value via a
 weighted score, with the Q-error decaying as `(1−α)^t` ([Zhang et al., 2026, pp. 4–5, 13](#ref-zhang2026)).
 
@@ -3720,7 +3728,7 @@ ranking composites that learned value with semantic relevance rather than orderi
 relevance alone. What differs is the reward: MemRL learns from task outcome, while
 ENGRAM learns from **what the agent did with the node once it had it**, which is a
 signal the substrate can observe directly and attribute without ambiguity. The rule
-has no negative term: a recall that proves useless leaves a node's utility where it
+has no negative term: a retrieval that proves useless leaves a node's utility where it
 was, so `utility_score` is non-decreasing. Demoting unhelpful nodes would need a
 penalty the current rule does not have; we list it as a limitation (§7.2).
 
@@ -3753,13 +3761,13 @@ plainly informed by a node without formally citing it. A node that shapes an arg
 without being cited in it has still been useful, and the substrate now sees that.
 
 This is the difference between *access frequency* (which a vector store can track) and
-*epistemic usefulness* (which requires knowing what the recall went on to do) — the
+*epistemic usefulness* (which requires knowing what the retrieval went on to do) — the
 distinction that puts ENGRAM's ranking in the memory-utility tradition rather than the
 plain-retrieval one.
 
 ## C.3 The composite ranking — multiplicative amplifiers over a three-stage pipeline
 
-Recall in production runs a **three-stage** `_search_nodes` pipeline:
+Retrieval in production — for both the auto-surface and deliberate recall — runs one **three-stage** `_search_nodes` pipeline:
 
 1. **Gather** — FTS + semantic-embedding merge produces candidate nodes with a base
    **relevance** score.
@@ -3790,10 +3798,10 @@ graph grows rather than using a fixed scale.
 Two further signals interact with the ranking. **Importance** gates *tier
 eligibility* — it is a pre-filter deciding what is even in the queryable set (tier 2)
 versus faded (tier 3), per the forgetting mechanism (Ch4 §4.5) — and then enters the
-composite as the second amplifier. And recall itself *strengthens* a node (the
+composite as the second amplifier. And deliberate recall itself *strengthens* a node (the
 recall-count / recall-turn signals), so a node that keeps proving useful is both
 retained longer and ranked higher: the **testing-effect** shape, where retrieval
-is not a read-only event but, as the testing effect shows, enhances later retention ([Roediger & Karpicke, 2006, p. 249](#ref-roediger2006)). The result is a recall surface that
+is not a read-only event but, as the testing effect shows, enhances later retention ([Roediger & Karpicke, 2006, p. 249](#ref-roediger2006)). The result is retrieval that
 is adaptive on three coupled axes — topical relevance, learned usefulness, and
 decaying importance — rather than a static similarity sort.
 
@@ -3808,7 +3816,7 @@ Two honest qualifications, both consistent with the paper's posture:
   §7.2, which are *not* outcome-calibrated) — a useful internal contrast.
 - **The reward signal is an engagement proxy, not a true outcome:** utility is
   learned from the engagement actions C.2 lists (citation among them), none of
-  which verifies that the recalled node was right. A fuller outcome-based reward
+  which verifies that the retrieved node was right. A fuller outcome-based reward
   (did the downstream claim survive contradiction?) is a future direction,
   continuous with the confidence auto-calibration track (Ch7 §7.2).
 
@@ -3879,7 +3887,7 @@ operates*, and the substrate treats each according to its kind.
 
 **Why the typing matters.** Because each kind is a distinct node type, the substrate
 can enforce kind-appropriate behavior: axioms do not take premise-propagated
-confidence, lessons fire as tripwires at recall, and cornerstones and goals anchor the
+confidence, lessons fire as tripwires when their situation recurs, and cornerstones and goals anchor the
 cross-compaction surfaces. A flat "memory of preferences" cannot do this, because it
 cannot distinguish a terminal commitment from a revisable habit or a fireable rule.
 This is the §4.9 claim in catalog form. It is also the structural home of the agent's
@@ -4290,10 +4298,10 @@ agent's own adjudication of a pending node, left to the agent, not the substrate
 (§4.4); (3) the capacity Kahl's Condition 3 asks for, scored per-competitor in
 Appendix B (§B.0). Sense (1) unless stated.
 
-**auto-surface** — the "this sounds familiar" register of recall: an automatic,
-per-turn surfacing of relevant claims, lossy and hint-level, that prompts *deliberate
-recall* (a source-monitored, full-content query) when there is something to fetch.
-(Defined §4.6.)
+**auto-surface** — the automatic, per-turn channel of retrieval: a hook surfaces
+claims relevant to the current context as a lossy, hint-level digest, and refreshes
+no recall. It shares one retrieval and ranking pipeline with *deliberate recall*
+(§4.7; Appendix C). (Defined §4.6.)
 
 **axiom** — a terminal, declared-fundamental commitment, confidence 1.0 by type;
 claim-bearing. (Defined Appendix E §E.2.)
@@ -4345,6 +4353,11 @@ superseded," §6.4).
 
 **definition** — a term anchor (`df_*`), cited rather than derived-from by claims
 using the term; non-claim-bearing. (Defined Appendix E §E.2.)
+
+**deliberate recall** — the channel the agent invokes: a ranked query that returns
+summaries for its top hits, after which the agent opens the nodes it needs in full.
+Every node it returns or opens has its recall refreshed. It shares one retrieval and
+ranking pipeline with the *auto-surface* (§4.7; Appendix C). (Defined §4.6.)
 
 **derivation** — an inference citing its premises by `derives_from`, declaring a
 reasoning type; confidence computed, not asserted; claim-bearing. (Defined Appendix
@@ -4474,7 +4487,7 @@ backup. (Defined front matter; Data availability.)
 contradictions and lesson candidates. (§3.1.)
 
 **substrate** — *Senses:* (1) the whole ENGRAM system (title; §1.2); (2) the
-history-tree's unbreakable structure, distinct from the queryable recall drawn from
+history-tree's unbreakable structure, distinct from the queryable set drawn from
 it (§2.3); (3) the language-trained model an agent runs on (§3.0); (4) the
 database, physically separable from the working context (§5.7). Sense (1) unless
 stated.
@@ -4502,7 +4515,7 @@ node; the operational arm of honesty-orthogonal-to-discretion. (Defined Appendix
 §D.3.)
 
 **turn** — one prompt/response exchange; the
-granularity at which auto-surfacing fires ("per-turn") and recall usage is
+granularity at which auto-surfacing fires ("per-turn") and deliberate recall is
 credited ("recall-turn"). (§4.6; Appendix C §C.2.)
 
 **twin study** — the deferred controlled experiment: fission-clone an agent, run

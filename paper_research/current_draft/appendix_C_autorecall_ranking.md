@@ -1,4 +1,4 @@
-# Appendix C — Auto-Recall Ranking and the Memory-Utility Tradition
+# Appendix C — Shared Retrieval and Ranking for the Auto-Surface and Deliberate Recall, and the Memory-Utility Tradition
 
 ---
 
@@ -9,7 +9,7 @@ to a model's weights but to its **memory retrieval**: it learns *which stored
 memories are worth surfacing* by treating retrieval as an action and downstream
 usefulness as a reward, ranking memories by a learned **Q-value** (ob_0647). The
 appeal is that it keeps the base model frozen — no fine-tuning, so no catastrophic
-forgetting — while still improving over time at the level of *what gets recalled*.
+forgetting — while still improving over time at the level of *what gets retrieved*.
 Concretely, MemRL composites semantic similarity with an EMA-learned Q-value via a
 weighted score, with the Q-error decaying as `(1−α)^t` [@zhang2026, pp. 4–5, 13] (ob_0651).
 
@@ -19,7 +19,7 @@ ranking composites that learned value with semantic relevance rather than orderi
 relevance alone. What differs is the reward: MemRL learns from task outcome, while
 ENGRAM learns from **what the agent did with the node once it had it**, which is a
 signal the substrate can observe directly and attribute without ambiguity. The rule
-has no negative term: a recall that proves useless leaves a node's utility where it
+has no negative term: a retrieval that proves useless leaves a node's utility where it
 was, so `utility_score` is non-decreasing. Demoting unhelpful nodes would need a
 penalty the current rule does not have; we list it as a limitation (§7.2).
 
@@ -52,13 +52,13 @@ plainly informed by a node without formally citing it. A node that shapes an arg
 without being cited in it has still been useful, and the substrate now sees that.
 
 This is the difference between *access frequency* (which a vector store can track) and
-*epistemic usefulness* (which requires knowing what the recall went on to do) — the
+*epistemic usefulness* (which requires knowing what the retrieval went on to do) — the
 distinction that puts ENGRAM's ranking in the memory-utility tradition rather than the
 plain-retrieval one.
 
 ## C.3 The composite ranking — multiplicative amplifiers over a three-stage pipeline
 
-Recall in production runs a **three-stage** `_search_nodes` pipeline (dv_0707):
+Retrieval in production — for both the auto-surface and deliberate recall — runs one **three-stage** `_search_nodes` pipeline (dv_0707):
 
 1. **Gather** — FTS + semantic-embedding merge produces candidate nodes with a base
    **relevance** score.
@@ -90,10 +90,10 @@ graph grows rather than using a fixed scale.
 Two further signals interact with the ranking. **Importance** gates *tier
 eligibility* — it is a pre-filter deciding what is even in the queryable set (tier 2)
 versus faded (tier 3), per the forgetting mechanism (Ch4 §4.5) — and then enters the
-composite as the second amplifier. And recall itself *strengthens* a node (the
+composite as the second amplifier. And deliberate recall itself *strengthens* a node (the
 recall-count / recall-turn signals), so a node that keeps proving useful is both
 retained longer and ranked higher: the **testing-effect** shape, where retrieval
-is not a read-only event but, as the testing effect shows, enhances later retention [@roediger2006, p. 249]. The result is a recall surface that
+is not a read-only event but, as the testing effect shows, enhances later retention [@roediger2006, p. 249]. The result is retrieval that
 is adaptive on three coupled axes — topical relevance, learned usefulness, and
 decaying importance — rather than a static similarity sort.
 
@@ -109,7 +109,7 @@ Two honest qualifications, both consistent with the paper's posture:
   §7.2, which are *not* outcome-calibrated) — a useful internal contrast.
 - **The reward signal is an engagement proxy, not a true outcome:** utility is
   learned from the engagement actions C.2 lists (citation among them), none of
-  which verifies that the recalled node was right. A fuller outcome-based reward
+  which verifies that the retrieved node was right. A fuller outcome-based reward
   (did the downstream claim survive contradiction?) is a future direction,
   continuous with the confidence auto-calibration track (Ch7 §7.2).
 
