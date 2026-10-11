@@ -38,9 +38,18 @@ This repository is published with its development history, so every claim in the
 traced to the work that produced it. Files were moved with `git mv`, so `git log --follow <path>`
 follows a file across the reorganisation of 2026-10-11.
 
-No commit in this history has been rewritten. If content ever has to be removed from it (for
-example for privacy), that is a rewrite: this section will then say so, and
-[`archive/INDEX.md`](archive/INDEX.md) will record what was removed and why.
+**One rewrite, made before publication.** Before this repository was made public, its history was
+rewritten once to remove the human author's child's information. Two early engine-development
+experiment folders, whose inputs were built from her events, were removed from every commit; three
+table rows in two archived memos were replaced with a marker line. The rule applied: remove a file
+when the private content is what the file is; redact the line when it is a string inside a file that
+otherwise stands on its own. Nothing else was changed, and no commit was dropped (229 commits before
+and after). Each commit's author and date are unchanged; one author's several git identities were
+unified under one address. What was removed is recorded in [`archive/INDEX.md`](archive/INDEX.md).
+
+**Commit hashes.** The rewrite gave every commit a new hash. `archive/INDEX.md` cites the new ones.
+Hashes quoted inside archived documents, reviews and manifests refer to the pre-publication history
+and do not resolve here.
 
 ## Citing in chapters
 
