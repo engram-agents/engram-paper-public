@@ -384,8 +384,8 @@ def test_residue_only_keep_ids():
     bracketed apparatus tag (e.g. ch3.md's "[SOLID: dv_0264, ob_1119]") is
     not yet a leak at the strip_provenance_ids stage alone.
 
-    #84 added a real data-point example to ch7.md (dv_0779 bare in prose,
-    dv_0877 inside an inline-code command example) -- both are KEEP_IDS
+    #84 added a real data-point example to ch7.md (dv_0779 and dv_0877
+    bare in one parenthetical) -- both are KEEP_IDS
     entries now that App B's dv_0605 citation (the previous sole entry) no
     longer exists in the sources at all (#88). No exact count is pinned for
     either -- only that each survives at least once -- because a future
@@ -413,18 +413,12 @@ def test_residue_only_keep_ids():
 
 
 def test_ch7_data_point_ids_survive_the_strip():
-    """#84's worked data-point sentence in ch7.md §7.2 ("The step is dv_0779
-    in the frozen snapshot; tracing the conclusion it fed,
-    `tools/paper_stats.py --trace dv_0877`, shows it at layer 4 of that
-    chain") must come through the
-    render untouched -- dv_0779 sits bare in prose and dv_0877 sits inside
-    an inline-code command example, neither of which any of forms A-G ever
-    matches, so both rely purely on the KEEP_IDS allowlist rather than on
-    the strip logic leaving them alone by construction."""
-    text_in = (
-        "is dv_0779 in the frozen snapshot; tracing the conclusion it fed,\n"
-        "`tools/paper_stats.py --trace dv_0877`, shows it at layer 4"
-    )
+    """#84's worked data-point sentence in ch7.md §7.2 ("0.14 (dv_0779, at
+    layer 4 of the chain behind the conclusion dv_0877).") must come through
+    the render untouched -- both IDs sit bare in one parenthetical, which no
+    form A-G ever matches, so both rely purely on the KEEP_IDS allowlist
+    rather than on the strip logic leaving them alone by construction."""
+    text_in = "0.14 (dv_0779, at layer 4 of the chain behind the conclusion dv_0877)."
     text, n = strip_provenance_ids("ch7.md", text_in)
     assert text == text_in
     assert n == 0
@@ -442,8 +436,7 @@ def test_ch7_data_point_sentence_present_in_real_source():
         pytest.skip(f"source moved: {path}")
     text = path.read_text(encoding="utf-8")
     assert (
-        "is dv_0779 in the frozen snapshot; tracing the conclusion it fed,\n"
-        "`tools/paper_stats.py --trace dv_0877`, shows it at layer 4"
+        "0.14 (dv_0779, at layer 4 of the chain behind the conclusion dv_0877)."
     ) in text
 
 

@@ -21,7 +21,8 @@ ENGRAM learns from **what the agent did with the node once it had it**, which is
 signal the substrate can observe directly and attribute without ambiguity. The rule
 has no negative term: a retrieval that proves useless leaves a node's utility where it
 was, so `utility_score` is non-decreasing. Demoting unhelpful nodes would need a
-penalty the current rule does not have; we list it as a limitation (§7.2).
+penalty the current rule does not have; adding one is a straightforward change for
+a later version.
 
 ## C.2 ENGRAM's utility_score — a learned value, graded by the act it earned
 

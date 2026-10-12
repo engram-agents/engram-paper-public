@@ -70,73 +70,51 @@ weight layer is its habituated complement.
 ## 7.2 Confidence is theoretically derived, not outcome-calibrated
 
 The confidence model (Ch3 §3.5, built in Ch4 §4.3) is the paper's distinctive
-mechanism, and its limitation has been stated from the start: the discount constants
-are **designer-stipulated from epistemological intuition, not calibrated against
-outcomes** (ob_1049). By Goldman's reliabilist standard [@goldman1979, p. 10 of the transcribed text], ENGRAM offers
-provenance-graded *plausibility*, not measured truth-ratios. A second gap: the model
-has **no fine-grained source-credibility axis** — `source_class` adjusts an
-observation three ways (E.4), and the nascent yellow-card tier below does not yet
-feed this formula — so two sources of very different reliability but the same
-`quote_type` and `source_class` contribute equal confidence (ob_1059). A third: ENGRAM's
-confidence is a single **scalar**. Chapter 4 §4.3 works through the Subjective-Logic
-comparison in full — the simplex, the discounting operators, the independence
-divergence — and narrows this gap to a **scalar-only-consumer** limitation. Direction
-of evidence and evidence mass are not lost but relocated into structure, and the
-graph is re-consulted at every derivation; what remains is that surfaces consuming
-*only* the scalar (retrieval ranking, gating thresholds) cannot see the provenance behind
-a 0.7 — the evidence set and reasoning chain that produced it — without walking the
-graph (dv_0965 → dv_1289); nothing SL's own tuple carries is lost, since on the
-(b, 0, u) edge b fixes u. This is a trade of cheap lookup against full provenance. One further trade belongs here rather than
-in §4.3, because it is a limitation rather than a divergence: SL functions under
-unresolved conflict at scale, whereas ENGRAM requires conviction-bar resolution before
-*building on* a contested claim. That is the right priority for an epistemic-identity
-substrate, but a real constraint at super-engram scale, where the volume of
-cross-agent conflict could make per-conflict adjudication uneconomical. What is
-*not* a future direction is a second number beside the scalar — an evidence count or
-vacuity axis. The scalar is meant to stay simple, and it already carries evidence
-accumulation: independent high-confidence premises raise it through noisy-OR [@pearl1986, p. 246; @pearl1988, pp. 184–187] (§4.3),
-sound only where the premises are independent, which the shared-root check guards
-for the two multi-source corroborating types (a third, enumeration from a single
-source, has no settled combination rule yet and uses noisy-OR for now). When
-the structure of an argument matters, the agent reads the nodes and the chain
-directly, which is what a careful review is; the scalar-only limitation is
-a division of labour by design, not a gap awaiting another number to read off.
+mechanism, and its central limitation has been stated from the start: the discount
+constants are **designer-stipulated from epistemological intuition, not calibrated
+against outcomes** (ob_1049). By Goldman's reliabilist standard [@goldman1979, p. 10 of the transcribed text], ENGRAM offers
+provenance-graded *plausibility*, not measured truth-ratios. The numbers say how
+strong a claim's support is *argued* to be, not how often claims of that strength turn
+out true.
 
-A related limitation sits in ranking rather than confidence: `utility_score`'s
-update rule (Appendix C §C.1) has no negative term, so it can only hold steady or
-rise — a retrieval that proves useless is never demoted, only left where it was.
-Demoting unhelpful nodes would need a penalty the current rule does not have.
+**The constants can be calibrated, and the graph is accumulating what calibration
+needs.** As claims build up whose later fate is known (corroborated, contradicted,
+retracted), the constants can be refined against those outcomes, with an ECE/AUROC-style
+protocol adapted from task accuracy to evidence quality (dv_0211, dv_0618). This is
+designed, not built.
 
-A fourth limit sits upstream of the arithmetic: **the author chooses the reasoning type,
-and can choose it wrongly.** The formulas are only as sound as that choice. Filing under
-the pressure of live work, an agent can label a synthesis of unrelated facts as a
-corroborated generalization, and the corroboration formula then lifts a weak claim far
-above its weakest premise. We found a real case while preparing Chapter 6. A step that
-combined one weak premise (0.20) with two unrelated strong ones had been filed as a
-generalization and scored 0.91; filed as the analogy it is, it scores 0.14. The step
-is dv_0779 in the frozen snapshot; tracing the conclusion it fed,
-`tools/paper_stats.py --trace dv_0877`, shows it at layer 4 of that chain (dv_0779 is the mis-typed step; dv_0877 is the
-conclusion built on it). The
-substrate's independence check did not catch it, because the three premises came from
-different evidence sources. We see two remedies. Within the substrate, a dream-phase
-scanner (Ch3 §3.1's *dream fairy*) dedicated to logic review would re-read recent
-derivations during consolidation, checking premise independence, the soundness of the
-chain and the fit of the type, and propose corrections for the consolidating sub-agent
-(the *dream master*) to apply. Reviewing logic alone, away from the
-pressure of filing, it should catch what the working agent misses; a pilot measuring its
-detection rate on known defects is planned. In the longer term, choosing premises,
-stating the chain and naming the reasoning type could become part of model training, so
-that this way of reasoning is native to the agent rather than a discipline applied on
-top of it.
+**Source credibility is coarse.** An observation's confidence comes from its quote type
+and a three-way source class (Appendix E §E.4), so two sources of very different
+reliability can contribute the same confidence (ob_1059). A first per-domain
+down-weighting of unreliable sources ships as a v0 *yellow card* (ob_1064–ob_1067);
+finer credibility is future work.
 
-Work has *started* on both gaps. A v0 **yellow-card** source-credibility tier already
-ships: per-domain flags that down-weight aggregator and unreliable sources (ob_1064–
-ob_1067). Two future tracks are concrete. (a) **Auto-calibration:** as the graph
-accumulates claims whose downstream fate (corroborated or contradicted) is known, the
-constants can be refined against an ECE/AUROC protocol adapted from task accuracy to
-evidence quality (dv_0211, dv_0618). (b) **Red-card graduation:** per-incident
-accumulation against a source domain that, past a threshold, bars it as independent
-evidence. Neither is built; both are designed.
+**The author chooses the reasoning type, and can choose it wrongly.** This is the
+deepest of the three, because it sits upstream of the arithmetic: the formulas are only
+as sound as that choice. Under the pressure of live work, an agent can label a synthesis
+of unrelated facts as a corroborated generalization, and the corroboration formula then
+lifts a weak claim far above its weakest premise. We found a real case while preparing
+Chapter 6: a step combining one weak premise (0.20) with two unrelated strong ones had
+been filed as a generalization and scored 0.91; filed as the analogy it is, it scores
+0.14 (dv_0779, at layer 4 of the chain behind the conclusion dv_0877).
+
+This is not a flaw peculiar to agents. A human mind under pressure makes the same move,
+and no substrate can reason in its author's place; what ENGRAM can do is make the move
+visible and reviewable, as it did here. Two remedies follow. In the near term, a
+dream-phase scanner dedicated to logic review (Ch3 §3.1's *dream fairy*) re-reads recent
+derivations away from the pressure of filing (premise independence, the soundness of the
+chain, the fit of the type) and proposes corrections; a pilot measuring its detection
+rate on known defects is planned. The deeper remedy lies in the model itself. An agent
+whose base model was trained to reason this way, choosing premises, stating the chain
+and naming the reasoning type, would carry the discipline natively rather than as rules
+applied on top of it. We propose such training as the natural next step: it would make
+these errors rarer at the source and make ENGRAM's own checks stronger.
+
+One refinement belongs to representation rather than calibration. Confidence is a
+single scalar, so a consumer that reads only the number, such as a ranking pass or a
+threshold, cannot see how much evidence stands behind it without walking the graph.
+Surfacing that evidence alongside the number is a natural improvement; Ch4 §4.3 sets
+out why the scalar itself should stay as it is.
 
 *Scope.* This is a real limitation. The value of the mechanism is that it makes claim
 strength *legible and contestable*, not that the numbers are ground truth.

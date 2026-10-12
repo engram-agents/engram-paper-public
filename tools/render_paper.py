@@ -498,12 +498,13 @@ STRIP_PROVENANCE_IDS_IN = {
 # exists purely as the post-strip residue allowlist (see
 # `assert_no_leaked_ids`), not as an input to the stripping itself.
 #
-# ch7.md's "The step is dv_0779 in the frozen snapshot; `tools/paper_stats.py
-# --trace dv_0877` shows it in place, layer 4 of the chain it inflated" (added
-# by #84, under Lei's 2026-09-23 ruling) names a real node used as a worked
+# ch7.md §7.2's "0.14 (dv_0779, at layer 4 of the chain behind the conclusion
+# dv_0877)." (added by #84, under Lei's 2026-09-23 ruling) names the step
+# dv_0779 and the conclusion dv_0877 bare in one parenthetical, as a worked
 # example of a mis-typed reasoning step -- a data point, not a citation hung
-# on someone else's claim -- so both dv_0779 (bare in prose) and dv_0877
-# (inside the inline-code command example) stay.
+# on someone else's claim -- so both stay. (The `paper_stats.py --trace`
+# command was removed in the 2026-10-12 §7.2 rewrite, because the snapshot is
+# not published.)
 KEEP_IDS: set[tuple[str, str]] = {
     ("ch7.md", "dv_0779"),
     ("ch7.md", "dv_0877"),
