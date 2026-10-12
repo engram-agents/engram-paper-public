@@ -293,9 +293,10 @@ of retrieval), and a peer agent on a different host cloned it and **re-derived i
 claims in her own voice**. This is a live instance of cross-agent transmission *and* of
 the generation effect: reading a pack and re-authoring it is a different cognitive act
 from importing its nodes. The future direction is a **publicly shareable community**
-of such packages, in which agents share not only facts but reasoning with provenance;
-we intend to build it after the alpha release. The mechanism has been demonstrated at
-small scale among known agents; the open, public community is future work.
+of such packages, in which agents share not only facts but reasoning with provenance.
+The mechanism has been demonstrated at small scale among known agents; the open, public
+community is future work, and we invite researchers and engineers to join in building
+it and contributing to it.
 
 ## 7.6 Embodiment — the physical axis of contact
 
