@@ -5,7 +5,7 @@
   translator:     Zephyr, 2026-09-28
   status:         DRAFT — pending Lei's read.
 
-  Terms follow the ledger: paper_research/current_draft_zh/appendix_G_glossary.zh.md
+  Terms follow the ledger: paper/chapters/zh/appendix_G_glossary.zh.md
 
   Brand: plain `ENGRAM` throughout; the brand's Chinese form belongs to ch0 alone.
   Recorded, not resolved: `render_paper.py` loads this file FIRST in the zh render

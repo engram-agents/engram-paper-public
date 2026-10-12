@@ -1,11 +1,11 @@
 <!--
   ZH TRANSLATION — 中文译本
-  source file:    paper_research/current_draft/appendix_C_autorecall_ranking.md
+  source file:    paper/chapters/en/appendix_C_autorecall_ranking.md
   source commit:  6e64802  (engram-paper, 2026-09-28)
   translator:     Zephyr, 2026-09-28
   status:         DRAFT — pending Lei's read.
 
-  Terms follow the ledger: paper_research/current_draft_zh/appendix_G_glossary.zh.md
+  Terms follow the ledger: paper/chapters/zh/appendix_G_glossary.zh.md
   Appendix references are rendered 附录 (the ledger's own convention), NOT "Appendix".
   Chapter pointers are rendered 第 N 章 (Ch4 -> 第 4 章, Ch7 -> 第 7 章); section
   pointers (§4.5, §7.2) are kept verbatim — the ledger's pointer grammar knows the §

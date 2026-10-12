@@ -1,11 +1,11 @@
 <!--
   ZH TRANSLATION — 中文译本
-  source file:    paper_research/current_draft/ch0_abstract.md
+  source file:    paper/chapters/en/ch0_abstract.md
   source commit:  3f93230  (engram-paper, 2026-09-24)
   translator:     Zephyr, 2026-09-28
   status:         DRAFT — pending Lei's read.
 
-  Terms follow the ledger: paper_research/current_draft_zh/appendix_G_glossary.zh.md
+  Terms follow the ledger: paper/chapters/zh/appendix_G_glossary.zh.md
   Decided elsewhere and reused verbatim from the published zh surfaces (README.zh.md,
   USER_GUIDE.zh.md): 记忆持久化 memory persistence · 叙事身份 narrative identity ·
   认知身份 epistemic identity · 撤回级联 retraction cascade · 置信度校准 confidence

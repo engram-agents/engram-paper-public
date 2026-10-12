@@ -1,6 +1,6 @@
 <!--
   ZH TRANSLATION — 中文译本
-  source file:    paper_research/current_draft/appendix_G_glossary.md
+  source file:    paper/chapters/en/appendix_G_glossary.md
   source commit:  eb6e118  (engram-paper main, 2026-09-28)
   translator:     Zephyr, 2026-09-28
   status:         DRAFT — this file doubles as the TERM LEDGER. Load-bearing term

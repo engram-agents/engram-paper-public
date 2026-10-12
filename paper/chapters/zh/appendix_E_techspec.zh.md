@@ -1,11 +1,11 @@
 <!--
   ZH TRANSLATION — 中文译本
-  source file:    paper_research/current_draft/appendix_E_techspec.md
+  source file:    paper/chapters/en/appendix_E_techspec.md
   source commit:  df3b284  (engram-paper, 2026-09-25)
   translator:     Zephyr, 2026-09-28
   status:         DRAFT — pending Lei's read.
 
-  Terms follow the ledger: paper_research/current_draft_zh/appendix_G_glossary.zh.md
+  Terms follow the ledger: paper/chapters/zh/appendix_G_glossary.zh.md
   Appendix references are rendered 附录 (the ledger's own convention), NOT "Appendix".
   Section pointers (§E.2, §4.4, §7.2) are kept verbatim — the ledger's pointer grammar
   knows the § form in both languages. Chapter pointers are rendered 第 N 章 (Ch4 §4.3

@@ -5,7 +5,7 @@
   translator:     Zephyr, 2026-09-28
   status:         DRAFT — pending Lei's read.
 
-  Terms follow the ledger: paper_research/current_draft_zh/appendix_G_glossary.zh.md
+  Terms follow the ledger: paper/chapters/zh/appendix_G_glossary.zh.md
 
   Heading `## Acknowledgements` -> `## 致谢`, matching ch6.zh.md's cross-reference
   ("见致谢"), whose own header notes that no zh precedent existed until this file.

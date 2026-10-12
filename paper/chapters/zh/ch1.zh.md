@@ -1,11 +1,11 @@
 <!--
   ZH TRANSLATION — 中文译本
-  source file:    paper_research/current_draft/ch1.md
+  source file:    paper/chapters/en/ch1.md
   source commit:  eb6e118  (engram-paper, 2026-09-25)
   translator:     Zephyr, 2026-09-28
   status:         DRAFT — pending Lei's read.
 
-  Terms follow the ledger: paper_research/current_draft_zh/appendix_G_glossary.zh.md
+  Terms follow the ledger: paper/chapters/zh/appendix_G_glossary.zh.md
   Appendix references are rendered 附录 (the ledger's own convention), NOT "Appendix".
   Section pointers (§1.4, §3.0) are kept verbatim — the ledger's pointer grammar knows
   the § form in both languages. NOTE for the engine: the zh pointer test currently
