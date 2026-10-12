@@ -38,6 +38,8 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
+from collections import Counter
 from pathlib import Path
 
 import pytest
@@ -192,14 +194,169 @@ def _body_outside_g(lang: str, full_text: str) -> str:
 
 
 # ── entry parsing ────────────────────────────────────────────────────────────
+#
+# Appendix G is a TABLE (Lei, 2026-10-12): one row per term,
+#   | Term | Definition | Notes | Section |        (zh: | 术语 | 定义 | 说明 | 章节 |)
+# A DATA row is a line whose first cell opens with a bold headword; the header and
+# the `|---|` separator row are not entries. An empty Notes / Section cell is
+# written `—`.
 
-_ENTRY_RE = re.compile(r"^\*\*(.+?)\*\*", re.MULTILINE)
+_ROW_RE = re.compile(r"^\|\s*\*\*(.+?)\*\*", re.MULTILINE)
+_CELL_SPLIT = re.compile(r"(?<!\\)\|")
+_EMPTY_CELL = "—"
+_TABLE_HEADER = {
+    "en": ["Term", "Definition", "Notes", "Section"],
+    "zh": ["术语", "定义", "说明", "章节"],
+}
+
+
+def _split_cells(line: str) -> list[str]:
+    """The cells of one table line (outer pipes dropped, `\\|` escapes kept)."""
+    inner = line.strip()
+    assert inner.startswith("|") and inner.endswith("|"), f"not a table line: {line!r}"
+    return [c.strip() for c in _CELL_SPLIT.split(inner[1:-1])]
+
+
+def _parse_rows(g_text: str) -> list[list[str]]:
+    """Every data row of the glossary table as its four cells
+    [term, definition, notes, section]."""
+    return [_split_cells(m.group(0)) for m in
+            re.finditer(r"^\|\s*\*\*.*$", g_text, re.MULTILINE)]
 
 
 def _parse_entries(g_text: str) -> list[str]:
-    """Every top-level glossary entry's bold headword, as written (including
-    any trailing parenthetical, e.g. 'cascade (retraction cascade)')."""
-    return _ENTRY_RE.findall(g_text)
+    """Every entry's bold headword, as written (the Term cell's `**...**`; any
+    non-bold annotation after it, e.g. 'cascade (retraction cascade)', is not
+    part of it)."""
+    return _ROW_RE.findall(g_text)
+
+
+# The headwords of the pre-table glossary at 89248b5, in order (contract C1): the
+# re-layout must not add, drop, rename or reorder a term. Raw bold text.
+_EXPECTED_HEADWORDS = {
+    "en": [
+        'arbitration',
+        'auto-surface',
+        'axiom',
+        'cascade',
+        'checkpoint',
+        'claim-bearing / non-claim-bearing',
+        'closest continuer',
+        'compaction',
+        'compaction bridge',
+        'confidence',
+        'conjecture',
+        'contradiction',
+        'cornerstone',
+        'current (node)',
+        'definition',
+        'deliberate recall',
+        'derivation',
+        'engram / ENGRAM',
+        'evidence node',
+        'faded set',
+        'fleet',
+        'focus list',
+        'forgetting curve',
+        'goal',
+        'harness',
+        'history-tree',
+        'identity documents',
+        'importance',
+        'lesson',
+        'nap',
+        'node ID prefixes',
+        'observation',
+        'pending marker',
+        'person node',
+        'premise',
+        'provenance',
+        'queryable set',
+        'quote_type',
+        'reasoning type',
+        'retention',
+        'retract',
+        'seat',
+        'seed / root',
+        'skill',
+        'sleep',
+        'snapshot',
+        'source_class',
+        'stale',
+        'substrate',
+        'supersede',
+        'sweep',
+        'tainted',
+        'tier',
+        'trust tier',
+        'turn',
+        'twin study',
+        'unified',
+        'utility (utility score)',
+        'warm briefing',
+    ],
+    "zh": [
+        '仲裁（arbitration）',
+        '自动浮现（auto-surface）',
+        '公理（axiom）',
+        '级联（cascade，撤回级联）',
+        '检查点（checkpoint）',
+        '承载主张／不承载主张（claim-bearing / non-claim-bearing）',
+        '最接近的延续者（closest continuer）',
+        '压缩（compaction）',
+        '压缩桥接（compaction bridge）',
+        '置信度（confidence）',
+        '猜想（conjecture）',
+        '矛盾（contradiction）',
+        '基石（cornerstone）',
+        '现行（节点）（current (node)）',
+        '定义（definition）',
+        '主动回忆（deliberate recall）',
+        '推导（derivation）',
+        'engram / ENGRAM（心迹）',
+        '证据节点（evidence node）',
+        '淡出集（faded set）',
+        '集群（fleet）',
+        '焦点清单（focus list）',
+        '遗忘曲线（forgetting curve）',
+        '目标（goal）',
+        '承载框架（harness）',
+        '历史树（history-tree）',
+        '身份文档（identity documents）',
+        '重要性（importance）',
+        '教训（lesson）',
+        '小憩（nap）',
+        '节点 ID 前缀（node ID prefixes）',
+        '观察（observation）',
+        '待决标记（pending marker）',
+        '人物节点（person node）',
+        '前提（premise）',
+        '出处（provenance）',
+        '可查询集（queryable set）',
+        'quote_type',
+        '推理类型（reasoning type）',
+        '保持（retention）',
+        '撤回（retract）',
+        '席位（seat）',
+        '种子／根（seed / root）',
+        '技能（skill）',
+        '睡眠（sleep）',
+        '快照（snapshot）',
+        'source_class',
+        '陈旧（stale）',
+        '基底（substrate）',
+        '取代（supersede）',
+        '普查（sweep）',
+        '污染（tainted）',
+        '层级（tier）',
+        '信任层级（trust tier）',
+        '轮次（turn）',
+        '孪生研究（twin study）',
+        '统一（unified）',
+        '效用（效用分）（utility (utility score)）',
+        '温暖简报（warm briefing）',
+    ],
+}
 
 
 # A trailing parenthetical annotation, in EITHER paren style. The content class
@@ -624,7 +781,7 @@ def test_t1_mutation_absent_term_reddens_only_this_test(tmp_path):
     body = _body_outside_g("en", full)
     bogus = "zorblattian-nonexistent-term"
     assert not re.search(r"\b" + re.escape(bogus) + r"\b", body, re.IGNORECASE)
-    g_text = _g_section_text("en", full) + f"\n\n**{bogus}** — a term invented for this test.\n"
+    g_text = _g_section_text("en", full) + f"\n| **{bogus}** | a term invented for this test. | — | — |\n"
     entries = _parse_entries(g_text)
     missing = []
     for raw in entries:
@@ -749,12 +906,428 @@ def test_t2_mutation_bad_pointer_reddens_only_this_test():
     section_tokens, appendix_letters, chapter_numbers, _named = _heading_index(full)
     bogus_token = "4.99"
     assert bogus_token not in section_tokens
-    synthetic_line = "**bogus-term** — a fake entry pointing nowhere. (Defined §4.99.)"
+    synthetic_line = "| **bogus-term** | a fake entry pointing nowhere. | — | §4.99 |"
     unresolved = []
     for tok in _SECTION_TOKEN_RE.findall(synthetic_line):
         if tok not in section_tokens:
             unresolved.append(f"§{tok}")
     assert f"§{bogus_token}" in unresolved
+
+
+# ── table contract (C1) ────────────────────────────────────────────────────
+#
+# Appendix G is a four-column table. These tests pin the LAYOUT contract; the
+# word-level preservation (every word of every old entry survives into its row)
+# was checked once, at the conversion, and is reported in the PR.
+
+
+def test_c1_table_shape_header_and_four_cells_per_row(lang: str):
+    text = _g_path(lang).read_text(encoding="utf-8")
+    body = _glossary_body(text) if lang == "zh" else text
+    lines = body.splitlines()
+    head_idx = [i for i, l in enumerate(lines) if l.startswith("| ") and
+                _split_cells(l) == _TABLE_HEADER[lang]]
+    assert len(head_idx) == 1, f"expected exactly one {lang} header row {_TABLE_HEADER[lang]}"
+    sep = lines[head_idx[0] + 1]
+    assert re.fullmatch(r"\|(?:\s*:?-{3,}:?\s*\|){4}", sep), f"bad separator row: {sep!r}"
+    rows = [l for l in lines[head_idx[0] + 2:] if l.strip()]
+    assert len(rows) == 59 and all(l.startswith("| **") for l in rows), (
+        "every non-blank line after the separator must be a data row")
+    for l in rows:
+        assert len(_split_cells(l)) == 4, f"row does not have exactly 4 cells: {l[:80]!r}"
+
+
+def test_c1_term_column_is_the_pre_table_headword_list_in_order(lang: str):
+    """Source file AND the rendered Appendix G."""
+    expected = _EXPECTED_HEADWORDS[lang]
+    assert len(expected) == 59
+    src = _g_path(lang).read_text(encoding="utf-8")
+    assert _parse_entries(src) == expected
+    rendered = _g_section_text(lang, _fresh_render(lang))
+    assert _parse_entries(rendered) == expected
+
+
+def test_c1_headword_parser_reads_rows_not_prose():
+    """Can-it-fail for the parser itself: a bold phrase in running prose or in a
+    non-first cell is NOT a headword; only a row's first cell is."""
+    text = (
+        "A **bold intro** line.\n\n"
+        "| Term | Definition | Notes | Section |\n|---|---|---|---|\n"
+        "| **alpha** (annotation) | has **bold** inside | — | §1.1 |\n"
+    )
+    assert _parse_entries(text) == ["alpha"]
+    assert _parse_rows(text) == [["**alpha** (annotation)", "has **bold** inside", "—", "§1.1"]]
+
+
+# ── Definition / Notes split (C7, C8) ──────────────────────────────────────
+#
+# Round 1 split each entry at its first top-level `;` and DROPPED the `;`, which cut
+# single-sentence definitions in half and left fragments in the Definition cell.
+# The rule now: Definition = the entry's FIRST SENTENCE, whole, as it stood in the
+# paper at 89248b5 (its semicolons and the clauses after them included); Notes =
+# every following sentence, verbatim, or `—` when there is none. The old text is
+# frozen in tests/fixtures/glossary_entries_v1_{en,zh}.txt (one entry per line,
+# whitespace collapsed, extracted from 89248b5) because origin/main moves.
+
+_FIXTURE_DIR = REPO_ROOT / "tests" / "fixtures"
+_SENTENCE_JOIN = {"en": " ", "zh": ""}
+# A sentence boundary. en: terminal punctuation, an optional closing quote, then
+# whitespace and the start of the next sentence (a capital or an `*italic` opener)
+# -- so `e.g. "every graph...` and `p. 1136]` and `§4.6` do not split. zh: see
+# `_first_sentence` (a `。`, then a closing quote if one is open).
+_SENTENCE_END_EN = re.compile(r'[.!?]["”]?\s+(?=[A-Z*])')
+# The pointer wrapper the pre-table entry carried around the Section cell.
+_POINTER_WRAPPER = {
+    "en": lambda s: re.compile(r"\s\((?:Defined )?" + re.escape(s) + r"\.\)$"),
+    "zh": lambda s: re.compile(r"（(?:界定于\s*)?" + re.escape(s) + r"。）$"),
+}
+
+
+def _collapse_ws(text: str) -> str:
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _fixture_entries(lang: str) -> list[tuple[str, str]]:
+    """[(term_cell_text, body)] from the frozen 89248b5 entries."""
+    path = _FIXTURE_DIR / f"glossary_entries_v1_{lang}.txt"
+    out = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        head, sep, body = line.partition(" — ")
+        assert sep, f"fixture line has no headword dash: {line[:60]!r}"
+        out.append((head, body))
+    return out
+
+
+def _first_sentence(text: str, lang: str) -> tuple[str, str]:
+    """(first sentence, the rest) of `text`; the rest is '' for a one-sentence text.
+
+    zh: the first `。` that is followed by more text which is not a closing `）`
+    (the `（...。）` trailing-note form ends in `。）`). A straight `"` right after
+    the `。` belongs to the sentence only when a quote is OPEN there (odd count of
+    `"` before it: `"我错了。"`); otherwise it opens the next sentence's quote
+    (`。"the sweep"取义项（2）。`)."""
+    if lang == "en":
+        m = _SENTENCE_END_EN.search(text)
+        if not m:
+            return text, ""
+        return text[: m.start()] + m.group(0).rstrip(), text[m.end():]
+    for m in re.finditer("。", text):
+        i = m.end()
+        if i < len(text) and (text[i] == "”" or (text[i] == '"' and text[:i].count('"') % 2 == 1)):
+            i += 1
+        if i < len(text) and text[i] != "）":
+            return text[:i], text[i:]
+    return text, ""
+
+
+def _entry_text_without_pointer(body: str, section: str, lang: str) -> str:
+    """The old entry body with its trailing `(Defined <Section>.)` wrapper removed.
+    Fails if the Section cell is not the pointer the old entry ended with."""
+    if section == _EMPTY_CELL:
+        return body
+    m = _POINTER_WRAPPER[lang](section).search(body)
+    if m:
+        return body[: m.start()]
+    if lang == "zh":
+        # The one entry whose trailing paren carries a translator's note after the
+        # pointer (`（§5.0。译名待定，见文件头。）`): the pointer moves to the Section
+        # cell and the paren stays around the note, which remains in Notes.
+        m = re.search(r"（" + re.escape(section) + r"。(?=[^（）]+）$)", body)
+        if m:
+            return body[: m.start()] + "（" + body[m.end():]
+    raise AssertionError(
+        f"Section {section!r} is not the trailing pointer of the old entry {body[-70:]!r}")
+
+
+def _rows_for(lang: str) -> list[list[str]]:
+    text = _g_path(lang).read_text(encoding="utf-8")
+    return _parse_rows(_glossary_body(text) if lang == "zh" else text)
+
+
+def test_fixture_is_the_pre_table_entry_list(lang: str):
+    """The frozen fixture carries all 59 entries, headwords in the C1 order."""
+    ents = _fixture_entries(lang)
+    assert len(ents) == 59
+    assert [re.match(r"\*\*(.+?)\*\*", h).group(1) for h, _ in ents] == _EXPECTED_HEADWORDS[lang]
+
+
+def test_c7_definition_plus_notes_plus_pointer_reconstructs_the_old_entry(lang: str):
+    """For every row: Definition + Notes + the re-wrapped Section pointer is the
+    89248b5 entry text, modulo whitespace and the removed wrapper words / parens /
+    headword dash -- no word, `;` or `；` was dropped or moved by the split."""
+    fixture, rows = _fixture_entries(lang), _rows_for(lang)
+    assert len(rows) == len(fixture) == 59
+    for (term_text, body), (term, definition, notes, section) in zip(fixture, rows):
+        assert term == term_text, f"term cell changed: {term!r} != {term_text!r}"
+        old = _entry_text_without_pointer(body, section, lang)
+        new = definition if notes == _EMPTY_CELL else definition + _SENTENCE_JOIN[lang] + notes
+        assert _collapse_ws(new) == _collapse_ws(old), (
+            f"{term_text}: Definition + Notes != the old entry text\n new: {new!r}\n old: {old!r}")
+
+
+def test_c8_definition_is_the_first_sentence_whole_and_notes_the_rest(lang: str):
+    """No Definition cell ends mid-sentence: it IS the first sentence of the old
+    entry (clauses after its `;` included), and Notes is every later sentence."""
+    fixture, rows = _fixture_entries(lang), _rows_for(lang)
+    n_notes = 0
+    for (term_text, body), (_t, definition, notes, section) in zip(fixture, rows):
+        first, rest = _first_sentence(
+            _collapse_ws(_entry_text_without_pointer(body, section, lang)), lang)
+        assert _collapse_ws(definition) == first, f"{term_text}: Definition is not the first sentence"
+        assert _collapse_ws(notes) == (rest if rest else _EMPTY_CELL), f"{term_text}: Notes is not the rest"
+        n_notes += notes != _EMPTY_CELL
+    assert 5 < n_notes < 59, n_notes  # non-vacuous: both outcomes occur
+
+
+@pytest.mark.parametrize(
+    "lang,text,first,rest",
+    [
+        ("en", "a x; b y. C d.", "a x; b y.", "C d."),
+        ("en", 'to withdraw: "I was wrong." The cascade fires.', 'to withdraw: "I was wrong."', "The cascade fires."),
+        ("en", 'the set, e.g. "every graph in this fleet."', 'the set, e.g. "every graph in this fleet."', ""),
+        ("en", "contested [@a1999, p. 1136].", "contested [@a1999, p. 1136].", ""),
+        ("en", "points (§4.6; Appendix E §E.2). Sense (1) unless stated.",
+         "points (§4.6; Appendix E §E.2).", "Sense (1) unless stated."),
+        ("zh", "甲；乙。丙；丁。", "甲；乙。", "丙；丁。"),
+        ("zh", '收回："我错了。"级联触发。', '收回："我错了。"', "级联触发。"),
+        ("zh", "甲。（注：乙。）", "甲。", "（注：乙。）"),
+        ("zh", '甲（2）。"the sweep"取义项（2）。', "甲（2）。", '"the sweep"取义项（2）。'),
+        ("zh", "只有一句。", "只有一句。", ""),
+    ],
+)
+def test_first_sentence_splitter(lang, text, first, rest):
+    assert _first_sentence(text, lang) == (first, rest)
+
+
+# ── pointer links & heading anchors (C2, C3, C4) ───────────────────────────
+#
+# The RENDERER turns every section pointer in Appendix G's table into a markdown
+# link and inserts the matching `<a id="..."></a>` line before the target
+# heading, from ONE scan, so a link and its target cannot drift apart (the same
+# single-source idea as `#ref-<key>` for citations). Sources keep plain-text
+# pointers.
+
+_FRESH: dict[str, str] = {}
+
+
+def _fresh_render(lang: str) -> str:
+    """The real `tools/render_paper.py --lang <lang>` output, rendered to a temp
+    path via `--out` (never in place), cached per language for this module."""
+    if lang not in _FRESH:
+        with tempfile.TemporaryDirectory() as d:
+            out = Path(d) / f"fresh-{lang}.md"
+            result = subprocess.run(
+                [sys.executable, "tools/render_paper.py", "--lang", lang, "--out", str(out)],
+                cwd=REPO_ROOT, capture_output=True, text=True,
+            )
+            assert result.returncode == 0, result.stderr
+            _FRESH[lang] = out.read_text(encoding="utf-8")
+    return _FRESH[lang]
+
+
+_ANCHOR_LINE = re.compile(r'^<a id="([^"]+)"></a>$', re.MULTILINE)
+_G_LINK = re.compile(
+    r"\]\(#((?:sec|appendix|ch)-[A-Za-z0-9-]+|front-matter|data-availability)\)")
+_MD_LINK = re.compile(r"\[[^\]]*\]\([^)]*\)")
+_SEC = r"§(?:[A-Z]\.\d+|\d+\.\d+)"
+# Written independently of the renderer's grammar: what a plain-text pointer in
+# the SOURCE looks like. Used to count the expected links and to find leftovers.
+_PLAIN_POINTER = {
+    "en": re.compile(
+        rf"Appendix [A-Z] {_SEC}|Appendix [A-Z]\b|{_SEC}|Chapter \d+|\bCh ?\d+\b"
+        r"|front matter|Data availability"),
+    "zh": re.compile(
+        rf"附录 ?[A-Z] ?{_SEC}|附录 ?[A-Z](?![A-Za-z0-9])|{_SEC}|第 ?\d+ ?章"
+        r"|前置部分|数据可用性"),
+}
+
+
+def _table_rows_text(g_text: str) -> str:
+    return "\n".join(l for l in g_text.splitlines() if re.match(r"^\|\s*\*\*", l))
+
+
+def _unresolved_g_links(render: str, lang: str) -> list[str]:
+    """Targets of Appendix G's pointer links that do not appear EXACTLY ONCE as an
+    anchor id in the same render."""
+    ids = Counter(_ANCHOR_LINE.findall(render))
+    return [t for t in _G_LINK.findall(_g_section_text(lang, render)) if ids[t] != 1]
+
+
+def _duplicate_anchor_ids(render: str) -> list[str]:
+    return sorted(i for i, n in Counter(_ANCHOR_LINE.findall(render)).items() if n > 1)
+
+
+def _heading_lines(text: str) -> list[str]:
+    """Every ATX heading line outside fenced code blocks, in order."""
+    out, fenced = [], False
+    for l in text.splitlines():
+        if re.match(r"^ {0,3}(```|~~~)", l):
+            fenced = not fenced
+        elif not fenced and re.match(r"^#{1,6}\s", l):
+            out.append(l)
+    return out
+
+
+def test_c2_every_pointer_link_targets_exactly_one_anchor(lang: str):
+    render = _fresh_render(lang)
+    assert _unresolved_g_links(render, lang) == []
+    # NON-VACUOUS: every plain-text pointer in the SOURCE rows became a link, and
+    # none was left as plain text.
+    src_rows = _table_rows_text(_g_path(lang).read_text(encoding="utf-8"))
+    expected_links = len(_PLAIN_POINTER[lang].findall(src_rows))
+    g_rows = _table_rows_text(_g_section_text(lang, render))
+    assert expected_links > 80, expected_links
+    assert len(_G_LINK.findall(g_rows)) == expected_links
+    leftover = _PLAIN_POINTER[lang].findall(_MD_LINK.sub("", g_rows))
+    assert leftover == [], f"pointers left as plain text in the {lang} table: {leftover}"
+
+
+def test_c2_checker_fails_on_a_missing_renamed_or_duplicated_anchor(lang: str):
+    """Can-it-fail for the C2 instrument: the checker must go red when an anchor
+    is removed, when a link is retargeted to a section that does not exist, and
+    when an anchor id is duplicated."""
+    render = _fresh_render(lang)
+    assert _unresolved_g_links(render, lang) == []
+    g = _g_section_text(lang, render)
+    first = _G_LINK.findall(g)[0]
+    anchor = f'<a id="{first}"></a>\n'
+    assert render.count(anchor) == 1
+    assert _unresolved_g_links(render.replace(anchor, ""), lang) == [first] * _G_LINK.findall(g).count(first)
+    m = _G_LINK.search(g)
+    bad = render.replace(g, g.replace(m.group(0), "](#sec-9-99)", 1))
+    assert _unresolved_g_links(bad, lang) == ["sec-9-99"]
+    assert _unresolved_g_links(render.replace(anchor, anchor * 2), lang) != []
+
+
+def test_c3_no_anchor_id_is_duplicated_anywhere_in_the_render(lang: str):
+    render = _fresh_render(lang)
+    assert len(_ANCHOR_LINE.findall(render)) > 30  # non-vacuous: ref- + section anchors
+    assert _duplicate_anchor_ids(render) == []
+    assert _duplicate_anchor_ids(render + '\n<a id="sec-4-6"></a>\n<a id="sec-4-6"></a>\n') == ["sec-4-6"]
+
+
+_SECTION_ANCHOR_ID = re.compile(r"(?:sec|appendix|ch)-|front-matter$|data-availability$")
+
+
+def _is_section_anchor(line: str) -> bool:
+    m = re.fullmatch(r'<a id="([^"]+)"></a>', line)
+    return bool(m and _SECTION_ANCHOR_ID.match(m.group(1)))
+
+
+def test_c4_headings_unchanged_and_anchors_sit_on_their_own_line_before_them(
+    lang: str, monkeypatch, tmp_path
+):
+    """The anchor insertion adds LINES and changes nothing else: the render with
+    the insertion switched off, and the real render with its section-anchor lines
+    deleted, carry the same non-blank lines -- so no heading line (or any other
+    line) was altered. And every anchor sits alone, directly before a heading."""
+    render = _fresh_render(lang)
+    monkeypatch.chdir(REPO_ROOT)
+    monkeypatch.setattr(rp, "insert_heading_anchors", lambda text, targets: text)
+    plain = tmp_path / "plain.md"
+    assert rp.main(["--lang", lang, "--out", str(plain)]) == 0
+    unanchored = plain.read_text(encoding="utf-8")
+    assert unanchored != render, "the anchor insertion switch-off changed nothing"
+    # Blank lines are compared out: a heading that follows a paragraph line with
+    # no blank between (one in the zh ch4 source, before "## 4.4") gets one blank
+    # line inserted along with its anchor, so the anchor is not glued onto that
+    # paragraph. Every NON-blank line must be identical, in order.
+    def nonblank(text: str) -> list[str]:
+        return [l for l in text.split("\n") if l.strip()]
+
+    assert nonblank("\n".join(l for l in render.split("\n") if not _is_section_anchor(l))) == nonblank(unanchored)
+    assert _heading_lines(render) == _heading_lines(unanchored)
+    lines = render.splitlines()
+    section_anchors = [i for i, l in enumerate(lines) if _is_section_anchor(l)]
+    assert section_anchors, "no section anchors were inserted"
+    for i in section_anchors:
+        assert re.match(r"#{1,6}\s", lines[i + 1]), f"anchor not directly before a heading: {lines[i:i+2]}"
+        assert i == 0 or lines[i - 1].strip() == "", f"anchor shares a paragraph with the line above: {lines[i-1:i+1]}"
+
+
+@pytest.mark.parametrize(
+    "src,expected",
+    [
+        ("(§4.6)", "([§4.6](#sec-4-6))"),
+        ("§E.2", "[§E.2](#sec-E-2)"),
+        ("Appendix E §E.2", "[Appendix E §E.2](#sec-E-2)"),
+        ("Appendix C", "[Appendix C](#appendix-C)"),
+        ("Chapter 5 holds it", "[Chapter 5](#ch-5) holds it"),
+        ("Ch8", "[Ch8](#ch-8)"),
+        ("front matter; Data availability",
+         "[front matter](#front-matter); [Data availability](#data-availability)"),
+        ("(§4.7; Appendix C)", "([§4.7](#sec-4-7); [Appendix C](#appendix-C))"),
+    ],
+)
+def test_link_glossary_pointers_en_grammar(src, expected):
+    row = f"| **t** | {src} | — | — |"
+    linked, targets = rp.link_glossary_pointers(row, "en")
+    assert linked == f"| **t** | {expected} | — | — |"
+    assert targets == set(re.findall(r"\(#([^)]+)\)", expected))
+
+
+@pytest.mark.parametrize(
+    "src,expected",
+    [
+        ("（§4.6）", "（[§4.6](#sec-4-6)）"),
+        ("附录 E §E.2", "[附录 E §E.2](#sec-E-2)"),
+        ("附录 C", "[附录 C](#appendix-C)"),
+        ("第 5 章将其固定", "[第 5 章](#ch-5)将其固定"),
+        ("前置部分；数据可用性", "[前置部分](#front-matter)；[数据可用性](#data-availability)"),
+    ],
+)
+def test_link_glossary_pointers_zh_grammar(src, expected):
+    row = f"| **t** | {src} | — | — |"
+    linked, targets = rp.link_glossary_pointers(row, "zh")
+    assert linked == f"| **t** | {expected} | — | — |"
+    assert targets == set(re.findall(r"\(#([^)]+)\)", expected))
+
+
+def test_link_glossary_pointers_touches_table_rows_only():
+    text = ("# Appendix G — Glossary\n\nSee §4.6 and Appendix C.\n\n"
+            "| Term | Definition | Notes | Section |\n|---|---|---|---|\n"
+            "| **t** | x | — | §4.6 |\n")
+    linked, targets = rp.link_glossary_pointers(text, "en")
+    assert "See §4.6 and Appendix C." in linked and "# Appendix G — Glossary" in linked
+    assert "| **t** | x | — | [§4.6](#sec-4-6) |" in linked
+    assert targets == {"sec-4-6"}
+
+
+_HEADINGS_EN = (
+    "# Epistemic Identity\n\ntext\n\n# Chapter 8 — Conclusion\n\n## 4.6 Auto-surface\n\n"
+    "```\n# 4.6 not a heading, inside a fence\n```\n\n# Appendix E — Spec\n\n## E.2 Node types\n\n"
+    "## Data availability\n"
+)
+
+
+def test_insert_heading_anchors_places_each_anchor_before_its_heading():
+    targets = {"sec-4-6", "sec-E-2", "appendix-E", "ch-8", "front-matter", "data-availability"}
+    out = rp.insert_heading_anchors(_HEADINGS_EN, targets)
+    lines = out.splitlines()
+    for t, heading in [
+        ("front-matter", "# Epistemic Identity"), ("ch-8", "# Chapter 8 — Conclusion"),
+        ("sec-4-6", "## 4.6 Auto-surface"), ("appendix-E", "# Appendix E — Spec"),
+        ("sec-E-2", "## E.2 Node types"), ("data-availability", "## Data availability"),
+    ]:
+        assert lines[lines.index(heading) - 1] == f'<a id="{t}"></a>'
+    assert out.count("<a id=") == 6
+    assert _heading_lines(out) == _heading_lines(_HEADINGS_EN)
+
+
+def test_insert_heading_anchors_zh_heading_forms():
+    zh = ("# 标题\n\n# 第 8 章 —— 结论\n\n## 4.6 自动浮现\n\n# 附录 E —— 规格\n\n"
+          "## E.2 节点类型\n\n## 数据可用性\n")
+    out = rp.insert_heading_anchors(
+        zh, {"ch-8", "sec-4-6", "appendix-E", "sec-E-2", "data-availability", "front-matter"})
+    assert out.count("<a id=") == 6
+    assert _heading_lines(out) == _heading_lines(zh)
+
+
+def test_insert_heading_anchors_fails_loudly_on_a_missing_or_ambiguous_target():
+    with pytest.raises(SystemExit):
+        rp.insert_heading_anchors(_HEADINGS_EN, {"sec-9-99"})
+    with pytest.raises(SystemExit):
+        rp.insert_heading_anchors(_HEADINGS_EN + "\n## 4.6 A second 4.6\n", {"sec-4-6"})
 
 
 # ── T3 ────────────────────────────────────────────────────────────────────
@@ -847,13 +1420,17 @@ def test_glossary_body_is_a_noop_without_a_leading_comment():
 # fixed 1800-word total is therefore gone; the limits are
 # `rp.GLOSSARY_AVG_WORDS_PER_ENTRY` (mean per entry) and
 # `rp.GLOSSARY_MAX_WORDS_PER_ENTRY` (worst single entry), zh scaled by
-# `rp.ZH_HAN_PER_EN_WORD`. An ENTRY is what `_ENTRY_RE` finds (a line starting
-# with a bold headword) through to the next one; text before the first entry
+# `rp.ZH_HAN_PER_EN_WORD`. An ENTRY is a table ROW (`_parse_rows`: a line whose first
+# cell opens with a bold headword); text before the first entry
 # (the intro) is not counted, and neither is the zh translator header
 # (`_glossary_body`).
 
 
-def _entry_size(text: str, lang: str) -> int:
+def _entry_size(row: list[str], lang: str) -> int:
+    """The size of one ENTRY = the words of its row: Term + Definition + Notes +
+    Section, i.e. the same words the pre-table entry had (the `—` empty-cell marker
+    and the table pipes are layout, not words, and are not counted)."""
+    text = " ".join(c for c in row if c != _EMPTY_CELL)
     return _han_char_count(text) if lang == "zh" else len(text.split())
 
 
@@ -861,13 +1438,13 @@ def _entry_stats(
     text: str, lang: str
 ) -> tuple[int, float, int, list[tuple[str, int]]]:
     """(n_entries, mean size, max size, [(headword, size) for every entry]) over
-    the glossary ENTRIES of `text`: intro and zh translator header excluded."""
+    the glossary ROWS of `text`: intro, header row and zh translator header
+    excluded."""
     body = _glossary_body(text) if lang == "zh" else text
-    ms = list(_ENTRY_RE.finditer(body))
-    sizes = []
-    for i, m in enumerate(ms):
-        end = ms[i + 1].start() if i + 1 < len(ms) else len(body)
-        sizes.append((m.group(1), _entry_size(body[m.start():end], lang)))
+    sizes = [
+        (re.match(r"\*\*(.+?)\*\*", row[0]).group(1), _entry_size(row, lang))
+        for row in _parse_rows(body)
+    ]
     if not sizes:
         return 0, 0.0, 0, []
     vals = [n for _, n in sizes]
@@ -898,14 +1475,18 @@ def _entry_limit_violations(text: str, lang: str) -> list[str]:
 
 
 def _synthetic(sizes: list[int], lang: str, intro: str = "") -> str:
-    """A glossary whose entry k has exactly sizes[k] counted units. en: whitespace
-    tokens (`**tK** —` is 2 of them); zh: Han characters (Latin headword adds 0)."""
+    """A glossary TABLE whose row k has exactly sizes[k] counted units. en:
+    whitespace tokens (the `**tK**` term is 1 of them); zh: Han characters (the
+    Latin term adds 0). Notes and Section are the empty marker `—`."""
     parts = [intro] if intro else []
+    hdr = _TABLE_HEADER[lang]
+    rows = ["| " + " | ".join(hdr) + " |", "|---|---|---|---|"]
     for k, n in enumerate(sizes):
         if lang == "zh":
-            parts.append(f"**t{k}** — " + "字" * n)
+            rows.append(f"| **t{k}** | " + "字" * n + " | — | — |")
         else:
-            parts.append(f"**t{k}** — " + " ".join(["w"] * (n - 2)))
+            rows.append(f"| **t{k}** | " + " ".join(["w"] * (n - 1)) + " | — | — |")
+    parts.append("\n".join(rows))
     return "\n\n".join(parts) + "\n"
 
 

@@ -170,7 +170,8 @@ ZH_HAN_PER_EN_WORD = 1.71
 # the actual number of terms in it. The real meaningful cap should be a per-term
 # average or something, so we avoid over complex and verbal definitions."
 #
-#   GLOSSARY_AVG_WORDS_PER_ENTRY  mean words per ENTRY (intro excluded)
+#   GLOSSARY_AVG_WORDS_PER_ENTRY  mean words per ENTRY (intro excluded; an entry
+#                                 is a table row: Term + Definition + Notes + Section)
 #   GLOSSARY_MAX_WORDS_PER_ENTRY  no single entry longer than this
 #
 # zh applies the same limits in Han characters x ZH_HAN_PER_EN_WORD, zh translator
@@ -1463,6 +1464,145 @@ def apply_inserts(
     return "\n".join(lines)
 
 
+# --- Appendix G: section pointers become links, headings get their anchors ----------
+#
+# Appendix G is a table whose Section column (and some inline text) points at the
+# section that defines each term. The SOURCES keep those pointers as plain text
+# ("§4.6", "Appendix E §E.2", "Ch8"); the RENDERER turns every pointer inside a
+# table row into a markdown link and inserts the matching `<a id="..."></a>` line
+# before the target heading -- from ONE scan, so a link and its target cannot drift
+# apart. It is the same single-source idea as `[label](#ref-<key>)` citations and
+# the `<a id="ref-<key>">` anchors of the bibliography.
+#
+# Anchor ids (the same in both languages):
+#   §4.6, §E.2        -> sec-4-6, sec-E-2           (the section heading "4.6 ...")
+#   Appendix E        -> appendix-E                  (the "# Appendix E" heading)
+#   Appendix E §E.2   -> sec-E-2                     (one link, to the section)
+#   Chapter 8 / Ch8   -> ch-8                        (the "# Chapter 8" heading)
+#   front matter      -> front-matter                (the paper's first heading)
+#   Data availability -> data-availability           (its "## Data availability")
+# zh pointers are localised (`附录 E §E.2`, `第 5 章`, `前置部分`, `数据可用性`) and
+# land on the same ids.
+#
+# The anchor goes on its OWN line immediately before the heading, never on the
+# heading line (which would break the `#`). Only the anchors Appendix G's pointers
+# need are inserted -- no blanket anchoring of every heading -- and a pointer whose
+# heading is missing, or matches twice, is a hard SystemExit, not a dead link.
+
+GLOSSARY_BODY = "appendix_G_glossary.md"
+
+_SEC_BODY = r"[A-Z]\.\d+|\d+\.\d+"
+_POINTER_RE = {
+    "en": re.compile(
+        rf"Appendix\s+(?P<asec_l>[A-Z])\s+§(?P<asec>{_SEC_BODY})"
+        r"|Appendix\s+(?P<app>[A-Z])\b"
+        rf"|§(?P<sec>{_SEC_BODY})"
+        r"|(?:Chapter\s+|\bCh\s?)(?P<ch>\d+)\b"
+        r"|(?P<front>front matter)"
+        r"|(?P<data>Data availability)"
+    ),
+    "zh": re.compile(
+        rf"附录\s?(?P<asec_l>[A-Z])\s?§(?P<asec>{_SEC_BODY})"
+        r"|附录\s?(?P<app>[A-Z])(?![A-Za-z0-9])"
+        rf"|§(?P<sec>{_SEC_BODY})"
+        r"|第\s?(?P<ch>\d+)\s?章"
+        r"|(?P<front>前置部分)"
+        r"|(?P<data>数据可用性)"
+    ),
+}
+_GLOSSARY_ROW = re.compile(r"^\|\s*\*\*")
+_CODE_SPAN = re.compile(r"(`[^`]*`)")
+
+
+def _pointer_anchor(m: re.Match) -> str:
+    if m.group("asec"):
+        return "sec-" + m.group("asec").replace(".", "-")
+    if m.group("app"):
+        return "appendix-" + m.group("app")
+    if m.group("sec"):
+        return "sec-" + m.group("sec").replace(".", "-")
+    if m.group("ch"):
+        return "ch-" + m.group("ch")
+    return "front-matter" if m.group("front") else "data-availability"
+
+
+def link_glossary_pointers(text: str, lang: str) -> tuple[str, set[str]]:
+    """Turn every section pointer inside the glossary TABLE ROWS of `text` into a
+    markdown link; return (linked text, the set of anchor ids it points at).
+
+    Only data rows (a line whose first cell opens with a bold headword) are
+    touched -- never the intro paragraph, the header row or the heading -- and code
+    spans are skipped. The caller must insert an anchor for every returned id
+    (`insert_heading_anchors`)."""
+    pointer = _POINTER_RE[lang]
+    targets: set[str] = set()
+
+    def link(m: re.Match) -> str:
+        anchor = _pointer_anchor(m)
+        targets.add(anchor)
+        return f"[{m.group(0)}](#{anchor})"
+
+    out = []
+    for line in text.split("\n"):
+        if _GLOSSARY_ROW.match(line):
+            line = "".join(
+                part if part.startswith("`") else pointer.sub(link, part)
+                for part in _CODE_SPAN.split(line)
+            )
+        out.append(line)
+    return "\n".join(out), targets
+
+
+_HEADING_ANCHOR_RES = (
+    (re.compile(rf"^#{{1,6}}\s+(?P<s>{_SEC_BODY})(?=\s|$)"),
+     lambda m: "sec-" + m.group("s").replace(".", "-")),
+    (re.compile(r"^#\s+(?:Appendix|附录)\s+(?P<a>[A-Z])(?![A-Za-z0-9])"),
+     lambda m: "appendix-" + m.group("a")),
+    (re.compile(r"^#\s+(?:Chapter\s+(?P<n>\d+)\b|第\s*(?P<n2>\d+)\s*章)"),
+     lambda m: "ch-" + (m.group("n") or m.group("n2"))),
+    (re.compile(r"^##\s+(?:Data availability|数据可用性)\s*$"),
+     lambda m: "data-availability"),
+)
+
+
+def insert_heading_anchors(text: str, targets: set[str]) -> str:
+    """Insert `<a id="<id>"></a>` on its own line immediately before the heading
+    each id in `targets` names. `front-matter` names the first heading of `text`.
+    Headings inside fenced code blocks are not headings. Raises SystemExit if a
+    target matches no heading or more than one -- a dead or ambiguous link is a
+    build failure, never a silent output."""
+    lines = text.split("\n")
+    found: dict[str, list[int]] = {}
+    fenced = False
+    first_heading = None
+    for i, line in enumerate(lines):
+        if re.match(r"^ {0,3}(```|~~~)", line):
+            fenced = not fenced
+            continue
+        if fenced or not re.match(r"^#{1,6}\s", line):
+            continue
+        if first_heading is None:
+            first_heading = i
+            found.setdefault("front-matter", []).append(i)
+        for rx, ident in _HEADING_ANCHOR_RES:
+            m = rx.match(line)
+            if m:
+                found.setdefault(ident(m), []).append(i)
+    for t in sorted(targets):
+        n = len(found.get(t, []))
+        if n != 1:
+            raise SystemExit(
+                f"heading anchor {t!r}: expected exactly one matching heading, found {n}"
+            )
+    for i, t in sorted(((found[t][0], t) for t in targets), reverse=True):
+        block = [f'<a id="{t}"></a>']
+        if i > 0 and lines[i - 1].strip():
+            block.insert(0, "")
+        lines[i:i] = block
+    return "\n".join(lines)
+
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument(
@@ -1494,6 +1634,7 @@ def main(argv: list[str] | None = None) -> int:
 
     stripped_total = 0
     apparatus_total = 0
+    anchor_targets: set[str] = set()
     for name in BODY:
         # ONE BODY list, resolved per language. A chapter that is missing in this
         # language is a hard SystemExit from `load`, naming the resolved path --
@@ -1504,6 +1645,9 @@ def main(argv: list[str] | None = None) -> int:
         stripped_total += n
         body, m = strip_apparatus_tags(name, body)
         apparatus_total += m
+        if name == GLOSSARY_BODY:
+            body, targets = link_glossary_pointers(body, lang)
+            anchor_targets |= targets
         parts.append(body)
 
     parts.append(load(PAPER / ACKNOWLEDGEMENTS[lang], cites))
@@ -1519,6 +1663,7 @@ def main(argv: list[str] | None = None) -> int:
 
     out.parent.mkdir(parents=True, exist_ok=True)
     text = "\n\n---\n\n".join(p.rstrip() for p in parts) + "\n"
+    text = insert_heading_anchors(text, anchor_targets)
     out.write_text(text, encoding="utf-8")
 
     words = len(text.split())

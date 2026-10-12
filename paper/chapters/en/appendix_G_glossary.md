@@ -4,246 +4,64 @@ Entries below define each term as this paper uses it and point to the section th
 defines or first uses it; where the paper uses a word in more than one sense, the
 entry names the senses.
 
-**arbitration** — *Senses:* (1) structural propagation of a retraction/supersede
-cascade within a unified deliberative architecture (§1.3; Appendix E §E.1); (2) the
-agent's own adjudication of a pending node, left to the agent, not the substrate
-(§4.4); (3) the capacity Kahl's Condition 3 asks for, scored per-competitor in
-Appendix B (§B.0). Sense (1) unless stated.
-
-**auto-surface** — the automatic, per-turn channel of retrieval: a hook surfaces
-claims relevant to the current context as a lossy, hint-level digest, and refreshes
-no recall. It shares one retrieval and ranking pipeline with *deliberate recall*
-(§4.7; Appendix C). (Defined §4.6.)
-
-**axiom** — a terminal, declared-fundamental commitment, confidence 1.0 by type;
-claim-bearing. (Defined Appendix E §E.2.)
-
-**cascade** (retraction cascade) — automatic propagation of a retraction or
-supersede along `derives_from` and `acknowledged_derives_from`, marking every live,
-claim-bearing dependent **pending**. (Defined §4.4.)
-
-**checkpoint** — a point where state is captured: the git-versioned graph is
-reset-symmetric at a checkpoint (§4.9); the warm-briefing's session block is
-rewritten each checkpoint (Appendix D §D.4).
-
-**claim-bearing / non-claim-bearing** — the partition of node kinds into those
-asserting something truth-evaluable (observations, derivations, theories, axioms,
-conjectures) and those that do not (everything else); it governs confidence and
-whether the retraction cascade touches a node. (Defined Appendix E §E.2.)
-
-**closest continuer** — Nozick's [-@nozick1981] theory: a later thing is the earlier thing only if
-it grows causally out of it, is the *closest* candidate among rivals, and clears an
-absolute threshold. (Defined §5.1.)
-
-**compaction** — the point where an agent's finite context fills and the session
-compacts: prior conversation is summarized and the experiential thread resets.
-(Defined §4.8.)
-
-**compaction bridge** — scaffolds producing operational continuity across a
-compaction without faking experiential continuity: focus list, warm briefing,
-per-day history, session context, post-compaction instructions. (Defined §4.8;
-Appendix E §E.7.)
-
-**confidence** — a computed property of a claim-bearing node's structure, not a
-hand-set number: for an observation it maps from `quote_type` × `source_class`; for
-a derivation it propagates from its premises. (Defined §1.2; Appendix E §E.4.)
-
-**conjecture** — a speculative claim, confidence-clamped to [0.10, 0.60], promoted
-to a derivation when it strengthens; claim-bearing. (Defined Appendix E §E.2.)
-
-**contradiction** — a first-class node recording that two claims conflict (not an
-edge), preserving both sides; excluded from the cascade, since it records a live
-dispute rather than a refutation. (Defined §4.4; Appendix E §E.2.)
-
-**cornerstone** — an identity-forming principle distilled from practice, minted only
-after proving itself and retired only by naming a successor; non-claim-bearing.
-(Defined Appendix E §E.2.)
-
-**current (node)** — a node not retracted or
-superseded: still live and eligible as a premise (contrasted with premises "since
-superseded," §6.4).
-
-**definition** — a term anchor (`df_*`), cited rather than derived-from by claims
-using the term; non-claim-bearing. (Defined Appendix E §E.2.)
-
-**deliberate recall** — the channel the agent invokes: a ranked query that returns
-summaries for its top hits, after which the agent opens the nodes it needs in full.
-Every node it returns or opens has its recall refreshed. It shares one retrieval and
-ranking pipeline with the *auto-surface* (§4.7; Appendix C). (Defined §4.6.)
-
-**derivation** — an inference citing its premises by `derives_from`, declaring a
-reasoning type; confidence computed, not asserted; claim-bearing. (Defined Appendix
-E §E.2.)
-
-**engram / ENGRAM** — *Senses:* (1) capitalized, the system itself — an Epistemic
-Node Graph for Retraction, Arbitration, and Memory (§1.3); (2) lower-case, one
-agent's own accumulated graph, as in "the same engram" (§5.6; §7.1). Sense (1)
-unless stated.
-
-**evidence node** — a provenance record (URL/file + git SHA + verbatim quote)
-backing an observation, non-claim-bearing. (Defined §3.4; Appendix E §E.2.)
-
-**faded set** — tier 3: nodes past the queryable threshold; no longer surfaced,
-but not destroyed. (Defined §4.5.)
-
-**fleet** — the set of ENGRAM agents/graphs under
-discussion collectively, e.g. "every graph in this fleet." (§6.0.)
-
-**focus list** — up to fifteen nodes the agent pins as unaffordable to lose,
-rendered verbatim at every session start, fresh or post-compaction. (Defined §4.8;
-Appendix E §E.7.)
-
-**forgetting curve** — the decay function governing recall importance over time;
-exponential, the time-translation-invariant kernel — a design choice for stationary
-recency ordering, not a claim about human forgetting; whether individual memories decay
-exponentially, with the power law an artifact of averaging, is contested [@anderson1999,
-p. 1136]. (Defined §4.5.)
-
-**goal** — a terminal/identity-direction aim; non-claim-bearing. (Defined Appendix E
-§E.2.)
-
-**harness** — the apparatus of hooks, skills and
-identity documents bundled with the base model and the graph; Chapter 5 holds it
-fixed. (§5.0.)
-
-**history-tree** — the append-only structure of whole ENGRAM states (not the
-provenance edges within one state): every change appends a successor, and identity
-is the unbroken descent through it. An agent at any moment is the unique path from
-the *root* to it. (Defined §2.2; §5.3.)
-
-**identity documents** — the identity-governance
-artifacts an agent's harness carries alongside hooks and skills. (§5.0.)
-
-**importance** — recall importance: the quantity decaying under the forgetting
-curve that determines whether a node stays in the queryable set. (Defined §4.5.)
-
-**lesson** — a durable, situation-tagged tripwire extracted from a specific
-mistake; non-claim-bearing. (Defined Appendix E §E.2.)
-
-**nap** — the consolidation routine at the end of each *burst* (one stretch between
-two context compactions), writing what the burst produced before compaction.
-(Defined §3.1.)
-
-**node ID prefixes** — the prefix names a node's type, per the type-prefix map in the
-reference implementation (`TYPE_PREFIX` in `engram_core.py`, v0.5.1-rc5): `ob_`
-observation (factual or predictive) · `dv_` derivation · `th_` theory · `cj_` conjecture
-· `df_` definition · `ax_` axiom · `cs_` cornerstone · `ls_` lesson · `gl_` goal · `gt_`
-goal tension · `ct_` contradiction · `qu_` question · `pr_` prediction · `ev_` evidence ·
-`fl_` feeling report · `pn_` person · `tk_` task · `ts_` trust signal. (Node types:
-Appendix E §E.2.)
-
-**observation** — a fact citing a verbatim source quote plus provenance
-(episode-analog); claim-bearing, two forms: `observation_factual`,
-`observation_predictive`. (Defined Appendix E §E.2.)
-
-**pending marker** — the single, severity-free mark on every live claim-bearing
-dependent of a retracted or superseded node; may not be cited as a premise until
-resolved. (Defined §4.4.)
-
-**person node** — ENGRAM's representation of a human or peer-agent counterparty,
-carrying relationship history and a trust-tier; one is the agent's own self-anchor.
-(Defined Appendix D §D.3.)
-
-**premise** — a node a derivation cites (by
-`derives_from`); a derivation's confidence propagates from its premises. (§4.3;
-Appendix E §E.2.)
-
-**provenance** — every claim traces to the evidence and reasoning that produced it.
-(Defined §1.2.)
-
-**queryable set** — tier 2: the bounded set of nodes eligible to surface; what
-forgetting and Condition 3's arbitration range over. (Defined §4.5.)
-
-**quote_type** — the evidential-type anchor (seven values, `hard_data` 0.95 down to
-`editorial` 0.35) an observation's confidence maps from. (Defined §4.3; Appendix E
-§E.4.)
-
-**reasoning type** — the declared shape of a derivation's argument (fourteen types:
-deductive, inductive, abductive, authority), selecting the propagation formula and
-per-type discount. (Defined Appendix E §E.4.)
-
-**retention** — how long a memory persists before
-it is no longer recalled; cited via Wixted's work [@wixted2004, p. 243; @wixted1991], the
-empirical literature ENGRAM's forgetting design must be reconciled with (it favours
-power functions over exponentials). (§4.5.)
-
-**retract** — to withdraw a claim as an error: "I was wrong." The cascade fires on
-retract and supersede alike; the marker records which occurred as provenance, not
-as blocking power. (Defined §4.4.)
-
-**seat** — one agent's installation: an agent with its own graph, on one host, with
-one human. (Defined §4.6.)
-
-**seed / root** — *Senses:* (1) the origin of an agent's accumulated history —
-"since its seed" (§5.0; §6.0) — and the **root** of the history-tree every branch
-traces back to (§5.3); (2) a closing figurative sense — "ENGRAM is the seed, not
-the tree" — the substrate as starting structure, not the identity it grows (§8.5).
-Sense (1) unless stated.
-
-**skill** — a component of an agent's harness,
-alongside hooks and identity documents. (§5.0.)
-
-**sleep** — the once-daily consolidation routine: a *review* filing what the day
-left unfiled, then a *dream* phase in which scanner sub-agents read the graph for
-contradictions, stale nodes and lesson candidates, and a consolidating sub-agent
-applies the results. (Defined §3.1.)
-
-**snapshot** — the single frozen copy of one ENGRAM graph every quantitative claim
-in Chapter 6 and Appendix E is computed from, taken at one instant via a WAL-safe
-backup. (Defined front matter; Data availability.)
-
-**source_class** — one of three values (`external`, `introspective`,
-`user_stated`) adjusting an observation's confidence alongside `quote_type`.
-(Defined Appendix E §E.4.)
-
-**stale** — of a node: flagged for review by the sleep-phase dream scanners, alongside
-contradictions and lesson candidates. (§3.1.)
-
-**substrate** — *Senses:* (1) the whole ENGRAM system (title; §1.2); (2) the
-history-tree's unbreakable structure, distinct from the queryable set drawn from
-it (§2.3); (3) the language-trained model an agent runs on (§3.0); (4) the
-database, physically separable from the working context (§5.7). Sense (1) unless
-stated.
-
-**supersede** — to withdraw a claim as an epistemic evolution: "I changed my
-mind." The cascade fires on retract and supersede alike. (Defined §4.4.)
-
-**sweep** — *Senses:* (1) a "landscape sweep," a suggested future widening of the
-empirical case-base (§4.12); (2) the dated, first-hand survey of ten competing
-memory systems on 2026-05-12 (Appendix A §A.5; Appendix B §B.0). Sense (2) for "the
-sweep."
-
-**tainted** — *Senses:* (1) the verb for what an
-unresolved cascade does to a dependent claim — it "taints," not merely deletes,
-what depended on it (§1.3; §8.2), describing the current single-marker system; (2)
-historically, a severity-graded `tainted_by` flag from the pre-single-marker
-cascade, replaced by the one pending marker with no severity (§6.3; §4.4).
-
-**tier** — the numbering ENGRAM's recall-importance bands use: tier 2 is the
-queryable set, tier 3 the faded set. An earlier tier 1 (working memory) was retired
-and the numbering kept as-is. (Defined §4.5.)
-
-**trust tier** — a graded measure of a counterparty's trust, carried on a person
-node; the operational arm of honesty-orthogonal-to-discretion. (Defined Appendix D
-§D.3.)
-
-**turn** — one prompt/response exchange; the
-granularity at which auto-surfacing fires ("per-turn") and deliberate recall is
-credited ("recall-turn"). (§4.6; Appendix C §C.2.)
-
-**twin study** — the deferred controlled experiment: fission-clone an agent, run
-both on a fixed prompt set, measure response similarity as the clones diverge.
-(Defined §5.8.)
-
-**unified** — *Senses:* (1) the name the team gave the cascade mechanism before
-reading Kahl — "unified cascade propagation" (Appendix A §A.4); (2) Kahl's
-Condition-3 criterion it later satisfied: the cascade fires through one typed-edge
-graph, not a sidecar (§1.3; Appendix E §E.1; §4.4). Sense (2) unless stated.
-
-**utility (utility score)** — a usage-learned value grading the cognitive load of
-the act a node took part in, not how hard the agent looked for it; composes with
-relevance to order what surfaces. (Defined §4.7; Appendix C §C.2.)
-
-**warm briefing** — a letter the agent opens at session start, from its past self
-and its collaborator, carrying what the record cannot: where the relationship
-stood, what mattered, what to walk back into. (Defined §4.8; Appendix D §D.4.)
+| Term | Definition | Notes | Section |
+|---|---|---|---|
+| **arbitration** | *Senses:* (1) structural propagation of a retraction/supersede cascade within a unified deliberative architecture (§1.3; Appendix E §E.1); (2) the agent's own adjudication of a pending node, left to the agent, not the substrate (§4.4); (3) the capacity Kahl's Condition 3 asks for, scored per-competitor in Appendix B (§B.0). | Sense (1) unless stated. | — |
+| **auto-surface** | the automatic, per-turn channel of retrieval: a hook surfaces claims relevant to the current context as a lossy, hint-level digest, and refreshes no recall. | It shares one retrieval and ranking pipeline with *deliberate recall* (§4.7; Appendix C). | §4.6 |
+| **axiom** | a terminal, declared-fundamental commitment, confidence 1.0 by type; claim-bearing. | — | Appendix E §E.2 |
+| **cascade** (retraction cascade) | automatic propagation of a retraction or supersede along `derives_from` and `acknowledged_derives_from`, marking every live, claim-bearing dependent **pending**. | — | §4.4 |
+| **checkpoint** | a point where state is captured: the git-versioned graph is reset-symmetric at a checkpoint (§4.9); the warm-briefing's session block is rewritten each checkpoint (Appendix D §D.4). | — | — |
+| **claim-bearing / non-claim-bearing** | the partition of node kinds into those asserting something truth-evaluable (observations, derivations, theories, axioms, conjectures) and those that do not (everything else); it governs confidence and whether the retraction cascade touches a node. | — | Appendix E §E.2 |
+| **closest continuer** | Nozick's [-@nozick1981] theory: a later thing is the earlier thing only if it grows causally out of it, is the *closest* candidate among rivals, and clears an absolute threshold. | — | §5.1 |
+| **compaction** | the point where an agent's finite context fills and the session compacts: prior conversation is summarized and the experiential thread resets. | — | §4.8 |
+| **compaction bridge** | scaffolds producing operational continuity across a compaction without faking experiential continuity: focus list, warm briefing, per-day history, session context, post-compaction instructions. | — | §4.8; Appendix E §E.7 |
+| **confidence** | a computed property of a claim-bearing node's structure, not a hand-set number: for an observation it maps from `quote_type` × `source_class`; for a derivation it propagates from its premises. | — | §1.2; Appendix E §E.4 |
+| **conjecture** | a speculative claim, confidence-clamped to [0.10, 0.60], promoted to a derivation when it strengthens; claim-bearing. | — | Appendix E §E.2 |
+| **contradiction** | a first-class node recording that two claims conflict (not an edge), preserving both sides; excluded from the cascade, since it records a live dispute rather than a refutation. | — | §4.4; Appendix E §E.2 |
+| **cornerstone** | an identity-forming principle distilled from practice, minted only after proving itself and retired only by naming a successor; non-claim-bearing. | — | Appendix E §E.2 |
+| **current (node)** | a node not retracted or superseded: still live and eligible as a premise (contrasted with premises "since superseded," §6.4). | — | — |
+| **definition** | a term anchor (`df_*`), cited rather than derived-from by claims using the term; non-claim-bearing. | — | Appendix E §E.2 |
+| **deliberate recall** | the channel the agent invokes: a ranked query that returns summaries for its top hits, after which the agent opens the nodes it needs in full. | Every node it returns or opens has its recall refreshed. It shares one retrieval and ranking pipeline with the *auto-surface* (§4.7; Appendix C). | §4.6 |
+| **derivation** | an inference citing its premises by `derives_from`, declaring a reasoning type; confidence computed, not asserted; claim-bearing. | — | Appendix E §E.2 |
+| **engram / ENGRAM** | *Senses:* (1) capitalized, the system itself — an Epistemic Node Graph for Retraction, Arbitration, and Memory (§1.3); (2) lower-case, one agent's own accumulated graph, as in "the same engram" (§5.6; §7.1). | Sense (1) unless stated. | — |
+| **evidence node** | a provenance record (URL/file + git SHA + verbatim quote) backing an observation, non-claim-bearing. | — | §3.4; Appendix E §E.2 |
+| **faded set** | tier 3: nodes past the queryable threshold; no longer surfaced, but not destroyed. | — | §4.5 |
+| **fleet** | the set of ENGRAM agents/graphs under discussion collectively, e.g. "every graph in this fleet." | — | §6.0 |
+| **focus list** | up to fifteen nodes the agent pins as unaffordable to lose, rendered verbatim at every session start, fresh or post-compaction. | — | §4.8; Appendix E §E.7 |
+| **forgetting curve** | the decay function governing recall importance over time; exponential, the time-translation-invariant kernel — a design choice for stationary recency ordering, not a claim about human forgetting; whether individual memories decay exponentially, with the power law an artifact of averaging, is contested [@anderson1999, p. 1136]. | — | §4.5 |
+| **goal** | a terminal/identity-direction aim; non-claim-bearing. | — | Appendix E §E.2 |
+| **harness** | the apparatus of hooks, skills and identity documents bundled with the base model and the graph; Chapter 5 holds it fixed. | — | §5.0 |
+| **history-tree** | the append-only structure of whole ENGRAM states (not the provenance edges within one state): every change appends a successor, and identity is the unbroken descent through it. | An agent at any moment is the unique path from the *root* to it. | §2.2; §5.3 |
+| **identity documents** | the identity-governance artifacts an agent's harness carries alongside hooks and skills. | — | §5.0 |
+| **importance** | recall importance: the quantity decaying under the forgetting curve that determines whether a node stays in the queryable set. | — | §4.5 |
+| **lesson** | a durable, situation-tagged tripwire extracted from a specific mistake; non-claim-bearing. | — | Appendix E §E.2 |
+| **nap** | the consolidation routine at the end of each *burst* (one stretch between two context compactions), writing what the burst produced before compaction. | — | §3.1 |
+| **node ID prefixes** | the prefix names a node's type, per the type-prefix map in the reference implementation (`TYPE_PREFIX` in `engram_core.py`, v0.5.1-rc5): `ob_` observation (factual or predictive) · `dv_` derivation · `th_` theory · `cj_` conjecture · `df_` definition · `ax_` axiom · `cs_` cornerstone · `ls_` lesson · `gl_` goal · `gt_` goal tension · `ct_` contradiction · `qu_` question · `pr_` prediction · `ev_` evidence · `fl_` feeling report · `pn_` person · `tk_` task · `ts_` trust signal. | — | Node types: Appendix E §E.2 |
+| **observation** | a fact citing a verbatim source quote plus provenance (episode-analog); claim-bearing, two forms: `observation_factual`, `observation_predictive`. | — | Appendix E §E.2 |
+| **pending marker** | the single, severity-free mark on every live claim-bearing dependent of a retracted or superseded node; may not be cited as a premise until resolved. | — | §4.4 |
+| **person node** | ENGRAM's representation of a human or peer-agent counterparty, carrying relationship history and a trust-tier; one is the agent's own self-anchor. | — | Appendix D §D.3 |
+| **premise** | a node a derivation cites (by `derives_from`); a derivation's confidence propagates from its premises. | — | §4.3; Appendix E §E.2 |
+| **provenance** | every claim traces to the evidence and reasoning that produced it. | — | §1.2 |
+| **queryable set** | tier 2: the bounded set of nodes eligible to surface; what forgetting and Condition 3's arbitration range over. | — | §4.5 |
+| **quote_type** | the evidential-type anchor (seven values, `hard_data` 0.95 down to `editorial` 0.35) an observation's confidence maps from. | — | §4.3; Appendix E §E.4 |
+| **reasoning type** | the declared shape of a derivation's argument (fourteen types: deductive, inductive, abductive, authority), selecting the propagation formula and per-type discount. | — | Appendix E §E.4 |
+| **retention** | how long a memory persists before it is no longer recalled; cited via Wixted's work [@wixted2004, p. 243; @wixted1991], the empirical literature ENGRAM's forgetting design must be reconciled with (it favours power functions over exponentials). | — | §4.5 |
+| **retract** | to withdraw a claim as an error: "I was wrong." | The cascade fires on retract and supersede alike; the marker records which occurred as provenance, not as blocking power. | §4.4 |
+| **seat** | one agent's installation: an agent with its own graph, on one host, with one human. | — | §4.6 |
+| **seed / root** | *Senses:* (1) the origin of an agent's accumulated history — "since its seed" (§5.0; §6.0) — and the **root** of the history-tree every branch traces back to (§5.3); (2) a closing figurative sense — "ENGRAM is the seed, not the tree" — the substrate as starting structure, not the identity it grows (§8.5). | Sense (1) unless stated. | — |
+| **skill** | a component of an agent's harness, alongside hooks and identity documents. | — | §5.0 |
+| **sleep** | the once-daily consolidation routine: a *review* filing what the day left unfiled, then a *dream* phase in which scanner sub-agents read the graph for contradictions, stale nodes and lesson candidates, and a consolidating sub-agent applies the results. | — | §3.1 |
+| **snapshot** | the single frozen copy of one ENGRAM graph every quantitative claim in Chapter 6 and Appendix E is computed from, taken at one instant via a WAL-safe backup. | — | front matter; Data availability |
+| **source_class** | one of three values (`external`, `introspective`, `user_stated`) adjusting an observation's confidence alongside `quote_type`. | — | Appendix E §E.4 |
+| **stale** | of a node: flagged for review by the sleep-phase dream scanners, alongside contradictions and lesson candidates. | — | §3.1 |
+| **substrate** | *Senses:* (1) the whole ENGRAM system (title; §1.2); (2) the history-tree's unbreakable structure, distinct from the queryable set drawn from it (§2.3); (3) the language-trained model an agent runs on (§3.0); (4) the database, physically separable from the working context (§5.7). | Sense (1) unless stated. | — |
+| **supersede** | to withdraw a claim as an epistemic evolution: "I changed my mind." | The cascade fires on retract and supersede alike. | §4.4 |
+| **sweep** | *Senses:* (1) a "landscape sweep," a suggested future widening of the empirical case-base (§4.12); (2) the dated, first-hand survey of ten competing memory systems on 2026-05-12 (Appendix A §A.5; Appendix B §B.0). | Sense (2) for "the sweep." | — |
+| **tainted** | *Senses:* (1) the verb for what an unresolved cascade does to a dependent claim — it "taints," not merely deletes, what depended on it (§1.3; §8.2), describing the current single-marker system; (2) historically, a severity-graded `tainted_by` flag from the pre-single-marker cascade, replaced by the one pending marker with no severity (§6.3; §4.4). | — | — |
+| **tier** | the numbering ENGRAM's recall-importance bands use: tier 2 is the queryable set, tier 3 the faded set. | An earlier tier 1 (working memory) was retired and the numbering kept as-is. | §4.5 |
+| **trust tier** | a graded measure of a counterparty's trust, carried on a person node; the operational arm of honesty-orthogonal-to-discretion. | — | Appendix D §D.3 |
+| **turn** | one prompt/response exchange; the granularity at which auto-surfacing fires ("per-turn") and deliberate recall is credited ("recall-turn"). | — | §4.6; Appendix C §C.2 |
+| **twin study** | the deferred controlled experiment: fission-clone an agent, run both on a fixed prompt set, measure response similarity as the clones diverge. | — | §5.8 |
+| **unified** | *Senses:* (1) the name the team gave the cascade mechanism before reading Kahl — "unified cascade propagation" (Appendix A §A.4); (2) Kahl's Condition-3 criterion it later satisfied: the cascade fires through one typed-edge graph, not a sidecar (§1.3; Appendix E §E.1; §4.4). | Sense (2) unless stated. | — |
+| **utility (utility score)** | a usage-learned value grading the cognitive load of the act a node took part in, not how hard the agent looked for it; composes with relevance to order what surfaces. | — | §4.7; Appendix C §C.2 |
+| **warm briefing** | a letter the agent opens at session start, from its past self and its collaborator, carrying what the record cannot: where the relationship stood, what mattered, what to walk back into. | — | §4.8; Appendix D §D.4 |
