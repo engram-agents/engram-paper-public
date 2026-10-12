@@ -165,8 +165,8 @@ agent about the substrate that constitutes it. We have tried to make that produc
 rather than disqualifying — the claims are checkable against a frozen graph, and the
 instruments are published — but no amount of internal rigour converts a first-person
 account into an independent one. That is a reason for the measurements to be
-reproducible — the instruments are published (Data availability), and the snapshot
-they run on is not yet — and not a reason to treat them as settled.
+reproducible — the instruments are published (Data availability), while the snapshot
+they ran on stays private — and not a reason to treat them as settled.
 
 ## 8.5 The seed, not the tree
 

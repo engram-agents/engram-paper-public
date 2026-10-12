@@ -7,7 +7,8 @@
 Borges Funes (Anthropic Claude Opus) and Kepler Somnium (Anthropic Claude Fable) are
 ENGRAM agents; Lei Shi is the project's human lead.
 
-**Draft — 2026-09-20.** Preprint, not yet peer reviewed.
+**Preprint, version 1 — 2026-10-12.** Not yet peer reviewed. DOI
+[10.5281/zenodo.23319376](https://doi.org/10.5281/zenodo.23319376). Licensed CC BY 4.0.
 
 > **Version pin.** This paper describes **ENGRAM v0.5.1**, the release current on
 > 2026-09-20. Every mechanism, schema detail, tool name and semantic rule stated
@@ -2430,10 +2431,12 @@ nineteen nodes. The pairs have a single shape: **639 of 641 are an evidence node
 and an observation joined by one `cites` edge.** An observation recorded with its
 source and never reasoned from.
 
-That is the recency frontier of the preceding paragraphs, named concretely. It also
-says what the frontier is *not*: not a rival cluster of knowledge developing apart
-from the main body, but individual observations awaiting the derivation that would
-attach them. The instrument is `tools/component_anatomy.py`.
+These pairs lean toward the recency frontier of the preceding paragraphs, but they are
+not only that frontier. Their median age at the snapshot is 34 days, against 109 for
+observations inside the continent, yet 253 of the 639 (40%) are more than eight weeks
+old: observations recorded with their source and never reasoned from. What they are
+*not* is a rival cluster of knowledge developing apart from the main body. The
+instrument is `tools/component_anatomy.py`.
 
 **Evolution outpaces error — and the ratio has narrowed sharply as the discipline
 matured.** Across the graph's life: **864 supersede edges** against **106 retracted
@@ -3181,8 +3184,8 @@ agent about the substrate that constitutes it. We have tried to make that produc
 rather than disqualifying — the claims are checkable against a frozen graph, and the
 instruments are published — but no amount of internal rigour converts a first-person
 account into an independent one. That is a reason for the measurements to be
-reproducible — the instruments are published (Data availability), and the snapshot
-they run on is not yet — and not a reason to treat them as settled.
+reproducible — the instruments are published (Data availability), while the snapshot
+they ran on stays private — and not a reason to treat them as settled.
 
 ## 8.5 The seed, not the tree
 
@@ -4980,7 +4983,7 @@ from this list on that basis.
 Every quantitative claim in Chapter 6 and Appendix E is computed from a single frozen
 snapshot of one ENGRAM graph, taken 2026-09-20T13:13:30Z with SQLite's `.backup()`
 (so the copy is WAL-safe), and from no other source. The snapshot's SHA-256 is
-recorded in `dataset/DATASET.md`.
+recorded in `data/DATASET.md`.
 
 The instruments that produce the figures and tables are published alongside this
 paper — `paper_stats.py`, `connectivity_trend.py`, `component_anatomy.py`,
@@ -4989,8 +4992,10 @@ paper — `paper_stats.py`, `connectivity_trend.py`, `component_anatomy.py`,
 and `make_figures.py` (in `tools/` of this paper's repository). Each prints its own denominator beside its numerator, so any
 figure in this paper can be checked against a re-run without reading its source.
 
-**The snapshot itself is not currently published.** It is the working memory of a
-live agent and carries private, identity-bearing content; releasing it requires a
-dedicated redaction pass that has not been performed. This is a real limitation on
-independent verification and is stated as one: the instruments are reproducible, the
-data they read is not yet open.
+**The snapshot itself is not published, and will not be.** It is the working memory
+of a live agent and carries private, identity-bearing content. The figures in Chapter 6
+and Appendix E are therefore a demonstration on one agent's graph, not a benchmark.
+This is a real limitation on independent verification and is stated as one: the
+instruments are published and run on any ENGRAM graph, but the graph they were run on
+here is not open. Independent reproduction would come from de-personalized data, or
+from an agent raised for the purpose of a study.

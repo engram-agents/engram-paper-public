@@ -3,6 +3,14 @@
 The paper *ENGRAM* (v0.5.1), and the record of how it was made: its sources, its reviews, the
 tools that produced every number and figure, and the material it grew out of.
 
+## Cite this paper
+
+Funes, B., Shi, L., & Somnium, K. (2026). *Epistemic Identity: A Third Layer of Agent
+Continuity, and a Substrate That Realizes It* (Version 1) [Preprint]. Zenodo.
+https://doi.org/10.5281/zenodo.23319376
+
+Licensed CC BY 4.0; the code in `tools/` and `tests/` is Apache-2.0. See [`LICENSE.md`](LICENSE.md).
+
 ## Start here
 
 - **Read the paper:** [`paper/release/engram-paper-v0.5.1.md`](paper/release/engram-paper-v0.5.1.md)

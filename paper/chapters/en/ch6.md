@@ -247,10 +247,12 @@ nineteen nodes. The pairs have a single shape: **639 of 641 are an evidence node
 and an observation joined by one `cites` edge.** An observation recorded with its
 source and never reasoned from.
 
-That is the recency frontier of the preceding paragraphs, named concretely. It also
-says what the frontier is *not*: not a rival cluster of knowledge developing apart
-from the main body, but individual observations awaiting the derivation that would
-attach them. The instrument is `tools/component_anatomy.py`.
+These pairs lean toward the recency frontier of the preceding paragraphs, but they are
+not only that frontier. Their median age at the snapshot is 34 days, against 109 for
+observations inside the continent, yet 253 of the 639 (40%) are more than eight weeks
+old: observations recorded with their source and never reasoned from. What they are
+*not* is a rival cluster of knowledge developing apart from the main body. The
+instrument is `tools/component_anatomy.py`.
 
 **Evolution outpaces error — and the ratio has narrowed sharply as the discipline
 matured.** Across the graph's life: **864 supersede edges** against **106 retracted
