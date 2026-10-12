@@ -1510,7 +1510,9 @@ _POINTER_RE = {
         r"|(?P<data>数据可用性)"
     ),
 }
-_GLOSSARY_ROW = re.compile(r"^\|\s*\*\*")
+# A linkable glossary line: a table data row (first cell opens with a bold
+# headword) OR a note line of the list under the table (`<a id="gnote-N"></a>N. ...`).
+_GLOSSARY_ROW = re.compile(r'^(?:\|\s*\*\*|<a id="gnote-\d+"></a>)')
 _CODE_SPAN = re.compile(r"(`[^`]*`)")
 
 
@@ -1527,10 +1529,12 @@ def _pointer_anchor(m: re.Match) -> str:
 
 
 def link_glossary_pointers(text: str, lang: str) -> tuple[str, set[str]]:
-    """Turn every section pointer inside the glossary TABLE ROWS of `text` into a
-    markdown link; return (linked text, the set of anchor ids it points at).
+    """Turn every section pointer inside the glossary TABLE ROWS of `text` -- and
+    inside the note lines of the list under the table -- into a markdown link;
+    return (linked text, the set of anchor ids it points at).
 
-    Only data rows (a line whose first cell opens with a bold headword) are
+    Only data rows (a line whose first cell opens with a bold headword) and note
+    lines (opening `<a id="gnote-N"></a>`) are
     touched -- never the intro paragraph, the header row or the heading -- and code
     spans are skipped. The caller must insert an anchor for every returned id
     (`insert_heading_anchors`)."""

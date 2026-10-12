@@ -196,18 +196,30 @@ def _body_outside_g(lang: str, full_text: str) -> str:
 # ── entry parsing ────────────────────────────────────────────────────────────
 #
 # Appendix G is a TABLE (Lei, 2026-10-12): one row per term,
-#   | Term | Definition | Notes | Section |        (zh: | 术语 | 定义 | 说明 | 章节 |)
+#   | Term | Definition | Section |                (zh: | 术语 | 定义 | 章节 |)
 # A DATA row is a line whose first cell opens with a bold headword; the header and
-# the `|---|` separator row are not entries. An empty Notes / Section cell is
-# written `—`.
+# the `|---|` separator row are not entries. An empty Section cell is written `—`.
+#
+# The rare NOTES live under the table, not in a column (Lei, 2026-10-12: "a mostly
+# empty column is a waste of page space"): a Definition cell that has a note ends
+# with the marker `<sup>[n](#gnote-n)</sup>`, and a `**Notes**` (zh `**注**`) list
+# directly after the table carries one line per note,
+#   <a id="gnote-n"></a>n. **headword** — note text
+# A "Sense (N) unless stated." tail is not a note: it is part of the senses
+# definition and sits inside the Definition cell.
 
 _ROW_RE = re.compile(r"^\|\s*\*\*(.+?)\*\*", re.MULTILINE)
 _CELL_SPLIT = re.compile(r"(?<!\\)\|")
 _EMPTY_CELL = "—"
 _TABLE_HEADER = {
-    "en": ["Term", "Definition", "Notes", "Section"],
-    "zh": ["术语", "定义", "说明", "章节"],
+    "en": ["Term", "Definition", "Section"],
+    "zh": ["术语", "定义", "章节"],
 }
+_NOTES_LEAD = {"en": "**Notes**", "zh": "**注**"}
+# A Definition cell's note marker, and a note line of the list under the table.
+_MARKER = re.compile(r"<sup>\[(\d+)\]\(#gnote-(\d+)\)</sup>")
+_NOTE_LINE_LOOSE = re.compile(r'^<a id="gnote-')
+_NOTE_LINE = re.compile(r'^<a id="gnote-(\d+)"></a>(\d+)\. \*\*(.+?)\*\* — (.+)$')
 
 
 def _split_cells(line: str) -> list[str]:
@@ -218,10 +230,37 @@ def _split_cells(line: str) -> list[str]:
 
 
 def _parse_rows(g_text: str) -> list[list[str]]:
-    """Every data row of the glossary table as its four cells
-    [term, definition, notes, section]."""
+    """Every data row of the glossary table as its three cells
+    [term, definition, section]."""
     return [_split_cells(m.group(0)) for m in
             re.finditer(r"^\|\s*\*\*.*$", g_text, re.MULTILINE)]
+
+
+def _parse_notes(g_text: str) -> list[tuple[int, int, str, str]]:
+    """The note lines of the list under the table, in order, as
+    (anchor n, shown n, headword, text). A line that opens like a note line but
+    does not have the exact shape is returned as (-1, -1, "", whole line) so the
+    caller sees it instead of it vanishing."""
+    out = []
+    for line in g_text.splitlines():
+        if _NOTE_LINE_LOOSE.match(line):
+            m = _NOTE_LINE.match(line)
+            out.append((int(m.group(1)), int(m.group(2)), m.group(3), m.group(4))
+                       if m else (-1, -1, "", line))
+    return out
+
+
+def _split_marker(definition: str) -> tuple[str, int | None]:
+    """(Definition with its note marker removed, the marker's number or None).
+    The marker is at most one, at the very end of the cell, with equal text/target."""
+    found = _MARKER.findall(definition)
+    assert len(found) <= 1, f"more than one note marker in {definition[-80:]!r}"
+    if not found:
+        return definition, None
+    assert found[0][0] == found[0][1], f"marker text/target differ: {found[0]}"
+    assert definition.endswith(f"<sup>[{found[0][0]}](#gnote-{found[0][0]})</sup>"), (
+        f"marker is not at the end of the cell: {definition[-80:]!r}")
+    return _MARKER.sub("", definition), int(found[0][0])
 
 
 def _parse_entries(g_text: str) -> list[str]:
@@ -916,12 +955,12 @@ def test_t2_mutation_bad_pointer_reddens_only_this_test():
 
 # ── table contract (C1) ────────────────────────────────────────────────────
 #
-# Appendix G is a four-column table. These tests pin the LAYOUT contract; the
-# word-level preservation (every word of every old entry survives into its row)
-# was checked once, at the conversion, and is reported in the PR.
+# Appendix G is a three-column table with its rare notes listed under it. These
+# tests pin the LAYOUT contract; word-level preservation across the move is C7/C8
+# below, and the marker <-> note pairing is C9.
 
 
-def test_c1_table_shape_header_and_four_cells_per_row(lang: str):
+def test_c1_table_shape_header_and_three_cells_per_row(lang: str):
     text = _g_path(lang).read_text(encoding="utf-8")
     body = _glossary_body(text) if lang == "zh" else text
     lines = body.splitlines()
@@ -929,12 +968,20 @@ def test_c1_table_shape_header_and_four_cells_per_row(lang: str):
                 _split_cells(l) == _TABLE_HEADER[lang]]
     assert len(head_idx) == 1, f"expected exactly one {lang} header row {_TABLE_HEADER[lang]}"
     sep = lines[head_idx[0] + 1]
-    assert re.fullmatch(r"\|(?:\s*:?-{3,}:?\s*\|){4}", sep), f"bad separator row: {sep!r}"
-    rows = [l for l in lines[head_idx[0] + 2:] if l.strip()]
+    assert re.fullmatch(r"\|(?:\s*:?-{3,}:?\s*\|){3}", sep), f"bad separator row: {sep!r}"
+    rows = []
+    for l in lines[head_idx[0] + 2:]:
+        if not l.startswith("|"):
+            break
+        rows.append(l)
     assert len(rows) == 59 and all(l.startswith("| **") for l in rows), (
-        "every non-blank line after the separator must be a data row")
+        "every line of the table after the separator must be a data row")
     for l in rows:
-        assert len(_split_cells(l)) == 4, f"row does not have exactly 4 cells: {l[:80]!r}"
+        assert len(_split_cells(l)) == 3, f"row does not have exactly 3 cells: {l[:80]!r}"
+    # The notes list sits directly under the table, behind its lead line.
+    rest = [l for l in lines[head_idx[0] + 2 + len(rows):] if l.strip()]
+    assert rest and rest[0] == _NOTES_LEAD[lang], f"no {_NOTES_LEAD[lang]!r} lead line under the table"
+    assert all(_NOTE_LINE_LOOSE.match(l) for l in rest[1:]), "non-note line in the notes list"
 
 
 def test_c1_term_column_is_the_pre_table_headword_list_in_order(lang: str):
@@ -952,11 +999,11 @@ def test_c1_headword_parser_reads_rows_not_prose():
     non-first cell is NOT a headword; only a row's first cell is."""
     text = (
         "A **bold intro** line.\n\n"
-        "| Term | Definition | Notes | Section |\n|---|---|---|---|\n"
-        "| **alpha** (annotation) | has **bold** inside | — | §1.1 |\n"
+        "| Term | Definition | Section |\n|---|---|---|\n"
+        "| **alpha** (annotation) | has **bold** inside | §1.1 |\n"
     )
     assert _parse_entries(text) == ["alpha"]
-    assert _parse_rows(text) == [["**alpha** (annotation)", "has **bold** inside", "—", "§1.1"]]
+    assert _parse_rows(text) == [["**alpha** (annotation)", "has **bold** inside", "§1.1"]]
 
 
 # ── Definition / Notes split (C7, C8) ──────────────────────────────────────
@@ -968,6 +1015,8 @@ def test_c1_headword_parser_reads_rows_not_prose():
 # every following sentence, verbatim, or `—` when there is none. The old text is
 # frozen in tests/fixtures/glossary_entries_v1_{en,zh}.txt (one entry per line,
 # whitespace collapsed, extracted from 89248b5) because origin/main moves.
+# 2026-10-12, translator ruling (Zephyr): zh 承载框架 note dropped, zh 心迹 note's
+# file-header pointer removed; all other entries are the 89248b5 text.
 
 _FIXTURE_DIR = REPO_ROOT / "tests" / "fixtures"
 _SENTENCE_JOIN = {"en": " ", "zh": ""}
@@ -1051,32 +1100,150 @@ def test_fixture_is_the_pre_table_entry_list(lang: str):
     assert [re.match(r"\*\*(.+?)\*\*", h).group(1) for h, _ in ents] == _EXPECTED_HEADWORDS[lang]
 
 
-def test_c7_definition_plus_notes_plus_pointer_reconstructs_the_old_entry(lang: str):
-    """For every row: Definition + Notes + the re-wrapped Section pointer is the
-    89248b5 entry text, modulo whitespace and the removed wrapper words / parens /
-    headword dash -- no word, `;` or `；` was dropped or moved by the split."""
-    fixture, rows = _fixture_entries(lang), _rows_for(lang)
+def _notes_for(lang: str) -> list[tuple[int, int, str, str]]:
+    text = _g_path(lang).read_text(encoding="utf-8")
+    return _parse_notes(_glossary_body(text) if lang == "zh" else text)
+
+
+def _row_note_text(notes: list, n: int | None) -> str | None:
+    """The text of numbered note `n` (None for a row with no marker)."""
+    if n is None:
+        return None
+    by_n = {a: t for a, _shown, _h, t in notes}
+    assert n in by_n, f"marker {n} has no note line"
+    return by_n[n]
+
+
+def test_c7_definition_plus_note_plus_pointer_reconstructs_the_old_entry(lang: str):
+    """For every row: Definition (marker stripped) + its numbered note's text (if
+    the row has one) + the re-wrapped Section pointer is the 89248b5 entry text,
+    modulo whitespace and the removed wrapper words / parens / headword dash -- no
+    word, `;` or `；` was dropped or moved by the split, INCLUDING the words that
+    moved from the Notes column into the notes list under the table."""
+    fixture, rows, notes = _fixture_entries(lang), _rows_for(lang), _notes_for(lang)
     assert len(rows) == len(fixture) == 59
-    for (term_text, body), (term, definition, notes, section) in zip(fixture, rows):
+    for (term_text, body), (term, definition, section) in zip(fixture, rows):
         assert term == term_text, f"term cell changed: {term!r} != {term_text!r}"
         old = _entry_text_without_pointer(body, section, lang)
-        new = definition if notes == _EMPTY_CELL else definition + _SENTENCE_JOIN[lang] + notes
+        d, n = _split_marker(definition)
+        note = _row_note_text(notes, n)
+        new = d if note is None else d + _SENTENCE_JOIN[lang] + note
         assert _collapse_ws(new) == _collapse_ws(old), (
-            f"{term_text}: Definition + Notes != the old entry text\n new: {new!r}\n old: {old!r}")
+            f"{term_text}: Definition + note != the old entry text\n new: {new!r}\n old: {old!r}")
 
 
-def test_c8_definition_is_the_first_sentence_whole_and_notes_the_rest(lang: str):
+# "Sense (N) unless stated." / `Sense (2) for "the sweep."` and the zh forms: part
+# of the senses definition, so they stay INSIDE the Definition cell, not in a note.
+_SENSE_TAIL = {
+    "en": re.compile(r'Sense \(\d\) (?:unless stated\.|for "the sweep\.")'),
+    "zh": re.compile(r'(?:除另有说明，|"the sweep")取义项（\d）。'),
+}
+
+
+def test_c8_definition_is_the_first_sentence_whole_senses_keep_their_tail(lang: str):
     """No Definition cell ends mid-sentence: it IS the first sentence of the old
-    entry (clauses after its `;` included), and Notes is every later sentence."""
-    fixture, rows = _fixture_entries(lang), _rows_for(lang)
-    n_notes = 0
-    for (term_text, body), (_t, definition, notes, section) in zip(fixture, rows):
+    entry (clauses after its `;` included) -- except a senses row, whose Definition
+    is the first sentence PLUS its `Sense (N) unless stated.` tail. Whatever follows
+    that is the row's numbered note, verbatim; a row with nothing after has no
+    marker."""
+    fixture, rows, notes = _fixture_entries(lang), _rows_for(lang), _notes_for(lang)
+    n_tail = n_note = 0
+    for (term_text, body), (_t, definition, section) in zip(fixture, rows):
         first, rest = _first_sentence(
             _collapse_ws(_entry_text_without_pointer(body, section, lang)), lang)
-        assert _collapse_ws(definition) == first, f"{term_text}: Definition is not the first sentence"
-        assert _collapse_ws(notes) == (rest if rest else _EMPTY_CELL), f"{term_text}: Notes is not the rest"
-        n_notes += notes != _EMPTY_CELL
-    assert 5 < n_notes < 59, n_notes  # non-vacuous: both outcomes occur
+        tail = _SENSE_TAIL[lang].match(rest)
+        if tail:
+            n_tail += 1
+            first = first + _SENTENCE_JOIN[lang] + tail.group(0)
+            rest = rest[tail.end():].strip()
+        d, n = _split_marker(definition)
+        assert _collapse_ws(d) == first, f"{term_text}: Definition is not the first sentence"
+        assert (n is None) == (rest == ""), f"{term_text}: marker present iff a note remains"
+        if n is not None:
+            n_note += 1
+            assert _collapse_ws(_row_note_text(notes, n)) == rest, f"{term_text}: note is not the rest"
+    assert 5 <= n_tail < 20 and 5 <= n_note < 20, (n_tail, n_note)  # non-vacuous
+
+
+def _gnote_problems(g_text: str, lang: str) -> list[str]:
+    """Everything wrong with the note markers / note list of `g_text` (source or a
+    render's Appendix G); empty = consistent. Rows in table order."""
+    problems: list[str] = []
+    rows = _parse_rows(g_text)
+    notes = _parse_notes(g_text)
+    markers: list[tuple[int, str]] = []  # (n, row headword), table order
+    for term, definition, _section in rows:
+        head = re.match(r"\*\*(.+?)\*\*", term).group(1)
+        for m in _MARKER.finditer(definition):
+            if m.group(1) != m.group(2):
+                problems.append(f"marker text/target differ in row {head!r}: {m.group(0)}")
+            markers.append((int(m.group(2)), head))
+    # the marker may live only in a Definition cell (not elsewhere in the text)
+    if len(_MARKER.findall(g_text)) != len(markers):
+        problems.append("a note marker sits outside a table Definition cell")
+    k = len(markers)
+    if [n for n, _h in markers] != list(range(1, k + 1)):
+        problems.append(f"markers are not 1..{k} contiguous in table order: {[n for n, _h in markers]}")
+    if [a for a, *_ in notes] != list(range(1, len(notes) + 1)):
+        problems.append(f"note anchors are not 1..{len(notes)} contiguous: {[a for a, *_ in notes]}")
+    for a, shown, head, _t in notes:
+        if a == -1:
+            problems.append("a note line does not have the exact shape")
+        elif a != shown:
+            problems.append(f"note {a} is shown as {shown}")
+    marker_count = Counter(n for n, _h in markers)
+    for a, *_ in notes:
+        if marker_count[a] != 1:
+            problems.append(f"note {a} has {marker_count[a]} markers, not exactly one")
+    note_nums = Counter(a for a, *_ in notes)
+    for n, head in markers:
+        if note_nums[n] != 1:
+            problems.append(f"marker {n} (row {head!r}) has {note_nums[n]} note lines, not exactly one")
+    by_marker = dict(markers)
+    for a, _s, head, _t in notes:
+        if a in by_marker and by_marker[a] != head:
+            problems.append(f"note {a} is headed {head!r} but its marker is in row {by_marker[a]!r}")
+    if _NOTES_LEAD[lang] not in g_text.splitlines():
+        problems.append(f"lead line {_NOTES_LEAD[lang]!r} missing")
+    return problems
+
+
+def test_c9_note_markers_and_note_lines_pair_one_to_one(lang: str):
+    """Every `<sup>[n](#gnote-n)</sup>` marker has exactly one `<a id="gnote-n">`
+    note, numbers are 1..k contiguous in table order, every note has exactly one
+    marker, and each note is headed with its row's headword -- in the source AND in
+    the rendered Appendix G."""
+    src = _g_path(lang).read_text(encoding="utf-8")
+    src = _glossary_body(src) if lang == "zh" else src
+    assert _gnote_problems(src, lang) == []
+    rendered = _g_section_text(lang, _fresh_render(lang))
+    assert _gnote_problems(rendered, lang) == []
+    k = len(_notes_for(lang))
+    assert k >= 6, k  # non-vacuous
+    assert len(_parse_notes(rendered)) == k
+
+
+def test_c9_checker_fails_on_a_lost_duplicated_or_misnumbered_note(lang: str):
+    """Can-it-fail for the C9 instrument, on the real source text."""
+    src = _g_path(lang).read_text(encoding="utf-8")
+    src = _glossary_body(src) if lang == "zh" else src
+    assert _gnote_problems(src, lang) == []
+    lines = src.splitlines()
+    note_idx = [i for i, l in enumerate(lines) if _NOTE_LINE_LOOSE.match(l)]
+    # a note line deleted (a marker is left without its note)
+    lost = "\n".join(l for i, l in enumerate(lines) if i != note_idx[1])
+    assert _gnote_problems(lost, lang) != []
+    # a marker deleted (a note is left without its marker)
+    first_marker = _MARKER.search(src).group(0)
+    assert _gnote_problems(src.replace(first_marker, "", 1), lang) != []
+    # a duplicated note line
+    dup = lines[:note_idx[0] + 1] + [lines[note_idx[0]]] + lines[note_idx[0] + 1:]
+    assert _gnote_problems("\n".join(dup), lang) != []
+    # a marker whose target differs from its text
+    assert _gnote_problems(src.replace("(#gnote-1)", "(#gnote-2)", 1), lang) != []
+    # a note under the wrong headword
+    head = re.match(r'<a id="gnote-1"></a>1\. \*\*(.+?)\*\*', lines[note_idx[0]]).group(1)
+    assert _gnote_problems(src.replace(f"1. **{head}**", "1. **elsewhere**", 1), lang) != []
 
 
 @pytest.mark.parametrize(
@@ -1143,18 +1310,33 @@ _PLAIN_POINTER = {
 
 
 def _table_rows_text(g_text: str) -> str:
-    return "\n".join(l for l in g_text.splitlines() if re.match(r"^\|\s*\*\*", l))
+    """The glossary's linkable lines: the table's data rows AND the note lines of
+    the list under it (both carry section pointers)."""
+    return "\n".join(
+        l for l in g_text.splitlines()
+        if re.match(r"^\|\s*\*\*", l) or _NOTE_LINE_LOOSE.match(l))
+
+
+# A note's anchor shares its line with the note text (`<a id="gnote-3"></a>3. ...`),
+# so it is not an `_ANCHOR_LINE`; it is counted with the other ids all the same.
+_GNOTE_ANCHOR = re.compile(r'<a id="(gnote-\d+)"></a>')
+_GNOTE_LINK = re.compile(r"\]\(#(gnote-\d+)\)")
+
+
+def _all_anchor_ids(render: str) -> Counter:
+    return Counter(_ANCHOR_LINE.findall(render)) + Counter(_GNOTE_ANCHOR.findall(render))
 
 
 def _unresolved_g_links(render: str, lang: str) -> list[str]:
     """Targets of Appendix G's pointer links that do not appear EXACTLY ONCE as an
     anchor id in the same render."""
-    ids = Counter(_ANCHOR_LINE.findall(render))
-    return [t for t in _G_LINK.findall(_g_section_text(lang, render)) if ids[t] != 1]
+    ids = _all_anchor_ids(render)
+    g = _g_section_text(lang, render)
+    return [t for t in _G_LINK.findall(g) + _GNOTE_LINK.findall(g) if ids[t] != 1]
 
 
 def _duplicate_anchor_ids(render: str) -> list[str]:
-    return sorted(i for i, n in Counter(_ANCHOR_LINE.findall(render)).items() if n > 1)
+    return sorted(i for i, n in _all_anchor_ids(render).items() if n > 1)
 
 
 def _heading_lines(text: str) -> list[str]:
@@ -1177,6 +1359,7 @@ def test_c2_every_pointer_link_targets_exactly_one_anchor(lang: str):
     expected_links = len(_PLAIN_POINTER[lang].findall(src_rows))
     g_rows = _table_rows_text(_g_section_text(lang, render))
     assert expected_links > 80, expected_links
+    assert _GNOTE_LINK.findall(g_rows) and len(_GNOTE_LINK.findall(g_rows)) == len(_notes_for(lang))
     assert len(_G_LINK.findall(g_rows)) == expected_links
     leftover = _PLAIN_POINTER[lang].findall(_MD_LINK.sub("", g_rows))
     assert leftover == [], f"pointers left as plain text in the {lang} table: {leftover}"
@@ -1204,6 +1387,12 @@ def test_c3_no_anchor_id_is_duplicated_anywhere_in_the_render(lang: str):
     assert len(_ANCHOR_LINE.findall(render)) > 30  # non-vacuous: ref- + section anchors
     assert _duplicate_anchor_ids(render) == []
     assert _duplicate_anchor_ids(render + '\n<a id="sec-4-6"></a>\n<a id="sec-4-6"></a>\n') == ["sec-4-6"]
+    # the gnote-* anchors are inside the uniqueness check, and a note whose anchor
+    # is gone, or doubled, or that collides with another id, is caught
+    assert [i for i in _all_anchor_ids(render) if i.startswith("gnote-")], "no gnote anchors in the render"
+    assert _duplicate_anchor_ids(render + '\n<a id="gnote-1"></a>x\n') == ["gnote-1"]
+    gone = _GNOTE_ANCHOR.search(render).group(0)
+    assert _unresolved_g_links(render.replace(gone, "", 1), lang) != []
 
 
 _SECTION_ANCHOR_ID = re.compile(r"(?:sec|appendix|ch)-|front-matter$|data-availability$")
@@ -1260,9 +1449,9 @@ def test_c4_headings_unchanged_and_anchors_sit_on_their_own_line_before_them(
     ],
 )
 def test_link_glossary_pointers_en_grammar(src, expected):
-    row = f"| **t** | {src} | — | — |"
+    row = f"| **t** | {src} | — |"
     linked, targets = rp.link_glossary_pointers(row, "en")
-    assert linked == f"| **t** | {expected} | — | — |"
+    assert linked == f"| **t** | {expected} | — |"
     assert targets == set(re.findall(r"\(#([^)]+)\)", expected))
 
 
@@ -1277,20 +1466,24 @@ def test_link_glossary_pointers_en_grammar(src, expected):
     ],
 )
 def test_link_glossary_pointers_zh_grammar(src, expected):
-    row = f"| **t** | {src} | — | — |"
+    row = f"| **t** | {src} | — |"
     linked, targets = rp.link_glossary_pointers(row, "zh")
-    assert linked == f"| **t** | {expected} | — | — |"
+    assert linked == f"| **t** | {expected} | — |"
     assert targets == set(re.findall(r"\(#([^)]+)\)", expected))
 
 
 def test_link_glossary_pointers_touches_table_rows_only():
     text = ("# Appendix G — Glossary\n\nSee §4.6 and Appendix C.\n\n"
-            "| Term | Definition | Notes | Section |\n|---|---|---|---|\n"
-            "| **t** | x | — | §4.6 |\n")
+            "| Term | Definition | Section |\n|---|---|---|\n"
+            "| **t** | x<sup>[1](#gnote-1)</sup> | §4.6 |\n\n**Notes**\n\n"
+            '<a id="gnote-1"></a>1. **t** — see (§4.7; Appendix C).\n')
     linked, targets = rp.link_glossary_pointers(text, "en")
     assert "See §4.6 and Appendix C." in linked and "# Appendix G — Glossary" in linked
-    assert "| **t** | x | — | [§4.6](#sec-4-6) |" in linked
-    assert targets == {"sec-4-6"}
+    assert "| **t** | x<sup>[1](#gnote-1)</sup> | [§4.6](#sec-4-6) |" in linked
+    # the note lines under the table are linked too (and only they, below it)
+    assert ('<a id="gnote-1"></a>1. **t** — see ([§4.7](#sec-4-7); [Appendix C](#appendix-C)).'
+            in linked)
+    assert targets == {"sec-4-6", "sec-4-7", "appendix-C"}
 
 
 _HEADINGS_EN = (
@@ -1426,11 +1619,14 @@ def test_glossary_body_is_a_noop_without_a_leading_comment():
 # (`_glossary_body`).
 
 
-def _entry_size(row: list[str], lang: str) -> int:
-    """The size of one ENTRY = the words of its row: Term + Definition + Notes +
-    Section, i.e. the same words the pre-table entry had (the `—` empty-cell marker
-    and the table pipes are layout, not words, and are not counted)."""
-    text = " ".join(c for c in row if c != _EMPTY_CELL)
+def _entry_size(row: list[str], lang: str, note: str | None = None) -> int:
+    """The size of one ENTRY = the words of its row: Term + Definition + Section,
+    PLUS its numbered note's text if it has one -- i.e. the same words the pre-table
+    entry had, so the budget measures the same text as before the notes moved out
+    of the table (the `—` empty-cell marker, the table pipes and the note marker are
+    layout, not words, and are not counted)."""
+    cells = [_MARKER.sub("", c) for c in row if c != _EMPTY_CELL]
+    text = " ".join(cells + ([note] if note else []))
     return _han_char_count(text) if lang == "zh" else len(text.split())
 
 
@@ -1441,10 +1637,12 @@ def _entry_stats(
     the glossary ROWS of `text`: intro, header row and zh translator header
     excluded."""
     body = _glossary_body(text) if lang == "zh" else text
-    sizes = [
-        (re.match(r"\*\*(.+?)\*\*", row[0]).group(1), _entry_size(row, lang))
-        for row in _parse_rows(body)
-    ]
+    by_n = {a: t for a, _shown, _h, t in _parse_notes(body)}
+    sizes = []
+    for row in _parse_rows(body):
+        found = _MARKER.findall(row[1])
+        note = by_n.get(int(found[0][1])) if found else None
+        sizes.append((re.match(r"\*\*(.+?)\*\*", row[0]).group(1), _entry_size(row, lang, note)))
     if not sizes:
         return 0, 0.0, 0, []
     vals = [n for _, n in sizes]
@@ -1477,15 +1675,15 @@ def _entry_limit_violations(text: str, lang: str) -> list[str]:
 def _synthetic(sizes: list[int], lang: str, intro: str = "") -> str:
     """A glossary TABLE whose row k has exactly sizes[k] counted units. en:
     whitespace tokens (the `**tK**` term is 1 of them); zh: Han characters (the
-    Latin term adds 0). Notes and Section are the empty marker `—`."""
+    Latin term adds 0). Section is the empty marker `—`; no row has a note."""
     parts = [intro] if intro else []
     hdr = _TABLE_HEADER[lang]
-    rows = ["| " + " | ".join(hdr) + " |", "|---|---|---|---|"]
+    rows = ["| " + " | ".join(hdr) + " |", "|---|---|---|"]
     for k, n in enumerate(sizes):
         if lang == "zh":
-            rows.append(f"| **t{k}** | " + "字" * n + " | — | — |")
+            rows.append(f"| **t{k}** | " + "字" * n + " | — |")
         else:
-            rows.append(f"| **t{k}** | " + " ".join(["w"] * (n - 1)) + " | — | — |")
+            rows.append(f"| **t{k}** | " + " ".join(["w"] * (n - 1)) + " | — |")
     parts.append("\n".join(rows))
     return "\n\n".join(parts) + "\n"
 
