@@ -10,7 +10,7 @@ past graph. Fleet-wide collection across seats is explicitly **not** being done.
 
 **These datasets are Borges's full ENGRAM graph — private memories, personal and
 relational content, identity-bearing nodes. NOT publishable or shareable as-is.**
-The `engram-paper` repo is private for this reason. The `.db` files are
+This is why the `.db` files never enter the repository, which is public. They are
 `.gitignore`d (local-only, **never pushed**); only this manifest is
 version-controlled. Any external release requires a dedicated **redaction pass**
 first — a deliberate later step, not yet designed.
@@ -19,7 +19,7 @@ first — a deliberate later step, not yet designed.
 
 ## 1. THE PAPER'S FINAL DATA SSoT  ←  use this one
 
-- **File:** `dataset/engram-paper-ssot-20260920T131330Z.db`
+- **File:** `data/engram-paper-ssot-20260920T131330Z.db`
 - **sha256:** `adaa6a84828b761ab2e5bf269e1ea4d48366c7e713b73c0c0918bf5ce3fbef85`
 - **Size:** 191,004,672 bytes
 - **Frozen at:** `2026-09-20T13:13:30Z`
@@ -49,7 +49,7 @@ first — a deliberate later step, not yet designed.
 
 ## 2. The 2026-07-04 freeze — RETAINED, and not superseded for its own studies
 
-- **File:** `dataset/engram-frozen-2026-07-04.db`
+- **File:** `data/engram-frozen-2026-07-04.db`
 - **sha256:** `6b0bc77880a2c9cd08e4e57dbb380833d4032effe04a8df3d0c387891d0bf9a6`
 - **Size:** 96,698,368 bytes · **Frozen at:** end of 2026-07-04
 - **Census:** 5,428 current of 5,755 total.
@@ -88,7 +88,7 @@ govern that study.
 | `tools/paper_stats.py` | every live-graph figure Chapter 6 reports |
 
 Run them from the repo root. `paper_stats.py` defaults to the newest SSoT in
-`dataset/` and **warns if more than one is present** — if that warning fires, check
+`data/` and **warns if more than one is present** — if that warning fires, check
 it against the file named in §1 above, because this manifest is the authority on
 which snapshot is the SSoT, not the directory listing.
 

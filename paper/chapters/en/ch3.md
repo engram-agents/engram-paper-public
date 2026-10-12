@@ -365,9 +365,21 @@ mechanisms serve from opposite directions — a rejected claim must not stay sil
 load-bearing — and AGM's own authors' observation that the intuitive process lives at the
 level of a theory's base rather than the theory as a whole [@alchourron1982, p. 21].
 
+Belief-base revision works at that level: the belief state is a base "not (except as a
+limiting case) closed under logical consequence", whose elements are "held independently of any other
+belief" [@hansson2026, § 5.1]; closure itself is, in Hansson's words, "clearly an unrealistic
+idealization" [@hansson2026, § 1.2]. ENGRAM is a base in that sense, but its inference is not
+exact. In Hansson's bases what follows from what is fixed by classical logic, so rejecting a belief
+means giving up some of the reasons that imply it, and his postulates constrain which. ENGRAM's
+derivations are the agent's own, carry finite confidence, and are often best explanations rather than
+proofs: when a better explanation arrives, the old one is superseded while its premises stand. What a
+change must reach is therefore downstream, the claims built on the revised one (the truth-maintenance
+move of §3.4), not upstream.
+
 [SOLID: dv_1658 — AGM/Hansson as the closed-theory contrast, from first-hand reads of
 AGM 1985 p. 510 and Alchourrón & Makinson 1982 pp. 16, 21; postulate statements via
-Hansson's own encyclopedia entry and Rocha & Wassermann. Hansson 1991 itself unread.]
+Hansson's own encyclopedia entry and Rocha & Wassermann. Hansson 1991 itself unread; the
+belief-base contrast cites the encyclopedia entry only (ob_5824, Lei 2026-10-12).]
 
 ---
 

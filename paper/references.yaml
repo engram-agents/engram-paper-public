@@ -5,7 +5,7 @@
 #
 # **How this bibliography was built.** Every field in every entry below was read
 # directly off the document itself — a title page, copyright page, journal running
-# head, or arXiv identifier line — in a file held under `paper_research/source_pdfs/`.
+# head, or arXiv identifier line — in a held copy (redistributable copies in `bibliography/sources/`).
 # No field was supplied from memory, from inference, or from an external bibliographic
 # database. Where a source does not print a field, the field is **omitted** rather than
 # reconstructed, and the entry carries a bracketed note naming exactly what is missing.
@@ -351,6 +351,32 @@ references:
     Metadata incomplete: the chapter's page range is not printed in the transcription (internal
     markers p.3 to p.20 only), and the transcription is not a facsimile. Confirm place and
     pagination against the printed volume.
+- id: hansson2026
+  type: entry-encyclopedia
+  author:
+  - family: Hansson
+    given: S. O.
+  issued:
+    date-parts:
+    - - 2026
+      - 7
+      - 29
+  title: Logic of belief revision
+  container-title: The Stanford encyclopedia of philosophy
+  URL: https://plato.stanford.edu/entries/logic-belief-revision/
+  accessed:
+    date-parts:
+    - - 2026
+      - 9
+      - 21
+  provenance: |-
+    Page header "First published Fri Apr 21, 2006; substantive revision Wed Jul 29, 2026"; the
+    date given is the revision read. Author from the page's citation metadata ("Hansson, Sven
+    Ove") and its footer "Copyright © 2026 by Sven Ove Hansson". The page does not print its
+    own address; the URL is the one the copy was fetched from, recorded in
+    bibliography/sourcing-journal.md. Held copy: bibliography/sources/hansson_sep_logic_belief_revision.html
+    (copyrighted; git-ignored, not redistributed). The accessed date is not printed on the page:
+    it is the capture date of that held copy (file modified 2026-09-21).
 - id: josang2013
   type: manuscript
   author:

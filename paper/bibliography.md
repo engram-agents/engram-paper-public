@@ -4,8 +4,9 @@
 
 **How this bibliography was built.** Every field in every entry below was read
 directly off the document itself — a title page, copyright page, journal running
-head, or arXiv identifier line — in a file held under `paper_research/source_pdfs/`.
-No field was supplied from memory, from inference, or from an external bibliographic
+head, or arXiv identifier line — in a copy the authors hold. Copies whose licence allows
+redistribution are published in `bibliography/sources/` of this paper's repository; the
+others are held privately, for copyright reasons. No field was supplied from memory, from inference, or from an external bibliographic
 database. Where a source does not print a field, the field is **omitted** rather than
 reconstructed, and the entry carries a bracketed note naming exactly what is missing.
 A thin entry is therefore never mistaken for a checked one.
@@ -14,30 +15,6 @@ A thin entry is therefore never mistaken for a checked one.
      tools/render_paper.py from paper/references.yaml (CSL style: tools/csl/apa.csl) and
      substituted for the token below. Edit entries in references.yaml, never here. -->
 {{REFERENCES}}
-
----
-
-## Works cited in the text without a verified entry
-
-Two further works are cited in the chapters for which no source document is
-currently held. They are listed here rather than given reconstructed entries, because
-a bibliographic entry built from memory is indistinguishable from a checked one once
-it is on the page — which is the failure mode the extraction rule above exists to
-prevent. **Each requires sourcing before this paper is submitted.**
-
-Schechtman · Hansson
-
-Hansson is listed for the belief-base postulates that Appendix B records as Kumiho's
-self-claimed compliance; the paper claims no postulate for ENGRAM and notes AGM only
-for contrast (Ch3 §3.9); the postulate statements were checked against Hansson's
-Stanford Encyclopedia of Philosophy entry "Logic of Belief
-Revision" (<https://plato.stanford.edu/entries/logic-belief-revision/>) and Rocha &
-Wassermann, "Postulates Here, Postulates Everywhere" (CEUR-WS Vol-4239,
-<https://ceur-ws.org/Vol-4239/paper-Rocha-11.pdf>), neither of which is claimed as a
-bibliography entry. AGM 1985 and Alchourrón & Makinson 1982 are entries above, built
-first-hand from held copies. ACT-R's spreading activation is cited in Ch4 as a
-secondary precedent with no source file and no weight rested on it; it is omitted
-from this list on that basis.
 
 ---
 

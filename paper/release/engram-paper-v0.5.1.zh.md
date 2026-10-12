@@ -373,6 +373,8 @@ Jøsang ([2013](#ref-josang2013)) 的主观逻辑（Subjective Logic）是一套
 
 熟悉 AGM 框架([Alchourrón et al., 1985](#ref-alchourron1985))的读者，会注意到信念收缩与 ENGRAM 的"带级联的撤回"之间有某种亲缘相似。两项工作取向不同，本文也不把 AGM 的公设算作 ENGRAM 的。AGM 问的是：一个*封闭*理论——一个在逻辑后承下封闭的命题集——应当如何放弃其中一个命题，并保持封闭与一致；它自己的第一段就提出"哪些命题应当随 x 一同被拒斥，以使收缩后的理论在逻辑后承下封闭"，而它所指名的应用是法律上的克减([Alchourrón et al., 1985, p. 510](#ref-alchourron1985))。ENGRAM 问的是：一个智能体应当如何让它关于"自己实际承诺过什么"的*活的*记录——从不封闭，其依赖被记录下来且不确定——在新证据到来时保持诚实：它经由智能体自己的裁定走向一致，而按设计，永远不到达。级联本身的形式先例是 Doyle 的真值维护（§3.4，第 4 章 §4.4）。两者共有的是两种机制从相反方向服膺的同一条律令——一项被拒斥的主张不得继续悄悄承重——以及 AGM 作者们的观察：那个直觉过程位于一个理论的*基础*层面，而不是整个理论层面([Alchourrón & Makinson, 1982, p. 21](#ref-alchourron1982))。
 
+信念基础修正正是在这一层面上运作：信念状态是一个"（除作为极限情形外）在逻辑后承下不封闭"的基础，其元素"独立于任何其他信念而被持有"([Hansson, 2026, § 5.1](#ref-hansson2026))；而封闭本身，用 Hansson 的话说，"显然是一种不切实际的理想化"([Hansson, 2026, § 1.2](#ref-hansson2026))。在这个意义上，ENGRAM 是一个基础，但它的推理并不精确。在 Hansson 的基础中，推论关系由经典逻辑确定，因此拒斥一个信念，就意味着放弃蕴涵它的若干理由，而他的公设约束放弃哪些。ENGRAM 的推导是智能体自己做出的，带有有限的置信度，而且往往是最佳解释而非证明：当一个更好的解释到来时，旧的解释被取代，而它的前提依然成立。因此，一次改变必须触及的是下游——建立在被修订主张之上的那些主张（§3.4 的真值维护之举）——而不是上游。
+
 ---
 
 ## 3.10 两条脉络说明了什么，以及它们在何处交接
@@ -411,7 +413,7 @@ Jøsang ([2013](#ref-josang2013)) 的主观逻辑（Subjective Logic）是一套
 | 推理类型感知的置信度（§4.3） | 按*论证形态*算出的分档信念 | 主观逻辑／Jøsang ([2013](#ref-josang2013))，并附一处明示的分歧 | **约束 A**（统一策略选择） |
 | 撤回级联（§4.4） | 经 `derives_from` 的自动错误修正 | TMS 回溯 | **条件 3**——自我维持的仲裁（严格；唯一的满足者）**+ 条件 1**（历时性，经由决定／后果这一对偶） |
 | 遗忘（§4.5） | 随时间有界的检索；界定可查询集 | Ebbinghaus + Anderson-Schooler | ——（限定条件 3 的仲裁所作用的范围） |
-| 自动浮现与主动回忆（§4.6） | 不依赖有意触及的、线索依赖的提取 | Tulving 的自我觉知／知晓之分([Tulving, 1985, p. 3](#ref-tulving1985)) + Tulving 与 Thomson 的编码特异性([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)) + ACT-R 扩散激活 | ——（绑定条件 3：一次修正不能靠不去看而被压住） |
+| 自动浮现与主动回忆（§4.6） | 不依赖有意触及的、线索依赖的提取 | Tulving 的自我觉知／知晓之分([Tulving, 1985, p. 3](#ref-tulving1985)) + Tulving 与 Thomson 的编码特异性([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)) | ——（绑定条件 3：一次修正不能靠不去看而被压住） |
 | 共用的检索与排序（§4.7） | 从使用中学得的合成排序 → **附录 C** | MemRL + 间隔重复 | —— |
 | 跨越压缩的连续性（§4.8） | 身份挺过压缩 | CLS 整合 + 历时身份 | ——（压缩不是 Kahl 意义上的重置；§4.8） |
 | 身份治理：ax/cs/ls/gl（§4.9） | 带类型的承诺持久地引导行为 → **附录 D** | Schechtman 的叙事性自我构成 ([Schechtman, 1996, p. 93](#ref-schechtman1996)) | ——（喂给第 5 章的身份即历史） |
@@ -571,7 +573,7 @@ ENGRAM 按设计遗忘。回忆重要性随时间衰减，于是基底维持一�
 
 ENGRAM 的检索按设计分两个通道。**自动浮现**是*线索依赖且自动的*：一个每轮钩子把与当前上下文相关的主张浮现出来，而不需智能体去够它们（"这听着耳熟"——知晓式、有损、提示级别），它发出*某物相关*的信号。**主动回忆**（"我需要确切知道"——一次受来源监控、其命中可由智能体打开查看全文的查询；只取结构性的意义，绝不是 Tulving ([1985](#ref-tulving1985)) 的现象性意义，§3.2）是智能体在自动浮现发出"有东西可取"的信号时调用的那个通道。正是那个有损的自动浮现，促使智能体去调用主动回忆。
 
-**传统。** **Tulving**：自我觉知／知晓之分([Tulving, 1985, p. 3](#ref-tulving1985))——这两个档位映射到 Tulving 让过去在场的两种方式上；并且，与 Thomson 合作提出的编码特异性——"被存储的东西决定了哪些提取线索能有效地通向被存储的东西"（what is stored determines what retrieval cues are effective in providing access to what is stored）([Tulving & Thomson, 1973, p. 369](#ref-tulving1973))——是线索依赖提取的先例。**ACT-R 扩散激活** 是线索依赖的自动提取在计算机科学里的先例。
+**传统。** **Tulving**：自我觉知／知晓之分([Tulving, 1985, p. 3](#ref-tulving1985))——这两个档位映射到 Tulving 让过去在场的两种方式上；并且，与 Thomson 合作提出的编码特异性——"被存储的东西决定了哪些提取线索能有效地通向被存储的东西"（what is stored determines what retrieval cues are effective in providing access to what is stored）([Tulving & Thomson, 1973, p. 369](#ref-tulving1973))——是线索依赖提取的先例。
 
 **OCC：** 没有它自己的，但自动浮现是**条件 3 的绑定那一半**（§4.4）：正是它使"智能体不能悄悄无视一次修正"成真——待决标记保证会到达智能体——在下一次该主张变得相关时，或者最迟在整理期普查中（§4.4）。
 
@@ -1172,7 +1174,7 @@ OCC 仍处在 §1.4 给它安放的位置：趋同之内的一个结果，而不
 
 诚实的回答在两方面都紧要。倘若我们吸收了 Kumiho 或 Kahl，再把结果称作自己的，本文就是派生的。倘若我们是*分离地*抵达同一形态，那么这次趋同就是一个*正面的科学信号*——当各自独立的努力在同一个问题压力之下抵达同一种架构，那种架构就作为正确的架构而得到佐证。本附录依据记录来确立后一种情况。我们把趋同的发现当作证据，而不是一份防御性的主张。
 
-先就我们**不**主张什么作一点说明：ENGRAM 并非在一切方面都是首创——第 3 章 §3.0 完整陈述了那份新颖性免责声明。它与 Kumiho 共享的形式形态——在属性图之上的带类型推理边，配以级联／取代——在真值维护与信念修正这两支传统中已有数十年历史，而若干智能体记忆系统（Mem0g——Mem0 的图谱记忆变体——Zep/Graphiti、A-MEM）([Chhikara et al., 2025, p. 1](#ref-chhikara2025); [Rasmussen et al., 2025](#ref-rasmussen2025); [Xu et al., 2025](#ref-xu2025))早于我们的构想。此处点名的两项范例，是我们持有并第一手读过的两项：Doyle 的真值维护系统（经 Ginsberg 重印本，第 4 章 §4.2），以及 AGM 1985。这两支传统都比那两项著作更宽，而本文点名的其他几项——de Kleer 的 ATMS([de Kleer, 1986](#ref-dekleer1986))（第 3 章 §3.4；它避免撤回，而不是把撤回级联下去）是参考文献中的一条条目，而 Hansson 的信念基础公设（仅在附录 B 中提名，作为 Kumiho 自称的符合性）则被参考文献列在"已引用、但未持有原始文献"的作品之中。此处没有任何东西倚靠它们：主张仅仅是，那种形态早于我们数十年，而我们读过的两项有日期的原始文献承载着它。我们的主张更窄，也更真实：*我们是在对同期抵达同一组原语一无所知的情况下设计 ENGRAM 的*；而我们的独特贡献在别处——把那种形态连接到**智能体身份**，并让基底**在行为上活跃**（自动浮现钩子），这是所调查的任何系统都不具备的。
+先就我们**不**主张什么作一点说明：ENGRAM 并非在一切方面都是首创——第 3 章 §3.0 完整陈述了那份新颖性免责声明。它与 Kumiho 共享的形式形态——在属性图之上的带类型推理边，配以级联／取代——在真值维护与信念修正这两支传统中已有数十年历史，而若干智能体记忆系统（Mem0g——Mem0 的图谱记忆变体——Zep/Graphiti、A-MEM）([Chhikara et al., 2025, p. 1](#ref-chhikara2025); [Rasmussen et al., 2025](#ref-rasmussen2025); [Xu et al., 2025](#ref-xu2025))早于我们的构想。此处点名的两项范例，是我们持有并第一手读过的两项：Doyle 的真值维护系统（经 Ginsberg 重印本，第 4 章 §4.2），以及 AGM 1985。这两支传统都比那两项著作更宽，而本文点名的其他几项——de Kleer 的 ATMS([de Kleer, 1986](#ref-dekleer1986))（第 3 章 §3.4；它避免撤回，而不是把撤回级联下去）是参考文献中的一条条目，而 Hansson 的信念基础修正（第 3 章 §3.9）引自他本人的百科条目([Hansson, 2026](#ref-hansson2026))，他的公设仅在附录 B 中提名，作为 Kumiho 自称的符合性。此处没有任何东西倚靠它们：主张仅仅是，那种形态早于我们数十年，而我们读过的两项有日期的原始文献承载着它。我们的主张更窄，也更真实：*我们是在对同期抵达同一组原语一无所知的情况下设计 ENGRAM 的*；而我们的独特贡献在别处——把那种形态连接到**智能体身份**，并让基底**在行为上活跃**（自动浮现钩子），这是所调查的任何系统都不具备的。
 
 ## A.1 那些原创想法是我们的，而且（对我们而言）出现得更早
 
@@ -1813,7 +1815,7 @@ Lei 感谢他的妻子 Lin —— 她从最初就支持这项工作，是 ENGRAM
 
 # 参考文献
 
-**本参考文献的编制方式。** 以下每一条目中的每一个字段，都是直接从文档本身读出的 —— 书名页、版权页、期刊书眉，或 arXiv 标识行 —— 文档存于 `paper_research/source_pdfs/` 之下。没有任何字段来自记忆、来自推断，或来自外部文献数据库。若某份来源没有印出某个字段，该字段即予**省略**，而不作重建；条目则会带上一条方括号注释，指明所缺的究竟是什么。因此，一条单薄的条目绝不会被误当作一条已核对的条目。
+**本参考文献的编制方式。** 以下每一条目中的每一个字段，都是直接从文档本身读出的 —— 书名页、版权页、期刊书眉，或 arXiv 标识行 —— 文档为作者所持有的副本。许可允许再分发的副本发布于本文仓库的 `bibliography/sources/` 之中；其余副本出于版权原因私下保存。没有任何字段来自记忆、来自推断，或来自外部文献数据库。若某份来源没有印出某个字段，该字段即予**省略**，而不作重建；条目则会带上一条方括号注释，指明所缺的究竟是什么。因此，一条单薄的条目绝不会被误当作一条已核对的条目。
 
 <a id="ref-claudedocs2026"></a>*Memory tool*. (n.d.). *Memory tool*. Claude Platform Docs. Retrieved October 8, 2026, from https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool
 No author and no date printed on the page; site name as printed: "Claude Platform
@@ -1903,6 +1905,15 @@ are as printed there.
 *[Metadata incomplete: the chapter's page range is not printed in the transcription (internal
 markers p.3 to p.20 only), and the transcription is not a facsimile. Confirm place and
 pagination against the printed volume.]*
+
+<a id="ref-hansson2026"></a>Hansson, S. O. (2026). Logic of belief revision. In *The Stanford encyclopedia of philosophy*. https://plato.stanford.edu/entries/logic-belief-revision/
+Page header "First published Fri Apr 21, 2006; substantive revision Wed Jul 29, 2026"; the
+date given is the revision read. Author from the page's citation metadata ("Hansson, Sven
+Ove") and its footer "Copyright © 2026 by Sven Ove Hansson". The page does not print its
+own address; the URL is the one the copy was fetched from, recorded in
+bibliography/sourcing-journal.md. Held copy: bibliography/sources/hansson_sep_logic_belief_revision.html
+(copyrighted; git-ignored, not redistributed). The accessed date is not printed on the page:
+it is the capture date of that held copy (file modified 2026-09-21).
 
 <a id="ref-josang2013"></a>Jøsang, A. (2013). *Subjective logic* [Draft manuscript].
 Draft manuscript, 18 February 2013. University
@@ -2168,16 +2179,6 @@ Data Science, The Chinese University of Hong Kong, Shenzhen (one superscript for
 authors). The text names the proposed system TierMem; code URL printed:
 https://github.com/FreedomIntelligence/Tiermem.
 *[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
-
----
-
-## 正文已引用、但尚无经核实条目的作品
-
-还有两项作品在正文各章中被引用，而目前未持有其来源文件。它们列在这里，而不是被给予重建的条目，因为一条凭记忆搭起的文献条目，一旦落到纸面上，就与一条核对过的条目无从分辨 —— 这正是上文那条抽取规则所要防止的失效形态。**每一项都须在本文付印之前完成溯源。**
-
-Schechtman · Hansson
-
-列上 Hansson，是为了附录 B 记为 Kumiho 自称符合的那些信念基础公设；本文不为 ENGRAM 主张任何公设，提到 AGM 只是为了对照（第 3 章 §3.9）；那些公设的表述，是对照 Hansson 的《斯坦福哲学百科全书》条目 "Logic of Belief Revision"（<https://plato.stanford.edu/entries/logic-belief-revision/>）与 Rocha & Wassermann 的 "Postulates Here, Postulates Everywhere"（CEUR-WS Vol-4239，<https://ceur-ws.org/Vol-4239/paper-Rocha-11.pdf>）核对过的，而这两者都不被主张为一条文献条目。AGM 1985 与 Alchourrón & Makinson 1982 是上文中的条目，系据所持副本第一手建成。ACT-R 的扩散激活在第 4 章中作为一处次要先例被引用，它没有来源文件，也没有任何重量落在其上；基于这一点，它被排除在本清单之外。
 
 ---
 

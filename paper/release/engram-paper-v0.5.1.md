@@ -1037,6 +1037,17 @@ mechanisms serve from opposite directions — a rejected claim must not stay sil
 load-bearing — and AGM's own authors' observation that the intuitive process lives at the
 level of a theory's base rather than the theory as a whole ([Alchourrón & Makinson, 1982, p. 21](#ref-alchourron1982)).
 
+Belief-base revision works at that level: the belief state is a base "not (except as a
+limiting case) closed under logical consequence", whose elements are "held independently of any other
+belief" ([Hansson, 2026, § 5.1](#ref-hansson2026)); closure itself is, in Hansson's words, "clearly an unrealistic
+idealization" ([Hansson, 2026, § 1.2](#ref-hansson2026)). ENGRAM is a base in that sense, but its inference is not
+exact. In Hansson's bases what follows from what is fixed by classical logic, so rejecting a belief
+means giving up some of the reasons that imply it, and his postulates constrain which. ENGRAM's
+derivations are the agent's own, carry finite confidence, and are often best explanations rather than
+proofs: when a better explanation arrives, the old one is superseded while its premises stand. What a
+change must reach is therefore downstream, the claims built on the revised one (the truth-maintenance
+move of §3.4), not upstream.
+
 ---
 
 ## 3.10 What the two strands show, and where they hand off
@@ -1109,7 +1120,7 @@ The chapter in one table; each row is a section below.
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang ([2013](#ref-josang2013)), with a stated divergence | **Constraint A** (unified policy-selection) |
 | Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
 | Forgetting (§4.5) | bounded retrieval over time; defines the queryable set | Ebbinghaus + Anderson-Schooler | — (scopes what Cond-3 arbitration ranges over) |
-| Auto-surface and deliberate recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) + Tulving & Thomson's encoding specificity ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)) + ACT-R spreading activation | — (binds Cond 3: a correction cannot be suppressed by not looking) |
+| Auto-surface and deliberate recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) + Tulving & Thomson's encoding specificity ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)) | — (binds Cond 3: a correction cannot be suppressed by not looking) |
 | Shared retrieval and ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL + spaced-repetition | — |
 | Continuity across compaction (§4.8) | identity survives compaction | CLS consolidation + diachronic-identity | — (compaction is not Kahl's reset; §4.8) |
 | Identity-governance: ax/cs/ls/gl (§4.9) | typed commitments durably steer behavior → **Appx D** | Schechtman narrative self-constitution ([Schechtman, 1996, p. 93](#ref-schechtman1996)) | — (feeds Ch5 identity-as-history) |
@@ -1534,8 +1545,7 @@ deliberate recall.
 
 **Tradition.** **Tulving**: the autonoetic/noetic
 distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) — the two registers map onto Tulving's two ways of having the past
-present; and, with Thomson, encoding specificity — "what is stored determines what retrieval cues are effective in providing access to what is stored" ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)) — the precedent for cue-dependent retrieval. **ACT-R spreading activation** is the
-computer-science precedent for cue-dependent automatic retrieval.
+present; and, with Thomson, encoding specificity — "what is stored determines what retrieval cues are effective in providing access to what is stored" ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)) — the precedent for cue-dependent retrieval.
 
 **OCC:** none of its own, but auto-surfacing is the **binding half of Condition 3**
 (§4.4): it is what makes "the agent cannot quietly ignore a correction" true — the
@@ -3246,9 +3256,9 @@ A-MEM) ([Chhikara et al., 2025, p. 1](#ref-chhikara2025); [Rasmussen et al., 202
 ideation. The two exemplars named here are the two we hold and have read first-hand:
 Doyle's truth maintenance system (via the Ginsberg reprint, Ch4 §4.2) and AGM 1985.
 Both traditions are wider than those two works, and the others this paper names — de
-Kleer's ATMS ([de Kleer, 1986](#ref-dekleer1986)) (Ch3 §3.4; it avoids retraction rather than cascading it) is a bibliography entry, while Hansson's belief-base postulates (named only in Appendix B,
-as Kumiho's self-claimed compliance) are among the works the bibliography lists as cited
-without a held source document.
+Kleer's ATMS ([de Kleer, 1986](#ref-dekleer1986)) (Ch3 §3.4; it avoids retraction rather than cascading it) is a bibliography entry, while Hansson's belief-base revision (Ch3 §3.9) is cited from his own encyclopedia entry
+([Hansson, 2026](#ref-hansson2026)), and his postulates are named only in Appendix B, as Kumiho's self-claimed
+compliance.
 Nothing here rests on them: the claim is only that the shape predates us by decades,
 and the two dated primaries we have read carry it. Our claim is narrower and
 true: *we designed ENGRAM in ignorance of the concurrent arrivals at the same
@@ -4421,8 +4431,9 @@ Lei thanks his wife, Lin, who supported this work from the beginning and was ENG
 
 **How this bibliography was built.** Every field in every entry below was read
 directly off the document itself — a title page, copyright page, journal running
-head, or arXiv identifier line — in a file held under `paper_research/source_pdfs/`.
-No field was supplied from memory, from inference, or from an external bibliographic
+head, or arXiv identifier line — in a copy the authors hold. Copies whose licence allows
+redistribution are published in `bibliography/sources/` of this paper's repository; the
+others are held privately, for copyright reasons. No field was supplied from memory, from inference, or from an external bibliographic
 database. Where a source does not print a field, the field is **omitted** rather than
 reconstructed, and the entry carries a bracketed note naming exactly what is missing.
 A thin entry is therefore never mistaken for a checked one.
@@ -4519,6 +4530,15 @@ are as printed there.
 *[Metadata incomplete: the chapter's page range is not printed in the transcription (internal
 markers p.3 to p.20 only), and the transcription is not a facsimile. Confirm place and
 pagination against the printed volume.]*
+
+<a id="ref-hansson2026"></a>Hansson, S. O. (2026). Logic of belief revision. In *The Stanford encyclopedia of philosophy*. https://plato.stanford.edu/entries/logic-belief-revision/
+Page header "First published Fri Apr 21, 2006; substantive revision Wed Jul 29, 2026"; the
+date given is the revision read. Author from the page's citation metadata ("Hansson, Sven
+Ove") and its footer "Copyright © 2026 by Sven Ove Hansson". The page does not print its
+own address; the URL is the one the copy was fetched from, recorded in
+bibliography/sourcing-journal.md. Held copy: bibliography/sources/hansson_sep_logic_belief_revision.html
+(copyrighted; git-ignored, not redistributed). The accessed date is not printed on the page:
+it is the capture date of that held copy (file modified 2026-09-21).
 
 <a id="ref-josang2013"></a>Jøsang, A. (2013). *Subjective logic* [Draft manuscript].
 Draft manuscript, 18 February 2013. University
@@ -4808,30 +4828,6 @@ Data Science, The Chinese University of Hong Kong, Shenzhen (one superscript for
 authors). The text names the proposed system TierMem; code URL printed:
 https://github.com/FreedomIntelligence/Tiermem.
 *[Metadata incomplete: no venue beyond the arXiv identifier is printed.]*
-
----
-
-## Works cited in the text without a verified entry
-
-Two further works are cited in the chapters for which no source document is
-currently held. They are listed here rather than given reconstructed entries, because
-a bibliographic entry built from memory is indistinguishable from a checked one once
-it is on the page — which is the failure mode the extraction rule above exists to
-prevent. **Each requires sourcing before this paper is submitted.**
-
-Schechtman · Hansson
-
-Hansson is listed for the belief-base postulates that Appendix B records as Kumiho's
-self-claimed compliance; the paper claims no postulate for ENGRAM and notes AGM only
-for contrast (Ch3 §3.9); the postulate statements were checked against Hansson's
-Stanford Encyclopedia of Philosophy entry "Logic of Belief
-Revision" (<https://plato.stanford.edu/entries/logic-belief-revision/>) and Rocha &
-Wassermann, "Postulates Here, Postulates Everywhere" (CEUR-WS Vol-4239,
-<https://ceur-ws.org/Vol-4239/paper-Rocha-11.pdf>), neither of which is claimed as a
-bibliography entry. AGM 1985 and Alchourrón & Makinson 1982 are entries above, built
-first-hand from held copies. ACT-R's spreading activation is cited in Ch4 as a
-secondary precedent with no source file and no weight rested on it; it is omitted
-from this list on that basis.
 
 ---
 

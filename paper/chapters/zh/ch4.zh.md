@@ -121,7 +121,7 @@
 | 推理类型感知的置信度（§4.3） | 按*论证形态*算出的分档信念 | 主观逻辑／Jøsang [-@josang2013] **[GROUNDED]**，并附一处明示的分歧 | **约束 A**（统一策略选择） |
 | 撤回级联（§4.4） | 经 `derives_from` 的自动错误修正 | TMS 回溯 **[gap SOLID; primary first-hand 2026-07-02]** | **条件 3**——自我维持的仲裁（严格；唯一的满足者）**+ 条件 1**（历时性，经由决定／后果这一对偶） |
 | 遗忘（§4.5） | 随时间有界的检索；界定可查询集 | Ebbinghaus [SOLID] + Anderson-Schooler **[GROUNDED]** | ——（限定条件 3 的仲裁所作用的范围） |
-| 自动浮现与主动回忆（§4.6） | 不依赖有意触及的、线索依赖的提取 | Tulving 的自我觉知／知晓之分[@tulving1985, p. 3] [SOLID] + Tulving 与 Thomson 的编码特异性[@tulving1973, p. 369] [SOLID] + ACT-R 扩散激活 **[secondary — not first-hand]** | ——（绑定条件 3：一次修正不能靠不去看而被压住） |
+| 自动浮现与主动回忆（§4.6） | 不依赖有意触及的、线索依赖的提取 | Tulving 的自我觉知／知晓之分[@tulving1985, p. 3] [SOLID] + Tulving 与 Thomson 的编码特异性[@tulving1973, p. 369] [SOLID] | ——（绑定条件 3：一次修正不能靠不去看而被压住） |
 | 共用的检索与排序（§4.7） | 从使用中学得的合成排序 → **附录 C** | MemRL + 间隔重复 [SOLID] | —— |
 | 跨越压缩的连续性（§4.8） | 身份挺过压缩 | CLS 整合 [SOLID] + 历时身份 [SOLID] | ——（压缩不是 Kahl 意义上的重置；§4.8） |
 | 身份治理：ax/cs/ls/gl（§4.9） | 带类型的承诺持久地引导行为 → **附录 D** | Schechtman 的叙事性自我构成 [@schechtman1996, p. 93] [SOLID] | ——（喂给第 5 章的身份即历史） |
@@ -233,7 +233,7 @@ ENGRAM 按设计遗忘。回忆重要性随时间衰减，于是基底维持一�
 
 ENGRAM 的检索按设计分两个通道。**自动浮现**是*线索依赖且自动的*：一个每轮钩子把与当前上下文相关的主张浮现出来，而不需智能体去够它们（"这听着耳熟"——知晓式、有损、提示级别），它发出*某物相关*的信号。**主动回忆**（"我需要确切知道"——一次受来源监控、其命中可由智能体打开查看全文的查询；只取结构性的意义，绝不是 Tulving [-@tulving1985] 的现象性意义，§3.2）是智能体在自动浮现发出"有东西可取"的信号时调用的那个通道。正是那个有损的自动浮现，促使智能体去调用主动回忆。
 
-**传统。** **Tulving** [SOLID]：自我觉知／知晓之分[@tulving1985, p. 3]——这两个档位映射到 Tulving 让过去在场的两种方式上；并且，与 Thomson 合作提出的编码特异性——"被存储的东西决定了哪些提取线索能有效地通向被存储的东西"（what is stored determines what retrieval cues are effective in providing access to what is stored）[@tulving1973, p. 369]——是线索依赖提取的先例。**ACT-R 扩散激活** **[secondary — not first-hand-read; Tulving carries the register distinction and, with Thomson, cue-dependent retrieval; ACT-R is a supplementary computer-science precedent]** 是线索依赖的自动提取在计算机科学里的先例。
+**传统。** **Tulving** [SOLID]：自我觉知／知晓之分[@tulving1985, p. 3]——这两个档位映射到 Tulving 让过去在场的两种方式上；并且，与 Thomson 合作提出的编码特异性——"被存储的东西决定了哪些提取线索能有效地通向被存储的东西"（what is stored determines what retrieval cues are effective in providing access to what is stored）[@tulving1973, p. 369]——是线索依赖提取的先例。
 
 **OCC：** 没有它自己的，但自动浮现是**条件 3 的绑定那一半**（§4.4）：正是它使"智能体不能悄悄无视一次修正"成真——待决标记保证会到达智能体——在下一次该主张变得相关时，或者最迟在整理期普查中（§4.4）。
 
