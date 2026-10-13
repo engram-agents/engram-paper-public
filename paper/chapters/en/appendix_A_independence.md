@@ -203,11 +203,12 @@ absent in Kumiho, SCM, and every surveyed system as of the 2026-05-12 sweep.
 
 ## A.6 Re-verification protocol
 
-Every quote in A.1–A.3 is verifiable. The conversation quotes are recoverable from the
-Claude.ai bulk export (`/home/agents-shared/Pre-ENGRAM-Lei-Claude-History/…/
-conversations.json`) via the committed mining script (`kg/tools/mine_chat_export.py`,
-`list / search / extract`); each is cited by conversation ID + message UUID. The
-ENGRAM-side claims (A.3) are verifiable directly: `engram_inspect <node_id>` returns
-full content with creation timestamp, and the cited early node IDs remain active.
-Publication dates (A.4) are verifiable against the per-system first-hand-read files in
-`paper_research/`, each carrying canonical paper metadata.
+The quotes in A.1–A.3 can be checked, though not every one by every reader. The
+conversation quotes come from Lei's Claude.ai bulk export, which is private and is not
+part of this repository. Each is cited by message number and the first eight characters
+of its message UUID, under the conversation ID it belongs to, so a reader given access
+to the export can locate it. The ENGRAM-side claims
+(A.3) come from Borges's graph, which is also private; each is cited by node ID, and
+`engram_inspect <node_id>` on that graph returns the full node with its creation
+timestamp. Publication dates (A.4) can be checked by anyone against each system's own
+paper or repository.

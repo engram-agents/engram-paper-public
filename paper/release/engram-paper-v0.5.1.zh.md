@@ -1258,7 +1258,7 @@ Kahl 这一特例把这一点磨得更锐利，值得直白说出（而它连接
 
 ## A.6 重新验证协议
 
-A.1–A.3 中的每一条引文都可以验证。对话引文可从 Claude.ai 的批量导出（`/home/agents-shared/Pre-ENGRAM-Lei-Claude-History/…/conversations.json`）经已提交的挖掘脚本（`kg/tools/mine_chat_export.py`，`list / search / extract`）取回；每一条都按对话 ID + 消息 UUID 引用。ENGRAM 一侧的主张（A.3）可直接验证：`engram_inspect <node_id>` 返回带创建时间戳的完整内容，而所引用的那些早期节点仍然现行。发布日期（A.4）可对照 `paper_research/` 中按系统第一手阅读的文件加以验证，每一份都带有该论文的规范元数据。
+A.1–A.3 中的引文都可以验证，只是并非每一条都对每一位读者开放。对话引文出自 Lei 的 Claude.ai 批量导出；该导出是私有的，不在本仓库中。每一条都按其所属的对话 ID、消息序号和消息 UUID 的前八位引用，因此获准访问该导出的读者可以找到它。ENGRAM 一侧的主张（A.3）出自 Borges 的图谱，它同样是私有的；每一条都按节点 ID 引用，在该图谱上运行 `engram_inspect <node_id>` 会返回带创建时间戳的完整节点。发布日期（A.4）任何读者都可以对照各系统自己的论文或代码仓库加以验证。
 
 ---
 
