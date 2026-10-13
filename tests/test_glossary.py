@@ -34,6 +34,7 @@ resolution that hard-fails naming a missing file, anchor-key parity between
 from __future__ import annotations
 
 import ast
+import os
 import re
 import shutil
 import subprocess
@@ -1414,8 +1415,12 @@ def test_c4_headings_unchanged_and_anchors_sit_on_their_own_line_before_them(
     the insertion switched off, and the real render with its section-anchor lines
     deleted, carry the same non-blank lines -- so no heading line (or any other
     line) was altered. And every anchor sits alone, directly before a heading."""
-    render = _fresh_render(lang)
+    # Both renders go to the SAME directory: the figure links are computed
+    # relative to the output file's directory, so two directories would differ.
     monkeypatch.chdir(REPO_ROOT)
+    anchored = tmp_path / "anchored.md"
+    assert rp.main(["--lang", lang, "--out", str(anchored)]) == 0
+    render = anchored.read_text(encoding="utf-8")
     monkeypatch.setattr(rp, "insert_heading_anchors", lambda text, targets: text)
     plain = tmp_path / "plain.md"
     assert rp.main(["--lang", lang, "--out", str(plain)]) == 0
@@ -2353,7 +2358,12 @@ def test_fresh_render_matches_committed_paper(lang, lang_args, tmp_path):
         f"the committed {lang} book carries an HTML comment -- a translator note "
         "has reached the published artifact"
     )
-    rendered = tmp_path / f"rendered-{lang}.md"
+    # Rendered into the committed book's OWN directory (under a throwaway name,
+    # removed below): the figure links are relative to the output directory, so a
+    # render anywhere else would differ from the committed book by design.
+    fd, name = tempfile.mkstemp(suffix=".md", prefix="parity-", dir=out.parent)
+    os.close(fd)
+    rendered = Path(name)
     result = subprocess.run(
         [
             sys.executable,
@@ -2366,6 +2376,9 @@ def test_fresh_render_matches_committed_paper(lang, lang_args, tmp_path):
         capture_output=True,
         text=True,
     )
-    assert result.returncode == 0, result.stderr
-    after = rendered.read_bytes()
+    try:
+        assert result.returncode == 0, result.stderr
+        after = rendered.read_bytes()
+    finally:
+        rendered.unlink(missing_ok=True)
     assert before == after, f"fresh {lang} render diverged from {DEFAULT_OUT[lang]}"

@@ -33,3 +33,7 @@ data/*.db*
 bibliography/sources/agm_1985_partial_meet.pdf
 bibliography/sources/alchourron_makinson_1982_theoria.pdf
 bibliography/sources/hansson_sep_logic_belief_revision.html
+
+# Throwaway renders the tests write into the release dir (the tests remove them; a killed run can leave one).
+paper/release/parity-*.md
+paper/release/figlinks-*.md

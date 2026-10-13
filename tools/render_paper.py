@@ -26,6 +26,7 @@ not render short.
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import sys
 import types
@@ -190,6 +191,24 @@ def _fig(path: str, number: int, caption: str, label: str = "Figure") -> str:
         f"\n![{label} {number}]({path})\n\n"
         f"**{label} {number}.** {caption}\n"
     )
+
+
+_FIG_SOURCE_LINK = re.compile(r"(!\[[^\]]*\]\()figures/([^)]+)\)")
+
+
+def relink_figures(text: str, out: Path) -> str:
+    """Point every `figures/<name>` image link at `paper/figures/<name>`, written
+    relative to the directory `out` will live in (forward slashes). The `_fig`
+    calls carry the repo-relative `figures/<name>` form; a link resolves against
+    the book's OWN directory, so it must be computed per `--out`, never fixed."""
+    figures = (PAPER / "figures").resolve()
+    start = out.resolve().parent
+
+    def _sub(m: re.Match) -> str:
+        rel = os.path.relpath(figures / m.group(2), start=start)
+        return f"{m.group(1)}{rel.replace(os.sep, '/')})"
+
+    return _FIG_SOURCE_LINK.sub(_sub, text)
 
 
 # Mechanism diagrams. These describe ENGRAM v0.5.1 and nothing earlier — in
@@ -1670,6 +1689,7 @@ def main(argv: list[str] | None = None) -> int:
     out.parent.mkdir(parents=True, exist_ok=True)
     text = "\n\n---\n\n".join(p.rstrip() for p in parts) + "\n"
     text = insert_heading_anchors(text, anchor_targets)
+    text = relink_figures(text, out)
     out.write_text(text, encoding="utf-8")
 
     words = len(text.split())

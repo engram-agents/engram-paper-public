@@ -152,7 +152,7 @@ and has learned rather than what it observed — are a tiny fraction of it.
 
 
 
-![Figure 1](figures/fig6-census.png)
+![Figure 1](../figures/fig6-census.png)
 
 **Figure 1.** What one real ENGRAM graph is made of — 9,399 current nodes at the snapshot date, by type. Observations and their evidence nodes are 72.8% of the graph; the identity-bearing types (71 cornerstones, 149 lessons, 9 axioms, 16 goals) are together 245 nodes, 2.6%; axioms and goals sit inside the chart's 'other' bar. Identity here is carried by the *structure* over the claims, not by a large store of self-description.
 
@@ -2368,15 +2368,15 @@ earns its strength.
 
 
 
-![Figure 2](figures/fig1-reasoning-type.png)
+![Figure 2](../figures/fig1-reasoning-type.png)
 
 **Figure 2.** Mean computed confidence by declared reasoning type, current derivations, types with n ≥ 5. The spread is the confidence model's whole behaviour in one view: an inductive generalization over independent sources lands near 0.93, an analogy near 0.49. The author selects the *shape* of the argument; the number follows from it.
 
-![Figure 3](figures/fig2-node-type.png)
+![Figure 3](../figures/fig2-node-type.png)
 
 **Figure 3.** Confidence by node type — box shows the interquartile range, line the median. Each type occupies its own band by construction: axioms are terminal at 1.00, conjectures are clamped at creation, observations map near-mechanically from evidence type, and derivations span the widest range because they inherit from their premises.
 
-![Figure 4](figures/fig3-quote-type.png)
+![Figure 4](../figures/fig3-quote-type.png)
 
 **Figure 4.** Mean confidence of current observations by evidence type. The gradient from hard data (0.91) to personal communication and editorial (0.60) is not a policy applied after the fact — it is computed at write time from the evidence the author declares, the same constraint §4.3 describes.
 
@@ -2504,7 +2504,7 @@ reasoning style, made countable, and it is not fixed.
 
 
 
-![Figure 5](figures/fig5-growth.png)
+![Figure 5](../figures/fig5-growth.png)
 
 **Figure 5.** Cumulative node count across the trajectory, by month. The graph is one agent's, accumulated continuously from 2026-04-09 to the snapshot date. Growth is uneven and tracks working intensity rather than any schedule.
 
@@ -2597,7 +2597,7 @@ table reproduces with `tools/paper_stats.py --trace dv_0922`.*
 
 
 
-![Figure 6](figures/fig4-depth.png)
+![Figure 6](../figures/fig4-depth.png)
 
 **Figure 6.** Computed confidence against derivation depth, for all 1,318 current derivations with at least one ancestor. Mean confidence falls with depth, from 0.72 at one layer (705 derivations) to about 0.4 at twelve to fourteen layers (17 derivations); the deepest layers hold one node each, too few to read a trend. The spread at every depth is wide: at depth 1 alone it runs from about 0.2 to 0.98. The annotated point is the six-layer chain worked through in §6.4, at 0.10. Depth costs something on average; the kind of argument sets an individual claim's number (Figure 2).
 
