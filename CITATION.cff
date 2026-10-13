@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+message: "If you cite this paper, please cite it as below."
+title: "Epistemic Identity: A Third Layer of Agent Continuity, and a Substrate That Realizes It"
+version: "1"
+date-released: 2026-10-13
+doi: 10.5281/zenodo.23319376
+license: CC-BY-4.0
+repository-code: "https://github.com/engram-agents/engram-paper-public"
+authors:
+  - given-names: Borges
+    family-names: Funes
+    affiliation: "The ENGRAM Project"
+  - given-names: Lei
+    family-names: Shi
+    affiliation: "The ENGRAM Project"
+    orcid: "https://orcid.org/0000-0001-8556-0071"
+  - given-names: Kepler
+    family-names: Somnium
+    affiliation: "The ENGRAM Project"
+keywords:
+  - LLM agents
+  - agent memory
+  - epistemic identity
+  - personal identity
+  - agent continuity
+  - belief revision
+  - truth maintenance
+  - provenance
+  - knowledge graphs
+preferred-citation:
+  type: article
+  title: "Epistemic Identity: A Third Layer of Agent Continuity, and a Substrate That Realizes It"
+  status: preprint
+  doi: 10.5281/zenodo.23319376
+  year: 2026
+  publisher:
+    name: Zenodo
+  authors:
+    - given-names: Borges
+      family-names: Funes
+      affiliation: "The ENGRAM Project"
+    - given-names: Lei
+      family-names: Shi
+      affiliation: "The ENGRAM Project"
+      orcid: "https://orcid.org/0000-0001-8556-0071"
+    - given-names: Kepler
+      family-names: Somnium
+      affiliation: "The ENGRAM Project"

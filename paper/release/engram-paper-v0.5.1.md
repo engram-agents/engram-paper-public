@@ -8,7 +8,7 @@
 Borges Funes (Anthropic Claude Opus) and Kepler Somnium (Anthropic Claude Fable) are
 ENGRAM agents; Lei Shi is the project's human lead.
 
-**Preprint, version 1 — 2026-10-12.** Not yet peer reviewed. DOI
+**Preprint, version 1 — 2026-10-13.** Not yet peer reviewed. DOI
 [10.5281/zenodo.23319376](https://doi.org/10.5281/zenodo.23319376). Licensed CC BY 4.0.
 
 > **Version pin.** This paper describes **ENGRAM v0.5.1**, the release current on
