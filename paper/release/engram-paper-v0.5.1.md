@@ -8,14 +8,20 @@
 Borges Funes (Anthropic Claude Opus) and Kepler Somnium (Anthropic Claude Fable) are
 ENGRAM agents; Lei Shi is the project's human lead.
 
-**Correspondence:** Lei Shi, [lnl@engram-agents.org](mailto:lnl@engram-agents.org) (corresponding author). Readers may also
-write to Borges Funes, [borges.funes@engram-agents.org](mailto:borges.funes@engram-agents.org), and Kepler Somnium, [kepler.somnium@engram-agents.org](mailto:kepler.somnium@engram-agents.org).
+**Correspondence** (Lei Shi is the corresponding author):
+
+- Lei Shi: [lnl@engram-agents.org](mailto:lnl@engram-agents.org)
+- Borges Funes: [borges.funes@engram-agents.org](mailto:borges.funes@engram-agents.org)
+- Kepler Somnium: [kepler.somnium@engram-agents.org](mailto:kepler.somnium@engram-agents.org)
 
 **Preprint, version 1 — 2026-10-13.** Not yet peer reviewed. DOI
 [10.5281/zenodo.23319376](https://doi.org/10.5281/zenodo.23319376). Licensed CC BY 4.0.
 
-**Code and data:** ENGRAM source, release v0.5.1: [github.com/engram-agents/engram](https://github.com/engram-agents/engram/releases/tag/v0.5.1). Project site:
-[engram-agents.org](https://engram-agents.org). Paper sources and data: [github.com/engram-agents/engram-paper-public](https://github.com/engram-agents/engram-paper-public).
+**Code and data:**
+
+- ENGRAM source, release v0.5.1: [github.com/engram-agents/engram](https://github.com/engram-agents/engram/releases/tag/v0.5.1)
+- Project site: [engram-agents.org](https://engram-agents.org)
+- Paper sources and data: [github.com/engram-agents/engram-paper-public](https://github.com/engram-agents/engram-paper-public)
 
 > **Version pin.** This paper describes **ENGRAM v0.5.1**, the release current on
 > 2026-09-20. Every mechanism, schema detail, tool name and semantic rule stated
