@@ -153,16 +153,23 @@ For convergent-discovery integrity verification:
 
 ## Pointers for Re-Verification
 
-Anyone with the bulk export at `/home/agents-shared/Pre-ENGRAM-Lei-Claude-History/data-d92d3721-b624-4377-a0d0-456893a499cf-1778285467-5ff6c2ff-batch-0000/conversations.json` can re-verify any quote in this digest by:
+**The raw chat log is not released with this repository.** The source of this digest is
+Lei's private Claude.ai bulk export (`conversations.json`). It stays private, so the quotes
+above can be re-verified only by someone who has that export.
+
+The tool that mined it is in this repository at `archive/experiments/mine_pre_engram.py`.
+It reads the export from the path set in its `ROOT` constant (the location on the authors'
+machine). With your own copy of the export, point `ROOT` at it and run, from the repository
+root:
 
 ```bash
-python3 /tmp/mine_pre_engram.py search '<keyword>'
-python3 /tmp/mine_pre_engram.py extract <conv_uuid_prefix>
+python3 archive/experiments/mine_pre_engram.py list
+python3 archive/experiments/mine_pre_engram.py search '<keyword>'
+python3 archive/experiments/mine_pre_engram.py extract <conv_uuid_prefix> [outfile]
 ```
 
-The scanner is at `/tmp/mine_pre_engram.py`. For permanence, it should be moved to `engram-alpha/tools/` or `paper-research-toolkit/` if we want to keep using it for similar history mining.
-
-The full extracted main conversation `a169ba3c` (255 msgs, 614KB) is at `/tmp/conv_a169ba3c.md` for the duration of the session — should be moved or copied if needed long-term.
+The conversation and message ids cited above (for example `a169ba3c`) are the export's own
+ids, so `extract` with a cited conversation prefix reproduces the conversation a quote came from.
 
 ---
 
@@ -179,12 +186,3 @@ The full extracted main conversation `a169ba3c` (255 msgs, 614KB) is at `/tmp/co
 7. ENGRAM was operational and integrated into a working AI research agent by 2026-04-08 (~3 weeks after foundational message).
 
 **The convergent-discovery framing is therefore established empirically**, not asserted. Architectural choices in ENGRAM converge with Kahl's structural conditions (first-hand-read at `kahl_eaa_first_hand_read_2026-05-08.md`, condition-by-condition match at §5.5) despite being designed without awareness of his work or the broader prior art.
-
----
-
-## Next Actions
-
-1. **Commit this digest to kg** (file:// citation per ls_0011 discipline) so ENGRAM can cite it.
-2. **File one or more ENGRAM observation nodes** anchored to specific quotes in this digest (e.g., the foundational message, the naming moment, the prior-art-search request).
-3. **In the paper**, methodology section cites this digest by filename + the specific msg-uuid pointers for the load-bearing claims.
-4. **Optional follow-up**: also mine the Claude Code JSONL transcripts in `/home/spt/.claude/projects/-home-spt-kg_protocol_for_ai/` (per Lei's note) for late-stage implementation history that complements this Stage-6 picture. Defer until paper draft needs it.
