@@ -26,6 +26,10 @@ bibliography/sources/tulving_memory_consciousness_1985/
 # -wal and -shm sidecars were committed once because `data/*.db` does not match
 # them, and a -wal can carry un-checkpointed page data even when the .db is ignored.
 data/*.db*
+# The ONE database that may be committed: the stripped release produced by
+# tools/strip_paper_snapshot.py (no free text; see data/DATASET.md section 3). An explicit
+# per-file negation, never a pattern - a new stripped file must be a deliberate edit here.
+!data/engram-paper-ssot-20260920T131330Z.stripped.db
 bibliography/sources/agm_1985_partial_meet.pdf
 bibliography/sources/alchourron_makinson_1982_theoria.pdf
 bibliography/sources/hansson_sep_logic_belief_revision.html

@@ -32,10 +32,22 @@ paper — `paper_stats.py`, `connectivity_trend.py`, `component_anatomy.py`,
 and `make_figures.py` (in `tools/` of this paper's repository). Each prints its own denominator beside its numerator, so any
 figure in this paper can be checked against a re-run without reading its source.
 
-**The snapshot itself is not published, and will not be.** It is the working memory
-of a live agent and carries private, identity-bearing content. The figures in Chapter 6
-and Appendix E are therefore a demonstration on one agent's graph, not a benchmark.
-This is a real limitation on independent verification and is stated as one: the
-instruments are published and run on any ENGRAM graph, but the graph they were run on
-here is not open. Independent reproduction would come from de-personalized data, or
-from an agent raised for the purpose of a study.
+**The snapshot's content is not published, and will not be.** It is the working memory
+of a live agent and carries private, identity-bearing content. What is published is a
+**structure-only release** of the same snapshot,
+`data/engram-paper-ssot-20260920T131330Z.stripped.db`, made from it by
+`tools/strip_paper_snapshot.py`, and is in this paper's repository (https://github.com/engram-agents/engram-paper-public) beside the tool and its
+test (3,690,496 bytes; SHA-256 `962d0c00c0c6388a5fcc1bcda5f6424de2979d19ed1c8624f9579210db0e1b5a`). It keeps node and edge identifiers, node types and
+statuses and whether each node is current, creation times to the whole second,
+confidence values, evidence-type labels, the reasoning-type and source-class labels, and
+the full edge structure; it keeps no claim text, quotation, title, name, URL or source.
+Every figure the instruments above print for Chapter 6 is reproduced from that release,
+and a committed test checks this against recorded values (`data/expected_stats.json`).
+Two kinds of result cannot be reproduced from it: results that depend on the text of
+claims, and the comparison against the graph's earlier history
+(`connectivity_trend.py --validate-git`), which reads the private record.
+`data/DATASET.md` lists exactly what the release keeps and drops.
+
+The figures in Chapter 6 and Appendix E remain a demonstration on one agent's graph, not
+a benchmark. Independent tests of the claims themselves would come from de-personalized
+data, or from an agent raised for the purpose of a study.

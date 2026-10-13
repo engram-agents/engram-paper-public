@@ -13,13 +13,17 @@ and silently false a few months later. A frozen, hash-pinned snapshot is what ma
 a figure re-runnable by a reviewer and what makes "this number is wrong" a
 checkable claim rather than an argument about when it was measured.
 
+Two artifacts are declared in `data/DATASET.md`, each with its own sha256 line:
+the private full SSoT (`...Z.db`) and its stripped public release (`...Z.stripped.db`,
+see `tools/strip_paper_snapshot.py`). Both are readable; anything else is refused.
+
 Three refusals, each loud:
 
 1. **A live graph.** Any path under `~/.engram/` (or `$ENGRAM_HOME`) is refused
    outright. `freeze_paper_snapshot.py` is the one legitimate reader of the live
    graph and does not use this module.
-2. **A hash mismatch.** The snapshot's SHA-256 must equal the one recorded in
-   `data/DATASET.md`. A snapshot that has been regenerated, truncated or
+2. **A hash mismatch.** The snapshot's SHA-256 must equal one of the two recorded in
+   `data/DATASET.md` (the full SSoT or its stripped release). A snapshot that has been regenerated, truncated or
    swapped fails here instead of silently producing different numbers.
 3. **A missing pin.** If `DATASET.md` records no hash, we refuse rather than
    proceed unverified — an unpinned run is exactly the state this module exists
@@ -44,6 +48,15 @@ MANIFEST = DATASET / "DATASET.md"
 
 _SHA_RE = re.compile(r"\*\*sha256:\*\*\s*`([0-9a-f]{64})`")
 
+# A declared artifact is a `**File:**` line immediately followed by its `**sha256:**` line.
+# Only snapshots named like the paper SSoT (full or `.stripped`) are readable artifacts, so
+# the manifest can describe other files (the 2026-07-04 freeze) without making them readable.
+_ARTIFACT_RE = re.compile(
+    r"\*\*File:\*\*\s*`data/(engram-paper-ssot-[0-9]{8}T[0-9]{6}Z(?:\.stripped)?\.db)`\s*\n"
+    r"\s*-\s*\*\*sha256:\*\*\s*`([0-9a-f]{64})`"
+)
+STRIPPED_SUFFIX = ".stripped.db"
+
 
 def _live_roots() -> list[Path]:
     roots = [Path(os.environ.get("ENGRAM_HOME", "~/.engram")).expanduser()]
@@ -51,11 +64,21 @@ def _live_roots() -> list[Path]:
     return [r.resolve() for r in roots if r.exists()]
 
 
+def pinned_shas() -> dict[str, str]:
+    """{file name: SHA-256} for every readable artifact the manifest declares."""
+    if not MANIFEST.exists():
+        return {}
+    return {name: sha for name, sha in _ARTIFACT_RE.findall(MANIFEST.read_text(encoding="utf-8"))}
+
+
 def pinned_sha() -> str | None:
-    """The SHA-256 the manifest declares for the paper's SSoT snapshot."""
+    """The SHA-256 the manifest declares for the paper's FULL SSoT snapshot."""
     if not MANIFEST.exists():
         return None
-    m = _SHA_RE.search(MANIFEST.read_text(encoding="utf-8"))
+    for name, sha in pinned_shas().items():
+        if not name.endswith(STRIPPED_SUFFIX):
+            return sha
+    m = _SHA_RE.search(MANIFEST.read_text(encoding="utf-8"))   # legacy single-pin manifest
     return m.group(1) if m else None
 
 
@@ -78,7 +101,9 @@ def resolve_db(explicit: str | None = None, *, allow_unpinned: bool = False) -> 
         if not db.exists():
             raise SystemExit(f"SSoT: no such database: {db}")
     else:
-        cands = sorted(DATASET.glob("engram-paper-ssot-*.db"))
+        # Prefer the full SSoT when present; an outside reader holds only the stripped release.
+        every = sorted(DATASET.glob("engram-paper-ssot-*.db"))
+        cands = [p for p in every if not p.name.endswith(STRIPPED_SUFFIX)] or every
         if not cands:
             raise SystemExit(
                 "SSoT: no frozen snapshot in data/ — run tools/freeze_paper_snapshot.py first"
@@ -101,20 +126,22 @@ def resolve_db(explicit: str | None = None, *, allow_unpinned: bool = False) -> 
             )
 
     # (2)/(3) the pin
-    want = pinned_sha()
+    want = set(pinned_shas().values())
+    if not want and pinned_sha() is not None:
+        want = {pinned_sha()}
     if allow_unpinned:
         print(f"# SSoT: --allow-unpinned — hash NOT verified for {db.name}", file=sys.stderr)
         return db
-    if want is None:
+    if not want:
         raise SystemExit(
             f"SSoT: {MANIFEST} records no sha256 pin, so {db.name} cannot be verified.\n"
             "      Record the hash in the manifest, or pass --allow-unpinned deliberately."
         )
     got = file_sha(db)
-    if got != want:
+    if got not in want:
         raise SystemExit(
             f"SSoT: HASH MISMATCH for {db.name}\n"
-            f"      manifest: {want}\n"
+            f"      manifest: {' or '.join(sorted(want))}\n"
             f"      actual:   {got}\n"
             "      The snapshot is not the one the paper's numbers were computed from.\n"
             "      Either restore it, or re-freeze and update data/DATASET.md."

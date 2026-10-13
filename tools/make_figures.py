@@ -88,7 +88,7 @@ def fig_reasoning_type(con, out: Path) -> str:
 
     rows = sorted(
         ((k, len(v), sum(v) / len(v)) for k, v in buckets.items() if len(v) >= 5),
-        key=lambda r: r[2],
+        key=lambda r: (r[2], str(r[0])),
     )
     labels = [r[0].replace("_", " ") for r in rows]
     means = [r[2] for r in rows]
@@ -156,7 +156,7 @@ def fig_quote_type(con, out: Path) -> str:
             FROM nodes
             WHERE type LIKE 'observation%' AND is_current = 1
               AND confidence IS NOT NULL AND quote_type IS NOT NULL
-            GROUP BY quote_type ORDER BY mean
+            GROUP BY quote_type ORDER BY mean, quote_type
             """
         )
     )
@@ -282,7 +282,7 @@ def fig_census(con, out: Path) -> str:
     """What the graph is made of."""
     rows = list(
         con.execute(
-            "SELECT type, COUNT(*) n FROM nodes WHERE is_current=1 GROUP BY type ORDER BY n DESC"
+            "SELECT type, COUNT(*) n FROM nodes WHERE is_current=1 GROUP BY type ORDER BY n DESC, type"
         )
     )
     top = rows[:9]

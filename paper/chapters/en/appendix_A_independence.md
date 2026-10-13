@@ -132,7 +132,8 @@ established design rather than adoption of someone else's. Rather than rest on t
 characterization, where a specific mechanism might be thought to postdate a reading we
 give that mechanism's own dates in place: Chapter 3 §3.8 does so for the two-channel
 retrieval design, including the later date at which its database fields shipped. Both
-figures above are re-derivable from the frozen dataset snapshot described in Chapter 6.
+figures above are re-derivable from the structure-only release of the frozen snapshot
+(Data availability).
 
 ## A.3 The design was substantially complete before we read any of it
 

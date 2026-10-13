@@ -33,12 +33,29 @@ import _ssot
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CB = {"observation_factual", "observation_predictive", "derivation", "theory", "axiom", "conjecture"}
 
+URL_CLASS_PREFIX = "redacted:"
+URL_CLASSES = ("transcript", "external", "file")
+
 def ev_class(url, stype):
     u = url or ""
+    # The stripped public release (tools/strip_paper_snapshot.py) replaces every source_url
+    # with `redacted:<class>`, the class THIS function computed for the raw URL. Reading the
+    # token back keeps the per-node class identical on the full and the stripped file.
+    if u.startswith(URL_CLASS_PREFIX):
+        cls = u[len(URL_CLASS_PREFIX):]
+        if cls not in URL_CLASSES:
+            raise ValueError(f"unknown redacted source_url class token: {cls!r}")
+        return cls
     if u.endswith(".jsonl"): return "transcript"
     if stype == "conversation": return "transcript"
     if stype == "web_page": return "external"
     return "file"
+
+def ranked(counter):
+    """[(label, count)] by count descending, ties by label ascending. A TOTAL order:
+    `Counter.most_common()` leaves tied labels in first-seen order, which is the order the
+    database happened to return rows in - and that depends on the query plan."""
+    return sorted(counter.items(), key=lambda kv: (-kv[1], str(kv[0])))
 
 def lcc(ids, edges):
     adj = defaultdict(set); kept = 0
@@ -72,7 +89,7 @@ def main():
 
     evtot = len(evcls)
     print("## Evidence by artifact kind (AXIS 1 — structural)")
-    for k, v in Counter(evcls.values()).most_common():
+    for k, v in ranked(Counter(evcls.values())):
         print(f"  {k:<14}{v:>6} / {evtot}  = {100.0*v/evtot:5.1f}%")
     print()
 
@@ -105,7 +122,7 @@ def main():
         elif "transcript" in ks: direct["mixed incl. transcript"] += 1
         else: direct["no transcript"] += 1
     print("## Q2a — observations by the KIND of evidence they cite (AXIS 1)")
-    for k, v in direct.most_common():
+    for k, v in ranked(direct):
         print(f"  {k:<26}{v:>6} / {len(obs)}  = {100.0*v/len(obs):5.1f}%")
     print()
 
@@ -115,7 +132,7 @@ def main():
         except Exception: sc["(unparseable)"] += 1
     tot = sum(sc.values())
     print("## Q2b — observations by DECLARED source_class (AXIS 2 — author-typed)")
-    for k, v in sc.most_common():
+    for k, v in ranked(sc):
         print(f"  {k:<26}{v:>6} / {tot}  = {100.0*v/tot:5.1f}%")
     print()
     print("## The two axes side by side — they measure different things; read the GAP, not a match.")

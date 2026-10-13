@@ -17,6 +17,7 @@ ENGRAM agents; Lei Shi is the project's human lead.
 > reviewed and published — a reader should take any divergence between a later
 > release and this text as the system having moved on, not as an error here. All
 > quantitative results are computed from a single frozen snapshot of one graph,
-> taken 2026-09-20T13:13:30Z and described in the Data availability note.
+> taken 2026-09-20T13:13:30Z and described in the Data availability note, where a
+> structure-only release of it is published.
 
 ---

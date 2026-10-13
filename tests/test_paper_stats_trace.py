@@ -74,6 +74,10 @@ def _run(db, *args):
 # tools/paper_stats.py, at base commit 049d6d0a, against this exact
 # fixture -- transcribed here verbatim minus the one path-dependent line,
 # the "# source:" header, which is asserted separately by shape.)
+# ROUND 2 (stripped-release work): the tied rows of the node census (2/2/2) and of the
+# reasoning_type table (1/1) were re-captured under the new total order - count descending,
+# ties by label ascending. They had been pinned in query-plan order, which differs between
+# an ANALYZEd and a fresh database. No number changed; only the order of tied rows.
 
 def _byte_identical_nodes():
     return [
@@ -105,9 +109,9 @@ _EXPECTED_BODY = """# every figure below is computed from that file and nothing 
   last node                2026-01-08T00:00:00
 
 ## Node census (current)
-  question                      2 / 7
-  observation                   2 / 7
   derivation                    2 / 7
+  observation                   2 / 7
+  question                      2 / 7
   axiom                         1 / 7
 
 ## §6.1 Confidence by node type — current, confidence NOT NULL
@@ -118,8 +122,8 @@ _EXPECTED_BODY = """# every figure below is computed from that file and nothing 
 
 ## §6.1 Confidence by reasoning_type — current derivations
   reasoning_type                          n    / dvs    mean
-  deductive_modus_ponens                  1        2    0.75
   abductive_best_explanation              1        2    0.55
+  deductive_modus_ponens                  1        2    0.75
 
 ## §6.1 Confidence by quote_type — current observations
   quote_type                              n    / obs    mean

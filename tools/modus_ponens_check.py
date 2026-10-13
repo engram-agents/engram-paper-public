@@ -78,7 +78,10 @@ def main():
             excluded_ids.append(did)
             continue
         scorable += 1
-        _wid, wtype, wconf = min(candidates, key=lambda x: x[2])
+        # weakest premise; a tie in confidence resolves to the lowest premise id, so which
+        # premise "is" the weakest (and whether it is a derivation) never depends on the
+        # order the join happened to return the rows in
+        _wid, wtype, wconf = min(candidates, key=lambda x: (x[2], x[0]))
         weakest_vals.append(wconf)
         if wtype == "derivation":
             weakest_is_derivation += 1

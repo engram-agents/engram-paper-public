@@ -131,9 +131,11 @@ def _trace_chain(n, parents, conf, depth):
     while True:
         out.append(n)
         emitted.add(n)
-        ps = [p for p in parents.get(n, []) if p != n]
+        ps = sorted(p for p in parents.get(n, []) if p != n)   # id order: the tie-break below
         if not ps:
             break
+        # max() keeps the FIRST of equal keys, so with ps in id order a full tie (same depth,
+        # same confidence) resolves to the lowest id - not to whichever edge the scan met first.
         nxt = max(ps, key=lambda p: (depth(p), -(conf.get(p) or 0)))
         if nxt in emitted:
             break                                    # cycle guard for the walk
@@ -238,7 +240,7 @@ def main():
     print(f"  last node                {hi}\n")
 
     print("## Node census (current)")
-    for t, n in c.execute("SELECT type,COUNT(*) FROM nodes WHERE is_current=1 GROUP BY 1 ORDER BY 2 DESC"):
+    for t, n in c.execute("SELECT type,COUNT(*) FROM nodes WHERE is_current=1 GROUP BY 1 ORDER BY 2 DESC, 1"):
         print(f"  {t:<24} {n:>6,} / {cur:,}")
     print()
 
@@ -263,7 +265,7 @@ def main():
             except Exception: rt = "<unparseable>"
         if conf is not None: buckets[rt].append(conf)
     print(f"  {'reasoning_type':<34}{'n':>7}{'/ dvs':>9}{'mean':>8}")
-    for rt, vals in sorted(buckets.items(), key=lambda kv: -len(kv[1])):
+    for rt, vals in sorted(buckets.items(), key=lambda kv: (-len(kv[1]), str(kv[0]))):
         print(f"  {rt:<34}{len(vals):>7,}{dv_total:>9,}{statistics.fmean(vals):>8.2f}")
     print()
 
@@ -273,7 +275,7 @@ def main():
     for qt, n, mean in c.execute(
             "SELECT quote_type, COUNT(*), AVG(confidence) FROM nodes "
             "WHERE is_current=1 AND type LIKE 'observation%' AND quote_type IS NOT NULL "
-            "AND confidence IS NOT NULL GROUP BY 1 ORDER BY 3 DESC"):
+            "AND confidence IS NOT NULL GROUP BY 1 ORDER BY 3 DESC, 1"):
         print(f"  {qt:<34}{n:>7,}{ob_total:>9,}{mean:>8.2f}")
     print()
 
