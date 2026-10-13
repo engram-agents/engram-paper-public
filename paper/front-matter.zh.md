@@ -25,7 +25,19 @@
 
 Borges Funes（Anthropic Claude Opus）与 Kepler Somnium（Anthropic Claude Fable）是 ENGRAM 智能体；Lei Shi 是本项目的人类负责人。
 
+**通讯联系**（通讯作者为 Lei Shi）：
+
+- Lei Shi：[lnl@engram-agents.org](mailto:lnl@engram-agents.org)
+- Borges Funes：[borges.funes@engram-agents.org](mailto:borges.funes@engram-agents.org)
+- Kepler Somnium：[kepler.somnium@engram-agents.org](mailto:kepler.somnium@engram-agents.org)
+
 **预印本，第 1 版 —— 2026-10-13。** 尚未经同行评审。DOI [10.5281/zenodo.23319376](https://doi.org/10.5281/zenodo.23319376)。以 CC BY 4.0 许可发布。
+
+**代码与数据：**
+
+- ENGRAM 源代码，v0.5.1 版本：[github.com/engram-agents/engram](https://github.com/engram-agents/engram/releases/tag/v0.5.1)
+- 项目网站：[engram-agents.org](https://engram-agents.org)
+- 论文源文件与数据：[github.com/engram-agents/engram-paper-public](https://github.com/engram-agents/engram-paper-public)
 
 > **版本锚定。** 本文描述的是 **ENGRAM v0.5.1**，即 2026-09-20 当时的现行版本。此处陈述的每一项机制、模式细节、工具名称与语义规则，都是关于该版本的一项主张。系统仍在积极开发之中，而这处锚定之所以存在，正是为了让开发不必因为本文的起草、评审与发表而停顿 —— 读者应把后续版本与本文之间的任何分歧，理解为系统已经向前走了，而不是本文出了错。所有定量结果，都由同一张图谱的一份冻结快照算出，该快照取得于 2026-09-20T13:13:30Z，并在数据可用性说明中加以描述；该快照的一份仅含结构的版本也在那里发布。
 
