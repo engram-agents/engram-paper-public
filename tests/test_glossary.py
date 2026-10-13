@@ -47,6 +47,7 @@ import pytest
 import tools.render_paper as rp
 from tools.render_paper import (
     ACKNOWLEDGEMENTS,
+    AFTERWORD,
     BIBLIOGRAPHY,
     BODY,
     CHAPTER_SUFFIX,
@@ -82,18 +83,20 @@ _G_HEADING = {
     "en": r"^# Appendix G — Glossary\s*$",
     "zh": r"^# 附录 G — 术语表\s*$",
 }
-# What ends G in the assembled render, per language. This became language-keyed
-# on 2026-09-28, exactly as the note here predicted: the zh slice was previously
-# pinned to the English "## Acknowledgements" heading and worked only because the
-# zh acknowledgements file was a heading-less placeholder, so the slice ran to the
-# end of the document harmlessly while T1/T2 skipped. Now that the zh file has a
-# real heading (`## 致谢`), an English-only boundary lets the zh slice swallow the
-# acknowledgements AND the bibliography -- whose section lead-ins then get
-# mis-parsed as glossary entries. Verified against
-# paper/acknowledgements.zh.md:22 (the first `## ` heading in the zh render).
+# What ends G in the assembled render, per language: the next level-1 heading,
+# which is the Acknowledgements title in both languages now that the back matter
+# is raised to chapter level (`# Acknowledgements` / `# 致谢`). This became
+# language-keyed on 2026-09-28, exactly as the note here predicted: the zh slice
+# was previously pinned to the English Acknowledgements heading and worked only
+# because the zh acknowledgements file was a heading-less placeholder, so the
+# slice ran to the end of the document harmlessly while T1/T2 skipped. Once the
+# zh file had a real heading, an English-only boundary let the zh slice swallow
+# the acknowledgements AND the bibliography -- whose section lead-ins then got
+# mis-parsed as glossary entries. Verified against the heading line of
+# paper/acknowledgements.zh.md (`# 致谢`).
 _G_HEADING_END = {
-    "en": r"^## Acknowledgements\s*$",
-    "zh": r"^## 致谢\s*$",
+    "en": r"^# Acknowledgements\s*$",
+    "zh": r"^# 致谢\s*$",
 }
 
 
@@ -169,6 +172,7 @@ def _render_full_text(lang: str = "en") -> str:
         body, _ = strip_provenance_ids(name, body)
         parts.append(body)
     parts.append(load(PAPER / ACKNOWLEDGEMENTS[lang]))
+    parts.append(load(PAPER / AFTERWORD[lang]))
     parts.append(load(PAPER / BIBLIOGRAPHY[lang]))
     return "\n\n---\n\n".join(p.rstrip() for p in parts) + "\n"
 
@@ -1862,24 +1866,32 @@ def test_zh_chapter_paths_derive_from_the_shared_body_list():
 
 
 def test_zh_front_and_back_matter_are_translated_and_substantive():
-    """Spec point 4, in its current state. These three files were one-line
-    placeholders while translation was pending, and this test used to assert that
-    placeholder state ("must carry an obvious TODO(zh) marker", "must be a
-    one-line placeholder"). They are translated now, so the property worth
-    defending is the inverse -- each exists, carries NO placeholder marker, and is
-    substantive. The 100-Han floor is deliberately well below the measured
-    minimum (233 Han characters, front-matter) so it stays non-vacuous without
-    pinning today's exact sizes. (The hard-fail rule covers CHAPTERS; these three
-    are checked here instead.)"""
-    for name in (FRONT_MATTER["zh"], ACKNOWLEDGEMENTS["zh"], BIBLIOGRAPHY["zh"]):
+    """Spec point 4, in its current state. These files (front matter,
+    acknowledgements, bibliography) were one-line placeholders while translation
+    was pending, and this test used to assert that placeholder state ("must carry
+    an obvious TODO(zh) marker", "must be a one-line placeholder"). They are
+    translated now, so the property worth defending is the inverse -- each exists,
+    carries NO placeholder marker, and is substantive. The 100-Han floor is
+    deliberately well below the measured minimum over the translated files (233
+    Han characters, front-matter) so it stays non-vacuous without pinning today's
+    exact sizes. (The hard-fail rule covers CHAPTERS; these four files are checked
+    here instead.)
+
+    The afterword zh file was a deliberate TODO(zh) placeholder in rounds 1-2 of
+    engram-paper-public#16, and this test was the merge gate that kept it from
+    shipping. In round 3 the human author's own Chinese afterword replaced it (he
+    wrote it himself, not as a translation), so all four files are now held to
+    the same floor. Do not weaken or skip the test."""
+    for name in (FRONT_MATTER["zh"], ACKNOWLEDGEMENTS["zh"], AFTERWORD["zh"],
+                 BIBLIOGRAPHY["zh"]):
         path = PAPER / name
         assert path.exists(), f"missing zh front/back matter: {path}"
         text = path.read_text(encoding="utf-8")
         for marker in ("TODO(zh)", "TODO"):
             assert marker not in text, (
-                f"{path} still carries a {marker!r} placeholder; the three zh "
+                f"{path} still carries a {marker!r} placeholder; the four zh "
                 f"front/back-matter files are translated, so a placeholder here "
-                f"means one was reverted"
+                f"means one was reverted or not yet translated"
             )
         non_blank = len([ln for ln in text.splitlines() if ln.strip()])
         assert non_blank > 1, (
@@ -1896,6 +1908,7 @@ def test_zh_front_and_back_matter_are_translated_and_substantive():
 def test_en_front_and_back_matter_names_are_unchanged():
     assert FRONT_MATTER["en"] == "front-matter.md"
     assert ACKNOWLEDGEMENTS["en"] == "acknowledgements.md"
+    assert AFTERWORD["en"] == "afterword.md"
     assert BIBLIOGRAPHY["en"] == "bibliography.md"
 
 
@@ -1905,7 +1918,7 @@ def test_zh_chapter_filename_convention_is_pinned():
     prose says "the zh sources use the SAME filenames under
     `current_draft_zh/`", while the only zh source that exists -- the parent
     commit's own `current_draft_zh/appendix_G_glossary.zh.md` -- carries the
-    suffix, as do the three zh front/back-matter names.
+    suffix, as do the four zh front/back-matter names.
 
     Suffix was chosen (the artifact plus the front/back-matter precedent), and
     this test makes that choice visible rather than implied. If the bare name

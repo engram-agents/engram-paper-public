@@ -121,6 +121,7 @@ def _make_tree(tmp_path: Path, chapter: str, refs: str = FIXTURE_YAML) -> None:
     (tmp_path / "paper").mkdir()
     (tmp_path / "paper" / "front-matter.md").write_text("# Title\n", encoding="utf-8")
     (tmp_path / "paper" / "acknowledgements.md").write_text("Thanks.\n", encoding="utf-8")
+    (tmp_path / "paper" / "afterword.md").write_text("# Afterword\n", encoding="utf-8")
     (tmp_path / "paper" / "bibliography.md").write_text(
         "# Bibliography\n\nIntro paragraph.\n\n{{REFERENCES}}\n\n---\n\n## Data availability\n\nNone.\n",
         encoding="utf-8",

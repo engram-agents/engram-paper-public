@@ -7,6 +7,7 @@ The current paper, and nothing else.
 | `chapters/en/` | Chapter and appendix sources, English | **yes — edit here** |
 | `chapters/zh/` | The same, Chinese; one `.zh.md` file per English file | **yes** |
 | `front-matter*.md`, `acknowledgements*.md` | Title page and acknowledgements | yes |
+| `afterword*.md` | Afterword, a note from the human author (back matter, between acknowledgements and bibliography); `afterword.md` is his approved text | yes |
 | `references.yaml` | The single bibliography source (CSL fields + provenance) | yes |
 | `bibliography*.md` | Templates; their `{{REFERENCES}}` line is filled at render time | yes (template only) |
 | `figures/` | Figures | **no** — `python tools/make_figures.py` |

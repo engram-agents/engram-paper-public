@@ -46,7 +46,7 @@ LANGS = ("en", "zh")
 # zh chapters carry a `.zh` infix (`ch1.md` -> `ch1.zh.md`). That is the
 # convention the one existing zh source already uses
 # (`chapters/zh/appendix_G_glossary.zh.md`, commit 7623554), and the same
-# one the three zh front/back-matter files need, since `paper/` is shared by
+# one the four zh front/back-matter files need, since `paper/` is shared by
 # both languages and the suffix is the only thing that tells them apart. The
 # directory carries the language marker too; that redundancy is deliberate here
 # -- `chapters/en/` and `chapters/zh/` are otherwise identical, and a
@@ -59,12 +59,13 @@ DEFAULT_OUT = {
 }
 
 # Front/back matter is not per-language-directory (both languages read `paper/`),
-# so the zh files carry the suffix there. These three are the only zh sources that
+# so the zh files carry the suffix there. These four are the only zh sources that
 # may legitimately be an untranslated placeholder while the translation is
 # pending; every BODY chapter is a hard requirement -- `load` raises on a missing
 # one, which is the whole point (see `main`).
 FRONT_MATTER = {"en": "front-matter.md", "zh": "front-matter.zh.md"}
 ACKNOWLEDGEMENTS = {"en": "acknowledgements.md", "zh": "acknowledgements.zh.md"}
+AFTERWORD = {"en": "afterword.md", "zh": "afterword.zh.md"}
 BIBLIOGRAPHY = {"en": "bibliography.md", "zh": "bibliography.zh.md"}
 
 
@@ -1655,6 +1656,7 @@ def main(argv: list[str] | None = None) -> int:
         parts.append(body)
 
     parts.append(load(PAPER / ACKNOWLEDGEMENTS[lang], cites))
+    parts.append(load(PAPER / AFTERWORD[lang], cites))
     # The bibliography file is a TEMPLATE (heading, method paragraph, and the sections
     # after the entries); the entries themselves are generated from references.yaml.
     parts.append(fill_bibliography_template(
@@ -1677,7 +1679,7 @@ def main(argv: list[str] | None = None) -> int:
         # Printed for non-default languages only: the en stdout stays
         # byte-identical to what it emitted before --lang existed.
         print(f"  language   {lang} (chapter sources from {SOURCE_DIRS[lang]}/)")
-    print(f"  sources    {len(BODY)} chapters/appendices + front matter + acknowledgements + bibliography")
+    print(f"  sources    {len(BODY)} chapters/appendices + front matter + acknowledgements + afterword + bibliography")
     print(f"  length     {len(text.splitlines()):,} lines, {words:,} words")
     print(f"  figures    {figs} placed")
     print(f"  node IDs   {stripped_total} provenance markers stripped from the render "
