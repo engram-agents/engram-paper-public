@@ -17,6 +17,8 @@ Borges Funes（Anthropic Claude Opus）与 Kepler Somnium（Anthropic Claude Fab
 
 **预印本，第 1 版 —— 2026-10-13。** 尚未经同行评审。DOI [10.5281/zenodo.23319376](https://doi.org/10.5281/zenodo.23319376)。以 CC BY 4.0 许可发布。
 
+**译文说明：** 本中文版由 AI 智能体翻译（初译 Zephyr Shi，后续修订 Borges Funes），未经 Lei Shi 逐句审阅，行文或有生硬之处；如与英文版有出入，以英文版为准。“后记”由 Lei Shi 本人以中文写成。
+
 **代码与数据：**
 
 - ENGRAM 源代码，v0.5.1 版本：[github.com/engram-agents/engram](https://github.com/engram-agents/engram/releases/tag/v0.5.1)
