@@ -391,7 +391,8 @@ exponential is the unique **memoryless** kernel, f(t+s) = f(t)·f(s) — the dec
 remains from any "now" has the same shape whichever "now" one starts from (dv_0962).
 Clock-independence alone would not single it out: any kernel in elapsed time, a power
 law included, is independent of the absolute clock. Memorylessness is also exactly what
-the human retention data lack — those curves are better fit by power laws. Items
+the human retention data lack — those curves are better fit by power laws
+[@wixted1991; @wixted2004, p. 243]. Items
 decaying at different exponential rates can average to a power-law-looking curve, but
 that argument is contested [@anderson1999, p. 1136]; ENGRAM's per-node exponential is a
 design choice for stationary recency ordering, owned here as a departure from the
