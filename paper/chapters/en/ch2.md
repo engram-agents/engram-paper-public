@@ -161,8 +161,9 @@ overlaps: a self a thousand sessions later may share little *directly* with its
 origin yet remain continuous through the unbroken chain of nearly identical adjacent
 sets. Because this is set overlap, it is **measurable**: the Jaccard similarity of
 the queryable set across sessions turns Parfit's claim that R *comes in degrees*
-into a quantity. The measurement is meant for the twin study of Chapter 6 and has
-not yet been made (§6.7).
+into a quantity. The measurement has not been made. It is a single-agent, across-session
+quantity, distinct from the two-agent comparison the deferred twin study would make
+(§5.4, §6.7); both are owed.
 
 This psychological continuity is distinct from, and rides on, the *structural*
 continuity of §2.2. The history-tree is the objective descent that persists whether
@@ -320,7 +321,7 @@ constitutive thesis, and asks the engineer's version of the question: *what woul
 have to be true of a built system for it to count?* That is exactly the question
 against which a memory graph can be measured.
 
-Two qualifications belong here:
+Three qualifications belong here:
 
 1. **On merit, not authority.** OCC is a recent proposal, not yet central to the
    field (ob_2544). Nothing in the paper's central argument *rests* on Kahl being right; OCC is
