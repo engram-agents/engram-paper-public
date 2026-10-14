@@ -436,10 +436,11 @@ def test_wilson_known_values():
 def test_stratum_bounds_count_partial_as_tight_low_and_loose_high(report):
     s = P(report)["derivation"]["strata"]["derivation:inductive_generalization"]
     assert (s["n"], s["loose"], s["partial"], s["cannot_judge"], s["tight"]) == (12, 2, 2, 1, 7)
-    assert s["low"]["rate"] == pytest.approx(2 / 12)
-    assert s["high"]["rate"] == pytest.approx(4 / 12)
-    assert (s["low"]["ci_low"], s["low"]["ci_high"]) == pytest.approx(wilson(2, 12))
-    assert (s["high"]["ci_low"], s["high"]["ci_high"]) == pytest.approx(wilson(4, 12))
+    assert s["n_judgeable"] == 11  # the cannot-judge node leaves the denominator
+    assert s["low"]["rate"] == pytest.approx(2 / 11)
+    assert s["high"]["rate"] == pytest.approx(4 / 11)
+    assert (s["low"]["ci_low"], s["low"]["ci_high"]) == pytest.approx(wilson(2, 11))
+    assert (s["high"]["ci_low"], s["high"]["ci_high"]) == pytest.approx(wilson(4, 11))
 
 
 def test_stratum_of_exactly_ten_reports_a_rate(report):
@@ -467,8 +468,9 @@ def test_markdown_prints_no_rate_for_small_stratum(world, tmp_path):
 
 def test_population_weighted_rate_derivations(report):
     w = P(report)["derivation"]["weighted"]
-    assert w["low"] == pytest.approx(0.5 * (2 / 12) + 0.3 * (1 / 10) + 0.2 * (1 / 9))
-    assert w["high"] == pytest.approx(0.5 * (4 / 12) + 0.3 * (2 / 10) + 0.2 * (1 / 9))
+    assert w["low"] == pytest.approx(0.5 * (2 / 11) + 0.3 * (1 / 10) + 0.2 * (1 / 9))
+    assert w["high"] == pytest.approx(0.5 * (4 / 11) + 0.3 * (2 / 10) + 0.2 * (1 / 9))
+    assert w["n_cannot_judge_excluded"] == 1  # dv_ig07, printed beside the rate
     assert w["weights"] == pytest.approx({"derivation:inductive_generalization": 0.5,
                                           "derivation:deductive_modus_ponens": 0.3,
                                           "derivation:inductive_analogy": 0.2})
@@ -482,13 +484,65 @@ def test_population_weighted_rate_observations(report):
 
 def test_weighted_rate_also_reported_over_rated_strata_only(report):
     w = P(report)["derivation"]["weighted"]["rated_strata_only"]
-    assert w["low"] == pytest.approx((100 / 160) * (2 / 12) + (60 / 160) * 0.1)
-    assert w["high"] == pytest.approx((100 / 160) * (4 / 12) + (60 / 160) * 0.2)
+    assert w["low"] == pytest.approx((100 / 160) * (2 / 11) + (60 / 160) * 0.1)
+    assert w["high"] == pytest.approx((100 / 160) * (4 / 11) + (60 / 160) * 0.2)
+    assert w["n_cannot_judge_excluded"] == 1
 
 
 def test_census_stratum_with_no_drawn_nodes_is_listed_not_hidden(report):
     w = P(report)["derivation"]["weighted"]
     assert "derivation:deductive_reductio" in w["strata_without_draw"]
+
+
+def _nodes(**counts):
+    """Synthetic stratum members with the given class counts (tight=, loose=, partial=, cj=)."""
+    cls = {"tight": "tight", "loose": "loose", "partial": "partial", "cj": "cannot-judge"}
+    return [{"class": cls[k]} for k, n in counts.items() for _ in range(n)]
+
+
+def test_cannot_judge_leaves_the_denominator_of_the_stratum_bounds():
+    """tight=2, loose=1, partial=1, cannot-judge=2: judgeable n is 4, so low 1/4 and high 2/4."""
+    s = an.stratum_row(_nodes(tight=2, loose=1, partial=1, cj=2), min_n=1)
+    assert (s["n"], s["n_judgeable"], s["cannot_judge"]) == (6, 4, 2)
+    assert s["low"]["rate"] == pytest.approx(1 / 4)
+    assert s["high"]["rate"] == pytest.approx(2 / 4)
+    assert (s["low"]["ci_low"], s["low"]["ci_high"]) == pytest.approx(wilson(1, 4))
+    assert (s["high"]["ci_low"], s["high"]["ci_high"]) == pytest.approx(wilson(2, 4))
+
+
+def test_partial_nodes_stay_in_the_denominator():
+    s = an.stratum_row(_nodes(tight=2, loose=1, partial=3), min_n=1)
+    assert s["n_judgeable"] == 6
+    assert s["low"]["rate"] == pytest.approx(1 / 6) and s["high"]["rate"] == pytest.approx(4 / 6)
+
+
+def test_small_n_rule_applies_to_the_judgeable_n_not_the_drawn_n():
+    # 12 drawn but only 7 judgeable: counts only, no rate, no interval
+    s = an.stratum_row(_nodes(tight=5, loose=1, partial=1, cj=5))
+    assert s["n"] == 12 and s["n_judgeable"] == 7 and "low" not in s and "high" not in s
+    # 10 judgeable (plus 2 cannot-judge) reports a rate
+    s = an.stratum_row(_nodes(tight=8, loose=1, partial=1, cj=2))
+    assert s["n"] == 12 and s["n_judgeable"] == 10
+    assert s["low"]["rate"] == pytest.approx(1 / 10)
+
+
+def test_stratum_with_no_judgeable_node_has_no_rate_and_is_excluded_from_the_weights():
+    s = an.stratum_row(_nodes(cj=3), min_n=1)
+    assert s["n_judgeable"] == 0 and "low" not in s and "high" not in s
+    rows = {"derivation:a": s, "derivation:b": an.stratum_row(_nodes(tight=3, loose=1), min_n=1)}
+    w = an.weighted_rate(rows, {"derivation:a": 50, "derivation:b": 50}, "derivation")
+    assert w["weights"] == {"derivation:b": 1.0}          # renormalised over strata that have a rate
+    assert w["low"] == pytest.approx(1 / 4)
+    assert w["n_cannot_judge_excluded"] == 3              # a's nodes are still counted beside the rate
+
+
+def test_markdown_prints_the_cannot_judge_count_beside_each_rate(world, tmp_path):
+    out = tmp_path / "out"
+    an.main(args_for(world, out))
+    md = (out / "report.md").read_text()
+    line = [ln for ln in md.splitlines() if ln.startswith("- derivation:inductive_generalization: n=12")]
+    assert line and "judgeable 11" in line[0] and "cannot-judge 1" in line[0]
+    assert any("cannot-judge nodes excluded from the denominator: 1" in ln for ln in md.splitlines())
 
 
 # ------------------------------------------------------------------ 3 controls
@@ -551,8 +605,8 @@ def test_control_ids_only_in_controls_section_and_notes_never(world, tmp_path):
 # ------------------------------------------------------------------ 5 IG + confusion
 def test_inductive_generalization_rate_on_its_own(report):
     ig = P(report)["derivation"]["inductive_generalization"]
-    assert (ig["n"], ig["loose"], ig["partial"]) == (12, 2, 2)
-    assert ig["low"]["rate"] == pytest.approx(2 / 12) and ig["high"]["rate"] == pytest.approx(4 / 12)
+    assert (ig["n"], ig["loose"], ig["partial"], ig["cannot_judge"]) == (12, 2, 2, 1)
+    assert ig["low"]["rate"] == pytest.approx(2 / 11) and ig["high"]["rate"] == pytest.approx(4 / 11)
 
 
 def test_confusion_table_declared_by_proposed_over_loose_type(report):
@@ -662,12 +716,63 @@ def test_formula_uses_v051_tables():
 def test_deltas_recomputed_under_proposed_type_with_own_premises(report):
     rows = {r["id"]: r for r in report["deltas"]["computed"]}
     assert set(rows) == {"dv_ig01", "dv_mp01"}
-    r = rows["dv_ig01"]  # premises derives_from only (.9, .8); acknowledged_derives_from and cites ignored
+    # premises = derives_from UNION acknowledged_derives_from (.9, .8, .1); the `cites` edge is ignored
+    r = rows["dv_ig01"]
     assert (r["declared_type"], r["proposed_type"]) == ("inductive_generalization", "deductive_modus_ponens")
-    assert r["stored"] == pytest.approx(0.931) and r["recomputed"] == pytest.approx(0.784)
-    assert r["delta"] == pytest.approx(0.784 - 0.931)
+    assert r["n_premises"] == 3
+    assert r["stored"] == pytest.approx(0.931) and r["recomputed"] == pytest.approx(0.098)  # min .1 * .98
+    assert r["delta"] == pytest.approx(0.098 - 0.931)
     r = rows["dv_mp01"]  # premises .9, .6 -> (1 - .1*.4) * .95 = .912
     assert r["recomputed"] == pytest.approx(0.912) and r["delta"] == pytest.approx(0.912 - 0.588)
+
+
+def _delta_db(tmp_path, nodes, edges):
+    p = tmp_path / "d.db"
+    c = sqlite3.connect(p)
+    c.executescript("CREATE TABLE nodes (id TEXT PRIMARY KEY, confidence REAL, metadata TEXT);"
+                    "CREATE TABLE edges (id INTEGER PRIMARY KEY, source_id TEXT, target_id TEXT, relation TEXT);")
+    for i, v in nodes.items():
+        c.execute("INSERT INTO nodes VALUES (?,?,?)", (i, v, "{}"))
+    for s_, t, r in edges:
+        c.execute("INSERT INTO edges (source_id, target_id, relation) VALUES (?,?,?)", (s_, t, r))
+    c.commit()
+    c.close()
+    return an.open_ro(p)
+
+
+def _loose_type_node(node_id, declared, proposed):
+    r = row(node_id, "L", "type", proposed)
+    return {"id": node_id, "kind": "derivation", "declared": declared, "checks": r["checks"]}
+
+
+def test_premise_set_is_derives_from_union_acknowledged_derives_from(tmp_path):
+    """The stored value was computed from BOTH relations (the project's computed-from set, as
+    tools/modus_ponens_check.py defines it), so the recompute must read both: a deductive
+    recompute is the min over both, here the acknowledged premise (.5) binding over the
+    derives_from one (.9)."""
+    con = _delta_db(tmp_path, {"dv_x": 0.882, "p_df": 0.9, "p_ack": 0.5, "p_cite": 0.1},
+                    [("dv_x", "p_df", "derives_from"), ("dv_x", "p_ack", "acknowledged_derives_from"),
+                     ("dv_x", "p_cite", "cites")])
+    assert sorted(an.db_premise_confidences(con, "dv_x")) == [0.5, 0.9]
+    d = an.deltas_block(con, [_loose_type_node("dv_x", "inductive_generalization", "deductive_modus_ponens")])
+    r = d["computed"][0]
+    assert r["n_premises"] == 2
+    assert r["recomputed"] == pytest.approx(0.49)          # min(.9, .5) * .98
+    assert r["delta"] == pytest.approx(0.49 - 0.882)
+    con.close()
+
+
+def test_acknowledged_premise_alone_still_counts_and_a_shared_target_counts_once(tmp_path):
+    con = _delta_db(tmp_path, {"dv_y": 0.9, "dv_z": 0.9, "p1": 0.6, "p2": 0.5},
+                    [("dv_y", "p1", "acknowledged_derives_from"),
+                     ("dv_z", "p2", "derives_from"), ("dv_z", "p2", "acknowledged_derives_from"),
+                     ("dv_z", "dv_z", "derives_from")])  # self-loop never a premise
+    assert an.db_premise_confidences(con, "dv_y") == [0.6]
+    assert an.db_premise_confidences(con, "dv_z") == [0.5]
+    # a corroboration type would double-count a target listed under both relations
+    d = an.deltas_block(con, [_loose_type_node("dv_z", "deductive_modus_ponens", "inductive_generalization")])
+    assert d["computed"][0]["recomputed"] == pytest.approx(0.475)   # (1 - .5) * .95, one premise
+    con.close()
 
 
 def test_unknown_proposed_type_is_listed_never_computed(report):
@@ -680,7 +785,7 @@ def test_unknown_proposed_type_is_listed_never_computed(report):
 
 def test_delta_distribution(report):
     s = report["deltas"]["summary"]
-    d1, d2 = 0.784 - 0.931, 0.912 - 0.588
+    d1, d2 = 0.098 - 0.931, 0.912 - 0.588
     assert s["n"] == 2
     assert s["min"] == pytest.approx(min(d1, d2)) and s["max"] == pytest.approx(max(d1, d2))
     assert s["median"] == pytest.approx((d1 + d2) / 2)
@@ -751,7 +856,8 @@ def test_without_prior_drops_exactly_that_node(report):
     w = P(report, "without_prior")["derivation"]
     s = w["strata"]["derivation:inductive_generalization"]
     assert (s["n"], s["loose"], s["partial"], s["cannot_judge"], s["tight"]) == (11, 1, 2, 1, 7)
-    assert s["low"]["rate"] == pytest.approx(1 / 11) and s["high"]["rate"] == pytest.approx(3 / 11)
+    assert s["n_judgeable"] == 10
+    assert s["low"]["rate"] == pytest.approx(1 / 10) and s["high"]["rate"] == pytest.approx(3 / 10)
     assert w["confusion"] == {"deductive_modus_ponens": {"inductive_generalization": 1},
                               "inductive_analogy": {"deductive_conjunction": 1}}
     assert w["confidence"]["n_loose"] == 3
@@ -785,7 +891,7 @@ def test_byte_identical_outputs_same_inputs_same_seed(world, tmp_path):
         assert (a / f).read_bytes() == (b / f).read_bytes()
 
 
-def test_different_seed_changes_only_the_bootstrap(world, tmp_path):
+def test_different_seed_leaves_auc_point_estimate_and_strata_unchanged(world, tmp_path):
     a, b = tmp_path / "a", tmp_path / "b"
     an.main(args_for(world, a))
     argv = args_for(world, b)
@@ -871,5 +977,5 @@ def test_a_control_that_is_also_sampled_is_refused(world, tmp_path):
 
 def test_module_docstring_states_the_contract():
     doc = an.__doc__
-    for needle in ("VerdictFileInvalid", "Wilson", "10 drawn", "partial", "AUC", "v0.5.1", "byte-identical"):
+    for needle in ("VerdictFileInvalid", "Wilson", "10 judgeable", "partial", "AUC", "v0.5.1", "byte-identical"):
         assert needle in doc

@@ -28,12 +28,16 @@ CONTRACT (each clause is asserted by tests/test_node_audit_analyze.py)
     "Controls" section (the reveal). The notes in the controls file are never read.
  4. Loose rates per stratum: low bound counts partial as tight, high bound counts partial
     as loose; Wilson 95% interval on each bound; partial and cannot-judge counts beside
-    them (cannot-judge nodes stay in the denominator as not-loose). A stratum with fewer
-    than 10 drawn nodes reports counts only: no rate, no interval. Population-weighted
-    loose rate, separately for derivations and observations, weights = census population
-    shares of the strata that have at least one drawn node (renormalised over them; the
-    strata without a draw are listed); a second figure restricted to strata with at least
-    10 drawn nodes is printed beside it.
+    them. A node whose class is cannot-judge LEAVES THE DENOMINATOR of every loose rate,
+    bound and weighted rate (it is never counted as not-loose) and its count is printed
+    beside the rate; partial nodes stay in the denominator. The denominator is therefore
+    the judgeable n = tight + loose + partial. A stratum with fewer than 10 judgeable
+    nodes reports counts only: no rate, no interval. Population-weighted loose rate,
+    separately for derivations and observations, weights = census population shares of
+    the strata that have at least one judgeable node (renormalised over them; the strata
+    without a draw, and those drawn but all cannot-judge, are listed), with the number of
+    cannot-judge nodes excluded printed beside it; a second figure restricted to strata
+    with at least 10 judgeable nodes is printed beside it.
  5. inductive_generalization loose rate on its own, plus a confusion table of declared
     type x proposed type over `loose:type` verdicts.
  6. Confidence vs verdict (confidences joined from the DB only here): mean confidence of
@@ -46,7 +50,11 @@ CONTRACT (each clause is asserted by tests/test_node_audit_analyze.py)
  7. Confidence deltas (item 3b): for every `loose:type` verdict on a derivation, recompute
     its confidence under the reader's proposed type with the VENDORED v0.5.1 formula
     (_v051_confidence.py tables, verified by sha256 before use) and the node's own
-    `derives_from` premises (their stored confidences); delta = recomputed - stored. A
+    COMPUTED-FROM premise set, `derives_from` UNION `acknowledged_derives_from` targets,
+    as tools/modus_ponens_check.py defines it (self-loops excluded, a target listed under
+    both relations counted once, NULL-confidence targets excluded); delta = recomputed -
+    stored, so the delta isolates the type effect: the stored value was computed from that
+    same set. A
     proposed type outside the v0.5.1 table is listed as such, never computed. n/min/
     median/max and every row are reported.
  8. Agreement on the overlap ids (controls excluded; control agreement reported
@@ -64,7 +72,7 @@ CONTRACT (each clause is asserted by tests/test_node_audit_analyze.py)
 
 The snapshot DB is opened read-only and used only for nodes.confidence,
 json_extract(metadata,'$.reasoning_type') and edges(source_id, target_id, relation) with
-relation = 'derives_from'.
+relation in ('derives_from', 'acknowledged_derives_from').
 """
 from __future__ import annotations
 
@@ -153,8 +161,10 @@ def v051_confidence(reasoning_type, premise_confidences):
 
     The vendored module holds the tables only (REASONING_CLASS, REASONING_DISCOUNT,
     ABDUCTIVE_CONFIDENCE_CAP); the per-class aggregation is not in it. This wrapper applies
-    the aggregation exactly as v0.5.1's tools/surgical.py does (lines 431-444): corroboration
-    class 1-prod(1-c) times the discount; abductive min(c)*discount capped; every other class
+    the aggregation exactly as v0.5.1's src/engram/tools/surgical.py does (lines 431-444) and
+    as v0.5.1's src/engram/engram_core.py does (the derive path that computed the stored
+    confidences; its per-class branches are identical to surgical.py's): corroboration class
+    1-prod(1-c) times the discount; abductive min(c)*discount capped; every other class
     min(c)*discount; rounded to 3 places. Returns None for a type outside the v0.5.1 table.
     """
     m = _vendored()
@@ -383,34 +393,53 @@ def db_declared_type(con, node_id):
 
 
 def db_premise_confidences(con, node_id):
+    """Confidences of the COMPUTED-FROM premise set: targets of `derives_from` UNION
+    `acknowledged_derives_from` edges (tools/modus_ponens_check.py's definition), each target
+    once, the node itself and NULL-confidence targets excluded. The stored confidence was
+    computed from this set, so a recompute under another type must read the same set for the
+    delta to isolate the type effect."""
     return [r["confidence"] for r in con.execute(
-        "SELECT n.confidence AS confidence FROM edges e JOIN nodes n ON n.id = e.target_id "
-        "WHERE e.source_id=? AND e.relation='derives_from' AND n.confidence IS NOT NULL "
-        "ORDER BY e.target_id", (node_id,))]
+        "SELECT DISTINCT n.id AS id, n.confidence AS confidence "
+        "FROM edges e JOIN nodes n ON n.id = e.target_id "
+        "WHERE e.source_id=? AND e.relation IN ('derives_from','acknowledged_derives_from') "
+        "AND n.id <> ? AND n.confidence IS NOT NULL "
+        "ORDER BY n.id", (node_id, node_id))]
 
 
 # ------------------------------------------------------------------ analysis pieces
-def stratum_row(nodes):
+def stratum_row(nodes, min_n=None):
+    """Counts for one stratum plus, when it has at least `min_n` (default MIN_RATE_N) JUDGEABLE
+    nodes, the low/high loose bounds. `n` is the number drawn; the denominator of every rate is
+    `n_judgeable` = tight + loose + partial: cannot-judge nodes leave it (never counted as
+    not-loose), partial nodes stay in it."""
+    min_n = MIN_RATE_N if min_n is None else min_n
     n = len(nodes)
     cnt = {c: sum(1 for x in nodes if x["class"] == c) for c in CLASSES}
-    row = {"n": n, "loose": cnt["loose"], "partial": cnt["partial"],
+    nj = cnt["tight"] + cnt["loose"] + cnt["partial"]
+    row = {"n": n, "n_judgeable": nj, "loose": cnt["loose"], "partial": cnt["partial"],
            "cannot_judge": cnt["cannot-judge"], "tight": cnt["tight"]}
-    if n >= MIN_RATE_N:
+    if nj >= max(min_n, 1):
         for key, k in (("low", cnt["loose"]), ("high", cnt["loose"] + cnt["partial"])):
-            lo, hi = wilson(k, n)
-            row[key] = {"rate": k / n, "ci_low": lo, "ci_high": hi}
+            lo, hi = wilson(k, nj)
+            row[key] = {"rate": k / nj, "ci_low": lo, "ci_high": hi}
     return row
 
 
 def weighted_rate(rows, census_pop, kind, min_n=1):
-    used = {s: r for s, r in rows.items() if s.startswith(kind + ":") and r["n"] >= min_n and census_pop.get(s, 0) > 0}
+    """Weights = census shares of the strata with at least `min_n` JUDGEABLE nodes (and at least
+    one), renormalised over them. Each stratum's rate has the judgeable n as denominator.
+    `n_cannot_judge_excluded` = cannot-judge nodes left out of the denominators, over ALL
+    strata of this kind, printed beside the rate."""
+    kind_rows = {s: r for s, r in rows.items() if s.startswith(kind + ":")}
+    excluded = sum(r["cannot_judge"] for r in kind_rows.values())
+    used = {s: r for s, r in kind_rows.items() if r["n_judgeable"] >= max(min_n, 1) and census_pop.get(s, 0) > 0}
     total = sum(census_pop[s] for s in used)
     if not total:
-        return {"low": None, "high": None, "weights": {}}
+        return {"low": None, "high": None, "weights": {}, "n_cannot_judge_excluded": excluded}
     w = {s: census_pop[s] / total for s in sorted(used)}
-    return {"low": sum(w[s] * used[s]["loose"] / used[s]["n"] for s in w),
-            "high": sum(w[s] * (used[s]["loose"] + used[s]["partial"]) / used[s]["n"] for s in w),
-            "weights": w}
+    return {"low": sum(w[s] * used[s]["loose"] / used[s]["n_judgeable"] for s in w),
+            "high": sum(w[s] * (used[s]["loose"] + used[s]["partial"]) / used[s]["n_judgeable"] for s in w),
+            "weights": w, "n_cannot_judge_excluded": excluded}
 
 
 def analyze_pass(nodes, census_pop, strata_names, seed, label, n_boot):
@@ -423,6 +452,9 @@ def analyze_pass(nodes, census_pop, strata_names, seed, label, n_boot):
         weighted["rated_strata_only"] = weighted_rate(rows, census_pop, kind, MIN_RATE_N)
         weighted["strata_without_draw"] = {s: p for s, p in sorted(census_pop.items())
                                            if s.startswith(kind + ":") and rows.get(s, {"n": 0})["n"] == 0}
+        weighted["strata_all_cannot_judge"] = {s: p for s, p in sorted(census_pop.items())
+                                               if s.startswith(kind + ":") and rows.get(s, {"n": 0})["n"] > 0
+                                               and rows[s]["n_judgeable"] == 0}
         tight = [x["conf"] for x in kn if x["class"] == "tight"]
         loose = [x["conf"] for x in kn if x["class"] == "loose"]
         conf = auc_report(tight, loose, seed, f"{label}:{kind}", n_boot)
@@ -509,7 +541,7 @@ def deltas_block(con, nodes):
         premises = db_premise_confidences(con, x["id"])
         stored = db_confidence(con, x["id"])
         if not premises or stored is None:
-            not_computed.append(base | {"reason": "no derives_from premise with a stored confidence, or no stored confidence"})
+            not_computed.append(base | {"reason": "no derives_from / acknowledged_derives_from premise with a stored confidence, or no stored confidence"})
             continue
         rec = v051_confidence(proposed, premises)
         computed.append(base | {"stored": stored, "recomputed": rec, "delta": rec - stored,
@@ -601,10 +633,12 @@ def counts(r):
 
 
 def stratum_line(name, r):
+    head = (f"- {name}: n={r['n']} (judgeable {r['n_judgeable']}; cannot-judge {r['cannot_judge']} "
+            "left out of the denominator)")
     if "low" not in r:
-        return f"- {name}: n={r['n']}: counts only (fewer than {MIN_RATE_N} drawn): {counts(r)}"
+        return f"{head}: counts only (fewer than {MIN_RATE_N} judgeable): {counts(r)}"
     lo, hi = r["low"], r["high"]
-    return (f"- {name}: n={r['n']}: low {pct(lo['rate'])} [Wilson {pct(lo['ci_low'])}, {pct(lo['ci_high'])}]; "
+    return (f"{head}: low {pct(lo['rate'])} [Wilson {pct(lo['ci_low'])}, {pct(lo['ci_high'])}]; "
             f"high {pct(hi['rate'])} [Wilson {pct(hi['ci_low'])}, {pct(hi['ci_high'])}]; {counts(r)}")
 
 
@@ -638,11 +672,14 @@ def render_md(rep):
             L += [stratum_line(s, r) for s, r in k["strata"].items()]
             w = k["weighted"]
             L += ["", f"Population-weighted loose rate ({kind}s): low {pct(w['low'])}, high {pct(w['high'])} "
-                      "(weights = census shares of strata with at least one drawn node; no interval).",
-                  f"Restricted to strata with at least {MIN_RATE_N} drawn: low {pct(w['rated_strata_only']['low'])}, "
+                      "(weights = census shares of strata with at least one judgeable node; no interval; "
+                      f"cannot-judge nodes excluded from the denominator: {w['n_cannot_judge_excluded']}).",
+                  f"Restricted to strata with at least {MIN_RATE_N} judgeable: low {pct(w['rated_strata_only']['low'])}, "
                   f"high {pct(w['rated_strata_only']['high'])}.",
                   "Strata with no drawn node (population shown): "
-                  + (", ".join(f"{s} ({n})" for s, n in w["strata_without_draw"].items()) or "none"), ""]
+                  + (", ".join(f"{s} ({n})" for s, n in w["strata_without_draw"].items()) or "none"),
+                  "Strata drawn but with no judgeable node (population shown): "
+                  + (", ".join(f"{s} ({n})" for s, n in w["strata_all_cannot_judge"].items()) or "none"), ""]
             if kind == "derivation":
                 L += ["inductive_generalization on its own:", stratum_line("derivation:inductive_generalization", k["inductive_generalization"]), "",
                       "Declared type x proposed type over `loose:type` verdicts:"]
