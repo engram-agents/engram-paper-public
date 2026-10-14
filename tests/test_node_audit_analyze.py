@@ -979,3 +979,66 @@ def test_module_docstring_states_the_contract():
     doc = an.__doc__
     for needle in ("VerdictFileInvalid", "Wilson", "10 judgeable", "partial", "AUC", "v0.5.1", "byte-identical"):
         assert needle in doc
+
+
+# ---- round 3: the "Free parameters" section (every number's choices visible in the report)
+FREE_KEYS = ("small_stratum_rule", "rate_denominator", "partial_bounds", "interval", "population_weights",
+             "auc", "reading_thresholds", "confidence_deltas", "readers")
+
+
+def _free_md_section(md):
+    lines = md.splitlines()
+    i = lines.index("## Free parameters")
+    j = next((k for k in range(i + 1, len(lines)) if lines[k].startswith("## ")), len(lines))
+    return i, lines[i:j]
+
+
+def test_free_parameters_section_in_md_directly_after_header_paragraph(world, tmp_path):
+    out = tmp_path / "out"
+    an.main(args_for(world, out))
+    md = (out / "report.md").read_text()
+    i, sec = _free_md_section(md)
+    # title, blank, two header-paragraph lines, blank, then the section
+    assert not any(ln.startswith("## ") for ln in md.splitlines()[:i])
+    assert md.splitlines()[:2] == ["# Node audit analysis report", ""] and md.splitlines()[i - 1] == ""
+    assert i == 5
+    assert sum(1 for ln in sec if ln.startswith("- ")) == len(FREE_KEYS)  # one short line each
+
+
+def test_free_parameters_keys_in_json_meta(report):
+    fp = report["meta"]["free_parameters"]
+    assert set(fp) == set(FREE_KEYS)
+    assert all(isinstance(v, str) and v and "\n" not in v for v in fp.values())
+
+
+def test_free_parameters_md_lines_are_the_json_values(world, tmp_path):
+    out = tmp_path / "out"
+    an.main(args_for(world, out))
+    fp = json.loads((out / "report.json").read_text())["meta"]["free_parameters"]
+    _, sec = _free_md_section((out / "report.md").read_text())
+    for v in fp.values():
+        assert f"- {v}" in sec
+
+
+def test_free_parameters_state_the_actual_constants(report):
+    fp = report["meta"]["free_parameters"]
+    assert str(an.MIN_RATE_N) in fp["small_stratum_rule"]
+    assert str(an.Z95) in fp["interval"]
+    assert str(an.N_BOOT) in fp["auc"] and an.BOOT_SEED_FORMAT in fp["auc"] and SEED in fp["auc"]
+    for r in (an.READING_TRACKS, an.READING_NONE, an.READING_AGAINST, an.READING_NA):
+        assert r in fp["reading_thresholds"]
+    assert "acknowledged_derives_from" in fp["confidence_deltas"] and "v0.5.1" in fp["confidence_deltas"]
+    assert PRIOR in fp["readers"]
+
+
+def test_free_parameters_values_are_read_from_the_constants_not_retyped(world, monkeypatch):
+    monkeypatch.setattr(an, "MIN_RATE_N", 7)
+    monkeypatch.setattr(an, "READING_NONE", "MUTATED-READING")
+    monkeypatch.setattr(an, "Z95", 1.5)
+    rep = an.run_analysis(world / "mira.jsonl", world / "zephyr.jsonl", world / "controls.json",
+                          world / "snap.db", world / "drawn.json", PRIOR, SEED, n_boot=123)
+    fp = rep["meta"]["free_parameters"]
+    assert "7" in fp["small_stratum_rule"] and "10" not in fp["small_stratum_rule"]
+    assert "MUTATED-READING" in fp["reading_thresholds"]
+    assert "1.5" in fp["interval"]
+    assert "123" in fp["auc"] and "10000" not in fp["auc"]

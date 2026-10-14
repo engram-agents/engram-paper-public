@@ -96,6 +96,7 @@ VENDORED_SHA256 = "5ea367d8d15153e82b68d3fdf5f08ef12b5d5555be9326f5ee65e0a12ac26
 N_BOOT = 10000
 MIN_RATE_N = 10
 Z95 = 1.959963984540054
+BOOT_SEED_FORMAT = "{seed}:boot:{label}"  # label = "<with_prior|without_prior>:<derivation|observation>"
 VERDICTS = ("tight", "loose", "cannot-judge")
 CLASSES = ("loose", "tight", "partial", "cannot-judge")
 CHECKS = {
@@ -220,7 +221,7 @@ def auc_report(tight, loose, seed, label, n_boot=N_BOOT):
     if not tight or not loose:
         out.update(auc=None, auc_ci=None, reading=READING_NA)
         return out
-    rng = random.Random(f"{seed}:boot:{label}")
+    rng = random.Random(BOOT_SEED_FORMAT.format(seed=seed, label=label))
     boots = sorted(auc(rng.choices(tight, k=len(tight)), rng.choices(loose, k=len(loose)))
                    for _ in range(n_boot))
     lo, hi = boots[int(0.025 * n_boot)], boots[math.ceil(0.975 * n_boot) - 1]
@@ -553,6 +554,27 @@ def deltas_block(con, nodes):
 
 
 # ------------------------------------------------------------------ the whole analysis
+def free_parameters(seed, prior_node, n_boot):
+    """The choices every number in the report depends on, one short line each. Values are read
+    from the module's constants and the run's arguments at call time, never retyped."""
+    return {
+        "small_stratum_rule": f"strata with fewer than {MIN_RATE_N} judgeable nodes report counts only (no rate, no interval)",
+        "rate_denominator": "judgeable nodes = tight + loose + partial; cannot-judge nodes are excluded and counted beside each rate",
+        "partial_bounds": "low bound counts partial as tight; high bound counts partial as loose",
+        "interval": f"Wilson, z = {Z95}",
+        "population_weights": "census population shares of each stratum, renormalised over strata with at least 1 judgeable node; "
+                              "strata left out of the weights are listed under each weighted rate (no draw; no judgeable node)",
+        "auc": f"P(conf(tight) > conf(loose)), ties count 0.5; bootstrap resamples the tight and loose groups separately, "
+               f"{n_boot} resamples, percentile 95% interval, seed string {BOOT_SEED_FORMAT!r} with seed {seed!r}",
+        "reading_thresholds": f"CI lower > 0.5: {READING_TRACKS!r}; CI contains 0.5: {READING_NONE!r}; "
+                              f"CI upper < 0.5: {READING_AGAINST!r}; no tight or no loose node: {READING_NA!r}",
+        "confidence_deltas": "premise set = derives_from + acknowledged_derives_from targets (tools/modus_ponens_check.py computed-from set); "
+                             f"v0.5.1 formula from the vendored module (sha256 {VENDORED_SHA256}); computed once over all nodes",
+        "readers": "rates and AUC use the primary reader's (Mira's) verdicts; Zephyr's feed controls and agreement only; "
+                   f"analyst-prior node {prior_node} reported with and without",
+    }
+
+
 def run_analysis(mira, zephyr, controls, db, drawn, prior_node, seed, n_boot=N_BOOT):
     verify_vendored()
     d, census_pop, stratum_of = load_drawn(drawn)
@@ -596,7 +618,8 @@ def run_analysis(mira, zephyr, controls, db, drawn, prior_node, seed, n_boot=N_B
     report = {
         "meta": {"seed": seed, "prior_node": prior_node, "n_boot": n_boot, "min_rate_n": MIN_RATE_N,
                  "wilson_z": Z95, "vendored_sha256": VENDORED_SHA256,
-                 "readings": {"tracks": READING_TRACKS, "none": READING_NONE, "against": READING_AGAINST}},
+                 "readings": {"tracks": READING_TRACKS, "none": READING_NONE, "against": READING_AGAINST},
+                 "free_parameters": free_parameters(seed, prior_node, n_boot)},
         "validation": {"mira_rows": len(mrows), "zephyr_rows": len(zrows), "mira_sampled": len(stratum_of),
                        "zephyr_overlap": len(overlap), "controls": len(ctl)},
         "passes": passes,
@@ -648,7 +671,10 @@ def render_md(rep):
     L += ["# Node audit analysis report", "",
           f"Seed `{m['seed']}`; analyst-prior node `{m['prior_node']}`; bootstrap resamples {m['n_boot']}; "
           f"vendored v0.5.1 confidence module sha256 `{m['vendored_sha256']}`.",
-          "Rates and confidence use the primary reader's (Mira's) verdicts on sampled nodes; controls are excluded from every rate.", ""]
+          "Rates and confidence use the primary reader's (Mira's) verdicts on sampled nodes; controls are excluded from every rate.", "",
+          "## Free parameters", ""]
+    L += [f"- {v}" for v in m["free_parameters"].values()]
+    L.append("")
     v = rep["validation"]
     L += ["## Validation", "",
           f"- Mira: {v['mira_rows']} rows ({v['mira_sampled']} sampled + {v['controls']} controls). "
