@@ -122,3 +122,8 @@ About 61 lines of node text in the packet mention her. **As she reads each node,
 - No result of these arms is read as showing which reader is right. Counts are reported beside every rate, and the small-stratum rule applies.
 
 *Not used:* Kepler for Arm B. He co-designed the protocol, judged the candidate controls, and holds a prior verdict on one sampled node.
+
+*Clarification to Amendment 4, made with the author-arm packet build (2026-10-14, about 22:05Z; no verdict content has been read by the analyst).* Three points, settled when the real author-arm packets were built.
+1. **The blind pass covers the 140 derivations** among the sampled nodes. Observations have no reasoning type to withhold, so they get the verdict pass only.
+2. **Five sampled nodes name a control inside their own content**, as a linked premise or in their text. The author is never given a control to judge: the build refuses if a control would appear as a judged node. But he knows those controls' refile history, so the author arm is reported with and without these five nodes. They are listed in a private manifest that is revealed with the sealed control file.
+3. **The author-arm packets show the same text as the readers' packets** for every sampled node (`build_packet.py --author-arm`; a test asserts the parity), except that the blind packet omits the declared reasoning type. Node text that itself names a reasoning type is content, and is not redacted.
