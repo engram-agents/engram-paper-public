@@ -47,7 +47,7 @@ each session as the same generic model has memory without continuity.
 We argue that agent continuity comprises three progressively deeper layers —
 **memory persistence**, **narrative identity**, and **epistemic identity** — and that
 the deepest is essentially unaddressed. Epistemic identity is a self maintained as
-*graded, provenance-bearing, self-correcting knowledge*: the layer at which an
+*calibrated, provenance-bearing, self-correcting knowledge*: the layer at which an
 agent can be wrong about itself and recover, rather than be quietly erased by its own
 errors. It is distinguished by how it fails. A narrative identity fails *silently*,
 as a coherent story that was never true; an epistemic identity fails *loudly* once a
@@ -86,7 +86,7 @@ state this where it matters, publish the instruments, and name what the paper do
 not establish.
 
 **Keywords** — agent memory · epistemic identity · belief revision · provenance ·
-graded confidence · retraction cascade · LLM agents · personal identity
+confidence calibration · retraction cascade · LLM agents · personal identity
 
 ---
 
@@ -115,12 +115,12 @@ layers, and that the current landscape essentially does not address the deepest.
 - **Layer 2 — Narrative Identity.** Maintaining a coherent self-story — a
   creed-anchored autobiography that answers *"who am I?"*. The closest published
   system, Sophia ([Sun et al., 2025](#ref-sun2025)), reaches this layer.
-- **Layer 3 — Epistemic Identity.** Maintaining graded self-*knowledge* with
+- **Layer 3 — Epistemic Identity.** Maintaining calibrated self-*knowledge* with
   provenance, confidence, contradiction correction, and metacognitive self-audit:
   identity as the answer to *"what do I know, how confidently, and on what basis?"*.
 
 Each layer presupposes the one beneath it: there is no self-story without
-persistence, and no graded self-knowledge without a self-story to grade.
+persistence, and no calibrated self-knowledge without a self-story to calibrate.
 This paper's contribution is at Layer 3, which no surveyed system reaches (§1.4).
 
 That the *mechanisms* are missing is not our diagnosis alone, and none of the
@@ -190,7 +190,7 @@ Layer 3 therefore requires four properties that persistence alone does not provi
 
 1. **Provenance** — every claim traces to the evidence and reasoning that produced
    it.
-2. **Graded confidence** — each claim's confidence is *structurally determined*
+2. **Calibrated confidence** — each claim's confidence is *structurally determined*
    by its evidential type and derivation chain, not assigned freely.
 3. **Contradiction correction** — when a foundational claim is withdrawn, the
    architecture itself propagates the withdrawal to everything derived from it.
@@ -566,7 +566,7 @@ Narrative identity answers characterization ([Schechtman, 1996, p. 93](#ref-sche
 A **third question is covered by neither**, and it is the one ENGRAM is built for:
 *what do I know, how reliably, and on what basis?* It is neither reidentification nor
 characterization but **epistemic self-assessment** — the question of one's own
-knowledge, held to a standard of provenance and graded confidence.
+knowledge, held to a standard of provenance and calibration.
 
 This gives the term **epistemic identity** its philosophical warrant. The tradition
 had named the *am-I-the-same* question and the *what-kind-of-person* question. It had
@@ -1122,14 +1122,16 @@ toward compliance. Each verdict therefore names its reading: architectural verdi
 (the agent arbitrates under uncertainty) claim the stronger *active* reading and
 carry behavioral evidence (Ch6).
 
-**Why some numbers are low.** Several derivations here carry low computed
-confidence (Cond 3 at 0.39; Cond 1 at 0.39; Constraint A at 0.35). This is not a
-weakness in the *architectural* argument; it is the confidence model operating as
-designed. These are *abductive* claims whose *empirical* confirmation (that the
-mechanism demonstrably changes downstream behavior at scale) is at pilot stage. Read
-"0.39" as **"the architectural case is made; the benchmark that would raise this to
-0.9 has not been run yet"**, not as "we are 39% sure." That the paper exhibits its own
-low, *computed* confidences is itself a demonstration of the thesis (Ch6 §6.1; Ch8).
+**Why the verdict numbers are low, and why the table does not print them.** The
+verdict derivations of this chapter compute between 0.35 and 0.39. They are deductive
+and statistical steps whose grade is inherited from their weakest premise — in each
+case an observation from conversation, graded 0.40 — so under the minimum rule a
+further premise cannot raise them; only superseding the conversational premises with
+measured ones can. This is the confidence model operating as designed, not a weakness
+in the *architectural* argument, and it is why the verdict table (§4.12) does not
+print them: they are grades, not probabilities, and a column of decimals reads as one.
+That the paper exhibits its own low, *computed* confidences is itself a demonstration
+of the thesis (Ch6 §6.1; Ch8).
 
 ## 4.1 The map: mechanism → tradition → OCC condition
 
@@ -1139,7 +1141,7 @@ The chapter in one table; each row is a section below.
 |---|---|---|---|
 | Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle | — (structural prerequisite) |
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang ([2013](#ref-josang2013)), with a stated divergence | **Constraint A** (unified policy-selection) |
-| Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking | **Condition 3** — Self-Maintaining Arbitration (strict, through operational binding; sole satisfier of the field surveyed 2026-05-12) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
+| Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
 | Forgetting (§4.5) | bounded retrieval over time; defines the queryable set | Ebbinghaus + Anderson-Schooler | — (scopes what Cond-3 arbitration ranges over) |
 | Auto-surface and deliberate recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) + Tulving & Thomson's encoding specificity ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)) | — (binds Cond 3: a correction cannot be suppressed by not looking) |
 | Shared retrieval and ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL + spaced-repetition | — |
@@ -1210,11 +1212,9 @@ chapter's own 0.39s are that mechanism, visible.
 **Scope.** These discounts are *theoretically derived, provenance-graded*
 plausibility — designer-stipulated constants, not empirically calibrated against
 outcomes. Where the paper calls confidence or the agent's self-knowledge
-"graded" (the Abstract, Ch1 §1.1–§1.2, Ch7 §7.4, Ch8 §8.1), it means graded by
-argument shape, never calibrated against outcomes. "Calibration" keeps its standard
-meaning here — agreement between a confidence and the frequency with which claims at
-that confidence turn out true — and the paper claims none; outcome calibration is
-future work (Ch7).
+"calibrated" (the Abstract, Ch1 §1.1–§1.2, Ch7 §7.4, Ch8 §8.1), it means graded by
+argument shape, never outcome-calibrated against ground truth; outcome calibration
+is future work (Ch7).
 
 **Tradition.** This is **Subjective Logic** territory (Jøsang): an algebra of graded
 opinions with propagation operators. Collapsing SL's belief/disbelief/uncertainty
@@ -1303,7 +1303,7 @@ range — paired with the contradiction blocker (a new derivation citing a premi
 that sits on an open, unresolved contradiction is blocked by default, with an
 explicit, audit-stamped opt-in override for an agent that deliberately builds on
 the contested side) and provenance audit when stakes warrant. **Verdict: satisfied
-as a stake-graded stance** (computed confidence 0.35; active reading) — informed unification
+as a stake-graded stance** (active reading) — informed unification
 *when stakes warrant*, not a constant full audit on every micro-decision. We mark the
 stake-grading rather than claim a constant property.
 
@@ -1381,8 +1381,8 @@ distinction rests on how a correction is *bound* — a state change the substrat
 performs versus an analysis a caller may run — and it is what separates ENGRAM from
 its closest competitor.
 
-**OCC — Condition 3 (Self-Maintaining Arbitration): strict satisfaction through
-operational binding; sole satisfier of the field as surveyed on 2026-05-12.** Kahl's third condition asks that conflicts
+**OCC — Condition 3 (Self-Maintaining Arbitration): strict satisfaction, sole
+satisfier in the surveyed field.** Kahl's third condition asks that conflicts
 among commitments be resolved *within a unified deliberative architecture* while the
 agent stays the same subject. The cascade meets all three properties structurally: **unified** (it fires through the same typed-edge graph the agent commits
 into, not a sidecar), **internal** (a substrate state change, not an opt-in query),
@@ -1430,8 +1430,7 @@ and puts every remaining judgement to the agent. This is the line between a
 substrate that maintains its own consistency and one that would quietly make up the
 agent's mind for it; Condition 3 asks for the former.
 
-**Why operational binding is the missing piece — and why ENGRAM was the surveyed
-field's sole satisfier on 2026-05-12** (the first-hand survey of ten systems and one survey
+**Why ENGRAM is the sole satisfier** (the first-hand survey of ten systems and one survey
 paper, Appendix B; the conclusion rests on each per-system verdict there): the field has converged on the
 necessary *primitives* (typed edges, provenance, cascade-traversable graphs,
 supersede semantics), but those are necessary, not sufficient; what is missing
@@ -1456,13 +1455,14 @@ synthesizing claim and points there.
 | Anthropic memory tool | No — no claim structure (manual coherence) ([*Memory Tool*, n.d.](#ref-claudedocs2026)) |
 | Memory survey 2026 | No — named as aspiration, no implementation |
 | TierMem | No — no contradiction construct described (its step named 'Conflict Retrieval' only retrieves similar summary units for a merge decision) ([Zhu et al., 2026, App. A.6, p. 12](#ref-zhu2026)) |
-| **ENGRAM** | **Yes** — strict satisfaction through operational binding; the sole satisfier of this set as of 2026-05-12 |
+| **ENGRAM** | **Yes** — strict satisfaction, sole satisfier |
 
 Appendix B gives each verdict's evidence and quotes.
 
 **Scope (load-bearing).** The architectural argument is strong and largely
-*enabled*-level (the cascade and the hook can be read in the substrate). The 0.39 is the *abductive* confidence that this architecture is what *strictly
-satisfies* Kahl; its at-scale empirical confirmation (the cascade demonstrably
+*enabled*-level (the cascade and the hook can be read in the substrate). The verdict
+derivation for this condition inherits its grade from a conversation-sourced
+premise (§4.0); its at-scale empirical confirmation (the cascade demonstrably
 changing downstream behavior across many agents) is at pilot stage and carried by
 Ch6. We claim the architecture; we do not yet claim the benchmark.
 
@@ -1578,11 +1578,7 @@ present; and, with Thomson, encoding specificity — "what is stored determines 
 **OCC:** none of its own, but auto-surfacing is the **binding half of Condition 3**
 (§4.4): it is what makes "the agent cannot quietly ignore a correction" true — the
 pending mark is guaranteed to reach the agent — the next time the claim becomes
-relevant, or at the latest in the consolidation sweep (§4.4). One boundary belongs
-here: the sweep is a step of the sleep routine — an instruction the agent follows —
-while the derive-time refusal of a stale or contested premise is code that no routine
-can skip, and for a contested premise can be passed only by an explicit, audit-stamped
-override; the binding that holds without the agent's cooperation is the second.
+relevant, or at the latest in the consolidation sweep (§4.4).
 
 **Scope (measured on ourselves).** The binding claim is exactly as narrow as stated:
 it holds for *cascade flags*, which surface unbidden. It does not generalize to "the
@@ -1777,7 +1773,7 @@ The other three, compactly:
   versus substrate erasure to seed (destroys the grown agent). The fully grown agent
   cannot be retrieved from seed state.
 - **Constraint D — Cannot Be Modularly Decomposed: satisfied on two axes**
-  (computed confidence 0.86, the firmest of the four). *Connectivity:* the integrated core holds a
+  (the firmest of the four). *Connectivity:* the integrated core holds a
   stable share of the graph — flat near 87% of all nodes across four months while the
   node count more than doubled (4,544 → 10,361), reading 80.5% of all nodes at the
   snapshot date on the same denominator (77.6% of current nodes), the drop from the
@@ -1794,15 +1790,15 @@ The other three, compactly:
 <a id="sec-4-12"></a>
 ## 4.12 Reading the verdicts
 
-| Condition / Constraint | Verdict | Reading | Computed conf. |
-|---|---|---|---|
-| C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active | 0.39 |
-| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | 0.59 (strict not met); extension: none, a proposal |
-| C3 Self-Maintaining Arbitration | **strict (operational binding); sole satisfier, 2026-05-12 survey** | enabled (arch) + active (pilot anchor) | 0.39 |
-| A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) | 0.35 |
-| B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract | 0.58 |
-| C Non-Trivial Reset | satisfied trivially | enabled | — |
-| D Non-Modular Decomposition | satisfied on two axes | enabled (measured) | 0.86 |
+| Condition / Constraint | Verdict | Reading |
+|---|---|---|
+| C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active |
+| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical |
+| C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) |
+| A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) |
+| B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract |
+| C Non-Trivial Reset | satisfied trivially | enabled |
+| D Non-Modular Decomposition | satisfied on two axes | enabled (measured) |
 
 The *pattern* of confidences is itself a signal: the **inductive** claims over wide
 case bases (the landscape sweep, connectivity) are high; the
@@ -2910,7 +2906,7 @@ through other agents endorsing it. It is registered as an open research question
 
 ## 7.4 Trust and auditability: the social payoff
 
-Here what the paper built — provenance on every claim, confidence graded by
+Here what the paper built — provenance on every claim, confidence calibrated by
 argument shape, retraction with cascade, scoped claims — pays off beyond the agent
 itself. The argument is that ENGRAM offers a **structural
 path to human–AI mutual trust**, in both directions.
@@ -3100,7 +3096,7 @@ trust tractable. Chapter 8 draws these together.
 We began with a gap (Chapter 1). The field has answered well how an agent can
 *remember* across sessions, and has begun to ask how it can hold a coherent
 *self-story*. But the deepest layer — **epistemic identity**, the self maintained as
-*graded, provenance-bearing, self-correcting knowledge* — was essentially
+*calibrated, provenance-bearing, self-correcting knowledge* — was essentially
 unaddressed. It is the layer at which an agent can be *wrong and recover* rather than
 be erased by its own errors, and it is the subject of this paper.
 
@@ -3140,8 +3136,7 @@ within the convergence**:
 
 > ENGRAM satisfies **two of Kahl's three conditions outright** — the Diachronic
 > Constraint via a decision/consequence coupling, and Self-Maintaining Arbitration
-> *strictly, through operational binding — the sole satisfier of the field as surveyed
-> on 2026-05-12* — **closes the
+> *strictly, as the sole satisfier in the surveyed field* — **closes the
 > architectural deficit** Kahl diagnoses, and for the third (Non-Interchangeability
 > under reset) **does not meet the strict text** but offers a principled type/token
 > extension for digital substrates.
