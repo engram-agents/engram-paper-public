@@ -380,7 +380,7 @@ def test_form_g_bracketed_cell_left_for_apparatus_stripper():
 REAL_VERDICT_ROWS = [
     '| C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active |',
     '| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical |',
-    '| C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) |',
+    '| C3 Self-Maintaining Arbitration | **strict (operational binding); sole satisfier, 2026-05-12 survey** | enabled (arch) + active (pilot anchor) |',
     '| A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) |',
     '| B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract |',
     '| C Non-Trivial Reset | satisfied trivially | enabled |',
