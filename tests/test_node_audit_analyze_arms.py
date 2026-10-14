@@ -406,6 +406,40 @@ def test_a1_manifest_names_ids_but_never_echoes_text_that_is_not_an_id(world, tm
     assert "dv_0102" in msg                                # an id-shaped key is still named
 
 
+def _manifest_with_declared(world, declared):
+    bad = manifest_obj()
+    bad["n_sampled_nodes_mentioning_a_control"] = declared
+    (world / FILES["manifest"]).write_text(json.dumps(bad))
+
+
+def test_a1_manifest_count_string_value_is_withheld_not_echoed(world, tmp_path):
+    _manifest_with_declared(world, "SENTINEL_DECL text")
+    msg = refused(world, tmp_path, arms.ManifestInvalid)
+    assert "SENTINEL" not in msg
+    assert "<non-integer value withheld, type str>" in msg
+
+
+@pytest.mark.parametrize("declared,typename", [(True, "bool"), (3.0, "float"), (None, "NoneType")])
+def test_a1_manifest_count_non_int_value_names_only_its_type(world, tmp_path, declared, typename):
+    _manifest_with_declared(world, declared)
+    msg = refused(world, tmp_path, arms.ManifestInvalid)
+    assert f"<non-integer value withheld, type {typename}>" in msg
+
+
+def test_a1_manifest_count_wrong_int_still_shows_the_int(world, tmp_path):
+    _manifest_with_declared(world, 7)
+    msg = refused(world, tmp_path, arms.ManifestInvalid)
+    assert "declares 7 but" in msg and "withheld" not in msg
+
+
+def test_a1_manifest_count_key_missing_still_refuses(world, tmp_path):
+    bad = manifest_obj()
+    del bad["n_sampled_nodes_mentioning_a_control"]
+    (world / FILES["manifest"]).write_text(json.dumps(bad))
+    msg = refused(world, tmp_path, arms.ManifestInvalid)
+    assert "n_sampled_nodes_mentioning_a_control" in msg
+
+
 def test_a1_filing_model_must_cover_every_sampled_id(world, tmp_path):
     f = filing_obj()
     del f["nodes"]["dv_0103"], f["nodes"]["ob_0104"]

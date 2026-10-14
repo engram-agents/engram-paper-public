@@ -265,9 +265,11 @@ def validate_manifest(path, sampled, controls):
             if not (isinstance(v, str) and v in ctl):
                 problems.append((who, f"listed value {named(v, f'value {j}')} is not a control id"))
     declared, actual = m["n_sampled_nodes_mentioning_a_control"], len(m["control_mentions"])
-    if declared != actual or isinstance(declared, bool):
+    if type(declared) is not int or declared != actual:
+        shown = repr(declared) if type(declared) is int else \
+            f"<non-integer value withheld, type {type(declared).__name__}>"
         problems.append(("n_sampled_nodes_mentioning_a_control",
-                         f"declares {declared!r} but control_mentions holds {actual} node(s)"))
+                         f"declares {shown} but control_mentions holds {actual} node(s)"))
     if problems:
         _refuse(ManifestInvalid, "manifest", problems)
     return set(m["control_mentions"])
