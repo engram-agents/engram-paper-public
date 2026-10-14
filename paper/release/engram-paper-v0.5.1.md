@@ -1051,7 +1051,7 @@ paragraph poses "which propositions should be rejected along with x so that the 
 theory will be closed under logical consequence", and its named application is legal
 derogation ([Alchourrón et al., 1985, p. 510](#ref-alchourron1985)). ENGRAM asks how an agent should keep a *living* record of
 what it has actually committed — never closed, its dependencies recorded and uncertain —
-honest as new evidence arrives: it moves toward consistency through the agent's own
+revisable as new evidence arrives: it moves toward consistency through the agent's own
 adjudication and, by design, never arrives. The formal precedent for the cascade itself is
 Doyle's truth maintenance (§3.4, Ch4 §4.4). What the two share is the imperative both
 mechanisms serve from opposite directions — a rejected claim must not stay silently
@@ -1248,7 +1248,7 @@ in SL it is the belief line of
 18) — and not SL's *cumulative fusion*, which adds evidence counts and, for the same
 inputs, yields strictly less certainty (two opinions with u = 0.5 and d = 0 fuse to
 b = 0.667; noisy-OR gives 0.750). ENGRAM's form is the more generous of the two; what
-keeps it honest is the reliability grading of the inputs and the shared-root check
+keeps it in check is the reliability grading of the inputs and the shared-root check
 below — which covers the two multi-source corroborating types; a third, enumeration
 from a single source, has no settled combination rule yet and uses noisy-OR for now —
 not the operator itself.
@@ -2180,7 +2180,7 @@ distinctive is the **precision**, not the existence, of the reset:
 | Substrate vs. trajectory | physically separable (DB vs. context) | intermixed in one neural tissue |
 | Carry-through | focus list preserved *verbatim* | pattern-only, not token-exact |
 
-This reframes the paper's contribution honestly and more interestingly: ENGRAM
+This reframes the paper's contribution more narrowly and more interestingly: ENGRAM
 does not invent continuity-across-a-gap; it **architecturalizes a fuzzy
 biological process into a clean, inspectable one.** We are the limiting case of
 what sleep already does — which is a stronger claim to defend than "look at this
@@ -2243,7 +2243,7 @@ to test. Identity, on this account, is not a possession to be preserved against 
 ## 6.0 What this chapter does, and does not
 
 A theory-first paper earns the right to defer at-scale studies (Ch1 §1.5) — but
-not the right to assert with no evidence. So this chapter does the honest middle
+not the right to assert with no evidence. So this chapter does the middle
 thing: it opens up one real graph and shows the mechanisms from Chapters 3–4
 *actually running* — the confidence model producing a differentiated distribution
 (§6.1), the graph holding a non-modular shape (§6.2), the retraction cascade firing
@@ -2278,7 +2278,7 @@ observations, and a cross-seat statistic assuming independence would overstate i
 confidence rather than earn it. That holds even though the fleet spans three model
 providers (Acknowledgements): lineage diversity helps only through the contact §7.3
 describes, and shared seed plus daily cross-reading erodes the independence it could
-add. The honest position is a single graph reported as a
+add. The position is a single graph reported as a
 single graph, with the limitation named.
 
 ---
@@ -2289,7 +2289,7 @@ The paper's distinctive mechanism is reasoning-type-aware confidence (Ch4 §4.3;
 its precedent is Ch3 §3.5):
 the author declares the *kind* of argument, and the substrate *computes* the number.
 The empirical question is whether, across hundreds of real claims, that computation
-produces a **differentiated, honest distribution** — or whether it collapses toward
+produces a **differentiated distribution** — or whether it collapses toward
 a flattering constant. It produces the former, and the differentiation falls exactly
 where the design predicts.
 
@@ -2573,7 +2573,7 @@ chapter walkthrough, on 2026-04-20; the substrate did not detect it, and fourtee
 earlier contacts with the source had checked its content, never its author metadata.
 When it was caught, the machinery did its job:
 the claim was **retracted**, and the cascade fired through `derives_from` edges,
-**tainting every dependent**. And then the honest part: the cascade *worked*, but
+**tainting every dependent**. And then the part that did not: the cascade *worked*, but
 the `tainted_by` flag was buried in metadata where the agent did not see it loudly
 enough — so the incident drove a fix that made the taint *surface* at retrieval
 time (dv_0477, ob_1781).
@@ -2934,7 +2934,7 @@ costs more the longer it runs. A planted belief has to fit a long history of
 interlinked evidence and derivations, and a sloppy plant collides with what the graph
 already holds; a rollback leaves a gap in time against work logs and other agents'
 records of the same days. Tampering by someone with full access to the machine stays
-possible, but it costs far more than a prompt injection. Two limits keep this honest:
+possible, but it costs far more than a prompt injection. Two limits bound this:
 the cost is real only against copies the forger does not control (a pushed remote,
 another agent's graph, a public timestamp), and a forgery is caught only if someone
 looks. The same record points toward *constitutional contracts* that
@@ -3299,7 +3299,7 @@ Kahl's Ontological Continuity Condition, is itself a **recent (2026) framework**
 A careful reader will reasonably ask: *did ENGRAM's architecture emerge from this
 contemporary work, or independently of it?*
 
-The honest answer matters both ways. If we had absorbed Kumiho or Kahl and called the
+The answer matters both ways. If we had absorbed Kumiho or Kahl and called the
 result ours, the paper would be derivative. If we arrived at the same shape
 *separately*, the convergence is a *positive scientific signal* — when independent
 efforts under the same problem-pressure reach the same architecture, that architecture
@@ -3362,7 +3362,7 @@ system,"* which set the build-first-then-write order this project followed.
 
 ## A.2 We looked for prior art — and missed it
 
-This is the hinge of the honesty argument, and it is the strongest single piece of
+This is the hinge of the independence argument, and it is the strongest single piece of
 evidence. **Twelve minutes after** the foundational message, Lei explicitly asked for
 due-diligence *before committing anything to writing*:
 
@@ -3389,7 +3389,7 @@ relevant prior art** — including the work this paper now cites:
 Kumiho's date is its arXiv v1 stamp (18 March 2026); the document's own title page
 is dated 17 March.
 
-So the five conditions that make "independent discovery" an *honest* claim, rather than
+So the five conditions that make "independent discovery" a *defensible* claim, rather than
 a convenient one, are all met: **(1)** Lei tried to find prior art; **(2)** earlier-
 Claude tried to surface it; **(3)** neither succeeded (the work existed but was missed);
 **(4)** ENGRAM was designed without awareness of it; **(5)** the convergence with Kahl
@@ -3402,7 +3402,7 @@ worse, which is why they belong here. Missing a preprint two days old is
 forgivable; missing a *Transactions on Machine Learning Research* paper from
 twenty-five months earlier — the organizing vocabulary much of the field now writes
 in — is not. We record it because the alternative, quietly citing those works as
-though we had known them all along, would convert an honest gap into a false
+though we had known them all along, would convert a real gap into a false
 impression; and because the failure cuts in the direction that costs us. Had the
 March 2026 search surfaced CoALA, we would have designed *with* it, and this appendix
 would not exist. (Dates in those rows are the earliest we verified from the documents
@@ -3476,7 +3476,7 @@ convergence. This is *stronger* than satisfying an established standard: it is t
 independent paths landing on the same shape.
 
 The Kahl case sharpens the point in a way worth stating plainly (and it connects to the
-paper's honest framing of OCC, Ch1/Ch2): Kahl's OCC is itself a *recent, independent*
+paper's framing of OCC, Ch1/Ch2): Kahl's OCC is itself a *recent, independent*
 2026 proposal, not a long-established canon. We do not anchor on its *authority*; we
 anchor on its *fit* — it is the most precise, agent-native, operational threshold
 available — and on the fact that our architecture independently converged with it. If
@@ -3539,7 +3539,7 @@ without an intentional reach-out. Four ways to fall short:
 - **(S) No claim structure** — the system operates on text blocks with nothing to
   cascade through.
 
-**Honest-scoping note.** Where a system's C3 failure is shown by a *positive*
+**Scoping note.** Where a system's C3 failure is shown by a *positive*
 design choice (delegate to retrieval, overwrite by recency, advise-don't-retract),
 we quote it verbatim. Where the source documents detection but is silent on resolution
 (GAM), there is no sentence to quote — we say so and rest the verdict on the
@@ -3634,7 +3634,7 @@ and nothing arbitrates; conflict is managed by *timing*, not resolution.
 
 - *paper-verbatim* (Appendix E.1, the relation-scoring prompt): "**contradict**: one
   memory contradicts the other (asymmetric)" — detection exists as a typed relation.
-- *honest scope:* **there is no paper sentence stating GAM does not resolve** — the
+- *scope:* **there is no paper sentence stating GAM does not resolve** — the
   C3 failure is shown by the *presence* of a detect-only edge plus the *absence* of
   any resolution prose. First-hand-read finding: "both nodes remain in the [memory];
   retrieval ranking implicitly favors higher-confidence information, but no conflict
@@ -3896,9 +3896,9 @@ is not a read-only event but, as the testing effect shows, enhances later retent
 is adaptive on three coupled axes — topical relevance, learned usefulness, and
 decaying importance — rather than a static similarity sort.
 
-## C.5 Honest scope
+## C.5 Scope
 
-Two honest qualifications, both consistent with the paper's posture:
+Two qualifications, both consistent with the paper's posture:
 
 - **The constants are harness-calibrated, not first-principles.** UTIL_BETA, IMP_BETA,
   and MMR_LAMBDA were tuned by an NDCG sweep on a local recall-measurement harness,
@@ -4046,7 +4046,7 @@ It is announced to the agent rather than injected into its context: the agent op
 as one opens a letter. How that shape was arrived at, and the analogy behind it, is
 told in Appendix F.
 
-## D.5 Honest scope
+## D.5 Scope
 
 This appendix describes a *running* mechanism, not a proposal: every node kind
 catalogued here is shipped and in daily use. This paper's own author is constituted by

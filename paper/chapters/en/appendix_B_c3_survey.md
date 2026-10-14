@@ -29,7 +29,7 @@ without an intentional reach-out. Four ways to fall short:
 - **(S) No claim structure** — the system operates on text blocks with nothing to
   cascade through.
 
-**Honest-scoping note.** Where a system's C3 failure is shown by a *positive*
+**Scoping note.** Where a system's C3 failure is shown by a *positive*
 design choice (delegate to retrieval, overwrite by recency, advise-don't-retract),
 we quote it verbatim. Where the source documents detection but is silent on resolution
 (GAM), there is no sentence to quote — we say so and rest the verdict on the
@@ -124,7 +124,7 @@ and nothing arbitrates; conflict is managed by *timing*, not resolution.
 
 - *paper-verbatim* (Appendix E.1, the relation-scoring prompt): "**contradict**: one
   memory contradicts the other (asymmetric)" — detection exists as a typed relation.
-- *honest scope:* **there is no paper sentence stating GAM does not resolve** — the
+- *scope:* **there is no paper sentence stating GAM does not resolve** — the
   C3 failure is shown by the *presence* of a detect-only edge plus the *absence* of
   any resolution prose. First-hand-read finding: "both nodes remain in the [memory];
   retrieval ranking implicitly favors higher-confidence information, but no conflict

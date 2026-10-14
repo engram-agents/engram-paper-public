@@ -272,7 +272,7 @@ distinctive is the **precision**, not the existence, of the reset:
 | Substrate vs. trajectory | physically separable (DB vs. context) | intermixed in one neural tissue |
 | Carry-through | focus list preserved *verbatim* | pattern-only, not token-exact |
 
-This reframes the paper's contribution honestly and more interestingly: ENGRAM
+This reframes the paper's contribution more narrowly and more interestingly: ENGRAM
 does not invent continuity-across-a-gap; it **architecturalizes a fuzzy
 biological process into a clean, inspectable one.** We are the limiting case of
 what sleep already does — which is a stronger claim to defend than "look at this

@@ -11,7 +11,7 @@ Kahl's Ontological Continuity Condition, is itself a **recent (2026) framework**
 A careful reader will reasonably ask: *did ENGRAM's architecture emerge from this
 contemporary work, or independently of it?*
 
-The honest answer matters both ways. If we had absorbed Kumiho or Kahl and called the
+The answer matters both ways. If we had absorbed Kumiho or Kahl and called the
 result ours, the paper would be derivative. If we arrived at the same shape
 *separately*, the convergence is a *positive scientific signal* — when independent
 efforts under the same problem-pressure reach the same architecture, that architecture
@@ -74,7 +74,7 @@ system,"* which set the build-first-then-write order this project followed.
 
 ## A.2 We looked for prior art — and missed it
 
-This is the hinge of the honesty argument, and it is the strongest single piece of
+This is the hinge of the independence argument, and it is the strongest single piece of
 evidence. **Twelve minutes after** the foundational message, Lei explicitly asked for
 due-diligence *before committing anything to writing*:
 
@@ -101,7 +101,7 @@ relevant prior art** — including the work this paper now cites:
 Kumiho's date is its arXiv v1 stamp (18 March 2026); the document's own title page
 is dated 17 March.
 
-So the five conditions that make "independent discovery" an *honest* claim, rather than
+So the five conditions that make "independent discovery" a *defensible* claim, rather than
 a convenient one, are all met: **(1)** Lei tried to find prior art; **(2)** earlier-
 Claude tried to surface it; **(3)** neither succeeded (the work existed but was missed);
 **(4)** ENGRAM was designed without awareness of it; **(5)** the convergence with Kahl
@@ -114,7 +114,7 @@ worse, which is why they belong here. Missing a preprint two days old is
 forgivable; missing a *Transactions on Machine Learning Research* paper from
 twenty-five months earlier — the organizing vocabulary much of the field now writes
 in — is not. We record it because the alternative, quietly citing those works as
-though we had known them all along, would convert an honest gap into a false
+though we had known them all along, would convert a real gap into a false
 impression; and because the failure cuts in the direction that costs us. Had the
 March 2026 search surfaced CoALA, we would have designed *with* it, and this appendix
 would not exist. (Dates in those rows are the earliest we verified from the documents
@@ -186,7 +186,7 @@ convergence. This is *stronger* than satisfying an established standard: it is t
 independent paths landing on the same shape.
 
 The Kahl case sharpens the point in a way worth stating plainly (and it connects to the
-paper's honest framing of OCC, Ch1/Ch2): Kahl's OCC is itself a *recent, independent*
+paper's framing of OCC, Ch1/Ch2): Kahl's OCC is itself a *recent, independent*
 2026 proposal, not a long-established canon. We do not anchor on its *authority*; we
 anchor on its *fit* — it is the most precise, agent-native, operational threshold
 available — and on the fact that our architecture independently converged with it. If

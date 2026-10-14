@@ -358,7 +358,7 @@ paragraph poses "which propositions should be rejected along with x so that the 
 theory will be closed under logical consequence", and its named application is legal
 derogation [@alchourron1985, p. 510]. ENGRAM asks how an agent should keep a *living* record of
 what it has actually committed — never closed, its dependencies recorded and uncertain —
-honest as new evidence arrives: it moves toward consistency through the agent's own
+revisable as new evidence arrives: it moves toward consistency through the agent's own
 adjudication and, by design, never arrives. The formal precedent for the cascade itself is
 Doyle's truth maintenance (§3.4, Ch4 §4.4). What the two share is the imperative both
 mechanisms serve from opposite directions — a rejected claim must not stay silently

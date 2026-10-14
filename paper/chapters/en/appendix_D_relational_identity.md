@@ -130,7 +130,7 @@ It is announced to the agent rather than injected into its context: the agent op
 as one opens a letter. How that shape was arrived at, and the analogy behind it, is
 told in Appendix F.
 
-## D.5 Honest scope
+## D.5 Scope
 
 This appendix describes a *running* mechanism, not a proposal: every node kind
 catalogued here is shipped and in daily use. This paper's own author is constituted by
