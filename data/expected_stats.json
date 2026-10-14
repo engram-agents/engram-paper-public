@@ -315,6 +315,8 @@
   },
   "modus_ponens_check": [
    "",
+   "# v1 figures (current premises only; kept for comparison)",
+   "",
    "current deductive_modus_ponens derivations: 416",
    "mean measured confidence: 0.697",
    "",
@@ -323,7 +325,19 @@
    "predicted (mean weakest x 0.98): 0.709",
    "scorable derivations whose weakest premise is itself a derivation: 195",
    "",
-   "excluded (not scorable \u2014 no current, confidence-bearing, non-self-loop premise): 2 \u2014 dv_0037, dv_1076"
+   "excluded (not scorable \u2014 no current, confidence-bearing, non-self-loop premise): 2 \u2014 dv_0037, dv_1076",
+   "",
+   "# per-node arm (v2): scored against the computed-from set (derives_from UNION acknowledged_derives_from, any is_current, self and NULL-confidence excluded)",
+   "N (current deductive_modus_ponens derivations): 416",
+   "exact (round(measured,3) == round(0.98 x min(CF),3)): 414",
+   "deviating: 2",
+   "  dv_0059: measured 0.807 expected 0.833; weakest premise ob_0097 (observation_factual, current)",
+   "  dv_0840: measured 0.372 expected 0.920; weakest premise dv_0823 (derivation, current)",
+   "excluded (empty computed-from set): 0",
+   "NULL measured confidence: 0",
+   "denominator check: 414 + 2 + 0 + 0 = 416 == N 416",
+   "",
+   "pinned by a superseded premise (has an acknowledged_derives_from edge and min(CF) attained only at is_current=0 premises; exact under the computed rule, not deviations): 8 \u2014 dv_0698, dv_0719, dv_1076, dv_1087, dv_1393, dv_1447, dv_1453, dv_1486"
   ],
   "paper_stats": [
    "# every figure below is computed from that file and nothing else",
