@@ -891,6 +891,46 @@ def test_byte_identical_outputs_same_inputs_same_seed(world, tmp_path):
         assert (a / f).read_bytes() == (b / f).read_bytes()
 
 
+def _file_sha(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def test_report_carries_sha256_of_each_input_verdict_file(world, tmp_path):
+    out = tmp_path / "out"
+    an.main(args_for(world, out))
+    rep = json.loads((out / "report.json").read_text())
+    want = {"mira": _file_sha(world / "mira.jsonl"), "zephyr": _file_sha(world / "zephyr.jsonl")}
+    assert want["mira"] != want["zephyr"]
+    assert rep["meta"]["verdict_sha256"] == want
+    md = (out / "report.md").read_text()
+    assert want["mira"] in md and want["zephyr"] in md
+
+
+def test_verdict_hash_changes_only_for_the_reader_whose_file_changed(world, tmp_path):
+    a, b = tmp_path / "a", tmp_path / "b"
+    an.main(args_for(world, a))
+    m = world / "mira.jsonl"
+    raw = m.read_bytes()
+    assert raw.count(b'"reason": "r"') > 0
+    m.write_bytes(raw.replace(b'"reason": "r"', b'"reason": "s"', 1))  # one byte of one reason
+    an.main(args_for(world, b))
+    ha = json.loads((a / "report.json").read_text())["meta"]["verdict_sha256"]
+    hb = json.loads((b / "report.json").read_text())["meta"]["verdict_sha256"]
+    assert ha["mira"] != hb["mira"]
+    assert ha["zephyr"] == hb["zephyr"]
+    assert hb["mira"] == _file_sha(m)
+
+
+def test_verdict_hash_is_of_file_bytes_not_of_validated_rows(world, tmp_path):
+    # re-serialising the same rows (spacing) leaves the rows identical but the bytes different
+    m = world / "mira.jsonl"
+    rows = [json.loads(l) for l in m.read_text().splitlines()]
+    m.write_text("".join(json.dumps(r, separators=(",", ":")) + "\n" for r in rows))
+    out = tmp_path / "out"
+    an.main(args_for(world, out))
+    assert json.loads((out / "report.json").read_text())["meta"]["verdict_sha256"]["mira"] == _file_sha(m)
+
+
 def test_different_seed_leaves_auc_point_estimate_and_strata_unchanged(world, tmp_path):
     a, b = tmp_path / "a", tmp_path / "b"
     an.main(args_for(world, a))

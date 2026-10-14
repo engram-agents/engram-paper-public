@@ -70,6 +70,9 @@ CONTRACT (each clause is asserted by tests/test_node_audit_analyze.py)
 12. Outputs go to --out, which must resolve outside the git worktree that holds this
     script (OutputInsideWorktree otherwise, nothing written): report.json (all numbers),
     report.md and the public/ export of clause 14. Nothing is written into the repo.
+    The report carries the sha256 of each reader's full verdict file (meta.verdict_sha256,
+    also in report.md), so the private files can be checked against the published report;
+    a hash reveals no content.
 13. No content in any output. No file `main()` writes under --out (the whole tree) contains
     any reader `reason` string; any text from the snapshot DB other than node ids,
     reasoning-type names and numbers (nothing from `nodes.claim`, nothing from `metadata`
@@ -661,6 +664,7 @@ def analyze_with_rows(mira, zephyr, controls, db, drawn, prior_node, seed, n_boo
     report = {
         "meta": {"seed": seed, "prior_node": prior_node, "n_boot": n_boot, "min_rate_n": MIN_RATE_N,
                  "wilson_z": Z95, "vendored_sha256": VENDORED_SHA256,
+                 "verdict_sha256": {"mira": _sha256(mira), "zephyr": _sha256(zephyr)},
                  "readings": {"tracks": READING_TRACKS, "none": READING_NONE, "against": READING_AGAINST},
                  "free_parameters": free_parameters(seed, prior_node, n_boot)},
         "validation": {"mira_rows": len(mrows), "zephyr_rows": len(zrows), "mira_sampled": len(stratum_of),
@@ -733,7 +737,9 @@ def render_md(rep):
           "Rates and confidence use the primary reader's (Mira's) verdicts on sampled nodes; controls are excluded from every rate.", "",
           "## Free parameters", ""]
     L += [f"- {v}" for v in m["free_parameters"].values()]
-    L.append("")
+    L += ["", "## Verdict files (sha256 of each reader's full file as read)", "",
+          f"- Mira: `{m['verdict_sha256']['mira']}`",
+          f"- Zephyr: `{m['verdict_sha256']['zephyr']}`", ""]
     v = rep["validation"]
     L += ["## Validation", "",
           f"- Mira: {v['mira_rows']} rows ({v['mira_sampled']} sampled + {v['controls']} controls). "
