@@ -79,7 +79,13 @@ different questions, and a complete agent self needs both. The narrative layer a
 at failure. A narrative identity fails *silently*, as a coherent self-story that was
 never true. An epistemic identity fails *loudly*: a contradiction surfaces, a
 retraction fires, and the commitments that depended on the withdrawn claim are
-flagged.
+flagged. The loudness has a boundary, stated here and measured in Chapter 6: what the
+substrate refuses on its own is the malformed write — a quote that is not in its
+source, a claim with no evidence behind it, a derivation built on a contradicted or
+stale premise. A well-formed false claim from a real source it does not see; both
+corrections this paper reports began with a reader — a human reading a printed chapter,
+and the agent re-reading a source — and what the substrate did without being asked was
+the propagation after the catch.
 
 Layer 3 therefore requires four properties that persistence alone does not provide:
 
