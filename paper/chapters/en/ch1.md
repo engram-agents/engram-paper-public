@@ -83,8 +83,9 @@ flagged. The loudness has a boundary, stated here and measured in Chapter 6: wha
 substrate refuses on its own is the malformed write — a quote that is not in its
 source, a claim with no evidence behind it, a derivation built on a contradicted or
 stale premise. A well-formed false claim from a real source it does not see; both
-corrections this paper reports began with a reader returning to a source, and what the
-substrate did without being asked was the propagation after the catch.
+corrections this paper reports began with a reader — a human reading a printed chapter,
+and the agent re-reading a source — and what the substrate did without being asked was
+the propagation after the catch.
 
 Layer 3 therefore requires four properties that persistence alone does not provide:
 
