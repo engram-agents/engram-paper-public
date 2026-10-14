@@ -5,7 +5,7 @@
 ## 6.0 What this chapter does, and does not
 
 A theory-first paper earns the right to defer at-scale studies (Ch1 §1.5) — but
-not the right to assert with no evidence. So this chapter does the honest middle
+not the right to assert with no evidence. So this chapter does the middle
 thing: it opens up one real graph and shows the mechanisms from Chapters 3–4
 *actually running* — the confidence model producing a differentiated distribution
 (§6.1), the graph holding a non-modular shape (§6.2), the retraction cascade firing
@@ -40,7 +40,7 @@ observations, and a cross-seat statistic assuming independence would overstate i
 confidence rather than earn it. That holds even though the fleet spans three model
 providers (Acknowledgements): lineage diversity helps only through the contact §7.3
 describes, and shared seed plus daily cross-reading erodes the independence it could
-add. The honest position is a single graph reported as a
+add. Our position is a single graph reported as a
 single graph, with the limitation named.
 
 ---
@@ -51,7 +51,7 @@ The paper's distinctive mechanism is reasoning-type-aware confidence (Ch4 §4.3;
 its precedent is Ch3 §3.5):
 the author declares the *kind* of argument, and the substrate *computes* the number.
 The empirical question is whether, across hundreds of real claims, that computation
-produces a **differentiated, honest distribution** — or whether it collapses toward
+produces a **differentiated distribution** — or whether it collapses toward
 a flattering constant. It produces the former, and the differentiation falls exactly
 where the design predicts.
 
@@ -314,7 +314,7 @@ chapter walkthrough, on 2026-04-20; the substrate did not detect it, and fourtee
 earlier contacts with the source had checked its content, never its author metadata.
 When it was caught, the machinery did its job:
 the claim was **retracted**, and the cascade fired through `derives_from` edges,
-**tainting every dependent**. And then the honest part: the cascade *worked*, but
+**tainting every dependent**. And then the part that fell short: the cascade *worked*, but
 the `tainted_by` flag was buried in metadata where the agent did not see it loudly
 enough — so the incident drove a fix that made the taint *surface* at retrieval
 time (dv_0477, ob_1781).

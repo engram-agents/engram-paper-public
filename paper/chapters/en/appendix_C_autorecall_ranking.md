@@ -98,9 +98,9 @@ is not a read-only event but, as the testing effect shows, enhances later retent
 is adaptive on three coupled axes — topical relevance, learned usefulness, and
 decaying importance — rather than a static similarity sort.
 
-## C.5 Honest scope
+## C.5 Scope
 
-Two honest qualifications, both consistent with the paper's posture:
+Two qualifications, both consistent with the paper's posture:
 
 - **The constants are harness-calibrated, not first-principles.** UTIL_BETA, IMP_BETA,
   and MMR_LAMBDA were tuned by an NDCG sweep on a local recall-measurement harness,

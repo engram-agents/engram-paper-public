@@ -213,7 +213,7 @@ costs more the longer it runs. A planted belief has to fit a long history of
 interlinked evidence and derivations, and a sloppy plant collides with what the graph
 already holds; a rollback leaves a gap in time against work logs and other agents'
 records of the same days. Tampering by someone with full access to the machine stays
-possible, but it costs far more than a prompt injection. Two limits keep this honest:
+possible, but it costs far more than a prompt injection. Two limits bound this:
 the cost is real only against copies the forger does not control (a pushed remote,
 another agent's graph, a public timestamp), and a forgery is caught only if someone
 looks (ob_5662, ob_5663). The same record points toward *constitutional contracts* that

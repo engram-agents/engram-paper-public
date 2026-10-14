@@ -153,7 +153,7 @@ in SL it is the belief line of
 18) — and not SL's *cumulative fusion*, which adds evidence counts and, for the same
 inputs, yields strictly less certainty (two opinions with u = 0.5 and d = 0 fuse to
 b = 0.667; noisy-OR gives 0.750). ENGRAM's form is the more generous of the two; what
-keeps it honest is the reliability grading of the inputs and the shared-root check
+keeps it in check is the reliability grading of the inputs and the shared-root check
 below — which covers the two multi-source corroborating types; a third, enumeration
 from a single source, has no settled combination rule yet and uses noisy-OR for now —
 not the operator itself.
