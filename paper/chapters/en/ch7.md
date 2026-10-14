@@ -188,7 +188,7 @@ through other agents endorsing it. It is registered as an open research question
 
 ## 7.4 Trust and auditability: the social payoff
 
-Here what the paper built — provenance on every claim, confidence calibrated by
+Here what the paper built — provenance on every claim, confidence graded by
 argument shape, retraction with cascade, scoped claims — pays off beyond the agent
 itself. The argument (ob_1176–ob_1183, dv_0486) is that ENGRAM offers a **structural
 path to human–AI mutual trust**, in both directions.

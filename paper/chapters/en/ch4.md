@@ -111,9 +111,11 @@ chapter's own 0.39s are that mechanism, visible.
 **Scope.** These discounts are *theoretically derived, provenance-graded*
 plausibility — designer-stipulated constants, not empirically calibrated against
 outcomes (ob_1049). Where the paper calls confidence or the agent's self-knowledge
-"calibrated" (the Abstract, Ch1 §1.1–§1.2, Ch7 §7.4, Ch8 §8.1), it means graded by
-argument shape, never outcome-calibrated against ground truth; outcome calibration
-is future work (Ch7).
+"graded" (the Abstract, Ch1 §1.1–§1.2, Ch7 §7.4, Ch8 §8.1), it means graded by
+argument shape, never calibrated against outcomes. "Calibration" keeps its standard
+meaning here — agreement between a confidence and the frequency with which claims at
+that confidence turn out true — and the paper claims none; outcome calibration is
+future work (Ch7).
 
 **Tradition.** This is **Subjective Logic** territory (Jøsang): an algebra of graded
 opinions with propagation operators. Collapsing SL's belief/disbelief/uncertainty
