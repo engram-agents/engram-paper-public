@@ -45,13 +45,19 @@ CONTRACT (each clause is asserted by tests/test_node_audit_sampler.py)
 
 AUTHOR ARM (--author-arm; PROTOCOL.md Amendment 4, "Arm A, the author"). Same inputs as above.
 Writes ONLY packet_author_blind.md, blind_template.jsonl, packet_author_verdict.md,
-verdict_template_author.jsonl and TYPE_TABLE.md under --out, and no reader packet.
+verdict_template_author.jsonl, author_arm_manifest.json and TYPE_TABLE.md under --out, and no reader packet.
 drawn_ids.json is written exactly as in the default mode. Refused together with --draw-only.
-  A1 No control in either author packet. No control id appears anywhere in any author-mode
-     output: not as a node, not in a linked-node heading, not in claim text. A control can be
-     a premise of a sampled node, so this is a real possibility. The build REFUSES with
-     AuthorPacketLeak, listing every (file, line, id), before any author file is written. It
-     never drops or redacts a link: what to do about a leak is the analyst's decision.
+  A1 No control is ever a JUDGED node. No `## Node i of n: <control>` heading in either packet
+     and no control id as a row id in blind_template.jsonl or verdict_template_author.jsonl
+     (the author is excluded from the controls so he never grades a node whose answer he knows).
+     Violation -> AuthorPacketLeak, listing every (file, line, id), before any author file is
+     written. An occurrence that cannot be attributed to a sampled node's block also refuses.
+  A1b Every other occurrence of a control id (a linked premise, claim or chain text inside a
+     SAMPLED node's block) is not a leak: the readers see the identical text, so redacting it
+     would break A4 parity. It is recorded in the private author_arm_manifest.json,
+     {"control_mentions": {sampled id: [control ids]}, "n_sampled_nodes_mentioning_a_control": N},
+     sorted, attributed to the sampled node whose `## Node` block holds it. Whole-token matching.
+     The analysis reports the author arm with and without these nodes.
   A2 Declared type withheld in the blind packet. No line of packet_author_blind.md starts with
      "- declared reasoning_type:" and blind_template.jsonl has no reasoning_type key. Reasoning
      words inside a node's own claim or chain text are content and are NOT redacted.
@@ -393,6 +399,41 @@ def control_occurrences(name, text, controls):
     return sorted(hits)
 
 
+NODE_HEADING = re.compile(r"^## Node \d+ of \d+: (\S+)$")
+
+
+def classify_control_occurrences(files, controls):
+    """Split every control-id occurrence in the author-arm files into
+    (leaks, mentions). A leak is a control as a JUDGED node: a `## Node` heading naming it, a
+    template row id, or any occurrence that cannot be attributed to a sampled node's block (before
+    the first heading, or in a non-packet file). A mention is any other occurrence inside a sampled
+    node's block (linked node, claim or chain text); it is attributed to the sampled id in the
+    nearest `## Node` heading above it. Returns (sorted leak list, {sampled id: set of control ids})."""
+    leaks, mentions = [], {}
+    for name, text in files.items():
+        hits = control_occurrences(name, text, controls)
+        if not name.endswith(".md") or name == "TYPE_TABLE.md":
+            leaks += hits
+            continue
+        cur_at, cur = {}, None
+        for ln, line in enumerate(text.split("\n"), 1):
+            m = NODE_HEADING.match(line)
+            if m:
+                cur = None  # a heading line carrying a control id is a judged node, never a mention
+                cur_at[ln] = None
+                if m.group(1) not in controls:
+                    cur = m.group(1)
+            else:
+                cur_at[ln] = cur
+        for name_, ln, cid in hits:
+            owner = cur_at.get(ln)
+            if owner is None:
+                leaks.append((name_, ln, cid))
+            else:
+                mentions.setdefault(owner, set()).add(cid)
+    return sorted(leaks), mentions
+
+
 def write_author_packets(con, seed, sampled_ids, controls, out):
     sampled = sorted(sampled_ids)
     nodes = {i: build_node(con, i) for i in sampled}
@@ -415,11 +456,15 @@ def write_author_packets(con, seed, sampled_ids, controls, out):
     if (any(ln.startswith(DECLARED_LINE) for ln in files["packet_author_blind.md"].split("\n"))
             or "reasoning_type" in files["blind_template.jsonl"]):
         raise AuditError("the declared reasoning_type reached the blind packet")
-    hits = [h for name, text in files.items() for h in control_occurrences(name, text, controls)]
-    if hits:
+    leaks, mentions = classify_control_occurrences(files, controls)
+    if leaks:
         raise AuthorPacketLeak(
-            f"{len(hits)} control-id occurrence(s) in author-arm output; nothing was written:\n" +
-            "\n".join(f"  {name}:{ln}: {cid}" for name, ln, cid in hits))
+            f"{len(leaks)} control id(s) are judged nodes (or unattributable) in author-arm output; "
+            "nothing was written:\n" + "\n".join(f"  {name}:{ln}: {cid}" for name, ln, cid in leaks))
+    files["author_arm_manifest.json"] = json.dumps(
+        {"control_mentions": {k: sorted(v) for k, v in sorted(mentions.items())},
+         "n_sampled_nodes_mentioning_a_control": len(mentions)},
+        indent=2, sort_keys=True, ensure_ascii=False) + "\n"
     out.mkdir(parents=True, exist_ok=True)
     for name, text in files.items():
         (out / name).write_text(text)

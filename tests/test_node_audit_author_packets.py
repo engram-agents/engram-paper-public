@@ -1,15 +1,16 @@
 """Contract tests for the `--author-arm` mode of `studies/node-audit/build_packet.py`
 (Amendment 4, Arm A). Written BEFORE the implementation (contract-first). Synthetic data only.
 
-  A1 no control id anywhere in any author-mode output file; a sampled node that links to a
-     control makes the build REFUSE with AuthorPacketLeak listing every occurrence
+  A1 no control id is ever a JUDGED node (heading or template row id): AuthorPacketLeak, every occurrence listed
+  A1b any other mention of a control (premise link, claim text) is recorded per sampled id in
+     author_arm_manifest.json; the build proceeds and nothing is redacted
   A2 declared type withheld in the blind packet (and no reasoning_type key in its template)
   A3 blind set = the derivations among the sampled, in Mira's filtered order
   A4 verdict packet = the 200 sampled, each block equal to its block in packet_mira.md
      (heading aside), in Mira's order with the controls removed
   A5 confidence withheld (same forbidden-key assertion)
   A6 deterministic: same inputs, byte-identical files
-  A7 only the five author files are written; default-mode output is byte-unchanged
+  A7 only the six author files are written; default-mode output is byte-unchanged
      (golden hashes taken from the UNMODIFIED code on the same synthetic fixture)
 """
 from __future__ import annotations
@@ -18,6 +19,7 @@ import hashlib
 import json
 import random
 import re
+import sqlite3
 from pathlib import Path
 
 import pytest
@@ -30,7 +32,7 @@ CTL = {"known_loose": {"dv_0002": "n", "dv_0003": "n"}, "known_tight_placement_v
        "known_tight_final": ["dv_0004"]}
 CTL_IDS = {"dv_0002", "dv_0003", "ob_0002", "dv_0004"}
 AUTHOR_FILES = {"packet_author_blind.md", "blind_template.jsonl", "packet_author_verdict.md",
-                "verdict_template_author.jsonl", "TYPE_TABLE.md"}
+                "verdict_template_author.jsonl", "TYPE_TABLE.md", "author_arm_manifest.json"}
 
 
 def run(tmp, db, controls=CTL, seed=SEED, author=True, out="out", drawn="drawn_ids.json"):
@@ -92,39 +94,74 @@ def test_a7_default_mode_byte_unchanged(tmp_path, db):
 
 
 # ---------------------------------------------------------------- A1
-def test_a1_no_control_id_in_any_author_file(tmp_path, db):
-    out, _ = run(tmp_path, db)
-    for p in out.iterdir():
-        text = p.read_text()
-        for cid in CTL_IDS:
-            assert not re.search(rf"(?<![A-Za-z0-9_]){cid}(?![A-Za-z0-9_])", text), (p.name, cid)
-
-
-def test_a1_link_to_control_refuses_with_named_error(tmp_path):
-    # tiny population: every node is sampled, so dv_0001 is sampled and its premise ob_0001 is a control
+def _mention_db(tmp_path):
+    """Every node sampled; ob_0001 is a control, a premise of dv_0001, and also linked from dv_0002."""
     small = make_db(tmp_path / "small.db", der={"inductive_generalization": 3}, obs={"hard_data": 3})
-    ctl = {"known_loose": {"ob_0001": "n"}, "known_tight_placement_verified": {}}
-    with pytest.raises(bp.AuthorPacketLeak) as ei:
-        run(tmp_path, small, controls=ctl)
-    msg = str(ei.value)
-    assert "ob_0001" in msg and "packet_author_blind.md" in msg and "packet_author_verdict.md" in msg
-    assert isinstance(ei.value, bp.AuditError)
-    # refused before writing any author packet
-    assert not (tmp_path / "out" / "packet_author_verdict.md").exists()
-    assert not (tmp_path / "out" / "packet_author_blind.md").exists()
-
-
-def test_a1_leak_lists_every_occurrence(tmp_path):
-    small = make_db(tmp_path / "small.db", der={"inductive_generalization": 3}, obs={"hard_data": 3})
-    c = __import__("sqlite3").connect(small)
+    c = sqlite3.connect(small)
     c.execute("INSERT INTO edges(source_id,target_id,relation) VALUES ('dv_0002','ob_0001','derives_from')")
     c.commit()
     c.close()
-    ctl = {"known_loose": {"ob_0001": "n"}, "known_tight_placement_verified": {}}
+    return small
+
+
+MENTION_CTL = {"known_loose": {"ob_0001": "n"}, "known_tight_placement_verified": {}}
+
+
+def test_a1_no_control_is_a_judged_node_in_the_normal_build(tmp_path, db):
+    out, _ = run(tmp_path, db)
+    for name in ("packet_author_blind.md", "packet_author_verdict.md"):
+        assert not set(ids_in_packet((out / name).read_text())) & CTL_IDS, name
+    for name in ("blind_template.jsonl", "verdict_template_author.jsonl"):
+        ids = {json.loads(x)["id"] for x in (out / name).read_text().splitlines()}
+        assert not ids & CTL_IDS, name
+
+
+def test_a1_control_as_judged_node_refuses_and_lists_every_occurrence(tmp_path):
+    small = make_db(tmp_path / "small.db", der={"inductive_generalization": 3}, obs={"hard_data": 3})
+    con = bp.open_ro(small)
+    sampled = ["dv_0001", "dv_0002", "dv_0003", "ob_0001", "ob_0002"]
+    out = tmp_path / "out"
     with pytest.raises(bp.AuthorPacketLeak) as ei:
-        run(tmp_path, small, controls=ctl)
-    # two sampled derivations link it; blind + verdict file each -> 4 occurrences
-    assert str(ei.value).count("ob_0001") >= 4
+        bp.write_author_packets(con, SEED, sampled, ["dv_0002", "ob_0001"], out)
+    msg = str(ei.value)
+    assert isinstance(ei.value, bp.AuditError)
+    for where in ("packet_author_blind.md", "packet_author_verdict.md", "blind_template.jsonl",
+                  "verdict_template_author.jsonl"):
+        assert re.search(rf"{where}:\d+: dv_0002", msg), where
+    assert re.search(r"packet_author_verdict.md:\d+: ob_0001", msg)
+    assert re.search(r"verdict_template_author.jsonl:\d+: ob_0001", msg)
+    assert not out.exists() or not any(out.iterdir())  # nothing written
+
+
+def test_a1b_link_to_control_builds_and_is_in_manifest_under_the_right_sampled_id(tmp_path):
+    small = _mention_db(tmp_path)
+    out, _ = run(tmp_path, small, controls=MENTION_CTL)
+    man = json.loads((out / "author_arm_manifest.json").read_text())
+    assert man == {"control_mentions": {"dv_0001": ["ob_0001"], "dv_0002": ["ob_0001"]},
+                   "n_sampled_nodes_mentioning_a_control": 2}
+    v = (out / "packet_author_verdict.md").read_text()
+    assert "ob_0001" in v  # mention stays in the text, unredacted
+    assert "ob_0001" not in ids_in_packet(v)  # and the control is still not a judged node
+
+
+def test_a1b_mention_in_claim_text_attributed_to_the_containing_node(tmp_path):
+    small = make_db(tmp_path / "small.db", der={"inductive_generalization": 3}, obs={"hard_data": 3})
+    c = sqlite3.connect(small)
+    c.execute("UPDATE nodes SET claim = claim || ' (see also ob_0001 here)' WHERE id='dv_0003'")
+    c.commit()
+    c.close()
+    out, _ = run(tmp_path, small, controls=MENTION_CTL)
+    man = json.loads((out / "author_arm_manifest.json").read_text())
+    assert man["control_mentions"] == {"dv_0001": ["ob_0001"], "dv_0003": ["ob_0001"]}
+    assert man["n_sampled_nodes_mentioning_a_control"] == 2
+
+
+def test_a1b_manifest_with_no_mentions_is_empty_and_deterministic(tmp_path, db):
+    a, _ = run(tmp_path, db, out="a")
+    b, _ = run(tmp_path, db, out="b", drawn="b.json")
+    assert json.loads((a / "author_arm_manifest.json").read_text()) == {
+        "control_mentions": {}, "n_sampled_nodes_mentioning_a_control": 0}
+    assert (a / "author_arm_manifest.json").read_bytes() == (b / "author_arm_manifest.json").read_bytes()
 
 
 def test_a1_id_boundary_is_not_a_prefix_match(tmp_path):
