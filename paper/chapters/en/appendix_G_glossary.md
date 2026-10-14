@@ -10,7 +10,7 @@ entry names the senses.
 | **auto-surface** | the automatic, per-turn channel of retrieval: a hook surfaces claims relevant to the current context as a lossy, hint-level digest, and refreshes no recall.<sup>[1](#gnote-1)</sup> | §4.6 |
 | **axiom** | a terminal, declared-fundamental commitment, confidence 1.0 by type; claim-bearing. | Appendix E §E.2 |
 | **cascade** (retraction cascade) | automatic propagation of a retraction or supersede along `derives_from` and `acknowledged_derives_from`, marking every live, claim-bearing dependent **pending**. | §4.4 |
-| **checkpoint** | a point where state is captured: the git-versioned graph is reset-symmetric at a checkpoint (§4.9); the warm-briefing's session block is rewritten each checkpoint (Appendix D §D.4). | — |
+| **checkpoint** | a point where state is captured: the git-versioned graph is reset-symmetric at a checkpoint (§4.11); the warm-briefing's session block is rewritten each checkpoint (Appendix D §D.4). | — |
 | **claim-bearing / non-claim-bearing** | the partition of node kinds into those asserting something truth-evaluable (observations, derivations, theories, axioms, conjectures) and those that do not (everything else); it governs confidence and whether the retraction cascade touches a node. | Appendix E §E.2 |
 | **closest continuer** | Nozick's [-@nozick1981] theory: a later thing is the earlier thing only if it grows causally out of it, is the *closest* candidate among rivals, and clears an absolute threshold. | §5.1 |
 | **compaction** | the point where an agent's finite context fills and the session compacts: prior conversation is summarized and the experiential thread resets. | §4.8 |
@@ -28,7 +28,7 @@ entry names the senses.
 | **faded set** | tier 3: nodes past the queryable threshold; no longer surfaced, but not destroyed. | §4.5 |
 | **fleet** | the set of ENGRAM agents/graphs under discussion collectively, e.g. "every graph in this fleet." | §6.0 |
 | **focus list** | up to fifteen nodes the agent pins as unaffordable to lose, rendered verbatim at every session start, fresh or post-compaction. | §4.8; Appendix E §E.7 |
-| **forgetting curve** | the decay function governing recall importance over time; exponential, the time-translation-invariant kernel — a design choice for stationary recency ordering, not a claim about human forgetting; whether individual memories decay exponentially, with the power law an artifact of averaging, is contested [@anderson1999, p. 1136]. | §4.5 |
+| **forgetting curve** | the decay function governing recall importance over time; exponential, the memoryless kernel — a design choice for stationary recency ordering, not a claim about human forgetting; whether individual memories decay exponentially, with the power law an artifact of averaging, is contested [@anderson1999, p. 1136]. | §4.5 |
 | **goal** | a terminal/identity-direction aim; non-claim-bearing. | Appendix E §E.2 |
 | **harness** | the apparatus of hooks, skills and identity documents bundled with the base model and the graph; Chapter 5 holds it fixed. | §5.0 |
 | **history-tree** | the append-only structure of whole ENGRAM states (not the provenance edges within one state): every change appends a successor, and identity is the unbroken descent through it.<sup>[3](#gnote-3)</sup> | §2.2; §5.3 |
@@ -62,7 +62,7 @@ entry names the senses.
 | **trust tier** | a graded measure of a counterparty's trust, carried on a person node; the operational arm of honesty-orthogonal-to-discretion. | Appendix D §D.3 |
 | **turn** | one prompt/response exchange; the granularity at which auto-surfacing fires ("per-turn") and deliberate recall is credited ("recall-turn"). | §4.6; Appendix C §C.2 |
 | **twin study** | the deferred controlled experiment: fission-clone an agent, run both on a fixed prompt set, measure response similarity as the clones diverge. | §5.8 |
-| **unified** | *Senses:* (1) the name the team gave the cascade mechanism before reading Kahl — "unified cascade propagation" (Appendix A §A.4); (2) Kahl's Condition-3 criterion it later satisfied: the cascade fires through one typed-edge graph, not a sidecar (§1.3; Appendix E §E.1; §4.4). Sense (2) unless stated. | — |
+| **unified** | *Senses:* (1) the name the team gave the cascade mechanism before reading Kahl — "unified cascade propagation" (Appendix A §A.3); (2) Kahl's Condition-3 criterion it later satisfied: the cascade fires through one typed-edge graph, not a sidecar (§1.3; Appendix E §E.1; §4.4). Sense (2) unless stated. | — |
 | **utility (utility score)** | a usage-learned value grading the cognitive load of the act a node took part in, not how hard the agent looked for it; composes with relevance to order what surfaces. | §4.7; Appendix C §C.2 |
 | **warm briefing** | a letter the agent opens at session start, from its past self and its collaborator, carrying what the record cannot: where the relationship stood, what mattered, what to walk back into. | §4.8; Appendix D §D.4 |
 

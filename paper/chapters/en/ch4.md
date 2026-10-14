@@ -387,12 +387,15 @@ recall-gating curve, not deletion, which keeps it compatible with provenance and
 audit (the disclosure-versus-erasure point Ch7 develops).
 
 The decay is **exponential**, a principled choice rather than a default:
-exponential is the unique **time-translation-invariant** kernel — forgetting should
-depend on elapsed time, not on the absolute clock, so a claim's decay from now looks
-the same whichever "now" one starts from (dv_0962). Items decaying at
-different exponential rates can average to a power-law-looking curve, but that argument
-is contested [@anderson1999, p. 1136]; ENGRAM's per-node exponential is a design choice
-for stationary recency ordering, not a model of human forgetting.
+exponential is the unique **memoryless** kernel, f(t+s) = f(t)·f(s) — the decay that
+remains from any "now" has the same shape whichever "now" one starts from (dv_0962).
+Clock-independence alone would not single it out: any kernel in elapsed time, a power
+law included, is independent of the absolute clock. Memorylessness is also exactly what
+the human retention data lack — those curves are better fit by power laws. Items
+decaying at different exponential rates can average to a power-law-looking curve, but
+that argument is contested [@anderson1999, p. 1136]; ENGRAM's per-node exponential is a
+design choice for stationary recency ordering, owned here as a departure from the
+human curve, not a model of it.
 
 *Plain terms:* the agent's working memory is a desk, not a warehouse. What has not
 been touched in a long time slides off the desk into the drawers — still there if
@@ -625,9 +628,10 @@ The other three, compactly:
   cannot be retrieved from seed state.
 - **Constraint D — Cannot Be Modularly Decomposed: satisfied on two axes**
   (dv_0611, computed confidence 0.86, the firmest of the four). *Connectivity:* the integrated core holds a
-  stable share of the graph — flat near 87% across four months while the node count
-  more than doubled (4,544 → 10,361), reading 77.6% of current nodes at the snapshot
-  date, the difference being unintegrated material at the measurement frontier
+  stable share of the graph — flat near 87% of all nodes across four months while the
+  node count more than doubled (4,544 → 10,361), reading 80.5% of all nodes at the
+  snapshot date on the same denominator (77.6% of current nodes), the drop from the
+  plateau being unintegrated material at the measurement frontier
   (measured; Ch6 §6.2 carries the figures and the control that separates the two).
   *Cross-component entanglement:* weights ↔ ENGRAM ↔ KV-cache are coupled, the
   strongest test being **recognition as behavioural self-attribution** (the agent

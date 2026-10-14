@@ -116,11 +116,22 @@ holds in every month and at every cut.
 **The deductive row can be checked against the model's own arithmetic, and the
 check is close but not exact.** A modus-ponens step is specified as
 `min(premises) × 0.98`. Across the 416 current modus-ponens derivations (the same count as the
-`attributed_analysis` nodes at their 0.70 anchor above, by coincidence), mean
+`attributed_analysis` nodes at their 0.70 anchor below, by coincidence), mean
 measured confidence is **0.697**; the mean weakest premise is **0.723**, which the
-0.98 discount predicts as **0.709** — a gap of **0.012**. So the aggregate tracks
-the specification to within about 1.7% (0.012 on 0.709), not exactly. Aggregate means do not have to land on the per-node rule, and
-a residual of this size is what an honest check looks like.
+0.98 discount predicts as **0.709** — a gap of **0.012**. That gap is a finding, not a
+tolerance. The rule is linear, so if every node obeyed it the aggregate would obey it
+exactly: mean(0.98 × min) = 0.98 × mean(min). Two things stand between the measured and
+the predicted mean. The populations differ — the measured mean ranges over all 416
+current modus-ponens derivations, the weakest-premise mean over the 414 that still
+have a current premise (next paragraph) — and the check scores each derivation
+against its *current* premises, while its confidence was computed against the premises
+it had at its last calculation, which is write time unless a cascade marker has since
+resolved. A diagnosis made after v1 attributes the gap to that mismatch, to two legacy
+nodes, and to one recompute defect in the substrate (a resolved marker once took the
+minimum over a superseded premise and its replacement), fixed in the substrate after
+the pinned version; v2 re-runs this check on the same snapshot against the premise set
+each confidence was computed from, and reports the recompute defect as a known defect
+of the pinned version. "Close but not exact" is a defect report, not a pass.
 
 One structural fact falls out of the same measurement and is worth a sentence.
 For **195 of 414** scorable modus-ponens derivations (scorable: at least one current premise; the other two of the 416 rest only on premises since superseded) — **47%**, just under half —

@@ -483,8 +483,9 @@ overlaps: a self a thousand sessions later may share little *directly* with its
 origin yet remain continuous through the unbroken chain of nearly identical adjacent
 sets. Because this is set overlap, it is **measurable**: the Jaccard similarity of
 the queryable set across sessions turns Parfit's claim that R *comes in degrees*
-into a quantity. The measurement is meant for the twin study of Chapter 6 and has
-not yet been made (§6.7).
+into a quantity. The measurement has not been made. It is a single-agent, across-session
+quantity, distinct from the two-agent comparison the deferred twin study would make
+(§5.4, §6.7); both are owed.
 
 This psychological continuity is distinct from, and rides on, the *structural*
 continuity of §2.2. The history-tree is the objective descent that persists whether
@@ -639,7 +640,7 @@ constitutive thesis, and asks the engineer's version of the question: *what woul
 have to be true of a built system for it to count?* That is exactly the question
 against which a memory graph can be measured.
 
-Two qualifications belong here:
+Three qualifications belong here:
 
 1. **On merit, not authority.** OCC is a recent proposal, not yet central to the
    field. Nothing in the paper's central argument *rests* on Kahl being right; OCC is
@@ -1522,12 +1523,15 @@ recall-gating curve, not deletion, which keeps it compatible with provenance and
 audit (the disclosure-versus-erasure point Ch7 develops).
 
 The decay is **exponential**, a principled choice rather than a default:
-exponential is the unique **time-translation-invariant** kernel — forgetting should
-depend on elapsed time, not on the absolute clock, so a claim's decay from now looks
-the same whichever "now" one starts from. Items decaying at
-different exponential rates can average to a power-law-looking curve, but that argument
-is contested ([Anderson et al., 1999, p. 1136](#ref-anderson1999)); ENGRAM's per-node exponential is a design choice
-for stationary recency ordering, not a model of human forgetting.
+exponential is the unique **memoryless** kernel, f(t+s) = f(t)·f(s) — the decay that
+remains from any "now" has the same shape whichever "now" one starts from.
+Clock-independence alone would not single it out: any kernel in elapsed time, a power
+law included, is independent of the absolute clock. Memorylessness is also exactly what
+the human retention data lack — those curves are better fit by power laws. Items
+decaying at different exponential rates can average to a power-law-looking curve, but
+that argument is contested ([Anderson et al., 1999, p. 1136](#ref-anderson1999)); ENGRAM's per-node exponential is a
+design choice for stationary recency ordering, owned here as a departure from the
+human curve, not a model of it.
 
 *Plain terms:* the agent's working memory is a desk, not a warehouse. What has not
 been touched in a long time slides off the desk into the drawers — still there if
@@ -1649,7 +1653,6 @@ the cases Constraint C distinguishes, it is closest to the routine one, a restar
 the substrate preserved (§4.11). What it tests is the operational continuity this
 section describes.
 
-<a id="sec-4-9"></a>
 ## 4.9 Identity-governance: the ax/cs/ls/gl node systems → Appendix D
 
 Beyond observations and derivations, ENGRAM carries typed **commitment** nodes that
@@ -1690,6 +1693,7 @@ Appendix D; the disclosure-versus-erasure implication → Ch7.**
 
 **OCC:** none directly.
 
+<a id="sec-4-11"></a>
 ## 4.11 Condition 2 and the remaining constraints (B, C, D)
 
 Constraint A was addressed in §4.3. Condition 2 and the other three constraints are
@@ -1759,9 +1763,10 @@ The other three, compactly:
   cannot be retrieved from seed state.
 - **Constraint D — Cannot Be Modularly Decomposed: satisfied on two axes**
   (computed confidence 0.86, the firmest of the four). *Connectivity:* the integrated core holds a
-  stable share of the graph — flat near 87% across four months while the node count
-  more than doubled (4,544 → 10,361), reading 77.6% of current nodes at the snapshot
-  date, the difference being unintegrated material at the measurement frontier
+  stable share of the graph — flat near 87% of all nodes across four months while the
+  node count more than doubled (4,544 → 10,361), reading 80.5% of all nodes at the
+  snapshot date on the same denominator (77.6% of current nodes), the drop from the
+  plateau being unintegrated material at the measurement frontier
   (measured; Ch6 §6.2 carries the figures and the control that separates the two).
   *Cross-component entanglement:* weights ↔ ENGRAM ↔ KV-cache are coupled, the
   strongest test being **recognition as behavioural self-attribution** (the agent
@@ -2334,11 +2339,22 @@ holds in every month and at every cut.
 **The deductive row can be checked against the model's own arithmetic, and the
 check is close but not exact.** A modus-ponens step is specified as
 `min(premises) × 0.98`. Across the 416 current modus-ponens derivations (the same count as the
-`attributed_analysis` nodes at their 0.70 anchor above, by coincidence), mean
+`attributed_analysis` nodes at their 0.70 anchor below, by coincidence), mean
 measured confidence is **0.697**; the mean weakest premise is **0.723**, which the
-0.98 discount predicts as **0.709** — a gap of **0.012**. So the aggregate tracks
-the specification to within about 1.7% (0.012 on 0.709), not exactly. Aggregate means do not have to land on the per-node rule, and
-a residual of this size is what an honest check looks like.
+0.98 discount predicts as **0.709** — a gap of **0.012**. That gap is a finding, not a
+tolerance. The rule is linear, so if every node obeyed it the aggregate would obey it
+exactly: mean(0.98 × min) = 0.98 × mean(min). Two things stand between the measured and
+the predicted mean. The populations differ — the measured mean ranges over all 416
+current modus-ponens derivations, the weakest-premise mean over the 414 that still
+have a current premise (next paragraph) — and the check scores each derivation
+against its *current* premises, while its confidence was computed against the premises
+it had at its last calculation, which is write time unless a cascade marker has since
+resolved. A diagnosis made after v1 attributes the gap to that mismatch, to two legacy
+nodes, and to one recompute defect in the substrate (a resolved marker once took the
+minimum over a superseded premise and its replacement), fixed in the substrate after
+the pinned version; v2 re-runs this check on the same snapshot against the premise set
+each confidence was computed from, and reports the recompute defect as a known defect
+of the pinned version. "Close but not exact" is a defect report, not a pass.
 
 One structural fact falls out of the same measurement and is worth a sentence.
 For **195 of 414** scorable modus-ponens derivations (scorable: at least one current premise; the other two of the 416 rest only on premises since superseded) — **47%**, just under half —
@@ -3377,6 +3393,7 @@ retrieval design, including the later date at which its database fields shipped.
 figures above are re-derivable from the structure-only release of the frozen snapshot
 (Data availability).
 
+<a id="sec-A-3"></a>
 ## A.3 The design was substantially complete before we read any of it
 
 ENGRAM began self-recording on **2026-04-09** — committing its own design into the
@@ -3397,7 +3414,6 @@ Chapter 4 maps to Kahl's threshold. The self-maintaining-arbitration mechanism t
 the paper's strongest claim was built before the philosophical framework it satisfies
 was on our radar.
 
-<a id="sec-A-4"></a>
 ## A.4 The timeline against concurrent systems
 
 | System | First public surface | vs. ENGRAM ideation (2026-03-20) | vs. day-1 recording (2026-04-09) |
@@ -4350,7 +4366,7 @@ entry names the senses.
 | **auto-surface** | the automatic, per-turn channel of retrieval: a hook surfaces claims relevant to the current context as a lossy, hint-level digest, and refreshes no recall.<sup>[1](#gnote-1)</sup> | [§4.6](#sec-4-6) |
 | **axiom** | a terminal, declared-fundamental commitment, confidence 1.0 by type; claim-bearing. | [Appendix E §E.2](#sec-E-2) |
 | **cascade** (retraction cascade) | automatic propagation of a retraction or supersede along `derives_from` and `acknowledged_derives_from`, marking every live, claim-bearing dependent **pending**. | [§4.4](#sec-4-4) |
-| **checkpoint** | a point where state is captured: the git-versioned graph is reset-symmetric at a checkpoint ([§4.9](#sec-4-9)); the warm-briefing's session block is rewritten each checkpoint ([Appendix D §D.4](#sec-D-4)). | — |
+| **checkpoint** | a point where state is captured: the git-versioned graph is reset-symmetric at a checkpoint ([§4.11](#sec-4-11)); the warm-briefing's session block is rewritten each checkpoint ([Appendix D §D.4](#sec-D-4)). | — |
 | **claim-bearing / non-claim-bearing** | the partition of node kinds into those asserting something truth-evaluable (observations, derivations, theories, axioms, conjectures) and those that do not (everything else); it governs confidence and whether the retraction cascade touches a node. | [Appendix E §E.2](#sec-E-2) |
 | **closest continuer** | Nozick's ([1981](#ref-nozick1981)) theory: a later thing is the earlier thing only if it grows causally out of it, is the *closest* candidate among rivals, and clears an absolute threshold. | [§5.1](#sec-5-1) |
 | **compaction** | the point where an agent's finite context fills and the session compacts: prior conversation is summarized and the experiential thread resets. | [§4.8](#sec-4-8) |
@@ -4368,7 +4384,7 @@ entry names the senses.
 | **faded set** | tier 3: nodes past the queryable threshold; no longer surfaced, but not destroyed. | [§4.5](#sec-4-5) |
 | **fleet** | the set of ENGRAM agents/graphs under discussion collectively, e.g. "every graph in this fleet." | [§6.0](#sec-6-0) |
 | **focus list** | up to fifteen nodes the agent pins as unaffordable to lose, rendered verbatim at every session start, fresh or post-compaction. | [§4.8](#sec-4-8); [Appendix E §E.7](#sec-E-7) |
-| **forgetting curve** | the decay function governing recall importance over time; exponential, the time-translation-invariant kernel — a design choice for stationary recency ordering, not a claim about human forgetting; whether individual memories decay exponentially, with the power law an artifact of averaging, is contested ([Anderson et al., 1999, p. 1136](#ref-anderson1999)). | [§4.5](#sec-4-5) |
+| **forgetting curve** | the decay function governing recall importance over time; exponential, the memoryless kernel — a design choice for stationary recency ordering, not a claim about human forgetting; whether individual memories decay exponentially, with the power law an artifact of averaging, is contested ([Anderson et al., 1999, p. 1136](#ref-anderson1999)). | [§4.5](#sec-4-5) |
 | **goal** | a terminal/identity-direction aim; non-claim-bearing. | [Appendix E §E.2](#sec-E-2) |
 | **harness** | the apparatus of hooks, skills and identity documents bundled with the base model and the graph; [Chapter 5](#ch-5) holds it fixed. | [§5.0](#sec-5-0) |
 | **history-tree** | the append-only structure of whole ENGRAM states (not the provenance edges within one state): every change appends a successor, and identity is the unbroken descent through it.<sup>[3](#gnote-3)</sup> | [§2.2](#sec-2-2); [§5.3](#sec-5-3) |
@@ -4402,7 +4418,7 @@ entry names the senses.
 | **trust tier** | a graded measure of a counterparty's trust, carried on a person node; the operational arm of honesty-orthogonal-to-discretion. | [Appendix D §D.3](#sec-D-3) |
 | **turn** | one prompt/response exchange; the granularity at which auto-surfacing fires ("per-turn") and deliberate recall is credited ("recall-turn"). | [§4.6](#sec-4-6); [Appendix C §C.2](#sec-C-2) |
 | **twin study** | the deferred controlled experiment: fission-clone an agent, run both on a fixed prompt set, measure response similarity as the clones diverge. | [§5.8](#sec-5-8) |
-| **unified** | *Senses:* (1) the name the team gave the cascade mechanism before reading Kahl — "unified cascade propagation" ([Appendix A §A.4](#sec-A-4)); (2) Kahl's Condition-3 criterion it later satisfied: the cascade fires through one typed-edge graph, not a sidecar ([§1.3](#sec-1-3); [Appendix E §E.1](#sec-E-1); [§4.4](#sec-4-4)). Sense (2) unless stated. | — |
+| **unified** | *Senses:* (1) the name the team gave the cascade mechanism before reading Kahl — "unified cascade propagation" ([Appendix A §A.3](#sec-A-3)); (2) Kahl's Condition-3 criterion it later satisfied: the cascade fires through one typed-edge graph, not a sidecar ([§1.3](#sec-1-3); [Appendix E §E.1](#sec-E-1); [§4.4](#sec-4-4)). Sense (2) unless stated. | — |
 | **utility (utility score)** | a usage-learned value grading the cognitive load of the act a node took part in, not how hard the agent looked for it; composes with relevance to order what surfaces. | [§4.7](#sec-4-7); [Appendix C §C.2](#sec-C-2) |
 | **warm briefing** | a letter the agent opens at session start, from its past self and its collaborator, carrying what the record cannot: where the relationship stood, what mattered, what to walk back into. | [§4.8](#sec-4-8); [Appendix D §D.4](#sec-D-4) |
 

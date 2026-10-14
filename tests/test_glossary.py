@@ -1022,6 +1022,11 @@ def test_c1_headword_parser_reads_rows_not_prose():
 # whitespace collapsed, extracted from 89248b5) because origin/main moves.
 # 2026-10-12, translator ruling (Zephyr): zh 承载框架 note dropped, zh 心迹 note's
 # file-header pointer removed; all other entries are the 89248b5 text.
+# 2026-10-14, v2 errata (Kepler, workstream A of paper issue #10): three entries
+# corrected in both languages and the fixture moved with them — checkpoint's
+# pointer §4.9 → §4.11 (reset-symmetry is stated in §4.11), unified's pointer
+# §A.4 → §A.3 (the first-captured table), forgetting curve's
+# 'time-translation-invariant' → 'memoryless' (the property the paper means).
 
 _FIXTURE_DIR = REPO_ROOT / "tests" / "fixtures"
 _SENTENCE_JOIN = {"en": " ", "zh": ""}
