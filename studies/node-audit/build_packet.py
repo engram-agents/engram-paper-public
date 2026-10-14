@@ -3,7 +3,7 @@
 (paper v2, workstream D; protocol: D-audit-protocol.md).
 
     build_packet.py --db PATH --seed TEXT --out DIR --controls PATH
-                    [--draw-only] [--drawn-ids PATH] [--expect-sha256 HEX]
+                    [--draw-only] [--author-arm] [--drawn-ids PATH] [--expect-sha256 HEX]
 
 CONTRACT (each clause is asserted by tests/test_node_audit_sampler.py)
 
@@ -42,6 +42,45 @@ CONTRACT (each clause is asserted by tests/test_node_audit_sampler.py)
    the census, and no control id. --draw-only writes only drawn_ids.json.
 6. Determinism. Same DB + seed + controls -> byte-identical drawn_ids.json. A
    different seed gives a different draw.
+
+AUTHOR ARM (--author-arm; PROTOCOL.md Amendment 4, "Arm A, the author"). Same inputs as above.
+Writes ONLY packet_author_blind.md, blind_template.jsonl, packet_author_verdict.md,
+verdict_template_author.jsonl, author_arm_manifest.json and TYPE_TABLE.md under --out, and no reader packet.
+drawn_ids.json is written exactly as in the default mode. Refused together with --draw-only.
+  A1 No control is ever a JUDGED node: no control id in the list of nodes rendered into either
+     packet and none as a row id in blind_template.jsonl or verdict_template_author.jsonl (the
+     author is excluded from the controls so he never grades a node whose answer he knows). This
+     is decided from the node id lists the build renders from, never from heading-shaped text, so
+     a field holding "## Node 1 of 9: <id>" can neither forge nor hide a judged node. Violation ->
+     AuthorPacketLeak, listing every (file, line, id), before any author file is written. An
+     occurrence outside every node block (the packet header, TYPE_TABLE.md) also refuses.
+  A1b Every other occurrence of a control id (a linked premise, claim or chain text inside a
+     SAMPLED node's block) is not a leak: the readers see the identical text, so redacting it
+     would break A4 parity. It is recorded in the private author_arm_manifest.json,
+     {"control_mentions": {sampled id: [control ids]}, "n_sampled_nodes_mentioning_a_control": N},
+     sorted. Each sampled node's block is rendered individually and scanned on its own, so a
+     mention is attributed to the node whose block holds it (known structure, no re-parsing of
+     rendered text). Matching is whole-token: a control id matches where it is not preceded and
+     not followed by a character in [A-Za-z0-9_] (so dv_0002 does not match dv_00021 or xdv_0002,
+     but does match dv_0002-x, "dv_0002." and a quoted 'dv_0002'). It is case-sensitive: DV_0002
+     does not match.
+     The analysis reports the author arm with and without these nodes.
+  A2 Declared type withheld in the blind packet. No line of packet_author_blind.md starts with
+     "- declared reasoning_type:" and blind_template.jsonl has no reasoning_type key. Reasoning
+     words inside a node's own claim or chain text are content and are NOT redacted.
+  A3 Blind set = exactly the derivations among the sampled ids (observations have no
+     reasoning type; no control). Order: Mira's order, filtered to those derivations.
+  A4 Verdict packet parity. packet_author_verdict.md holds all sampled ids and no control, in
+     Mira's order (the random.Random(f"{seed}:order:mira") shuffle of sampled U controls)
+     with the controls removed. Each node block equals its block in packet_mira.md except
+     the "## Node i of n" numbering, here n = the sampled count.
+  A5 Confidence withheld: the same assert_packet_clean covers author-mode nodes.
+  A6 Deterministic: same inputs, byte-identical files.
+  A7 The default mode's output, every file it writes (the five files under --out and
+     drawn_ids.json), is byte-unchanged by the author arm (tests/test_node_audit_author_packets.py
+     holds golden hashes taken from the code before the arm was added; in drawn_ids.json only
+     the embedded snapshot file hash is masked, since it depends on the sqlite version that
+     wrote the fixture DB).
 
 The snapshot is opened read-only and its sha256 must match; a DB whose current
 derivations have empty claim text (the stripped shape) is refused.
@@ -108,6 +147,10 @@ CHECKS = {
 
 class AuditError(Exception):
     """A refusal with a name; the tool never improvises past one."""
+
+
+class AuthorPacketLeak(AuditError):
+    """A control id appears in an author-arm output (A1). Never silently dropped or redacted."""
 
 
 class StrippedSnapshotError(AuditError):
@@ -299,12 +342,14 @@ def _q(text):
     return "\n".join("> " + ln for ln in (text if text is not None else "(none)").split("\n"))
 
 
-def render_node(i, n, node):
+def render_node(i, n, node, blind=False):
+    """`blind=True` omits the declared-reasoning_type line and the blank line after it (A2)."""
     out = [f"## Node {i} of {n}: {node['id']}", "", f"- id: {node['id']}", f"- type: {node['type']}", "",
            "claim:", _q(node["claim"]), ""]
     if node["kind"] == "derivation":
-        out += [f"- declared reasoning_type: {node['reasoning_type'] or '(none declared)'}", "",
-                "logical chain:", _q(node["logical_chain"]), ""]
+        if not blind:
+            out += [f"- declared reasoning_type: {node['reasoning_type'] or '(none declared)'}", ""]
+        out += ["logical chain:", _q(node["logical_chain"]), ""]
         out.append(f"linked nodes ({len(node['links'])}):")
         for lk in node["links"]:
             out += ["", f"### {lk['relation']}: {lk['id']} ({lk['type']})", "claim:", _q(lk["claim"])]
@@ -347,6 +392,98 @@ def write_packets(con, seed, sampled_ids, zeph, controls, out):
             "\n".join(template_line(nodes[i]) for i in order) + "\n")
 
 
+BLIND_HEADER = ("# Node audit packet: author blind pass\n\nFor each derivation, write the reasoning type you "
+                "would file now, from the table below; the declared type is withheld. Fill in "
+                "blind_template.jsonl (blind_type, reason).\n\n")
+DECLARED_LINE = "- declared reasoning_type:"
+
+
+def control_occurrences(name, text, controls):
+    """Every (file name, 1-based line, control id) where a control id occurs as a whole token."""
+    hits = []
+    for cid in controls:
+        pat = re.compile(r"(?<![A-Za-z0-9_])" + re.escape(cid) + r"(?![A-Za-z0-9_])")
+        for ln, line in enumerate(text.split("\n"), 1):
+            hits += [(name, ln, cid)] * len(pat.findall(line))
+    return sorted(hits)
+
+
+def scan_blocks(name, prefix, ids, blocks, controls):
+    """Attribute control occurrences in one packet file from its KNOWN structure, never by
+    re-parsing rendered text. `ids[k]` is the node rendered as `blocks[k]` (file text is
+    prefix + "\n".join(blocks)). A block whose node id is a control is a JUDGED node: every
+    occurrence in it is a leak, with its true line number. An occurrence in the prefix is a leak
+    (unattributable). Any occurrence in the block of a sampled node is a mention, attributed to
+    that node, wherever in its block it sits (so a heading-shaped string inside a field can neither
+    forge a judged node nor move a mention). Returns (leaks, {sampled id: set of control ids})."""
+    ctl = set(controls)
+    leaks = control_occurrences(name, prefix, controls)
+    mentions = {}
+    start = prefix.count("\n") + 1  # file line on which the next block starts
+    for nid, block in zip(ids, blocks):
+        hits = control_occurrences(name, block, controls)
+        if nid in ctl:
+            leaks += [(name, start + ln - 1, cid) for _, ln, cid in hits]
+        else:
+            for _, _, cid in hits:
+                mentions.setdefault(nid, set()).add(cid)
+        start += block.count("\n") + 1
+    return leaks, mentions
+
+
+def scan_template_rows(name, ids, controls):
+    """Leaks in a *.jsonl template: one row per id, so a control id is a judged row."""
+    return [(name, k + 1, nid) for k, nid in enumerate(ids) if nid in set(controls)]
+
+
+def write_author_packets(con, seed, sampled_ids, controls, out):
+    sampled = sorted(sampled_ids)
+    nodes = {i: build_node(con, i) for i in sampled}
+    assert_packet_clean(list(nodes.values()))
+    order = sorted(set(sampled) | set(controls))
+    random.Random(f"{seed}:order:mira").shuffle(order)
+    order = [i for i in order if i in set(sampled)]  # Mira's order, controls removed
+    blind_ids = [i for i in order if nodes[i]["kind"] == "derivation"]
+    blocks_b = [render_node(k + 1, len(blind_ids), nodes[i], blind=True) for k, i in enumerate(blind_ids)]
+    blocks_v = [render_node(k + 1, len(order), nodes[i]) for k, i in enumerate(order)]
+    prefix_b = BLIND_HEADER + TYPE_TABLE_MD + "\n"
+    prefix_v = HEADER + TYPE_TABLE_MD + "\n"
+    files = {
+        "packet_author_blind.md": prefix_b + "\n".join(blocks_b),
+        "blind_template.jsonl": "".join(
+            json.dumps({"id": i, "blind_type": None, "reason": None}, ensure_ascii=False) + "\n"
+            for i in blind_ids),
+        "packet_author_verdict.md": prefix_v + "\n".join(blocks_v),
+        "verdict_template_author.jsonl": "\n".join(template_line(nodes[i]) for i in order) + "\n",
+        "TYPE_TABLE.md": TYPE_TABLE_MD,
+    }
+    if (any(ln.startswith(DECLARED_LINE) for ln in files["packet_author_blind.md"].split("\n"))
+            or "reasoning_type" in files["blind_template.jsonl"]):
+        raise AuditError("the declared reasoning_type reached the blind packet")
+    leaks, mentions = [], {}
+    for name, prefix, ids, blocks in (("packet_author_blind.md", prefix_b, blind_ids, blocks_b),
+                                      ("packet_author_verdict.md", prefix_v, order, blocks_v)):
+        lk, mn = scan_blocks(name, prefix, ids, blocks, controls)
+        leaks += lk
+        for nid, cids in mn.items():
+            mentions.setdefault(nid, set()).update(cids)
+    leaks += scan_template_rows("blind_template.jsonl", blind_ids, controls)
+    leaks += scan_template_rows("verdict_template_author.jsonl", order, controls)
+    leaks += control_occurrences("TYPE_TABLE.md", files["TYPE_TABLE.md"], controls)
+    leaks = sorted(leaks)
+    if leaks:
+        raise AuthorPacketLeak(
+            f"{len(leaks)} control id(s) are judged nodes (or unattributable) in author-arm output; "
+            "nothing was written:\n" + "\n".join(f"  {name}:{ln}: {cid}" for name, ln, cid in leaks))
+    files["author_arm_manifest.json"] = json.dumps(
+        {"control_mentions": {k: sorted(v) for k, v in sorted(mentions.items())},
+         "n_sampled_nodes_mentioning_a_control": len(mentions)},
+        indent=2, sort_keys=True, ensure_ascii=False) + "\n"
+    out.mkdir(parents=True, exist_ok=True)
+    for name, text in files.items():
+        (out / name).write_text(text)
+
+
 # ------------------------------------------------------------------ main
 def repo_root():
     here = Path(__file__).resolve().parent
@@ -361,9 +498,13 @@ def main(argv=None):
     ap.add_argument("--out", required=True)
     ap.add_argument("--controls", required=True)
     ap.add_argument("--draw-only", action="store_true")
+    ap.add_argument("--author-arm", action="store_true",
+                    help="write only the Arm A (author) blind and verdict packets")
     ap.add_argument("--drawn-ids", default=str(Path(__file__).resolve().parent / "drawn_ids.json"))
     ap.add_argument("--expect-sha256", default=SNAPSHOT_SHA256)
     a = ap.parse_args(argv)
+    if a.author_arm and a.draw_only:
+        raise AuditError("--author-arm cannot be combined with --draw-only (the arm writes packets)")
 
     out = Path(a.out).resolve()
     root = repo_root()
@@ -383,7 +524,9 @@ def main(argv=None):
     drawn = {"seed": a.seed, "snapshot_sha256": got, "census": census, "allocation": alloc,
              "sampled": sampled, "zephyr": zeph}
     Path(a.drawn_ids).write_text(json.dumps(drawn, indent=2, sort_keys=True, ensure_ascii=False) + "\n")
-    if not a.draw_only:
+    if a.author_arm:
+        write_author_packets(con, a.seed, [i for v in sampled.values() for i in v], controls, out)
+    elif not a.draw_only:
         write_packets(con, a.seed, [i for v in sampled.values() for i in v], zeph, controls, out)
     print(f"allocation (seed {a.seed!r}):")
     for k, v in alloc.items():
