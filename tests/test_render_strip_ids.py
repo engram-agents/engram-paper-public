@@ -316,8 +316,10 @@ FORM_G_ROWS = [
      "| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | 0.59 (strict not met); extension: none, a proposal |"),
     # #88 dropped the dv_0605 half of this cell (App B's synthesis node no
     # longer exists as a bare citation) -- was "dv_0606 0.39; dv_0605 0.95".
-    ("| C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) | dv_0606 0.39 |",
-     "| C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) | 0.39 |"),
+    # v2 B3 (paper-public #10): the C3 cell names operational binding and dates the
+    # survey; the pin moves with the source text.
+    ("| C3 Self-Maintaining Arbitration | **strict (operational binding); sole satisfier, 2026-05-12 survey** | enabled (arch) + active (pilot anchor) | dv_0606 0.39 |",
+     "| C3 Self-Maintaining Arbitration | **strict (operational binding); sole satisfier, 2026-05-12 survey** | enabled (arch) + active (pilot anchor) | 0.39 |"),
     ("| A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) | dv_0608 0.35 |",
      "| A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) | 0.35 |"),
     ("| B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract | dv_0609 0.58 |",

@@ -41,7 +41,7 @@ The chapter in one table; each row is a section below.
 |---|---|---|---|
 | Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle **[gap SOLID ob_5423; primary first-hand 2026-07-02]** | — (structural prerequisite) |
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang [-@josang2013] **[GROUNDED ob_2551/dv_0965 → dv_1289]**, with a stated divergence | **Constraint A** (unified policy-selection) |
-| Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
+| Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking **[gap SOLID; primary first-hand 2026-07-02]** | **Condition 3** — Self-Maintaining Arbitration (strict, through operational binding; sole satisfier of the field surveyed 2026-05-12) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
 | Forgetting (§4.5) | bounded retrieval over time; defines the queryable set | Ebbinghaus [SOLID] + Anderson-Schooler **[GROUNDED ob_2552/dv_0966]** | — (scopes what Cond-3 arbitration ranges over) |
 | Auto-surface and deliberate recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction [@tulving1985, p. 3] [SOLID] + Tulving & Thomson's encoding specificity [@tulving1973, p. 369] [SOLID] | — (binds Cond 3: a correction cannot be suppressed by not looking) |
 | Shared retrieval and ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL **[ob_0647/ob_0651, prior read]** + spaced-repetition [SOLID] | — |
@@ -283,8 +283,8 @@ distinction rests on how a correction is *bound* — a state change the substrat
 performs versus an analysis a caller may run — and it is what separates ENGRAM from
 its closest competitor (dv_1657).
 
-**OCC — Condition 3 (Self-Maintaining Arbitration): strict satisfaction, sole
-satisfier in the surveyed field.** Kahl's third condition asks that conflicts
+**OCC — Condition 3 (Self-Maintaining Arbitration): strict satisfaction through
+operational binding; sole satisfier of the field as surveyed on 2026-05-12.** Kahl's third condition asks that conflicts
 among commitments be resolved *within a unified deliberative architecture* while the
 agent stays the same subject. The cascade meets all three properties structurally
 (dv_0606): **unified** (it fires through the same typed-edge graph the agent commits
@@ -333,7 +333,8 @@ and puts every remaining judgement to the agent. This is the line between a
 substrate that maintains its own consistency and one that would quietly make up the
 agent's mind for it; Condition 3 asks for the former.
 
-**Why ENGRAM is the sole satisfier** (the first-hand survey of ten systems and one survey
+**Why operational binding is the missing piece — and why ENGRAM was the surveyed
+field's sole satisfier on 2026-05-12** (the first-hand survey of ten systems and one survey
 paper, Appendix B; the conclusion rests on each per-system verdict there): the field has converged on the
 necessary *primitives* (typed edges, provenance, cascade-traversable graphs,
 supersede semantics), but those are necessary, not sufficient; what is missing
@@ -358,7 +359,7 @@ synthesizing claim and points there.
 | Anthropic memory tool | No — no claim structure (manual coherence) [@claudedocs2026] |
 | Memory survey 2026 | No — named as aspiration, no implementation |
 | TierMem | No — no contradiction construct described (its step named 'Conflict Retrieval' only retrieves similar summary units for a merge decision) [@zhu2026, App. A.6, p. 12] |
-| **ENGRAM** | **Yes** — strict satisfaction, sole satisfier |
+| **ENGRAM** | **Yes** — strict satisfaction through operational binding; the sole satisfier of this set as of 2026-05-12 |
 
 Appendix B gives each verdict's evidence and quotes.
 
@@ -436,7 +437,10 @@ present; and, with Thomson, encoding specificity — "what is stored determines 
 **OCC:** none of its own, but auto-surfacing is the **binding half of Condition 3**
 (§4.4): it is what makes "the agent cannot quietly ignore a correction" true — the
 pending mark is guaranteed to reach the agent — the next time the claim becomes
-relevant, or at the latest in the consolidation sweep (§4.4).
+relevant, or at the latest in the consolidation sweep (§4.4). One boundary belongs
+here: the sweep is a step of the sleep routine — an instruction the agent follows —
+while the derive-time refusal of a contested or stale premise is code that no routine
+can skip; the binding that holds without the agent's cooperation is the second.
 
 **Scope (measured on ourselves).** The binding claim is exactly as narrow as stated:
 it holds for *cascade flags*, which surface unbidden. It does not generalize to "the
@@ -650,7 +654,7 @@ The other three, compactly:
 |---|---|---|---|
 | C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active | dv_0926 0.39 |
 | C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | dv_0578 0.59 (strict not met); extension: none, a proposal |
-| C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) | dv_0606 0.39 |
+| C3 Self-Maintaining Arbitration | **strict (operational binding); sole satisfier, 2026-05-12 survey** | enabled (arch) + active (pilot anchor) | dv_0606 0.39 |
 | A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) | dv_0608 0.35 |
 | B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract | dv_0609 0.58 |
 | C Non-Trivial Reset | satisfied trivially | enabled | dv_0610 |

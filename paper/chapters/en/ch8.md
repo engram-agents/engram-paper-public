@@ -47,7 +47,8 @@ within the convergence**:
 
 > ENGRAM satisfies **two of Kahl's three conditions outright** — the Diachronic
 > Constraint via a decision/consequence coupling, and Self-Maintaining Arbitration
-> *strictly, as the sole satisfier in the surveyed field* — **closes the
+> *strictly, through operational binding — the sole satisfier of the field as surveyed
+> on 2026-05-12* — **closes the
 > architectural deficit** Kahl diagnoses, and for the third (Non-Interchangeability
 > under reset) **does not meet the strict text** but offers a principled type/token
 > extension for digital substrates.
