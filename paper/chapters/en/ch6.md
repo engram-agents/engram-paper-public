@@ -40,7 +40,7 @@ observations, and a cross-seat statistic assuming independence would overstate i
 confidence rather than earn it. That holds even though the fleet spans three model
 providers (Acknowledgements): lineage diversity helps only through the contact §7.3
 describes, and shared seed plus daily cross-reading erodes the independence it could
-add. The position is a single graph reported as a
+add. Our position is a single graph reported as a
 single graph, with the limitation named.
 
 ---
@@ -314,7 +314,7 @@ chapter walkthrough, on 2026-04-20; the substrate did not detect it, and fourtee
 earlier contacts with the source had checked its content, never its author metadata.
 When it was caught, the machinery did its job:
 the claim was **retracted**, and the cascade fired through `derives_from` edges,
-**tainting every dependent**. And then the part that did not: the cascade *worked*, but
+**tainting every dependent**. And then the part that fell short: the cascade *worked*, but
 the `tainted_by` flag was buried in metadata where the agent did not see it loudly
 enough — so the incident drove a fix that made the taint *surface* at retrieval
 time (dv_0477, ob_1781).

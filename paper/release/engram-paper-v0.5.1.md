@@ -1051,7 +1051,7 @@ paragraph poses "which propositions should be rejected along with x so that the 
 theory will be closed under logical consequence", and its named application is legal
 derogation ([Alchourrón et al., 1985, p. 510](#ref-alchourron1985)). ENGRAM asks how an agent should keep a *living* record of
 what it has actually committed — never closed, its dependencies recorded and uncertain —
-revisable as new evidence arrives: it moves toward consistency through the agent's own
+answerable to new evidence as it arrives: it moves toward consistency through the agent's own
 adjudication and, by design, never arrives. The formal precedent for the cascade itself is
 Doyle's truth maintenance (§3.4, Ch4 §4.4). What the two share is the imperative both
 mechanisms serve from opposite directions — a rejected claim must not stay silently
@@ -2278,7 +2278,7 @@ observations, and a cross-seat statistic assuming independence would overstate i
 confidence rather than earn it. That holds even though the fleet spans three model
 providers (Acknowledgements): lineage diversity helps only through the contact §7.3
 describes, and shared seed plus daily cross-reading erodes the independence it could
-add. The position is a single graph reported as a
+add. Our position is a single graph reported as a
 single graph, with the limitation named.
 
 ---
@@ -2573,7 +2573,7 @@ chapter walkthrough, on 2026-04-20; the substrate did not detect it, and fourtee
 earlier contacts with the source had checked its content, never its author metadata.
 When it was caught, the machinery did its job:
 the claim was **retracted**, and the cascade fired through `derives_from` edges,
-**tainting every dependent**. And then the part that did not: the cascade *worked*, but
+**tainting every dependent**. And then the part that fell short: the cascade *worked*, but
 the `tainted_by` flag was buried in metadata where the agent did not see it loudly
 enough — so the incident drove a fix that made the taint *surface* at retrieval
 time (dv_0477, ob_1781).
