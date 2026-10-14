@@ -1139,7 +1139,7 @@ The chapter in one table; each row is a section below.
 |---|---|---|---|
 | Typed nodes/edges + provenance (§4.2) | claim graph with epistemic lineage | TMS/Doyle | — (structural prerequisite) |
 | Reasoning-type confidence (§4.3) | computed graded belief by *argument shape* | Subjective Logic/Jøsang ([2013](#ref-josang2013)), with a stated divergence | **Constraint A** (unified policy-selection) |
-| Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking | **Condition 3** — Self-Maintaining Arbitration (strict; sole satisfier) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
+| Retraction cascade (§4.4) | automatic error-correction through `derives_from` | TMS backtracking | **Condition 3** — Self-Maintaining Arbitration (strict, through operational binding; sole satisfier of the field surveyed 2026-05-12) **+ Condition 1** (Diachronic, via the decision/consequence dyad) |
 | Forgetting (§4.5) | bounded retrieval over time; defines the queryable set | Ebbinghaus + Anderson-Schooler | — (scopes what Cond-3 arbitration ranges over) |
 | Auto-surface and deliberate recall (§4.6) | cue-dependent retrieval without intentional reach | Tulving's autonoetic/noetic distinction ([Tulving, 1985, p. 3](#ref-tulving1985)) + Tulving & Thomson's encoding specificity ([Tulving & Thomson, 1973, p. 369](#ref-tulving1973)) | — (binds Cond 3: a correction cannot be suppressed by not looking) |
 | Shared retrieval and ranking (§4.7) | usage-learned composite ordering → **Appx C** | MemRL + spaced-repetition | — |
@@ -1381,8 +1381,8 @@ distinction rests on how a correction is *bound* — a state change the substrat
 performs versus an analysis a caller may run — and it is what separates ENGRAM from
 its closest competitor.
 
-**OCC — Condition 3 (Self-Maintaining Arbitration): strict satisfaction, sole
-satisfier in the surveyed field.** Kahl's third condition asks that conflicts
+**OCC — Condition 3 (Self-Maintaining Arbitration): strict satisfaction through
+operational binding; sole satisfier of the field as surveyed on 2026-05-12.** Kahl's third condition asks that conflicts
 among commitments be resolved *within a unified deliberative architecture* while the
 agent stays the same subject. The cascade meets all three properties structurally: **unified** (it fires through the same typed-edge graph the agent commits
 into, not a sidecar), **internal** (a substrate state change, not an opt-in query),
@@ -1430,7 +1430,8 @@ and puts every remaining judgement to the agent. This is the line between a
 substrate that maintains its own consistency and one that would quietly make up the
 agent's mind for it; Condition 3 asks for the former.
 
-**Why ENGRAM is the sole satisfier** (the first-hand survey of ten systems and one survey
+**Why operational binding is the missing piece — and why ENGRAM was the surveyed
+field's sole satisfier on 2026-05-12** (the first-hand survey of ten systems and one survey
 paper, Appendix B; the conclusion rests on each per-system verdict there): the field has converged on the
 necessary *primitives* (typed edges, provenance, cascade-traversable graphs,
 supersede semantics), but those are necessary, not sufficient; what is missing
@@ -1455,7 +1456,7 @@ synthesizing claim and points there.
 | Anthropic memory tool | No — no claim structure (manual coherence) ([*Memory Tool*, n.d.](#ref-claudedocs2026)) |
 | Memory survey 2026 | No — named as aspiration, no implementation |
 | TierMem | No — no contradiction construct described (its step named 'Conflict Retrieval' only retrieves similar summary units for a merge decision) ([Zhu et al., 2026, App. A.6, p. 12](#ref-zhu2026)) |
-| **ENGRAM** | **Yes** — strict satisfaction, sole satisfier |
+| **ENGRAM** | **Yes** — strict satisfaction through operational binding; the sole satisfier of this set as of 2026-05-12 |
 
 Appendix B gives each verdict's evidence and quotes.
 
@@ -1577,7 +1578,11 @@ present; and, with Thomson, encoding specificity — "what is stored determines 
 **OCC:** none of its own, but auto-surfacing is the **binding half of Condition 3**
 (§4.4): it is what makes "the agent cannot quietly ignore a correction" true — the
 pending mark is guaranteed to reach the agent — the next time the claim becomes
-relevant, or at the latest in the consolidation sweep (§4.4).
+relevant, or at the latest in the consolidation sweep (§4.4). One boundary belongs
+here: the sweep is a step of the sleep routine — an instruction the agent follows —
+while the derive-time refusal of a stale or contested premise is code that no routine
+can skip, and for a contested premise can be passed only by an explicit, audit-stamped
+override; the binding that holds without the agent's cooperation is the second.
 
 **Scope (measured on ourselves).** The binding claim is exactly as narrow as stated:
 it holds for *cascade flags*, which surface unbidden. It does not generalize to "the
@@ -1793,7 +1798,7 @@ The other three, compactly:
 |---|---|---|---|
 | C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active | 0.39 |
 | C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | 0.59 (strict not met); extension: none, a proposal |
-| C3 Self-Maintaining Arbitration | **strict, sole satisfier** | enabled (arch) + active (pilot anchor) | 0.39 |
+| C3 Self-Maintaining Arbitration | **strict (operational binding); sole satisfier, 2026-05-12 survey** | enabled (arch) + active (pilot anchor) | 0.39 |
 | A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) | 0.35 |
 | B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract | 0.58 |
 | C Non-Trivial Reset | satisfied trivially | enabled | — |
@@ -3135,7 +3140,8 @@ within the convergence**:
 
 > ENGRAM satisfies **two of Kahl's three conditions outright** — the Diachronic
 > Constraint via a decision/consequence coupling, and Self-Maintaining Arbitration
-> *strictly, as the sole satisfier in the surveyed field* — **closes the
+> *strictly, through operational binding — the sole satisfier of the field as surveyed
+> on 2026-05-12* — **closes the
 > architectural deficit** Kahl diagnoses, and for the third (Non-Interchangeability
 > under reset) **does not meet the strict text** but offers a principled type/token
 > extension for digital substrates.
