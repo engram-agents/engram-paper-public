@@ -32,7 +32,6 @@ PRIOR = "dv_ig01"
 READING_TRACKS = "confidence tracks correctness in this sample"
 READING_NONE = "no evidence either way at this n"
 READING_AGAINST = "confidence runs against correctness in this sample"
-OTHER_TYPE_TXT = "other (not a v0.5.1 type; text withheld)"
 
 
 def _load():
@@ -614,7 +613,7 @@ def test_confusion_table_declared_by_proposed_over_loose_type(report):
     c = P(report)["derivation"]["confusion"]
     assert c == {"inductive_generalization": {"deductive_modus_ponens": 1},
                  "deductive_modus_ponens": {"inductive_generalization": 1},
-                 "inductive_analogy": {OTHER_TYPE_TXT: 1}}
+                 "inductive_analogy": {"deductive_conjunction": 1}}
 
 
 # ------------------------------------------------------------------ 6 confidence vs verdict
@@ -779,7 +778,7 @@ def test_acknowledged_premise_alone_still_counts_and_a_shared_target_counts_once
 def test_unknown_proposed_type_is_listed_never_computed(report):
     nc = report["deltas"]["not_computed"]
     assert [r["id"] for r in nc] == ["dv_an01"]
-    assert nc[0]["proposed_type"] == OTHER_TYPE_TXT  # clause 13: not a v0.5.1 name, so withheld
+    assert nc[0]["proposed_type"] == "deductive_conjunction"  # clause 13: pinned publishable name, rendered as itself
     assert "v0.5.1" in nc[0]["reason"]
     assert "dv_an01" not in {r["id"] for r in report["deltas"]["computed"]}
 
@@ -860,7 +859,7 @@ def test_without_prior_drops_exactly_that_node(report):
     assert s["n_judgeable"] == 10
     assert s["low"]["rate"] == pytest.approx(1 / 10) and s["high"]["rate"] == pytest.approx(3 / 10)
     assert w["confusion"] == {"deductive_modus_ponens": {"inductive_generalization": 1},
-                              "inductive_analogy": {OTHER_TYPE_TXT: 1}}
+                              "inductive_analogy": {"deductive_conjunction": 1}}
     assert w["confidence"]["n_loose"] == 3
     assert w["confidence"]["auc"] == pytest.approx(65.5 / 69)
     # observations are untouched by a derivation prior
@@ -1148,8 +1147,34 @@ def test_13_every_v051_name_passes_through_and_nothing_else_does():
     assert an.public_type("deductive_modus_ponens") == "deductive_modus_ponens"
     for name in an._vendored().REASONING_CLASS:
         assert an.public_type(name) == name
-    for bad in (FREE_PT, "deductive_conjunction", "", " inductive_analogy", "Inductive_Analogy"):
+    assert an.public_type("deductive_conjunction") == "deductive_conjunction"  # the one pinned post-v0.5.1 name
+    for bad in (FREE_PT, "", " inductive_analogy", "Inductive_Analogy", "deductive_conjunction "):
         assert an.public_type(bad) == PLACEHOLDER
+
+
+def test_13_publishable_set_is_v051_names_plus_exactly_deductive_conjunction():
+    assert an.PUBLISHABLE_TYPE_NAMES == frozenset(an._vendored().REASONING_CLASS) | {"deductive_conjunction"}
+
+
+def test_13_deductive_conjunction_is_rendered_verbatim_yet_still_not_computed(sworld, tmp_path):
+    ms = mira_spec()
+    ms["dv_an01"] = ("L", "type", "deductive_conjunction")
+    write_jsonl(sworld / "mira.jsonl", _sentinel_rows(ms, "mira"))
+    out = tmp_path / "dcout"
+    an.main(args_for(sworld, out))
+    rj = json.loads((out / "report.json").read_text())
+    md = (out / "report.md").read_text()
+    for wp in ("with_prior", "without_prior"):
+        assert rj["passes"][wp]["derivation"]["confusion"]["inductive_analogy"] == {"deductive_conjunction": 1}
+    nc = {r["id"]: r for r in rj["deltas"]["not_computed"]}
+    assert nc["dv_an01"]["proposed_type"] == "deductive_conjunction"          # not-computed row, verbatim
+    assert "dv_an01" not in {r["id"] for r in rj["deltas"]["computed"]}       # ...and still not computed
+    assert "- dv_an01: inductive_analogy -> deductive_conjunction: NOT computed" in md
+    assert "inductive_analogy -> deductive_conjunction: 1" in md
+    _, mira = _public(out, "mira")
+    assert {r["id"]: r for r in mira}["dv_an01"]["checks"]["type"]["proposed_type"] == "deductive_conjunction"
+    for p in _all_files(out):
+        assert b"SENTINEL" not in p.read_bytes(), p.name
 
 
 def test_14_export_shape(sworld, sout):

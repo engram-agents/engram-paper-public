@@ -74,11 +74,13 @@ CONTRACT (each clause is asserted by tests/test_node_audit_analyze.py)
     any reader `reason` string; any text from the snapshot DB other than node ids,
     reasoning-type names and numbers (nothing from `nodes.claim`, nothing from `metadata`
     other than `reasoning_type`); any note text from the controls file (keys only); or any
-    reader `proposed_type` that is not a v0.5.1 reasoning-type name (a key of the vendored
-    module's reasoning table). Such a value is rendered everywhere (report.json, report.md,
-    the confusion table, the deltas "not computed" rows, the public export) as the fixed
-    string `other (not a v0.5.1 type; text withheld)`; a value that IS a v0.5.1 name is
-    rendered as itself.
+    reader `proposed_type` outside PUBLISHABLE_TYPE_NAMES: the keys of the vendored v0.5.1
+    reasoning table plus exactly one pinned later name, `deductive_conjunction` (a type name,
+    not node content). Any other value is rendered everywhere (report.json, report.md, the
+    confusion table, the deltas "not computed" rows, the public export) as the fixed string
+    `other (not a v0.5.1 type; text withheld)`; a name in the set is rendered as itself.
+    The confidence recomputation (clause 7) is unchanged: `deductive_conjunction` is not in
+    the v0.5.1 formula, so a proposal of it is still listed as not computed.
 14. Public verdict export. `main()` also writes public/verdicts-mira.public.jsonl and
     public/verdicts-zephyr.public.jsonl under --out: one line per row of the validated input
     file, sorted by id, each {"id": ..., "checks": {<check>: {"verdict": ...}}}, plus
@@ -204,10 +206,23 @@ def v051_confidence(reasoning_type, premise_confidences):
     return round(conf, 3)
 
 
+def _publishable_type_names():
+    # Pinned: the vendored v0.5.1 names plus deductive_conjunction, added after v0.5.1 (so it is
+    # not in the vendored table and its confidence is never recomputed). It is a type name, not
+    # node content, so withholding it would only hide a real reader judgement. Never read live.
+    return frozenset(_vendored().REASONING_CLASS) | {"deductive_conjunction"}
+
+
+def __getattr__(name):  # PEP 562: PUBLISHABLE_TYPE_NAMES, built lazily so import never hashes the vendored file
+    if name == "PUBLISHABLE_TYPE_NAMES":
+        return _publishable_type_names()
+    raise AttributeError(name)
+
+
 def public_type(proposed):
-    """Clause 13: a proposed_type that is a v0.5.1 reasoning-type name is rendered as itself;
-    anything else (free text) as the fixed placeholder OTHER_TYPE."""
-    return proposed if isinstance(proposed, str) and proposed in _vendored().REASONING_CLASS else OTHER_TYPE
+    """Clause 13: a proposed_type in PUBLISHABLE_TYPE_NAMES is rendered as itself; anything else
+    (free text) as the fixed placeholder OTHER_TYPE."""
+    return proposed if isinstance(proposed, str) and proposed in _publishable_type_names() else OTHER_TYPE
 
 
 # ------------------------------------------------------------------ small statistics
