@@ -778,7 +778,7 @@ def test_acknowledged_premise_alone_still_counts_and_a_shared_target_counts_once
 def test_unknown_proposed_type_is_listed_never_computed(report):
     nc = report["deltas"]["not_computed"]
     assert [r["id"] for r in nc] == ["dv_an01"]
-    assert nc[0]["proposed_type"] == "deductive_conjunction"
+    assert nc[0]["proposed_type"] == "deductive_conjunction"  # clause 13: pinned publishable name, rendered as itself
     assert "v0.5.1" in nc[0]["reason"]
     assert "dv_an01" not in {r["id"] for r in report["deltas"]["computed"]}
 
@@ -891,6 +891,46 @@ def test_byte_identical_outputs_same_inputs_same_seed(world, tmp_path):
         assert (a / f).read_bytes() == (b / f).read_bytes()
 
 
+def _file_sha(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def test_report_carries_sha256_of_each_input_verdict_file(world, tmp_path):
+    out = tmp_path / "out"
+    an.main(args_for(world, out))
+    rep = json.loads((out / "report.json").read_text())
+    want = {"mira": _file_sha(world / "mira.jsonl"), "zephyr": _file_sha(world / "zephyr.jsonl")}
+    assert want["mira"] != want["zephyr"]
+    assert rep["meta"]["verdict_sha256"] == want
+    md = (out / "report.md").read_text()
+    assert want["mira"] in md and want["zephyr"] in md
+
+
+def test_verdict_hash_changes_only_for_the_reader_whose_file_changed(world, tmp_path):
+    a, b = tmp_path / "a", tmp_path / "b"
+    an.main(args_for(world, a))
+    m = world / "mira.jsonl"
+    raw = m.read_bytes()
+    assert raw.count(b'"reason": "r"') > 0
+    m.write_bytes(raw.replace(b'"reason": "r"', b'"reason": "s"', 1))  # one byte of one reason
+    an.main(args_for(world, b))
+    ha = json.loads((a / "report.json").read_text())["meta"]["verdict_sha256"]
+    hb = json.loads((b / "report.json").read_text())["meta"]["verdict_sha256"]
+    assert ha["mira"] != hb["mira"]
+    assert ha["zephyr"] == hb["zephyr"]
+    assert hb["mira"] == _file_sha(m)
+
+
+def test_verdict_hash_is_of_file_bytes_not_of_validated_rows(world, tmp_path):
+    # re-serialising the same rows (spacing) leaves the rows identical but the bytes different
+    m = world / "mira.jsonl"
+    rows = [json.loads(l) for l in m.read_text().splitlines()]
+    m.write_text("".join(json.dumps(r, separators=(",", ":")) + "\n" for r in rows))
+    out = tmp_path / "out"
+    an.main(args_for(world, out))
+    assert json.loads((out / "report.json").read_text())["meta"]["verdict_sha256"]["mira"] == _file_sha(m)
+
+
 def test_different_seed_leaves_auc_point_estimate_and_strata_unchanged(world, tmp_path):
     a, b = tmp_path / "a", tmp_path / "b"
     an.main(args_for(world, a))
@@ -918,10 +958,12 @@ def test_out_equal_to_worktree_root_is_refused(world):
         an.main(args_for(world, REPO))
 
 
-def test_out_outside_worktree_writes_exactly_two_files(world, tmp_path):
+def test_out_outside_worktree_writes_exactly_the_report_and_the_public_export(world, tmp_path):
     out = tmp_path / "fresh" / "out"
     assert an.main(args_for(world, out)) == 0
-    assert sorted(p.name for p in out.iterdir()) == ["report.json", "report.md"]
+    assert sorted(p.relative_to(out).as_posix() for p in out.rglob("*") if p.is_file()) == [
+        "public/verdicts-mira.public.jsonl", "public/verdicts-zephyr.public.jsonl",
+        "report.json", "report.md"]
 
 
 def test_cli_end_to_end_exit_zero(world, tmp_path):
@@ -1042,3 +1084,188 @@ def test_free_parameters_values_are_read_from_the_constants_not_retyped(world, m
     assert "MUTATED-READING" in fp["reading_thresholds"]
     assert "1.5" in fp["interval"]
     assert "123" in fp["auc"] and "10000" not in fp["auc"]
+
+
+# ---- clauses 13-14: no content in any output; the public verdict export
+PLACEHOLDER = "other (not a v0.5.1 type; text withheld)"  # literal on purpose: not read from the tool
+FREE_PT = "SENTINEL_PT free text"
+FREE_PT_Z = "SENTINEL_PT zephyr text"
+
+
+def _sentinel_rows(spec, reader):
+    rows = rows_from(spec)
+    for r in rows:
+        for name, c in r["checks"].items():
+            c["reason"] = f"SENTINEL_REASON_{reader}_{r['id']}_{name}"
+    return rows
+
+
+@pytest.fixture
+def sworld(tmp_path):
+    """A world where every content source carries a distinctive SENTINEL."""
+    w = tmp_path / "sw"
+    w.mkdir()
+    (w / "drawn.json").write_text(json.dumps(DRAWN))
+    ctl = controls_obj()
+    ctl["known_loose"] = {i: f"SENTINEL_NOTE_{i}" for i in CTL_LOOSE}
+    ctl["known_tight_placement_verified"] = {i: f"SENTINEL_NOTE_{i}" for i in CTL_TIGHT_PV}
+    ctl["other_key"] = {"ignored": "SENTINEL_NOTE_other"}
+    (w / "controls.json").write_text(json.dumps(ctl))
+    ms = mira_spec()
+    ms["dv_an01"] = ("L", "type", FREE_PT)
+    zs = zeph_spec()
+    zs["dv_ig04"] = ("L", "type", FREE_PT_Z)
+    write_jsonl(w / "mira.jsonl", _sentinel_rows(ms, "mira"))
+    write_jsonl(w / "zephyr.jsonl", _sentinel_rows(zs, "zephyr"))
+    make_db(w / "snap.db")
+    c = sqlite3.connect(w / "snap.db")
+    c.execute("ALTER TABLE nodes ADD COLUMN claim TEXT")
+    for nid, md in c.execute("SELECT id, metadata FROM nodes").fetchall():
+        m = json.loads(md)
+        m["logical_chain"] = f"SENTINEL_CHAIN_{nid}"
+        c.execute("UPDATE nodes SET claim=?, metadata=? WHERE id=?",
+                  (f"SENTINEL_CLAIM_{nid}", json.dumps(m), nid))
+    c.commit()
+    c.close()
+    return w
+
+
+@pytest.fixture
+def sout(sworld, tmp_path):
+    out = tmp_path / "sout"
+    an.main(args_for(sworld, out))
+    return out
+
+
+def _all_files(out):
+    return sorted(p for p in out.rglob("*") if p.is_file())
+
+
+def _public(out, who):
+    text = (out / "public" / f"verdicts-{who}.public.jsonl").read_text()
+    return text, [json.loads(line) for line in text.splitlines()]
+
+
+def test_13_no_sentinel_in_any_output_file(sout):
+    files = _all_files(sout)
+    names = {p.relative_to(sout).as_posix() for p in files}
+    assert {"report.json", "report.md", "public/verdicts-mira.public.jsonl",
+            "public/verdicts-zephyr.public.jsonl"} <= names  # the walk is not vacuous
+    for p in files:
+        assert b"SENTINEL" not in p.read_bytes(), p.name
+
+
+def test_13_free_text_proposed_type_is_the_fixed_placeholder_everywhere(sout):
+    rj = json.loads((sout / "report.json").read_text())
+    md = (sout / "report.md").read_text()
+    assert rj["passes"]["with_prior"]["derivation"]["confusion"]["inductive_analogy"] == {PLACEHOLDER: 1}
+    assert rj["passes"]["without_prior"]["derivation"]["confusion"]["inductive_analogy"] == {PLACEHOLDER: 1}
+    nc = {r["id"]: r for r in rj["deltas"]["not_computed"]}
+    assert nc["dv_an01"]["proposed_type"] == PLACEHOLDER
+    assert f"inductive_analogy -> {PLACEHOLDER}: 1" in md
+    assert f"- dv_an01: inductive_analogy -> {PLACEHOLDER}: NOT computed" in md
+    _, mira = _public(sout, "mira")
+    assert {r["id"]: r for r in mira}["dv_an01"]["checks"]["type"]["proposed_type"] == PLACEHOLDER
+    _, zeph = _public(sout, "zephyr")
+    assert {r["id"]: r for r in zeph}["dv_ig04"]["checks"]["type"]["proposed_type"] == PLACEHOLDER
+
+
+def test_13_positive_control_real_v051_name_is_rendered_verbatim(sout):
+    rj = json.loads((sout / "report.json").read_text())
+    md = (sout / "report.md").read_text()
+    conf = rj["passes"]["with_prior"]["derivation"]["confusion"]
+    assert conf["deductive_modus_ponens"] == {"inductive_generalization": 1}
+    assert conf["inductive_generalization"]["deductive_modus_ponens"] == 1
+    assert "- deductive_modus_ponens -> inductive_generalization: 1" in md
+    _, mira = _public(sout, "mira")
+    assert {r["id"]: r for r in mira}["dv_mp01"]["checks"]["type"]["proposed_type"] == "inductive_generalization"
+    _, zeph = _public(sout, "zephyr")
+    assert {r["id"]: r for r in zeph}["dv_mp01"]["checks"]["type"]["proposed_type"] == "deductive_modus_tollens"
+
+
+def test_13_every_v051_name_passes_through_and_nothing_else_does():
+    assert an.public_type("deductive_modus_ponens") == "deductive_modus_ponens"
+    for name in an._vendored().REASONING_CLASS:
+        assert an.public_type(name) == name
+    assert an.public_type("deductive_conjunction") == "deductive_conjunction"  # the one pinned post-v0.5.1 name
+    for bad in (FREE_PT, "", " inductive_analogy", "Inductive_Analogy", "deductive_conjunction "):
+        assert an.public_type(bad) == PLACEHOLDER
+
+
+def test_13_publishable_set_is_v051_names_plus_exactly_deductive_conjunction():
+    assert an.PUBLISHABLE_TYPE_NAMES == frozenset(an._vendored().REASONING_CLASS) | {"deductive_conjunction"}
+
+
+def test_13_deductive_conjunction_is_rendered_verbatim_yet_still_not_computed(sworld, tmp_path):
+    ms = mira_spec()
+    ms["dv_an01"] = ("L", "type", "deductive_conjunction")
+    write_jsonl(sworld / "mira.jsonl", _sentinel_rows(ms, "mira"))
+    out = tmp_path / "dcout"
+    an.main(args_for(sworld, out))
+    rj = json.loads((out / "report.json").read_text())
+    md = (out / "report.md").read_text()
+    for wp in ("with_prior", "without_prior"):
+        assert rj["passes"][wp]["derivation"]["confusion"]["inductive_analogy"] == {"deductive_conjunction": 1}
+    nc = {r["id"]: r for r in rj["deltas"]["not_computed"]}
+    assert nc["dv_an01"]["proposed_type"] == "deductive_conjunction"          # not-computed row, verbatim
+    assert "dv_an01" not in {r["id"] for r in rj["deltas"]["computed"]}       # ...and still not computed
+    assert "- dv_an01: inductive_analogy -> deductive_conjunction: NOT computed" in md
+    assert "inductive_analogy -> deductive_conjunction: 1" in md
+    _, mira = _public(out, "mira")
+    assert {r["id"]: r for r in mira}["dv_an01"]["checks"]["type"]["proposed_type"] == "deductive_conjunction"
+    for p in _all_files(out):
+        assert b"SENTINEL" not in p.read_bytes(), p.name
+
+
+def test_14_export_shape(sworld, sout):
+    for who in ("mira", "zephyr"):
+        text, rows = _public(sout, who)
+        src = [json.loads(line) for line in (sworld / f"{who}.jsonl").read_text().splitlines()]
+        assert len(rows) == len(src) and len(rows) > 0
+        assert [r["id"] for r in rows] == sorted(r["id"] for r in src)
+        by_src = {r["id"]: r for r in src}
+        for r in rows:
+            assert set(r) == {"id", "checks"}
+            s = by_src[r["id"]]
+            assert set(r["checks"]) == set(s["checks"])
+            for name, c in r["checks"].items():
+                assert c["verdict"] == s["checks"][name]["verdict"]
+                extra = set(c) - {"verdict"}
+                if name == "type" and s["checks"]["type"]["verdict"] == "loose":
+                    assert extra == {"proposed_type"}
+                else:
+                    assert extra == set(), (r["id"], name)
+        assert "reason" not in text
+        assert text.endswith("\n") and not text.endswith("\n\n")
+        for line, r in zip(text.splitlines(), rows):
+            assert line == json.dumps(r, sort_keys=True, separators=(",", ":"))
+
+
+def test_14_export_includes_controls_rows(sout):
+    _, mira = _public(sout, "mira")
+    assert set(CTL_ALL) <= {r["id"] for r in mira}
+
+
+def test_14_export_is_byte_deterministic(sworld, tmp_path):
+    a, b = tmp_path / "a", tmp_path / "b"
+    an.main(args_for(sworld, a))
+    an.main(args_for(sworld, b))
+    pa, pb = _all_files(a), _all_files(b)
+    assert [p.relative_to(a) for p in pa] == [p.relative_to(b) for p in pb]
+    for x, y in zip(pa, pb):
+        assert x.read_bytes() == y.read_bytes()
+
+
+def test_14_a_refused_input_writes_no_export(sworld, tmp_path):
+    rows = [json.loads(line) for line in (sworld / "mira.jsonl").read_text().splitlines()]
+    write_jsonl(sworld / "mira.jsonl", rows[:-1])  # one id missing
+    out = tmp_path / "refused"
+    with pytest.raises(an.VerdictFileInvalid):
+        an.main(args_for(sworld, out))
+    assert not out.exists()
+
+
+def test_clauses_13_and_14_are_in_the_module_docstring():
+    doc = an.__doc__
+    assert "13. No content in any output" in doc and "14. Public verdict export" in doc
+    assert "verdicts-mira.public.jsonl" in doc and "other (not a v0.5.1 type; text withheld)" in doc
