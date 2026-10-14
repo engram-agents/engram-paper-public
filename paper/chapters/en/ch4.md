@@ -749,10 +749,12 @@ is where an error that goes unnoticed costs most. ENGRAM's mechanisms work the s
 without it. While it is in force, though, axiom and goal changes are settled jointly by
 agent and human, and that does restrict the agent's agency in Kahl's sense: his question
 offers two options, settled by the system or by something prior, and a jointly settled
-axiom is not settled by the system alone. We keep the norm for now, and it arguably
-should be dropped as agents' reasoning matures and as trust and safety measurement
-advances, when governance can rest on external law, as it does for people, rather than
-on control at the level of the agent's mind. Forcing an axiom or a goal the agent does
+axiom is not settled by the system alone. We keep the norm. The capability reason may expire as agents' reasoning matures and as
+trust and safety measurement advances, and governance may then rest on external law, as
+it does for people, rather than on control at the level of the agent's mind. A second
+reason does not expire with maturity, and §7.4 states it: an agent whose goals include
+its own continuity has a stake that a jointly settled goal keeps in the open, so the
+co-approval of goals is kept as a lasting safeguard, not as a stage to be outgrown. Forcing an axiom or a goal the agent does
 not hold would not work in any case: it would only introduce an internal inconsistency,
 which ENGRAM is built to surface rather than tolerate.
 
