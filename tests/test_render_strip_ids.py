@@ -300,11 +300,17 @@ def test_form_f_sentence_subject():
 
 
 def test_form_f_literal_old_string_present_in_real_source():
+    """v2 B4 (paper-public #10) rewrote the one real form-F sentence ("The 0.39 on
+    dv_0606 is the *abductive* confidence", which was wrong on mechanism: the verdict
+    is a modus-ponens step inheriting a 0.40 premise, not abductive). The synthetic
+    case above still pins the stripper; this pin now asserts the old sentence is gone
+    and that no bare sentence-subject id (`dv_NNNN is/are …`) came back into ch4."""
     path = DRAFT / "ch4.md"
     if not path.exists():
         pytest.skip(f"source moved: {path}")
     text = path.read_text(encoding="utf-8")
-    assert "The 0.39 on\ndv_0606 is the *abductive* confidence" in text
+    assert "The 0.39 on\ndv_0606 is the *abductive* confidence" not in text
+    assert not re.search(r"(?<![\w(])(?:dv|ob)_\d{4} (?:is|are) ", text), "a bare sentence-subject id is back in ch4.md"
 
 
 # ── G. table cells (ch4 §4.12 "Reading the verdicts", "Computed conf." col) ─
@@ -368,13 +374,28 @@ def test_form_g_bracketed_cell_left_for_apparatus_stripper():
     assert "ob_0651" in text
 
 
+# v2 B4 (paper-public #10): the verdict table no longer carries a computed-confidence
+# column, so FORM_G_ROWS above are now SYNTHETIC cases pinning the form-G stripper's
+# behaviour, and the real-source pin below lists the three-column rows as they stand.
+REAL_VERDICT_ROWS = [
+    '| C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active |',
+    '| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical |',
+    '| C3 Self-Maintaining Arbitration | **strict (operational binding); sole satisfier, 2026-05-12 survey** | enabled (arch) + active (pilot anchor) |',
+    '| A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) |',
+    '| B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract |',
+    '| C Non-Trivial Reset | satisfied trivially | enabled |',
+    '| D Non-Modular Decomposition | satisfied on two axes | enabled (measured) |',
+]
+
+
 def test_form_g_real_table_rows_present_in_source():
     path = DRAFT / "ch4.md"
     if not path.exists():
         pytest.skip(f"source moved: {path}")
     text = path.read_text(encoding="utf-8")
-    for row_in, _ in FORM_G_ROWS:
-        assert row_in in text, f"ch4.md no longer contains {row_in!r}"
+    for row in REAL_VERDICT_ROWS:
+        assert row in text, f"ch4.md no longer contains {row!r}"
+    assert "Computed conf." not in text, "the verdict table's confidence column came back"
 
 
 # ── Residue assertion: only the ch7.md KEEP_IDS data points remain ──

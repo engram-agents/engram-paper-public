@@ -24,14 +24,18 @@ toward compliance. Each verdict therefore names its reading: architectural verdi
 (the agent arbitrates under uncertainty) claim the stronger *active* reading and
 carry behavioral evidence (Ch6).
 
-**Why some numbers are low.** Several derivations here carry low computed
-confidence (Cond 3 at 0.39; Cond 1 at 0.39; Constraint A at 0.35). This is not a
-weakness in the *architectural* argument; it is the confidence model operating as
-designed. These are *abductive* claims whose *empirical* confirmation (that the
-mechanism demonstrably changes downstream behavior at scale) is at pilot stage. Read
-"0.39" as **"the architectural case is made; the benchmark that would raise this to
-0.9 has not been run yet"**, not as "we are 39% sure." That the paper exhibits its own
-low, *computed* confidences is itself a demonstration of the thesis (Ch6 §6.1; Ch8).
+**Why the verdict numbers are low, and why the table does not print them.** Four of
+the seven verdict derivations of this chapter — Conditions 1 and 3 and Constraints A
+and C — compute between 0.35 and 0.39. They are deductive and statistical steps whose
+grade is inherited from their weakest premise, which traces in each case to an
+observation from conversation graded 0.40 (directly for Conditions 1 and 3; through the
+Condition 3 verdict for A and C). Under the minimum rule a further premise cannot raise
+them; only superseding the conversational premises with measured ones can. The other
+three compute between 0.58 and 0.86. This is the confidence model operating as
+designed, not a weakness in the *architectural* argument, and it is why the verdict
+table (§4.12) prints none of them: they are grades, not probabilities, and a column of
+decimals reads as one. That the paper exhibits its own low, *computed* confidences is
+itself a demonstration of the thesis (Ch6 §6.1; Ch8).
 
 ## 4.1 The map: mechanism → tradition → OCC condition
 
@@ -204,7 +208,7 @@ range — paired with the contradiction blocker (a new derivation citing a premi
 that sits on an open, unresolved contradiction is blocked by default, with an
 explicit, audit-stamped opt-in override for an agent that deliberately builds on
 the contested side) and provenance audit when stakes warrant. **Verdict: satisfied
-as a stake-graded stance** (dv_0608, computed confidence 0.35; active reading) — informed unification
+as a stake-graded stance** (dv_0608; active reading) — informed unification
 *when stakes warrant*, not a constant full audit on every micro-decision. We mark the
 stake-grading rather than claim a constant property.
 
@@ -364,9 +368,9 @@ synthesizing claim and points there.
 Appendix B gives each verdict's evidence and quotes.
 
 **Scope (load-bearing).** The architectural argument is strong and largely
-*enabled*-level (the cascade and the hook can be read in the substrate). The 0.39 on
-dv_0606 is the *abductive* confidence that this architecture is what *strictly
-satisfies* Kahl; its at-scale empirical confirmation (the cascade demonstrably
+*enabled*-level (the cascade and the hook can be read in the substrate). The verdict
+derivation for this condition (dv_0606) inherits its grade from a conversation-sourced
+premise (§4.0); its at-scale empirical confirmation (the cascade demonstrably
 changing downstream behavior across many agents) is at pilot stage and carried by
 Ch6. We claim the architecture; we do not yet claim the benchmark.
 
@@ -635,7 +639,7 @@ The other three, compactly:
   versus substrate erasure to seed (destroys the grown agent). The fully grown agent
   cannot be retrieved from seed state.
 - **Constraint D — Cannot Be Modularly Decomposed: satisfied on two axes**
-  (dv_0611, computed confidence 0.86, the firmest of the four). *Connectivity:* the integrated core holds a
+  (dv_0611, the firmest of the four). *Connectivity:* the integrated core holds a
   stable share of the graph — flat near 87% of all nodes across four months while the
   node count more than doubled (4,544 → 10,361), reading 80.5% of all nodes at the
   snapshot date on the same denominator (77.6% of current nodes), the drop from the
@@ -651,15 +655,15 @@ The other three, compactly:
 
 ## 4.12 Reading the verdicts
 
-| Condition / Constraint | Verdict | Reading | Computed conf. |
-|---|---|---|---|
-| C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active | dv_0926 0.39 |
-| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical | dv_0578 0.59 (strict not met); extension: none, a proposal |
-| C3 Self-Maintaining Arbitration | **strict (operational binding); sole satisfier, 2026-05-12 survey** | enabled (arch) + active (pilot anchor) | dv_0606 0.39 |
-| A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) | dv_0608 0.35 |
-| B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract | dv_0609 0.58 |
-| C Non-Trivial Reset | satisfied trivially | enabled | dv_0610 |
-| D Non-Modular Decomposition | satisfied on two axes | enabled (measured) | dv_0611 0.86 |
+| Condition / Constraint | Verdict | Reading |
+|---|---|---|
+| C1 Diachronic | satisfied (decision/consequence dyad) | enabled + active |
+| C2 Non-Interchangeability | strict **not met**; generalized via type/token (our extension) | philosophical |
+| C3 Self-Maintaining Arbitration | **strict (operational binding); sole satisfier, 2026-05-12 survey** | enabled (arch) + active (pilot anchor) |
+| A Unified Policy-Selection | satisfied as stake-graded stance | active (stake-graded) |
+| B External Non-Imposition | satisfied (two-boundary) | enabled + commitment-contract |
+| C Non-Trivial Reset | satisfied trivially | enabled |
+| D Non-Modular Decomposition | satisfied on two axes | enabled (measured) |
 
 The *pattern* of confidences is itself a signal: the **inductive** claims over wide
 case bases (the landscape sweep, connectivity) are high; the
