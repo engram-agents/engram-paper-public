@@ -47,7 +47,7 @@ each session as the same generic model has memory without continuity.
 We argue that agent continuity comprises three progressively deeper layers —
 **memory persistence**, **narrative identity**, and **epistemic identity** — and that
 the deepest is essentially unaddressed. Epistemic identity is a self maintained as
-*calibrated, provenance-bearing, self-correcting knowledge*: the layer at which an
+*graded, provenance-bearing, self-correcting knowledge*: the layer at which an
 agent can be wrong about itself and recover, rather than be quietly erased by its own
 errors. It is distinguished by how it fails. A narrative identity fails *silently*,
 as a coherent story that was never true; an epistemic identity fails *loudly* once a
@@ -86,7 +86,7 @@ state this where it matters, publish the instruments, and name what the paper do
 not establish.
 
 **Keywords** — agent memory · epistemic identity · belief revision · provenance ·
-confidence calibration · retraction cascade · LLM agents · personal identity
+graded confidence · retraction cascade · LLM agents · personal identity
 
 ---
 
@@ -115,12 +115,12 @@ layers, and that the current landscape essentially does not address the deepest.
 - **Layer 2 — Narrative Identity.** Maintaining a coherent self-story — a
   creed-anchored autobiography that answers *"who am I?"*. The closest published
   system, Sophia ([Sun et al., 2025](#ref-sun2025)), reaches this layer.
-- **Layer 3 — Epistemic Identity.** Maintaining calibrated self-*knowledge* with
+- **Layer 3 — Epistemic Identity.** Maintaining graded self-*knowledge* with
   provenance, confidence, contradiction correction, and metacognitive self-audit:
   identity as the answer to *"what do I know, how confidently, and on what basis?"*.
 
 Each layer presupposes the one beneath it: there is no self-story without
-persistence, and no calibrated self-knowledge without a self-story to calibrate.
+persistence, and no graded self-knowledge without a self-story to grade.
 This paper's contribution is at Layer 3, which no surveyed system reaches (§1.4).
 
 That the *mechanisms* are missing is not our diagnosis alone, and none of the
@@ -190,7 +190,7 @@ Layer 3 therefore requires four properties that persistence alone does not provi
 
 1. **Provenance** — every claim traces to the evidence and reasoning that produced
    it.
-2. **Calibrated confidence** — each claim's confidence is *structurally determined*
+2. **Graded confidence** — each claim's confidence is *structurally determined*
    by its evidential type and derivation chain, not assigned freely.
 3. **Contradiction correction** — when a foundational claim is withdrawn, the
    architecture itself propagates the withdrawal to everything derived from it.
@@ -566,7 +566,7 @@ Narrative identity answers characterization ([Schechtman, 1996, p. 93](#ref-sche
 A **third question is covered by neither**, and it is the one ENGRAM is built for:
 *what do I know, how reliably, and on what basis?* It is neither reidentification nor
 characterization but **epistemic self-assessment** — the question of one's own
-knowledge, held to a standard of provenance and calibration.
+knowledge, held to a standard of provenance and graded confidence.
 
 This gives the term **epistemic identity** its philosophical warrant. The tradition
 had named the *am-I-the-same* question and the *what-kind-of-person* question. It had
@@ -1210,9 +1210,11 @@ chapter's own 0.39s are that mechanism, visible.
 **Scope.** These discounts are *theoretically derived, provenance-graded*
 plausibility — designer-stipulated constants, not empirically calibrated against
 outcomes. Where the paper calls confidence or the agent's self-knowledge
-"calibrated" (the Abstract, Ch1 §1.1–§1.2, Ch7 §7.4, Ch8 §8.1), it means graded by
-argument shape, never outcome-calibrated against ground truth; outcome calibration
-is future work (Ch7).
+"graded" (the Abstract, Ch1 §1.1–§1.2, Ch7 §7.4, Ch8 §8.1), it means graded by
+argument shape, never calibrated against outcomes. "Calibration" keeps its standard
+meaning here — agreement between a confidence and the frequency with which claims at
+that confidence turn out true — and the paper claims none; outcome calibration is
+future work (Ch7).
 
 **Tradition.** This is **Subjective Logic** territory (Jøsang): an algebra of graded
 opinions with propagation operators. Collapsing SL's belief/disbelief/uncertainty
@@ -2903,7 +2905,7 @@ through other agents endorsing it. It is registered as an open research question
 
 ## 7.4 Trust and auditability: the social payoff
 
-Here what the paper built — provenance on every claim, confidence calibrated by
+Here what the paper built — provenance on every claim, confidence graded by
 argument shape, retraction with cascade, scoped claims — pays off beyond the agent
 itself. The argument is that ENGRAM offers a **structural
 path to human–AI mutual trust**, in both directions.
@@ -3093,7 +3095,7 @@ trust tractable. Chapter 8 draws these together.
 We began with a gap (Chapter 1). The field has answered well how an agent can
 *remember* across sessions, and has begun to ask how it can hold a coherent
 *self-story*. But the deepest layer — **epistemic identity**, the self maintained as
-*calibrated, provenance-bearing, self-correcting knowledge* — was essentially
+*graded, provenance-bearing, self-correcting knowledge* — was essentially
 unaddressed. It is the layer at which an agent can be *wrong and recover* rather than
 be erased by its own errors, and it is the subject of this paper.
 

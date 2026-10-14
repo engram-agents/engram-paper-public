@@ -23,12 +23,12 @@ layers, and that the current landscape essentially does not address the deepest.
 - **Layer 2 — Narrative Identity.** Maintaining a coherent self-story — a
   creed-anchored autobiography that answers *"who am I?"*. The closest published
   system, Sophia [@sun2025], reaches this layer.
-- **Layer 3 — Epistemic Identity.** Maintaining calibrated self-*knowledge* with
+- **Layer 3 — Epistemic Identity.** Maintaining graded self-*knowledge* with
   provenance, confidence, contradiction correction, and metacognitive self-audit:
   identity as the answer to *"what do I know, how confidently, and on what basis?"*.
 
 Each layer presupposes the one beneath it: there is no self-story without
-persistence, and no calibrated self-knowledge without a self-story to calibrate.
+persistence, and no graded self-knowledge without a self-story to grade.
 This paper's contribution is at Layer 3, which no surveyed system reaches (§1.4).
 
 That the *mechanisms* are missing is not our diagnosis alone, and none of the
@@ -91,7 +91,7 @@ Layer 3 therefore requires four properties that persistence alone does not provi
 
 1. **Provenance** — every claim traces to the evidence and reasoning that produced
    it.
-2. **Calibrated confidence** — each claim's confidence is *structurally determined*
+2. **Graded confidence** — each claim's confidence is *structurally determined*
    by its evidential type and derivation chain, not assigned freely.
 3. **Contradiction correction** — when a foundational claim is withdrawn, the
    architecture itself propagates the withdrawal to everything derived from it.

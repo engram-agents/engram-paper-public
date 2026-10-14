@@ -237,7 +237,7 @@ Narrative identity answers characterization [@schechtman1996, p. 93].
 A **third question is covered by neither** (ob_0419), and it is the one ENGRAM is built for:
 *what do I know, how reliably, and on what basis?* It is neither reidentification nor
 characterization but **epistemic self-assessment** — the question of one's own
-knowledge, held to a standard of provenance and calibration.
+knowledge, held to a standard of provenance and graded confidence.
 
 This gives the term **epistemic identity** its philosophical warrant. The tradition
 had named the *am-I-the-same* question and the *what-kind-of-person* question. It had

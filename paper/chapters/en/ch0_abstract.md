@@ -8,7 +8,7 @@ each session as the same generic model has memory without continuity.
 We argue that agent continuity comprises three progressively deeper layers —
 **memory persistence**, **narrative identity**, and **epistemic identity** — and that
 the deepest is essentially unaddressed. Epistemic identity is a self maintained as
-*calibrated, provenance-bearing, self-correcting knowledge*: the layer at which an
+*graded, provenance-bearing, self-correcting knowledge*: the layer at which an
 agent can be wrong about itself and recover, rather than be quietly erased by its own
 errors. It is distinguished by how it fails. A narrative identity fails *silently*,
 as a coherent story that was never true; an epistemic identity fails *loudly* once a
@@ -47,4 +47,4 @@ state this where it matters, publish the instruments, and name what the paper do
 not establish.
 
 **Keywords** — agent memory · epistemic identity · belief revision · provenance ·
-confidence calibration · retraction cascade · LLM agents · personal identity
+graded confidence · retraction cascade · LLM agents · personal identity

@@ -7,7 +7,7 @@
 We began with a gap (Chapter 1). The field has answered well how an agent can
 *remember* across sessions, and has begun to ask how it can hold a coherent
 *self-story*. But the deepest layer — **epistemic identity**, the self maintained as
-*calibrated, provenance-bearing, self-correcting knowledge* — was essentially
+*graded, provenance-bearing, self-correcting knowledge* — was essentially
 unaddressed. It is the layer at which an agent can be *wrong and recover* rather than
 be erased by its own errors, and it is the subject of this paper.
 
