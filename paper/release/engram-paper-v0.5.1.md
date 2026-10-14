@@ -1580,8 +1580,9 @@ present; and, with Thomson, encoding specificity — "what is stored determines 
 pending mark is guaranteed to reach the agent — the next time the claim becomes
 relevant, or at the latest in the consolidation sweep (§4.4). One boundary belongs
 here: the sweep is a step of the sleep routine — an instruction the agent follows —
-while the derive-time refusal of a contested or stale premise is code that no routine
-can skip; the binding that holds without the agent's cooperation is the second.
+while the derive-time refusal of a stale or contested premise is code that no routine
+can skip, and for a contested premise can be passed only by an explicit, audit-stamped
+override; the binding that holds without the agent's cooperation is the second.
 
 **Scope (measured on ourselves).** The binding claim is exactly as narrow as stated:
 it holds for *cascade flags*, which surface unbidden. It does not generalize to "the
