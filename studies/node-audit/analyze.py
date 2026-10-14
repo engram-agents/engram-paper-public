@@ -65,10 +65,26 @@ CONTRACT (each clause is asserted by tests/test_node_audit_analyze.py)
     into tight or loose.
 10. Analyst-prior node (--prior-node, must be a sampled node): every rate in 4-6 is
     reported twice, with and without that node. The <10 rule applies to each pass's own n.
-11. Determinism: same inputs plus seed give byte-identical report.json and report.md.
+11. Determinism: same inputs plus seed give byte-identical report.json and report.md, and
+    byte-identical public export files (clause 14).
 12. Outputs go to --out, which must resolve outside the git worktree that holds this
-    script (OutputInsideWorktree otherwise, nothing written): report.json (all numbers)
-    and report.md. Nothing is written into the repo.
+    script (OutputInsideWorktree otherwise, nothing written): report.json (all numbers),
+    report.md and the public/ export of clause 14. Nothing is written into the repo.
+13. No content in any output. No file `main()` writes under --out (the whole tree) contains
+    any reader `reason` string; any text from the snapshot DB other than node ids,
+    reasoning-type names and numbers (nothing from `nodes.claim`, nothing from `metadata`
+    other than `reasoning_type`); any note text from the controls file (keys only); or any
+    reader `proposed_type` that is not a v0.5.1 reasoning-type name (a key of the vendored
+    module's reasoning table). Such a value is rendered everywhere (report.json, report.md,
+    the confusion table, the deltas "not computed" rows, the public export) as the fixed
+    string `other (not a v0.5.1 type; text withheld)`; a value that IS a v0.5.1 name is
+    rendered as itself.
+14. Public verdict export. `main()` also writes public/verdicts-mira.public.jsonl and
+    public/verdicts-zephyr.public.jsonl under --out: one line per row of the validated input
+    file, sorted by id, each {"id": ..., "checks": {<check>: {"verdict": ...}}}, plus
+    "proposed_type" inside the `type` check when present (rendered per clause 13). No
+    `reason` key anywhere. Byte-deterministic (sort_keys, fixed separators, trailing
+    newline). Written only after validation passes: a refused input writes nothing.
 
 The snapshot DB is opened read-only and used only for nodes.confidence,
 json_extract(metadata,'$.reasoning_type') and edges(source_id, target_id, relation) with
@@ -109,6 +125,7 @@ READING_TRACKS = "confidence tracks correctness in this sample"
 READING_NONE = "no evidence either way at this n"
 READING_AGAINST = "confidence runs against correctness in this sample"
 READING_NA = "not computable: needs at least one tight and one loose node"
+OTHER_TYPE = "other (not a v0.5.1 type; text withheld)"  # clause 13: stands in for any non-v0.5.1 proposed_type
 
 
 # ------------------------------------------------------------------ errors
@@ -185,6 +202,12 @@ def v051_confidence(reasoning_type, premise_confidences):
     else:
         conf = min(confs) * discount
     return round(conf, 3)
+
+
+def public_type(proposed):
+    """Clause 13: a proposed_type that is a v0.5.1 reasoning-type name is rendered as itself;
+    anything else (free text) as the fixed placeholder OTHER_TYPE."""
+    return proposed if isinstance(proposed, str) and proposed in _vendored().REASONING_CLASS else OTHER_TYPE
 
 
 # ------------------------------------------------------------------ small statistics
@@ -468,7 +491,7 @@ def analyze_pass(nodes, census_pop, strata_names, seed, label, n_boot):
     for x in nodes:
         if x["kind"] == "derivation" and x["checks"]["type"]["verdict"] == "loose":
             d = confusion.setdefault(x["declared"], {})
-            p = x["checks"]["type"]["proposed_type"]
+            p = public_type(x["checks"]["type"]["proposed_type"])
             d[p] = d.get(p, 0) + 1
     out["derivation"]["confusion"] = {a: dict(sorted(b.items())) for a, b in sorted(confusion.items())}
     return out
@@ -535,7 +558,7 @@ def deltas_block(con, nodes):
         if x["kind"] != "derivation" or x["checks"]["type"]["verdict"] != "loose":
             continue
         proposed = x["checks"]["type"]["proposed_type"]
-        base = {"id": x["id"], "declared_type": x["declared"], "proposed_type": proposed}
+        base = {"id": x["id"], "declared_type": x["declared"], "proposed_type": public_type(proposed)}
         if proposed not in _vendored().REASONING_CLASS:
             not_computed.append(base | {"reason": "proposed_type is not in the v0.5.1 reasoning table"})
             continue
@@ -576,6 +599,11 @@ def free_parameters(seed, prior_node, n_boot):
 
 
 def run_analysis(mira, zephyr, controls, db, drawn, prior_node, seed, n_boot=N_BOOT):
+    return analyze_with_rows(mira, zephyr, controls, db, drawn, prior_node, seed, n_boot)[0]
+
+
+def analyze_with_rows(mira, zephyr, controls, db, drawn, prior_node, seed, n_boot=N_BOOT):
+    """run_analysis plus the validated verdict rows: (report, mira_rows, zephyr_rows)."""
     verify_vendored()
     d, census_pop, stratum_of = load_drawn(drawn)
     loose_ctl, tight_ctl = load_controls(controls, stratum_of)
@@ -629,7 +657,23 @@ def run_analysis(mira, zephyr, controls, db, drawn, prior_node, seed, n_boot=N_B
                          "zephyr": cannot_judge_block(zrows, zeph_ids)},
         "controls": controls_block(loose_ctl, tight_ctl, mrows, zrows),
     }
-    return _round(report)
+    return _round(report), mrows, zrows
+
+
+def public_export_text(rows):
+    """Clause 14: the content-free form of a validated verdict file, as the exact text to write.
+    `rows` is {id: checks} from validate_verdicts. Only verdicts and (rendered) proposed_type
+    are copied, field by field; no reason key exists in the output."""
+    lines = []
+    for nid in sorted(rows):
+        checks = {}
+        for name, c in rows[nid].items():
+            pc = {"verdict": c["verdict"]}
+            if name == "type" and c.get("proposed_type") is not None:
+                pc["proposed_type"] = public_type(c["proposed_type"])
+            checks[name] = pc
+        lines.append(json.dumps({"id": nid, "checks": checks}, sort_keys=True, separators=(",", ":")))
+    return "".join(line + "\n" for line in lines)
 
 
 def _round(o):
@@ -773,11 +817,14 @@ def main(argv=None):
     root = repo_root()
     if root is not None and (out == root or root in out.parents):
         raise OutputInsideWorktree(f"--out {out} is inside the git worktree {root}; the report must live outside it")
-    rep = run_analysis(a.mira, a.zephyr, a.controls, a.db, a.drawn, a.prior_node, a.seed)
+    rep, mrows, zrows = analyze_with_rows(a.mira, a.zephyr, a.controls, a.db, a.drawn, a.prior_node, a.seed)
     out.mkdir(parents=True, exist_ok=True)
     (out / "report.json").write_text(json.dumps(rep, indent=2, sort_keys=True, ensure_ascii=False) + "\n")
     (out / "report.md").write_text(render_md(rep))
-    print(f"wrote {out / 'report.json'} and {out / 'report.md'}")
+    (out / "public").mkdir(exist_ok=True)
+    (out / "public" / "verdicts-mira.public.jsonl").write_text(public_export_text(mrows))
+    (out / "public" / "verdicts-zephyr.public.jsonl").write_text(public_export_text(zrows))
+    print(f"wrote {out / 'report.json'}, {out / 'report.md'} and {out / 'public'}")
     return 0
 
 
