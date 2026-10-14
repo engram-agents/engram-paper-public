@@ -1,0 +1,806 @@
+{
+ "n": 200,
+ "nodes": {
+  "dv_0005": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0011": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0012": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0027": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0030": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0061": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0063": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0064": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0068": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.01
+  },
+  "dv_0086": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0102": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0112": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0115": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0116": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.13
+  },
+  "dv_0120": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0122": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0137": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0138": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0148": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0169": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0174": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0185": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0193": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0217": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0224": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0227": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0234": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0246": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0249": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0259": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0290": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0291": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0299": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0324": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0339": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "dv_0351": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0354": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0356": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0367": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0412": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0413": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0416": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0440": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0450": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0451": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0455": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0465": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0469": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.01
+  },
+  "dv_0492": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0497": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0498": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0500": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0503": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0507": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0513": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0521": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0527": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0538": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.01
+  },
+  "dv_0555": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0557": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 22.77
+  },
+  "dv_0560": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 66.39
+  },
+  "dv_0566": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 92.19
+  },
+  "dv_0579": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 122.63
+  },
+  "dv_0581": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 123.03
+  },
+  "dv_0584": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 139.4
+  },
+  "dv_0604": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 193.21
+  },
+  "dv_0608": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0611": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0614": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0617": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0628": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0629": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0636": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0646": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0654": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0659": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0679": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0694": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.06
+  },
+  "dv_0707": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0714": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0715": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "dv_0719": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.04
+  },
+  "dv_0756": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.03
+  },
+  "dv_0759": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_0763": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_0768": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_0786": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_0795": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.05
+  },
+  "dv_0802": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.04
+  },
+  "dv_0805": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.06
+  },
+  "dv_0816": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.05
+  },
+  "dv_0822": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.03
+  },
+  "dv_0828": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.07
+  },
+  "dv_0829": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.07
+  },
+  "dv_0840": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.07
+  },
+  "dv_0846": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.11
+  },
+  "dv_0850": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.12
+  },
+  "dv_0855": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_0902": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.07
+  },
+  "dv_0915": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_0918": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_0948": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_0960": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_0996": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_1013": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.08
+  },
+  "dv_1020": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_1030": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_1053": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.08
+  },
+  "dv_1067": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_1096": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_1138": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "dv_1180": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1188": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1192": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1199": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1207": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.01
+  },
+  "dv_1240": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1318": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.06
+  },
+  "dv_1328": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1394": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.08
+  },
+  "dv_1398": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1407": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.05
+  },
+  "dv_1410": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1424": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1477": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.1
+  },
+  "dv_1480": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.15
+  },
+  "dv_1482": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1483": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1485": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1494": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.06
+  },
+  "dv_1502": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.01
+  },
+  "dv_1513": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1548": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 18.24
+  },
+  "dv_1555": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1565": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1583": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1597": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1600": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1619": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "dv_1622": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.07
+  },
+  "ob_0024": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "ob_0050": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.04
+  },
+  "ob_0215": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "ob_0230": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "ob_0301": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.24
+  },
+  "ob_0339": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "ob_0445": {
+   "filing_model": "claude-opus-4-6",
+   "hours_before": 0.0
+  },
+  "ob_0759": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_0817": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_0900": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_0987": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_1017": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_1083": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_1175": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_1177": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_1223": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_1244": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_1390": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_1550": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 91.94
+  },
+  "ob_1575": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 96.94
+  },
+  "ob_1621": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 139.96
+  },
+  "ob_1636": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 163.48
+  },
+  "ob_1756": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_1959": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_1967": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_2094": {
+   "filing_model": "claude-opus-4-7",
+   "hours_before": 0.0
+  },
+  "ob_2178": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "ob_2194": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "ob_2207": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "ob_2244": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "ob_2386": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "ob_2598": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "ob_2666": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "ob_2806": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "ob_2936": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "ob_2957": {
+   "filing_model": "claude-opus-4-8",
+   "hours_before": 0.0
+  },
+  "ob_3169": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_3331": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_3537": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_3656": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_3773": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_3857": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_3868": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_3941": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_3989": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_4087": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.01
+  },
+  "ob_4208": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_4440": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_4467": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_4503": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_4531": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_4618": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_4640": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_4702": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.01
+  },
+  "ob_4739": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 11.8
+  },
+  "ob_4771": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 16.64
+  },
+  "ob_4779": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 17.89
+  },
+  "ob_4933": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_4954": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  },
+  "ob_5228": {
+   "filing_model": "claude-opus-5",
+   "hours_before": 0.0
+  }
+ },
+ "rule": "model of the nearest assistant message at or before the node's created_at in Borges's top-level session transcripts (~/.claude/projects/*/*.jsonl); computed 2026-10-14 before any verdict was read"
+}
