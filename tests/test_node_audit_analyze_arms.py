@@ -158,7 +158,7 @@ def vrows(who, node_ids, over):
 MIRA_OVER = {
     "dv_0101": {"type": ("loose", "deductive_modus_ponens"), "placement": "loose"},
     "dv_0102": {"placement": "loose"}, "dv_0201": {"placement": "loose"},
-    "dv_0301": {"type": ("loose", "inductive_causal")}, "dv_0110": {"type": ("loose", "inductive_statistical")},
+    "dv_0301": {"type": ("loose", "SENTINEL_PT_MIRA free text")}, "dv_0110": {"type": ("loose", "inductive_statistical")},
     "ob_0101": {"quote_type": "loose"}, "ob_0201": {"support-overreach": "loose"},
     "ob_0102": {"source_class": "loose"},
     "dv_0901": {"placement": "loose"}, "dv_0902": {"placement": "loose"}, "ob_0901": {"quote_type": "loose"},
@@ -170,12 +170,13 @@ AUTHOR_OVER = {
     "ob_0101": {"quote_type": "loose"}, "ob_0201": {"support-overreach": "cannot-judge"},
 }
 ARIADNE_OVER = {
-    "dv_0101": {"type": ("loose", "inductive_enumeration")}, "dv_0105": {"placement": "loose"},
+    "dv_0101": {"type": ("loose", "inductive_enumeration")},
+    "dv_0105": {"placement": "loose", "type": ("loose", "SENTINEL_PT_ARIADNE free text")},
     "ob_0101": {"quote_type": "loose"},
     "dv_0901": {"placement": "loose"}, "ob_0901": {"support-overreach": "loose"},
 }
 ZEPH_OVER = {
-    "dv_0101": {"type": ("loose", "deductive_conjunction")}, "ob_0101": {"quote_type": "loose"},
+    "dv_0101": {"type": ("loose", "SENTINEL_PT_ZEPH free text")}, "ob_0101": {"quote_type": "loose"},
     "dv_0201": {"chain-overreach": "loose"},
     "dv_0901": {"placement": "loose"}, "dv_0902": {"placement": "loose"},
 }
@@ -308,12 +309,15 @@ def read_lines(path):
 
 
 # ------------------------------------------------------------------ analyze.py untouched
-def test_analyze_py_is_byte_unchanged_against_head():
-    head = subprocess.run(["git", "-C", str(REPO), "show", "HEAD:studies/node-audit/analyze.py"],
-                          capture_output=True)
-    if head.returncode != 0:
-        pytest.skip("git HEAD not readable here")
-    assert hashlib.sha256(ANALYZE.read_bytes()).hexdigest() == hashlib.sha256(head.stdout).hexdigest()
+# sha256 of studies/node-audit/analyze.py as it stands on main at 392a0b7
+# (`git show 392a0b7:studies/node-audit/analyze.py | sha256sum`). A literal, so a COMMITTED edit
+# fails here too; comparing to `git show HEAD:` only ever caught uncommitted ones (Amendment 4:
+# analyze.py clauses 1-14 do not change).
+ANALYZE_PY_SHA256_AT_392A0B7 = "675116a487da292ed4931b400b3b2e5e8c674751928ae954bbea4b3034b9e95b"
+
+
+def test_analyze_py_is_byte_unchanged_since_392a0b7():
+    assert hashlib.sha256(ANALYZE.read_bytes()).hexdigest() == ANALYZE_PY_SHA256_AT_392A0B7
 
 
 def test_clauses_a1_to_a13_are_in_the_module_docstring():
@@ -391,6 +395,15 @@ def test_a1_manifest_every_offender_listed(world, tmp_path):
     msg = refused(world, tmp_path, arms.ManifestInvalid)
     assert "dv_9998" in msg and "dv_0101" in msg          # a non-sampled key; a non-control value
     assert "n_sampled_nodes_mentioning_a_control" in msg  # the count check names its field
+
+
+def test_a1_manifest_names_ids_but_never_echoes_text_that_is_not_an_id(world, tmp_path):
+    bad = {"control_mentions": {"dv_0102": ["SENTINEL_FREE not an id"], "SENTINEL_KEY not an id": ["dv_0901"]},
+           "n_sampled_nodes_mentioning_a_control": 2}
+    (world / FILES["manifest"]).write_text(json.dumps(bad))
+    msg = refused(world, tmp_path, arms.ManifestInvalid)
+    assert "SENTINEL" not in msg and "withheld" in msg
+    assert "dv_0102" in msg                                # an id-shaped key is still named
 
 
 def test_a1_filing_model_must_cover_every_sampled_id(world, tmp_path):
@@ -507,10 +520,10 @@ def test_a4_per_stratum_counts_and_the_lt10_rule_inside_a_pass(rep):
 def test_a4_per_filing_model_with_less_certain_counts(rep):
     exp = {M46: (7, 9, 0), M47: (5, 7, 1), M48: (5, 8, 1), M5: (3, 4, 0)}   # dv_0304 is exactly 24.0: not "less certain"
     for m, (k, n, less) in exp.items():
-        g = grp(rep, "all", "by_filing_model", m)
+        g = grp(rep, "all", "by_filing_model", "models", m)
         assert (g["k"], g["n"], g["less_certain"]) == (k, n, less), m
         assert "rate" not in g                                              # every model has < 10 nodes
-    g = grp(rep, "without_prior", "by_filing_model", M46)
+    g = grp(rep, "without_prior", "by_filing_model", "models", M46)
     assert (g["k"], g["n"]) == (6, 8)                                       # dv_0101 (agrees) is gone
 
 
@@ -594,7 +607,8 @@ def test_a6_the_denominator_keeps_the_cannot_judge_cell(rep):
 
 
 def test_a6_ariadne_and_zephyr(rep):
-    assert cells(avr(rep, "ariadne")["total"]) == (3, 0, 0, 2, 3)
+    # dv_0105 adds a free-text `type` loose where the author is tight: one author-disagrees, one more reader-loose
+    assert cells(avr(rep, "ariadne")["total"]) == (3, 1, 0, 2, 4)
     assert cells(avr(rep, "zephyr")["total"]) == (3, 0, 0, 1, 3)   # Zephyr judged 8 sampled nodes
 
 
@@ -619,6 +633,74 @@ def test_a6_filing_model_split_is_labelled_exploratory(rep, out):
 def test_a6_controls_never_enter(rep):
     # the author file has no control rows; a control leaking into the tallies would add loose cells
     assert avr(rep, "mira")["total"]["n_reader_loose"] == 9   # Mira marks 3 controls loose
+
+
+def test_a6_md_prints_every_check_even_when_all_its_cells_are_zero(out):
+    md = (out / "report_arms.md").read_text()
+    section = md.split("### zephyr, pass: all")[1].split("###")[0]
+    for c in DER_CHECKS + OBS_CHECKS:                     # Zephyr has no source_class cell: still printed
+        assert f"- {c}:" in section, c
+
+
+# ------------------------------------------------------------------ reading rules and registration labels
+DERIVED = "derived (combines pre-registered exclusions; not itself pre-registered)"
+DESCRIPTIVE = "descriptive (not pre-registered)"
+EXPLORATORY = "exploratory, not attribution"
+PROTOCOL = AUDIT / "PROTOCOL.md"
+
+
+def protocol_reading_rules():
+    """The bullets under PROTOCOL.md's `*Reading rules, fixed now.*`, read from the file itself."""
+    lines = PROTOCOL.read_text().splitlines()
+    rules = []
+    for ln in lines[lines.index("*Reading rules, fixed now.*") + 1:]:
+        if not ln.startswith("- "):
+            break
+        rules.append(ln)
+    return rules
+
+
+def test_reading_rules_are_printed_verbatim_at_the_top_of_the_md(out):
+    rules = protocol_reading_rules()
+    assert len(rules) == 5, "Amendment 4 fixes five reading rules"
+    top = (out / "report_arms.md").read_text().split("## Input files")[0]
+    pos = [top.find(r) for r in rules]
+    assert -1 not in pos, [r[:30] for r, p in zip(rules, pos) if p == -1]
+    assert pos == sorted(pos)
+
+
+def test_blind_per_filing_model_split_is_labelled_exploratory_in_json_and_md(rep, out):
+    for p in PASSES4:
+        assert grp(rep, p, "by_filing_model")["label"] == EXPLORATORY, p
+    md = (out / "report_arms.md").read_text()
+    blind = md.split("## Arm A blind pass")[1].split("## Author agrees")[0]
+    assert blind.count(f"- per filing model ({EXPLORATORY}):") == 4
+
+
+def test_combined_passes_are_marked_derived_and_the_registered_ones_are_not(rep):
+    for p in PASSES4:
+        want = DERIVED if p == "without_both" else None
+        blocks = [rep["blind"][p], rep["author"]["passes"][p]] + [rep["author_vs_reader"][w][p]
+                                                                  for w in ("mira", "ariadne", "zephyr")]
+        for b in blocks:
+            assert b.get("status", {}).get("pass") == want, p
+    for p in PASSES_ARI:
+        want = DERIVED if p == "without_both_sets" else None
+        assert rep["ariadne"]["passes"][p].get("status", {}).get("pass") == want, p
+
+
+def test_blind_wilson_intervals_and_confusion_are_marked_descriptive(rep):
+    for p in PASSES4:
+        st = rep["blind"][p]["status"]
+        assert st["wilson_intervals"] == DESCRIPTIVE and st["confusion"] == DESCRIPTIVE, p
+
+
+def test_registration_labels_appear_in_the_md(out):
+    md = (out / "report_arms.md").read_text()
+    assert md.count(DERIVED) == 6      # blind, author, three readers' author-vs-reader, Ariadne's both-sets
+    blind = md.split("## Arm A blind pass")[1].split("## Author agrees")[0]
+    assert blind.count(DESCRIPTIVE) == 8   # intervals and the confusion table, in each of the four passes
+    assert blind.count(DERIVED) == 1
 
 
 # ------------------------------------------------------------------ A7 pairwise agreement
@@ -647,8 +729,8 @@ def test_a7_kappa_on_a_hand_computed_pair(rep):
 
 def test_a7_per_check_percent_and_kappa(rep):
     pc = pair(rep, "author_ariadne")["per_check"]
-    assert (pc["type"]["n"], pc["type"]["n_agree"]) == (28, 27)           # only dv_0301 differs (cannot-judge/tight)
-    assert pc["type"]["percent_agreement"] == pytest.approx(100 * 27 / 28)
+    assert (pc["type"]["n"], pc["type"]["n_agree"]) == (28, 26)           # dv_0301 (cannot-judge/tight), dv_0105 (tight/loose)
+    assert pc["type"]["percent_agreement"] == pytest.approx(100 * 26 / 28)
     assert (pc["placement"]["n"], pc["placement"]["n_agree"]) == (28, 26)   # dv_0101 and dv_0102 differ
     assert "kappa" in pc["placement"]
     assert set(pc) == set(DER_CHECKS + OBS_CHECKS)
@@ -695,7 +777,7 @@ def test_a8_rates_in_the_five_passes(rep):
 def test_a8_inductive_generalization_confusion_confidence_and_reading(rep):
     k = rep["ariadne"]["passes"]["all"]["derivation"]
     assert k["inductive_generalization"]["loose"] == 2
-    assert k["confusion"] == {"inductive_generalization": {"inductive_enumeration": 1}}
+    assert k["confusion"] == {"inductive_generalization": {"inductive_enumeration": 1, PLACEHOLDER: 1}}
     c = k["confidence"]
     assert (c["n_tight"], c["n_loose"]) == (26, 2) and c["reading"] and "auc" in c
     assert rep["ariadne"]["passes"]["all"]["observation"]["confidence"]["n_loose"] == 1
@@ -762,9 +844,10 @@ def test_a10_recognized_line_text_and_packet_text_never_appear(out):
 
 def test_a10_positive_controls_a_v051_name_and_a_blind_type_appear_verbatim(rep, out):
     assert rep["ariadne"]["passes"]["all"]["derivation"]["confusion"]["inductive_generalization"] == {
-        "inductive_enumeration": 1}
+        "inductive_enumeration": 1, PLACEHOLDER: 1}
     ariadne = {r["id"]: r for r in read_lines(out / "public" / "verdicts-ariadne.public.jsonl")}
     assert ariadne["dv_0101"]["checks"]["type"]["proposed_type"] == "inductive_enumeration"
+    assert ariadne["dv_0105"]["checks"]["type"]["proposed_type"] == PLACEHOLDER   # her free-text one is withheld
     blind = {r["id"]: r for r in read_lines(out / "public" / "blind-author.public.jsonl")}
     assert blind["dv_0102"]["blind_type"] == "inductive_enumeration"
     author = {r["id"]: r for r in read_lines(out / "public" / "verdicts-author.public.jsonl")}

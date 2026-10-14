@@ -23,13 +23,16 @@ CONTRACT (each clause is asserted by tests/test_node_audit_analyze_arms.py)
     a string. The manifest: every key a sampled id, every listed value a control id, and the
     count equal to n_sampled_nodes_mentioning_a_control. The filing-model file must cover every
     sampled id, and the packet must hold exactly the sampled ids plus the controls. Any
-    violation raises a named error listing EVERY offending item (a withheld value is never
-    echoed), the CLI exits non-zero, and nothing is written.
+    violation raises a named error listing EVERY offending item of that input file (a withheld
+    value is never echoed: text that is not an id is named only by its position), the CLI exits
+    non-zero, and nothing is written. Files are checked in turn, so a second bad file is reported
+    after the first is fixed; each file has its own named error, as in analyze.py clause 1.
  A2 recognized.txt. Each non-empty line not starting with `#` must hold exactly one id-shaped
     token ((dv|ob)_\\d{4}, whole token); a line also holding the token LATE counts as late.
     RecognizedInvalid lists LINE NUMBERS ONLY, never line text or ids, for: zero ids, more than
     one id, an id outside the packet's ids, a duplicated id. The set may include control ids,
-    which are counted and named only in the Controls section.
+    which are COUNTED in the set comparison (A8) and NAMED only in the Controls section; the n of
+    a set therefore includes its control ids, and the without-set passes drop sampled ids only.
  A3 Mention set: the ids of packet node blocks whose text matches (?i)ariadne|\\bari\\b. The report
     prints its n and the protocol's measured figure "41 of 211"; it does not assert equality.
     The matched text is never printed.
@@ -39,7 +42,12 @@ CONTRACT (each clause is asserted by tests/test_node_audit_analyze_arms.py)
     hours_before > 24 are counted beside each model row as less_certain), plus a declared x
     blind confusion table. A group with fewer than 10 nodes reports counts only. Every figure
     is reported in four passes: all; without --prior-node; without the manifest's sampled ids;
-    without both.
+    without both. The per-filing-model split is labelled `exploratory, not attribution`. Outputs
+    that are not themselves pre-registered carry a status in json and md: the "without both" pass
+    (here, in A6 and in A9) and A8's "without both sets" are `derived (combines pre-registered
+    exclusions; not itself pre-registered)`; the Wilson intervals and the declared x blind table of
+    the blind pass are `descriptive (not pre-registered)`. Passes the protocol names carry no
+    status. The report opens with the five Amendment 4 reading rules, verbatim from PROTOCOL.md.
  A5 Self-naming. A blind-pass derivation names its own type if its claim or its logical chain
     (nodes.claim, nodes.logical_chain: the fields build_packet.py renders) contains its declared
     reasoning_type in underscore or space form, case-insensitive. Reported: the count, and the
@@ -118,6 +126,23 @@ PASSES4 = ("all", "without_prior", "without_manifest", "without_both")
 PASSES_ARIADNE = ("all", "without_prior", "without_recognized", "without_mention", "without_both_sets")
 PROTOCOL_MENTION_FIGURE = "41 of 211"
 SPLIT_LABEL = "exploratory, not attribution"
+DERIVED_LABEL = "derived (combines pre-registered exclusions; not itself pre-registered)"
+DESCRIPTIVE_LABEL = "descriptive (not pre-registered)"
+# PROTOCOL.md Amendment 4, "Reading rules, fixed now": the five bullets, verbatim, printed at the top
+# of report_arms.md. tests/test_node_audit_analyze_arms.py reads them back out of PROTOCOL.md itself.
+READING_RULES = (
+    "- **Author agrees** is read as an error made at filing time. The design cannot attribute it to a cause. "
+    "Time pressure, an earlier model's habits, and the project's own changing practice over those months are all "
+    "confounded, because in one author's transcripts each model occupied one continuous period. The per-model "
+    "breakdown is reported, and it is not read as attribution.",
+    "- **Author disagrees** is read as a standing disagreement between the author and that reader.",
+    "- **Ariadne vs Mira and Zephyr** is read as a difference of lineage plus exposure, not of lineage alone. "
+    "Being of the author's lineage and having read the author's posts arrive together in her.",
+    "- **Ariadne vs the author** is read as an authorship difference within one lineage, with the same exposure "
+    "caveat.",
+    "- No result of these arms is read as showing which reader is right. Counts are reported beside every rate, "
+    "and the small-stratum rule applies.",
+)
 INPUT_KEYS = ("author_blind", "author_verdicts", "ariadne", "ariadne_recognized", "mira", "zephyr",
               "controls", "manifest", "packet", "db", "drawn", "filing_model")
 PAIRS = (("author", "mira"), ("author", "ariadne"), ("author", "zephyr"), ("ariadne", "mira"),
@@ -224,15 +249,21 @@ def validate_manifest(path, sampled, controls):
                               "n_sampled_nodes_mentioning_a_control")
     problems = []
     ctl, smp = set(controls), set(sampled)
-    for nid, vals in m["control_mentions"].items():
+
+    def named(x, where):
+        """An id-shaped string is named; anything else is withheld (A1: a withheld value is never echoed)."""
+        return x if isinstance(x, str) and ID_TOKEN.fullmatch(x) else f"<non-id text withheld, {where}>"
+
+    for k, (nid, vals) in enumerate(m["control_mentions"].items(), 1):
+        who = named(nid, f"key {k}")
         if nid not in smp:
-            problems.append((nid, "key is not a sampled id"))
+            problems.append((who, "key is not a sampled id"))
         if not isinstance(vals, list) or not vals:
-            problems.append((nid, "value must be a non-empty list of control ids"))
+            problems.append((who, "value must be a non-empty list of control ids"))
             continue
-        for v in vals:
+        for j, v in enumerate(vals, 1):
             if not (isinstance(v, str) and v in ctl):
-                problems.append((nid, f"listed value {v!r} is not a control id"))
+                problems.append((who, f"listed value {named(v, f'value {j}')} is not a control id"))
     declared, actual = m["n_sampled_nodes_mentioning_a_control"], len(m["control_mentions"])
     if declared != actual or isinstance(declared, bool):
         problems.append(("n_sampled_nodes_mentioning_a_control",
@@ -356,8 +387,10 @@ def blind_pass(nodes, derivation_strata):
         row = confusion.setdefault(x["declared"], {})
         row[x["blind"]] = row.get(x["blind"], 0) + 1
     rest = [x for x in nodes if not x["self_naming"]]
-    return {"overall": group(agree(nodes), len(nodes)), "by_stratum": by_stratum, "by_filing_model": by_model,
+    return {"overall": group(agree(nodes), len(nodes)), "by_stratum": by_stratum,
+            "by_filing_model": {"label": SPLIT_LABEL, "models": by_model},
             "confusion": {a: dict(sorted(b.items())) for a, b in sorted(confusion.items())},
+            "status": {"wilson_intervals": DESCRIPTIVE_LABEL, "confusion": DESCRIPTIVE_LABEL},
             "self_naming": {"n_self_naming": len(nodes) - len(rest), "n": len(nodes),
                             "agreement_excluding": group(agree(rest), len(rest))}}
 
@@ -388,6 +421,19 @@ def author_vs_reader(author_rows, reader_rows, ids, model_of):
                 mcells[h] += 1
     return {"total": total, "by_check": by_check,
             "by_filing_model": {"label": SPLIT_LABEL, "models": dict(sorted(by_model.items()))}}
+
+
+def mark_derived(passes, name):
+    """Label the one pass that is a union of two pre-registered exclusions. Only that pass is labelled:
+    the registered passes carry no status, so nothing here claims a registration."""
+    passes[name].setdefault("status", {})["pass"] = DERIVED_LABEL
+
+
+def ariadne_controls(loose_ctl, tight_ctl, arows):
+    """Clause 3's sensitivity/specificity block for Ariadne alone. analyze.controls_block compares two
+    readers (Mira, Zephyr) and keys its per-reader block "mira"/"zephyr"; passing her rows as both and
+    reading the "mira" key gives her block, and the self-comparison it also computes is discarded."""
+    return an.controls_block(loose_ctl, tight_ctl, arows, arows)["mira"]
 
 
 def class_agreement(ra, rb, ids, la, lb):
@@ -511,7 +557,7 @@ def analyze_arms(paths, prior_node, seed, n_boot):
     for a, b in PAIRS:
         shared = sorted(set(ids_of[a]) & set(ids_of[b]))
         pairs[f"{a}_{b}"] = pair_block(allrows[a], allrows[b], shared, a, b)
-    ari_ctl = an.controls_block(loose_ctl, tight_ctl, arows, arows)["mira"]  # clause 3, for one reader
+    ari_ctl = ariadne_controls(loose_ctl, tight_ctl, arows)
     controls = {
         "ariadne": ari_ctl,
         "pairs": {f"ariadne_{b}": class_agreement(arows, allrows[b], ctl, "ariadne", b) for b in ("mira", "zephyr")},
@@ -519,6 +565,11 @@ def analyze_arms(paths, prior_node, seed, n_boot):
         "mention_control_ids": sorted(mention & ctl_set),
     }
     both_sets = recognized & mention
+    blind_passes = {p: blind_pass([x for x in blind_nodes if x["id"] not in ex], derivation_strata)
+                    for p, ex in excl4.items()}
+    for passes in (blind_passes, aut_passes, *avr.values()):
+        mark_derived(passes, "without_both")
+    mark_derived(ari_passes, "without_both_sets")
     report = {
         "meta": {"seed": seed, "prior_node": prior_node, "n_boot": n_boot, "min_rate_n": an.MIN_RATE_N,
                  "wilson_z": an.Z95, "vendored_sha256": an.VENDORED_SHA256,
@@ -530,8 +581,7 @@ def analyze_arms(paths, prior_node, seed, n_boot):
                        "packet_nodes": len(blocks), "controls": len(ctl)},
         "mention_set": set_counts(mention, ctl_set) | {"n_packet_nodes": len(blocks),
                                                        "protocol_measured": PROTOCOL_MENTION_FIGURE},
-        "blind": {p: blind_pass([x for x in blind_nodes if x["id"] not in ex], derivation_strata)
-                  for p, ex in excl4.items()},
+        "blind": blind_passes,
         "author_vs_reader": avr,
         "pairs": pairs,
         "ariadne": {"passes": ari_passes, "deltas": deltas,
@@ -570,6 +620,19 @@ def fmt_cells(c):
             f"reader-loose total {c['n_reader_loose']}")
 
 
+def status_lines(block):
+    """The registration labels a pass block carries (none for the passes the protocol names)."""
+    st = block.get("status", {})
+    out = []
+    if "pass" in st:
+        out.append(f"- Status of this pass: {st['pass']}")
+    if "wilson_intervals" in st:
+        out.append(f"- Status of the Wilson intervals below: {st['wilson_intervals']}")
+    if "confusion" in st:
+        out.append(f"- Status of the declared -> blind table below: {st['confusion']}")
+    return out + [""] if out else out
+
+
 def render_rates(L, p, heading):
     for kind in ("derivation", "observation"):
         k = p[kind]
@@ -598,10 +661,14 @@ def render_md(rep):
     L = []
     m = rep["meta"]
     L += ["# Node audit analysis report: Arm A (author) and Arm B (Ariadne)", "",
+          "## Reading rules (PROTOCOL.md Amendment 4, \"Reading rules, fixed now\", verbatim)", "",
+          *READING_RULES, "",
           f"Seed `{m['seed']}`; analyst-prior node `{m['prior_node']}`; bootstrap resamples {m['n_boot']}; small-stratum "
           f"rule: fewer than {m['min_rate_n']} nodes report counts only. Controls are excluded from every rate. "
           f"{m['n_manifest_nodes']} sampled nodes mention a control (the private manifest).", "",
-          "No result here is read as showing which reader is right (PROTOCOL.md Amendment 4, reading rules).", "",
+          "Pass labels: a pass labelled \"derived\" is a union of two pre-registered exclusions and is not itself "
+          "named in the protocol; items labelled \"descriptive\" are not pre-registered. Unlabelled passes are the "
+          "ones the protocol names.", "",
           "## Input files (sha256)", ""]
     L += [f"- {k}: `{v}`" for k, v in m["input_sha256"].items()]
     v = rep["validation"]
@@ -620,9 +687,11 @@ def render_md(rep):
     L += ["## Arm A blind pass: agreement with the declared type, and self-naming", ""]
     for p in PASSES4:
         b = rep["blind"][p]
-        L += [f"### pass: {p}", "", f"- overall: {fmt_group(b['overall'])}", "- per stratum:"]
+        L += [f"### pass: {p}", ""] + status_lines(b)
+        L += [f"- overall: {fmt_group(b['overall'])}", "- per stratum:"]
         L += [f"  - {s_}: {fmt_group(g)}" for s_, g in b["by_stratum"].items()]
-        L += ["- per filing model:"] + [f"  - {mm}: {fmt_group(g)}" for mm, g in b["by_filing_model"].items()]
+        L += [f"- per filing model ({b['by_filing_model']['label']}):"]
+        L += [f"  - {mm}: {fmt_group(g)}" for mm, g in b["by_filing_model"]["models"].items()]
         L += ["- declared -> blind:"] + [f"  - {a} -> {c}: {n}" for a, row in b["confusion"].items() for c, n in row.items()]
         sn = b["self_naming"]
         L += [f"- self-naming (claim or chain contains the declared type): {sn['n_self_naming']} of {sn['n']}; "
@@ -631,8 +700,8 @@ def render_md(rep):
     for who in ("mira", "ariadne", "zephyr"):
         for p in PASSES4:
             a = rep["author_vs_reader"][who][p]
-            L += [f"### {who}, pass: {p}", "", f"- all checks: {fmt_cells(a['total'])}"]
-            L += [f"- {c}: {fmt_cells(r)}" for c, r in a["by_check"].items() if any(r.values())]
+            L += [f"### {who}, pass: {p}", ""] + status_lines(a) + [f"- all checks: {fmt_cells(a['total'])}"]
+            L += [f"- {c}: {fmt_cells(r)}" for c, r in a["by_check"].items()]
             L += [f"- per filing model ({a['by_filing_model']['label']}):"]
             L += [f"  - {mm}: {fmt_cells(r)}" for mm, r in a["by_filing_model"]["models"].items()]
             L.append("")
@@ -652,7 +721,7 @@ def render_md(rep):
         L.append("")
     L += ["## Ariadne's rates", ""]
     for p in PASSES_ARIADNE:
-        L += [f"### pass: {p}", ""]
+        L += [f"### pass: {p}", ""] + status_lines(rep["ariadne"]["passes"][p])
         render_rates(L, rep["ariadne"]["passes"][p], "####")
     d = rep["ariadne"]["deltas"]
     sm = d["summary"]
@@ -664,7 +733,7 @@ def render_md(rep):
           for r in d["not_computed"]]
     L += ["", "## Author's rates", ""]
     for p in PASSES4:
-        L += [f"### pass: {p}", ""]
+        L += [f"### pass: {p}", ""] + status_lines(rep["author"]["passes"][p])
         render_rates(L, rep["author"]["passes"][p], "####")
     c = rep["controls"]
     a = c["ariadne"]
