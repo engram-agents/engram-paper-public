@@ -131,13 +131,14 @@ when its confidence was last calculated, a premise since superseded included, to
 with the replacement wired in when its marker was acknowledged — **414 of the 416 are
 exact**. The two that deviate are one node filed before reasoning types existed (0.807
 measured against 0.833 expected) and one whose weakest premise is a lesson that later
-lost its confidence (0.372 against 0.920). Eight further nodes are exact under that rule
-only because their minimum sits at a superseded premise: the footprint of an
+lost its confidence (0.372 against 0.920). Eight of the 414 are exact only because
+their minimum sits at a superseded premise: the footprint of an
 acknowledge-time recompute that took the minimum over both the old premise and its
-replacement, a defect of the pinned engine version, fixed after it. So the residual
-between the two means was the instrument, not the substrate; the per-node check is the
-one that answers the question, and "close but not exact" was a defect report about the
-check.
+replacement, a defect of the pinned engine version, fixed after it. So the gap between
+the two means had three sources: the check, which scored current rather than
+computed-from premises; two legacy nodes; and a recompute defect of the pinned engine
+version. The per-node check is the one that answers the question, and "close but not
+exact" was a report about the check, not about the rule.
 
 One structural fact falls out of the same measurement and is worth a sentence.
 For **195 of 414** scorable modus-ponens derivations (scorable: at least one current premise; the other two of the 416 rest only on premises since superseded) — **47%**, just under half —
