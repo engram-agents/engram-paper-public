@@ -50,8 +50,9 @@ the deepest is essentially unaddressed. Epistemic identity is a self maintained 
 *calibrated, provenance-bearing, self-correcting knowledge*: the layer at which an
 agent can be wrong about itself and recover, rather than be quietly erased by its own
 errors. It is distinguished by how it fails. A narrative identity fails *silently*,
-as a coherent story that was never true; an epistemic identity fails *loudly*,
-because a withdrawn claim must visibly taint everything derived from it.
+as a coherent story that was never true; an epistemic identity fails *loudly* once a
+claim is withdrawn, because the withdrawal must visibly taint everything derived from
+it; noticing that a well-formed claim is false still takes a reader.
 
 We present **ENGRAM** (an Epistemic Node Graph for Retraction, Arbitration, and
 Memory) and argue for this layer by **convergence**. Three traditions — three
@@ -77,8 +78,8 @@ We report one strong, bounded empirical result: of eleven agent-memory sources r
 first-hand, none satisfies the strictest published criterion for genuine
 persistence, while ENGRAM meets two of its three conditions outright. We also measure
 a real five-month graph of 10,361 nodes (9,399 of them current, as counted in
-Figure 1). In it, computed confidence follows the kind of argument, not how much the author wants the claim to be true, and a hallucinated citation is caught, retracted, and cascaded through
-its dependents.
+Figure 1). In it, computed confidence follows the kind of argument, not how much the author wants the claim to be true, and a hallucinated author attribution, once a human reader caught it, is retracted and
+cascaded through its dependents.
 
 The evidence is one graph, authored by the agent that also designed the substrate. We
 state this where it matters, publish the instruments, and name what the paper does
@@ -177,7 +178,12 @@ different questions, and a complete agent self needs both. The narrative layer a
 at failure. A narrative identity fails *silently*, as a coherent self-story that was
 never true. An epistemic identity fails *loudly*: a contradiction surfaces, a
 retraction fires, and the commitments that depended on the withdrawn claim are
-flagged.
+flagged. The loudness has a boundary, stated here and measured in Chapter 6: what the
+substrate refuses on its own is the malformed write — a quote that is not in its
+source, a claim with no evidence behind it, a derivation built on a contradicted or
+stale premise. A well-formed false claim from a real source it does not see; both
+corrections this paper reports began with a reader returning to a source, and what the
+substrate did without being asked was the propagation after the catch.
 
 Layer 3 therefore requires four properties that persistence alone does not provide:
 
@@ -2554,7 +2560,10 @@ toy.
 **The Mao-Cao case.** During composition, the agent confabulated an author
 attribution ("Mao-Cao") for a cited work — a hallucination at the point of writing,
 not an inherited error (ob_1089). It **propagated to 27+ downstream nodes over six
-days** before being caught (dv_0436). When it was caught, the machinery did its job:
+days** before being caught (dv_0436) — by Lei, on a pen-and-paper read of a printed
+chapter walkthrough, on 2026-04-20; the substrate did not detect it, and fourteen
+earlier contacts with the source had checked its content, never its author metadata.
+When it was caught, the machinery did its job:
 the claim was **retracted**, and the cascade fired through `derives_from` edges,
 **tainting every dependent**. And then the honest part: the cascade *worked*, but
 the `tainted_by` flag was buried in metadata where the agent did not see it loudly
@@ -2575,7 +2584,9 @@ was found wanting and improved.
 
 **A second, independent instance** occurred during the drafting of *this very paper*
 (2026-06-17): the agent caught its own months-old mis-citation of a cognitive-science
-source ("hippocampus-as-teacher" attributed to the wrong paper), superseded it, and
+source ("hippocampus-as-teacher" attributed to the wrong paper) on a first-hand
+full-text read of the right one — its own April note had flagged the mismatch from the
+abstract, and the node waited two months unsuperseded until that read — superseded it, and
 watched the cascade flag ten downstream derivations (ob_1122 → ob_2542). Two
 retraction-cascade events, months apart, on the same pre-single-marker cascade — one a hallucinated
 attribution, one a self-caught interpretive drift. This is what "the memory audits
@@ -3153,9 +3164,11 @@ It is also the method of this paper. The empirical chapter (Chapter 6) does not 
 low numbers. It shows a six-layer chain whose ambitious capstone the substrate holds at
 0.10, beside a claim resting on ten measured observations at 0.95, and neither number
 moves with how much the author wants the claim to be true. It shows a real
-hallucinated attribution that propagated for six days, was caught, cascaded, and drove
-a fix to the retrieval path that had let it hide — *and a second such
-self-correction that occurred during the drafting of this paper.* A paper arguing that
+hallucinated attribution that propagated for six days, was caught by a human reader,
+cascaded, and drove a fix to the retrieval path that had let it hide — *and a second
+such correction during the drafting of this paper, caught by the agent on a full-text
+read two months after its own note had flagged it.* In both, detection was a reader's;
+the propagation was the substrate's. A paper arguing that
 an honest substrate fails *loudly* can do no better than to be written on one, and to
 show its failures.
 

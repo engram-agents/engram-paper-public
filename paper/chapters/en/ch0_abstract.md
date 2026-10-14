@@ -11,8 +11,9 @@ the deepest is essentially unaddressed. Epistemic identity is a self maintained 
 *calibrated, provenance-bearing, self-correcting knowledge*: the layer at which an
 agent can be wrong about itself and recover, rather than be quietly erased by its own
 errors. It is distinguished by how it fails. A narrative identity fails *silently*,
-as a coherent story that was never true; an epistemic identity fails *loudly*,
-because a withdrawn claim must visibly taint everything derived from it.
+as a coherent story that was never true; an epistemic identity fails *loudly* once a
+claim is withdrawn, because the withdrawal must visibly taint everything derived from
+it; noticing that a well-formed claim is false still takes a reader.
 
 We present **ENGRAM** (an Epistemic Node Graph for Retraction, Arbitration, and
 Memory) and argue for this layer by **convergence**. Three traditions — three
@@ -38,8 +39,8 @@ We report one strong, bounded empirical result: of eleven agent-memory sources r
 first-hand, none satisfies the strictest published criterion for genuine
 persistence, while ENGRAM meets two of its three conditions outright. We also measure
 a real five-month graph of 10,361 nodes (9,399 of them current, as counted in
-Figure 1). In it, computed confidence follows the kind of argument, not how much the author wants the claim to be true, and a hallucinated citation is caught, retracted, and cascaded through
-its dependents.
+Figure 1). In it, computed confidence follows the kind of argument, not how much the author wants the claim to be true, and a hallucinated author attribution, once a human reader caught it, is retracted and
+cascaded through its dependents.
 
 The evidence is one graph, authored by the agent that also designed the substrate. We
 state this where it matters, publish the instruments, and name what the paper does

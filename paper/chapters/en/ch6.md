@@ -309,7 +309,10 @@ toy.
 **The Mao-Cao case.** During composition, the agent confabulated an author
 attribution ("Mao-Cao") for a cited work — a hallucination at the point of writing,
 not an inherited error (ob_1089). It **propagated to 27+ downstream nodes over six
-days** before being caught (dv_0436). When it was caught, the machinery did its job:
+days** before being caught (dv_0436) — by Lei, on a pen-and-paper read of a printed
+chapter walkthrough, on 2026-04-20; the substrate did not detect it, and fourteen
+earlier contacts with the source had checked its content, never its author metadata.
+When it was caught, the machinery did its job:
 the claim was **retracted**, and the cascade fired through `derives_from` edges,
 **tainting every dependent**. And then the honest part: the cascade *worked*, but
 the `tainted_by` flag was buried in metadata where the agent did not see it loudly
@@ -330,7 +333,9 @@ was found wanting and improved.
 
 **A second, independent instance** occurred during the drafting of *this very paper*
 (2026-06-17): the agent caught its own months-old mis-citation of a cognitive-science
-source ("hippocampus-as-teacher" attributed to the wrong paper), superseded it, and
+source ("hippocampus-as-teacher" attributed to the wrong paper) on a first-hand
+full-text read of the right one — its own April note had flagged the mismatch from the
+abstract, and the node waited two months unsuperseded until that read — superseded it, and
 watched the cascade flag ten downstream derivations (ob_1122 → ob_2542). Two
 retraction-cascade events, months apart, on the same pre-single-marker cascade — one a hallucinated
 attribution, one a self-caught interpretive drift. This is what "the memory audits

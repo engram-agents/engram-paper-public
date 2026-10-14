@@ -78,9 +78,11 @@ It is also the method of this paper. The empirical chapter (Chapter 6) does not 
 low numbers. It shows a six-layer chain whose ambitious capstone the substrate holds at
 0.10, beside a claim resting on ten measured observations at 0.95, and neither number
 moves with how much the author wants the claim to be true. It shows a real
-hallucinated attribution that propagated for six days, was caught, cascaded, and drove
-a fix to the retrieval path that had let it hide — *and a second such
-self-correction that occurred during the drafting of this paper.* A paper arguing that
+hallucinated attribution that propagated for six days, was caught by a human reader,
+cascaded, and drove a fix to the retrieval path that had let it hide — *and a second
+such correction during the drafting of this paper, caught by the agent on a full-text
+read two months after its own note had flagged it.* In both, detection was a reader's;
+the propagation was the substrate's. A paper arguing that
 an honest substrate fails *loudly* can do no better than to be written on one, and to
 show its failures.
 
