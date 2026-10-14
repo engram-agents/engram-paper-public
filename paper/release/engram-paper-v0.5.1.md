@@ -1122,16 +1122,18 @@ toward compliance. Each verdict therefore names its reading: architectural verdi
 (the agent arbitrates under uncertainty) claim the stronger *active* reading and
 carry behavioral evidence (Ch6).
 
-**Why the verdict numbers are low, and why the table does not print them.** The
-verdict derivations of this chapter compute between 0.35 and 0.39. They are deductive
-and statistical steps whose grade is inherited from their weakest premise — in each
-case an observation from conversation, graded 0.40 — so under the minimum rule a
-further premise cannot raise them; only superseding the conversational premises with
-measured ones can. This is the confidence model operating as designed, not a weakness
-in the *architectural* argument, and it is why the verdict table (§4.12) does not
-print them: they are grades, not probabilities, and a column of decimals reads as one.
-That the paper exhibits its own low, *computed* confidences is itself a demonstration
-of the thesis (Ch6 §6.1; Ch8).
+**Why the verdict numbers are low, and why the table does not print them.** Four of
+the seven verdict derivations of this chapter — Conditions 1 and 3 and Constraints A
+and C — compute between 0.35 and 0.39. They are deductive and statistical steps whose
+grade is inherited from their weakest premise, which traces in each case to an
+observation from conversation graded 0.40 (directly for Conditions 1 and 3; through the
+Condition 3 verdict for A and C). Under the minimum rule a further premise cannot raise
+them; only superseding the conversational premises with measured ones can. The other
+three compute between 0.58 and 0.86. This is the confidence model operating as
+designed, not a weakness in the *architectural* argument, and it is why the verdict
+table (§4.12) prints none of them: they are grades, not probabilities, and a column of
+decimals reads as one. That the paper exhibits its own low, *computed* confidences is
+itself a demonstration of the thesis (Ch6 §6.1; Ch8).
 
 ## 4.1 The map: mechanism → tradition → OCC condition
 
