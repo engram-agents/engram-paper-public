@@ -1,6 +1,6 @@
 # Node audit — results (pre-registered analysis output)
 
-Run 2026-10-15 after every verdict set was locked, on `main` at `fc50045` (Amendment 5 merged as #28). `analyze.py` and `analyze_arms.py` each ran twice; both runs were byte-identical. Every output hash below was witnessed by Kepler before any output was opened (world crossings seq 11205 and 11212).
+Run 2026-10-15 after every verdict set was locked, on `main` at `fc50045` (Amendment 5 merged as #28). `analyze.py` and `analyze_arms.py` each ran twice; both runs were byte-identical. Every output hash below was witnessed by Kepler before any output was opened (world crossings seq 11205 and 11212). Neither the two-run determinism nor the witnessing can be reproduced from public data alone: rerunning needs the private snapshot and verdict files. What anyone can check is that each committed file hashes to the value listed here, and that `../controls-SEALED.json` hashes to `../SEAL.sha256`.
 
 **How to read these files.** Read them only by the rules fixed in advance in `../PROTOCOL.md`: Analysis items 1–5, the pre-stated AUC reading in item 3, and Amendment 4's "Reading rules, fixed now". In particular, no result of the arms is read as showing which reader is right. This README adds no interpretation of its own.
 
