@@ -2733,9 +2733,13 @@ asked readers to judge each one. For a derivation there are three checks: is the
 declared type right, are the premises placed correctly, and does the claim stay within
 what its premises support. For an observation there are three as well: support, quote
 type and source class. A node counts as loose if any of its checks is loose. The
-protocol, the sample, the controls and the analysis code were published before anyone
-read a node (`studies/node-audit/` in the paper's repository), every reader's verdicts
-were locked and hashed before any result existed, and every number below is
+protocol, the sample and a hash of the sealed control list were published before anyone
+read a node (`studies/node-audit/` in the paper's repository). The analysis code and
+protocol Amendments 1–4 were published while the reading was under way, each before
+the analyst opened any verdict, and each amendment records when it was made. Every
+reader's verdicts were locked and hashed before any result existed; two locked files
+needed a pinned format normalisation, applied to copies, written and reviewed as
+Amendment 5 before any number was computed, and published before the results. Every number below is
 recomputable from published data: the content-free verdict exports and the
 content-stripped snapshot.
 
@@ -2749,10 +2753,10 @@ of this paper, in two seeded rounds of candidates before any reader started.
 
 **The readers disagree.** The population-weighted share of derivations judged loose was
 93–96% for Mira, 81.4% for Ariadne, 60.3% for the author, and 24 of 45 for Zephyr on
-the derivations Zephyr read. Two pre-registered checks move these figures by at most about three points.
-Ariadne's rate is 84.4% without the 43 nodes she recorded as recognising, and 84.7%
-without the 41 whose text names her. The author's rate stays between 59.8% and 60.3%
-under every pre-registered exclusion. Agreement between readers on tight versus loose
+the derivations Zephyr read. The pre-registered exclusions move Ariadne's and the author's figures by at most about
+three points. Ariadne's rate is 84.4% without the 40 sampled nodes she recorded as
+recognising, and 84.7% without the 38 whose text names her. The author's rate stays
+between 59.8% and 60.3% under every pre-registered exclusion. Agreement between readers on tight versus loose
 was low for every pair (Cohen's κ from 0.03 to 0.36). The controls show part of why.
 Mira flagged all seven known-loose nodes, and also three of the four known-good ones,
 so her threshold is stricter than the one that chose the controls. Ariadne classed all
@@ -2769,10 +2773,10 @@ not agree: on the 25 such nodes Zephyr read, Zephyr's type check was loose for 6
 re-typing matched the declared type for 52 (37%). Sixteen of the 140 name their own
 type in their text, and without those the match is 47 of 124 (38%).[^permodel]
 
-Recomputing a node's confidence under the type a reader proposed, with the same formula,
+Recomputing a node's confidence under the type Mira proposed, with the same formula,
 lowers it in most cases (52 recomputable cases, median change −0.19). For the 18
-`inductive_generalization` nodes re-typed as an inference to the best explanation, 12
-lose a third or more of their confidence.
+`inductive_generalization` nodes she re-typed as an inference to the best explanation,
+12 lose a third or more of their confidence.
 
 **Confidence and correctness.** Within this sample, stored confidence does not
 separate the nodes readers judged sound from the ones they judged loose. Using Mira's
@@ -2783,13 +2787,15 @@ as *no evidence either way at this sample size*.
 **What this changes.** §6.1's table shows the formula grading the argument shape the
 author declares, and it does so faithfully. The audit locates the weak point one step
 earlier, in the declaration, most of all in calling an argument an inductive
-generalization when most of the readers judged it to be something weaker. That is
-measurable at filing time and repairable. The audit's verdict format is now the input
-to a repair pass on the live graph.
+generalization when most of the readers judged it to be something else, most often an
+inference to the best explanation or a plain modus ponens. That is measurable at filing
+time and repairable. The audit's verdict format is planned as the input to a repair pass
+on the live graph.
 
 [^permodel]: Blind-pass agreement by the model that filed the node: 6 of 35 (17%),
 11 of 47 (23%), 15 of 29 (52%) and 20 of 29 (69%), from the earliest model to the
-latest. Reading rule, fixed before any verdict existed: "Time pressure, an earlier
+latest. Reading rule, fixed before the analyst read any verdict (Protocol Amendment 4):
+"Time pressure, an earlier
 model's habits, and the project's own changing practice over those months are all
 confounded, because in one author's transcripts each model occupied one continuous
 period. The per-model breakdown is reported, and it is not read as attribution."
