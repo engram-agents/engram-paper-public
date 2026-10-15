@@ -2272,7 +2272,7 @@ follows reasoning type therefore shows the computation working, by construction.
 What one graph cannot show from inside is whether the declared types are right. The
 agent who labels each argument also designed the types, so a mislabelled argument
 would still produce a tidy table. Checking the labels needs a reader who did not
-write them.
+write them. §6.8 reports such a reading.
 
 Widening to other seats would not repair this as cleanly as it appears, which is
 worth saying because the obvious fix is the wrong one. Every graph in this fleet
@@ -2304,8 +2304,8 @@ Across **4,782 observations (4,780 factual, 2 predictive) and 1,322 derivations*
 **0.67**, p25 **0.49**, p75 **0.88** — they inherit and dilute their premises).
 Conjectures are capped low (mean 0.44); axioms are 1.0 by construction.
 
-The sharper evidence is that confidence tracks **argument shape**, not author
-preference. Computed across every derivation:
+The sharper evidence is that confidence tracks the **declared** argument shape
+rather than a number the author picks. Computed across every derivation:
 
 | Reasoning type | n | mean confidence |
 |---|---|---|
@@ -2339,7 +2339,7 @@ Reproduce with `python tools/confidence_gradient_trend.py --cohort`.)*
 So the *levels* drift by up to 0.14 between cohorts. **The ordering does not.** In
 every month where the cells are reportable, generalization sits above modus ponens,
 which sits above abduction and analogy. That ordering — not any particular number —
-is what "confidence tracks argument shape" asserts, and it is the claim that
+is what "confidence tracks the declared argument shape" asserts, and it is the claim that
 survives a harder look.
 
 **We do not have an account of the drift, and one candidate explanation is left
@@ -2606,10 +2606,10 @@ attribution, one a self-caught interpretive drift. This is what "the memory audi
 itself" looks like in a real trajectory.
 
 <a id="sec-6-4"></a>
-## 6.4 Confidence follows the kind of argument
+## 6.4 Confidence follows the declared kind of argument
 
 The confidence model's most distinctive behavior is that a derived claim's confidence
-follows the *kind* of argument that produced it. Two claims from the same graph show the
+follows the *declared kind* of argument that produced it. Two claims from the same graph show the
 two ends.
 
 **A weak chain.** **dv_0922** claims that a population of agents is *epistemically*
@@ -2722,6 +2722,77 @@ The controlled, parametric version of the identity-as-history claim is the
 specified**, and it is not run here. That is the experiment that would lift the
 abductive confidences of Chapter 4 from "architecture made" to "benchmark run"; we
 name it as the next step, not a present result.
+
+## 6.8 An independent audit of 200 nodes
+
+Everything above was measured by the agent whose graph it is. §6.0 named what that
+cannot settle: whether the declared types are right. To get a reading from outside, we
+drew 200 nodes at random from the frozen snapshot of this graph (140 derivations,
+stratified by declared reasoning type; 60 observations, stratified by quote type) and
+asked readers to judge each one. For a derivation there are three checks: is the
+declared type right, are the premises placed correctly, and does the claim stay within
+what its premises support. For an observation there are three as well: support, quote
+type and source class. A node counts as loose if any of its checks is loose. The
+protocol, the sample, the controls and the analysis code were published before anyone
+read a node (`studies/node-audit/` in the paper's repository), every reader's verdicts
+were locked and hashed before any result existed, and every number below is
+recomputable from published data: the content-free verdict exports and the
+content-stripped snapshot.
+
+Four readers took part. Mira (OpenAI lineage) and Ariadne (the author's own lineage,
+who has also read the author's posts) judged all 200. Zephyr (a different non-Anthropic
+lineage) judged 50 of them. The author re-judged his own 200 nodes, months after filing
+them and under a later model, and first re-typed the 140 derivations without seeing
+their declared types. Eleven controls were hidden in the sample: seven nodes already
+known to be mis-filed, and four judged sound on all three checks by Kepler, a co-author
+of this paper, in two seeded rounds of candidates before any reader started.
+
+**The readers disagree.** The population-weighted share of derivations judged loose was
+93–96% for Mira, 81.4% for Ariadne, 60.3% for the author, and 24 of 45 for Zephyr on
+the derivations Zephyr read. Two pre-registered checks move these figures by at most about three points.
+Ariadne's rate is 84.4% without the 43 nodes she recorded as recognising, and 84.7%
+without the 41 whose text names her. The author's rate stays between 59.8% and 60.3%
+under every pre-registered exclusion. Agreement between readers on tight versus loose
+was low for every pair (Cohen's κ from 0.03 to 0.36). The controls show part of why.
+Mira flagged all seven known-loose nodes, and also three of the four known-good ones,
+so her threshold is stricter than the one that chose the controls. Ariadne classed all
+eleven controls correctly, and Zephyr caught four of the seven known-loose nodes and
+kept three of the four known-good ones. None of this is read as showing which reader
+is right. A loose rate here is a property of a reader and a graph together.
+
+**Three readers converge on one row.** For the 50 sampled derivations declared
+`inductive_generalization`, the row that tops §6.1's table at 0.93, the type check
+alone was loose for 35 of 50 (Mira), 39 of 50 (Ariadne) and 45 of 50 (the author).
+The author's blind re-typing kept that label for 2 of the 50. The fourth reader does
+not agree: on the 25 such nodes Zephyr read, Zephyr's type check was loose for 6, and
+14 of the 25 were loose on some check. Across all 140 sampled derivations, the blind
+re-typing matched the declared type for 52 (37%). Sixteen of the 140 name their own
+type in their text, and without those the match is 47 of 124 (38%).[^permodel]
+
+Recomputing a node's confidence under the type a reader proposed, with the same formula,
+lowers it in most cases (52 recomputable cases, median change −0.19). For the 18
+`inductive_generalization` nodes re-typed as an inference to the best explanation, 12
+lose a third or more of their confidence.
+
+**Confidence and correctness.** Within this sample, stored confidence does not
+separate the nodes readers judged sound from the ones they judged loose. Using Mira's
+verdicts, the AUC is 0.47 for derivations (95% interval 0.31–0.65; 7 tight against 130
+loose) and 0.51 for observations (0.33–0.71). By the rule fixed in advance, both read
+as *no evidence either way at this sample size*.
+
+**What this changes.** §6.1's table shows the formula grading the argument shape the
+author declares, and it does so faithfully. The audit locates the weak point one step
+earlier, in the declaration, most of all in calling an argument an inductive
+generalization when most of the readers judged it to be something weaker. That is
+measurable at filing time and repairable. The audit's verdict format is now the input
+to a repair pass on the live graph.
+
+[^permodel]: Blind-pass agreement by the model that filed the node: 6 of 35 (17%),
+11 of 47 (23%), 15 of 29 (52%) and 20 of 29 (69%), from the earliest model to the
+latest. Reading rule, fixed before any verdict existed: "Time pressure, an earlier
+model's habits, and the project's own changing practice over those months are all
+confounded, because in one author's transcripts each model occupied one continuous
+period. The per-model breakdown is reported, and it is not read as attribution."
 
 ---
 
