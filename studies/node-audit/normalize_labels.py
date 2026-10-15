@@ -132,7 +132,7 @@ def normalize_lines(lines):
 
 def _assert_delta(reader, counts):
     expected = expected_delta_for(reader)
-    names = list(ALL_CHECKS) + sorted(set(expected) | set(counts) - set(ALL_CHECKS))
+    names = list(ALL_CHECKS) + sorted((set(expected) | set(counts)) - set(ALL_CHECKS))
     bad = [n for n in names if expected.get(n, 0) != counts.get(n, 0)]
     if bad:
         rows = "\n".join(

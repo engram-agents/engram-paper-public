@@ -112,6 +112,19 @@ def test_n1_delta_too_many_refused(tmp_path):
     assert r.returncode != 0 and not out.exists()
 
 
+def test_n1_right_total_wrong_split_refused(tmp_path):
+    # 37 changed cells, the pinned total, but split 13/10/14 instead of 10/13/14: the pin is per check.
+    rows = _zephyr_rows(t=13, p=10, c=14)
+    r, _, out = _cli(tmp_path, rows)
+    assert sum(1 for x in rows for c in x["checks"].values() if c["verdict"].startswith("loose:")) == 37
+    assert r.returncode != 0
+    assert not out.exists()
+    assert "type: expected 10, actual 13" in r.stderr
+    assert "placement: expected 13, actual 10" in r.stderr
+    assert "chain-overreach: expected 14, actual 14" in r.stderr  # the full table is shown
+    assert "mismatch in ['type', 'placement']" in r.stderr
+
+
 def test_n1_non_zephyr_with_a_single_loose_type_refused(tmp_path):
     rows = [_row("dv_0001", ("loose:type", "tight", "tight"), proposed="x")]
     r, _, out = _cli(tmp_path, rows, reader="mira")
