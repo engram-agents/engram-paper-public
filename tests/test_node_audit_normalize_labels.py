@@ -348,3 +348,30 @@ def test_n9_report_lines(tmp_path):
     assert counts["quote_type"] == "0"
     digest = hashlib.sha256(out.read_bytes()).hexdigest()
     assert lines[-1] == f"sha256 {digest} {out}"
+
+
+# ---------------------------------------------------------------- round 4: prefix-mismatch strength
+def _with_extra_cell(key, verdict):
+    rows = _zephyr_rows()
+    rows[2]["checks"][key] = {"verdict": verdict, "reason": "r"}
+    return rows
+
+
+@pytest.mark.parametrize(
+    "key,verdict",
+    [
+        ("typeX", "loose:type"),            # suffix is a strict prefix of the enclosing key name
+        ("placement-2", "loose:placement"),  # same shape, longer
+        ("plac", "loose:placement"),         # enclosing key is a strict prefix of the suffix
+        ("type", "loose:typeX"),             # superstring of the enclosing check
+        ("placement", "loose:place"),        # strict prefix of the enclosing check
+    ],
+)
+def test_prefix_and_superstring_relations_refused(tmp_path, key, verdict):
+    rows = _with_extra_cell(key, verdict) if key not in ("type", "placement") else _zephyr_rows()
+    if key in ("type", "placement"):
+        rows[2]["checks"][key]["verdict"] = verdict
+    r, _, out = _cli(tmp_path, rows)
+    assert r.returncode != 0
+    assert not out.exists()
+    assert "dv_0002" in r.stderr and verdict in r.stderr

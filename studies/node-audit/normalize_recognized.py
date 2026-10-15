@@ -24,6 +24,9 @@ R2  Per data line (non-blank, not starting with `#`, numbered by physical line, 
 R3  Before ANY write: stripped, dropped, untouched and ids_out (the number of output data lines)
     must each equal the pin exactly, per field (a total-only check is a defect), and no two output
     lines may share a first id. Otherwise refuse.
+    Numbering parity: the tool numbers lines as bytes.splitlines does (LF/CRLF/CR), analyze_arms
+    as str.splitlines does (also \\x0b \\x0c \\x1c \\x1d \\x1e \\x85 U+2028 U+2029). An input holding any
+    of the extra separators is refused (line number only) so the two numberings cannot differ.
 R4  A refusal names LINE NUMBERS and the failed field only, never line text and never an id; every
     offending line is listed; exit 1, `REFUSED:` on stderr; nothing is written (temp file in the
     output directory, os.replace only after every assertion passed).
@@ -71,6 +74,8 @@ EXPECTED = {
     "ariadne": {"stripped": 16, "dropped": [44], "untouched": 27, "ids_out": 43, "drop_phrase": "not mine"},
 }
 FIELDS = ("stripped", "dropped", "untouched", "ids_out")
+# What str.splitlines splits on beyond \n, \r and \r\n (the only breaks bytes.splitlines knows).
+EXTRA_SEPARATORS = frozenset("\x0b\x0c\x1c\x1d\x1e\x85\u2028\u2029")
 
 
 class NormalizeRefused(Exception):
@@ -109,6 +114,13 @@ def transform(lines, exp):
             text = body.decode("utf-8")
         except UnicodeDecodeError:
             problems.append((n, f"line {n}: not readable as UTF-8"))
+            out.append(raw)
+            continue
+        if EXTRA_SEPARATORS.intersection(text):
+            # analyze_arms.parse_recognized numbers lines with str.splitlines, which also breaks on
+            # these; the drop pin is a line NUMBER, so the two numberings must agree. Refuse, never
+            # re-split (untouched lines keep their bytes).
+            problems.append((n, f"line {n}: holds a line separator that str.splitlines would split on"))
             out.append(raw)
             continue
         s = text.strip()

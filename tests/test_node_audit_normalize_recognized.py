@@ -316,3 +316,72 @@ def test_output_parses_with_analyze_arms_and_late_survives(tmp_path):
     recognized, late = arms.parse_recognized(out, _packet_ids())
     assert recognized == {_first(n) for n in range(1, 44)}
     assert late == {_first(LATE_SINGLE), _first(LATE_MULTI)}
+
+
+# ---------------------------------------------------------------- round 4: numbering parity with parse_recognized
+SEPARATORS = ["\x0b", "\x0c", "\x1c", "\x1d", "\x1e", "\x85", " ", " "]
+
+
+def test_numbering_parity_with_str_splitlines_and_parse_recognized(tmp_path):
+    src = _write(tmp_path / "in.txt", _fixture_lines())
+    assert len(src.read_text().splitlines()) == len(src.read_bytes().splitlines()) == 44
+    # the real parser numbers the multi-id lines exactly as this tool's pin numbers them
+    try:
+        arms.parse_recognized(src, _packet_ids())
+    except arms.RecognizedInvalid as e:
+        said = {int(x) for x in __import__("re").findall(r"line (\d+): more than one id", str(e))}
+    assert said == set(STRIPPED_LINES) | {44}
+
+
+def test_extra_separators_refused_each(tmp_path):
+    for sep in SEPARATORS:
+        lines = _fixture_lines()
+        lines[4] = lines[4] + sep + "tail"  # line 5
+        d = tmp_path / f"s{ord(sep):x}"
+        d.mkdir()
+        r, _, out = _cli(d, lines)
+        assert r.returncode != 0, repr(sep)
+        assert not out.exists()
+        assert "line 5" in r.stderr
+        assert ID_TOKEN.search(r.stderr) is None and "tail" not in r.stderr
+
+
+def test_extra_separator_refused_for_other_reader_too(tmp_path):
+    r, _, out = _cli(tmp_path, ["dv_0001 a\x0cb"], reader="other")
+    assert r.returncode != 0 and not out.exists() and "line 1" in r.stderr
+
+
+def test_utf8_non_separator_text_still_fine(tmp_path):
+    lines = _fixture_lines()
+    lines[4] += " café — dash"
+    r, _, out = _cli(tmp_path, lines)
+    assert r.returncode == 0, r.stderr
+
+
+# ---------------------------------------------------------------- round 4: LATE position
+def _late_fixture(before, after_later):
+    lines = _fixture_lines()
+    lines[LATE_MULTI - 1] = f"{_first(LATE_MULTI)} synthetic note mentions {_first(5000 + LATE_MULTI)}"  # plain
+    lines[11] = f"LATE {_first(12)} synthetic note mentions {_first(5012)}"  # line 12: LATE before the first id
+    lines[12] = f"{_first(13)} synthetic note mentions {_first(5013)} LATE"  # line 13: LATE after a later id
+    return lines
+
+
+def test_late_before_first_id_kept(tmp_path):
+    r, _, out = _cli(tmp_path, _late_fixture(True, True))
+    assert r.returncode == 0, r.stderr
+    assert out.read_text().splitlines()[11] == f"{_first(12)} LATE"
+
+
+def test_late_after_a_later_id_kept(tmp_path):
+    r, _, out = _cli(tmp_path, _late_fixture(True, True))
+    assert r.returncode == 0, r.stderr
+    assert out.read_text().splitlines()[12] == f"{_first(13)} LATE"
+
+
+def test_late_substring_of_a_word_is_not_late(tmp_path):
+    lines = _fixture_lines()
+    lines[LATE_MULTI - 1] = f"{_first(LATE_MULTI)} note {_first(5008)} LATELY and PLATE"
+    r, _, out = _cli(tmp_path, lines)
+    assert r.returncode == 0, r.stderr
+    assert out.read_text().splitlines()[LATE_MULTI - 1] == _first(LATE_MULTI)
