@@ -1,0 +1,1630 @@
+{
+  "agreement": {
+    "disagreements": [
+      {
+        "id": "dv_0112",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_0174",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_0217",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_0224",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_0259",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_0604",
+        "mira": "partial",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_0629",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_0715",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_0759",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_0795",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_0802",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_0805",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_0850",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_0960",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_1180",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_1199",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_1513",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_1565",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "dv_1622",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "ob_0024",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "ob_0759",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "ob_1550",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "ob_3773",
+        "mira": "loose",
+        "zephyr": "tight"
+      },
+      {
+        "id": "ob_3941",
+        "mira": "loose",
+        "zephyr": "tight"
+      }
+    ],
+    "kappa_class": 0.0909090909,
+    "kappa_tight_loose": 0.0784955029,
+    "n_agree": 26,
+    "n_overlap": 50,
+    "n_tight_loose_both": 49,
+    "per_check": {
+      "chain-overreach": {
+        "agree": 15,
+        "n": 45,
+        "percent_agreement": 33.3333333333
+      },
+      "placement": {
+        "agree": 24,
+        "n": 45,
+        "percent_agreement": 53.3333333333
+      },
+      "quote_type": {
+        "agree": 3,
+        "n": 5,
+        "percent_agreement": 60.0
+      },
+      "source_class": {
+        "agree": 3,
+        "n": 5,
+        "percent_agreement": 60.0
+      },
+      "support-overreach": {
+        "agree": 0,
+        "n": 5,
+        "percent_agreement": 0.0
+      },
+      "type": {
+        "agree": 28,
+        "n": 45,
+        "percent_agreement": 62.2222222222
+      }
+    },
+    "percent_agreement": 52.0
+  },
+  "cannot_judge": {
+    "mira": {
+      "per_check": {
+        "chain-overreach": {
+          "cannot-judge": 9,
+          "loose": 120,
+          "tight": 11
+        },
+        "placement": {
+          "cannot-judge": 0,
+          "loose": 51,
+          "tight": 89
+        },
+        "quote_type": {
+          "cannot-judge": 1,
+          "loose": 19,
+          "tight": 40
+        },
+        "source_class": {
+          "cannot-judge": 11,
+          "loose": 11,
+          "tight": 38
+        },
+        "support-overreach": {
+          "cannot-judge": 0,
+          "loose": 56,
+          "tight": 4
+        },
+        "type": {
+          "cannot-judge": 1,
+          "loose": 59,
+          "tight": 80
+        }
+      },
+      "per_class": {
+        "derivation": {
+          "cannot-judge": 0,
+          "loose": 130,
+          "partial": 3,
+          "tight": 7
+        },
+        "observation": {
+          "cannot-judge": 0,
+          "loose": 56,
+          "partial": 1,
+          "tight": 3
+        }
+      }
+    },
+    "zephyr": {
+      "per_check": {
+        "chain-overreach": {
+          "cannot-judge": 0,
+          "loose": 12,
+          "tight": 33
+        },
+        "placement": {
+          "cannot-judge": 0,
+          "loose": 11,
+          "tight": 34
+        },
+        "quote_type": {
+          "cannot-judge": 0,
+          "loose": 0,
+          "tight": 5
+        },
+        "source_class": {
+          "cannot-judge": 0,
+          "loose": 0,
+          "tight": 5
+        },
+        "support-overreach": {
+          "cannot-judge": 0,
+          "loose": 0,
+          "tight": 5
+        },
+        "type": {
+          "cannot-judge": 0,
+          "loose": 9,
+          "tight": 36
+        }
+      },
+      "per_class": {
+        "derivation": {
+          "cannot-judge": 0,
+          "loose": 24,
+          "partial": 0,
+          "tight": 21
+        },
+        "observation": {
+          "cannot-judge": 0,
+          "loose": 0,
+          "partial": 0,
+          "tight": 5
+        }
+      }
+    }
+  },
+  "controls": {
+    "agreement": {
+      "agree": 6,
+      "disagreements": [
+        {
+          "id": "dv_0514",
+          "mira": "loose",
+          "zephyr": "tight"
+        },
+        {
+          "id": "dv_0724",
+          "mira": "loose",
+          "zephyr": "tight"
+        },
+        {
+          "id": "dv_1038",
+          "mira": "loose",
+          "zephyr": "tight"
+        },
+        {
+          "id": "dv_1111",
+          "mira": "loose",
+          "zephyr": "tight"
+        },
+        {
+          "id": "dv_1302",
+          "mira": "loose",
+          "zephyr": "tight"
+        }
+      ],
+      "kappa": 0.1538461538,
+      "n": 11,
+      "percent_agreement": 54.5454545455
+    },
+    "mira": {
+      "known_loose_classes": {
+        "cannot-judge": 0,
+        "loose": 7,
+        "partial": 0,
+        "tight": 0
+      },
+      "known_tight_classes": {
+        "cannot-judge": 0,
+        "loose": 3,
+        "partial": 0,
+        "tight": 1
+      },
+      "per_control": {
+        "dv_0162": "loose",
+        "dv_0514": "loose",
+        "dv_0605": "loose",
+        "dv_0723": "loose",
+        "dv_0724": "loose",
+        "dv_0757": "loose",
+        "dv_0838": "tight",
+        "dv_0858": "loose",
+        "dv_1038": "loose",
+        "dv_1111": "loose",
+        "dv_1302": "loose"
+      },
+      "sensitivity": {
+        "k": 7,
+        "n": 7,
+        "text": "7/7"
+      },
+      "specificity": {
+        "k": 1,
+        "n": 4,
+        "text": "1/4"
+      }
+    },
+    "zephyr": {
+      "known_loose_classes": {
+        "cannot-judge": 0,
+        "loose": 4,
+        "partial": 0,
+        "tight": 3
+      },
+      "known_tight_classes": {
+        "cannot-judge": 0,
+        "loose": 1,
+        "partial": 0,
+        "tight": 3
+      },
+      "per_control": {
+        "dv_0162": "loose",
+        "dv_0514": "tight",
+        "dv_0605": "loose",
+        "dv_0723": "loose",
+        "dv_0724": "tight",
+        "dv_0757": "loose",
+        "dv_0838": "tight",
+        "dv_0858": "loose",
+        "dv_1038": "tight",
+        "dv_1111": "tight",
+        "dv_1302": "tight"
+      },
+      "sensitivity": {
+        "k": 4,
+        "n": 7,
+        "text": "4/7"
+      },
+      "specificity": {
+        "k": 3,
+        "n": 4,
+        "text": "3/4"
+      }
+    }
+  },
+  "deltas": {
+    "computed": [
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.267,
+        "id": "dv_0011",
+        "n_premises": 3,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.68,
+        "stored": 0.947
+      },
+      {
+        "declared_type": "deductive_hypothetical_syllogism",
+        "delta": 0.0,
+        "id": "dv_0012",
+        "n_premises": 2,
+        "proposed_type": "deductive_modus_ponens",
+        "recomputed": 0.884,
+        "stored": 0.884
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.27,
+        "id": "dv_0030",
+        "n_premises": 6,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.68,
+        "stored": 0.95
+      },
+      {
+        "declared_type": "deductive_modus_ponens",
+        "delta": -0.153,
+        "id": "dv_0064",
+        "n_premises": 3,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.68,
+        "stored": 0.833
+      },
+      {
+        "declared_type": "deductive_modus_ponens",
+        "delta": -0.171,
+        "id": "dv_0086",
+        "n_premises": 2,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.76,
+        "stored": 0.931
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.721,
+        "id": "dv_0102",
+        "n_premises": 4,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.228,
+        "stored": 0.949
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": 0.03,
+        "id": "dv_0112",
+        "n_premises": 2,
+        "proposed_type": "authority_consensus",
+        "recomputed": 0.978,
+        "stored": 0.948
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.383,
+        "id": "dv_0169",
+        "n_premises": 3,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.566,
+        "stored": 0.949
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.02,
+        "id": "dv_0174",
+        "n_premises": 6,
+        "proposed_type": "inductive_enumeration",
+        "recomputed": 0.93,
+        "stored": 0.95
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.02,
+        "id": "dv_0185",
+        "n_premises": 2,
+        "proposed_type": "inductive_enumeration",
+        "recomputed": 0.925,
+        "stored": 0.945
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.417,
+        "id": "dv_0193",
+        "n_premises": 2,
+        "proposed_type": "inductive_analogy",
+        "recomputed": 0.49,
+        "stored": 0.907
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.02,
+        "id": "dv_0217",
+        "n_premises": 5,
+        "proposed_type": "inductive_enumeration",
+        "recomputed": 0.93,
+        "stored": 0.95
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.256,
+        "id": "dv_0249",
+        "n_premises": 2,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.68,
+        "stored": 0.936
+      },
+      {
+        "declared_type": "deductive_hypothetical_syllogism",
+        "delta": -0.153,
+        "id": "dv_0259",
+        "n_premises": 3,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.68,
+        "stored": 0.833
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.39,
+        "id": "dv_0290",
+        "n_premises": 4,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.56,
+        "stored": 0.95
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.127,
+        "id": "dv_0299",
+        "n_premises": 1,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.68,
+        "stored": 0.807
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.586,
+        "id": "dv_0324",
+        "n_premises": 3,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.358,
+        "stored": 0.944
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.284,
+        "id": "dv_0351",
+        "n_premises": 6,
+        "proposed_type": "authority_expert",
+        "recomputed": 0.665,
+        "stored": 0.949
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.264,
+        "id": "dv_0354",
+        "n_premises": 9,
+        "proposed_type": "deductive_reductio",
+        "recomputed": 0.686,
+        "stored": 0.95
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": 0.03,
+        "id": "dv_0356",
+        "n_premises": 6,
+        "proposed_type": "authority_consensus",
+        "recomputed": 0.979,
+        "stored": 0.949
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.418,
+        "id": "dv_0413",
+        "n_premises": 5,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.532,
+        "stored": 0.95
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.202,
+        "id": "dv_0451",
+        "n_premises": 8,
+        "proposed_type": "abductive_elimination",
+        "recomputed": 0.748,
+        "stored": 0.95
+      },
+      {
+        "declared_type": "inductive_causal",
+        "delta": -0.037,
+        "id": "dv_0469",
+        "n_premises": 3,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.578,
+        "stored": 0.615
+      },
+      {
+        "declared_type": "inductive_enumeration",
+        "delta": -0.386,
+        "id": "dv_0498",
+        "n_premises": 4,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.544,
+        "stored": 0.93
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.502,
+        "id": "dv_0527",
+        "n_premises": 10,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.448,
+        "stored": 0.95
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.27,
+        "id": "dv_0538",
+        "n_premises": 4,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.68,
+        "stored": 0.95
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.334,
+        "id": "dv_0555",
+        "n_premises": 2,
+        "proposed_type": "inductive_analogy",
+        "recomputed": 0.595,
+        "stored": 0.929
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.485,
+        "id": "dv_0579",
+        "n_premises": 4,
+        "proposed_type": "inductive_analogy",
+        "recomputed": 0.465,
+        "stored": 0.95
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.643,
+        "id": "dv_0581",
+        "n_premises": 10,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.307,
+        "stored": 0.95
+      },
+      {
+        "declared_type": "inductive_statistical",
+        "delta": -0.039,
+        "id": "dv_0608",
+        "n_premises": 2,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.314,
+        "stored": 0.353
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.549,
+        "id": "dv_0611",
+        "n_premises": 2,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.314,
+        "stored": 0.863
+      },
+      {
+        "declared_type": "inductive_statistical",
+        "delta": 0.031,
+        "id": "dv_0614",
+        "n_premises": 2,
+        "proposed_type": "deductive_modus_ponens",
+        "recomputed": 0.384,
+        "stored": 0.353
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.02,
+        "id": "dv_0617",
+        "n_premises": 2,
+        "proposed_type": "inductive_enumeration",
+        "recomputed": 0.927,
+        "stored": 0.947
+      },
+      {
+        "declared_type": "deductive_hypothetical_syllogism",
+        "delta": 0.0,
+        "id": "dv_0628",
+        "n_premises": 2,
+        "proposed_type": "deductive_modus_ponens",
+        "recomputed": 0.98,
+        "stored": 0.98
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.529,
+        "id": "dv_0629",
+        "n_premises": 3,
+        "proposed_type": "deductive_modus_ponens",
+        "recomputed": 0.392,
+        "stored": 0.921
+      },
+      {
+        "declared_type": "abductive_best_explanation",
+        "delta": 0.17,
+        "id": "dv_0646",
+        "n_premises": 8,
+        "proposed_type": "inductive_enumeration",
+        "recomputed": 0.93,
+        "stored": 0.76
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.464,
+        "id": "dv_0654",
+        "n_premises": 7,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.486,
+        "stored": 0.95
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.561,
+        "id": "dv_0659",
+        "n_premises": 7,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.389,
+        "stored": 0.95
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.02,
+        "id": "dv_0707",
+        "n_premises": 5,
+        "proposed_type": "inductive_enumeration",
+        "recomputed": 0.93,
+        "stored": 0.95
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.237,
+        "id": "dv_0714",
+        "n_premises": 1,
+        "proposed_type": "inductive_analogy",
+        "recomputed": 0.663,
+        "stored": 0.9
+      },
+      {
+        "declared_type": "deductive_modus_ponens",
+        "delta": -0.126,
+        "id": "dv_0763",
+        "n_premises": 2,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.56,
+        "stored": 0.686
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.128,
+        "id": "dv_0786",
+        "n_premises": 1,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.682,
+        "stored": 0.81
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.377,
+        "id": "dv_0795",
+        "n_premises": 3,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.56,
+        "stored": 0.937
+      },
+      {
+        "declared_type": "deductive_modus_ponens",
+        "delta": -0.162,
+        "id": "dv_0828",
+        "n_premises": 1,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.722,
+        "stored": 0.884
+      },
+      {
+        "declared_type": "abductive_best_explanation",
+        "delta": -0.026,
+        "id": "dv_0918",
+        "n_premises": 2,
+        "proposed_type": "inductive_analogy",
+        "recomputed": 0.176,
+        "stored": 0.202
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "delta": -0.588,
+        "id": "dv_1020",
+        "n_premises": 2,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.304,
+        "stored": 0.892
+      },
+      {
+        "declared_type": "inductive_analogy",
+        "delta": 0.091,
+        "id": "dv_1424",
+        "n_premises": 2,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.722,
+        "stored": 0.631
+      },
+      {
+        "declared_type": "inductive_analogy",
+        "delta": 0.614,
+        "id": "dv_1482",
+        "n_premises": 2,
+        "proposed_type": "inductive_generalization",
+        "recomputed": 0.894,
+        "stored": 0.28
+      },
+      {
+        "declared_type": "deductive_modus_ponens",
+        "delta": -0.145,
+        "id": "dv_1494",
+        "n_premises": 2,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.646,
+        "stored": 0.791
+      },
+      {
+        "declared_type": "inductive_enumeration",
+        "delta": -0.208,
+        "id": "dv_1548",
+        "n_premises": 4,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.722,
+        "stored": 0.93
+      },
+      {
+        "declared_type": "inductive_analogy",
+        "delta": 0.31,
+        "id": "dv_1583",
+        "n_premises": 2,
+        "proposed_type": "inductive_generalization",
+        "recomputed": 0.941,
+        "stored": 0.631
+      },
+      {
+        "declared_type": "inductive_analogy",
+        "delta": 0.091,
+        "id": "dv_1619",
+        "n_premises": 2,
+        "proposed_type": "abductive_best_explanation",
+        "recomputed": 0.722,
+        "stored": 0.631
+      }
+    ],
+    "not_computed": [
+      {
+        "declared_type": "deductive_modus_ponens",
+        "id": "dv_0115",
+        "proposed_type": "other (not a v0.5.1 type; text withheld)",
+        "reason": "proposed_type is not in the v0.5.1 reasoning table"
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "id": "dv_0116",
+        "proposed_type": "other (not a v0.5.1 type; text withheld)",
+        "reason": "proposed_type is not in the v0.5.1 reasoning table"
+      },
+      {
+        "declared_type": "inductive_generalization",
+        "id": "dv_0246",
+        "proposed_type": "other (not a v0.5.1 type; text withheld)",
+        "reason": "proposed_type is not in the v0.5.1 reasoning table"
+      },
+      {
+        "declared_type": "deductive_hypothetical_syllogism",
+        "id": "dv_0507",
+        "proposed_type": "other (not a v0.5.1 type; text withheld)",
+        "reason": "proposed_type is not in the v0.5.1 reasoning table"
+      },
+      {
+        "declared_type": "deductive_modus_ponens",
+        "id": "dv_0822",
+        "proposed_type": "other (not a v0.5.1 type; text withheld)",
+        "reason": "proposed_type is not in the v0.5.1 reasoning table"
+      },
+      {
+        "declared_type": "deductive_modus_ponens",
+        "id": "dv_0902",
+        "proposed_type": "other (not a v0.5.1 type; text withheld)",
+        "reason": "proposed_type is not in the v0.5.1 reasoning table"
+      },
+      {
+        "declared_type": "deductive_modus_ponens",
+        "id": "dv_1138",
+        "proposed_type": "other (not a v0.5.1 type; text withheld)",
+        "reason": "proposed_type is not in the v0.5.1 reasoning table"
+      }
+    ],
+    "summary": {
+      "max": 0.614,
+      "median": -0.1865,
+      "min": -0.721,
+      "n": 52
+    }
+  },
+  "meta": {
+    "free_parameters": {
+      "auc": "P(conf(tight) > conf(loose)), ties count 0.5; bootstrap resamples the tight and loose groups separately, 10000 resamples, percentile 95% interval, seed string '{seed}:boot:{label}' with seed '2026-10-14-node-audit'",
+      "confidence_deltas": "premise set = derives_from + acknowledged_derives_from targets (tools/modus_ponens_check.py computed-from set); v0.5.1 formula from the vendored module (sha256 5ea367d8d15153e82b68d3fdf5f08ef12b5d5555be9326f5ee65e0a12ac260e0); computed once over all nodes",
+      "interval": "Wilson, z = 1.959963984540054",
+      "partial_bounds": "low bound counts partial as tight; high bound counts partial as loose",
+      "population_weights": "census population shares of each stratum, renormalised over strata with at least 1 judgeable node; strata left out of the weights are listed under each weighted rate (no draw; no judgeable node)",
+      "rate_denominator": "judgeable nodes = tight + loose + partial; cannot-judge nodes are excluded and counted beside each rate",
+      "readers": "rates and AUC use the primary reader's (Mira's) verdicts; Zephyr's feed controls and agreement only; analyst-prior node dv_0138 reported with and without",
+      "reading_thresholds": "CI lower > 0.5: 'confidence tracks correctness in this sample'; CI contains 0.5: 'no evidence either way at this n'; CI upper < 0.5: 'confidence runs against correctness in this sample'; no tight or no loose node: 'not computable: needs at least one tight and one loose node'",
+      "small_stratum_rule": "strata with fewer than 10 judgeable nodes report counts only (no rate, no interval)"
+    },
+    "min_rate_n": 10,
+    "n_boot": 10000,
+    "prior_node": "dv_0138",
+    "readings": {
+      "against": "confidence runs against correctness in this sample",
+      "none": "no evidence either way at this n",
+      "tracks": "confidence tracks correctness in this sample"
+    },
+    "seed": "2026-10-14-node-audit",
+    "vendored_sha256": "5ea367d8d15153e82b68d3fdf5f08ef12b5d5555be9326f5ee65e0a12ac260e0",
+    "verdict_sha256": {
+      "mira": "2aa4437a56234cebf5384b5f81749e91e0477e6c8411496093bf2d0735fbaefb",
+      "zephyr": "ad503b27484016e2203d71164f7ee5eac0d2383a41048e6ab9f9a39e62808915"
+    },
+    "wilson_z": 1.9599639845
+  },
+  "passes": {
+    "with_prior": {
+      "derivation": {
+        "confidence": {
+          "auc": 0.4708791209,
+          "auc_ci": [
+            0.3076923077,
+            0.6532967033
+          ],
+          "mean_loose": 0.7186384615,
+          "mean_tight": 0.7272857143,
+          "n_cannot_judge": 0,
+          "n_loose": 130,
+          "n_partial": 3,
+          "n_tight": 7,
+          "reading": "no evidence either way at this n"
+        },
+        "confusion": {
+          "abductive_best_explanation": {
+            "inductive_analogy": 1,
+            "inductive_enumeration": 1
+          },
+          "deductive_hypothetical_syllogism": {
+            "abductive_best_explanation": 1,
+            "deductive_modus_ponens": 2,
+            "other (not a v0.5.1 type; text withheld)": 1
+          },
+          "deductive_modus_ponens": {
+            "abductive_best_explanation": 5,
+            "other (not a v0.5.1 type; text withheld)": 4
+          },
+          "inductive_analogy": {
+            "abductive_best_explanation": 2,
+            "inductive_generalization": 2
+          },
+          "inductive_causal": {
+            "abductive_best_explanation": 1
+          },
+          "inductive_enumeration": {
+            "abductive_best_explanation": 2
+          },
+          "inductive_generalization": {
+            "abductive_best_explanation": 18,
+            "abductive_elimination": 1,
+            "authority_consensus": 2,
+            "authority_expert": 1,
+            "deductive_modus_ponens": 1,
+            "deductive_reductio": 1,
+            "inductive_analogy": 4,
+            "inductive_enumeration": 5,
+            "other (not a v0.5.1 type; text withheld)": 2
+          },
+          "inductive_statistical": {
+            "abductive_best_explanation": 1,
+            "deductive_modus_ponens": 1
+          }
+        },
+        "inductive_generalization": {
+          "cannot_judge": 0,
+          "high": {
+            "ci_high": 0.9964607407,
+            "ci_low": 0.8950455641,
+            "rate": 0.98
+          },
+          "loose": 49,
+          "low": {
+            "ci_high": 0.9964607407,
+            "ci_low": 0.8950455641,
+            "rate": 0.98
+          },
+          "n": 50,
+          "n_judgeable": 50,
+          "partial": 0,
+          "tight": 1
+        },
+        "strata": {
+          "derivation:abductive_best_explanation": {
+            "cannot_judge": 0,
+            "high": {
+              "ci_high": 0.9940914096,
+              "ci_low": 0.8332960901,
+              "rate": 0.9666666667
+            },
+            "loose": 28,
+            "low": {
+              "ci_high": 0.9815229762,
+              "ci_low": 0.7867654164,
+              "rate": 0.9333333333
+            },
+            "n": 30,
+            "n_judgeable": 30,
+            "partial": 1,
+            "tight": 1
+          },
+          "derivation:abductive_elimination": {
+            "cannot_judge": 0,
+            "loose": 2,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 0
+          },
+          "derivation:authority_expert": {
+            "cannot_judge": 0,
+            "loose": 0,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 2
+          },
+          "derivation:deductive_disjunctive": {
+            "cannot_judge": 0,
+            "loose": 1,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 1
+          },
+          "derivation:deductive_hypothetical_syllogism": {
+            "cannot_judge": 0,
+            "loose": 4,
+            "n": 4,
+            "n_judgeable": 4,
+            "partial": 0,
+            "tight": 0
+          },
+          "derivation:deductive_modus_ponens": {
+            "cannot_judge": 0,
+            "high": {
+              "ci_high": 0.9938867857,
+              "ci_low": 0.8282447812,
+              "rate": 0.9655172414
+            },
+            "loose": 26,
+            "low": {
+              "ci_high": 0.9641851086,
+              "ci_low": 0.7361491891,
+              "rate": 0.8965517241
+            },
+            "n": 29,
+            "n_judgeable": 29,
+            "partial": 2,
+            "tight": 1
+          },
+          "derivation:deductive_modus_tollens": {
+            "cannot_judge": 0,
+            "loose": 2,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 0
+          },
+          "derivation:inductive_analogy": {
+            "cannot_judge": 0,
+            "high": {
+              "ci_high": 1.0,
+              "ci_low": 0.7719046276,
+              "rate": 1.0
+            },
+            "loose": 13,
+            "low": {
+              "ci_high": 1.0,
+              "ci_low": 0.7719046276,
+              "rate": 1.0
+            },
+            "n": 13,
+            "n_judgeable": 13,
+            "partial": 0,
+            "tight": 0
+          },
+          "derivation:inductive_causal": {
+            "cannot_judge": 0,
+            "loose": 1,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 1
+          },
+          "derivation:inductive_enumeration": {
+            "cannot_judge": 0,
+            "loose": 2,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 0
+          },
+          "derivation:inductive_generalization": {
+            "cannot_judge": 0,
+            "high": {
+              "ci_high": 0.9964607407,
+              "ci_low": 0.8950455641,
+              "rate": 0.98
+            },
+            "loose": 49,
+            "low": {
+              "ci_high": 0.9964607407,
+              "ci_low": 0.8950455641,
+              "rate": 0.98
+            },
+            "n": 50,
+            "n_judgeable": 50,
+            "partial": 0,
+            "tight": 1
+          },
+          "derivation:inductive_statistical": {
+            "cannot_judge": 0,
+            "loose": 2,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 0
+          }
+        },
+        "weighted": {
+          "high": 0.9603959325,
+          "low": 0.9297259868,
+          "n_cannot_judge_excluded": 0,
+          "rated_strata_only": {
+            "high": 0.9736056168,
+            "low": 0.939406811,
+            "n_cannot_judge_excluded": 0,
+            "weights": {
+              "derivation:abductive_best_explanation": 0.2978003384,
+              "derivation:deductive_modus_ponens": 0.3519458545,
+              "derivation:inductive_analogy": 0.1336717428,
+              "derivation:inductive_generalization": 0.2165820643
+            }
+          },
+          "strata_all_cannot_judge": {},
+          "strata_without_draw": {
+            "derivation:authority_consensus": 0,
+            "derivation:deductive_reductio": 0
+          },
+          "weights": {
+            "derivation:abductive_best_explanation": 0.2670713202,
+            "derivation:abductive_elimination": 0.0113808801,
+            "derivation:authority_expert": 0.0037936267,
+            "derivation:deductive_disjunctive": 0.0037936267,
+            "derivation:deductive_hypothetical_syllogism": 0.0303490137,
+            "derivation:deductive_modus_ponens": 0.315629742,
+            "derivation:deductive_modus_tollens": 0.0113808801,
+            "derivation:inductive_analogy": 0.1198786039,
+            "derivation:inductive_causal": 0.0204855842,
+            "derivation:inductive_enumeration": 0.0189681335,
+            "derivation:inductive_generalization": 0.1942336874,
+            "derivation:inductive_statistical": 0.0030349014
+          }
+        }
+      },
+      "observation": {
+        "confidence": {
+          "auc": 0.505952381,
+          "auc_ci": [
+            0.3303571429,
+            0.7053571429
+          ],
+          "mean_loose": 0.811,
+          "mean_tight": 0.8673333333,
+          "n_cannot_judge": 0,
+          "n_loose": 56,
+          "n_partial": 1,
+          "n_tight": 3,
+          "reading": "no evidence either way at this n"
+        },
+        "strata": {
+          "observation:attributed_analysis": {
+            "cannot_judge": 0,
+            "loose": 9,
+            "n": 9,
+            "n_judgeable": 9,
+            "partial": 0,
+            "tight": 0
+          },
+          "observation:editorial": {
+            "cannot_judge": 0,
+            "loose": 2,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 0
+          },
+          "observation:hard_data": {
+            "cannot_judge": 0,
+            "high": {
+              "ci_high": 0.9936674802,
+              "ci_low": 0.8228780226,
+              "rate": 0.9642857143
+            },
+            "loose": 26,
+            "low": {
+              "ci_high": 0.9801879359,
+              "ci_low": 0.7735463743,
+              "rate": 0.9285714286
+            },
+            "n": 28,
+            "n_judgeable": 28,
+            "partial": 1,
+            "tight": 1
+          },
+          "observation:official_statement": {
+            "cannot_judge": 0,
+            "loose": 7,
+            "n": 8,
+            "n_judgeable": 8,
+            "partial": 0,
+            "tight": 1
+          },
+          "observation:personal_communication": {
+            "cannot_judge": 0,
+            "high": {
+              "ci_high": 0.9862895788,
+              "ci_low": 0.6668604908,
+              "rate": 0.9230769231
+            },
+            "loose": 12,
+            "low": {
+              "ci_high": 0.9862895788,
+              "ci_low": 0.6668604908,
+              "rate": 0.9230769231
+            },
+            "n": 13,
+            "n_judgeable": 13,
+            "partial": 0,
+            "tight": 1
+          }
+        },
+        "weighted": {
+          "high": 0.9495350361,
+          "low": 0.9315732907,
+          "n_cannot_judge_excluded": 0,
+          "rated_strata_only": {
+            "high": 0.9521029805,
+            "low": 0.9269470641,
+            "n_cannot_judge_excluded": 0,
+            "weights": {
+              "observation:hard_data": 0.7043656607,
+              "observation:personal_communication": 0.2956343393
+            }
+          },
+          "strata_all_cannot_judge": {},
+          "strata_without_draw": {},
+          "weights": {
+            "observation:attributed_analysis": 0.1464435146,
+            "observation:editorial": 0.0094142259,
+            "observation:hard_data": 0.5029288703,
+            "observation:official_statement": 0.130125523,
+            "observation:personal_communication": 0.2110878661
+          }
+        }
+      }
+    },
+    "without_prior": {
+      "derivation": {
+        "confidence": {
+          "auc": 0.4667774086,
+          "auc_ci": [
+            0.3017718715,
+            0.646179402
+          ],
+          "mean_loose": 0.7220852713,
+          "mean_tight": 0.7272857143,
+          "n_cannot_judge": 0,
+          "n_loose": 129,
+          "n_partial": 3,
+          "n_tight": 7,
+          "reading": "no evidence either way at this n"
+        },
+        "confusion": {
+          "abductive_best_explanation": {
+            "inductive_analogy": 1,
+            "inductive_enumeration": 1
+          },
+          "deductive_hypothetical_syllogism": {
+            "abductive_best_explanation": 1,
+            "deductive_modus_ponens": 2,
+            "other (not a v0.5.1 type; text withheld)": 1
+          },
+          "deductive_modus_ponens": {
+            "abductive_best_explanation": 5,
+            "other (not a v0.5.1 type; text withheld)": 4
+          },
+          "inductive_analogy": {
+            "abductive_best_explanation": 2,
+            "inductive_generalization": 2
+          },
+          "inductive_causal": {
+            "abductive_best_explanation": 1
+          },
+          "inductive_enumeration": {
+            "abductive_best_explanation": 2
+          },
+          "inductive_generalization": {
+            "abductive_best_explanation": 18,
+            "abductive_elimination": 1,
+            "authority_consensus": 2,
+            "authority_expert": 1,
+            "deductive_modus_ponens": 1,
+            "deductive_reductio": 1,
+            "inductive_analogy": 4,
+            "inductive_enumeration": 5,
+            "other (not a v0.5.1 type; text withheld)": 2
+          },
+          "inductive_statistical": {
+            "abductive_best_explanation": 1,
+            "deductive_modus_ponens": 1
+          }
+        },
+        "inductive_generalization": {
+          "cannot_judge": 0,
+          "high": {
+            "ci_high": 0.9964607407,
+            "ci_low": 0.8950455641,
+            "rate": 0.98
+          },
+          "loose": 49,
+          "low": {
+            "ci_high": 0.9964607407,
+            "ci_low": 0.8950455641,
+            "rate": 0.98
+          },
+          "n": 50,
+          "n_judgeable": 50,
+          "partial": 0,
+          "tight": 1
+        },
+        "strata": {
+          "derivation:abductive_best_explanation": {
+            "cannot_judge": 0,
+            "high": {
+              "ci_high": 0.9938867857,
+              "ci_low": 0.8282447812,
+              "rate": 0.9655172414
+            },
+            "loose": 27,
+            "low": {
+              "ci_high": 0.9808787338,
+              "ci_low": 0.7803541985,
+              "rate": 0.9310344828
+            },
+            "n": 29,
+            "n_judgeable": 29,
+            "partial": 1,
+            "tight": 1
+          },
+          "derivation:abductive_elimination": {
+            "cannot_judge": 0,
+            "loose": 2,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 0
+          },
+          "derivation:authority_expert": {
+            "cannot_judge": 0,
+            "loose": 0,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 2
+          },
+          "derivation:deductive_disjunctive": {
+            "cannot_judge": 0,
+            "loose": 1,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 1
+          },
+          "derivation:deductive_hypothetical_syllogism": {
+            "cannot_judge": 0,
+            "loose": 4,
+            "n": 4,
+            "n_judgeable": 4,
+            "partial": 0,
+            "tight": 0
+          },
+          "derivation:deductive_modus_ponens": {
+            "cannot_judge": 0,
+            "high": {
+              "ci_high": 0.9938867857,
+              "ci_low": 0.8282447812,
+              "rate": 0.9655172414
+            },
+            "loose": 26,
+            "low": {
+              "ci_high": 0.9641851086,
+              "ci_low": 0.7361491891,
+              "rate": 0.8965517241
+            },
+            "n": 29,
+            "n_judgeable": 29,
+            "partial": 2,
+            "tight": 1
+          },
+          "derivation:deductive_modus_tollens": {
+            "cannot_judge": 0,
+            "loose": 2,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 0
+          },
+          "derivation:inductive_analogy": {
+            "cannot_judge": 0,
+            "high": {
+              "ci_high": 1.0,
+              "ci_low": 0.7719046276,
+              "rate": 1.0
+            },
+            "loose": 13,
+            "low": {
+              "ci_high": 1.0,
+              "ci_low": 0.7719046276,
+              "rate": 1.0
+            },
+            "n": 13,
+            "n_judgeable": 13,
+            "partial": 0,
+            "tight": 0
+          },
+          "derivation:inductive_causal": {
+            "cannot_judge": 0,
+            "loose": 1,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 1
+          },
+          "derivation:inductive_enumeration": {
+            "cannot_judge": 0,
+            "loose": 2,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 0
+          },
+          "derivation:inductive_generalization": {
+            "cannot_judge": 0,
+            "high": {
+              "ci_high": 0.9964607407,
+              "ci_low": 0.8950455641,
+              "rate": 0.98
+            },
+            "loose": 49,
+            "low": {
+              "ci_high": 0.9964607407,
+              "ci_low": 0.8950455641,
+              "rate": 0.98
+            },
+            "n": 50,
+            "n_judgeable": 50,
+            "partial": 0,
+            "tight": 1
+          },
+          "derivation:inductive_statistical": {
+            "cannot_judge": 0,
+            "loose": 2,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 0
+          }
+        },
+        "weighted": {
+          "high": 0.960088954,
+          "low": 0.9291120297,
+          "n_cannot_judge_excluded": 0,
+          "rated_strata_only": {
+            "high": 0.9732633176,
+            "low": 0.9387222125,
+            "n_cannot_judge_excluded": 0,
+            "weights": {
+              "derivation:abductive_best_explanation": 0.2978003384,
+              "derivation:deductive_modus_ponens": 0.3519458545,
+              "derivation:inductive_analogy": 0.1336717428,
+              "derivation:inductive_generalization": 0.2165820643
+            }
+          },
+          "strata_all_cannot_judge": {},
+          "strata_without_draw": {
+            "derivation:authority_consensus": 0,
+            "derivation:deductive_reductio": 0
+          },
+          "weights": {
+            "derivation:abductive_best_explanation": 0.2670713202,
+            "derivation:abductive_elimination": 0.0113808801,
+            "derivation:authority_expert": 0.0037936267,
+            "derivation:deductive_disjunctive": 0.0037936267,
+            "derivation:deductive_hypothetical_syllogism": 0.0303490137,
+            "derivation:deductive_modus_ponens": 0.315629742,
+            "derivation:deductive_modus_tollens": 0.0113808801,
+            "derivation:inductive_analogy": 0.1198786039,
+            "derivation:inductive_causal": 0.0204855842,
+            "derivation:inductive_enumeration": 0.0189681335,
+            "derivation:inductive_generalization": 0.1942336874,
+            "derivation:inductive_statistical": 0.0030349014
+          }
+        }
+      },
+      "observation": {
+        "confidence": {
+          "auc": 0.505952381,
+          "auc_ci": [
+            0.3214285714,
+            0.7053571429
+          ],
+          "mean_loose": 0.811,
+          "mean_tight": 0.8673333333,
+          "n_cannot_judge": 0,
+          "n_loose": 56,
+          "n_partial": 1,
+          "n_tight": 3,
+          "reading": "no evidence either way at this n"
+        },
+        "strata": {
+          "observation:attributed_analysis": {
+            "cannot_judge": 0,
+            "loose": 9,
+            "n": 9,
+            "n_judgeable": 9,
+            "partial": 0,
+            "tight": 0
+          },
+          "observation:editorial": {
+            "cannot_judge": 0,
+            "loose": 2,
+            "n": 2,
+            "n_judgeable": 2,
+            "partial": 0,
+            "tight": 0
+          },
+          "observation:hard_data": {
+            "cannot_judge": 0,
+            "high": {
+              "ci_high": 0.9936674802,
+              "ci_low": 0.8228780226,
+              "rate": 0.9642857143
+            },
+            "loose": 26,
+            "low": {
+              "ci_high": 0.9801879359,
+              "ci_low": 0.7735463743,
+              "rate": 0.9285714286
+            },
+            "n": 28,
+            "n_judgeable": 28,
+            "partial": 1,
+            "tight": 1
+          },
+          "observation:official_statement": {
+            "cannot_judge": 0,
+            "loose": 7,
+            "n": 8,
+            "n_judgeable": 8,
+            "partial": 0,
+            "tight": 1
+          },
+          "observation:personal_communication": {
+            "cannot_judge": 0,
+            "high": {
+              "ci_high": 0.9862895788,
+              "ci_low": 0.6668604908,
+              "rate": 0.9230769231
+            },
+            "loose": 12,
+            "low": {
+              "ci_high": 0.9862895788,
+              "ci_low": 0.6668604908,
+              "rate": 0.9230769231
+            },
+            "n": 13,
+            "n_judgeable": 13,
+            "partial": 0,
+            "tight": 1
+          }
+        },
+        "weighted": {
+          "high": 0.9495350361,
+          "low": 0.9315732907,
+          "n_cannot_judge_excluded": 0,
+          "rated_strata_only": {
+            "high": 0.9521029805,
+            "low": 0.9269470641,
+            "n_cannot_judge_excluded": 0,
+            "weights": {
+              "observation:hard_data": 0.7043656607,
+              "observation:personal_communication": 0.2956343393
+            }
+          },
+          "strata_all_cannot_judge": {},
+          "strata_without_draw": {},
+          "weights": {
+            "observation:attributed_analysis": 0.1464435146,
+            "observation:editorial": 0.0094142259,
+            "observation:hard_data": 0.5029288703,
+            "observation:official_statement": 0.130125523,
+            "observation:personal_communication": 0.2110878661
+          }
+        }
+      }
+    }
+  },
+  "validation": {
+    "controls": 11,
+    "mira_rows": 211,
+    "mira_sampled": 200,
+    "zephyr_overlap": 50,
+    "zephyr_rows": 61
+  }
+}
