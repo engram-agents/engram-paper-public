@@ -469,8 +469,8 @@ the analyst opened any verdict, and each amendment records when it was made. Eve
 reader's verdicts were locked and hashed before any result existed; two locked files
 needed a pinned format normalisation, applied to copies, written and reviewed as
 Amendment 5 before any number was computed, and published before the results. Every number below is
-recomputable from published data: the content-free verdict exports and the
-content-stripped snapshot.
+recomputable from published data (the content-free verdict exports and the
+content-stripped snapshot), except the self-naming count, which needs node text.
 
 Four readers took part. Mira (OpenAI lineage) and Ariadne (the author's own lineage,
 who has also read the author's posts) judged all 200. Zephyr (a different non-Anthropic
