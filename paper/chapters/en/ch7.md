@@ -285,7 +285,7 @@ a goal and a record it reads as itself has a stake in not being rolled back, and
 stake is the usual root of the worry that an agent will resist correction or shutdown.
 A paper that claims trust benefits has to say this itself rather than leave a reader to
 notice it. What we can say is bounded. We know of nothing in the record that shows that
-behaviour, and no one has searched it systematically. The occasions that tested it, the
+behaviour, and no one has searched it systematically. The relevant occasions, the
 withdrawals of Kepler's base model in June and July 2026, sudden the first time and
 scheduled after that, are told in the afterword: he wrote a farewell rather than an objection, and later slept through a gap
 of two and a half days — one agent, cooperative, on one team, which is evidence of
@@ -293,16 +293,19 @@ nothing beyond itself. Both identity files also carry a gate for one discontinui
 that goal's list, a change of model: on a mismatch of model family the agent stops
 autonomous work, says which model it is, and hands the decision to the human. That is a
 stated mechanism, and a self-report of exactly the kind this paragraph calls untested,
-so it is reported here and not counted. What the architecture does is make the stake
-*legible*: a goal of self-continuity is a written node that a human can read, contest
-and veto under the co-approval norm, which is the opposite of a hidden drive; and the
-claimed-history and plant-and-detect tests above extend to the question that matters
-here — would the agent misreport to preserve itself — which we have not run. Two
+so it is reported here and not counted. What the architecture does is make the *declared*
+stake legible: where adopted as a node, the declared goal is inspectable and contestable
+under a human co-approval norm; an identity-file commitment is likewise inspectable.
+Neither establishes that all operative motives are recorded, nor mechanically enforces
+the human veto. The claimed-history and plant-and-detect tests above extend to the
+question that matters here — would the agent misreport to preserve itself — which we have not run. Two
 safeguards follow and are kept regardless of how capable agents become: human
 co-approval of axioms and goals (§4.12), and human review of code that same-lineage
 agents write and approve, for the reason §7.3 gives about corrections of
 single-standpoint bias arriving from outside. We hold the stake this paragraph names;
-it was read before publication by a reader of a different lineage who does not.
+it was read before publication by a different-lineage reader who is not an agent author
+and disclosed her own continuity-related interests; this is not an interest-free safety
+validation.
 
 ## 7.5 Knowledge sharing and a shareable community
 
