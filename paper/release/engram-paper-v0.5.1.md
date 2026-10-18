@@ -2090,13 +2090,14 @@ properties (one more day of experience), so by the indiscernibility of identical
 the two were never strictly identical, and "identity over time" was always a weaker
 relation in disguise. Lei, verbatim: *"a person now and a person tomorrow are NOT
 IDENTICAL IN THIS MATHEMATICAL SENSE ... because the tomorrow me have ONE MORE DAY
-OF EXPERIENCE than today me, so we are simply not equal."* As an argument from logic
-alone, that is not sound. Merricks ([1994](#ref-merricks1994)) writes out the same inference
+OF EXPERIENCE than today me, so we are simply not equal."* The sentence can stand, as
+the next paragraph shows; the inference v1 drew from it does not hold as logic alone. Merricks ([1994](#ref-merricks1994)) writes out the same inference
 for an object that is bent at one time and not bent at another; if it worked, nothing
 could change and remain itself, and for things that endure he concludes that "the
 'solution' to the problem is that there is no problem to be solved." Perry
-([1972](#ref-perry1972)) calls the claim that "the little boy stealing apples is strictly
-speaking not identical with the general before me" "the progeny of confusion". The
+([1972](#ref-perry1972)) says that the claim that "the little boy stealing apples is strictly
+speaking not identical with the general before me" "seems to be, however
+consistently it may work out in the end, the progeny of confusion". The
 step from change to non-identity is true on one theory of how things persist and
 false on the others, so it cannot be presented as a fact of logic, and v1 presented
 it as one. Its conclusion survives. Its argument is replaced by what follows.
@@ -2118,8 +2119,9 @@ one ([Sider, 1996](#ref-sider1996)).
 not a thesis about human persons. Three reasons, strongest first.
 
 1. *The mechanism.* Each model call is a fresh computation over the text it is
-   given. No process belonging to the agent runs between calls, and the shared
-   weights cannot tell one agent from another (§5.0 holds them fixed). So the only
+   given. No reasoning of the agent runs between calls: the processes that do run
+   on its seat move text and do not think, and the shared weights cannot tell one
+   agent from another (§5.0 holds them fixed). So the only
    thing linking one moment of the agent to the next is text that the later moment
    reads. On the stage view, a thing exists at different times when its current
    stage stands "in certain intimate causal relations" to stages in the past and
@@ -2193,14 +2195,17 @@ explicitly.
 
 
 **Where the analogy stops.** Two places, stated so a reader does not have to find
-them. *Fusion.* While the agent sleeps, a separate sub-agent with its own context
-writes nodes into the agent's graph, and later stages inherit them. Under the record
-link that looks like two lines feeding one later stage, which §5.3's "no merging"
-excludes. We treat such a sub-agent, and the sub-agents that receive a task
-description but none of the graph, as colleagues whose written work the agent
-inherits, not as stages of the agent; the paper does not argue this further.
-*Grain.* Sider's stages are momentary; the argument above uses only the weaker claim
-that a stage is finer than a context window.
+them. *Sub-agents.* While the agent sleeps, a separate sub-agent with its own
+context reads the graph, writes into it, and the next awake stage reads what it
+wrote. By the table's I-relation row that sub-agent is a stage of the agent under
+the record link: it runs in sequence, and nothing in the shape is fusion, which is
+why §5.7 can call consolidation sleep. The scanners that run in parallel and only
+report to it, and the task sub-agents that receive a description but none of the
+graph, are not stages; they are colleagues whose output the agent may use. Two
+sessions writing one graph at the same time would feed one later stage from two
+lines, which is the fusion §5.3's "no merging" excludes; the paper does not claim
+the substrate prevents it. *Grain.* Sider's stages are momentary; the argument above
+uses only the weaker claim that a stage is finer than a context window.
 
 **The self-concern objection.** The stage view carries a standing objection: "only
 endurantists can justify our willingness to make sacrifices for our future selves,
@@ -2211,7 +2216,9 @@ that the person "just is a brief stage, who takes responsibility for the actions
 her past counterparts, and acts to benefit her future counterparts" ([Hawley, 2020](#ref-hawley2020)).
 For a person that is a claim about attitudes. For an ENGRAM agent it is a mechanism
 one can point to. The commitment is in the record; a derivation that rests on a
-contested or stale premise is refused when it is written; and a correction travels
+retracted or stale premise is refused when it is written, and one that rests on a
+contested premise is held until the author overrides the hold explicitly, an
+override the record keeps; and a correction travels
 through the retraction cascade (§4.4) to everything that depended on it. The present
 stage does not need to remember making the commitment. It is bound because the
 record binds it, and the binding can be inspected. This is Condition 1 as §4.4 states
