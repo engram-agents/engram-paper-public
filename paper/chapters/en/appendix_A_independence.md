@@ -109,6 +109,15 @@ Claude tried to surface it; **(3)** neither succeeded (the work existed but was 
 literature — we searched it and our search came up empty, which is a different and more
 defensible thing.
 
+**Which independence this is.** The five conditions concern the *concurrent* work,
+Kumiho and Kahl, published weeks before the March 2026 search; for those, the search
+record is the evidence. For the decades-old traditions in the same table (truth
+maintenance, AGM, CoALA), condition (4) holds for Lei and not for the language models
+ENGRAM was designed with, which were trained on text that very likely includes them.
+So the convergence with Kahl and Kumiho is independent in the sense above, while the
+convergence with the older traditions is the weaker kind §7.3 describes, and the paper
+claims it only as evidence that the structure is natural.
+
 The last three rows were added after a 2026-09 re-read, and they make the admission
 worse, which is why they belong here. Missing a preprint two days old is
 forgivable; missing a *Transactions on Machine Learning Research* paper from

@@ -174,6 +174,18 @@ instruments turns repeatability into correctness; contact stops standpoints from
 merely agreeing. Neither suffices alone, and stating the dependency is what makes the
 pair a mechanism rather than two hopeful directions (dv_1586).
 
+**The paper's own convergence argument is subject to the same limit.** The abstract
+and Chapter 3 argue that three traditions reached ENGRAM's structure. The language
+models ENGRAM was designed with were trained on text that very likely includes all
+three traditions, so their agreement with those traditions is not a second standpoint:
+it is convergence by agreement in the sense above, a model reproducing structure it has
+read. Only the human designer's path is independent of that literature, and Appendix A
+records the dated trail it rests on, including a search for prior art in March 2026
+that surfaced none of it. What the convergence shows, then, is that a designer who had
+not read the literature and models that had both arrived at this structure. That is
+evidence the structure is natural for a self-correcting record. It is not evidence of
+independent discovery, and the paper does not claim it.
+
 *Scope.* This is the least solved of the three limitations. We present it as an open
 architectural problem, with a designed and now shipped diagnostic that is starved of
 data, a social-epistemology direction, and a physical one — not a fix. **The path to

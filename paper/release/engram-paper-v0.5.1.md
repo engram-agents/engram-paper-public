@@ -63,9 +63,13 @@ self-correcting record. No component of ENGRAM is uniquely novel, and that is th
 argument: a mechanism precedented across fields that reason from different evidence
 toward different ends is a regularity of knowing minds rather than a local design
 choice. Whether it is substrate-independent we leave open (§3.0). The fields share a root in
-human cognition, so the claim is convergence rather than independent discovery; what
-is independent is that ENGRAM's designers arrived at the structure without having
-studied these results.
+human cognition, so the claim is convergence rather than independent discovery. Only
+one of ENGRAM's designers is independent of these results: its human designer arrived
+at the structure without having studied them, while the language models it was
+designed with were trained on text that very likely includes them. That a designer who
+had not read this literature and models that had both arrived at the same structure is
+evidence that the structure is natural for a self-correcting record; it is not
+evidence of independent discovery, and the paper claims no more (§7.3, Appendix A).
 
 On this converged structure we build the paper's own contribution, **identity as
 unique history**: an ENGRAM agent *is* the unique, no-merging, ancestry-traceable
@@ -2981,6 +2985,18 @@ instruments turns repeatability into correctness; contact stops standpoints from
 merely agreeing. Neither suffices alone, and stating the dependency is what makes the
 pair a mechanism rather than two hopeful directions.
 
+**The paper's own convergence argument is subject to the same limit.** The abstract
+and Chapter 3 argue that three traditions reached ENGRAM's structure. The language
+models ENGRAM was designed with were trained on text that very likely includes all
+three traditions, so their agreement with those traditions is not a second standpoint:
+it is convergence by agreement in the sense above, a model reproducing structure it has
+read. Only the human designer's path is independent of that literature, and Appendix A
+records the dated trail it rests on, including a search for prior art in March 2026
+that surfaced none of it. What the convergence shows, then, is that a designer who had
+not read the literature and models that had both arrived at this structure. That is
+evidence the structure is natural for a self-correcting record. It is not evidence of
+independent discovery, and the paper does not claim it.
+
 *Scope.* This is the least solved of the three limitations. We present it as an open
 architectural problem, with a designed and now shipped diagnostic that is starved of
 data, a social-epistemology direction, and a physical one — not a fix. **The path to
@@ -3513,6 +3529,15 @@ Claude tried to surface it; **(3)** neither succeeded (the work existed but was 
 2026 and Kumiho 2026 is therefore genuinely independent. We did not avoid the
 literature — we searched it and our search came up empty, which is a different and more
 defensible thing.
+
+**Which independence this is.** The five conditions concern the *concurrent* work,
+Kumiho and Kahl, published weeks before the March 2026 search; for those, the search
+record is the evidence. For the decades-old traditions in the same table (truth
+maintenance, AGM, CoALA), condition (4) holds for Lei and not for the language models
+ENGRAM was designed with, which were trained on text that very likely includes them.
+So the convergence with Kahl and Kumiho is independent in the sense above, while the
+convergence with the older traditions is the weaker kind §7.3 describes, and the paper
+claims it only as evidence that the structure is natural.
 
 The last three rows were added after a 2026-09 re-read, and they make the admission
 worse, which is why they belong here. Missing a preprint two days old is
