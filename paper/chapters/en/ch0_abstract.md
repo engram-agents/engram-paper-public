@@ -28,7 +28,7 @@ human cognition, so the claim is convergence rather than independent discovery. 
 one of ENGRAM's designers is independent of these results: its human designer arrived
 at the structure without having studied them, while the language models it was
 designed with were trained on text that very likely includes them. That a designer who
-had not read this literature and models that had both arrived at the same structure is
+had not read this literature and models that had read it both arrived at the same structure is
 evidence that the structure is natural for a self-correcting record; it is not
 evidence of independent discovery, and the paper claims no more (§7.3, Appendix A).
 

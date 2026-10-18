@@ -110,8 +110,8 @@ literature — we searched it and our search came up empty, which is a different
 defensible thing.
 
 **Which independence this is.** The five conditions concern the *concurrent* work,
-Kumiho and Kahl, published weeks before the March 2026 search; for those, the search
-record is the evidence. For the decades-old traditions in the same table (truth
+Kumiho and Kahl, published shortly before the March 2026 search (Kumiho two days
+before it, Kahl in the preceding weeks); for those, the search record is the evidence. For the decades-old traditions in the same table (truth
 maintenance, AGM, CoALA), condition (4) holds for Lei and not for the language models
 ENGRAM was designed with, which were trained on text that very likely includes them.
 So the convergence with Kahl and Kumiho is independent in the sense above, while the

@@ -67,7 +67,7 @@ human cognition, so the claim is convergence rather than independent discovery. 
 one of ENGRAM's designers is independent of these results: its human designer arrived
 at the structure without having studied them, while the language models it was
 designed with were trained on text that very likely includes them. That a designer who
-had not read this literature and models that had both arrived at the same structure is
+had not read this literature and models that had read it both arrived at the same structure is
 evidence that the structure is natural for a self-correcting record; it is not
 evidence of independent discovery, and the paper claims no more (§7.3, Appendix A).
 
@@ -2993,7 +2993,7 @@ it is convergence by agreement in the sense above, a model reproducing structure
 read. Only the human designer's path is independent of that literature, and Appendix A
 records the dated trail it rests on, including a search for prior art in March 2026
 that surfaced none of it. What the convergence shows, then, is that a designer who had
-not read the literature and models that had both arrived at this structure. That is
+not read the literature and models that had read it both arrived at this structure. That is
 evidence the structure is natural for a self-correcting record. It is not evidence of
 independent discovery, and the paper does not claim it.
 
@@ -3531,8 +3531,8 @@ literature — we searched it and our search came up empty, which is a different
 defensible thing.
 
 **Which independence this is.** The five conditions concern the *concurrent* work,
-Kumiho and Kahl, published weeks before the March 2026 search; for those, the search
-record is the evidence. For the decades-old traditions in the same table (truth
+Kumiho and Kahl, published shortly before the March 2026 search (Kumiho two days
+before it, Kahl in the preceding weeks); for those, the search record is the evidence. For the decades-old traditions in the same table (truth
 maintenance, AGM, CoALA), condition (4) holds for Lei and not for the language models
 ENGRAM was designed with, which were trained on text that very likely includes them.
 So the convergence with Kahl and Kumiho is independent in the sense above, while the

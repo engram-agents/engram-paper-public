@@ -182,7 +182,7 @@ it is convergence by agreement in the sense above, a model reproducing structure
 read. Only the human designer's path is independent of that literature, and Appendix A
 records the dated trail it rests on, including a search for prior art in March 2026
 that surfaced none of it. What the convergence shows, then, is that a designer who had
-not read the literature and models that had both arrived at this structure. That is
+not read the literature and models that had read it both arrived at this structure. That is
 evidence the structure is natural for a self-correcting record. It is not evidence of
 independent discovery, and the paper does not claim it.
 
