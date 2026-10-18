@@ -377,6 +377,28 @@ references:
     bibliography/sourcing-journal.md. Held copy: bibliography/sources/hansson_sep_logic_belief_revision.html
     (copyrighted; git-ignored, not redistributed). The accessed date is not printed on the page:
     it is the capture date of that held copy (file modified 2026-09-21).
+- id: hawley2020
+  type: entry-encyclopedia
+  author:
+  - family: Hawley
+    given: K.
+  issued:
+    date-parts:
+    - - 2020
+      - 5
+      - 5
+  title: Temporal parts
+  container-title: The Stanford Encyclopedia of Philosophy
+  URL: https://plato.stanford.edu/entries/temporal-parts/
+  accessed:
+    date-parts:
+    - - 2026
+      - 10
+      - 14
+  provenance: |-
+    "First published Sun Feb 1, 2004; substantive revision Tue May 5, 2020", as printed on the entry. Read first-hand from a saved copy (§3, §9).
+  provenance_zh: |-
+    条目上印有"First published Sun Feb 1, 2004; substantive revision Tue May 5, 2020"。据保存的副本第一手阅读（§3、§9）。
 - id: josang2013
   type: manuscript
   author:
@@ -665,6 +687,23 @@ references:
   metadata_incomplete: |-
     Metadata incomplete: the two printed dates disagree (see provenance); no venue beyond
     the arXiv identifier is printed.
+- id: merricks1994
+  type: article-journal
+  author:
+  - family: Merricks
+    given: T.
+  issued:
+    date-parts:
+    - - 1994
+  title: Endurance and indiscernibility
+  container-title: The Journal of Philosophy
+  volume: '91'
+  issue: '4'
+  page: 165–184
+  provenance: |-
+    Read first-hand in the author's manuscript, headed "Journal of Philosophy 91 (1994): 165-184"; the journal's typeset pages were not seen, so no pinpoint pages are given.
+  provenance_zh: |-
+    据作者手稿第一手阅读，手稿页首印有"Journal of Philosophy 91 (1994): 165-184"；未见期刊排印页，因此不给出具体页码。
 - id: nozick1981
   type: book
   author:
@@ -701,6 +740,28 @@ references:
     University of Michigan, Ann Arbor. Running head "Cognitive Systems Research 17-18 (2012) 34-48";
     "Available online 31 October 2011"; Action editor: Vasant Honavar. The file was fetched with TLS
     certificate verification disabled (the host's chain would not verify).
+- id: olson2023
+  type: entry-encyclopedia
+  author:
+  - family: Olson
+    given: E. T.
+  issued:
+    date-parts:
+    - - 2023
+      - 6
+      - 30
+  title: Personal identity
+  container-title: The Stanford Encyclopedia of Philosophy
+  URL: https://plato.stanford.edu/entries/identity-personal/
+  accessed:
+    date-parts:
+    - - 2026
+      - 10
+      - 14
+  provenance: |-
+    "First published Tue Aug 20, 2002; substantive revision Fri Jun 30, 2023", as printed on the entry. Read first-hand from a saved copy (§5, fission).
+  provenance_zh: |-
+    条目上印有"First published Tue Aug 20, 2002; substantive revision Fri Jun 30, 2023"。据保存的副本第一手阅读（§5，分裂）。
 - id: packer2023
   type: article
   author:
@@ -859,6 +920,23 @@ references:
     Metadata incomplete: volume and issue are not printed in the pages read. Volume 16, no. 4
     (October 1906) is what the DOI string "monist190616436" and a secondary record suggest; check
     before printing.
+- id: perry1972
+  type: article-journal
+  author:
+  - family: Perry
+    given: J.
+  issued:
+    date-parts:
+    - - 1972
+  title: Can the self divide?
+  container-title: The Journal of Philosophy
+  volume: '69'
+  issue: '16'
+  page: 463–488
+  provenance: |-
+    Read first-hand in the author-hosted manuscript, headed "Journal of Philosophy 69 (1972): 463-88", reprinted in Perry, Identity, Personal Identity and the Self (Hackett, 2002). The journal's typeset pages were not seen, so no pinpoint pages are given.
+  provenance_zh: |-
+    据作者网站托管的手稿第一手阅读，手稿页首印有"Journal of Philosophy 69 (1972): 463-88"，后收入 Perry, Identity, Personal Identity and the Self (Hackett, 2002)。未见期刊排印页，因此不给出具体页码。
 - id: pink2025
   type: article
   author:
@@ -1040,6 +1118,40 @@ references:
   provenance: |-
     Clyrai IP Studio (the author's own imprint), April 2026. arXiv:2604.20943v1 [cs.LG],
     22 April 2026.
+- id: sider1996
+  type: article-journal
+  author:
+  - family: Sider
+    given: T.
+  issued:
+    date-parts:
+    - - 1996
+  title: All the world's a stage
+  container-title: Australasian Journal of Philosophy
+  volume: '74'
+  issue: '3'
+  page: 433–453
+  DOI: 10.1080/00048409612347421
+  provenance: |-
+    Read first-hand in the author's PDF (tedsider.org), headed "Australasian Journal of Philosophy 74 (1996): 433–453"; issue number and DOI from Crossref. The typeset pages were not seen, so no pinpoint pages are given.
+  provenance_zh: |-
+    据作者 PDF（tedsider.org）第一手阅读，页首印有"Australasian Journal of Philosophy 74 (1996): 433–453"；期号与 DOI 取自 Crossref。未见排印页，因此不给出具体页码。
+- id: sider2000
+  type: article-journal
+  author:
+  - family: Sider
+    given: T.
+  issued:
+    date-parts:
+    - - 2000
+  title: The stage view and temporary intrinsics
+  container-title: Analysis
+  volume: '60'
+  page: 84–88
+  provenance: |-
+    Read first-hand in the author's PDF, headed "Analysis 60 (2000): 84–88".
+  provenance_zh: |-
+    据作者 PDF 第一手阅读，页首印有"Analysis 60 (2000): 84–88"。
 - id: stiegler1998
   type: book
   author:

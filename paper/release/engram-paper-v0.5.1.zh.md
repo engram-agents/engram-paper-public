@@ -1971,6 +1971,9 @@ bibliography/sourcing-journal.md. Held copy: bibliography/sources/hansson_sep_lo
 (copyrighted; git-ignored, not redistributed). The accessed date is not printed on the page:
 it is the capture date of that held copy (file modified 2026-09-21).
 
+<a id="ref-hawley2020"></a>Hawley, K. (2020). Temporal parts. In *The Stanford Encyclopedia of Philosophy*. https://plato.stanford.edu/entries/temporal-parts/
+条目上印有"First published Sun Feb 1, 2004; substantive revision Tue May 5, 2020"。据保存的副本第一手阅读（§3、§9）。
+
 <a id="ref-josang2013"></a>Jøsang, A. (2013). *Subjective logic* [Draft manuscript].
 Draft manuscript, 18 February 2013. University
 of Oslo.
@@ -2055,6 +2058,9 @@ https://github.com/menonpg/soul.py).
 *[Metadata incomplete: the two printed dates disagree (see provenance); no venue beyond
 the arXiv identifier is printed.]*
 
+<a id="ref-merricks1994"></a>Merricks, T. (1994). Endurance and indiscernibility. *The Journal of Philosophy*, *91*(4), 165–184.
+据作者手稿第一手阅读，手稿页首印有"Journal of Philosophy 91 (1994): 165-184"；未见期刊排印页，因此不给出具体页码。
+
 <a id="ref-nozick1981"></a>Nozick, R. (1981). *Philosophical explanations*. The Belknap Press of Harvard University Press.
 ISBN 0-674-66448-5 (cloth); 0-674-66479-5 (paper).
 *[书名页与版权页系作为页面图像读取；该来源 PDF 没有文本层。]*
@@ -2063,6 +2069,9 @@ ISBN 0-674-66448-5 (cloth); 0-674-66479-5 (paper).
 University of Michigan, Ann Arbor. Running head "Cognitive Systems Research 17-18 (2012) 34-48";
 "Available online 31 October 2011"; Action editor: Vasant Honavar. The file was fetched with TLS
 certificate verification disabled (the host's chain would not verify).
+
+<a id="ref-olson2023"></a>Olson, E. T. (2023). Personal identity. In *The Stanford Encyclopedia of Philosophy*. https://plato.stanford.edu/entries/identity-personal/
+条目上印有"First published Tue Aug 20, 2002; substantive revision Fri Jun 30, 2023"。据保存的副本第一手阅读（§5，分裂）。
 
 <a id="ref-packer2023"></a>Packer, C., Wooders, S., Lin, K., Fang, V., Patil, S. G., Stoica, I., & Gonzalez, J. E. (2023). *MemGPT: Towards LLMs as operating systems*. https://arxiv.org/abs/2310.08560
 arXiv:2310.08560v2 [cs.AI], 12 Feb 2024 (version read); first submitted 12 Oct 2023
@@ -2109,6 +2118,9 @@ pp. 505-506.
 (October 1906) is what the DOI string "monist190616436" and a secondary record suggest; check
 before printing.]*
 
+<a id="ref-perry1972"></a>Perry, J. (1972). Can the self divide?. *The Journal of Philosophy*, *69*(16), 463–488.
+据作者网站托管的手稿第一手阅读，手稿页首印有"Journal of Philosophy 69 (1972): 463-88"，后收入 Perry, Identity, Personal Identity and the Self (Hackett, 2002)。未见期刊排印页，因此不给出具体页码。
+
 <a id="ref-pink2025"></a>Pink, M., Wu, Q., Vo, V. A., Turek, J., Mu, J., Huth, A., & Toneva, M. (2025). *Position: Episodic memory is the missing piece for long-term LLM agents*.
 arXiv:2502.06975v1 [cs.AI], 10 February 2025. Affiliations as printed: Max Planck
 Institute for Software Systems; EarthDynamics.ai; University of Texas at Austin.
@@ -2151,6 +2163,12 @@ conducted at Duolingo").
 <a id="ref-shinde2026"></a>Shinde, S. (2026). *SCM: Sleep-consolidated memory with algorithmic forgetting for large language models*.
 Clyrai IP Studio (the author's own imprint), April 2026. arXiv:2604.20943v1 [cs.LG],
 22 April 2026.
+
+<a id="ref-sider1996"></a>Sider, T. (1996). All the world's a stage. *Australasian Journal of Philosophy*, *74*(3), 433–453. https://doi.org/10.1080/00048409612347421
+据作者 PDF（tedsider.org）第一手阅读，页首印有"Australasian Journal of Philosophy 74 (1996): 433–453"；期号与 DOI 取自 Crossref。未见排印页，因此不给出具体页码。
+
+<a id="ref-sider2000"></a>Sider, T. (2000). The stage view and temporary intrinsics. *Analysis*, *60*, 84–88.
+据作者 PDF 第一手阅读，页首印有"Analysis 60 (2000): 84–88"。
 
 <a id="ref-stiegler1998"></a>Stiegler, B. (1998). *Technics and time, 1: The fault of Epimetheus* (R. Beardsworth & G. Collins, Trans.). Stanford University Press. (Original work published 1994)
 Originally published
