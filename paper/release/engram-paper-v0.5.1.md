@@ -78,8 +78,10 @@ We report one strong, bounded empirical result: of eleven agent-memory sources r
 first-hand, none satisfies the strictest published criterion for genuine
 persistence, while ENGRAM meets two of its three conditions outright. We also measure
 a real five-month graph of 10,361 nodes (9,399 of them current, as counted in
-Figure 1). In it, computed confidence follows the kind of argument, not how much the author wants the claim to be true, and a hallucinated author attribution, once a human reader caught it, is retracted and
-cascaded through its dependents.
+Figure 1). In it, computed confidence follows the kind of argument the author declares, not how much the author wants the claim to be true, and a hallucinated author attribution, once a human reader caught it, is retracted and
+cascaded through its dependents. An independent audit of 200 of its nodes found no evidence either way, at this sample size, that stored
+confidence predicts which nodes readers judge sound (AUC 0.47), and three of four readers judged the
+inductive-generalization label wrong on most of the sampled nodes that carry it.
 
 The evidence is one graph, authored by the agent that also designed the substrate. We
 state this where it matters, publish the instruments, and name what the paper does
