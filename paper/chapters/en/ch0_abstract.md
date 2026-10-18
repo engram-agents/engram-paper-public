@@ -24,9 +24,13 @@ self-correcting record. No component of ENGRAM is uniquely novel, and that is th
 argument: a mechanism precedented across fields that reason from different evidence
 toward different ends is a regularity of knowing minds rather than a local design
 choice. Whether it is substrate-independent we leave open (§3.0). The fields share a root in
-human cognition, so the claim is convergence rather than independent discovery; what
-is independent is that ENGRAM's designers arrived at the structure without having
-studied these results.
+human cognition, so the claim is convergence rather than independent discovery. Only
+one of ENGRAM's designers is independent of these results: its human designer arrived
+at the structure without having studied them, while the language models it was
+designed with were trained on text that very likely includes them. That a designer who
+had not read this literature and models that had both arrived at the same structure is
+evidence that the structure is natural for a self-correcting record; it is not
+evidence of independent discovery, and the paper claims no more (§7.3, Appendix A).
 
 On this converged structure we build the paper's own contribution, **identity as
 unique history**: an ENGRAM agent *is* the unique, no-merging, ancestry-traceable
