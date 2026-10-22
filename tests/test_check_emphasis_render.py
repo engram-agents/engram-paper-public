@@ -160,6 +160,14 @@ def test_conformant_emphasis_in_image_alt_text_gives_no_finding():
     assert scan("![a *b* and **c**](x.png)\n")[0] == []
 
 
-def test_the_alt_scan_does_not_double_count_text_outside_the_image():
-    findings, _ = scan("lead * ![ok](x.png) tail\n")
-    assert kinds(findings) == ["single"]
+def test_alt_text_is_scanned_as_its_own_block_never_fused_with_the_text_around_it():
+    # Alt "x *" and the "*" after the image are two separate literal stars (2 findings).
+    # Fused into one stream they would read "x ** tail": one unpaired `**` run, 1 finding.
+    findings, _ = scan("![x *](i.png)* tail\n")
+    assert kinds(findings) == ["single", "single"]
+
+
+def test_a_bold_pair_split_across_alt_and_outer_text_is_not_a_bold_finding():
+    # Fused, "**" in the alt and "**" after the image would pair into one `bold` finding.
+    findings, _ = scan("![a **](i.png)** b\n")
+    assert kinds(findings) == ["single", "single"]

@@ -264,3 +264,84 @@ def test_without_the_flag_a_missing_renderer_still_falls_back_and_exits_zero(tmp
     p2h.main()
     out = dst.read_text(encoding="utf-8")
     assert "<pre><code>graph TD" in out and 'figure class="diagram"' not in out
+
+
+# ------------------------------------------------- R1-R3: the strict path trusts nothing
+import hashlib as _hashlib  # noqa: E402
+
+DIAGRAM = "graph TD; A-->B"
+
+
+def stub_writing(tmp_path, svg_literal):
+    """A stub renderer whose check_bundle passes and which writes `svg_literal` as the SVG."""
+    d = tmp_path / "stub"
+    d.mkdir()
+    (d / "mermaid_to_svg.py").write_text(
+        'import sys\n'
+        'def check_bundle(path=None):\n    pass\n'
+        'if __name__ == "__main__":\n'
+        f'    open(sys.argv[2], "wb").write({svg_literal!r})\n', encoding="utf-8")
+    return d
+
+
+INVALID_SVGS = [
+    pytest.param(b"", id="empty"),
+    pytest.param(b"garbage, not xml", id="garbage"),
+    pytest.param(b"<svg width='10'", id="svg-prefix-but-truncated"),
+    pytest.param(b"<html><body/></html>", id="well-formed-but-not-svg-root"),
+]
+
+
+@pytest.mark.parametrize("bad", INVALID_SVGS)
+def test_require_mermaid_rejects_an_invalid_rendered_svg(bad, tmp_path, monkeypatch):
+    dst = run_strict(tmp_path, monkeypatch, renderer_dir=stub_writing(tmp_path, bad))
+    with pytest.raises(SystemExit) as e:
+        p2h.main()
+    assert e.value.code not in (0, None)
+    assert "invalid SVG" in str(e.value)
+    assert not dst.exists()
+
+
+def test_require_mermaid_accepts_a_namespaced_svg_with_an_xml_prolog(tmp_path, monkeypatch):
+    good = b'<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" width="5"><g/></svg>'
+    dst = run_strict(tmp_path, monkeypatch, renderer_dir=stub_writing(tmp_path, good))
+    p2h.main()
+    assert 'class="mermaid-svg"' in dst.read_text(encoding="utf-8")
+
+
+def seed_cache(tmp_path, content: bytes):
+    cache = tmp_path / "cache"
+    cache.mkdir()
+    key = _hashlib.sha1(DIAGRAM.encode("utf-8")).hexdigest()[:16]
+    (cache / f"mermaid-{key}.svg").write_bytes(content)
+
+
+@pytest.mark.parametrize("bad", INVALID_SVGS)
+def test_require_mermaid_does_not_trust_an_invalid_cached_svg(bad, tmp_path, monkeypatch):
+    # Cache validation (not bundle-keyed): every hit is parsed like a fresh render.
+    seed_cache(tmp_path, bad)
+    dst = run_strict(tmp_path, monkeypatch, renderer_dir=stub_writing(tmp_path, b"<svg/>"))
+    with pytest.raises(SystemExit) as e:
+        p2h.main()
+    assert e.value.code not in (0, None)
+    assert "invalid SVG" in str(e.value) and "cache" in str(e.value)
+    assert not dst.exists()
+
+
+def test_without_the_flag_a_garbage_cached_svg_is_still_inlined_unchanged(tmp_path, monkeypatch):
+    seed_cache(tmp_path, b"garbage, not xml")
+    dst = run_strict(tmp_path, monkeypatch, flag=False)
+    p2h.main()
+    assert '<figure class="diagram">garbage, not xml</figure>' in dst.read_text(encoding="utf-8")
+
+
+def test_any_exception_in_a_require_mermaid_run_removes_the_output(tmp_path, monkeypatch):
+    d = tmp_path / "stub"
+    d.mkdir()
+    (d / "mermaid_to_svg.py").write_text(
+        'def check_bundle(path=None):\n    raise ValueError("unexpected")\n', encoding="utf-8")
+    dst = run_strict(tmp_path, monkeypatch, renderer_dir=d)
+    dst.write_text("stale output from an earlier run", encoding="utf-8")
+    with pytest.raises(ValueError):
+        p2h.main()
+    assert not dst.exists()

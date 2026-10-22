@@ -97,6 +97,21 @@ class MermaidRequired(Exception):
     """Raised, under --require-mermaid, instead of falling back to a source block."""
 
 
+def _check_svg(raw, source):
+    """Raise MermaidRequired unless `raw` (bytes) is an XML document with an <svg> root.
+
+    A real XML parse, not a prefix check: an empty, truncated or non-SVG file must not
+    count as a rendered diagram. `source` names where the bytes came from.
+    """
+    import xml.etree.ElementTree as ET
+    try:
+        root = ET.fromstring(raw)
+    except ET.ParseError as e:
+        raise MermaidRequired(f'invalid SVG from {source}: not well-formed XML ({e})') from None
+    if root.tag.rpartition('}')[2] != 'svg':
+        raise MermaidRequired(f'invalid SVG from {source}: root element is <{root.tag}>, not <svg>')
+
+
 def render_mermaid(code, cache_dir, strict=False):
     """Return inline SVG for a mermaid block, or None if it cannot be rendered.
 
@@ -141,6 +156,10 @@ def render_mermaid(code, cache_dir, strict=False):
                 raise MermaidRequired('mermaid diagram failed to render: renderer wrote no SVG')
             return None
 
+    if strict:
+        # Never trust the cache unvalidated: a hit is checked exactly like a fresh render
+        # (the cache is keyed by diagram text only, so a corrupt file would be reused forever).
+        _check_svg(svg_path.read_bytes(), f'the mermaid cache file {svg_path}')
     svg = svg_path.read_text(encoding='utf-8')
     # Strip the XML prolog/DOCTYPE so the SVG can sit inline in HTML.
     svg = re.sub(r'<\?xml[^>]*\?>\s*', '', svg)
@@ -364,19 +383,24 @@ def main():
         banner = f'<div class="banner">{sys.argv[sys.argv.index("--banner") + 1]}</div>'
     cache = Path(sys.argv[sys.argv.index('--mermaid-cache') + 1]) \
         if '--mermaid-cache' in sys.argv else dst.parent / '.diagram-cache'
+    done = False
     try:
-        if strict:
-            _require_mermaid_ready()
-        body = convert(src.read_text(encoding='utf-8'), src.parent, cache, strict)
-    except MermaidRequired as e:
-        dst.unlink(missing_ok=True)  # never leave a stale or partial output behind
-        raise SystemExit(f'--require-mermaid: {e}')
-    title = 'ENGRAM — Epistemic Identity'
-    dst.write_text(
-        f'<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
-        f'<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-        f'<title>{title}</title>\n<style>{CSS}</style>\n</head>\n<body>\n'
-        f'{banner}\n{body}\n</body>\n</html>\n', encoding='utf-8')
+        try:
+            if strict:
+                _require_mermaid_ready()
+            body = convert(src.read_text(encoding='utf-8'), src.parent, cache, strict)
+        except MermaidRequired as e:
+            raise SystemExit(f'--require-mermaid: {e}')
+        title = 'ENGRAM — Epistemic Identity'
+        dst.write_text(
+            f'<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+            f'<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+            f'<title>{title}</title>\n<style>{CSS}</style>\n</head>\n<body>\n'
+            f'{banner}\n{body}\n</body>\n</html>\n', encoding='utf-8')
+        done = True
+    finally:
+        if strict and not done:
+            dst.unlink(missing_ok=True)  # any failure: never leave a stale or partial output
     print(f'{dst}  ({dst.stat().st_size / 1024:.0f} KB)')
 
 

@@ -55,7 +55,12 @@ bundle is missing or its sha256 differs. Through `paper_to_print_html.py` the de
 opposite: a missing bundle, an unavailable renderer or a failed diagram falls back to the
 diagram's source block and exits 0. Pass `--require-mermaid` for the strict path: any of
 those, or a bundle whose sha256 differs from the pin, exits non-zero naming the cause and
-leaves no output file (an existing one is removed). Use it for any build meant to be published.
+leaves no output file (an existing one is removed, also on any other exception). A diagram
+counts as rendered only if its SVG parses as XML with an `<svg>` root; every cached SVG is
+validated the same way on each run, never trusted (the cache is keyed by diagram text only,
+so validation, not a bundle-keyed cache, is the guard; it does not detect a cache rendered by
+a different mermaid version, so clear `--mermaid-cache` when the pin changes). Use the flag
+for any build meant to be published.
 
 Provenance of the pin, only what is verifiable: the desk tool's own fetch hint pointed at the
 floating URL `https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js`; the bundle the DOI
@@ -95,5 +100,7 @@ shows, not that the rules are correct.
   14 `**`, 16 single; en: none), not v1.0's. Regenerate with `--write-baseline` when the
   release text changes, and read the diff.
 - `--gate-zero`: fail on any finding. For a version whose source is fixed.
+- Boundary: image alt text from Markdown `![alt](src)` is scanned; raw HTML (including an
+  `<img alt>` or any other inline/block HTML) is not scanned.
 - The golden sha256s in `tests/test_pdf_build.py` are likewise tied to the release text on the
   tree; regenerate them from the desk converter the same way (see the comment there).
