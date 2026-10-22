@@ -16,6 +16,12 @@ Usage:
     python tools/render_paper.py --out paper/release/engram-paper-v0.5.1.md
     python tools/render_paper.py --lang zh          # -> paper/release/engram-paper-v0.5.1.zh.md
 
+    python tools/render_paper.py --lang zh --split-dir site-pages   # -> site-pages/zh/<slug>.md x20
+
+`--split-dir DIR` writes one page per part (front matter, abstract, ch1-8, appendix
+A-G, acknowledgements, afterword, bibliography) plus `manifest.json`, from the SAME
+assembler as the single file (`assemble`). See the "Split pages" section below.
+
 `--lang {en,zh}` (default `en`) selects the chapter-source directory: `en` reads
 `paper/chapters/en/`, `zh` reads `paper/chapters/zh/`.
 ONE `BODY` list drives both; a chapter that is missing in the selected language is
@@ -26,10 +32,13 @@ not render short.
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import re
+import subprocess
 import sys
 import types
+from dataclasses import dataclass
 from pathlib import Path
 
 DRAFT = Path("paper/chapters/en")
@@ -1589,13 +1598,10 @@ _HEADING_ANCHOR_RES = (
 )
 
 
-def insert_heading_anchors(text: str, targets: set[str]) -> str:
-    """Insert `<a id="<id>"></a>` on its own line immediately before the heading
-    each id in `targets` names. `front-matter` names the first heading of `text`.
-    Headings inside fenced code blocks are not headings. Raises SystemExit if a
-    target matches no heading or more than one -- a dead or ambiguous link is a
-    build failure, never a silent output."""
-    lines = text.split("\n")
+def _heading_positions(lines: list[str], *, first_heading_is_front: bool = True) -> dict[str, list[int]]:
+    """Line indexes of the headings each anchor id would name, in `lines`.
+    Headings inside fenced code blocks are not headings. `front-matter` names the
+    first heading of `lines` (when `first_heading_is_front`)."""
     found: dict[str, list[int]] = {}
     fenced = False
     first_heading = None
@@ -1607,24 +1613,316 @@ def insert_heading_anchors(text: str, targets: set[str]) -> str:
             continue
         if first_heading is None:
             first_heading = i
-            found.setdefault("front-matter", []).append(i)
+            if first_heading_is_front:
+                found.setdefault("front-matter", []).append(i)
         for rx, ident in _HEADING_ANCHOR_RES:
             m = rx.match(line)
             if m:
                 found.setdefault(ident(m), []).append(i)
+    return found
+
+
+def _check_anchor_targets(targets: set[str], counts: dict[str, int]) -> None:
     for t in sorted(targets):
-        n = len(found.get(t, []))
+        n = counts.get(t, 0)
         if n != 1:
             raise SystemExit(
                 f"heading anchor {t!r}: expected exactly one matching heading, found {n}"
             )
-    for i, t in sorted(((found[t][0], t) for t in targets), reverse=True):
+
+
+def _insert_anchor_lines(lines: list[str], wanted: list[tuple[int, str]]) -> str:
+    for i, t in sorted(wanted, reverse=True):
         block = [f'<a id="{t}"></a>']
         if i > 0 and lines[i - 1].strip():
             block.insert(0, "")
         lines[i:i] = block
     return "\n".join(lines)
 
+
+def insert_heading_anchors(text: str, targets: set[str]) -> str:
+    """Insert `<a id="<id>"></a>` on its own line immediately before the heading
+    each id in `targets` names. `front-matter` names the first heading of `text`.
+    Headings inside fenced code blocks are not headings. Raises SystemExit if a
+    target matches no heading or more than one -- a dead or ambiguous link is a
+    build failure, never a silent output."""
+    lines = text.split("\n")
+    found = _heading_positions(lines)
+    _check_anchor_targets(targets, {t: len(v) for t, v in found.items()})
+    return _insert_anchor_lines(lines, [(found[t][0], t) for t in targets])
+
+
+def insert_heading_anchors_in_parts(texts: list[str], targets: set[str]) -> list[str]:
+    """`insert_heading_anchors` over the book as an ordered list of parts: each id
+    must name exactly one heading ACROSS ALL parts, and its anchor line goes into the
+    part that holds that heading. Joined, the result equals `insert_heading_anchors`
+    run on the joined book (`front-matter` names the first heading of the first part
+    that has one)."""
+    split_lines = [t.split("\n") for t in texts]
+    per_part: list[dict[str, list[int]]] = []
+    seen_heading = False
+    for lines in split_lines:
+        found = _heading_positions(lines, first_heading_is_front=not seen_heading)
+        per_part.append(found)
+        if any(re.match(r"^#{1,6}\s", l) for l in lines):
+            seen_heading = True
+    counts: dict[str, int] = {}
+    for found in per_part:
+        for t, v in found.items():
+            counts[t] = counts.get(t, 0) + len(v)
+    _check_anchor_targets(targets, counts)
+    # Each part gets exactly the ids whose (single, now-validated) heading it holds, and
+    # is anchored by the single-text `insert_heading_anchors`. A part's own first
+    # heading is only treated as `front-matter` when `front-matter` is in its subset,
+    # i.e. only for the first part that has a heading.
+    return [
+        insert_heading_anchors(text, {t for t in targets if t in found})
+        for text, found in zip(texts, per_part)
+    ]
+
+
+# --- The assembler: ONE function behind both the single file and the split pages ---
+#
+# `assemble` does all the per-part work (load, figure/diagram inserts, provenance and
+# apparatus strip, glossary pointer links, citations, bibliography fill, heading
+# anchors) and returns the parts in reading order. The single-file path joins them
+# (`main`); the split path (`write_split`) writes them one by one. Nothing is
+# processed in only one of the two, which is what keeps the site from drifting from
+# the release text. (Figure relinking depends on where the output file lives, so the
+# caller applies `relink_figures` per output file.)
+
+@dataclass
+class Part:
+    slug: str
+    text: str  # rstripped; carries no trailing newline
+
+
+@dataclass
+class Assembly:
+    parts: list[Part]
+    stripped_total: int
+    apparatus_total: int
+
+
+def _body_slug(name: str) -> str:
+    """The page slug of a BODY entry: `ch0_abstract.md` -> `abstract`, `ch3.md` ->
+    `ch3`, `appendix_E_techspec.md` -> `appendix-e`. Language-independent (BODY
+    names are always the English ones)."""
+    stem = name[:-3] if name.endswith(".md") else name
+    if stem.startswith("ch0_"):
+        return stem[4:]
+    m = re.match(r"appendix_([A-Z])_", stem)
+    if m:
+        return f"appendix-{m.group(1).lower()}"
+    if re.fullmatch(r"ch\d+", stem):
+        return stem
+    raise SystemExit(f"no page slug rule for BODY entry {name!r}")
+
+
+FRONT_SLUG = "front-matter"
+ACKNOWLEDGEMENTS_SLUG = "acknowledgements"
+AFTERWORD_SLUG = "afterword"
+BIBLIOGRAPHY_SLUG = "bibliography"
+# Reading order, one slug per part: front matter, the BODY entries, then the back matter.
+PART_SLUGS: list[str] = (
+    [FRONT_SLUG] + [_body_slug(n) for n in BODY]
+    + [ACKNOWLEDGEMENTS_SLUG, AFTERWORD_SLUG, BIBLIOGRAPHY_SLUG]
+)
+assert len(set(PART_SLUGS)) == len(PART_SLUGS), "page slugs must be unique"
+
+
+def assemble(lang: str, cites: "CitationContext") -> Assembly:
+    parts: list[tuple[str, str]] = [(FRONT_SLUG, load(PAPER / FRONT_MATTER[lang], cites))]
+
+    stripped_total = 0
+    apparatus_total = 0
+    anchor_targets: set[str] = set()
+    for name in BODY:
+        # ONE BODY list, resolved per language. A chapter that is missing in this
+        # language is a hard SystemExit from `load`, naming the resolved path --
+        # never a skip, so a partially translated book cannot render short.
+        body = load(chapter_path(lang, name), cites)
+        body = apply_inserts(name, body, INSERTS_BY_LANG[lang])
+        body, n = strip_provenance_ids(name, body)
+        stripped_total += n
+        body, m = strip_apparatus_tags(name, body)
+        apparatus_total += m
+        if name == GLOSSARY_BODY:
+            body, targets = link_glossary_pointers(body, lang)
+            anchor_targets |= targets
+        parts.append((_body_slug(name), body))
+
+    parts.append((ACKNOWLEDGEMENTS_SLUG, load(PAPER / ACKNOWLEDGEMENTS[lang], cites)))
+    parts.append((AFTERWORD_SLUG, load(PAPER / AFTERWORD[lang], cites)))
+    # The bibliography file is a TEMPLATE (heading, method paragraph, and the sections
+    # after the entries); the entries themselves are generated from references.yaml.
+    parts.append((BIBLIOGRAPHY_SLUG, fill_bibliography_template(
+        load(PAPER / BIBLIOGRAPHY[lang], cites), cites.bibliography_markdown(lang))))
+
+    texts = insert_heading_anchors_in_parts([t.rstrip() for _, t in parts], anchor_targets)
+    return Assembly(
+        parts=[Part(s, t) for (s, _), t in zip(parts, texts)],
+        stripped_total=stripped_total,
+        apparatus_total=apparatus_total,
+    )
+
+
+PART_SEPARATOR = "\n\n---\n\n"
+
+
+def join_parts(parts: list[Part]) -> str:
+    return PART_SEPARATOR.join(p.text for p in parts) + "\n"
+
+
+# --- Split pages (`--split-dir`) -----------------------------------------------------
+#
+# The split cuts at the assembler's PART boundaries and nowhere else. It never scans
+# for headings: Chapter 7 holds two inner H1s (Part A / Part B) that belong on its one
+# page, and zh Appendix G's H1 spells its dash differently from the other zh H1s.
+#
+# What the split changes, and ONLY this (the fidelity test undoes exactly these):
+#   1. intra-book links `](#id)` whose anchor lives on another page become
+#      `](<slug><ext>#id)`;
+#   2. image paths are written relative to the page, not to the single file;
+#   3. zh pages gain one blockquote line after their first heading (the translator
+#      note, or for the afterword the "written in Chinese" note).
+
+ZH_TRANSLATORS = ("Zephyr Shi", "Borges Funes")
+# Worded from the approved note in paper/front-matter.zh.md (the line beginning
+# "译文说明"); tests/test_render_split.py checks the names have not drifted from it.
+ZH_TRANSLATION_NOTE = (
+    "> 本页中文由 AI 智能体译自英文版（初译 Zephyr Shi，后续修订 Borges Funes）；"
+    "如与英文版有出入，以英文版为准。"
+)
+# The afterword is the one zh page that is NOT a translation: Lei Shi wrote it in
+# Chinese (front-matter.zh.md says so). Named, tested exception -- not a silent skip.
+ZH_AFTERWORD_NOTE = "> 本页“后记”由 Lei Shi 本人以中文写成，并非译文。"
+
+
+def zh_page_note(slug: str) -> str:
+    """The one-line blockquote a zh page carries after its first heading."""
+    return ZH_AFTERWORD_NOTE if slug == AFTERWORD_SLUG else ZH_TRANSLATION_NOTE
+
+
+_ANCHOR_LINE = re.compile(r'<a id="([^"]+)"></a>')
+_INTRA_LINK = re.compile(r"\]\(#([^)\s]+)\)")
+_FENCE = re.compile(r"^ {0,3}(```|~~~)")
+
+
+def _lines_with_fence_state(text: str):
+    """Yield (line, in_fence) for each line of `text`; fence lines count as in-fence."""
+    fenced = False
+    for line in text.split("\n"):
+        if _FENCE.match(line):
+            fenced = not fenced
+            yield line, True
+            continue
+        yield line, fenced
+
+
+def rewrite_cross_page_links(pages: list[tuple[str, str]], ext: str) -> list[str]:
+    """Rewrite every `](#id)` whose `<a id="id"></a>` is on a DIFFERENT page to
+    `](<slug><ext>#id)`; a same-page link stays as it is. A link whose target exists
+    on no page, or an id declared twice, is a hard SystemExit (the same policy as
+    `insert_heading_anchors`). Code fences and inline code are left alone."""
+    owner: dict[str, str] = {}
+    for slug, text in pages:
+        for line, in_fence in _lines_with_fence_state(text):
+            if in_fence:
+                continue
+            for i in _ANCHOR_LINE.findall(line):
+                if i in owner:
+                    raise SystemExit(
+                        f"anchor {i!r} is declared on both page {owner[i]!r} and {slug!r}")
+                owner[i] = slug
+
+    out = []
+    for slug, text in pages:
+        def sub(m: re.Match, slug=slug) -> str:
+            target = m.group(1)
+            if target not in owner:
+                raise SystemExit(f"{slug}: link to #{target} but no page declares that anchor")
+            if owner[target] == slug:
+                return m.group(0)
+            return f"]({owner[target]}{ext}#{target})"
+
+        lines = []
+        for line, in_fence in _lines_with_fence_state(text):
+            if not in_fence:
+                line = "".join(
+                    part if part.startswith("`") else _INTRA_LINK.sub(sub, part)
+                    for part in _CODE_SPAN.split(line)
+                )
+            lines.append(line)
+        out.append("\n".join(lines))
+    return out
+
+
+def _first_heading_index(text: str) -> int | None:
+    for i, (line, in_fence) in enumerate(_lines_with_fence_state(text)):
+        if not in_fence and re.match(r"^#{1,6}\s", line):
+            return i
+    return None
+
+
+def add_zh_page_note(slug: str, text: str) -> str:
+    """Put the page's zh note as its own blockquote line after the first heading."""
+    i = _first_heading_index(text)
+    if i is None:
+        raise SystemExit(f"{slug}: page has no heading to put the translator note after")
+    lines = text.split("\n")
+    if i + 1 < len(lines) and lines[i + 1].strip():
+        raise SystemExit(
+            f"{slug}: the first heading is not followed by a blank line; "
+            "the page note would merge into the paragraph below it")
+    lines[i + 1:i + 1] = ["", zh_page_note(slug)]
+    return "\n".join(lines)
+
+
+def page_title(text: str) -> str:
+    """The page's first heading text, with `<a id>` anchors and the `#`s stripped."""
+    i = _first_heading_index(text)
+    if i is None:
+        raise SystemExit("page has no heading to take a title from")
+    line = re.sub(r'<a id="[^"]*"></a>', "", text.split("\n")[i])
+    return re.sub(r"^#{1,6}\s+", "", line).strip()
+
+
+def source_provenance(repo: Path) -> tuple[str, str | None]:
+    """(HEAD commit sha, the tag pointing exactly at HEAD or None). A null tag is
+    recorded, never refused: pinning to a tag is the site build's gate."""
+    def git(*args: str) -> subprocess.CompletedProcess:
+        return subprocess.run(["git", *args], cwd=repo, capture_output=True,
+                              text=True, encoding="utf-8")
+    head = git("rev-parse", "HEAD")
+    if head.returncode != 0:
+        raise SystemExit(f"cannot read the source commit in {repo}: {head.stderr.strip()}")
+    tag = git("describe", "--tags", "--exact-match")
+    return head.stdout.strip(), (tag.stdout.strip() if tag.returncode == 0 else None)
+
+
+def write_split(asm: Assembly, lang: str, split_dir: Path, ext: str) -> Path:
+    """Write `<split_dir>/<lang>/<slug>.md` for every part, plus `manifest.json`."""
+    pages_dir = split_dir / lang
+    pages_dir.mkdir(parents=True, exist_ok=True)
+    texts = rewrite_cross_page_links([(p.slug, p.text) for p in asm.parts], ext)
+    commit, tag = source_provenance(Path.cwd())
+    manifest_pages = []
+    for order, (part, text) in enumerate(zip(asm.parts, texts), start=1):
+        target = pages_dir / f"{part.slug}.md"
+        text = relink_figures(text, target)
+        if lang == "zh":
+            text = add_zh_page_note(part.slug, text)
+        target.write_text(text.rstrip() + "\n", encoding="utf-8")
+        manifest_pages.append({
+            "order": order, "slug": part.slug, "file": target.name,
+            "title": page_title(text),
+        })
+    (pages_dir / "manifest.json").write_text(
+        json.dumps({"lang": lang, "source_commit": commit, "source_tag": tag,
+                    "pages": manifest_pages}, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8")
+    return pages_dir
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -1648,47 +1946,39 @@ def main(argv: list[str] | None = None) -> int:
         help="CSL style file used for in-text citations and the generated bibliography "
              "(default: tools/csl/apa.csl, APA 7th edition)",
     )
+    ap.add_argument(
+        "--split-dir",
+        default=None,
+        help="write one page per part to <DIR>/<lang>/<slug>.md plus manifest.json "
+             "(front matter, 16 body parts, acknowledgements, afterword, bibliography). "
+             "With --split-dir the single file is written only if --out is given.",
+    )
+    ap.add_argument(
+        "--split-link-ext",
+        default=".html",
+        help="extension on cross-page links in the split pages: ](<slug><ext>#id) "
+             "(default: .html)",
+    )
     a = ap.parse_args(argv)
     lang = a.lang
     out = Path(a.out) if a.out else Path(DEFAULT_OUT[lang])
 
     cites = CitationContext(load_references(REFERENCES_YAML), Path(a.csl), lang=lang)
-
-    parts = [load(PAPER / FRONT_MATTER[lang], cites)]
-
-    stripped_total = 0
-    apparatus_total = 0
-    anchor_targets: set[str] = set()
-    for name in BODY:
-        # ONE BODY list, resolved per language. A chapter that is missing in this
-        # language is a hard SystemExit from `load`, naming the resolved path --
-        # never a skip, so a partially translated book cannot render short.
-        body = load(chapter_path(lang, name), cites)
-        body = apply_inserts(name, body, INSERTS_BY_LANG[lang])
-        body, n = strip_provenance_ids(name, body)
-        stripped_total += n
-        body, m = strip_apparatus_tags(name, body)
-        apparatus_total += m
-        if name == GLOSSARY_BODY:
-            body, targets = link_glossary_pointers(body, lang)
-            anchor_targets |= targets
-        parts.append(body)
-
-    parts.append(load(PAPER / ACKNOWLEDGEMENTS[lang], cites))
-    parts.append(load(PAPER / AFTERWORD[lang], cites))
-    # The bibliography file is a TEMPLATE (heading, method paragraph, and the sections
-    # after the entries); the entries themselves are generated from references.yaml.
-    parts.append(fill_bibliography_template(
-        load(PAPER / BIBLIOGRAPHY[lang], cites), cites.bibliography_markdown(lang)))
+    asm = assemble(lang, cites)
 
     uncited = cites.uncited()
     if uncited:
         print(f"WARNING: {len(uncited)} reference(s) in {REFERENCES_YAML} never cited in the "
               f"{lang} render: {', '.join(uncited)}", file=sys.stderr)
 
+    if a.split_dir:
+        pages_dir = write_split(asm, lang, Path(a.split_dir), a.split_link_ext)
+        print(f"# split {len(asm.parts)} pages -> {pages_dir}/ (manifest.json)")
+        if not a.out:
+            return 0
+
     out.parent.mkdir(parents=True, exist_ok=True)
-    text = "\n\n---\n\n".join(p.rstrip() for p in parts) + "\n"
-    text = insert_heading_anchors(text, anchor_targets)
+    text = join_parts(asm.parts)
     text = relink_figures(text, out)
     out.write_text(text, encoding="utf-8")
 
@@ -1702,9 +1992,9 @@ def main(argv: list[str] | None = None) -> int:
     print(f"  sources    {len(BODY)} chapters/appendices + front matter + acknowledgements + afterword + bibliography")
     print(f"  length     {len(text.splitlines()):,} lines, {words:,} words")
     print(f"  figures    {figs} placed")
-    print(f"  node IDs   {stripped_total} provenance markers stripped from the render "
+    print(f"  node IDs   {asm.stripped_total} provenance markers stripped from the render "
           f"(sources keep them; audit anchors and data points untouched)")
-    print(f"  apparatus  {apparatus_total} bracketed working tags stripped from the "
+    print(f"  apparatus  {asm.apparatus_total} bracketed working tags stripped from the "
           f"render (sources keep them)")
     return 0
 
