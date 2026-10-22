@@ -33,8 +33,10 @@ python tools/pdf_build/paper_to_print_html.py paper/release/engram-paper-v0.5.1.
 python tools/pdf_build/print_html_to_pdf.py "$PWD/out/en.html" out/en.pdf   # absolute html path
 ```
 
-`paper_to_print_html.py` also takes `--banner "text"` and `--mermaid-cache <dir>` (default:
-`.diagram-cache` beside the output). The Mermaid step and the PDF step need a Python with
+`paper_to_print_html.py` also takes `--banner "text"`, `--mermaid-cache <dir>` (default:
+`.diagram-cache` beside the output) and `--require-mermaid`; options may sit anywhere. It refuses,
+before touching any file, an output that is the same file as the input or does not end in `.html`/`.htm`;
+`mermaid_to_svg.py` and `print_html_to_pdf.py` refuse the same way for `.svg` and `.pdf` outputs. The Mermaid step and the PDF step need a Python with
 Playwright and its Chromium (`pip install playwright && playwright install chromium`); set
 `PDF_BUILD_PYTHON` to that interpreter if it is not the one running the converter.
 

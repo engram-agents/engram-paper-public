@@ -345,3 +345,128 @@ def test_any_exception_in_a_require_mermaid_run_removes_the_output(tmp_path, mon
     with pytest.raises(ValueError):
         p2h.main()
     assert not dst.exists()
+
+
+# ------------------------------------------- round 5: argparse; the output can never be the input
+def run_argv(monkeypatch, *args):
+    monkeypatch.setattr(sys, "argv", ["x", *map(str, args)])
+
+
+def test_flag_first_invocation_never_deletes_the_input(tmp_path, monkeypatch):
+    # Positional sys.argv parsing made `--require-mermaid in.md out.html` read dst = in.md,
+    # and the strict-failure cleanup then deleted the INPUT.
+    src = tmp_path / "in.md"
+    src.write_text(MERMAID_MD, encoding="utf-8")
+    before = src.read_bytes()
+    dst = tmp_path / "out.html"
+    monkeypatch.setattr(p2h, "_RENDERER", renderer_copy(tmp_path) / "mermaid_to_svg.py")  # no bundle
+    monkeypatch.setattr(p2h, "_VENV_PY", Path(sys.executable))
+    run_argv(monkeypatch, "--require-mermaid", src, dst, "--mermaid-cache", tmp_path / "cache")
+    with pytest.raises(SystemExit) as e:
+        p2h.main()
+    assert e.value.code not in (0, None) and "bundle missing" in str(e.value)
+    assert src.read_bytes() == before
+    assert not dst.exists()
+
+
+def test_output_equal_to_input_is_refused_and_the_input_is_untouched(tmp_path, monkeypatch):
+    src = tmp_path / "in.html"  # even with an .html name, same file is refused
+    src.write_text("<p>precious</p>", encoding="utf-8")
+    before = src.read_bytes()
+    for out in (src, tmp_path / "." / "in.html"):
+        run_argv(monkeypatch, src, out, "--require-mermaid")
+        with pytest.raises(SystemExit) as e:
+            p2h.main()
+        assert e.value.code not in (0, None) and "same file" in str(e.value)
+        assert src.read_bytes() == before
+
+
+def test_output_equal_to_input_through_a_symlink_is_refused(tmp_path, monkeypatch):
+    src = tmp_path / "in.html"
+    src.write_text("<p>precious</p>", encoding="utf-8")
+    link = tmp_path / "link.html"
+    link.symlink_to(src)
+    run_argv(monkeypatch, src, link)
+    with pytest.raises(SystemExit) as e:
+        p2h.main()
+    assert "same file" in str(e.value)
+    assert src.read_text(encoding="utf-8") == "<p>precious</p>"
+
+
+@pytest.mark.parametrize("name", ["out.md", "out", "out.txt", "out.html.bak"])
+def test_output_that_is_not_html_is_refused_and_nothing_is_written(name, tmp_path, monkeypatch):
+    src = tmp_path / "in.md"
+    src.write_text("# T\n", encoding="utf-8")
+    run_argv(monkeypatch, src, tmp_path / name)
+    with pytest.raises(SystemExit) as e:
+        p2h.main()
+    assert e.value.code not in (0, None) and ".html" in str(e.value)
+    assert not (tmp_path / name).exists()
+
+
+def test_flags_after_the_positionals_and_between_them_still_work(tmp_path, monkeypatch):
+    src = tmp_path / "in.md"
+    src.write_text("# T\n", encoding="utf-8")
+    dst = tmp_path / "out.html"
+    run_argv(monkeypatch, src, dst, "--banner", "BANNER-ONE", "--mermaid-cache", tmp_path / "c")
+    p2h.main()
+    assert "BANNER-ONE" in dst.read_text(encoding="utf-8")
+    dst2 = tmp_path / "out2.HTM"
+    run_argv(monkeypatch, src, "--banner", "BANNER-TWO", dst2)
+    p2h.main()
+    assert "BANNER-TWO" in dst2.read_text(encoding="utf-8")
+
+
+def test_a_stale_output_at_the_declared_path_is_still_removed_on_strict_failure(tmp_path, monkeypatch):
+    src = tmp_path / "in.md"
+    src.write_text(MERMAID_MD, encoding="utf-8")
+    dst = tmp_path / "out.html"
+    dst.write_text("an older good-looking build", encoding="utf-8")
+    monkeypatch.setattr(p2h, "_RENDERER", renderer_copy(tmp_path) / "mermaid_to_svg.py")
+    run_argv(monkeypatch, src, dst, "--require-mermaid")
+    with pytest.raises(SystemExit):
+        p2h.main()
+    assert not dst.exists() and src.exists()
+
+
+# ---------------------------------- round 5: the same guard on the other two scripts' outputs
+import tools.pdf_build.print_html_to_pdf as h2p  # noqa: E402
+
+
+def test_mermaid_to_svg_refuses_output_equal_to_input_before_rendering(tmp_path, monkeypatch):
+    mmd = tmp_path / "d.svg"  # even with an .svg name, the same file is refused
+    mmd.write_text("graph TD; A-->B", encoding="utf-8")
+    monkeypatch.setattr(sys, "argv", ["x", str(mmd), str(mmd)])
+    with pytest.raises(SystemExit) as e:
+        m2s.main()
+    assert "same file" in str(e.value)
+    assert mmd.read_text(encoding="utf-8") == "graph TD; A-->B"
+
+
+def test_mermaid_to_svg_refuses_a_non_svg_output_before_rendering(tmp_path, monkeypatch):
+    mmd = tmp_path / "d.mmd"
+    mmd.write_text("graph TD; A-->B", encoding="utf-8")
+    out = tmp_path / "out.txt"
+    monkeypatch.setattr(sys, "argv", ["x", str(mmd), str(out)])
+    with pytest.raises(SystemExit) as e:
+        m2s.main()
+    assert ".svg" in str(e.value) and not out.exists()
+
+
+def test_print_html_to_pdf_refuses_output_equal_to_input(tmp_path, monkeypatch):
+    f = tmp_path / "in.pdf"
+    f.write_bytes(b"precious")
+    monkeypatch.setattr(sys, "argv", ["x", str(f), str(f)])
+    with pytest.raises(SystemExit) as e:
+        h2p.main()
+    assert "same file" in str(e.value) and f.read_bytes() == b"precious"
+
+
+def test_print_html_to_pdf_refuses_a_non_pdf_output(tmp_path, monkeypatch):
+    html_in = tmp_path / "in.html"
+    html_in.write_text("<p>x</p>", encoding="utf-8")
+    out = tmp_path / "out.html"
+    monkeypatch.setattr(sys, "argv", ["x", str(html_in), str(out)])
+    with pytest.raises(SystemExit) as e:
+        h2p.main()
+    assert ".pdf" in str(e.value) and not out.exists()

@@ -9,8 +9,14 @@ import sys
 
 
 def main():
-    from playwright.sync_api import sync_playwright
+    from pathlib import Path
     src, out = sys.argv[1], sys.argv[2]
+    # Refuse before launching a browser: the output is overwritten, so it may never be the input.
+    if Path(out).resolve() == Path(src).resolve():
+        raise SystemExit(f'refusing: output and input are the same file ({src})')
+    if Path(out).suffix.lower() != '.pdf':
+        raise SystemExit(f'refusing: output {out} does not end in .pdf')
+    from playwright.sync_api import sync_playwright
     with sync_playwright() as p:
         b = p.chromium.launch()
         pg = b.new_page()

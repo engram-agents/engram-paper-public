@@ -90,6 +90,11 @@ def render(code):
 
 def main():
     src, dst = Path(sys.argv[1]), Path(sys.argv[2])
+    # Refuse before rendering: the output is overwritten, so it may never be the input.
+    if dst.resolve() == src.resolve():
+        raise SystemExit(f'refusing: output and input are the same file ({src})')
+    if dst.suffix.lower() != '.svg':
+        raise SystemExit(f'refusing: output {dst} does not end in .svg')
     svg = render(src.read_text(encoding='utf-8'))
     dst.write_text(svg, encoding='utf-8')
     print(f'{dst}  ({len(svg)} bytes)')

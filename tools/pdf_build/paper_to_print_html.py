@@ -375,14 +375,34 @@ def _require_mermaid_ready():
         raise MermaidRequired(str(e.code)) from None
 
 
-def main():
-    src, dst = Path(sys.argv[1]), Path(sys.argv[2])
-    strict = '--require-mermaid' in sys.argv
-    banner = ''
-    if '--banner' in sys.argv:
-        banner = f'<div class="banner">{sys.argv[sys.argv.index("--banner") + 1]}</div>'
-    cache = Path(sys.argv[sys.argv.index('--mermaid-cache') + 1]) \
-        if '--mermaid-cache' in sys.argv else dst.parent / '.diagram-cache'
+def _parse_args(argv):
+    """Positional input and output; options may sit anywhere without shifting them."""
+    import argparse
+    ap = argparse.ArgumentParser(
+        prog='paper_to_print_html.py',
+        description='Render the paper Markdown into one self-contained print HTML file.')
+    ap.add_argument('input', help='input Markdown file')
+    ap.add_argument('output', help='output HTML file (.html or .htm)')
+    ap.add_argument('--banner', default=None, help='banner text shown above the body')
+    ap.add_argument('--mermaid-cache', default=None,
+                    help='directory of cached diagram SVGs (default: .diagram-cache beside the output)')
+    ap.add_argument('--require-mermaid', action='store_true',
+                    help='strict: missing/mismatched bundle, unavailable renderer or any '
+                         'failed or invalid diagram exits non-zero and leaves no output')
+    return ap.parse_intermixed_args(argv)
+
+
+def main(argv=None):
+    args = _parse_args(sys.argv[1:] if argv is None else argv)
+    src, dst = Path(args.input), Path(args.output)
+    # Refuse before touching any file: the output may never be the input, and must be HTML.
+    if dst.resolve() == src.resolve():
+        raise SystemExit(f'refusing: output and input are the same file ({src})')
+    if dst.suffix.lower() not in ('.html', '.htm'):
+        raise SystemExit(f'refusing: output {dst} does not end in .html or .htm')
+    strict = args.require_mermaid
+    banner = f'<div class="banner">{args.banner}</div>' if args.banner is not None else ''
+    cache = Path(args.mermaid_cache) if args.mermaid_cache else dst.parent / '.diagram-cache'
     done = False
     try:
         try:
@@ -399,8 +419,11 @@ def main():
             f'{banner}\n{body}\n</body>\n</html>\n', encoding='utf-8')
         done = True
     finally:
-        if strict and not done:
-            dst.unlink(missing_ok=True)  # any failure: never leave a stale or partial output
+        # Only the declared output is ever removed, never a path equal to the input. A stale
+        # output that pre-existed at the declared path is removed too on purpose: a failed
+        # strict run must not leave an older good-looking HTML behind.
+        if strict and not done and dst.resolve() != src.resolve():
+            dst.unlink(missing_ok=True)
     print(f'{dst}  ({dst.stat().st_size / 1024:.0f} KB)')
 
 
