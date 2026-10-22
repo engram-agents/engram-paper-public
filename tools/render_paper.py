@@ -1861,20 +1861,31 @@ def rewrite_cross_page_links(pages: list[tuple[str, str]], ext: str) -> list[str
     return out
 
 
-# Intra-book link shapes the rewrite does NOT handle (it knows only `](#id)`). Left in
-# a page they would point at the wrong place once the book is split, so -- like a dead
-# link -- they are a build error, never silently kept.
+# Intra-book link shapes the rewrite does NOT handle (it knows only the plain `](#id)`).
+# Left in a page they would point at the wrong place once the book is split, so -- like
+# a dead link -- they are a build error. Exactly these shapes are enforced, no more:
+#   title-form link      `](#id "t")`, `](#id 't')`, `](#id (t))`, and `](#id )`
+#                        (anything but the id before the closing paren)
+#   angle-bracket link   `](<#id>)`
+#   reference definition `[x]: #id` / `[x]: <#id>`, also after any number of `>` quote
+#                        markers or indentation
+#   raw href             `href=#id`, `href="#id"`, `href='#id'` (spaces around `=` ok)
+# A shape outside this list (e.g. a reference-style use `[t][x]`, or a definition whose
+# `[x]:` is not at the start of its line) is not detected.
 _RESIDUAL_SHAPES = (
-    ("title-form link", re.compile(r"\]\(#[^)\s]*\s+[\"']")),
-    ("reference definition", re.compile(r"^\s*\[[^\]]+\]:\s*#")),
-    ("raw href", re.compile(r"href\s*=\s*[\"']#")),
+    ("title-form link", re.compile(r"\]\(\s*#[^)]*[\s\"'(]")),
+    ("angle-bracket link", re.compile(r"\]\(\s*<#")),
+    ("reference definition", re.compile(r"^[\s>]*\[[^\]]+\]:\s*<?#")),
+    ("raw href", re.compile(r"href\s*=\s*[\"']?#")),
 )
 
 
 def check_residual_link_shapes(pages: list[tuple[str, str]]) -> None:
-    """SystemExit, naming the page and the shape, if a page holds an intra-book link
-    shape the cross-page rewrite does not handle. Fenced blocks and inline code spans
-    are not scanned."""
+    """SystemExit, naming the page and the shape, if a page holds one of the intra-book
+    link shapes listed at `_RESIDUAL_SHAPES` (and only those). Fenced blocks and inline
+    code spans are not scanned. Limit: a code span is recognised within one line, so a
+    span crossing a line break is not recognised and a link shape inside it is a loud
+    false positive (the build stops; nothing is silently wrong)."""
     for slug, text in pages:
         for line, in_fence in _lines_with_fence_state(text):
             if in_fence:
@@ -1943,7 +1954,10 @@ def source_provenance(repo: Path) -> tuple[str, str | None]:
 
 def source_dirty(repo: Path) -> bool:
     """Whether `git status --porcelain -- paper tools` is non-empty: the text the pages
-    were rendered from differs from the recorded commit (untracked files count)."""
+    were rendered from differs from the recorded commit (untracked files count).
+    Two limits: (1) a --split-dir placed inside paper/ or tools/ makes the second
+    language's run see the first language's pages as untracked, so it reads dirty;
+    (2) a custom --csl outside the tree is not covered by the paths checked."""
     st = _git(repo, "status", "--porcelain", "--", "paper", "tools")
     if st.returncode != 0:
         raise SystemExit(f"cannot read the tree state in {repo}: {st.stderr.strip()}")

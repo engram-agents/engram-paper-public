@@ -422,11 +422,31 @@ def test_dirty_flag_tracks_paper_and_tools_only(tmp_path):
 
 # ---- 8. residual link shapes, code exclusion, zh note placement, front-matter fence ---
 
-_RESIDUAL = {
-    "title-form link": '[t](#x "a title")',
-    "reference definition": "[x]: #x",
-    "raw href": '<a href="#x">t</a>',
-}
+# (cell id, sample, shape name the error must carry). The cells after the first three
+# are the round-3 widening: each was silently kept by the round-2 regexes.
+_RESIDUAL = [
+    ("title-form", '[t](#x "a title")', "title-form link"),
+    ("refdef", "[x]: #x", "reference definition"),
+    ("href-quoted", '<a href="#x">t</a>', "raw href"),
+    ("href-unquoted", "<a href=#x>t</a>", "raw href"),
+    ("angle-dest", "[t](<#x>)", "angle-bracket link"),
+    ("refdef-angle", "[x]: <#x>", "reference definition"),
+    ("refdef-quote", "> [x]: #x", "reference definition"),
+    ("refdef-quote-deep", "> > [x]: #x", "reference definition"),
+    ("paren-title", "[t](#x (t))", "title-form link"),
+    ("trailing-space", "[t](#x )", "title-form link"),
+]
+_RESIDUAL_IDS = [c[0] for c in _RESIDUAL]
+
+# Shapes that must stay clean: the handled shape and external look-alikes.
+_NOT_RESIDUAL = [
+    "[t](#x)",
+    "[x]: https://example.com/#frag",
+    '<a href="https://example.com/#a">t</a>',
+    "the href attribute is a word, and href=https://example.com/",
+    '[t](https://example.com/#x "t")',
+    "> quoted [t](#x) link",
+]
 
 
 def _pages_with(body: str):
@@ -434,21 +454,34 @@ def _pages_with(body: str):
             ("b", '<a id="y"></a>\n# B\n')]
 
 
-@pytest.mark.parametrize("shape", sorted(_RESIDUAL))
-def test_residual_link_shape_outside_code_is_a_hard_error(shape):
+@pytest.mark.parametrize("cell", _RESIDUAL, ids=_RESIDUAL_IDS)
+def test_residual_link_shape_outside_code_is_a_hard_error(cell):
+    _, sample, name = cell
     with pytest.raises(SystemExit) as e:
-        rp.rewrite_cross_page_links(_pages_with(_RESIDUAL[shape]), ".html")
+        rp.rewrite_cross_page_links(_pages_with(sample), ".html")
     msg = str(e.value)
-    assert msg.startswith("a:") and shape in msg
+    assert msg.startswith("a:") and name in msg
 
 
-@pytest.mark.parametrize("shape", sorted(_RESIDUAL))
-def test_residual_link_shape_inside_code_is_not_an_error(shape):
-    sample = _RESIDUAL[shape]
-    for body in (f"text `{sample}` more", f"```\n{sample}\n```"):
+@pytest.mark.parametrize("cell", _RESIDUAL, ids=_RESIDUAL_IDS)
+def test_residual_link_shape_inside_code_is_not_an_error(cell):
+    _, sample, name = cell
+    bodies = [f"```\n{sample}\n```"]
+    if name != "reference definition":   # see the comment below: a definition starts its line
+        bodies.insert(0, f"text `{sample}` more")
+    for body in bodies:
         pages = _pages_with(body)
         out = rp.rewrite_cross_page_links(pages, ".html")
         assert [o.rstrip("\n") for o in out] == [t.rstrip("\n") for _, t in pages]
+
+
+@pytest.mark.parametrize("sample", _NOT_RESIDUAL)
+def test_non_residual_shapes_are_not_flagged(sample):
+    rp.check_residual_link_shapes(_pages_with(sample))
+
+
+# A reference definition cannot sit inside an inline code span (it must start its
+# line), so there is no inline-span cell for it; the fenced-block cell above covers it.
 
 
 def test_rewrite_skips_inline_code_and_fenced_blocks_byte_for_byte():
@@ -485,6 +518,14 @@ def test_zh_note_undo_inverts_the_insertion_when_a_blank_follows_the_heading():
         src = "# T\n\nbody text\n\n| a |\n"
         out = rp.add_zh_page_note(slug, src)
         assert out.replace("\n\n" + rp.zh_page_note(slug), "", 1) == src
+
+
+def test_zh_note_insertion_is_not_injective_on_a_blank_after_the_heading():
+    # Documents the non-injectivity the fidelity test's undo accepts: a heading directly
+    # followed by content and a heading, blank line, content give the same page.
+    for slug in ("ch1", "afterword"):
+        assert (rp.add_zh_page_note(slug, "# T\nX")
+                == rp.add_zh_page_note(slug, "# T\n\nX"))
 
 
 def test_front_matter_anchor_skips_a_part_whose_only_hash_line_is_in_a_fence():
