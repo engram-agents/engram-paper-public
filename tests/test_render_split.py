@@ -4,7 +4,9 @@ The site build wants one page per chapter and appendix, in both languages, from 
 SAME assembler that makes the single-file release, so the site cannot drift from the
 release text. These tests state the contract first:
 
-  * the single-file outputs stay byte-identical to what the pre-split renderer made;
+  * the single-file outputs are the committed release files (checked by rendering in
+    place and `git diff --quiet paper/release`; the one-shot proof that the refactor
+    left them byte-identical to 56aa5683 is recorded in the PR body, not kept here);
   * the split is on the assembler's PART boundaries, never on heading scans (Chapter 7
     has two inner H1s; zh Appendix G's H1 uses one dash where the others use two);
   * joining the pages, after undoing ONLY the documented split transforms, gives the
@@ -13,14 +15,13 @@ release text. These tests state the contract first:
     to an existing file;
   * every zh page states the translation note, except the afterword (Lei wrote it in
     Chinese), which says so instead;
-  * the manifest records the pinned source commit and tag.
+  * the manifest records the pinned source commit, tag and whether the tree was dirty.
 """
 from __future__ import annotations
 
 import json
 import os
 import re
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -30,7 +31,6 @@ import pytest
 import tools.render_paper as rp
 
 REPO = Path(__file__).resolve().parents[1]
-BASE_SHA = "56aa5683"  # main before the split; the single-file outputs must not move
 LANGS = ("en", "zh")
 
 EXPECTED_SLUGS = [
@@ -85,33 +85,6 @@ def split(work, lang):
 
 def _pages(split_dir: Path) -> dict[str, str]:
     return {s: (split_dir / f"{s}.md").read_text(encoding="utf-8") for s in EXPECTED_SLUGS}
-
-
-# ---- 1. one assembler, two outputs ----------------------------------------------
-
-def test_single_file_is_byte_identical_to_the_pre_split_renderer(work, lang, single):
-    new_out, new_stdout = single
-    base_src = subprocess.run(
-        ["git", "show", f"{BASE_SHA}:tools/render_paper.py"],
-        cwd=REPO, capture_output=True, text=True, encoding="utf-8",
-    )
-    if base_src.returncode != 0:
-        pytest.skip(f"base commit {BASE_SHA} not available in this clone")
-    old_script = work / "render_paper_base.py"
-    old_script.write_text(base_src.stdout, encoding="utf-8")
-    csl = str(REPO / "tools" / "csl" / "apa.csl")
-    # Same --out path for both, so the stdout `# rendered <path>` line is comparable.
-    probe = work / "probe" / f"book.{lang}.md"
-    old = _run(["--lang", lang, "--out", str(probe), "--csl", csl], script=old_script)
-    assert old.returncode == 0, old.stderr
-    old_bytes = probe.read_bytes()
-    new = _run(["--lang", lang, "--out", str(probe)])
-    assert new.returncode == 0, new.stderr
-    assert len(old_bytes) > 100_000
-    assert probe.read_bytes() == old_bytes
-    assert new.stdout == old.stdout
-    assert new.stderr == old.stderr
-    assert new_out.read_bytes()  # the fixture's own render exists too
 
 
 # ---- 2. the page set ------------------------------------------------------------
@@ -186,6 +159,18 @@ def _undo_split_transforms(slug: str, text: str, lang: str, page_dir: Path,
 
 
 def test_joined_pages_reproduce_the_single_file_byte_for_byte(split, single, lang):
+    """Join-after-undo equals the single file.
+
+    The undo accepts ANY slug in a cross-page link (`CROSS_LINK` is `[a-z0-9-]+`), so
+    this test alone cannot tell a link pointed at the RIGHT page from one pointed at a
+    wrong one. It discriminates only together with
+    `test_every_link_resolves_to_an_anchor_on_an_existing_page`, which checks that each
+    link's page owns the anchor (owner == page). Neither is a stand-alone control.
+
+    The zh-note undo also assumes the real sources' first heading is followed by a
+    blank line (`add_zh_page_note` is not injective otherwise); the undo asserts the
+    note is found exactly once, so a source that broke this fails here.
+    """
     book, _ = single
     pages = _pages(split)
     undone = [
@@ -341,7 +326,8 @@ def test_manifest_records_commit_tag_and_titles(split, lang):
     tag = subprocess.run(["git", "describe", "--tags", "--exact-match"], cwd=REPO,
                          capture_output=True, text=True)
     assert m["source_tag"] == (tag.stdout.strip() if tag.returncode == 0 else None)
-    assert set(m) == {"lang", "source_commit", "source_tag", "pages"}
+    assert set(m) == {"lang", "source_commit", "source_tag", "dirty", "pages"}
+    assert isinstance(m["dirty"], bool)
     for p in m["pages"]:
         assert set(p) == {"order", "slug", "file", "title"}
         assert p["file"] == f"{p['slug']}.md"
@@ -373,3 +359,136 @@ def test_source_provenance_tag_present_absent_and_null_is_not_refused(tmp_path):
     git("commit", "-qam", "two")
     commit2, tag2 = rp.source_provenance(repo)
     assert commit2 != commit and tag2 is None  # HEAD past the tag is not "exactly tagged"
+
+
+def _scratch_repo(tmp_path: Path):
+    repo = tmp_path / "r"
+    repo.mkdir()
+    env = {**os.environ, "GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@t",
+           "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t"}
+
+    def git(*a):
+        return subprocess.run(["git", *a], cwd=repo, env=env, check=True,
+                              capture_output=True, text=True).stdout.strip()
+    return repo, git
+
+
+def test_missing_git_binary_is_a_clean_exit_naming_git(monkeypatch, tmp_path):
+    def boom(*a, **k):
+        raise FileNotFoundError(2, "No such file or directory", "git")
+    monkeypatch.setattr(rp.subprocess, "run", boom)
+    for fn in (rp.source_provenance, rp.source_dirty):
+        with pytest.raises(SystemExit) as e:
+            fn(tmp_path)
+        assert "git" in str(e.value) and "not found" in str(e.value).lower(), fn.__name__
+
+
+def test_provenance_outside_a_git_checkout_is_refused(tmp_path, monkeypatch):
+    plain = tmp_path / "not-a-repo"
+    plain.mkdir()
+    monkeypatch.setenv("GIT_CEILING_DIRECTORIES", str(tmp_path))
+    with pytest.raises(SystemExit) as e:
+        rp.source_provenance(plain)
+    assert "cannot read the source commit" in str(e.value)
+
+
+def test_split_dir_help_says_it_needs_a_git_checkout():
+    r = _run(["--help"])
+    assert r.returncode == 0
+    flat = " ".join(r.stdout.split())
+    assert "--split-dir SPLIT_DIR" in flat
+    assert "must run in a git checkout" in flat
+
+
+def test_dirty_flag_tracks_paper_and_tools_only(tmp_path):
+    repo, git = _scratch_repo(tmp_path)
+    git("init", "-q")
+    for d in ("paper", "tools", "other"):
+        (repo / d).mkdir()
+        (repo / d / "f").write_text("1")
+    git("add", ".")
+    git("commit", "-q", "-m", "one")
+    assert rp.source_dirty(repo) is False
+    (repo / "other" / "f").write_text("2")          # outside paper/ and tools/
+    (repo / "other" / "new").write_text("x")
+    assert rp.source_dirty(repo) is False
+    (repo / "paper" / "f").write_text("2")           # tracked edit
+    assert rp.source_dirty(repo) is True
+    git("checkout", "--", "paper/f")
+    assert rp.source_dirty(repo) is False
+    (repo / "tools" / "untracked").write_text("x")   # untracked counts
+    assert rp.source_dirty(repo) is True
+
+
+# ---- 8. residual link shapes, code exclusion, zh note placement, front-matter fence ---
+
+_RESIDUAL = {
+    "title-form link": '[t](#x "a title")',
+    "reference definition": "[x]: #x",
+    "raw href": '<a href="#x">t</a>',
+}
+
+
+def _pages_with(body: str):
+    return [("a", '<a id="x"></a>\n# A\n\n' + body + "\n"),
+            ("b", '<a id="y"></a>\n# B\n')]
+
+
+@pytest.mark.parametrize("shape", sorted(_RESIDUAL))
+def test_residual_link_shape_outside_code_is_a_hard_error(shape):
+    with pytest.raises(SystemExit) as e:
+        rp.rewrite_cross_page_links(_pages_with(_RESIDUAL[shape]), ".html")
+    msg = str(e.value)
+    assert msg.startswith("a:") and shape in msg
+
+
+@pytest.mark.parametrize("shape", sorted(_RESIDUAL))
+def test_residual_link_shape_inside_code_is_not_an_error(shape):
+    sample = _RESIDUAL[shape]
+    for body in (f"text `{sample}` more", f"```\n{sample}\n```"):
+        pages = _pages_with(body)
+        out = rp.rewrite_cross_page_links(pages, ".html")
+        assert [o.rstrip("\n") for o in out] == [t.rstrip("\n") for _, t in pages]
+
+
+def test_rewrite_skips_inline_code_and_fenced_blocks_byte_for_byte():
+    a_body = ('<a id="here"></a>\n# A\n\n'
+              "plain [p](#ref-x) then `[c](#ref-x)` inline\n\n"
+              "```\n[f](#ref-x)\n```\n")
+    pages = [("a", a_body), ("bib", '<a id="ref-x"></a>\n# Bib\n')]
+    out = rp.rewrite_cross_page_links(pages, ".html")
+    assert out[0] == a_body.replace("plain [p](#ref-x)", "plain [p](bib.html#ref-x)")
+    assert "`[c](#ref-x)`" in out[0] and "```\n[f](#ref-x)\n```" in out[0]
+
+
+def test_zh_note_after_a_heading_followed_directly_by_a_table_stays_a_separate_block():
+    table = "| a | b |\n|---|---|\n| 1 | 2 |"
+    out = rp.add_zh_page_note("ch1", "# T\n" + table + "\n")
+    note = rp.zh_page_note("ch1")
+    assert out == "# T\n\n" + note + "\n\n" + table + "\n"
+    lines = out.split("\n")
+    n = lines.index(note)
+    assert lines[n - 1] == "" and lines[n + 1] == "" and lines[n + 2] == "| a | b |"
+
+
+def test_zh_note_with_blank_line_list_paragraph_and_heading_only():
+    note = rp.zh_page_note("ch1")
+    assert rp.add_zh_page_note("ch1", "# T\n\nbody\n") == f"# T\n\n{note}\n\nbody\n"
+    for nxt in ("- item", "para"):
+        assert rp.add_zh_page_note("ch1", "# T\n" + nxt) == f"# T\n\n{note}\n\n{nxt}"
+    assert rp.add_zh_page_note("ch1", "# T") == f"# T\n\n{note}"
+    assert rp.zh_page_note("afterword") in rp.add_zh_page_note("afterword", "# T\nx")
+
+
+def test_zh_note_undo_inverts_the_insertion_when_a_blank_follows_the_heading():
+    for slug in ("ch1", "afterword"):
+        src = "# T\n\nbody text\n\n| a |\n"
+        out = rp.add_zh_page_note(slug, src)
+        assert out.replace("\n\n" + rp.zh_page_note(slug), "", 1) == src
+
+
+def test_front_matter_anchor_skips_a_part_whose_only_hash_line_is_in_a_fence():
+    texts = ["```\n# not a heading\n```\n\nprose", "# Real title\n\nbody"]
+    out = rp.insert_heading_anchors_in_parts(texts, {"front-matter"})
+    assert "<a id=" not in out[0]
+    assert out[1].startswith('<a id="front-matter"></a>\n# Real title')

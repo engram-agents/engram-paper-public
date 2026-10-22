@@ -1664,7 +1664,9 @@ def insert_heading_anchors_in_parts(texts: list[str], targets: set[str]) -> list
     for lines in split_lines:
         found = _heading_positions(lines, first_heading_is_front=not seen_heading)
         per_part.append(found)
-        if any(re.match(r"^#{1,6}\s", l) for l in lines):
+        # Fence-aware: `front-matter` is recorded for a part's first REAL heading, so
+        # asking for it with the default flag says whether the part has one at all.
+        if "front-matter" in _heading_positions(lines):
             seen_heading = True
     counts: dict[str, int] = {}
     for found in per_part:
@@ -1855,7 +1857,35 @@ def rewrite_cross_page_links(pages: list[tuple[str, str]], ext: str) -> list[str
                 )
             lines.append(line)
         out.append("\n".join(lines))
+    check_residual_link_shapes([(slug, t) for (slug, _), t in zip(pages, out)])
     return out
+
+
+# Intra-book link shapes the rewrite does NOT handle (it knows only `](#id)`). Left in
+# a page they would point at the wrong place once the book is split, so -- like a dead
+# link -- they are a build error, never silently kept.
+_RESIDUAL_SHAPES = (
+    ("title-form link", re.compile(r"\]\(#[^)\s]*\s+[\"']")),
+    ("reference definition", re.compile(r"^\s*\[[^\]]+\]:\s*#")),
+    ("raw href", re.compile(r"href\s*=\s*[\"']#")),
+)
+
+
+def check_residual_link_shapes(pages: list[tuple[str, str]]) -> None:
+    """SystemExit, naming the page and the shape, if a page holds an intra-book link
+    shape the cross-page rewrite does not handle. Fenced blocks and inline code spans
+    are not scanned."""
+    for slug, text in pages:
+        for line, in_fence in _lines_with_fence_state(text):
+            if in_fence:
+                continue
+            visible = "".join(
+                part for part in _CODE_SPAN.split(line) if not part.startswith("`"))
+            for name, rx in _RESIDUAL_SHAPES:
+                if rx.search(visible):
+                    raise SystemExit(
+                        f"{slug}: unhandled intra-book link shape ({name}): "
+                        f"{line.strip()[:100]!r}")
 
 
 def _first_heading_index(text: str) -> int | None:
@@ -1866,16 +1896,18 @@ def _first_heading_index(text: str) -> int | None:
 
 
 def add_zh_page_note(slug: str, text: str) -> str:
-    """Put the page's zh note as its own blockquote line after the first heading."""
+    """Put the page's zh note as its own blockquote line after the first heading,
+    blank-line separated from what follows (a blank line is added when the heading is
+    followed directly by content)."""
     i = _first_heading_index(text)
     if i is None:
         raise SystemExit(f"{slug}: page has no heading to put the translator note after")
     lines = text.split("\n")
+    block = ["", zh_page_note(slug)]
     if i + 1 < len(lines) and lines[i + 1].strip():
-        raise SystemExit(
-            f"{slug}: the first heading is not followed by a blank line; "
-            "the page note would merge into the paragraph below it")
-    lines[i + 1:i + 1] = ["", zh_page_note(slug)]
+        # A table, list or paragraph straight under the heading must stay its own block.
+        block.append("")
+    lines[i + 1:i + 1] = block
     return "\n".join(lines)
 
 
@@ -1888,17 +1920,34 @@ def page_title(text: str) -> str:
     return re.sub(r"^#{1,6}\s+", "", line).strip()
 
 
-def source_provenance(repo: Path) -> tuple[str, str | None]:
-    """(HEAD commit sha, the tag pointing exactly at HEAD or None). A null tag is
-    recorded, never refused: pinning to a tag is the site build's gate."""
-    def git(*args: str) -> subprocess.CompletedProcess:
+def _git(repo: Path, *args: str) -> subprocess.CompletedProcess:
+    try:
         return subprocess.run(["git", *args], cwd=repo, capture_output=True,
                               text=True, encoding="utf-8")
-    head = git("rev-parse", "HEAD")
+    except FileNotFoundError:
+        raise SystemExit(
+            "git not found: --split-dir records the source commit, tag and dirty flag "
+            "in manifest.json and needs the git executable on PATH") from None
+
+
+def source_provenance(repo: Path) -> tuple[str, str | None]:
+    """(HEAD commit sha, the tag pointing exactly at HEAD or None). A null tag is
+    recorded, never refused: pinning to a tag is the site build's gate. Outside a git
+    checkout there is no commit to record, which is a refusal."""
+    head = _git(repo, "rev-parse", "HEAD")
     if head.returncode != 0:
         raise SystemExit(f"cannot read the source commit in {repo}: {head.stderr.strip()}")
-    tag = git("describe", "--tags", "--exact-match")
+    tag = _git(repo, "describe", "--tags", "--exact-match")
     return head.stdout.strip(), (tag.stdout.strip() if tag.returncode == 0 else None)
+
+
+def source_dirty(repo: Path) -> bool:
+    """Whether `git status --porcelain -- paper tools` is non-empty: the text the pages
+    were rendered from differs from the recorded commit (untracked files count)."""
+    st = _git(repo, "status", "--porcelain", "--", "paper", "tools")
+    if st.returncode != 0:
+        raise SystemExit(f"cannot read the tree state in {repo}: {st.stderr.strip()}")
+    return bool(st.stdout.strip())
 
 
 def write_split(asm: Assembly, lang: str, split_dir: Path, ext: str) -> Path:
@@ -1907,6 +1956,7 @@ def write_split(asm: Assembly, lang: str, split_dir: Path, ext: str) -> Path:
     pages_dir.mkdir(parents=True, exist_ok=True)
     texts = rewrite_cross_page_links([(p.slug, p.text) for p in asm.parts], ext)
     commit, tag = source_provenance(Path.cwd())
+    dirty = source_dirty(Path.cwd())
     manifest_pages = []
     for order, (part, text) in enumerate(zip(asm.parts, texts), start=1):
         target = pages_dir / f"{part.slug}.md"
@@ -1920,7 +1970,7 @@ def write_split(asm: Assembly, lang: str, split_dir: Path, ext: str) -> Path:
         })
     (pages_dir / "manifest.json").write_text(
         json.dumps({"lang": lang, "source_commit": commit, "source_tag": tag,
-                    "pages": manifest_pages}, ensure_ascii=False, indent=2) + "\n",
+                    "dirty": dirty, "pages": manifest_pages}, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8")
     return pages_dir
 
@@ -1951,7 +2001,9 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help="write one page per part to <DIR>/<lang>/<slug>.md plus manifest.json "
              "(front matter, 16 body parts, acknowledgements, afterword, bibliography). "
-             "With --split-dir the single file is written only if --out is given.",
+             "The single file is written only if --out is also given. "
+             "It must run in a git checkout (the manifest records commit, tag and dirty "
+             "flag; the site builds from a pinned tag).",
     )
     ap.add_argument(
         "--split-link-ext",
