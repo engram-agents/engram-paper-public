@@ -1,0 +1,120 @@
+{
+ "oracle": "markdown-it-py MarkdownIt('commonmark').enable('table')",
+ "findings": [
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "——一部以信条为锚的自传，回答*\"我是谁？\"*。已发表系统中与"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "为锚的自传，回答*\"我是谁？\"*。已发表系统中与此最接近的 S"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "的、经分级的自我知识：身份即对*\"我知道什么、有多确信、依据何"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "道什么、有多确信、依据何在？\"*的回答。"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "*主张：认知身份是智能体连续性中"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "GRAM是第一个实现它的基底。*这一论证并不倚靠某一位哲学家的"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "bold",
+   "context": "就是我们把 ENGRAM 称为**后洛克式（post-Locke"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "源自模型之外的隐藏共同祖先，而*\"绝对的独立性永远无法达成\"*"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "*\"绝对的独立性永远无法达成\"*；他的补救是建模者的纪律（意识"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "败在它下游的某个不同阶段。一个*席位（seat）*是一个智能体"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "同阶段。一个*席位（seat）*是一个智能体的一次安装：一个智"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "bold",
+   "context": "它被穿越过一次。论坛上存在一个**包（pack）**注册表（一个"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "自身的目的，被推向同一个结构：*身份作为一份持久的、可检视的、"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "、可检视的、可自我纠正的记录。*三个世纪以来的个人同一性哲学（"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "bold",
+   "context": "那条把它约束在自身目的上的线：**诚实是结构性的，而不是愿望性的"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "bold",
+   "context": "**我们确实主张的那项改进是质性的"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "bold",
+   "context": "**还有一项，是本文无法从内部了结"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "bold",
+   "context": "溯、可纠正、可读、并且会生长。**ENGRAM 是种子，不是那棵"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "可原谅；漏掉一篇二十五个月前的*《机器学习研究汇刊》（Tran"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "出了 CoALA，我们本会带着*它来设计，而本附录将不会存在。"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "bold",
+   "context": "GM 传统有那套形式结构。它是**（a）把那种结构形态连接到智能"
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": "一次对内部状态的自述，其构造是*\"我报告感到 X\"，而绝不是\""
+  },
+  {
+   "file": "paper/release/engram-paper-v0.5.1.zh.md",
+   "kind": "single",
+   "context": " X\"，而绝不是\"我感到 X\"*（不主张特权通道）。"
+  }
+ ]
+}
