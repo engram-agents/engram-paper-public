@@ -1964,13 +1964,36 @@ def source_dirty(repo: Path) -> bool:
     return bool(st.stdout.strip())
 
 
+def renderer_provenance(renderer_file: Path | None = None) -> tuple[str | None, bool | None]:
+    """(commit, dirty) of the repo holding THIS renderer, resolved from `__file__`, never
+    from the cwd: the site build runs this renderer with cwd inside a checkout of an older
+    tag, so the content's provenance (`source_*`, read at cwd) and the tool's differ.
+    Dirty = `git status --porcelain -- tools` in that repo's toplevel is non-empty. A
+    renderer installed outside any git checkout records (None, None), not a refusal."""
+    here = Path(renderer_file if renderer_file is not None else __file__).resolve().parent
+    top = _git(here, "rev-parse", "--show-toplevel")
+    if top.returncode != 0:
+        return None, None
+    repo = Path(top.stdout.strip())
+    head = _git(repo, "rev-parse", "HEAD")
+    st = _git(repo, "status", "--porcelain", "--", "tools")
+    if head.returncode != 0 or st.returncode != 0:
+        return None, None
+    return head.stdout.strip(), bool(st.stdout.strip())
+
+
 def write_split(asm: Assembly, lang: str, split_dir: Path, ext: str) -> Path:
-    """Write `<split_dir>/<lang>/<slug>.md` for every part, plus `manifest.json`."""
+    """Write `<split_dir>/<lang>/<slug>.md` for every part, plus `manifest.json`.
+
+    Manifest provenance has two sides. `source_commit` / `source_tag` / `dirty` describe
+    the CONTENT, read from git at the cwd. `renderer_commit` / `renderer_dirty` describe
+    the TOOL, read from the repo containing this file (null, null outside git)."""
     pages_dir = split_dir / lang
     pages_dir.mkdir(parents=True, exist_ok=True)
     texts = rewrite_cross_page_links([(p.slug, p.text) for p in asm.parts], ext)
     commit, tag = source_provenance(Path.cwd())
     dirty = source_dirty(Path.cwd())
+    renderer_commit, renderer_dirty = renderer_provenance()
     manifest_pages = []
     for order, (part, text) in enumerate(zip(asm.parts, texts), start=1):
         target = pages_dir / f"{part.slug}.md"
@@ -1984,7 +2007,8 @@ def write_split(asm: Assembly, lang: str, split_dir: Path, ext: str) -> Path:
         })
     (pages_dir / "manifest.json").write_text(
         json.dumps({"lang": lang, "source_commit": commit, "source_tag": tag,
-                    "dirty": dirty, "pages": manifest_pages}, ensure_ascii=False, indent=2) + "\n",
+                    "dirty": dirty, "renderer_commit": renderer_commit,
+                    "renderer_dirty": renderer_dirty, "pages": manifest_pages}, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8")
     return pages_dir
 
@@ -2017,7 +2041,9 @@ def main(argv: list[str] | None = None) -> int:
              "(front matter, 16 body parts, acknowledgements, afterword, bibliography). "
              "The single file is written only if --out is also given. "
              "It must run in a git checkout (the manifest records commit, tag and dirty "
-             "flag; the site builds from a pinned tag).",
+             "flag; the site builds from a pinned tag). source_* describe the content "
+             "at the cwd; renderer_commit / renderer_dirty describe this tool's own "
+             "checkout (null outside git).",
     )
     ap.add_argument(
         "--split-link-ext",

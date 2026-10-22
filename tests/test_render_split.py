@@ -326,7 +326,10 @@ def test_manifest_records_commit_tag_and_titles(split, lang):
     tag = subprocess.run(["git", "describe", "--tags", "--exact-match"], cwd=REPO,
                          capture_output=True, text=True)
     assert m["source_tag"] == (tag.stdout.strip() if tag.returncode == 0 else None)
-    assert set(m) == {"lang", "source_commit", "source_tag", "dirty", "pages"}
+    assert set(m) == {"lang", "source_commit", "source_tag", "dirty",
+                      "renderer_commit", "renderer_dirty", "pages"}
+    assert re.fullmatch(r"[0-9a-f]{40}", m["renderer_commit"])
+    assert isinstance(m["renderer_dirty"], bool)
     assert isinstance(m["dirty"], bool)
     for p in m["pages"]:
         assert set(p) == {"order", "slug", "file", "title"}
@@ -398,6 +401,65 @@ def test_split_dir_help_says_it_needs_a_git_checkout():
     flat = " ".join(r.stdout.split())
     assert "--split-dir SPLIT_DIR" in flat
     assert "must run in a git checkout" in flat
+
+
+def _commit_repo(path: Path, rel: str) -> str:
+    """A scratch repo at `path` with one committed file `rel`; returns HEAD."""
+    path.mkdir(parents=True)
+    env = {**os.environ, "GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@t",
+           "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t"}
+
+    def git(*a):
+        return subprocess.run(["git", *a], cwd=path, env=env, check=True,
+                              capture_output=True, text=True).stdout.strip()
+    git("init", "-q")
+    (path / rel).parent.mkdir(parents=True, exist_ok=True)
+    (path / rel).write_text(path.name)
+    git("add", ".")
+    git("commit", "-q", "-m", path.name)
+    return git("rev-parse", "HEAD")
+
+
+def _one_part_asm():
+    from types import SimpleNamespace
+    return SimpleNamespace(parts=[SimpleNamespace(slug="ch1", text="# Chapter 1\n\nbody\n")])
+
+
+def test_renderer_provenance_comes_from_the_renderer_file_not_the_cwd(tmp_path, monkeypatch):
+    content = tmp_path / "content"
+    renderer = tmp_path / "renderer"
+    content_head = _commit_repo(content, "paper/f")
+    renderer_head = _commit_repo(renderer, "tools/render_paper.py")
+    assert content_head != renderer_head
+    monkeypatch.chdir(content)
+    monkeypatch.setattr(rp, "__file__", str(renderer / "tools" / "render_paper.py"))
+    pages = rp.write_split(_one_part_asm(), "en", tmp_path / "out", ".html")
+    m = json.loads((pages / "manifest.json").read_text(encoding="utf-8"))
+    assert m["source_commit"] == content_head
+    assert m["renderer_commit"] == renderer_head
+    assert m["renderer_dirty"] is False and m["dirty"] is False
+    rfile = renderer / "tools" / "render_paper.py"
+    rfile.write_text("edited")          # dirtiness is the tool's, read from its own repo
+    assert rp.renderer_provenance(rfile) == (renderer_head, True)
+    rfile.write_text("renderer")
+    (renderer / "elsewhere").write_text("x")          # outside tools/: not dirty
+    assert rp.renderer_provenance(rfile) == (renderer_head, False)
+
+
+def test_renderer_outside_git_records_null_null_without_error(tmp_path, monkeypatch):
+    content = tmp_path / "content"
+    _commit_repo(content, "paper/f")
+    loose = tmp_path / "loose" / "tools"
+    loose.mkdir(parents=True)
+    (loose / "render_paper.py").write_text("x")
+    monkeypatch.setenv("GIT_CEILING_DIRECTORIES", str(tmp_path / "loose"))
+    assert rp.renderer_provenance(loose / "render_paper.py") == (None, None)
+    monkeypatch.chdir(content)
+    monkeypatch.setattr(rp, "__file__", str(loose / "render_paper.py"))
+    pages = rp.write_split(_one_part_asm(), "en", tmp_path / "out", ".html")
+    m = json.loads((pages / "manifest.json").read_text(encoding="utf-8"))
+    assert m["renderer_commit"] is None and m["renderer_dirty"] is None
+    assert re.fullmatch(r"[0-9a-f]{40}", m["source_commit"])
 
 
 def test_dirty_flag_tracks_paper_and_tools_only(tmp_path):
