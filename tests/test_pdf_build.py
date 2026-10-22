@@ -166,3 +166,101 @@ def test_mermaid_bundle_with_the_pinned_sha256_passes(tmp_path, monkeypatch):
 
 def test_the_pinned_bundle_sha256_is_the_one_in_the_spec():
     assert m2s.BUNDLE_SHA256 == "581ed7d74bd9048d0e3a91363927d72ef22942d7722546b27f7cc29e35390eb8"
+
+
+# ------------------------------------------------------------------ S1: --require-mermaid
+# Without the flag a missing bundle or renderer degrades to source blocks and exits 0
+# (pinned byte-for-byte by the A3 cells). WITH the flag any of: missing bundle,
+# hash-mismatched bundle, unavailable renderer, a diagram that fails to render, must exit
+# non-zero naming the cause, and leave no output file.
+MERMAID_MD = "# T\n\n```mermaid\ngraph TD; A-->B\n```\n"
+STUB_OK = ('import sys\n'
+           'def check_bundle(path=None):\n    pass\n'
+           'if __name__ == "__main__":\n'
+           '    open(sys.argv[2], "w").write("<svg width=\\"10\\"></svg>")\n')
+STUB_FAIL = ('import sys\n'
+             'def check_bundle(path=None):\n    pass\n'
+             'if __name__ == "__main__":\n'
+             '    sys.stderr.write("boom"); sys.exit(3)\n')
+
+
+def run_strict(tmp_path, monkeypatch, renderer_dir=None, interpreter=sys.executable, flag=True):
+    src = tmp_path / "in.md"
+    src.write_text(MERMAID_MD, encoding="utf-8")
+    dst = tmp_path / "out.html"
+    if renderer_dir is not None:
+        monkeypatch.setattr(p2h, "_RENDERER", renderer_dir / "mermaid_to_svg.py")
+    monkeypatch.setattr(p2h, "_VENV_PY", Path(interpreter))
+    argv = ["x", str(src), str(dst), "--mermaid-cache", str(tmp_path / "cache")]
+    monkeypatch.setattr(sys, "argv", argv + (["--require-mermaid"] if flag else []))
+    return dst
+
+
+def renderer_copy(tmp_path, bundle_bytes=None):
+    """A copy of the real mermaid_to_svg.py in tmp, so BUNDLE resolves to tmp/vendor."""
+    d = tmp_path / "renderer"
+    d.mkdir()
+    (d / "mermaid_to_svg.py").write_text(
+        (REPO / "tools/pdf_build/mermaid_to_svg.py").read_text(encoding="utf-8"), encoding="utf-8")
+    if bundle_bytes is not None:
+        (d / "vendor").mkdir()
+        (d / "vendor" / "mermaid.min.js").write_bytes(bundle_bytes)
+    return d
+
+
+def test_require_mermaid_with_a_missing_bundle_exits_nonzero_and_writes_nothing(tmp_path, monkeypatch):
+    dst = run_strict(tmp_path, monkeypatch, renderer_dir=renderer_copy(tmp_path))
+    with pytest.raises(SystemExit) as e:
+        p2h.main()
+    assert e.value.code not in (0, None)
+    assert "bundle missing" in str(e.value)
+    assert not dst.exists()
+
+
+def test_require_mermaid_with_a_mismatched_bundle_exits_nonzero_and_writes_nothing(tmp_path, monkeypatch):
+    dst = run_strict(tmp_path, monkeypatch, renderer_dir=renderer_copy(tmp_path, b"not mermaid"))
+    with pytest.raises(SystemExit) as e:
+        p2h.main()
+    assert e.value.code not in (0, None)
+    assert "sha256 mismatch" in str(e.value)
+    assert not dst.exists()
+
+
+def test_require_mermaid_with_an_unavailable_renderer_exits_nonzero_and_writes_nothing(tmp_path, monkeypatch):
+    dst = run_strict(tmp_path, monkeypatch, renderer_dir=renderer_copy(tmp_path, b"x"),
+                     interpreter="/nonexistent/python")
+    with pytest.raises(SystemExit) as e:
+        p2h.main()
+    assert e.value.code not in (0, None)
+    assert "renderer unavailable" in str(e.value)
+    assert not dst.exists()
+
+
+def test_require_mermaid_with_a_diagram_that_fails_to_render_exits_nonzero_and_removes_output(tmp_path, monkeypatch):
+    d = tmp_path / "stub"
+    d.mkdir()
+    (d / "mermaid_to_svg.py").write_text(STUB_FAIL, encoding="utf-8")
+    dst = run_strict(tmp_path, monkeypatch, renderer_dir=d)
+    dst.write_text("stale output from an earlier run", encoding="utf-8")
+    with pytest.raises(SystemExit) as e:
+        p2h.main()
+    assert e.value.code not in (0, None)
+    assert "failed to render" in str(e.value) and "boom" in str(e.value)
+    assert not dst.exists()
+
+
+def test_require_mermaid_succeeds_when_the_renderer_works(tmp_path, monkeypatch):
+    d = tmp_path / "stub"
+    d.mkdir()
+    (d / "mermaid_to_svg.py").write_text(STUB_OK, encoding="utf-8")
+    dst = run_strict(tmp_path, monkeypatch, renderer_dir=d)
+    p2h.main()
+    out = dst.read_text(encoding="utf-8")
+    assert 'figure class="diagram"' in out and "mermaid-svg" in out
+
+
+def test_without_the_flag_a_missing_renderer_still_falls_back_and_exits_zero(tmp_path, monkeypatch):
+    dst = run_strict(tmp_path, monkeypatch, interpreter="/nonexistent/python", flag=False)
+    p2h.main()
+    out = dst.read_text(encoding="utf-8")
+    assert "<pre><code>graph TD" in out and 'figure class="diagram"' not in out

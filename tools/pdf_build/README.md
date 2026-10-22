@@ -19,6 +19,8 @@ Only where the desk layout leaked; no behaviour change beyond these.
   It is now `sys.executable`, overridable with the environment variable `PDF_BUILD_PYTHON`.
   A path that does not exist disables the mermaid step (diagrams fall back to their source
   block), which is how the byte-identity test runs.
+- `paper_to_print_html.py` also gains `--require-mermaid` (strict mermaid, see below). Without
+  the flag its output is byte-unchanged.
 - `mermaid_to_svg.py`: the bundle is pinned and checked (see below); `playwright` is imported
   lazily, after the bundle check. The renderer and bundle paths resolve next to the files.
 - `print_html_to_pdf.py`: the top-level script body moved into `main()` and the Playwright
@@ -48,7 +50,18 @@ curl -sSL -o tools/pdf_build/vendor/mermaid.min.js \
 sha256sum tools/pdf_build/vendor/mermaid.min.js
 ```
 
-`mermaid_to_svg.py` exits with a clear message if the bundle is missing or its sha256 differs.
+Which path is strict: run **directly**, `mermaid_to_svg.py` exits with a clear message if the
+bundle is missing or its sha256 differs. Through `paper_to_print_html.py` the default is the
+opposite: a missing bundle, an unavailable renderer or a failed diagram falls back to the
+diagram's source block and exits 0. Pass `--require-mermaid` for the strict path: any of
+those, or a bundle whose sha256 differs from the pin, exits non-zero naming the cause and
+leaves no output file (an existing one is removed). Use it for any build meant to be published.
+
+Provenance of the pin, only what is verifiable: the desk tool's own fetch hint pointed at the
+floating URL `https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js`; the bundle the DOI
+build actually used embeds version 11.17.2 and its sha256 equals the pin above. The fetch date
+and command were not recorded. The versioned URL in the fetch command above is not
+known to return those bytes: the sha256 check decides.
 
 ## One-time measurements (recorded here, not tests)
 

@@ -147,3 +147,19 @@ def test_oracle_missing_exits_nonzero_with_a_message(monkeypatch, capsys):
 def test_markdown_it_is_a_declared_requirement():
     reqs = (REPO / "requirements.txt").read_text(encoding="utf-8")
     assert "markdown-it-py>=3,<4" in reqs
+
+
+# ------------------------------------------------------------------- S2: image alt text
+def test_a_literal_star_in_image_alt_text_is_a_finding():
+    findings, _ = scan("![a * b](x.png)\n")
+    assert kinds(findings) == ["single"]
+    assert findings[0]["file"] == "fixture.md"
+
+
+def test_conformant_emphasis_in_image_alt_text_gives_no_finding():
+    assert scan("![a *b* and **c**](x.png)\n")[0] == []
+
+
+def test_the_alt_scan_does_not_double_count_text_outside_the_image():
+    findings, _ = scan("lead * ![ok](x.png) tail\n")
+    assert kinds(findings) == ["single"]

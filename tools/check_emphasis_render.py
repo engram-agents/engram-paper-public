@@ -11,8 +11,8 @@ the PDF builder (tools/pdf_build): the builder's rules are what is in question.
 If markdown-it-py cannot be imported the check exits non-zero. A missing oracle is
 never a pass.
 
-What counts: render each file, walk the inline text outside code spans, code blocks
-and raw HTML. Any literal `*` is a finding (default-deny). Kinds:
+What counts: render each file, walk the inline text (image alt text included) outside code spans,
+code blocks and raw HTML. Any literal `*` is a finding (default-deny). Kinds:
   bold    a pair of consecutive `**` runs in one block (reported once, at the opener)
   single  any other `*` run (a lone `*`, an unpaired `**`, or a run of 3+)
 
@@ -78,12 +78,24 @@ def label_for(path) -> str:
         return p.as_posix()
 
 
+def _inline_text(children) -> str:
+    out = []
+    for c in children:
+        if c.type == "text":
+            out.append(c.content)
+        elif c.type in ("softbreak", "hardbreak"):
+            out.append("\n")
+        elif c.type in ("code_inline", "html_inline"):
+            out.append(_CODE)
+    return "".join(out)
+
+
 def block_texts(md_text: str):
     """Yield the visible text of each rendered inline block (code spans masked)."""
     for tok in load_oracle().parse(md_text):
         if tok.type != "inline":
             continue
-        parts = []
+        parts, alts = [], []
         for c in tok.children or []:
             if c.type == "text":
                 parts.append(c.content)
@@ -91,8 +103,13 @@ def block_texts(md_text: str):
                 parts.append("\n")
             elif c.type in ("code_inline", "html_inline"):
                 parts.append(_CODE)
-            # image alt text is an attribute, not visible text; open/close tags add none
+            elif c.type == "image":
+                # Alt text is visible text too (fallback rendering, screen readers):
+                # scanned as its own block so it never fuses with the surrounding text.
+                alts.append(_inline_text(c.children or []))
+            # open/close tags add no text
         yield "".join(parts)
+        yield from alts
 
 
 def _allowed(text: str, start: int, end: int) -> bool:

@@ -14,7 +14,12 @@ print dialog opens silently produces a blank box. Rendered SVGs are cached by
 content hash, so an unchanged diagram costs nothing on a rebuild.
 
 Usage:  paper_to_print_html.py <input.md> <output.html> [--banner "text"]
-                               [--mermaid-cache <dir>]
+                               [--mermaid-cache <dir>] [--require-mermaid]
+
+--require-mermaid is the strict path: a missing or hash-mismatched mermaid bundle, an
+unavailable renderer, or any diagram that fails to render exits non-zero naming the
+cause and leaves no output file. Without it those cases fall back to the source block
+and exit 0.
 """
 import base64
 import hashlib
@@ -88,14 +93,21 @@ _RENDERER = Path(__file__).resolve().parent / 'mermaid_to_svg.py'
 _VENV_PY = Path(os.environ.get('PDF_BUILD_PYTHON') or sys.executable)
 
 
-def render_mermaid(code, cache_dir):
+class MermaidRequired(Exception):
+    """Raised, under --require-mermaid, instead of falling back to a source block."""
+
+
+def render_mermaid(code, cache_dir, strict=False):
     """Return inline SVG for a mermaid block, or None if it cannot be rendered.
 
     Cached by content hash: an unchanged diagram never re-renders, a changed one
     always does. None is a real outcome, not an error — the caller falls back to
-    showing the source, which is what the block did before.
+    showing the source, which is what the block did before. With strict=True
+    (--require-mermaid) every None outcome raises MermaidRequired instead.
     """
     if cache_dir is None:
+        if strict:
+            raise MermaidRequired('no mermaid cache directory given')
         return None
     cache_dir.mkdir(parents=True, exist_ok=True)
     key = hashlib.sha1(code.encode('utf-8')).hexdigest()[:16]
@@ -103,6 +115,8 @@ def render_mermaid(code, cache_dir):
 
     if not svg_path.is_file():
         if not (_VENV_PY.is_file() and _RENDERER.is_file()):
+            if strict:
+                raise MermaidRequired(f'mermaid renderer unavailable ({_VENV_PY} / {_RENDERER})')
             print(f'  mermaid: renderer unavailable ({_VENV_PY} / {_RENDERER}) — '
                   f'falling back to source block', file=sys.stderr)
             return None
@@ -114,11 +128,17 @@ def render_mermaid(code, cache_dir):
                                check=True, capture_output=True, timeout=300)
             except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
                 detail = getattr(e, 'stderr', b'') or b''
+                if strict:
+                    raise MermaidRequired(
+                        f'mermaid diagram failed to render ({type(e).__name__}): '
+                        f'{detail.decode("utf-8", "replace").strip()[-300:]}') from e
                 print(f'  mermaid render failed ({type(e).__name__}): '
                       f'{detail.decode("utf-8", "replace").strip()[-300:]}\n'
                       f'  falling back to source block', file=sys.stderr)
                 return None
         if not svg_path.is_file():
+            if strict:
+                raise MermaidRequired('mermaid diagram failed to render: renderer wrote no SVG')
             return None
 
     svg = svg_path.read_text(encoding='utf-8')
@@ -134,7 +154,7 @@ def render_mermaid(code, cache_dir):
 
 # ---------------------------------------------------------------- block
 
-def convert(md, base, mermaid_cache=None):
+def convert(md, base, mermaid_cache=None, strict=False):
     out, lines, i = [], md.split('\n'), 0
     n = len(lines)
 
@@ -152,7 +172,7 @@ def convert(md, base, mermaid_cache=None):
             lang = line[3:].strip().lower()
             code = '\n'.join(buf)
             if lang == 'mermaid':
-                fig = render_mermaid(code, mermaid_cache)
+                fig = render_mermaid(code, mermaid_cache, strict)
                 if fig:
                     out.append(fig)
                     continue
@@ -203,7 +223,7 @@ def convert(md, base, mermaid_cache=None):
             while i < n and (lines[i].lstrip().startswith('>') or
                              (lines[i].strip() and buf and not lines[i].lstrip().startswith(('#', '|', '-', '*')))):
                 buf.append(re.sub(r'^\s*>\s?', '', lines[i])); i += 1
-            out.append('<blockquote>' + convert('\n'.join(buf), base, mermaid_cache) + '</blockquote>')
+            out.append('<blockquote>' + convert('\n'.join(buf), base, mermaid_cache, strict) + '</blockquote>')
             continue
 
         # lists
@@ -322,14 +342,35 @@ figcaption {
 """
 
 
+def _require_mermaid_ready():
+    """--require-mermaid preflight: renderer, interpreter and pinned bundle must be usable."""
+    import importlib.util
+    if not (_VENV_PY.is_file() and _RENDERER.is_file()):
+        raise MermaidRequired(f'mermaid renderer unavailable ({_VENV_PY} / {_RENDERER})')
+    spec = importlib.util.spec_from_file_location('_mermaid_to_svg_preflight', _RENDERER)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    try:
+        mod.check_bundle()
+    except SystemExit as e:  # check_bundle exits with the message naming the cause
+        raise MermaidRequired(str(e.code)) from None
+
+
 def main():
     src, dst = Path(sys.argv[1]), Path(sys.argv[2])
+    strict = '--require-mermaid' in sys.argv
     banner = ''
     if '--banner' in sys.argv:
         banner = f'<div class="banner">{sys.argv[sys.argv.index("--banner") + 1]}</div>'
     cache = Path(sys.argv[sys.argv.index('--mermaid-cache') + 1]) \
         if '--mermaid-cache' in sys.argv else dst.parent / '.diagram-cache'
-    body = convert(src.read_text(encoding='utf-8'), src.parent, cache)
+    try:
+        if strict:
+            _require_mermaid_ready()
+        body = convert(src.read_text(encoding='utf-8'), src.parent, cache, strict)
+    except MermaidRequired as e:
+        dst.unlink(missing_ok=True)  # never leave a stale or partial output behind
+        raise SystemExit(f'--require-mermaid: {e}')
     title = 'ENGRAM — Epistemic Identity'
     dst.write_text(
         f'<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
