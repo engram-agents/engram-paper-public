@@ -127,10 +127,10 @@ def _context(text: str, start: int, end: int) -> str:
     return window.replace("\n", " ").replace(_CODE, "`")
 
 
-def scan(md_text: str, file_label: str):
-    """Return (findings, allowed_count). A finding is {file, kind, context}."""
-    findings, allowed = [], 0
+def _scan_blocks(md_text: str, file_label: str):
+    """Yield (block_findings, allowed_count_in_block) for each visible-text block."""
     for text in block_texts(md_text):
+        findings, allowed = [], 0
         bold_open = None  # a `**` run waiting for its partner
         for m in re.finditer(r"\*+", text):
             if _allowed(text, m.start(), m.end()):
@@ -149,7 +149,37 @@ def scan(md_text: str, file_label: str):
         if bold_open is not None:  # unpaired `**`
             findings.append({"file": file_label, "kind": "single",
                              "context": _context(text, bold_open.start(), bold_open.end())})
+        yield findings, allowed
+
+
+def scan(md_text: str, file_label: str):
+    """Return (findings, allowed_count). A finding is {file, kind, context}."""
+    findings, allowed = [], 0
+    for block_findings, block_allowed in _scan_blocks(md_text, file_label):
+        findings.extend(block_findings)
+        allowed += block_allowed
     return findings, allowed
+
+
+def count_spans(md_text: str) -> dict:
+    """Findings grouped into the spans an author wrote, per block (pairing never crosses blocks).
+
+    bold      one per `bold` finding (a pair of `**` runs)
+    italic    pairs of `single` runs within a block (a failed `*x*` is two findings, one span)
+    unpaired  the odd leftover `single` run of a block, if any
+    """
+    spans = {"bold": 0, "italic": 0, "unpaired": 0}
+    for block_findings, _ in _scan_blocks(md_text, ""):
+        spans["bold"] += sum(f["kind"] == "bold" for f in block_findings)
+        singles = sum(f["kind"] == "single" for f in block_findings)
+        spans["italic"] += singles // 2
+        spans["unpaired"] += singles % 2
+    return spans
+
+
+def _span_text(spans: dict) -> str:
+    return (f"{sum(spans.values())} spans: {spans['bold']} bold, "
+            f"{spans['italic']} italic, {spans['unpaired']} unpaired single")
 
 
 def _key(f):
@@ -163,14 +193,18 @@ def _fmt(f):
 def check(paths, baseline_path, gate_zero=False):
     """Return (exit_code, report_lines)."""
     findings = []
+    spans = {"bold": 0, "italic": 0, "unpaired": 0}
     for p in paths:
-        f, _ = scan(Path(p).read_text(encoding="utf-8"), label_for(p))
+        text = Path(p).read_text(encoding="utf-8")
+        f, _ = scan(text, label_for(p))
         findings.extend(f)
+        for k, v in count_spans(text).items():
+            spans[k] += v
     lines = []
     if gate_zero:
         for f in findings:
             lines.append("finding: " + _fmt(f))
-        lines.append(f"gate-zero: {len(findings)} finding(s)")
+        lines.append(f"gate-zero: {len(findings)} finding(s) ({_span_text(spans)})")
         return (1 if findings else 0), lines
 
     base = json.loads(Path(baseline_path).read_text(encoding="utf-8"))["findings"]
@@ -182,7 +216,7 @@ def check(paths, baseline_path, gate_zero=False):
     for k in sorted(stale.elements()):
         lines.append("stale baseline entry (no longer found): "
                      + _fmt(dict(zip(("file", "kind", "context"), k))))
-    lines.append(f"{len(findings)} finding(s), baseline {len(base)}: "
+    lines.append(f"{len(findings)} finding(s) ({_span_text(spans)}), baseline {len(base)}: "
                  f"{sum(new.values())} new, {sum(stale.values())} stale")
     return (1 if (new or stale) else 0), lines
 

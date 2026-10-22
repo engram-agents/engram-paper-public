@@ -171,3 +171,51 @@ def test_a_bold_pair_split_across_alt_and_outer_text_is_not_a_bold_finding():
     # Fused, "**" in the alt and "**" after the image would pair into one `bold` finding.
     findings, _ = scan("![a **](i.png)** b\n")
     assert kinds(findings) == ["single", "single"]
+
+
+# --------------------------------------------------- round 4: two spans in one block; span counts
+TWO_BOLD = "甲。**一。**乙，丙。**二。**丁\n"
+TWO_ITALIC = "甲。*一。*乙，丙。*二。*丁\n"
+
+
+def test_two_failed_bold_spans_in_one_block_give_two_bold_findings():
+    findings, _ = scan(TWO_BOLD)
+    assert kinds(findings) == ["bold", "bold"]
+
+
+def test_two_failed_italic_spans_in_one_block_give_four_single_findings():
+    findings, _ = scan(TWO_ITALIC)
+    assert kinds(findings) == ["single"] * 4
+
+
+def test_span_counts_pair_bold_per_block_and_singles_into_italic_spans():
+    assert cer.count_spans(TWO_BOLD) == {"bold": 2, "italic": 0, "unpaired": 0}
+    assert cer.count_spans(TWO_ITALIC) == {"bold": 0, "italic": 2, "unpaired": 0}
+    # an odd leftover single run is 'unpaired'; pairing never crosses blocks
+    assert cer.count_spans("甲。*一。*乙，丙。*二\n") == {"bold": 0, "italic": 1, "unpaired": 1}
+    assert cer.count_spans("a。*b\n\nc。*d\n") == {"bold": 0, "italic": 0, "unpaired": 2}
+
+
+def test_current_tree_span_counts():
+    assert cer.count_spans(EN.read_text(encoding="utf-8")) == {"bold": 0, "italic": 0, "unpaired": 0}
+    assert cer.count_spans(ZH.read_text(encoding="utf-8")) == {"bold": 7, "italic": 8, "unpaired": 0}
+
+
+def test_v1_0_span_counts_when_the_tag_object_is_available():
+    import subprocess
+    import pytest
+    got = {}
+    for lang, name in (("en", "engram-paper-v0.5.1.md"), ("zh", "engram-paper-v0.5.1.zh.md")):
+        r = subprocess.run(["git", "show", f"d55feec:paper/release/{name}"], cwd=REPO,
+                           capture_output=True)
+        if r.returncode != 0 or not r.stdout:
+            pytest.skip("v1.0 commit d55feec not available (shallow clone?)")
+        got[lang] = cer.count_spans(r.stdout.decode("utf-8"))
+    assert got["en"] == {"bold": 0, "italic": 0, "unpaired": 0}
+    assert got["zh"] == {"bold": 8, "italic": 8, "unpaired": 0}
+
+
+def test_the_summary_line_reports_spans(capsys):
+    assert cer.main([]) == 0
+    assert ("23 finding(s) (15 spans: 7 bold, 8 italic, 0 unpaired single), "
+            "baseline 23: 0 new, 0 stale") in capsys.readouterr().out
