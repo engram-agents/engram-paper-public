@@ -121,3 +121,7 @@ Anderson & Schooler (1991), which is a different work. It is omitted from the li
 above because the text marks it in place as secondary and declines to rest weight on
 it. If the final pass decides a flagged-secondary precedent still requires an entry,
 this list becomes nineteen.*
+
+## 2026-10-18 — Chapter 5 v2 (stage view): six sources
+
+Sider 1996 and Sider 2000 (author PDFs, tedsider.org), Perry 1972 and Merricks 1994 (author-hosted manuscripts), and the Stanford Encyclopedia entries "Temporal Parts" (Hawley, rev. 2020-05-05) and "Personal Identity" (Olson, rev. 2023-06-30) were found by a source scout on 2026-10-14 and read first-hand by Borges the same day. None of the copies is committed: they are not openly licensed. The manuscripts carry no journal pagination, so the chapter gives no pinpoint pages for them. Lewis 1976 "Survival and Identity" was not found in a legitimate copy and is not cited.

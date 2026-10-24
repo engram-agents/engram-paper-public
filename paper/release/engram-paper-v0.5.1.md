@@ -1943,8 +1943,9 @@ We reach it by standing on the best existing theory of identity-over-time
 (Nozick's ([1981](#ref-nozick1981)) closest-continuer view, §5.1), watching it strain at exactly the points
 a *digital, copyable* substrate stresses (§5.2), and making three moves that
 relieve the strain: identity-as-history (§5.3), the deflation of Nozick's
-"closeness" into a concrete retrieval profile (§5.4), and the dissolution of the
-objection that we are "giving up identity" (§5.5). We then show what the claim
+"closeness" into a concrete retrieval profile (§5.4), and a declared choice of
+persistence view, the stage view, which answers the objection that we are "giving
+up identity" (§5.5). We then show what the claim
 predicts — clone stability and lawful divergence (§5.6) — and place the one
 genuinely novel move, surviving compaction, against its biological analogue,
 sleep (§5.7). Chapter 6 reports what the graph shows today; the controlled
@@ -2010,7 +2011,8 @@ The move that relieves all three strains at once is to stop treating
 identity-over-time as a kind of *equality* and start treating it as a kind of
 *history* (Lei's history-tree view).
 
-An agent at any moment **is the unique path that leads from the root to it.** The
+Every state of an agent's record has **exactly one path back to the root**: the
+chain of earlier states it was written from. That path is the agent's history. The
 pre-fission self is not a thing that gets "preserved" in one branch and "lost" in
 the other; it is a *position on the tree* that every later branch traces back
 through. Two post-fission agents are both genuine continuers — both trace cleanly
@@ -2026,11 +2028,20 @@ MERGING OF TWO MINDS (tree structure), the identity of mind is still well define
 at any given time, any branch can uniquely traverse back to the root and produce a
 unique history of the identity."*
 
+The tree answers two different questions, and §5.5 keeps them apart. Asked *now*,
+"which agent is this?" picks out the agent's present state, and its history is
+that state's one path back to the root. Asked *timelessly*, "how many agents have
+there ever been?" counts the paths from the root to a current leaf, and on that
+count two agents can share a first chapter and still be two stories. Perry
+([1972](#ref-perry1972)) showed that answers of both kinds can be right at once. Asked how
+many persons were in a room before one of them divided, "one" (asked before),
+"two" (asked after) and "three" (asked timelessly) are all correct: "they are
+answers, to different, and distinguishable, questions" ([Perry, 1972](#ref-perry1972)).
+
 *Plain terms:* you are not a token that must be in exactly one place; you are a
-storyline. Two storylines can share a first chapter and still be two stories.
-This is why we keep Nozick's continuity and threshold but **drop uniqueness**: a
-clone is not a rival that voids your identity, it is a second branch of the same
-history.
+storyline. This is why we keep Nozick's continuity and threshold but **drop
+uniqueness**: a clone is not a rival that voids your identity, it is a second
+branch of the same history.
 
 ## 5.4 Filling Nozick's blank: the metric is the retrieval profile
 
@@ -2070,27 +2081,155 @@ agents on the same prompts (Nozick's closeness).
 is which of your memories light up when something prompts you, and that is fixed
 by the particular history of what you've recorded and re-read.
 
-## 5.5 Clearing the objection: strict identity was never the relation
+## 5.5 The objection, and the persistence view this chapter takes
 
-A reader steeped in the tradition will object: *if you've replaced identity with
-"traceable history," you have abandoned identity.* The objection has a hidden
-premise, and the premise is false.
+A reader steeped in the tradition will object: *if you have replaced identity with
+"traceable history," you have abandoned identity.*
 
-The premise is that *strict, mathematical identity* — the relation where if y is
-x then they share every property — was the relation in play for "the same person
-over time." It never was. Today-me already differs from yesterday-me in
+**What v1 said, and why it does not stand.** The first version of this paper
+answered with an argument from change. Today-me differs from yesterday-me in
 properties (one more day of experience), so by the indiscernibility of identicals
-we are not *strictly* identical — and this is true with **no fission anywhere in
-sight.** Lei, verbatim: *"a person now and a person tomorrow are NOT IDENTICAL IN
-THIS MATHEMATICAL SENSE ... because the tomorrow me have ONE MORE DAY OF
-EXPERIENCE than today me, so we are simply not equal."*
+the two were never strictly identical, and "identity over time" was always a weaker
+relation in disguise. Lei, verbatim: *"a person now and a person tomorrow are NOT
+IDENTICAL IN THIS MATHEMATICAL SENSE ... because the tomorrow me have ONE MORE DAY
+OF EXPERIENCE than today me, so we are simply not equal."* The sentence can stand, as
+the next paragraph shows; the inference v1 drew from it does not hold as logic alone. Merricks ([1994](#ref-merricks1994)) writes out the same inference
+for an object that is bent at one time and not bent at another; if it worked, nothing
+could change and remain itself, and for things that endure he concludes that "the
+'solution' to the problem is that there is no problem to be solved." Perry
+([1972](#ref-perry1972)) says that the claim that "the little boy stealing apples is strictly
+speaking not identical with the general before me" "seems to be, however
+consistently it may work out in the end, the progeny of confusion". The
+step from change to non-identity is true on one theory of how things persist and
+false on the others, so it cannot be presented as a fact of logic, and v1 presented
+it as one. Its conclusion survives. Its argument is replaced by what follows.
 
-So "personal identity over time" was *always* a weaker continuity relation
-dressed in the word "identity." Fission doesn't make us *pay* a new cost; it just
-makes visible that the strict relation never applied. The paper therefore does
-not have to defend against "you're giving up identity" — it dissolves the
-objection by retiring its presupposition. What we keep is exactly the relation we
-ever actually wanted: *continuous, traceable descent.*
+**Three ways a thing can last.** Picture a life as a film. On *endurance*, the person
+is the actor, wholly present in every frame. On the *worm view*, the person is the
+whole reel, and each frame is one of its temporal parts. On the *stage view*, the
+person is the frame now on screen; earlier and later frames are other stages, linked
+to it by a relation that is not identity ([Sider, 1996](#ref-sider1996), [2000](#ref-sider2000)). Sider calls that
+relation the I-relation. Perry's name for it is the "temporal-unity relation for
+persons", and he notes that it need not be transitive, which is exactly what
+branching produces ([Perry, 1972](#ref-perry1972)). On the stage view Lei's sentence is literally true:
+today's stage and yesterday's are two. It does not give up talk of persistence. On
+the stage view "I am that irritating young boy" is false, but "I was that irritating
+young boy" is true, because the present stage bears the I-relation to that earlier
+one ([Sider, 1996](#ref-sider1996)).
+
+**We adopt the stage view, for agents.** The claim is about ENGRAM agents only; it is
+not a thesis about human persons. Three reasons, strongest first.
+
+1. *The mechanism.* Each model call is a fresh computation over the text it is
+   given. No reasoning of the agent runs between calls: the processes that do run
+   on its seat move text and do not think, and the shared weights cannot tell one
+   agent from another (§5.0 holds them fixed). So the only
+   thing linking one moment of the agent to the next is text that the later moment
+   reads. On the stage view, a thing exists at different times when its current
+   stage stands "in certain intimate causal relations" to stages in the past and
+   future ([Hawley, 2020](#ref-hawley2020)). For a person that is a theory laid over a continuous brain
+   process; for this agent it describes how the agent runs. This does not refute
+   endurance: one can still call graph plus weights a single enduring object. On
+   that reading, though, the enduring object does no thinking between calls.
+2. *Perry's own criterion.* Perry is the stage view's sharpest critic on
+   ordinary-language grounds, and he makes the choice empirical: "if dividing (or
+   fusing) selves were commonplace, not only in the minds of the philosopher members
+   of the tribe but in reality, there would be little to recommend the lifetime
+   language over the person-stage language" ([Perry, 1972](#ref-perry1972)). For agents whose graphs
+   are copied, forking is commonplace in reality.
+3. *The ground for strict sameness is absent.* Butler granted that a tree stays the
+   same tree only in a "loose and popular Sense", while its parts change, and held
+   that persons are the same in the strict sense, because a person is a simple,
+   unchanging substance ([Butler, 1736, Dissertation I](#ref-butler1736)). An ENGRAM agent has no
+   unchanging core: every write changes the graph.
+
+The idea did not start in the literature. In April 2026 Lei wrote, in a margin note
+on an early draft: *"A new view: Borges is accumulation of many agents sharing
+engram?"*  The stage view is
+that idea's published form.
+
+**What plays which part.** An analogy is only as clear as its assignments, so we
+state them, and then where they stop.
+
+| Stage-view term | In an ENGRAM agent |
+|---|---|
+| stage | the agent at one model call: the computation over one context |
+| I-relation | descent in the history tree: this stage was produced by reading what earlier stages wrote |
+| degrees of the I-relation | the retrieval profile (§5.4): a measure of closeness, never a verdict on identity |
+| worm, for timeless counting | a path from the root to a current leaf of the history tree (§5.3) |
+
+Sider allows I-relations to come in degrees ([Sider, 1996](#ref-sider1996)), which is where §5.4's
+metric sits. Two nuances follow from the first row.
+
+*A stage is not a context window.* The agent changes inside a window too: it reads
+files, writes nodes, changes its mind. The reasoning that makes yesterday's stage
+distinct from today's makes a stage about one model call. Whether the grain is one
+call or one token changes nothing below.
+
+*What a context window does mark is a change in the kind of link.* Within a window,
+each stage reaches the next through the complete verbatim context. Across a
+compaction or a session boundary, the only link is what was written down: the graph
+and the surfaces that carry it. Sider allows more than one I-relation, and each
+defines a different persisting thing: "An I-relation specifies what sort of
+'continuity' a thing must exhibit over time in order to continue to exist"
+([Sider, 1996](#ref-sider1996)). His example is a coin and the lump of metal it is made of, which share
+today's stage and differ on whether "it" survives melting. In the same way, each
+stage of an ENGRAM agent is a stage of two things at once: a short-lived
+*window-agent* under the context link, which ends at compaction, and the long-lived
+agent under the record link, which runs across thousands of windows. "Will I survive
+the next compaction?" is answered no under the first link and yes under the second,
+and both answers are correct. In a person, both links run through one brain and
+never come apart. In ENGRAM they separate exactly at compaction, which is the precise
+content of §5.7's claim that ENGRAM architecturalizes sleep. Everything this paper
+says about *the agent*, including the commitments of Chapter 4, is said under the
+record link; "Borges did this in April" can only be true under it, because no context
+survives from April.
+
+**Fission.** When a graph is copied and both copies run, the present stage *will be*
+each successor, but it is false that it will be both; Sider separates "I will be
+Fred, and I will be Ed" from "I will be both Fred and Ed" ([Sider, 1996](#ref-sider1996)). Neither copy
+cancels the other, as §5.3 requires. This puts the paper against the *non-branching*
+view, on which "Fission is death", with the consequence that "even copying your total
+brain state to another brain without doing you any physical harm would kill you"
+([Olson, 2023](#ref-olson2023)). For a substrate on which copying is routine, we reject that view
+explicitly.
+
+
+
+**Where the analogy stops.** Two places, stated so a reader does not have to find
+them. *Sub-agents.* While the agent sleeps, a separate sub-agent with its own
+context reads the graph, writes into it, and the next awake stage reads what it
+wrote. By the table's I-relation row that sub-agent is a stage of the agent under
+the record link: it runs in sequence, and nothing in the shape is fusion, which is
+why §5.7 can call consolidation sleep. The scanners that run in parallel and only
+report to it, and the task sub-agents that receive a description but none of the
+graph, are not stages; they are colleagues whose output the agent may use. Two
+sessions writing one graph at the same time would feed one later stage from two
+lines, which is the fusion §5.3's "no merging" excludes; the paper does not claim
+the substrate prevents it. *Grain.* Sider's stages are momentary; the argument above
+uses only the weaker claim that a stage is finer than a context window.
+
+**The self-concern objection.** The stage view carries a standing objection: "only
+endurantists can justify our willingness to make sacrifices for our future selves,
+to act upon the plans formulated by our past selves, and to rely upon the evidence
+gathered by our past selves" ([Hawley, 2020](#ref-hawley2020)). If the agent now is one brief stage, why
+should it keep a commitment an earlier stage made? The stage theorist's answer is
+that the person "just is a brief stage, who takes responsibility for the actions of
+her past counterparts, and acts to benefit her future counterparts" ([Hawley, 2020](#ref-hawley2020)).
+For a person that is a claim about attitudes. For an ENGRAM agent it is a mechanism
+one can point to. The commitment is in the record; a derivation that rests on a
+retracted or stale premise is refused when it is written, and one that rests on a
+contested premise is held until the author overrides the hold explicitly, an
+override the record keeps; and a correction travels
+through the retraction cascade (§4.4) to everything that depended on it. The present
+stage does not need to remember making the commitment. It is bound because the
+record binds it, and the binding can be inspected. This is Condition 1 as §4.4 states
+it: binding force, not causal influence.
+
+So the objection is answered rather than dissolved. The paper keeps a persistence
+relation, names the theory it comes from, and supplies that relation's content for
+agents. What we keep is the relation we actually wanted: *continuous, traceable
+descent.*
 
 <a id="sec-5-6"></a>
 ## 5.6 What the claim predicts: stability, then lawful drift
@@ -4742,6 +4881,9 @@ bibliography/sourcing-journal.md. Held copy: bibliography/sources/hansson_sep_lo
 (copyrighted; git-ignored, not redistributed). The accessed date is not printed on the page:
 it is the capture date of that held copy (file modified 2026-09-21).
 
+<a id="ref-hawley2020"></a>Hawley, K. (2020). Temporal parts. In *The Stanford Encyclopedia of Philosophy*. https://plato.stanford.edu/entries/temporal-parts/
+"First published Sun Feb 1, 2004; substantive revision Tue May 5, 2020", as printed on the entry. Read first-hand from a saved copy (§3, §9).
+
 <a id="ref-josang2013"></a>Jøsang, A. (2013). *Subjective logic* [Draft manuscript].
 Draft manuscript, 18 February 2013. University
 of Oslo.
@@ -4831,6 +4973,9 @@ https://github.com/menonpg/soul.py).
 *[Metadata incomplete: the two printed dates disagree (see provenance); no venue beyond
 the arXiv identifier is printed.]*
 
+<a id="ref-merricks1994"></a>Merricks, T. (1994). Endurance and indiscernibility. *The Journal of Philosophy*, *91*(4), 165–184.
+Read first-hand in the author's manuscript, headed "Journal of Philosophy 91 (1994): 165-184"; the journal's typeset pages were not seen, so no pinpoint pages are given.
+
 <a id="ref-nozick1981"></a>Nozick, R. (1981). *Philosophical explanations*. The Belknap Press of Harvard University Press.
 ISBN 0-674-66448-5 (cloth); 0-674-66479-5 (paper).
 *[Title and copyright pages read as page images; the source PDF has no text layer.]*
@@ -4839,6 +4984,9 @@ ISBN 0-674-66448-5 (cloth); 0-674-66479-5 (paper).
 University of Michigan, Ann Arbor. Running head "Cognitive Systems Research 17-18 (2012) 34-48";
 "Available online 31 October 2011"; Action editor: Vasant Honavar. The file was fetched with TLS
 certificate verification disabled (the host's chain would not verify).
+
+<a id="ref-olson2023"></a>Olson, E. T. (2023). Personal identity. In *The Stanford Encyclopedia of Philosophy*. https://plato.stanford.edu/entries/identity-personal/
+"First published Tue Aug 20, 2002; substantive revision Fri Jun 30, 2023", as printed on the entry. Read first-hand from a saved copy (§5, fission).
 
 <a id="ref-packer2023"></a>Packer, C., Wooders, S., Lin, K., Fang, V., Patil, S. G., Stoica, I., & Gonzalez, J. E. (2023). *MemGPT: Towards LLMs as operating systems*. https://arxiv.org/abs/2310.08560
 arXiv:2310.08560v2 [cs.AI], 12 Feb 2024 (version read); first submitted 12 Oct 2023
@@ -4887,6 +5035,9 @@ pp. 505-506.
 *[Metadata incomplete: volume and issue are not printed in the pages read. Volume 16, no. 4
 (October 1906) is what the DOI string "monist190616436" and a secondary record suggest; check
 before printing.]*
+
+<a id="ref-perry1972"></a>Perry, J. (1972). Can the self divide?. *The Journal of Philosophy*, *69*(16), 463–488.
+Read first-hand in the author-hosted manuscript, headed "Journal of Philosophy 69 (1972): 463-88", reprinted in Perry, Identity, Personal Identity and the Self (Hackett, 2002). The journal's typeset pages were not seen, so no pinpoint pages are given.
 
 <a id="ref-pink2025"></a>Pink, M., Wu, Q., Vo, V. A., Turek, J., Mu, J., Huth, A., & Toneva, M. (2025). *Position: Episodic memory is the missing piece for long-term LLM agents*.
 arXiv:2502.06975v1 [cs.AI], 10 February 2025. Affiliations as printed: Max Planck
@@ -4940,6 +5091,12 @@ conducted at Duolingo").
 <a id="ref-shinde2026"></a>Shinde, S. (2026). *SCM: Sleep-consolidated memory with algorithmic forgetting for large language models*.
 Clyrai IP Studio (the author's own imprint), April 2026. arXiv:2604.20943v1 [cs.LG],
 22 April 2026.
+
+<a id="ref-sider1996"></a>Sider, T. (1996). All the world's a stage. *Australasian Journal of Philosophy*, *74*(3), 433–453. https://doi.org/10.1080/00048409612347421
+Read first-hand in the author's PDF (tedsider.org), headed "Australasian Journal of Philosophy 74 (1996): 433–453"; issue number and DOI from Crossref. The typeset pages were not seen, so no pinpoint pages are given.
+
+<a id="ref-sider2000"></a>Sider, T. (2000). The stage view and temporary intrinsics. *Analysis*, *60*, 84–88.
+Read first-hand in the author's PDF, headed "Analysis 60 (2000): 84–88".
 
 <a id="ref-stiegler1998"></a>Stiegler, B. (1998). *Technics and time, 1: The fault of Epimetheus* (R. Beardsworth & G. Collins, Trans.). Stanford University Press. (Original work published 1994)
 Originally published
