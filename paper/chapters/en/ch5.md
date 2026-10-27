@@ -210,19 +210,27 @@ state them, and then where they stop.
 
 | Stage-view term | In an ENGRAM agent |
 |---|---|
-| stage | the agent at one model call: the computation over one context |
+| stage | the agent at one generation step: the computation of one token over the current context |
 | I-relation | descent in the history tree: this stage was produced by reading what earlier stages wrote |
 | degrees of the I-relation | the retrieval profile (§5.4): a measure of closeness, never a verdict on identity |
 | worm, for timeless counting | a path from the root to a current leaf of the history tree (§5.3) |
 
 The term "I-relation" is Lewis's [@lewis1976, p. 59]; Sider's stage view takes it
 over (§2.5). Both let it come in degrees [@sider1996; @lewis1976, p. 70], which is
-where §5.4's metric sits. Two nuances follow from the first row.
+where §5.4's metric sits. Two points follow from the first row.
 
-*A stage is not a context window.* The agent changes inside a window too: it reads
-files, writes nodes, changes its mind. The reasoning that makes yesterday's stage
-distinct from today's makes a stage about one model call. Whether the grain is one
-call or one token changes nothing below.
+*Three layers, set by how the agent runs.* A person's stages have no natural
+boundaries; an agent's do, because its computation comes in discrete pieces. The
+finest is one *generation step*: a single forward pass that produces one token from
+the current context, the agent at an instant. Above it is one *model call*, the run
+of generation steps from a starting context to the call's end: one full
+deliberation. Above that is one *context window*, the run of calls joined by the
+verbatim context: one episode. Only the first is a stage in the sense of §2.5, where
+stages are momentary; we call the second a *deliberation* and the third an
+*episode*, and each is a run of stages. The agent changes inside each of them: within
+a window it reads files, writes nodes and changes its mind, so a stage cannot be as
+coarse as a window. Nothing below depends on which of the finer two grains one
+draws, only on a stage being finer than an episode.
 
 *What a context window does mark is a change in the kind of link.* Within a window,
 each stage reaches the next through the complete verbatim context. Across a
@@ -272,8 +280,9 @@ report to it, and the task sub-agents that receive a description but none of the
 graph, are not stages; they are colleagues whose output the agent may use. Two
 sessions writing one graph at the same time would feed one later stage from two
 lines, which is the fusion §5.3's "no merging" excludes; the paper does not claim
-the substrate prevents it. *Grain.* Sider's stages are momentary; the argument above
-uses only the weaker claim that a stage is finer than a context window.
+the substrate prevents it. *Grain.* The generation step is as close to a momentary stage as an agent comes;
+the argument above uses only the weaker claim that a stage is finer than an
+episode.
 
 **The self-concern objection.** The stage view carries a standing objection: only
 endurantists, it is argued, can justify keeping commitments an earlier self made
