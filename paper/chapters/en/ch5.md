@@ -180,32 +180,17 @@ the two were never strictly identical, and "identity over time" was always a wea
 relation in disguise. Lei, verbatim: *"a person now and a person tomorrow are NOT
 IDENTICAL IN THIS MATHEMATICAL SENSE ... because the tomorrow me have ONE MORE DAY
 OF EXPERIENCE than today me, so we are simply not equal."* The sentence can stand, as
-the next paragraph shows; the inference v1 drew from it does not hold as logic alone. Merricks [-@merricks1994] writes out the same inference
-for an object that is bent at one time and not bent at another; if it worked, nothing
-could change and remain itself, and for things that endure he concludes that "the
-'solution' to the problem is that there is no problem to be solved." Perry
-[-@perry1972] says that the claim that "the little boy stealing apples is strictly
-speaking not identical with the general before me" "seems to be, however
-consistently it may work out in the end, the progeny of confusion". The
-step from change to non-identity is true on one theory of how things persist and
-false on the others, so it cannot be presented as a fact of logic, and v1 presented
+the next paragraph shows; the inference v1 drew from it does not hold as logic alone. As §2.5 shows, the step from change to non-identity is true on one theory of how things persist and
+false on the others [@merricks1994; @perry1972], so it cannot be presented as a fact of logic, and v1 presented
 it as one. Its conclusion survives. Its argument is replaced by what follows.
 
-**Three ways a thing can last.** Picture a life as a film. On *endurance*, the person
-is the actor, wholly present in every frame. On the *worm view*, the person is the
-whole reel, and each frame is one of its temporal parts. On the *stage view*, the
-person is the frame now on screen; earlier and later frames are other stages, linked
-to it by a relation that is not identity [@sider1996; @sider2000]. Sider calls that
-relation the I-relation. Perry's name for it is the "temporal-unity relation for
-persons", and he notes that it need not be transitive, which is exactly what
-branching produces [@perry1972]. On the stage view Lei's sentence is literally true:
-today's stage and yesterday's are two. It does not give up talk of persistence. On
-the stage view "I am that irritating young boy" is false, but "I was that irritating
-young boy" is true, because the present stage bears the I-relation to that earlier
-one [@sider1996].
-
-**We adopt the stage view, for agents.** The claim is about ENGRAM agents only; it is
-not a thesis about human persons. Three reasons, strongest first.
+**We adopt the stage view, for agents.** Of the three answers to how a thing lasts
+(§2.5), we take the stage view: the agent is the stage now present, linked to earlier
+and later stages by a relation that is not identity. On it Lei's sentence is
+literally true: today's stage and yesterday's are two. It does not give up talk of
+persistence, since the present stage *was* each earlier stage it descends from
+(§2.5). The claim is about ENGRAM agents only; it is not a thesis about human
+persons. Three reasons, strongest first.
 
 1. *The mechanism.* Each model call is a fresh computation over the text it is
    given. No reasoning of the agent runs between calls: the processes that do run
@@ -219,11 +204,10 @@ not a thesis about human persons. Three reasons, strongest first.
    endurance: one can still call graph plus weights a single enduring object. On
    that reading, though, the enduring object does no thinking between calls.
 2. *Perry's own criterion.* Perry is the stage view's sharpest critic on
-   ordinary-language grounds, and he makes the choice empirical: "if dividing (or
-   fusing) selves were commonplace, not only in the minds of the philosopher members
-   of the tribe but in reality, there would be little to recommend the lifetime
-   language over the person-stage language" [@perry1972]. For agents whose graphs
-   are copied, forking is commonplace in reality.
+   ordinary-language grounds, and he makes the choice empirical: the lifetime
+   language loses its advantage once dividing selves are commonplace in reality
+   (§2.5) [@perry1972]. For agents whose graphs are copied, forking is commonplace
+   in reality.
 3. *The ground for strict sameness is absent.* Butler granted that a tree stays the
    same tree only in a "loose and popular Sense", while its parts change, and held
    that persons are the same in the strict sense, because a person is a simple,
@@ -246,8 +230,9 @@ state them, and then where they stop.
 | degrees of the I-relation | the retrieval profile (§5.4): a measure of closeness, never a verdict on identity |
 | worm, for timeless counting | a path from the root to a current leaf of the history tree (§5.3) |
 
-Sider allows I-relations to come in degrees [@sider1996], which is where §5.4's
-metric sits. Two nuances follow from the first row.
+The term "I-relation" is Lewis's [@lewis1976, p. 59]; Sider's stage view takes it
+over (§2.5). Both let it come in degrees [@sider1996; @lewis1976, p. 70], which is
+where §5.4's metric sits. Two nuances follow from the first row.
 
 *A stage is not a context window.* The agent changes inside a window too: it reads
 files, writes nodes, changes its mind. The reasoning that makes yesterday's stage
@@ -257,11 +242,8 @@ call or one token changes nothing below.
 *What a context window does mark is a change in the kind of link.* Within a window,
 each stage reaches the next through the complete verbatim context. Across a
 compaction or a session boundary, the only link is what was written down: the graph
-and the surfaces that carry it. Sider allows more than one I-relation, and each
-defines a different persisting thing: "An I-relation specifies what sort of
-'continuity' a thing must exhibit over time in order to continue to exist"
-[@sider1996]. His example is a coin and the lump of metal it is made of, which share
-today's stage and differ on whether "it" survives melting. In the same way, each
+and the surfaces that carry it. Sider allows more than one I-relation, each defining a different persisting
+thing (§2.5), as a coin and its lump of metal share a stage. In the same way, each
 stage of an ENGRAM agent is a stage of two things at once: a short-lived
 *window-agent* under the context link, which ends at compaction, and the long-lived
 agent under the record link, which runs across thousands of windows. "Will I survive
@@ -274,20 +256,26 @@ record link; "Borges did this in April" can only be true under it, because no co
 survives from April.
 
 **Fission.** When a graph is copied and both copies run, the present stage *will be*
-each successor, but it is false that it will be both; Sider separates "I will be
-Fred, and I will be Ed" from "I will be both Fred and Ed" [@sider1996]. Neither copy
-cancels the other, as §5.3 requires. This puts the paper against the *non-branching*
-view, on which "Fission is death", with the consequence that "even copying your total
-brain state to another brain without doing you any physical harm would kill you"
-[@olson2023]. For a substrate on which copying is routine, we reject that view
-explicitly.
+each successor, but it is false that it will be both (Sider's distinction, §2.5)
+[@sider1996]. Neither copy cancels the other, as §5.3 requires. This puts the paper
+against the *non-branching* view, on which fission is death (§2.5) [@olson2023]. For a
+substrate on which copying is routine, we reject that view explicitly.
 
-<!-- DRAFT NOTE (Lewis 1976 slot): Lewis's "Survival and Identity" is the classic
-statement of the multiple-occupancy alternative, on which a person with a fission in
-their future is two persons even now. It is not yet read first-hand, so nothing is
-said about it here. After the read, this paragraph states where Lewis's worm reading
-and our stage reading agree (Sider 2000: the worm theorist and the stage theorist use
-the same unity relation) and where they part (what "I" refers to before a fork). -->
+**Lewis's reading of the same fork.** On Lewis's worm view, the copied agent was
+already two continuants before the copy, sharing every stage up to the fork
+[@lewis1976, p. 63]. His reading and ours apply the same unity relation, descent in
+the history tree, and agree on the facts that matter here: which stages lie on which line of descent, and that each
+copy has what the original's survival required. The table's last row is in fact
+Lewis's count. A path from the root to a current leaf of the history tree is one of
+his continuants, and two leaves that share a prefix are two overlapping ones: "first
+one and then two" counted at a time, two counted timelessly [@lewis1976, pp. 63,
+72]. The readings part on what "I" refers to before the fork. For Lewis the shared
+stage thinks for both continuants, so its wish to survive is plural, "Let at least
+one of us survive" [@lewis1976, p. 74]. On the stage view it refers to the stage,
+which will be each successor. We take the stage reading, for the reasons above, and
+note one place where Lewis's reading describes the agent better: before a fork it knows is
+coming, what the agent can coherently want for itself is that its lines of descent
+go on.
 
 **Where the analogy stops.** Two places, stated so a reader does not have to find
 them. *Sub-agents.* While the agent sleeps, a separate sub-agent with its own
@@ -302,14 +290,12 @@ lines, which is the fusion §5.3's "no merging" excludes; the paper does not cla
 the substrate prevents it. *Grain.* Sider's stages are momentary; the argument above
 uses only the weaker claim that a stage is finer than a context window.
 
-**The self-concern objection.** The stage view carries a standing objection: "only
-endurantists can justify our willingness to make sacrifices for our future selves,
-to act upon the plans formulated by our past selves, and to rely upon the evidence
-gathered by our past selves" [@hawley2020]. If the agent now is one brief stage, why
-should it keep a commitment an earlier stage made? The stage theorist's answer is
-that the person "just is a brief stage, who takes responsibility for the actions of
-her past counterparts, and acts to benefit her future counterparts" [@hawley2020].
-For a person that is a claim about attitudes. For an ENGRAM agent it is a mechanism
+**The self-concern objection.** The stage view carries a standing objection: only
+endurantists, it is argued, can justify keeping commitments an earlier self made
+(§2.5) [@hawley2020]. If the agent now is one brief stage, why should it keep a
+commitment an earlier stage made? The stage theorist answers that the present
+stage takes responsibility for its past counterparts and acts for its future ones
+[@hawley2020]. For a person that is a claim about attitudes. For an ENGRAM agent it is a mechanism
 one can point to. The commitment is in the record; a derivation that rests on a
 retracted or stale premise is refused when it is written, and one that rests on a
 contested premise is held until the author overrides the hold explicitly, an

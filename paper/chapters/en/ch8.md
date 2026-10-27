@@ -41,7 +41,7 @@ place.
 
 Among the converging traditions, one is *operational* enough to measure against:
 Kahl's Ontological Continuity Condition, an explicit threshold for when an agent-like
-system genuinely persists. We adopted it on merit (§2.7) and assessed ENGRAM against it
+system genuinely persists. We adopted it on merit (§2.8) and assessed ENGRAM against it
 condition by condition (Chapter 4). The result is **one strong, bounded data point
 within the convergence**:
 

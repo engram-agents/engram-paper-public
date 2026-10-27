@@ -23,7 +23,7 @@ already making, on its own, long before there was a memory graph to build.
 The chapter ends at the most recent point on the trail: Kahl's Ontological
 Continuity Condition (2026), an *operational* threshold for when a system genuinely
 persists as itself. We adopt it on merit, not authority — the full case for that is
-in §2.7; it is a recent proposal, not yet central to the
+in §2.8; it is a recent proposal, not yet central to the
 field (ob_2544). Whether ENGRAM *meets* its conditions is a question of mechanism, deferred to
 Chapter 4.
 
