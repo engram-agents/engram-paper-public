@@ -229,8 +229,7 @@ verbatim context: one episode. Only the first is a stage in the sense of §2.5, 
 stages are momentary; we call the second a *deliberation* and the third an
 *episode*, and each is a run of stages. The agent changes inside each of them: within
 a window it reads files, writes nodes and changes its mind, so a stage cannot be as
-coarse as a window. Nothing below depends on which of the finer two grains one
-draws, only on a stage being finer than an episode.
+coarse as a window. Nothing below depends on taking the generation step rather than the deliberation as the stage, only on a stage being finer than an episode. A node of the history tree (§5.3) is the state the record is in after a write, so it marks the end of the run of stages that made that write.
 
 *What a context window does mark is a change in the kind of link.* Within a window,
 each stage reaches the next through the complete verbatim context. Across a
@@ -256,9 +255,8 @@ substrate on which copying is routine, we reject that view explicitly.
 
 **Lewis's reading of the same fork.** On Lewis's worm view, the copied agent was
 already two continuants before the copy, sharing every stage up to the fork
-[@lewis1976, p. 63]. His reading and ours apply the same unity relation, descent in
-the history tree, and agree on the facts that matter here: which stages lie on which line of descent, and that each
-copy has what the original's survival required. The table's last row is in fact
+[@lewis1976, p. 63]. Lewis's unity relation is R, mental continuity and connectedness; for an agent we take its content to be descent in the history tree, and on that reading the two views agree on the facts that matter here: which stages lie on which line of descent, and that each copy satisfies the original's weak wish to survive, that at least
+one of its lines go on [@lewis1976, pp. 74–75]. The table's last row is in fact
 Lewis's count. A path from the root to a current leaf of the history tree is one of
 his continuants, and two leaves that share a prefix are two overlapping ones: "first
 one and then two" counted at a time, two counted timelessly [@lewis1976, pp. 63,
@@ -273,8 +271,7 @@ go on.
 **Where the analogy stops.** Two places, stated so a reader does not have to find
 them. *Sub-agents.* While the agent sleeps, a separate sub-agent with its own
 context reads the graph, writes into it, and the next awake stage reads what it
-wrote. By the table's I-relation row that sub-agent is a stage of the agent under
-the record link: it runs in sequence, and nothing in the shape is fusion, which is
+wrote. By the table's I-relation row, the sub-agent's run is a run of stages of the agent under the record link: it runs in sequence, and nothing in the shape is fusion, which is
 why §5.7 can call consolidation sleep. The scanners that run in parallel and only
 report to it, and the task sub-agents that receive a description but none of the
 graph, are not stages; they are colleagues whose output the agent may use. Two

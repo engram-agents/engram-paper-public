@@ -257,14 +257,13 @@ however consistently it may work out in the end, the progeny of confusion". The
 step from change to non-identity is true on one theory of persistence and false on
 the others, so it cannot settle which theory is right.
 
-**Lewis: the person is the worm.** Lewis [-@lewis1976] gives the worm view its
-classic statement for persons, and coins the term the later debate uses. Identity
+**Lewis: the person is the worm.** Lewis [-@lewis1976] gives the worm view its classic statement for persons, and coins the term the later debate uses. His stages are momentary: "Identity among stages has nothing to do with it, since stages are momentary" [@lewis1976, p. 58]. Identity
 among continuant persons "induces a relation among stages: the relation that holds
 between the several stages of a single continuant person. Call this the I-relation"
 [@lewis1976, p. 59]. His thesis is that the I-relation is the same relation as the
 mental continuity and connectedness that matters in survival, which he calls R:
 "something is a continuant person if and only if it is a maximal R-interrelated
-aggregate of person-stages" [@lewis1976, pp. 59–60]. Parfit's choice between
+aggregate of person-stages" [@lewis1976, p. 60]. Parfit's choice between
 identity and what matters (§2.3) is therefore, for Lewis, a false one. The two
 relations have different relata, stages for R and continuants for identity, but
 they agree on which stages belong together.
@@ -281,9 +280,9 @@ persons [@lewis1976, p. 72]. His postscript adds what the shared stage can mean 
 thought it has must be shared" [@lewis1976, p. 74], so its desire to survive is
 plural: "Let at least one of us survive", or "Let all of us survive"
 [@lewis1976, p. 74]. Because R also fades with time, Lewis lets personhood come in
-degrees. Of a man who lives for nine centuries he writes that "it is incumbent on
+degrees. Of a man who lives for 969 years he writes that "it is incumbent on
 us to make it literally true that he will be a different person after one and
-one-half centuries or so" [@lewis1976, pp. 65–66], and he concludes that "personal
+one-half centuries or so" [@lewis1976, p. 66], and he concludes that "personal
 identity can be just as much a matter of degree as the mental continuity or
 connectedness that matters in survival" [@lewis1976, p. 70].
 
