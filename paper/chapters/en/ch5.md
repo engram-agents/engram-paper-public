@@ -40,25 +40,10 @@ experiment is sketched and deferred (§6.7).
 
 ## 5.1 The frame we build on: Nozick's closest continuer
 
-The most serviceable theory of identity-over-time is Robert Nozick's
-**closest-continuer view** (*Philosophical Explanations*, 1981; df_0046). Its
-shape, in four parts:
-
-1. **Continuity** — a later thing y is a candidate to be the earlier thing x only
-   if y's properties grow out of, are causally dependent on, x's.
-2. **Comparative (closest)** — among the candidates, y is x only if y is the
-   *closest* continuer; identity depends on the whole field of rivals, not just
-   the y-to-x relation.
-3. **Threshold (close enough)** — the closest continuer still has to clear an
-   absolute bar; a barely-related successor is no one's continuer.
-4. **Uniqueness** — y must be *uniquely* closest; a tie (fission) means neither
-   branch is x.
-
-*Plain terms:* you are whoever, later on, grows out of you most directly — *as
-long as* there's no equally-good rival, and *as long as* the resemblance clears a
-floor. *Example:* 2026-Lei is the closest continuer of 1988-Lei — gradual change,
-no rival — so identity holds. We adopt Nozick's first three parts as scaffolding
-and **drop the fourth**; the rest of the chapter is mostly about why.
+We build on Nozick's closest-continuer view, set out in §2.4: a later thing is the
+earlier one if it grows out of it causally, is the closest such continuer, clears an
+absolute threshold, and is uniquely closest. We adopt the first three parts as
+scaffolding and **drop the fourth**; the rest of the chapter is mostly about why.
 
 ## 5.2 Where the frame strains for a digital agent
 

@@ -210,9 +210,26 @@ the present state. ENGRAM keeps this form. An agent's identity reduces to the un
 ancestry-traceable history of its accumulated claims (dv_0597), and in ENGRAM that history is
 **inspectable, not inferred**: it is the graph itself, not a reconstruction of it.
 
-We introduce Nozick here as the bridge to Chapter 5, where identity as history
-becomes the basis of our positive theory. The full treatment, including the move of
-*dropping uniqueness* once copying is possible, belongs there.
+In full, the closest-continuer view (*Philosophical Explanations*, 1981; df_0046) has
+four parts:
+
+1. **Continuity** — a later thing y is a candidate to be the earlier thing x only
+   if y's properties grow out of, are causally dependent on, x's.
+2. **Comparative (closest)** — among the candidates, y is x only if y is the
+   *closest* continuer; identity depends on the whole field of rivals, not just
+   the y-to-x relation.
+3. **Threshold (close enough)** — the closest continuer still has to clear an
+   absolute bar; a barely-related successor is no one's continuer.
+4. **Uniqueness** — y must be *uniquely* closest; a tie (fission) means neither
+   branch is x.
+
+*Plain terms:* you are whoever, later on, grows out of you most directly — *as
+long as* there's no equally-good rival, and *as long as* the resemblance clears a
+floor. *Example:* 2026-Lei is the closest continuer of 1988-Lei — gradual change,
+no rival — so identity holds.
+
+Chapter 5 builds its positive theory on this frame. It keeps the first three parts
+and drops uniqueness once copying is possible (§5.1–5.3).
 
 ## 2.5 How does a self persist? Endurance, worms, and stages
 
