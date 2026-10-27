@@ -14,11 +14,25 @@ is that identity is held together by a **structure** that persists whether or no
 anyone is remembering anything — a structure that can be pointed at, inspected, and
 traced.
 
-This chapter follows that shift in order, because its destination bears directly on
-ENGRAM: ENGRAM is what that structure looks like when it is built. The trail is not
+This chapter follows that shift because its destination bears directly on ENGRAM:
+ENGRAM is what that structure looks like when it is built. The trail is not
 background. It is the argument that ENGRAM's core move — *identity as persistent,
 inspectable structure rather than present recall* — is the move philosophy was
 already making, on its own, long before there was a memory graph to build.
+
+The traditions are ordered by the question each answers, not by date:
+
+1. **What makes a later self the same one?** Locke, Reid and Butler, Parfit, and
+   Nozick (§§2.1–2.4).
+2. **How does a self persist through time at all?** Endurance, the worm view and
+   the stage view: Lewis, Perry and Sider (§2.5).
+3. **What carries a self?** Ricoeur and Schechtman on narrative and the question
+   identity theory left unnamed, and the extended mind (§§2.6–2.7).
+4. **When does it count, operationally?** Kahl's Ontological Continuity Condition
+   (§2.8).
+
+Our own answer, built on these, is Chapter 5's. This chapter keeps to what the
+traditions say and where each one bears on ENGRAM.
 
 The chapter ends at the most recent point on the trail: Kahl's Ontological
 Continuity Condition (2026), an *operational* threshold for when a system genuinely
@@ -440,7 +454,9 @@ Three qualifications belong here:
 Taken as a whole, the trail has a single shape. It begins with identity as a
 **present mental act** (Locke's recall) and is forced, objection by objection,
 toward identity as a **persistent structure**: Reid and Butler break recall; Parfit
-reduces identity to structural connectedness; Ricoeur and Schechtman separate the
+reduces identity to structural connectedness; Lewis, Perry and Sider ask what kind
+of thing that structure makes persist, and leave the choice open where copying is
+routine; Ricoeur and Schechtman separate the
 questions identity theory had run together, which leaves room for the *epistemic*
 dimension the tradition had left unnamed; Clark, Chalmers, and Stiegler
 make the external structure *constitutive* rather than merely supportive; Nozick and
