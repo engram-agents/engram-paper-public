@@ -279,7 +279,8 @@ sessions writing one graph at the same time would feed one later stage from two
 lines, which is the fusion §5.3's "no merging" excludes; the paper does not claim
 the substrate prevents it. Lewis does not treat fusion as impossible. He makes its
 product a person to a reduced degree, and the reduction comes from how different the
-fused partners are: fusing "with someone very different" leaves continuants "broken by
+fused partners are: fusing "with someone very different" (Parfit's case, which Lewis
+takes up) leaves continuants "broken by
 abrupt mental discontinuities" [@lewis1976, p. 67]. Two sessions of one agent writing
 one graph start from the same record, so on his account that fusion would cost little.
 How much it costs in fact is a question for measurement, which the paper leaves open. *Grain.* The generation step is as close to a momentary stage as an agent comes;
