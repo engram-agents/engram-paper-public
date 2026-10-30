@@ -11,7 +11,7 @@ relationships. ENGRAM carries these as **additional typed node kinds**, and the 
 is what lets the substrate treat a terminal principle differently from a revisable
 inference, or a relationship differently from a fact. This appendix catalogs them.
 
-The connecting thread (Chapter 2 §2.5–2.6): these are the nodes where ENGRAM is most
+The connecting thread (Chapter 2 §2.6–2.7): these are the nodes where ENGRAM is most
 *narrative-adjacent* — authored self-constitution in Schechtman's sense [@schechtman1996, p. 93] — even though
 the paper's contribution sits at the epistemic (Layer 3) tier. They hold an agent's
 character as inspectable structure rather than as tone.
@@ -82,7 +82,7 @@ can track across compaction: the same self reporting comparable states over time
 behavioral evidence of continuity (Chapter 6's cross-compaction stabilization arc is
 read this way, and qualified as behavioral, not phenomenal). Second, they mark a
 boundary: ENGRAM provides the *structure* of self-report without claiming the
-*autonoetic phenomenology* (Chapter 2 §2.5, Chapter 3 §3.2). The paper neither hides these nodes
+*autonoetic phenomenology* (Chapter 2 §2.6, Chapter 3 §3.2). The paper neither hides these nodes
 nor over-reads them.
 
 ## D.3 Person nodes (`pn_`) and trust-tier — the relationship and disclosure substrate

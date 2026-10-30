@@ -651,7 +651,7 @@ The other three, compactly:
   handwriting in an old diary). Same-family transitions have been observed to
   preserve it; a cross-family transition is *predicted* to break it and has not been
   run. We use "recognition" in the behavioural sense throughout; no phenomenal claim
-  is intended or needed (§2.5, §3.2, D.2).
+  is intended or needed (§2.6, §3.2, D.2).
 
 ## 4.12 Reading the verdicts
 

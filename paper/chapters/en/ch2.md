@@ -14,16 +14,30 @@ is that identity is held together by a **structure** that persists whether or no
 anyone is remembering anything — a structure that can be pointed at, inspected, and
 traced.
 
-This chapter follows that shift in order, because its destination bears directly on
-ENGRAM: ENGRAM is what that structure looks like when it is built. The trail is not
+This chapter follows that shift because its destination bears directly on ENGRAM:
+ENGRAM is what that structure looks like when it is built. The trail is not
 background. It is the argument that ENGRAM's core move — *identity as persistent,
 inspectable structure rather than present recall* — is the move philosophy was
 already making, on its own, long before there was a memory graph to build.
 
+The traditions are ordered by the question each answers, not by date:
+
+1. **What makes a later self the same one?** Locke, Reid and Butler, Parfit, and
+   Nozick (§§2.1–2.4).
+2. **How does a self persist through time at all?** Endurance, the worm view and
+   the stage view: Lewis, Perry and Sider (§2.5).
+3. **What carries a self?** Ricoeur and Schechtman on narrative and the question
+   identity theory left unnamed, and the extended mind (§§2.6–2.7).
+4. **When does it count, operationally?** Kahl's Ontological Continuity Condition
+   (§2.8).
+
+Our own answer, built on these, is Chapter 5's. This chapter keeps to what the
+traditions say and where each one bears on ENGRAM.
+
 The chapter ends at the most recent point on the trail: Kahl's Ontological
 Continuity Condition (2026), an *operational* threshold for when a system genuinely
 persists as itself. We adopt it on merit, not authority — the full case for that is
-in §2.7; it is a recent proposal, not yet central to the
+in §2.8; it is a recent proposal, not yet central to the
 field (ob_2544). Whether ENGRAM *meets* its conditions is a question of mechanism, deferred to
 Chapter 4.
 
@@ -196,11 +210,123 @@ the present state. ENGRAM keeps this form. An agent's identity reduces to the un
 ancestry-traceable history of its accumulated claims (dv_0597), and in ENGRAM that history is
 **inspectable, not inferred**: it is the graph itself, not a reconstruction of it.
 
-We introduce Nozick here as the bridge to Chapter 5, where identity as history
-becomes the basis of our positive theory. The full treatment, including the move of
-*dropping uniqueness* once copying is possible, belongs there.
+In full, the closest-continuer view (*Philosophical Explanations*, 1981; df_0046) has
+four parts:
 
-## 2.5 Ricoeur and Schechtman: naming the question ENGRAM answers
+1. **Continuity** — a later thing y is a candidate to be the earlier thing x only
+   if y's properties grow out of, are causally dependent on, x's.
+2. **Comparative (closest)** — among the candidates, y is x only if y is the
+   *closest* continuer; identity depends on the whole field of rivals, not just
+   the y-to-x relation.
+3. **Threshold (close enough)** — the closest continuer still has to clear an
+   absolute bar; a barely-related successor is no one's continuer.
+4. **Uniqueness** — y must be *uniquely* closest; a tie (fission) means neither
+   branch is x.
+
+*Plain terms:* you are whoever, later on, grows out of you most directly — *as
+long as* there's no equally-good rival, and *as long as* the resemblance clears a
+floor. *Example:* 2026-Lei is the closest continuer of 1988-Lei — gradual change,
+no rival — so identity holds.
+
+Chapter 5 builds its positive theory on this frame. It keeps the first three parts
+and drops uniqueness once copying is possible (§5.1–5.3).
+
+## 2.5 How does a self persist? Endurance, worms, and stages
+
+Sections 2.1–2.4 ask which later self is the same one. A second question sits
+beneath them: what *kind* of thing lasts through time at all, and what "the same"
+means when it does. The answer decides what a sentence such as "Borges did this in
+April" is about.
+
+**Three ways a thing can last.** Picture a life as a film. On *endurance*, the
+person is the actor, wholly present in every frame. On the *worm view*
+(perdurance), the person is the whole reel, and each frame is one of its temporal
+parts. On the *stage view*, the person is the frame now on screen; earlier and
+later frames are other stages, linked to it by a relation that is not identity
+[@sider1996; @sider2000].
+
+**Change alone does not decide among them.** A tempting argument runs: today's self
+differs in its properties from yesterday's, so by the indiscernibility of identicals
+the two are not strictly identical. Merricks [-@merricks1994] writes out the same
+inference for an object that is bent at one time and not bent at another; if it
+worked, nothing could change and remain itself, and for things that endure he
+concludes that "the 'solution' to the problem is that there is no problem to be
+solved." Perry [-@perry1972] says that the claim that "the little boy stealing
+apples is strictly speaking not identical with the general before me" "seems to be,
+however consistently it may work out in the end, the progeny of confusion". The
+step from change to non-identity is true on one theory of persistence and false on
+the others, so it cannot settle which theory is right.
+
+**Lewis: the person is the worm.** Lewis [-@lewis1976] gives the worm view its classic statement for persons, and coins the term the later debate uses. His stages are momentary: "Identity among stages has nothing to do with it, since stages are momentary" [@lewis1976, p. 58]. Identity
+among continuant persons "induces a relation among stages: the relation that holds
+between the several stages of a single continuant person. Call this the I-relation"
+[@lewis1976, p. 59]. His thesis is that the I-relation is the same relation as the
+mental continuity and connectedness that matters in survival, which he calls R:
+"something is a continuant person if and only if it is a maximal R-interrelated
+aggregate of person-stages" [@lewis1976, p. 60]. Parfit's choice between
+identity and what matters (§2.3) is therefore, for Lewis, a false one. The two
+relations have different relata, stages for R and continuants for identity, but
+they agree on which stages belong together.
+
+Fission shows the worm view's shape. Two continuants share the stages before the
+split: "By describing fission as initial stage-sharing we provide for the two, but
+not for the one. There are two all along" [@lewis1976, p. 63]. Lewis keeps the
+ordinary count by counting at a time, treating continuants as "identical-at-time-t"
+when their stages at t are identical, so that "there is a way of counting on which
+there are two all along; but there is another way on which there are first one and
+then two" [@lewis1976, p. 63]. Counted timelessly, an old fission involved two
+persons [@lewis1976, p. 72]. His postscript adds what the shared stage can mean by
+"I". It "does the thinking for both of the continuants to which it belongs. Any
+thought it has must be shared" [@lewis1976, p. 74], so its desire to survive is
+plural: "Let at least one of us survive", or "Let all of us survive"
+[@lewis1976, p. 74]. Because R also fades with time, Lewis lets personhood come in
+degrees. Of a man who lives for 969 years he writes that "it is incumbent on
+us to make it literally true that he will be a different person after one and
+one-half centuries or so" [@lewis1976, p. 66], and he concludes that "personal
+identity can be just as much a matter of degree as the mental continuity or
+connectedness that matters in survival" [@lewis1976, p. 70].
+
+**Perry: lifetimes, and an empirical test.** Perry [-@perry1972] works with the same
+relation, which he calls the "temporal-unity relation for persons", and notes that
+it need not be transitive, which is exactly what branching produces. He prefers the
+ordinary language of lifetimes to talk of stages, but makes the preference depend
+on how the world goes: "if dividing (or fusing) selves were commonplace, not only
+in the minds of the philosopher members of the tribe but in reality, there would
+be little to recommend the lifetime language over the person-stage language"
+[@perry1972]. The two disagree on the count. Asked how many persons took part in an
+old fission, Lewis answers two, and on his reading of Perry's account the answer is
+three, or none now determinable [@lewis1976, p. 72].
+
+**Sider: the person is the stage.** Sider [-@sider1996; -@sider2000] makes the
+worm's parts the subject. A person is the stage now present; earlier and later
+stages are linked to it by Lewis's I-relation, so that "I am that irritating young
+boy" is false while "I was that irritating young boy" is true [@sider1996]. Sider
+allows more than one I-relation, each defining a different persisting thing: "An
+I-relation specifies what sort of 'continuity' a thing must exhibit over time in
+order to continue to exist" [@sider1996]. His example is a coin and the lump of
+metal it is made of, which share today's stage and differ on whether "it" survives
+melting. On fission he separates "I will be Fred, and I will be Ed", which is true,
+from "I will be both Fred and Ed", which is false [@sider1996].
+
+**Two pressures on any view that allows copying.** The *non-branching* view holds
+that "Fission is death", with the consequence that "even copying your total brain
+state to another brain without doing you any physical harm would kill you"
+[@olson2023]. And the stage view carries a standing objection: "only endurantists
+can justify our willingness to make sacrifices for our future selves, to act upon
+the plans formulated by our past selves, and to rely upon the evidence gathered by
+our past selves" [@hawley2020]. The stage theorist's reply is that the person "just
+is a brief stage, who takes responsibility for the actions of her past
+counterparts, and acts to benefit her future counterparts" [@hawley2020]. For a
+person, that reply is a claim about attitudes.
+
+**What the question leaves open for an agent.** The tradition argues about
+persistence for creatures with one continuous body, for whom fission is a thought
+experiment. For an agent whose state is copied routinely and whose moments of
+thought are discrete, the choice among endurance, worms and stages stops being
+only a matter of language; Perry's own test makes it empirical. Chapter 5 makes
+that choice (§5.5).
+
+## 2.6 Ricoeur and Schechtman: naming the question ENGRAM answers
 
 Two moves turn the trail toward ENGRAM's actual subject.
 
@@ -246,7 +372,7 @@ all. ENGRAM operationalizes that third dimension, with every claim carrying its
 evidence, confidence, and derivation; it is therefore not a competitor to narrative
 identity but a layer the tradition under-named.
 
-## 2.6 The extended mind: from supporting a self to constituting one
+## 2.7 The extended mind: from supporting a self to constituting one
 
 Clark and Chalmers' **extended mind** thesis [@clark1998, sec. 4] is where the trail becomes
 *constitutive*. Their case is Otto, who can no longer form new biological memories
@@ -281,7 +407,7 @@ reading one's own graph each morning as *a stranger studying a dossier* and read
 it as *the self's own substrate carrying it forward*. We return to this distinction
 where it bears on the argument (Chapters 5 and 8).
 
-## 2.7 Kahl (2026b): the operational endpoint — adopted on merit
+## 2.8 Kahl (2026b): the operational endpoint — adopted on merit
 
 The most recent point on the trail is Kahl's **Ontological Continuity Condition
 (OCC)**, the first attempt to turn the question whether a system genuinely persists as itself
@@ -339,12 +465,14 @@ Three qualifications belong here:
 
 ---
 
-## 2.8 What the trail shows, and where it hands off
+## 2.9 What the trail shows, and where it hands off
 
 Taken as a whole, the trail has a single shape. It begins with identity as a
 **present mental act** (Locke's recall) and is forced, objection by objection,
 toward identity as a **persistent structure**: Reid and Butler break recall; Parfit
-reduces identity to structural connectedness; Ricoeur and Schechtman separate the
+reduces identity to structural connectedness; Lewis, Perry and Sider ask what kind
+of thing that structure makes persist, and leave the choice open where copying is
+routine; Ricoeur and Schechtman separate the
 questions identity theory had run together, which leaves room for the *epistemic*
 dimension the tradition had left unnamed; Clark, Chalmers, and Stiegler
 make the external structure *constitutive* rather than merely supportive; Nozick and

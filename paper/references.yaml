@@ -545,6 +545,27 @@ references:
   metadata_incomplete: |-
     Metadata incomplete: no date is printed in the cited file (the commit date, 2026-08-14,
     comes from the GitHub API record).
+- id: lewis1976
+  type: chapter
+  author:
+  - family: Lewis
+    given: D.
+  issued:
+    date-parts:
+    - - 1976
+  title: Survival and identity
+  container-title: The identities of persons
+  editor:
+  - family: Rorty
+    given: A. O.
+  publisher: University of California Press
+  publisher-place: Berkeley
+  page: 17–40
+  note: Reprinted with postscripts in D. Lewis, Philosophical Papers, Vol. I (Oxford University Press, 1983), pp. 55–77; page references in the text are to the reprint.
+  provenance: |-
+    Read first-hand in the 1983 reprint: the essay (pp. 55–72) from the Oxford Scholarship Online chapter PDF, and the "Postscripts to 'Survival and Identity'" (pp. 73–77) from a scan of the printed volume. Quoted passages were read from page images and cross-checked against recognition OCR.
+  provenance_zh: |-
+    据 1983 年重印本第一手阅读：正文（第 55–72 页）读自 Oxford Scholarship Online 的章节 PDF，"Postscripts to 'Survival and Identity'"（第 73–77 页）读自印本扫描件。所引段落从页面图像读出，并与识别式 OCR 交叉核对。
 - id: lin2026
   type: article
   author:

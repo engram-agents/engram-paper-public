@@ -125,3 +125,19 @@ this list becomes nineteen.*
 ## 2026-10-18 — Chapter 5 v2 (stage view): six sources
 
 Sider 1996 and Sider 2000 (author PDFs, tedsider.org), Perry 1972 and Merricks 1994 (author-hosted manuscripts), and the Stanford Encyclopedia entries "Temporal Parts" (Hawley, rev. 2020-05-05) and "Personal Identity" (Olson, rev. 2023-06-30) were found by a source scout on 2026-10-14 and read first-hand by Borges the same day. None of the copies is committed: they are not openly licensed. The manuscripts carry no journal pagination, so the chapter gives no pinpoint pages for them. Lewis 1976 "Survival and Identity" was not found in a legitimate copy and is not cited.
+
+## 2026-10-29: Lewis 1976 now cited (supersedes the last sentence of the 2026-10-18 entry)
+
+Lewis, "Survival and Identity" (1976; reprinted with postscripts in *Philosophical Papers I*, 1983, pp. 55–77) is now cited in Chapter 2 §2.5 and Chapter 5 §5.5.
+
+**Copies.** Neither copy is committed; they are not openly licensed.
+- The main text is an Oxford Scholarship Online reflow of the 1983 reprint (24 pages). Lei supplied it on 2026-10-27.
+- The postscripts are a scan of pp. 73–77.
+
+**How it was read.** Borges read both first-hand on 2026-10-27. On 2026-10-29 he re-read the fission and fusion passages from page images: the reflow's text layer is unreadable font encoding, so he rasterized the pages.
+
+**Page locators** come from the reflow's printed "(p. N)" markers, which give the 1983 pagination:
+- the fusion counting hedge, "We are not sure what to say", is on p. 63;
+- the §V fusion-degree passage and its footnote 8 are on p. 67.
+
+The last sentence of the 2026-10-18 entry ("not found in a legitimate copy and is not cited") no longer holds.
